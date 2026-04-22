@@ -5,7 +5,6 @@ const Home = lazy(() => import('./pages/Home'));
 const Terms = lazy(() => import('./pages/Terms'));
 const Privacy = lazy(() => import('./pages/Privacy'));
 const Blog = lazy(() => import('./pages/Blog'));
-const Sitemap = lazy(() => import('./pages/Sitemap'));
 
 const LoadingFallback = () => (
   <div className="flex items-center justify-center min-h-[50vh] w-full">
@@ -57,7 +56,7 @@ function Footer() {
         <Link to="/blog" className="hover:text-[#00d2ff] transition-colors">Blog</Link>
         <Link to="/terms" className="hover:text-[#00d2ff] transition-colors">Terms of Service</Link>
         <Link to="/privacy" className="hover:text-[#00d2ff] transition-colors">Privacy Policy</Link>
-        <Link to="/sitemap" className="hover:text-[#00d2ff] transition-colors">Sitemap</Link>
+        <a href="/sitemap.xml" target="_blank" rel="noopener noreferrer" className="hover:text-[#00d2ff] transition-colors">Sitemap</a>
       </div>
     </footer>
   );
@@ -73,7 +72,6 @@ export default function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/blog" element={<Blog />} />
-              <Route path="/sitemap" element={<Sitemap />} />
               <Route path="/terms" element={<Terms />} />
               <Route path="/privacy" element={<Privacy />} />
             </Routes>
