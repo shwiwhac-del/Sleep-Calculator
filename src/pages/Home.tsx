@@ -189,7 +189,7 @@ export default function Home() {
   };
 
   return (
-    <div className="w-full max-w-2xl mx-auto flex flex-col items-center">
+    <div className="w-full max-w-4xl lg:max-w-5xl mx-auto flex flex-col items-center">
       {/* Header */}
       <div className="flex flex-col items-center justify-center mb-8 mt-4">
         <motion.div 
@@ -219,13 +219,13 @@ export default function Home() {
       <div 
         role="radiogroup" 
         aria-label="Calculation mode"
-        className="flex bg-[#130f2e]/80 rounded-full p-1 border border-white/10 w-full max-w-md mx-auto mb-8 backdrop-blur-sm"
+        className="flex flex-col sm:flex-row bg-[#130f2e]/80 rounded-2xl sm:rounded-full p-1 border border-white/10 w-full max-w-md mx-auto mb-8 backdrop-blur-sm gap-1 sm:gap-0"
       >
         <button
           role="radio"
           aria-checked={mode === 'wake'}
           onClick={() => { setMode('wake'); setResults([]); }}
-          className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-full text-sm font-medium transition-all focus-visible:ring-2 focus-visible:ring-[#00d2ff] focus-visible:outline-none ${
+          className={`flex-1 flex items-center justify-center gap-2 py-3 sm:py-2.5 px-2 rounded-xl sm:rounded-full text-xs sm:text-sm font-medium transition-all focus-visible:ring-2 focus-visible:ring-[#00d2ff] focus-visible:outline-none ${
             mode === 'wake'
               ? 'bg-gradient-to-r from-[#20448a] to-[#1a3673] border border-[#4a72b8] shadow-lg'
               : 'text-white/60 hover:text-white'
@@ -234,7 +234,7 @@ export default function Home() {
           {mode === 'wake' ? (
             <div className="bg-white rounded-full p-0.5"><Check size={12} className="text-[#1a3673]" strokeWidth={3} /></div>
           ) : (
-            <Check size={16} className="opacity-0" />
+            <Check size={16} className="opacity-0 hidden sm:block" />
           )}
           I want to wake up at
         </button>
@@ -242,7 +242,7 @@ export default function Home() {
           role="radio"
           aria-checked={mode === 'bed'}
           onClick={() => { setMode('bed'); setResults([]); }}
-          className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-full text-sm font-medium transition-all focus-visible:ring-2 focus-visible:ring-[#00d2ff] focus-visible:outline-none ${
+          className={`flex-1 flex items-center justify-center gap-2 py-3 sm:py-2.5 px-2 rounded-xl sm:rounded-full text-xs sm:text-sm font-medium transition-all focus-visible:ring-2 focus-visible:ring-[#00d2ff] focus-visible:outline-none ${
             mode === 'bed'
               ? 'bg-gradient-to-r from-[#20448a] to-[#1a3673] border border-[#4a72b8] shadow-lg'
               : 'text-white/60 hover:text-white'
@@ -251,7 +251,7 @@ export default function Home() {
           {mode === 'bed' ? (
             <div className="bg-white rounded-full p-0.5"><Check size={12} className="text-[#1a3673]" strokeWidth={3} /></div>
           ) : (
-            <Moon size={16} fill="currentColor" />
+            <Moon size={16} fill="currentColor" className="hidden sm:block" />
           )}
           I want to go to sleep at
         </button>
@@ -275,7 +275,7 @@ export default function Home() {
               }
             }}
             aria-label={mode === 'wake' ? "Select wake up time" : "Select go to sleep time"}
-            className="bg-[#1a173a]/60 border border-white/20 hover:border-white/40 rounded-xl px-8 py-4 text-4xl font-bold text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00d2ff] focus-visible:border-transparent backdrop-blur-md shadow-[0_8px_32px_rgba(0,0,0,0.3)] transition-all cursor-pointer appearance-none"
+            className="bg-[#1a173a]/60 border border-white/20 hover:border-white/40 rounded-xl px-5 py-3 sm:px-8 sm:py-4 text-3xl sm:text-4xl font-bold text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00d2ff] focus-visible:border-transparent backdrop-blur-md shadow-[0_8px_32px_rgba(0,0,0,0.3)] transition-all cursor-pointer appearance-none text-center"
             style={{ colorScheme: 'dark' }}
           />
         </div>
@@ -285,7 +285,7 @@ export default function Home() {
       <button
         onClick={calculate}
         aria-label="Calculate optimal sleep times"
-        className="bg-gradient-to-b from-[#40c9ff] to-[#0088ff] rounded-full px-16 py-3 text-white font-bold text-lg shadow-[0_0_20px_rgba(0,136,255,0.6)] border border-[#40c9ff]/50 hover:scale-105 transition-transform mb-12 focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none"
+        className="bg-gradient-to-b from-[#40c9ff] to-[#0088ff] rounded-full px-12 md:px-20 py-3 md:py-4 text-white font-bold text-base md:text-xl md:tracking-wide shadow-[0_0_20px_rgba(0,136,255,0.6)] border border-[#40c9ff]/50 hover:scale-105 transition-transform mb-12 focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none w-full sm:w-auto max-w-[320px]"
       >
         Calculate
       </button>
@@ -315,25 +315,27 @@ export default function Home() {
               transition={{ duration: 0.4, ease: "easeOut" }}
               className="w-full border-2 border-[#00d2ff] hover:border-[#40c9ff] rounded-xl bg-gradient-to-b from-[#1a2a5c]/80 to-[#121b3d]/80 p-5 shadow-[0_0_20px_rgba(0,210,255,0.3)] hover:shadow-[0_0_40px_rgba(0,210,255,0.6)] backdrop-blur-md mb-4 transition-all duration-500 ease-out hover:-translate-y-1 hover:scale-[1.03] cursor-default"
             >
-              <div className="flex justify-between items-center mb-3">
-                <div className="flex items-center gap-3">
+              <div className="flex flex-col sm:flex-row sm:justify-between items-start sm:items-center mb-3 sm:mb-4 gap-3 sm:gap-0">
+                <div className="flex items-center gap-2 sm:gap-3">
                   <Bed className="text-white/70" size={24} />
-                  <span className="text-3xl font-bold">{formatTime(res.date, true)}</span>
-                  <span className="text-white/70 text-lg">({res.cycles} cycles)</span>
+                  <span className="text-2xl sm:text-3xl font-bold">{formatTime(res.date, true)}</span>
+                  <span className="text-white/70 text-base sm:text-lg">({res.cycles} cycles)</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <button onClick={() => handleSetAlarm(res.date, mode === 'bed')} className="p-2 bg-white/5 hover:bg-white/20 rounded-full transition-colors text-white/80 hover:text-white focus-visible:ring-2 focus-visible:ring-[#00d2ff] focus-visible:outline-none" title={`Set alarm for ${formatTime(res.date, true)}`} aria-label={`Set alarm for ${formatTime(res.date, true)}`}>
-                    <Bell size={16} />
-                  </button>
-                  <button onClick={() => handleShare(res)} className="p-2 bg-white/5 hover:bg-white/20 rounded-full transition-colors text-white/80 hover:text-white focus-visible:ring-2 focus-visible:ring-[#00d2ff] focus-visible:outline-none" title="Share to X/Twitter" aria-label={`Share ${formatTime(res.date, true)} time`}>
-                    <Share2 size={16} />
-                  </button>
-                  <span className="bg-[#3a9e4c] text-white text-xs font-bold px-4 py-1.5 rounded-full">Recommended</span>
+                <div className="flex items-center gap-2 w-full sm:w-auto justify-between sm:justify-end pl-8 sm:pl-0">
+                  <div className="flex gap-2">
+                    <button onClick={() => handleSetAlarm(res.date, mode === 'bed')} className="p-2 bg-white/5 hover:bg-white/20 rounded-full transition-colors text-white/80 hover:text-white focus-visible:ring-2 focus-visible:ring-[#00d2ff] focus-visible:outline-none" title={`Set alarm for ${formatTime(res.date, true)}`} aria-label={`Set alarm for ${formatTime(res.date, true)}`}>
+                      <Bell size={16} />
+                    </button>
+                    <button onClick={() => handleShare(res)} className="p-2 bg-white/5 hover:bg-white/20 rounded-full transition-colors text-white/80 hover:text-white focus-visible:ring-2 focus-visible:ring-[#00d2ff] focus-visible:outline-none" title="Share to X/Twitter" aria-label={`Share ${formatTime(res.date, true)} time`}>
+                      <Share2 size={16} />
+                    </button>
+                  </div>
+                  <span className="bg-[#3a9e4c] text-white text-[10px] sm:text-xs font-bold px-3 py-1 sm:px-4 sm:py-1.5 rounded-full uppercase tracking-wider">Recommended</span>
                 </div>
               </div>
-              <div className="text-white/80 text-sm ml-9 border-t border-white/10 pt-3">
-                <div className="mb-2">Sleep for {formatDuration(res.cycles)}</div>
-                <div className="flex gap-1.5 w-full max-w-xs" aria-label={`${res.cycles} sleep cycles`}>
+              <div className="text-white/80 text-sm pl-0 sm:pl-9 border-t border-white/10 pt-3">
+                <div className="mb-2 text-center sm:text-left">Sleep for {formatDuration(res.cycles)}</div>
+                <div className="flex gap-1.5 w-full max-w-xs mx-auto sm:mx-0" aria-label={`${res.cycles} sleep cycles`}>
                   {Array.from({ length: res.cycles }).map((_, i) => (
                     <div key={i} className="h-1.5 flex-1 bg-[#00d2ff] rounded-full shadow-[0_0_5px_rgba(0,210,255,0.5)]"></div>
                   ))}
@@ -343,7 +345,7 @@ export default function Home() {
           ))}
 
           {/* Other Cards (5, 4, 3 cycles) */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-8 w-full">
             {results.filter(r => r.cycles < 6).map((res, index) => (
               <motion.div 
                 key={`${res.cycles}-${res.date.getTime()}`} 
@@ -352,15 +354,17 @@ export default function Home() {
                 transition={{ duration: 0.4, ease: "easeOut", delay: 0.1 * (index + 1) }}
                 className="border border-white/10 hover:border-[#00d2ff]/50 rounded-xl bg-[#1d1842]/80 hover:bg-[#251f54]/90 p-5 backdrop-blur-md transition-all duration-500 ease-out hover:-translate-y-1 hover:scale-[1.03] hover:shadow-[0_0_25px_rgba(0,210,255,0.2)] cursor-default"
               >
-                <div className="flex justify-between items-center mb-3">
-                  <div className="flex items-center gap-3">
-                    <Bed className="text-white/70" size={20} />
-                    <span className="text-2xl font-bold">{formatTime(res.date, true)}</span>
-                    <span className="text-white/70">({res.cycles} cycles)</span>
+                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-3 sm:mb-4 gap-2 sm:gap-0">
+                  <div className="flex items-center gap-2 sm:gap-3">
+                    <Bed className="text-white/70 hidden sm:block" size={20} />
+                    <span className="text-xl sm:text-2xl font-bold">{formatTime(res.date, true)}</span>
+                    <span className="text-white/70 text-sm sm:text-base">({res.cycles} cycles)</span>
                   </div>
-                  <button onClick={() => handleShare(res)} className="p-2 bg-white/5 hover:bg-white/20 rounded-full transition-colors text-white/80 hover:text-white focus-visible:ring-2 focus-visible:ring-[#00d2ff] focus-visible:outline-none" title="Share to X/Twitter" aria-label={`Share ${formatTime(res.date, true)} time`}>
-                    <Share2 size={16} />
-                  </button>
+                  <div className="self-end sm:self-auto -mt-8 sm:mt-0">
+                    <button onClick={() => handleShare(res)} className="p-2 bg-white/5 hover:bg-white/20 rounded-full transition-colors text-white/80 hover:text-white focus-visible:ring-2 focus-visible:ring-[#00d2ff] focus-visible:outline-none" title="Share to X/Twitter" aria-label={`Share ${formatTime(res.date, true)} time`}>
+                      <Share2 size={16} />
+                    </button>
+                  </div>
                 </div>
                 <div className="text-white/80 text-sm border-t border-white/10 pt-3 text-center flex flex-col items-center">
                   <div className="mb-2">Sleep for {formatDuration(res.cycles)}</div>
@@ -375,11 +379,11 @@ export default function Home() {
           </div>
 
           {/* Action Buttons */}
-          <div className="flex justify-center gap-4 mb-12">
-            <button onClick={handleSleepNow} aria-label="Calculate times for sleeping right now" className="flex items-center gap-2 bg-[#130f2e]/80 border border-white/20 rounded-full px-8 py-2.5 text-sm hover:bg-white/10 transition-colors backdrop-blur-md focus-visible:ring-2 focus-visible:ring-[#00d2ff] focus-visible:outline-none">
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-3 sm:gap-4 mb-12 sm:px-0">
+            <button onClick={handleSleepNow} aria-label="Calculate times for sleeping right now" className="flex items-center justify-center gap-2 bg-[#130f2e]/80 border border-white/20 rounded-full px-8 py-3 sm:py-2.5 text-sm hover:bg-white/10 transition-colors backdrop-blur-md focus-visible:ring-2 focus-visible:ring-[#00d2ff] focus-visible:outline-none w-full sm:w-auto">
               <Moon size={16} fill="currentColor" /> Sleep Now
             </button>
-            <button onClick={() => handleSetAlarm()} aria-label="Set web alarm for the recommended time" className="flex items-center gap-2 bg-[#130f2e]/80 border border-white/20 rounded-full px-8 py-2.5 text-sm hover:bg-white/10 transition-colors backdrop-blur-md focus-visible:ring-2 focus-visible:ring-[#00d2ff] focus-visible:outline-none">
+            <button onClick={() => handleSetAlarm()} aria-label="Set web alarm for the recommended time" className="flex items-center justify-center gap-2 bg-[#130f2e]/80 border border-white/20 rounded-full px-8 py-3 sm:py-2.5 text-sm hover:bg-white/10 transition-colors backdrop-blur-md focus-visible:ring-2 focus-visible:ring-[#00d2ff] focus-visible:outline-none w-full sm:w-auto">
               <Bell size={16} /> Set Alarm
             </button>
           </div>
@@ -390,19 +394,30 @@ export default function Home() {
       <div className="w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent mb-8" />
 
       {/* Info Section */}
-      <div className="w-full text-left pb-12">
-        <div className="mb-6">
-          <h2 className="text-lg font-bold mb-3">What is a Sleep Cycle Calculator?</h2>
-          <p className="text-white/70 text-sm leading-relaxed">
-            Whether you're wondering <strong>"what time should I wake up?"</strong> or <strong>"what time should I go to bed?"</strong>, our <strong>sleep calculator</strong> is here to help. By calculating backwards or forwards in 90-minute increments, this <strong>sleep time calculator</strong> ensures you wake up between REM sleep cycles, leaving you feeling refreshed instead of groggy.
-          </p>
-        </div>
-        <div className="w-full h-px bg-white/10 mb-6" />
-        <div>
-          <h2 className="text-lg font-bold mb-3">How does the REM Sleep Calculator work?</h2>
-          <p className="text-white/70 text-sm leading-relaxed">
-            Your body moves through sleep stages in cycles of <span className="font-bold text-white">around 90 minutes</span>. We also factor in an average of <span className="font-bold text-white">15 minutes</span> to fall asleep. Using a <strong>sleeping calculator</strong> (or <em>sleep calc</em>) to find your optimal <strong>sleep calculator time</strong> means you avoid waking up mid-cycle. Next time you ask yourself <strong>"when should I wake up?"</strong> or <strong>"when to wake up?"</strong>, just use this <strong>calculator sleep</strong> tool!
-          </p>
+      <div className="w-full pb-12 pt-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 text-left">
+          <div className="bg-[#130f2e]/60 p-6 sm:p-8 rounded-3xl border border-white/5 backdrop-blur-md shadow-lg flex flex-col justify-center">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="bg-[#00d2ff]/10 p-2 rounded-lg">
+                <Moon className="text-[#00d2ff]" size={20} />
+              </div>
+              <h2 className="text-xl font-bold text-white">What is this Calculator?</h2>
+            </div>
+            <p className="text-white/70 text-sm sm:text-base leading-relaxed">
+              Whether you're wondering <strong>"what time should I wake up?"</strong> or <strong>"what time should I go to bed?"</strong>, our <strong>sleep calculator</strong> is here to help. By calculating backwards or forwards in 90-minute increments, this <strong>sleep time calculator</strong> ensures you wake up between REM sleep cycles, leaving you feeling refreshed instead of groggy.
+            </p>
+          </div>
+          <div className="bg-[#130f2e]/60 p-6 sm:p-8 rounded-3xl border border-white/5 backdrop-blur-md shadow-lg flex flex-col justify-center">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="bg-[#fcd34d]/10 p-2 rounded-lg">
+                <Clock className="text-[#fcd34d]" size={20} />
+              </div>
+              <h2 className="text-xl font-bold text-white">How does it work?</h2>
+            </div>
+            <p className="text-white/70 text-sm sm:text-base leading-relaxed">
+              Your body moves through sleep stages in cycles of <span className="font-bold text-white">around 90 minutes</span>. We also factor in an average of <span className="font-bold text-white">15 minutes</span> to fall asleep. Using a <strong>sleeping calculator</strong> (or <em>sleep calc</em>) to find your optimal <strong>sleep calculator time</strong> means you avoid waking up mid-cycle!
+            </p>
+          </div>
         </div>
       </div>
 

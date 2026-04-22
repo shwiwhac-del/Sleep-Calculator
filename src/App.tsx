@@ -52,7 +52,7 @@ const StarryBackground = () => {
 function Footer() {
   return (
     <footer className="w-full py-6 mt-auto border-t border-white/10 bg-[#130f2e]/50 backdrop-blur-md z-20 relative text-center">
-      <div className="flex justify-center gap-8 text-sm text-white/60">
+      <div className="flex flex-wrap justify-center gap-x-6 gap-y-4 text-sm text-white/60 px-4">
         <Link to="/blog" className="hover:text-[#00d2ff] transition-colors">Blog</Link>
         <Link to="/terms" className="hover:text-[#00d2ff] transition-colors">Terms of Service</Link>
         <Link to="/privacy" className="hover:text-[#00d2ff] transition-colors">Privacy Policy</Link>
