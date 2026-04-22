@@ -1,8 +1,17 @@
-import { HashRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import Home from './pages/Home';
-import Terms from './pages/Terms';
-import Privacy from './pages/Privacy';
-import Blog from './pages/Blog';
+import { lazy, Suspense } from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+
+const Home = lazy(() => import('./pages/Home'));
+const Terms = lazy(() => import('./pages/Terms'));
+const Privacy = lazy(() => import('./pages/Privacy'));
+const Blog = lazy(() => import('./pages/Blog'));
+const Sitemap = lazy(() => import('./pages/Sitemap'));
+
+const LoadingFallback = () => (
+  <div className="flex items-center justify-center min-h-[50vh] w-full">
+    <div className="w-8 h-8 border-4 border-[#00d2ff] border-t-transparent rounded-full animate-spin"></div>
+  </div>
+);
 
 const StarryBackground = () => {
   // Generate static stars to avoid hydration mismatches or re-renders
@@ -48,6 +57,7 @@ function Footer() {
         <Link to="/blog" className="hover:text-[#00d2ff] transition-colors">Blog</Link>
         <Link to="/terms" className="hover:text-[#00d2ff] transition-colors">Terms of Service</Link>
         <Link to="/privacy" className="hover:text-[#00d2ff] transition-colors">Privacy Policy</Link>
+        <Link to="/sitemap" className="hover:text-[#00d2ff] transition-colors">Sitemap</Link>
       </div>
     </footer>
   );
@@ -59,12 +69,15 @@ export default function App() {
       <div className="min-h-screen flex flex-col text-white font-sans relative overflow-x-hidden bg-gradient-to-b from-[#1c1445] via-[#15103a] to-[#0d0a26]">
         <StarryBackground />
         <main className="relative z-10 flex-grow flex flex-col items-center justify-start p-4 sm:p-8">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/terms" element={<Terms />} />
-            <Route path="/privacy" element={<Privacy />} />
-          </Routes>
+          <Suspense fallback={<LoadingFallback />}>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/blog" element={<Blog />} />
+              <Route path="/sitemap" element={<Sitemap />} />
+              <Route path="/terms" element={<Terms />} />
+              <Route path="/privacy" element={<Privacy />} />
+            </Routes>
+          </Suspense>
         </main>
         <Footer />
       </div>
