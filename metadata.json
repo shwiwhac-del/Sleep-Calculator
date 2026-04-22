@@ -1,0 +1,6 @@
+{
+  "name": "Sleep Calculator",
+  "description": "Calculate the best times to sleep or wake up based on 90-minute sleep cycles.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}
