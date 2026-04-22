@@ -4,7 +4,7 @@ import { Moon, BookOpen, Clock, Activity, Brain, Battery, AlarmClock, BedDouble,
 
 export default function Blog() {
   return (
-    <div className="w-full max-w-3xl mx-auto px-4 py-12">
+    <div className="w-full max-w-5xl lg:max-w-6xl mx-auto px-4 py-12">
       <div className="mb-8">
         <Link to="/" className="inline-flex items-center gap-2 text-white/60 hover:text-[#00d2ff] transition-colors font-medium focus-visible:ring-2 focus-visible:ring-[#00d2ff] focus-visible:outline-none rounded-lg px-2 py-1 -ml-2">
           <ArrowLeft size={20} />
@@ -15,7 +15,7 @@ export default function Blog() {
       <motion.div 
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="flex flex-col items-center justify-center mb-12 text-center"
+        className="flex flex-col items-center justify-center mb-16 text-center"
       >
         <BookOpen className="text-[#00d2ff] mb-4" size={48} />
         <h1 className="text-4xl font-bold tracking-wide mb-4">Sleep Better Blog</h1>
@@ -24,7 +24,7 @@ export default function Blog() {
         </p>
       </motion.div>
 
-      <div className="space-y-12">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
         {/* Article 1 */}
         <motion.article 
           initial={{ opacity: 0, y: 20 }}
