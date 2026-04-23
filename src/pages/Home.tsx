@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react';
-import { Moon, Check, Bed, Bell, Share2, Clock } from 'lucide-react';
+import { Moon, Check, Bed, Bell, Share2, Clock, Info, HelpCircle, BookOpen } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import { Helmet } from 'react-helmet-async';
+import { Link } from 'react-router-dom';
+import { FAQAccordion } from '../components/FAQAccordion';
 
 export default function Home() {
   const [mode, setMode] = useState<'wake' | 'bed'>(() => {
@@ -192,15 +195,19 @@ export default function Home() {
     <div className="w-full max-w-4xl lg:max-w-5xl mx-auto flex flex-col items-center">
       {/* Header */}
       <div className="flex flex-col items-center justify-center mb-8 mt-4">
+        <Helmet>
+          <title>Sleep Calculator: Find the Best Time to Sleep and Wake Up</title>
+          <meta name="description" content="Use our free sleep calculator to find the best time to sleep, wake up refreshed, and understand your 90-minute sleep cycles." />
+        </Helmet>
         <motion.div 
           initial={{ opacity: 0, scale: 0.95, y: -10 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="flex items-center justify-center gap-3 mb-4"
+          className="flex flex-col items-center justify-center gap-3 md:gap-5 mb-4 text-center px-4"
         >
-          <Moon className="text-[#a5b4fc]" size={36} fill="#a5b4fc" />
-          <h1 className="text-3xl font-bold tracking-wide">Sleep Calculator</h1>
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-[#e0e7ff] to-[#00d2ff]">Sleep Calculator: Find the Best Time to Sleep and Wake Up</h1>
         </motion.div>
+        
         <motion.div 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -391,35 +398,112 @@ export default function Home() {
       )}
 
       {/* Bottom Divider */}
-      <div className="w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent mb-8" />
+      <div className="w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent mb-12" />
 
-      {/* Info Section */}
-      <div className="w-full pb-12 pt-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 text-left">
-          <div className="bg-[#130f2e]/60 p-6 sm:p-8 rounded-3xl border border-white/5 backdrop-blur-md shadow-lg flex flex-col justify-center">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="bg-[#00d2ff]/10 p-2 rounded-lg">
-                <Moon className="text-[#00d2ff]" size={20} />
-              </div>
-              <h2 className="text-xl font-bold text-white">What is this Calculator?</h2>
+      {/* Comprehensive SEO Content Section */}
+      <article className="w-full pb-16 px-4 md:px-0 text-left max-w-4xl mx-auto space-y-12">
+        
+        {/* Section 1: What is a Sleep Calculator? */}
+        <section className="bg-[#130f2e]/60 p-6 md:p-8 rounded-3xl border border-white/5 backdrop-blur-md shadow-lg">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="bg-[#00d2ff]/10 p-2.5 rounded-xl">
+               <Moon className="text-[#00d2ff]" size={24} />
             </div>
-            <p className="text-white/70 text-sm sm:text-base leading-relaxed">
-              Whether you're wondering <strong>"what time should I wake up?"</strong> or <strong>"what time should I go to bed?"</strong>, our <strong>sleep calculator</strong> is here to help. By calculating backwards or forwards in 90-minute increments, this <strong>sleep time calculator</strong> ensures you wake up between REM sleep cycles, leaving you feeling refreshed instead of groggy.
-            </p>
+            <h2 className="text-2xl md:text-3xl font-bold text-white"><Link to="/what-is-a-sleep-calculator" className="hover:text-[#00d2ff] transition-colors">What is a Sleep Calculator?</Link></h2>
           </div>
-          <div className="bg-[#130f2e]/60 p-6 sm:p-8 rounded-3xl border border-white/5 backdrop-blur-md shadow-lg flex flex-col justify-center">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="bg-[#fcd34d]/10 p-2 rounded-lg">
-                <Clock className="text-[#fcd34d]" size={20} />
-              </div>
-              <h2 className="text-xl font-bold text-white">How does it work?</h2>
+          <div className="space-y-4 text-white/80 leading-relaxed sm:text-lg">
+            <p>
+              A <strong>sleep calculator</strong> is a free digital tool designed to help you figure out the absolute <Link to="/best-time-to-sleep" className="text-[#00d2ff] hover:underline font-medium">best time to sleep</Link> and wake up. Instead of just guessing when to set your alarm, this tool uses the science of human sleep to calculate exact bedtimes or wake-up times.
+            </p>
+            <p>
+              If you have ever woken up feeling incredibly exhausted—even after getting a full eight hours of rest—you likely woke up in the middle of a deep sleep phase. Our advanced <strong>sleep cycle calculator</strong> counts backward or forwards in specific intervals to ensure you wake up at the end of a cycle, leaving you feeling naturally refreshed, alert, and ready to tackle the day.
+            </p>
+            <Link to="/what-is-a-sleep-calculator" className="inline-block mt-4 text-[#00d2ff] hover:underline font-medium text-sm">Read full guide →</Link>
+          </div>
+        </section>
+
+        {/* Section 2: How Does Sleep Cycle Work? */}
+        <section className="bg-[#130f2e]/60 p-6 md:p-8 rounded-3xl border border-white/5 backdrop-blur-md shadow-lg">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="bg-[#fcd34d]/10 p-2.5 rounded-xl">
+               <Clock className="text-[#fcd34d]" size={24} />
             </div>
-            <p className="text-white/70 text-sm sm:text-base leading-relaxed">
-              Your body moves through sleep stages in cycles of <span className="font-bold text-white">around 90 minutes</span>. We also factor in an average of <span className="font-bold text-white">15 minutes</span> to fall asleep. Using a <strong>sleeping calculator</strong> (or <em>sleep calc</em>) to find your optimal <strong>sleep calculator time</strong> means you avoid waking up mid-cycle!
-            </p>
+            <h2 className="text-2xl md:text-3xl font-bold text-white"><Link to="/how-does-your-sleep-cycle-work" className="hover:text-[#fcd34d] transition-colors">How Does Your Sleep Cycle Work?</Link></h2>
           </div>
-        </div>
-      </div>
+          <div className="space-y-4 text-white/80 leading-relaxed sm:text-lg">
+            <p>
+              Human sleep isn't just a single block of unconsciousness. As you rest, your brain cycles through multiple stages of sleep: light sleep, deep sleep, and REM (Rapid Eye Movement) sleep. You can read more about this in our <Link to="/sleep-cycle-guide" className="text-[#fcd34d] hover:underline font-medium">sleep cycle guide</Link>.
+            </p>
+            <p>
+              On average, one complete sleep cycle lasts for about <strong>90 minutes</strong>. During a normal night, a healthy adult will go through five to six of these cycles. If your alarm clock goes off while you are in the deepest stage of a sleep cycle, you will experience what scientists call "sleep inertia"—that heavy, groggy feeling that makes it nearly impossible to get out of bed.
+            </p>
+            <p>
+              By utilizing a <strong>sleep time calculator</strong>, you can align your wake-up time with the natural end of a 90-minute cycle. 
+            </p>
+            <Link to="/how-does-your-sleep-cycle-work" className="inline-block mt-4 text-[#fcd34d] hover:underline font-medium text-sm">Read full guide →</Link>
+          </div>
+        </section>
+
+        {/* Section 3: Benefits */}
+        <section className="bg-[#130f2e]/60 p-6 md:p-8 rounded-3xl border border-white/5 backdrop-blur-md shadow-lg">
+          <div className="flex items-center gap-3 mb-6">
+            <div className="bg-[#10b981]/10 p-2.5 rounded-xl">
+               <Check className="text-[#10b981]" size={24} />
+            </div>
+            <h2 className="text-2xl md:text-3xl font-bold text-white"><Link to="/benefits-of-using-a-sleep-calculator" className="hover:text-[#10b981] transition-colors">Benefits of Using a Sleep Calculator</Link></h2>
+          </div>
+          <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 text-white/80 sm:text-lg">
+            <li className="flex items-start gap-3 bg-white/5 p-4 rounded-2xl">
+              <span className="text-[#10b981] mt-1 flex-shrink-0">✦</span>
+              <span><strong>Wake up instantly refreshed:</strong> Avoid sleep inertia and grogginess by waking up during light sleep.</span>
+            </li>
+            <li className="flex items-start gap-3 bg-white/5 p-4 rounded-2xl">
+              <span className="text-[#10b981] mt-1 flex-shrink-0">✦</span>
+              <span><strong>Improve daily focus:</strong> Optimize your deep sleep to boost brain function and memory recall. If you struggle with focus, find out <Link to="/why-you-feel-tired" className="text-[#10b981] hover:underline font-medium">why you feel tired</Link>.</span>
+            </li>
+            <li className="flex items-start gap-3 bg-white/5 p-4 rounded-2xl">
+              <span className="text-[#10b981] mt-1 flex-shrink-0">✦</span>
+              <span><strong>Establish a healthy routine:</strong> Consistently sleeping in 90-minute intervals builds an effortless circadian rhythm.</span>
+            </li>
+            <li className="flex items-start gap-3 bg-white/5 p-4 rounded-2xl">
+              <span className="text-[#10b981] mt-1 flex-shrink-0">✦</span>
+              <span><strong>Stop oversleeping:</strong> Sometime 6 hours (4 cycles) feels better than 8 hours, which wakes you up mid-cycle.</span>
+            </li>
+          </ul>
+          <Link to="/benefits-of-using-a-sleep-calculator" className="inline-block mt-6 text-[#10b981] hover:underline font-medium text-sm">Read full guide →</Link>
+        </section>
+
+        {/* Section 4: Best Times / Age */}
+        <section className="bg-[#130f2e]/60 p-6 md:p-8 rounded-3xl border border-white/5 backdrop-blur-md shadow-lg">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="bg-[#ec4899]/10 p-2.5 rounded-xl">
+               <Bed className="text-[#ec4899]" size={24} />
+            </div>
+            <h2 className="text-2xl md:text-3xl font-bold text-white"><Link to="/best-sleep-times-based-on-90-minute-cycles" className="hover:text-[#ec4899] transition-colors">Best Sleep Times Based on 90-Minute Cycles</Link></h2>
+          </div>
+          <div className="space-y-4 text-white/80 leading-relaxed sm:text-lg mb-6">
+            <p>
+              To wake up perfectly refreshed, you should aim for either <strong>5 or 6 full cycles</strong>. Our tool automatically factors in the average 15 minutes it takes a human to fall asleep. However, ideal sleep duration changes throughout your life. Check our <Link to="/sleep-by-age" className="text-[#ec4899] hover:underline font-medium">sleep by age</Link> chart for more detailed requirements. 
+            </p>
+            <p>
+              If you only have a short amount of time during the day, you don't need a full night's rest. Read our <Link to="/power-nap-guide" className="text-[#ec4899] hover:underline font-medium">power nap guide</Link> to learn how a 20-minute nap can save your day.
+            </p>
+            <Link to="/best-sleep-times-based-on-90-minute-cycles" className="inline-block mt-4 text-[#ec4899] hover:underline font-medium text-sm">Read full guide →</Link>
+          </div>
+        </section>
+
+        {/* FAQs */}
+        <section className="bg-[#0f0c29]/80 p-6 md:p-8 rounded-3xl border border-white/10 shadow-xl mt-4">
+          <div className="flex items-center gap-3 mb-8">
+            <div className="bg-white/10 p-2.5 rounded-xl">
+               <HelpCircle className="text-white" size={24} />
+            </div>
+            <h2 className="text-2xl md:text-3xl font-bold text-white">Frequently Asked Questions</h2>
+          </div>
+          <FAQAccordion />
+        </section>
+
+      </article>
 
       {/* Toast Notification */}
       <AnimatePresence>

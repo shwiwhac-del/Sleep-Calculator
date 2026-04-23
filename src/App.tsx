@@ -1,11 +1,21 @@
 import { lazy, Suspense, useMemo } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { Moon } from 'lucide-react';
+import { HelmetProvider } from 'react-helmet-async';
 
 const Home = lazy(() => import('./pages/Home'));
 const Terms = lazy(() => import('./pages/Terms'));
 const Privacy = lazy(() => import('./pages/Privacy'));
 const Blog = lazy(() => import('./pages/Blog'));
+const BestTimeToSleep = lazy(() => import('./pages/BestTimeToSleep'));
+const SleepCycleGuide = lazy(() => import('./pages/SleepCycleGuide'));
+const SleepByAge = lazy(() => import('./pages/SleepByAge'));
+const WhyYouFeelTired = lazy(() => import('./pages/WhyYouFeelTired'));
+const PowerNapGuide = lazy(() => import('./pages/PowerNapGuide'));
+const WhatIsASleepCalculator = lazy(() => import('./pages/WhatIsASleepCalculator'));
+const HowSleepCycleWorks = lazy(() => import('./pages/HowSleepCycleWorks'));
+const BenefitsOfSleepCalculator = lazy(() => import('./pages/BenefitsOfSleepCalculator'));
+const BestSleepTimes = lazy(() => import('./pages/BestSleepTimes'));
 
 const LoadingFallback = () => (
   <div className="flex flex-col items-center justify-center min-h-[60vh] w-full gap-4">
@@ -74,23 +84,50 @@ function Footer() {
   );
 }
 
+function Header() {
+  return (
+    <header className="w-full py-4 px-6 border-b border-white/10 bg-[#130f2e]/70 backdrop-blur-md z-50 sticky top-0 flex items-center justify-between">
+      <Link to="/" className="flex items-center gap-2 text-white hover:text-[#00d2ff] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00d2ff] rounded-lg">
+        <Moon className="text-[#a5b4fc]" size={24} fill="#a5b4fc" />
+        <span className="text-xl font-bold tracking-wide">Sleep Calculator</span>
+      </Link>
+      <nav className="flex items-center gap-6 text-sm font-medium text-white/80">
+        <Link to="/" className="hover:text-white transition-colors focus-visible:outline-none focus-visible:underline">Home</Link>
+        <Link to="/blog" className="hover:text-white transition-colors focus-visible:outline-none focus-visible:underline">Blog</Link>
+      </nav>
+    </header>
+  );
+}
+
 export default function App() {
   return (
-    <Router>
-      <div className="min-h-screen flex flex-col text-white font-sans relative overflow-x-hidden bg-gradient-to-b from-[#1c1445] via-[#15103a] to-[#0d0a26]">
-        <StarryBackground />
-        <main className="relative z-10 flex-grow flex flex-col items-center justify-start p-4 sm:p-8">
-          <Suspense fallback={<LoadingFallback />}>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/blog" element={<Blog />} />
-              <Route path="/terms" element={<Terms />} />
-              <Route path="/privacy" element={<Privacy />} />
-            </Routes>
-          </Suspense>
-        </main>
-        <Footer />
-      </div>
-    </Router>
+    <HelmetProvider>
+      <Router>
+        <div className="min-h-screen flex flex-col text-white font-sans relative overflow-x-hidden bg-gradient-to-b from-[#1c1445] via-[#15103a] to-[#0d0a26]">
+          <StarryBackground />
+          <Header />
+          <main className="relative z-10 flex-grow flex flex-col items-center justify-start p-4 sm:p-8">
+            <Suspense fallback={<LoadingFallback />}>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/blog" element={<Blog />} />
+                <Route path="/terms" element={<Terms />} />
+                <Route path="/privacy" element={<Privacy />} />
+                <Route path="/best-time-to-sleep" element={<BestTimeToSleep />} />
+                <Route path="/sleep-cycle-guide" element={<SleepCycleGuide />} />
+                <Route path="/sleep-by-age" element={<SleepByAge />} />
+                <Route path="/why-you-feel-tired" element={<WhyYouFeelTired />} />
+                <Route path="/power-nap-guide" element={<PowerNapGuide />} />
+                <Route path="/what-is-a-sleep-calculator" element={<WhatIsASleepCalculator />} />
+                <Route path="/how-does-your-sleep-cycle-work" element={<HowSleepCycleWorks />} />
+                <Route path="/benefits-of-using-a-sleep-calculator" element={<BenefitsOfSleepCalculator />} />
+                <Route path="/best-sleep-times-based-on-90-minute-cycles" element={<BestSleepTimes />} />
+              </Routes>
+            </Suspense>
+          </main>
+          <Footer />
+        </div>
+      </Router>
+    </HelmetProvider>
   );
 }
