@@ -8,12 +8,25 @@ export default function PowerNapGuide() {
       description="Stop waking up from naps feeling worse. Learn the optimal power nap lengths, from the 20-minute energy boost to the full 90-minute cycle."
       readingTime="5"
       date="May 26, 2024"
+      author="Sleep Expert Team"
+      relatedPosts={[
+        {
+          title: "Best Sleep Routine for Productivity",
+          url: "/blog/best-sleep-routine-for-productivity",
+          description: "Build a bulletproof sleep routine that ensures you wake up ready and focused."
+        },
+        {
+          title: "The Student's Guide to Sleep",
+          url: "/blog/sleep-for-students",
+          description: "How to optimize your rest around studying, exams, and classes without all-nighters."
+        }
+      ]}
     >
       <p>
         We have all made the same mistake. You feel a massive wave of afternoon fatigue hit, so you lie down on the couch for a "quick nap." When you finally wake up, two hours have passed, you don't know what year it is, and you feel exponentially more exhausted than before you went to sleep. 
       </p>
       <p>
-        Napping is an art form driven entirely by neuroscience. To understand how to execute the perfect power nap, we have to look back at the mechanics we covered in our <Link to="/sleep-cycle-guide">sleep cycle guide</Link>.
+        Napping is an art form driven entirely by neuroscience. To understand how to execute the perfect power nap, we have to look back at the mechanics we covered in our <Link to="/blog/sleep-cycle-guide">sleep cycle guide</Link>.
       </p>
 
       <h2>The Danger of the "1 Hour" Nap</h2>
@@ -50,7 +63,7 @@ export default function PowerNapGuide() {
 
       <h2>Nap Best Practices</h2>
       <p>
-        To make the most of your naps, always try to nap in the early afternoon (between 1:00 PM and 3:00 PM). Napping any later than this will destroy your body's sleep drive, making it impossible to fall asleep at night. If you struggle to fall asleep at your designated bedtime, you might need to stop napping altogether and re-evaluate your schedule using our <strong><Link to="/">sleep calculator</Link></strong> to find the <Link to="/best-time-to-sleep">best time to sleep</Link>.
+        To make the most of your naps, always try to nap in the early afternoon (between 1:00 PM and 3:00 PM). Napping any later than this will destroy your body's sleep drive, making it impossible to fall asleep at night. If you struggle to fall asleep at your designated bedtime, you might need to stop napping altogether and re-evaluate your schedule using our <strong><Link to="/">sleep calculator</Link></strong> to find the <Link to="/blog/best-time-to-sleep">best time to sleep</Link>.
       </p>
     </ArticleLayout>
   );

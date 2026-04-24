@@ -7,6 +7,8 @@ async function startServer() {
   app.disable('x-powered-by');
   const PORT = 3000;
 
+  app.use(express.json());
+
   // API routes FIRST
   app.get("/api/health", (req, res) => {
     res.json({ status: "ok" });

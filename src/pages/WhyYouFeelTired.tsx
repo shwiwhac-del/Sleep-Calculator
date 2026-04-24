@@ -8,6 +8,19 @@ export default function WhyYouFeelTired() {
       description="Constantly exhausted despite getting enough sleep? Discover the hidden causes of daily fatigue, from sleep inertia to poor sleep hygiene."
       readingTime="6"
       date="May 22, 2024"
+      author="Sleep Expert Team"
+      relatedPosts={[
+        {
+          title: "Deep Sleep Tips That Actually Work",
+          url: "/blog/deep-sleep-tips-that-actually-work",
+          description: "Maximize your deep sleep restorative cycles with science-backed techniques."
+        },
+        {
+          title: "The Ultimate Power Nap Guide",
+          url: "/blog/power-nap-guide",
+          description: "Use strategic napping to beat afternoon fatigue without ruining your night."
+        }
+      ]}
     >
       <p>
         You did everything right. You went to bed early, you stayed off your phone, and you slept for a perfectly continuous eight hours. Yet, when your alarm rings, you feel like you've been hit by a truck. If you are constantly wondering why you feel so exhausted despite "getting enough sleep," you are not alone.
@@ -18,7 +31,7 @@ export default function WhyYouFeelTired() {
 
       <h2>1. The Mid-Cycle Awakening (Sleep Inertia)</h2>
       <p>
-        This is the most common, yet easily solvable, reason for morning exhaustion. As explained in our <Link to="/sleep-cycle-guide">sleep cycle guide</Link>, your brain moves through 90-minute phases of light and deep sleep.
+        This is the most common, yet easily solvable, reason for morning exhaustion. As explained in our <Link to="/blog/sleep-cycle-guide">sleep cycle guide</Link>, your brain moves through 90-minute phases of light and deep sleep.
       </p>
       <p>
         If your alarm goes off while you are in "Stage 3 Deep Sleep," your brain is essentially being violently ripped back to consciousness from its lowest state of electrical activity. This results in "sleep inertia"—a severe grogginess that can last for hours. In fact, sleeping for 8 hours often causes this, because 8 hours drops you right in the middle of a sleep cycle. By using a <strong><Link to="/">sleep calculator</Link></strong>, you can adjust your alarm by just 30 minutes to wake up at the end of a cycle, avoiding this fatigue entirely.
@@ -39,7 +52,7 @@ export default function WhyYouFeelTired() {
         Your body's circadian rhythm is controlled by light. When the sun goes down, your brain produces melatonin, signaling that it's time to sleep. However, staring at the blue light emitting from your phone or television tricks your brain into thinking it is high noon.
       </p>
       <p>
-        If you scroll on your phone right until you close your eyes, your brain has no melatonin in its system. Even if you fall asleep, the first few hours of your rest will be incredibly shallow. You should aim to turn off all screens at least one hour before the <Link to="/best-time-to-sleep">best time to sleep</Link>.
+        If you scroll on your phone right until you close your eyes, your brain has no melatonin in its system. Even if you fall asleep, the first few hours of your rest will be incredibly shallow. You should aim to turn off all screens at least one hour before the <Link to="/blog/best-time-to-sleep">best time to sleep</Link>.
       </p>
 
       <h2>4. Chronic Dehydration and Diet</h2>

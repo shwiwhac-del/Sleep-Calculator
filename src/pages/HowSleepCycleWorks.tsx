@@ -9,7 +9,7 @@ export default function HowSleepCycleWorks() {
       readingTime="4"
       date="June 5, 2024"
       backLink="/"
-      backLabel="Back to Home"
+      backLabel="Back to Calculator"
     >
       <p>
         Human sleep isn't just a single block of unconsciousness. As you rest, your brain cycles through multiple stages of sleep: light sleep, deep sleep, and REM (Rapid Eye Movement) sleep.
@@ -27,7 +27,7 @@ export default function HowSleepCycleWorks() {
       
       <h2>Syncing with Your Biology</h2>
       <p>
-        By utilizing a <strong><Link to="/">sleep time calculator</Link></strong>, you can align your wake-up time with the natural end of a 90-minute cycle. When you wake up at the end of a cycle, your brain is already transitioning towards wakefulness, making it infinitely easier to get out of bed and start your day. For a deeper dive into the exact stages, read our <Link to="/sleep-cycle-guide">comprehensive sleep cycle guide</Link>.
+        By utilizing a <strong><Link to="/">sleep time calculator</Link></strong>, you can align your wake-up time with the natural end of a 90-minute cycle. When you wake up at the end of a cycle, your brain is already transitioning towards wakefulness, making it infinitely easier to get out of bed and start your day. For a deeper dive into the exact stages, read our <Link to="/blog/sleep-cycle-guide">comprehensive sleep cycle guide</Link>.
       </p>
     </ArticleLayout>
   );

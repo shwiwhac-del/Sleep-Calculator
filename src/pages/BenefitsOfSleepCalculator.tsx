@@ -9,7 +9,7 @@ export default function BenefitsOfSleepCalculator() {
       readingTime="3"
       date="June 8, 2024"
       backLink="/"
-      backLabel="Back to Home"
+      backLabel="Back to Calculator"
     >
       <p>
         Ditching your standard alarm clock logic and switching to a <strong><Link to="/">sleep calculator</Link></strong> can dramatically transform your mornings. Here are the core benefits of tracking your 90-minute sleep cycles.
@@ -22,7 +22,7 @@ export default function BenefitsOfSleepCalculator() {
 
       <h2>2. Improve Daily Focus and Cognitive Function</h2>
       <p>
-        When you optimize your cycles, you protect your deep sleep. Deep sleep is when your brain flushes out neurotoxins and consolidates memories. Protecting these cycles prevents that "brain fog" feeling, directly boosting your daily focus. If you suffer from frequent exhaustion, read more about <Link to="/why-you-feel-tired">why you feel tired</Link>.
+        When you optimize your cycles, you protect your deep sleep. Deep sleep is when your brain flushes out neurotoxins and consolidates memories. Protecting these cycles prevents that "brain fog" feeling, directly boosting your daily focus. If you suffer from frequent exhaustion, read more about <Link to="/blog/why-you-feel-tired">why you feel tired</Link>.
       </p>
 
       <h2>3. Establish a Healthy, Effortless Routine</h2>

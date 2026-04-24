@@ -8,7 +8,7 @@ export default function Blog() {
     {
       title: "What is a Sleep Calculator?",
       description: "Learn how a sleep calculator uses human biology and 90-minute sleep cycles to calculate your perfect wake-up time.",
-      url: "/what-is-a-sleep-calculator",
+      url: "/blog/what-is-a-sleep-calculator",
       icon: <Search size={20} />,
       topic: "Tool Guide",
       color: "text-[#00d2ff]"
@@ -16,7 +16,7 @@ export default function Blog() {
     {
       title: "How Does Your Sleep Cycle Work?",
       description: "Understand the 90-minute phases of sleep, deep sleep, and REM, and why waking up mid-cycle makes you groggy.",
-      url: "/how-does-your-sleep-cycle-work",
+      url: "/blog/how-does-your-sleep-cycle-work",
       icon: <Activity size={20} />,
       topic: "Sleep Science",
       color: "text-[#fcd34d]"
@@ -24,7 +24,7 @@ export default function Blog() {
     {
       title: "Benefits of Using a Sleep Calculator",
       description: "Discover how tracking your cycles can eliminate morning grogginess entirely, improve daytime focus, and fix your routine.",
-      url: "/benefits-of-using-a-sleep-calculator",
+      url: "/blog/benefits-of-using-a-sleep-calculator",
       icon: <Check size={20} />,
       topic: "Benefits",
       color: "text-[#10b981]"
@@ -32,7 +32,7 @@ export default function Blog() {
     {
       title: "Best Sleep Times Based on 90-Minute Cycles",
       description: "Find out if you should be aiming for 4, 5, or 6 complete cycles tonight for optimal morning energy.",
-      url: "/best-sleep-times-based-on-90-minute-cycles",
+      url: "/blog/best-sleep-times-based-on-90-minute-cycles",
       icon: <BedDouble size={20} />,
       topic: "Sleep Timing",
       color: "text-[#ec4899]"
@@ -40,7 +40,7 @@ export default function Blog() {
     {
       title: "The Best Time to Sleep: Finding Your Perfect Bedtime",
       description: "Discover the absolute best time to sleep and wake up based on biology and 90-minute sleep cycles. Learn how a sleep calculator can fix your routine.",
-      url: "/best-time-to-sleep",
+      url: "/blog/best-time-to-sleep",
       icon: <Clock size={20} />,
       topic: "Sleep Timing",
       color: "text-[#00d2ff]"
@@ -48,7 +48,7 @@ export default function Blog() {
     {
       title: "The Ultimate Sleep Cycle Guide: What Happens When You Sleep?",
       description: "Learn about the 4 stages of sleep, REM, deep sleep, and how the 90-minute sleep cycle works. Stop waking up tired by mastering your biology.",
-      url: "/sleep-cycle-guide",
+      url: "/blog/sleep-cycle-guide",
       icon: <Activity size={20} />,
       topic: "Sleep Science",
       color: "text-[#fcd34d]"
@@ -56,7 +56,7 @@ export default function Blog() {
     {
       title: "How Much Sleep Do You Need? A Sleep by Age Guide",
       description: "Find out exactly how many hours of sleep you need based on your age. From newborns to seniors, learn how sleep requirements change over time.",
-      url: "/sleep-by-age",
+      url: "/blog/sleep-by-age",
       icon: <BedDouble size={20} />,
       topic: "Health",
       color: "text-[#ec4899]"
@@ -64,7 +64,7 @@ export default function Blog() {
     {
       title: "Why You Feel Tired Even After 8 Hours of Sleep",
       description: "Constantly exhausted despite getting enough sleep? Discover the hidden causes of daily fatigue, from sleep inertia to poor sleep hygiene.",
-      url: "/why-you-feel-tired",
+      url: "/blog/why-you-feel-tired",
       icon: <Battery size={20} />,
       topic: "Energy",
       color: "text-[#10b981]"
@@ -72,10 +72,66 @@ export default function Blog() {
     {
       title: "The Ultimate Power Nap Guide: How to Sleep During the Day",
       description: "Stop waking up from naps feeling worse. Learn the optimal power nap lengths, from the 20-minute energy boost to the full 90-minute cycle.",
-      url: "/power-nap-guide",
+      url: "/blog/power-nap-guide",
       icon: <Moon size={20} />,
       topic: "Napping",
       color: "text-[#a855f7]"
+    },
+    {
+      title: "10 Actionable Sleep Tips for Better Health",
+      description: "Struggling to wake up refreshed? Discover the most effective sleep tips for better health, improved energy, and optimized rhythm.",
+      url: "/blog/sleep-tips-for-better-health",
+      icon: <Check size={20} />,
+      topic: "Health",
+      color: "text-[#10b981]"
+    },
+    {
+      title: "How to Fix Your Sleep Schedule Fast",
+      description: "Learn how to safely and effectively reset your internal clock in just a few days after staying up too late.",
+      url: "/blog/fix-your-sleep-schedule",
+      icon: <Clock size={20} />,
+      topic: "Routine",
+      color: "text-[#00d2ff]"
+    },
+    {
+      title: "The Hidden Connection Between Sleep and Weight Loss",
+      description: "Diet and exercise aren't enough. Uncover why a lack of sleep could be the reason you are struggling to lose weight.",
+      url: "/blog/sleep-and-weight-loss",
+      icon: <Activity size={20} />,
+      topic: "Fitness",
+      color: "text-[#fcd34d]"
+    },
+    {
+      title: "Best Sleep Routine for Maximum Productivity",
+      description: "Discover the sleep routines used by highly productive people to optimize focus, creativity, and daily output.",
+      url: "/blog/best-sleep-routine-for-productivity",
+      icon: <Battery size={20} />,
+      topic: "Performance",
+      color: "text-[#ec4899]"
+    },
+    {
+      title: "Deep Sleep Tips That Actually Work",
+      description: "Try these heavily researched protocols to increase your time spent in the restorative deep sleep stage.",
+      url: "/blog/deep-sleep-tips-that-actually-work",
+      icon: <Moon size={20} />,
+      topic: "Sleep Science",
+      color: "text-[#a855f7]"
+    },
+    {
+      title: "The Effects of Oversleeping",
+      description: "Why does sleeping for ten hours leave you feeling drained? Discover the scientific reasons behind oversleeping.",
+      url: "/blog/effects-of-oversleeping",
+      icon: <BedDouble size={20} />,
+      topic: "Health",
+      color: "text-[#00d2ff]"
+    },
+    {
+      title: "The Student's Guide to Sleep",
+      description: "Pulling all-nighters destroys your GPA. Learn how students can optimize their limited sleep to ace exams.",
+      url: "/blog/sleep-for-students",
+      icon: <BookOpen size={20} />,
+      topic: "Productivity",
+      color: "text-[#10b981]"
     }
   ];
 
@@ -96,11 +152,11 @@ export default function Blog() {
       <motion.div 
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="flex flex-col items-center justify-center mb-16 text-center"
+        className="flex flex-col items-center justify-center mb-16 sm:mb-20 text-center mt-6"
       >
-        <BookOpen className="text-[#00d2ff] mb-4" size={48} />
-        <h1 className="text-4xl font-bold tracking-wide mb-4 text-white">Sleep Better Blog</h1>
-        <p className="text-white/70 text-lg max-w-2xl">
+        <BookOpen className="text-[#00d2ff] mb-6" size={56} strokeWidth={1.5} />
+        <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-5 text-white">Sleep Better Blog</h1>
+        <p className="text-white/75 text-lg sm:text-xl max-w-2xl leading-relaxed">
           Learn how to optimize your rest, understand your REM cycles, and wake up feeling refreshed every single day.
         </p>
       </motion.div>
@@ -114,7 +170,7 @@ export default function Blog() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
-            className={`group bg-[#130f2e]/60 border border-white/5 rounded-3xl backdrop-blur-md shadow-xl hover:bg-[#1a153a]/80 hover:border-white/20 transition-all duration-300 flex flex-col overflow-hidden relative ${isFeatured ? 'md:col-span-2 lg:col-span-3 lg:flex-row' : ''}`}
+            className={`group bg-[#130f2e]/60 border border-white/5 rounded-3xl backdrop-blur-md shadow-lg hover:shadow-[0_8px_30px_rgba(0,210,255,0.1)] hover:bg-[#1a153a]/90 hover:border-white/10 transition-all duration-300 ease-out hover:-translate-y-1 flex flex-col overflow-hidden relative ${isFeatured ? 'md:col-span-2 lg:col-span-3 lg:flex-row' : ''}`}
           >
             {/* Glow effect on hover */}
             <div className="absolute inset-0 bg-gradient-to-br from-white/0 via-white/0 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl pointer-events-none" />

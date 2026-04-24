@@ -23,7 +23,7 @@ export default function BestTimeToSleep() {
 
       <h2>Working with 90-Minute Sleep Cycles</h2>
       <p>
-        Regardless of whether you go to sleep at 9 PM or 2 AM, the mechanism of sleep remains identical. Once you close your eyes, your brain begins to descend through various stages of light sleep and deep sleep before returning to REM (Rapid Eye Movement) sleep. You can explore the fascinating mechanics behind this in our in-depth <Link to="/sleep-cycle-guide">sleep cycle guide</Link>.
+        Regardless of whether you go to sleep at 9 PM or 2 AM, the mechanism of sleep remains identical. Once you close your eyes, your brain begins to descend through various stages of light sleep and deep sleep before returning to REM (Rapid Eye Movement) sleep. You can explore the fascinating mechanics behind this in our in-depth <Link to="/blog/sleep-cycle-guide">sleep cycle guide</Link>.
       </p>
       <p>
         One complete cycle takes approximately 90 minutes. If you wake up at the precise end of a 90-minute cycle, you will open your eyes feeling naturally refreshed, alert, and entirely free of sleep inertia (that agonizing, groggy feeling of not wanting to get out of bed). If you wake up in the middle of a cycle—specifically during deep sleep—you will feel exhausted, even if you just slept for nine solid hours.
@@ -45,7 +45,7 @@ export default function BestTimeToSleep() {
         Yes, absolutely. The amount of rest you need—and therefore the time you should go to bed—fluctuates wildly throughout your life. Teenagers produce melatonin (the sleep hormone) much later in the evening than adults, making it biologically difficult for them to fall asleep before 11 PM. Older adults often experience the opposite, feeling tired early in the evening but waking up at dawn.
       </p>
       <p>
-        If you are unsure how many cycles you should be aiming for, you should review our <Link to="/sleep-by-age">sleep by age</Link> chart to see the recommended hours of rest for your specific demographic.
+        If you are unsure how many cycles you should be aiming for, you should review our <Link to="/blog/sleep-by-age">sleep by age</Link> chart to see the recommended hours of rest for your specific demographic.
       </p>
 
       <h2>Consistency is the Ultimate Rule</h2>

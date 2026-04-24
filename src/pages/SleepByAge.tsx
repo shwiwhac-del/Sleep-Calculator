@@ -13,7 +13,7 @@ export default function SleepByAge() {
         If you have ever tried to drag a teenager out of bed at 6:00 AM, or wondered why your grandparents seem to naturally wake up at sunrise, you are witnessing biology in action. The amount of sleep a human requires—and the times they naturally feel tired—are largely dictated by their age.
       </p>
       <p>
-        While you can always use our <strong><Link to="/">sleep calculator</Link></strong> to find the <Link to="/best-time-to-sleep">best time to sleep</Link> based on 90-minute cycles, the total number of cycles you should be aiming for changes as you grow. Here is a definitive breakdown of sleep requirements by age according to the National Sleep Foundation.
+        While you can always use our <strong><Link to="/">sleep calculator</Link></strong> to find the <Link to="/blog/best-time-to-sleep">best time to sleep</Link> based on 90-minute cycles, the total number of cycles you should be aiming for changes as you grow. Here is a definitive breakdown of sleep requirements by age according to the National Sleep Foundation.
       </p>
 
       <h2>Infants and Toddlers (0-3 Years)</h2>

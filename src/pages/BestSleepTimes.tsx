@@ -9,7 +9,7 @@ export default function BestSleepTimes() {
       readingTime="4"
       date="June 12, 2024"
       backLink="/"
-      backLabel="Back to Home"
+      backLabel="Back to Calculator"
     >
       <p>
         To wake up perfectly refreshed, you need to rely on math rather than arbitrary bedtimes. Since human sleep cycles last approximately 90 minutes, the "best times" to sleep are simple multiples of this duration.
@@ -32,11 +32,11 @@ export default function BestSleepTimes() {
 
       <h2>Exceptions to the Rule</h2>
       <p>
-        It is important to remember that ideal sleep duration changes throughout your life. Teenagers and babies have entirely different biological requirements. Check our <Link to="/sleep-by-age">sleep by age</Link> chart for more detailed requirements tailored to different life stages.
+        It is important to remember that ideal sleep duration changes throughout your life. Teenagers and babies have entirely different biological requirements. Check our <Link to="/blog/sleep-by-age">sleep by age</Link> chart for more detailed requirements tailored to different life stages.
       </p>
       
       <p>
-        If you only have a short amount of time during the day and need a quick fix, you don't need a full night's rest. You can read our <Link to="/power-nap-guide">power nap guide</Link> to learn how a 20-minute nap can save your day without triggering sleep inertia.
+        If you only have a short amount of time during the day and need a quick fix, you don't need a full night's rest. You can read our <Link to="/blog/power-nap-guide">power nap guide</Link> to learn how a 20-minute nap can save your day without triggering sleep inertia.
       </p>
     </ArticleLayout>
   );

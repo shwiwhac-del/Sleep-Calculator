@@ -34,19 +34,22 @@ export function FAQAccordion() {
   };
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-4" itemScope itemType="https://schema.org/FAQPage">
       {faqs.map((faq, index) => (
         <div 
           key={index} 
           className="bg-white/5 border border-white/10 rounded-2xl overflow-hidden backdrop-blur-sm transition-colors hover:bg-white/10"
           style={{ borderLeftWidth: '4px', borderLeftColor: faq.color }}
+          itemScope 
+          itemProp="mainEntity" 
+          itemType="https://schema.org/Question"
         >
           <button
             onClick={() => toggleFAQ(index)}
             className="w-full text-left px-6 py-5 flex items-center justify-between focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50"
             aria-expanded={openIndex === index}
           >
-            <h3 className="text-lg font-bold text-white pr-4">{faq.question}</h3>
+            <h3 className="text-lg font-bold text-white pr-4" itemProp="name">{faq.question}</h3>
             <ChevronDown 
               className={`text-white transition-transform duration-300 flex-shrink-0 ${openIndex === index ? 'rotate-180' : ''}`} 
               size={20} 
@@ -59,8 +62,11 @@ export function FAQAccordion() {
                 animate={{ height: "auto", opacity: 1 }}
                 exit={{ height: 0, opacity: 0 }}
                 transition={{ duration: 0.3, ease: "easeInOut" }}
+                itemScope 
+                itemProp="acceptedAnswer" 
+                itemType="https://schema.org/Answer"
               >
-                <div className="px-6 pb-5 text-white/70 leading-relaxed">
+                <div className="px-6 pb-5 text-white/70 leading-relaxed" itemProp="text">
                   {faq.answer}
                 </div>
               </motion.div>
