@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { Moon, Check, Bed, Bell, Share2, Clock, Info, HelpCircle, BookOpen } from 'lucide-react';
-import { motion, AnimatePresence } from 'motion/react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { FAQAccordion } from '../components/FAQAccordion';
@@ -21,9 +20,19 @@ export default function Home() {
     const mins = String(roundedDate.getMinutes()).padStart(2, '0');
     return `${hours}:${mins}`;
   });
+  const [ageGroup, setAgeGroup] = useState<string>(() => localStorage.getItem('aurasleep_age') || '');
   const [results, setResults] = useState<{ date: Date; cycles: number }[]>([]);
   const [currentTime, setCurrentTime] = useState(new Date());
   const [toast, setToast] = useState<{ show: boolean; message: string }>({ show: false, message: '' });
+
+  const AGE_GROUPS = [
+    { id: '6-12', label: '6–12 years', minCycles: 6, maxCycles: 8, recText: '9–12 hours', suggestion: 'At this age, consistent sleep improves focus, growth, and daily energy.' },
+    { id: '13-17', label: '13–17 years', minCycles: 5, maxCycles: 7, recText: '8–10 hours', suggestion: 'Adequate sleep is crucial for cognitive development, memory, and mood regulation.' },
+    { id: '18-25', label: '18–25 years', minCycles: 5, maxCycles: 6, recText: '7–9 hours', suggestion: 'Optimal rest helps young adults manage studies, work stress, and social life.' },
+    { id: '26-40', label: '26–40 years', minCycles: 5, maxCycles: 6, recText: '7–9 hours', suggestion: 'Vital for daily recovery, immune health, and maintaining daytime productivity.' },
+    { id: '41-60', label: '41–60 years', minCycles: 5, maxCycles: 6, recText: '7–9 hours', suggestion: 'Prioritize sleep quality to support metabolic and heart health as your body changes.' },
+    { id: '60+', label: '60+ years', minCycles: 4, maxCycles: 5, recText: '7–8 hours', suggestion: 'Maintains brain health. Shorter nighttime sleep is normal; afternoon naps can help.' }
+  ];
 
   const showToast = (message: string) => {
     setToast({ show: true, message });
@@ -37,10 +46,8 @@ export default function Home() {
 
   useEffect(() => {
     const savedTime = localStorage.getItem('aurasleep_time');
-    
-    if (!savedTime) {
-      calculateForTime(time, mode);
-    } else {
+    const savedAge = localStorage.getItem('aurasleep_age');
+    if (savedTime && savedAge) {
       calculateForTime(time, mode);
     }
   }, []);
@@ -48,7 +55,8 @@ export default function Home() {
   useEffect(() => {
     localStorage.setItem('aurasleep_mode', mode);
     localStorage.setItem('aurasleep_time', time);
-  }, [mode, time]);
+    localStorage.setItem('aurasleep_age', ageGroup);
+  }, [mode, time, ageGroup]);
 
   const timeToDate = (timeStr: string, currentMode: 'wake' | 'bed' = mode) => {
     const [hours, minutes] = timeStr.split(':').map(Number);
@@ -71,12 +79,21 @@ export default function Home() {
   };
 
   const calculateForTime = (timeStr: string, currentMode: 'wake' | 'bed') => {
-    if (!timeStr) return;
+    if (!timeStr || !ageGroup) return;
     
     const baseDate = timeToDate(timeStr, currentMode);
+    
+    let cyclesToGenerate = [6, 5, 4, 3];
+    const ageConfig = AGE_GROUPS.find(g => g.id === ageGroup);
+    if (ageConfig) {
+      const maxC = ageConfig.maxCycles;
+      cyclesToGenerate = [];
+      for (let i = maxC; i >= Math.max(3, ageConfig.minCycles - 2); i--) {
+        cyclesToGenerate.push(i);
+      }
+    }
 
-    const cycles = [6, 5, 4, 3];
-    const calculatedResults = cycles.map(cycle => {
+    const calculatedResults = cyclesToGenerate.map(cycle => {
       if (currentMode === 'wake') {
         const totalMinutesToSubtract = (cycle * 90) + 15;
         return {
@@ -96,6 +113,10 @@ export default function Home() {
   };
 
   const calculate = () => {
+    if (!ageGroup) {
+      showToast("Please select your age group before calculating.");
+      return;
+    }
     setResults([]);
     setTimeout(() => {
       calculateForTime(time, mode);
@@ -148,6 +169,10 @@ export default function Home() {
   };
 
   const handleSleepNow = () => {
+    if (!ageGroup) {
+      showToast("Please select your age group before calculating.");
+      return;
+    }
     const now = new Date();
     const hours = String(now.getHours()).padStart(2, '0');
     const minutes = String(now.getMinutes()).padStart(2, '0');
@@ -159,8 +184,14 @@ export default function Home() {
     showToast("Calculated optimal wake times for sleeping right now.");
   };
 
+  const isRecommended = (cycle: number) => {
+    const config = AGE_GROUPS.find(g => g.id === ageGroup);
+    if (!config) return cycle === 6 || cycle === 5;
+    return cycle >= config.minCycles && cycle <= config.maxCycles;
+  };
+
   const handleSetAlarm = (specificTime?: Date, isWakeAlarm: boolean = true) => {
-    const alarmTime = specificTime || (mode === 'wake' ? timeToDate(time, mode) : results.find(r => r.cycles === 6)?.date);
+    const alarmTime = specificTime || (mode === 'wake' ? timeToDate(time, mode) : results.find(r => isRecommended(r.cycles))?.date);
     if (!alarmTime) return;
 
     const timeStr = formatTime(alarmTime, true);
@@ -199,42 +230,57 @@ export default function Home() {
           <title>Sleep Calculator: Find the Best Time to Sleep and Wake Up</title>
           <meta name="description" content="Use our free sleep calculator to find the best time to sleep, wake up refreshed, and understand your 90-minute sleep cycles." />
         </Helmet>
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.95, y: -10 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="flex flex-col items-center justify-center gap-3 md:gap-4 mb-6 text-center px-4 max-w-3xl"
-        >
-          <h1 className="text-3xl sm:text-4xl lg:text-[40px] font-bold tracking-tight leading-[1.25] text-white/95">
-            Sleep Calculator: Find the Best Time to Sleep and Wake Up
+        <div className="flex flex-col items-center justify-center gap-2 mb-6 text-center px-4 max-w-2xl mx-auto">
+          <h1 className="text-2xl sm:text-4xl font-bold tracking-tight leading-snug text-white/95">
+            Calculate your perfect sleep schedule
           </h1>
-          <p className="text-lg text-white/70 max-w-2xl font-medium">
-            Calculate your optimal 90-minute sleep cycles to wake up feeling naturally refreshed and alert.
+          <p className="text-base sm:text-lg text-white/70 font-medium leading-relaxed mt-2">
+            Find the best time to sleep or wake up based on your natural 90-minute sleep cycles, so you can start your day feeling refreshed.
           </p>
-        </motion.div>
+        </div>
         
-        <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.3 }}
-          className="flex items-center gap-2 text-[#00d2ff] font-medium tracking-wide bg-[#00d2ff]/10 px-4 py-1.5 rounded-full border border-[#00d2ff]/20 shadow-sm backdrop-blur-sm"
+        <div 
+          className="flex items-center gap-2 text-[#00d2ff] font-medium tracking-wide bg-[#00d2ff]/10 px-4 py-1.5 rounded-full border border-[#00d2ff]/20 animate-in fade-in slide-in-from-bottom-2 duration-700 delay-300 fill-mode-both"
         >
           <Clock size={16} />
           <span className="font-mono text-sm">{currentTime.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', second: '2-digit', hour12: true })}</span>
-        </motion.div>
+        </div>
       </div>
 
       {/* Top Space Instead of Divider */}
       <div className="w-full mb-8 sm:mb-12" />
 
       {/* Container for input section with subtle card look */}
-      <div className="bg-[#1a153a]/40 border border-white/5 rounded-[2rem] p-6 sm:p-10 md:p-12 w-full max-w-2xl mx-auto mb-16 backdrop-blur-sm flex flex-col items-center">
+      <div className="bg-[#1a153a] border border-white/5 rounded-[2rem] p-6 sm:p-10 md:p-12 w-full max-w-2xl mx-auto mb-16 flex flex-col items-center">
         
+        {/* Age Selection */}
+        <div className="w-full mb-10">
+          <label className="text-white/70 font-medium mb-4 block uppercase tracking-wider text-sm text-center">
+            Select Your Age Group
+          </label>
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-3">
+            {AGE_GROUPS.map((group) => (
+              <button
+                key={group.id}
+                onClick={() => { setAgeGroup(group.id); setResults([]); }}
+                aria-pressed={ageGroup === group.id}
+                className={`py-3 px-2 rounded-xl text-sm font-medium transition-all duration-200 focus-visible:ring-2 focus-visible:ring-[#00d2ff] focus-visible:outline-none border ${
+                  ageGroup === group.id
+                    ? 'bg-blue-600 border-blue-500 text-white shadow-[0_0_15px_rgba(37,99,235,0.4)]'
+                    : 'bg-[#130f2e]/80 border-white/10 text-white/70 hover:bg-white/10 hover:text-white'
+                }`}
+              >
+                {group.label}
+              </button>
+            ))}
+          </div>
+        </div>
+
         {/* Toggle */}
         <div 
           role="radiogroup" 
           aria-label="Calculation mode"
-          className="flex flex-col sm:flex-row bg-[#130f2e]/80 rounded-2xl sm:rounded-full p-1.5 border border-white/10 w-full mb-10 backdrop-blur-sm gap-1.5 sm:gap-0 shadow-inner"
+          className="flex flex-col sm:flex-row bg-[#130f2e] rounded-2xl sm:rounded-full p-1.5 border border-white/10 w-full mb-10 gap-1.5 sm:gap-0 shadow-sm"
         >
           <button
             role="radio"
@@ -290,7 +336,7 @@ export default function Home() {
                 }
               }}
               aria-label={mode === 'wake' ? "Select wake up time" : "Select go to sleep time"}
-              className="w-full bg-[#130f2e]/80 border border-white/20 hover:border-[#00d2ff]/50 rounded-2xl px-6 py-4 text-4xl sm:text-5xl font-bold text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00d2ff] focus-visible:border-transparent backdrop-blur-md shadow-[0_8px_32px_rgba(0,0,0,0.15)] transition-all cursor-pointer appearance-none text-center tracking-wider"
+              className="w-full bg-[#130f2e] border border-white/20 hover:border-[#00d2ff]/50 rounded-2xl px-6 py-4 text-4xl sm:text-5xl font-bold text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00d2ff] focus-visible:border-transparent transition-all cursor-pointer appearance-none text-center tracking-wider"
               style={{ colorScheme: 'dark' }}
             />
           </div>
@@ -300,9 +346,9 @@ export default function Home() {
         <button
           onClick={calculate}
           aria-label="Calculate optimal sleep times"
-          className="bg-gradient-to-r from-[#00d2ff] to-[#3a7bd5] rounded-full px-12 sm:px-16 py-4 sm:py-4 text-white font-bold text-lg tracking-wide shadow-[0_4px_20px_rgba(0,210,255,0.3)] hover:shadow-[0_8px_30px_rgba(0,210,255,0.5)] border border-[#00d2ff]/50 hover:-translate-y-1 active:scale-95 transition-all duration-300 focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none w-full sm:w-auto"
+          className="bg-blue-600 hover:bg-blue-500 rounded-full px-12 sm:px-16 py-4 sm:py-5 text-white font-bold text-lg tracking-wide shadow-lg border border-blue-400/20 hover:-translate-y-0.5 active:scale-95 transition-all duration-300 focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none w-full sm:w-auto mt-2"
         >
-          Calculate optimal time
+          Calculate sleep schedule
         </button>
       </div>
 
@@ -319,14 +365,12 @@ export default function Home() {
             </span>
           </div>
 
-          {/* Recommended Card (6 cycles) */}
-          {results.filter(r => r.cycles === 6).map(res => (
-            <motion.div 
+          {/* Recommended Cards */}
+          {results.filter(r => isRecommended(r.cycles)).map((res, index) => (
+            <div 
               key={`${res.cycles}-${res.date.getTime()}`} 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, ease: "easeOut" }}
-              className="w-full border-2 border-[#00d2ff] hover:border-[#40c9ff] rounded-xl bg-gradient-to-b from-[#1a2a5c]/80 to-[#121b3d]/80 p-5 shadow-[0_0_20px_rgba(0,210,255,0.3)] hover:shadow-[0_0_40px_rgba(0,210,255,0.6)] backdrop-blur-md mb-4 transition-all duration-500 ease-out hover:-translate-y-1 hover:scale-[1.03] cursor-default"
+              className={`w-full border-2 border-[#00d2ff] hover:border-[#40c9ff] rounded-xl bg-gradient-to-b from-[#1a2a5c]/80 to-[#121b3d]/80 p-5 shadow-lg mb-4 transition-all duration-300 ease-out hover:-translate-y-1 animate-in fade-in slide-in-from-bottom-4`}
+              style={{ animationFillMode: 'both', animationDelay: `${index * 100}ms` }}
             >
               <div className="flex flex-col sm:flex-row sm:justify-between items-start sm:items-center mb-3 sm:mb-4 gap-3 sm:gap-0">
                 <div className="flex items-center gap-2 sm:gap-3">
@@ -354,18 +398,16 @@ export default function Home() {
                   ))}
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
 
-          {/* Other Cards (5, 4, 3 cycles) */}
+          {/* Other Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-8 w-full">
-            {results.filter(r => r.cycles < 6).map((res, index) => (
-              <motion.div 
+            {results.filter(r => !isRecommended(r.cycles)).map((res, index) => (
+              <div 
                 key={`${res.cycles}-${res.date.getTime()}`} 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, ease: "easeOut", delay: 0.1 * (index + 1) }}
-                className="border border-white/10 hover:border-[#00d2ff]/50 rounded-xl bg-[#1d1842]/80 hover:bg-[#251f54]/90 p-5 backdrop-blur-md transition-all duration-500 ease-out hover:-translate-y-1 hover:scale-[1.03] hover:shadow-[0_0_25px_rgba(0,210,255,0.2)] cursor-default"
+                className="border border-white/10 hover:border-[#00d2ff]/50 rounded-xl bg-[#1d1842]/80 hover:bg-[#251f54]/90 p-5 transition-all duration-300 ease-out hover:-translate-y-1 animate-in fade-in slide-in-from-bottom-4"
+                style={{ animationFillMode: 'both', animationDelay: `${(index + 1) * 100}ms` }}
               >
                 <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-3 sm:mb-4 gap-2 sm:gap-0">
                   <div className="flex items-center gap-2 sm:gap-3">
@@ -387,19 +429,39 @@ export default function Home() {
                     ))}
                   </div>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
 
           {/* Action Buttons */}
-          <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6 mb-16 sm:px-0">
-            <button onClick={handleSleepNow} aria-label="Calculate times for sleeping right now" className="flex items-center justify-center gap-2 bg-[#130f2e]/80 border border-white/10 rounded-full px-8 py-3.5 text-sm sm:text-base font-medium hover:bg-white/10 shadow-sm hover:shadow-md transition-all duration-200 hover:-translate-y-0.5 backdrop-blur-md focus-visible:ring-2 focus-visible:ring-[#00d2ff] focus-visible:outline-none w-full sm:w-auto">
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6 mb-8 sm:px-0">
+            <button onClick={handleSleepNow} aria-label="Calculate times for sleeping right now" className="flex items-center justify-center gap-2 bg-[#130f2e] border border-white/10 rounded-full px-8 py-3.5 text-sm sm:text-base font-medium hover:bg-white/10 shadow-sm hover:shadow-md transition-all duration-200 hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-[#00d2ff] focus-visible:outline-none w-full sm:w-auto">
               <Moon size={18} fill="currentColor" /> Sleep Now
             </button>
-            <button onClick={() => handleSetAlarm()} aria-label="Set web alarm for the recommended time" className="flex items-center justify-center gap-2 bg-[#130f2e]/80 border border-white/10 rounded-full px-8 py-3.5 text-sm sm:text-base font-medium hover:bg-white/10 shadow-sm hover:shadow-md transition-all duration-200 hover:-translate-y-0.5 backdrop-blur-md focus-visible:ring-2 focus-visible:ring-[#00d2ff] focus-visible:outline-none w-full sm:w-auto">
+            <button onClick={() => handleSetAlarm()} aria-label="Set web alarm for the recommended time" className="flex items-center justify-center gap-2 bg-[#130f2e] border border-white/10 rounded-full px-8 py-3.5 text-sm sm:text-base font-medium hover:bg-white/10 shadow-sm hover:shadow-md transition-all duration-200 hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-[#00d2ff] focus-visible:outline-none w-full sm:w-auto">
               <Bell size={18} /> Set Alarm
             </button>
           </div>
+
+          {/* Health Insights */}
+          {AGE_GROUPS.find(g => g.id === ageGroup) && (
+            <div 
+              className="bg-[#1a153a]/60 border border-white/5 p-6 rounded-2xl flex flex-col sm:flex-row gap-4 items-start sm:items-center text-left animate-in fade-in duration-500 delay-200 fill-mode-both"
+            >
+              <div className="bg-blue-600/20 p-3 rounded-full shrink-0">
+                <Info size={24} className="text-blue-400" />
+              </div>
+              <div>
+                <h3 className="text-white font-semibold mb-1">
+                  Health insight for {AGE_GROUPS.find(g => g.id === ageGroup)?.label}
+                </h3>
+                <p className="text-white/70 text-sm">
+                  Recommended sleep: <span className="text-blue-400 font-medium">{AGE_GROUPS.find(g => g.id === ageGroup)?.recText}</span>. 
+                  {' '}{AGE_GROUPS.find(g => g.id === ageGroup)?.suggestion}
+                </p>
+              </div>
+            </div>
+          )}
         </div>
       )}
 
@@ -410,7 +472,7 @@ export default function Home() {
       <article className="w-full pb-20 px-4 md:px-0 text-left max-w-4xl mx-auto space-y-12 sm:space-y-16">
         
         {/* Section 1: What is a Sleep Calculator? */}
-        <section className="bg-[#130f2e]/60 p-6 md:p-8 rounded-3xl border border-white/5 backdrop-blur-md shadow-lg">
+        <section className="bg-[#130f2e] p-6 md:p-8 rounded-3xl border border-white/5 shadow-md">
           <div className="flex items-center gap-3 mb-4">
             <div className="bg-[#00d2ff]/10 p-2.5 rounded-xl">
                <Moon className="text-[#00d2ff]" size={24} />
@@ -429,7 +491,7 @@ export default function Home() {
         </section>
 
         {/* Section 2: How Does Sleep Cycle Work? */}
-        <section className="bg-[#130f2e]/60 p-6 md:p-8 rounded-3xl border border-white/5 backdrop-blur-md shadow-lg">
+        <section className="bg-[#130f2e] p-6 md:p-8 rounded-3xl border border-white/5 shadow-md">
           <div className="flex items-center gap-3 mb-4">
             <div className="bg-[#fcd34d]/10 p-2.5 rounded-xl">
                <Clock className="text-[#fcd34d]" size={24} />
@@ -451,7 +513,7 @@ export default function Home() {
         </section>
 
         {/* Section 3: Benefits */}
-        <section className="bg-[#130f2e]/60 p-6 md:p-8 rounded-3xl border border-white/5 backdrop-blur-md shadow-lg">
+        <section className="bg-[#130f2e] p-6 md:p-8 rounded-3xl border border-white/5 shadow-md">
           <div className="flex items-center gap-3 mb-6">
             <div className="bg-[#10b981]/10 p-2.5 rounded-xl">
                <Check className="text-[#10b981]" size={24} />
@@ -480,7 +542,7 @@ export default function Home() {
         </section>
 
         {/* Section 4: Best Times / Age */}
-        <section className="bg-[#130f2e]/60 p-6 md:p-8 rounded-3xl border border-white/5 backdrop-blur-md shadow-lg">
+        <section className="bg-[#130f2e] p-6 md:p-8 rounded-3xl border border-white/5 shadow-md">
           <div className="flex items-center gap-3 mb-4">
             <div className="bg-[#ec4899]/10 p-2.5 rounded-xl">
                <Bed className="text-[#ec4899]" size={24} />
@@ -489,7 +551,7 @@ export default function Home() {
           </div>
           <div className="space-y-4 text-white/80 leading-relaxed sm:text-lg mb-6">
             <p>
-              To wake up perfectly refreshed, you should aim for either <strong>5 or 6 full cycles</strong>. Our tool automatically factors in the average 15 minutes it takes a human to fall asleep. However, ideal sleep duration changes throughout your life. Check our <Link to="/blog/sleep-by-age" className="text-[#ec4899] hover:underline font-medium">sleep by age</Link> chart for more detailed requirements. 
+              To wake up perfectly refreshed, you should aim for either <strong>5 or 6 full cycles</strong>. Our tool automatically factors in the average 15 minutes it takes a human to fall asleep.
             </p>
             <p>
               If you only have a short amount of time during the day, you don't need a full night's rest. Read our <Link to="/blog/power-nap-guide" className="text-[#ec4899] hover:underline font-medium">power nap guide</Link> to learn how a 20-minute nap can save your day.
@@ -498,13 +560,38 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Section 5: Recommended Sleep by Age */}
+        <section className="bg-[#130f2e] p-6 md:p-8 rounded-3xl border border-white/5 shadow-md">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="bg-[#8b5cf6]/10 p-2.5 rounded-xl">
+               <BookOpen className="text-[#8b5cf6]" size={24} />
+            </div>
+            <h2 className="text-2xl md:text-3xl font-bold text-white"><Link to="/blog/sleep-by-age" className="hover:text-[#8b5cf6] transition-colors">Recommended Sleep Duration by Age</Link></h2>
+          </div>
+          <div className="space-y-4 text-white/80 leading-relaxed sm:text-lg mb-6">
+            <p>
+              Ideal sleep duration changes throughout your life. Our age-based sleep calculator helps personalize your schedule for maximum recovery. Here are the general recommendations:
+            </p>
+            <ul className="list-disc list-inside space-y-2 ml-2">
+              <li><strong>6–12 years:</strong> 9 to 12 hours</li>
+              <li><strong>13–17 years:</strong> 8 to 10 hours</li>
+              <li><strong>18–60 years:</strong> 7 to 9 hours</li>
+              <li><strong>60+ years:</strong> 7 to 8 hours</li>
+            </ul>
+            <p>
+              If you struggle to meet these targets or consistently feel tired despite hitting them, it might be a sign to re-evaluate your sleep schedule.
+            </p>
+            <Link to="/blog/sleep-by-age" className="inline-block mt-4 text-[#8b5cf6] hover:underline font-medium text-sm">Read full chart & guide →</Link>
+          </div>
+        </section>
+
         {/* FAQs */}
-        <section className="bg-[#0f0c29]/80 p-6 md:p-8 rounded-3xl border border-white/10 shadow-xl mt-4">
+        <section className="bg-[#0f0c29] p-6 md:p-8 rounded-3xl border border-white/10 shadow-md mt-4">
           <div className="flex items-center gap-3 mb-8">
             <div className="bg-white/10 p-2.5 rounded-xl">
                <HelpCircle className="text-white" size={24} />
             </div>
-            <h2 className="text-2xl md:text-3xl font-bold text-white">Frequently Asked Questions</h2>
+            <h2 className="text-2xl md:text-3xl font-bold text-white">FAQs</h2>
           </div>
           <FAQAccordion />
         </section>
@@ -512,19 +599,14 @@ export default function Home() {
       </article>
 
       {/* Toast Notification */}
-      <AnimatePresence>
-        {toast.show && (
-          <motion.div
-            initial={{ opacity: 0, y: 50, scale: 0.9 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 20, scale: 0.9 }}
-            className="fixed bottom-24 left-1/2 -translate-x-1/2 bg-[#1a2a5c]/90 border border-[#00d2ff]/50 text-white px-6 py-3 rounded-full backdrop-blur-md shadow-[0_0_20px_rgba(0,210,255,0.3)] z-50 flex items-center gap-3 whitespace-nowrap"
-          >
-            <Bell size={18} className="text-[#00d2ff]" />
-            <span className="font-medium">{toast.message}</span>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {toast.show && (
+        <div
+          className="fixed bottom-24 left-1/2 -translate-x-1/2 bg-[#1a2a5c]/90 border border-[#00d2ff]/50 text-white px-6 py-3 rounded-full shadow-lg z-50 flex items-center gap-3 whitespace-nowrap animate-in fade-in slide-in-from-bottom-10 duration-300"
+        >
+          <Bell size={18} className="text-[#00d2ff]" />
+          <span className="font-medium">{toast.message}</span>
+        </div>
+      )}
     </div>
   );
 }

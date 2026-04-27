@@ -1,7 +1,6 @@
 import { Helmet } from 'react-helmet-async';
-import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
-import { Calculator, Clock, Brain, Battery, Moon, ArrowRight, Activity, Zap } from 'lucide-react';
+import { Calculator, Clock, Brain, Battery, Moon, ArrowRight, Activity, Zap, ArrowLeft } from 'lucide-react';
 
 export default function SleepCalculatorTool() {
   return (
@@ -12,17 +11,19 @@ export default function SleepCalculatorTool() {
       </Helmet>
 
       {/* Hero Section */}
-      <motion.section 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="text-center mt-8 md:mt-16 mb-20 px-4"
+      <div className="w-full flex justify-start mb-4 mt-8 px-4">
+        <Link to="/" className="inline-flex items-center gap-2 text-white/60 hover:text-[#00d2ff] transition-colors font-medium focus-visible:outline-none focus-visible:text-[#00d2ff]">
+          <ArrowLeft size={16} /> Back
+        </Link>
+      </div>
+      <section 
+        className="text-center md:mt-8 mb-20 px-4 animate-in fade-in slide-in-from-bottom-4 duration-700"
       >
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-300 mb-6 font-medium text-sm tracking-wide">
           <Calculator size={16} />
           <span>Free Tool</span>
         </div>
-        <h1 className="text-4xl md:text-6xl lg:text-[64px] font-extrabold tracking-tight leading-[1.1] text-white mb-6">
+        <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight leading-[1.1] text-white mb-6">
           The Ultimate <br className="hidden sm:block" />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00d2ff] to-[#3a7bd5]">
             Sleep Calculator Tool
@@ -34,18 +35,15 @@ export default function SleepCalculatorTool() {
         
         <Link 
           to="/"
-          className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#00d2ff] to-[#3a7bd5] rounded-full px-10 py-5 text-white font-bold text-lg shadow-[0_4px_20px_rgba(0,210,255,0.3)] hover:shadow-[0_8px_30px_rgba(0,210,255,0.5)] border border-[#00d2ff]/50 hover:-translate-y-1 active:scale-95 transition-all duration-300 focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none"
+          className="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-500 rounded-full px-10 py-5 text-white font-bold text-lg shadow-lg border border-blue-400/20 hover:-translate-y-1 active:scale-95 transition-all duration-300 focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none"
         >
           Use the Tool Now <ArrowRight size={20} />
         </Link>
-      </motion.section>
+      </section>
 
       {/* Tool Explanation Section */}
-      <motion.section 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.2 }}
-        className="w-full bg-[#130f2e]/60 border border-white/5 rounded-[2.5rem] p-8 md:p-14 backdrop-blur-sm shadow-xl mb-20"
+      <section 
+        className="w-full bg-[#130f2e] border border-white/5 rounded-[2.5rem] p-8 md:p-14 shadow-lg mb-20 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-200 fill-mode-both"
       >
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
@@ -93,7 +91,7 @@ export default function SleepCalculatorTool() {
             </div>
           </div>
         </div>
-      </motion.section>
+      </section>
 
       {/* Benefits Section */}
       <section className="w-full mb-24">
@@ -126,11 +124,8 @@ export default function SleepCalculatorTool() {
       </section>
 
       {/* Final CTA */}
-      <motion.section 
-        initial={{ opacity: 0, scale: 0.95 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true }}
-        className="w-full bg-gradient-to-br from-[#1a2b5e] to-[#131d45] border border-blue-500/20 rounded-[2.5rem] p-10 md:p-16 text-center shadow-2xl relative overflow-hidden"
+      <section 
+        className="w-full bg-gradient-to-br from-[#1a2b5e] to-[#131d45] border border-blue-500/20 rounded-[2.5rem] p-10 md:p-16 text-center shadow-xl relative overflow-hidden"
       >
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,210,255,0.1)_0%,transparent_60%)]" />
         <div className="relative z-10">
@@ -145,7 +140,7 @@ export default function SleepCalculatorTool() {
             Go to the Calculator <ArrowRight size={20} />
           </Link>
         </div>
-      </motion.section>
+      </section>
     </div>
   );
 }

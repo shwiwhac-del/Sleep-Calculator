@@ -7,8 +7,7 @@ export default function GenericPage({ title }: { title: string }) {
       description={`Find answers and information regarding our ${title.toLowerCase()}.`}
       readingTime="2"
       date={new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
-      backLabel="Back to Calculator"
-      backLink="/"
+      backUrl="/"
     >
       <h2>Welcome to our {title} page</h2>
       <p>

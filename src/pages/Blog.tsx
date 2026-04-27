@@ -1,9 +1,9 @@
-import { motion } from 'motion/react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Moon, BookOpen, Clock, Activity, Battery, ArrowLeft, ArrowRight, BedDouble, Check, Search } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 
 export default function Blog() {
+  const navigate = useNavigate();
   const articles = [
     {
       title: "What is a Sleep Calculator?",
@@ -143,43 +143,41 @@ export default function Blog() {
       </Helmet>
 
       <div className="mb-8">
-        <Link to="/" className="inline-flex items-center gap-2 text-white/60 hover:text-[#00d2ff] transition-colors font-medium focus-visible:ring-2 focus-visible:ring-[#00d2ff] focus-visible:outline-none rounded-lg px-2 py-1 -ml-2">
+        <Link to="/" className="inline-flex items-center gap-2 text-white/60 hover:text-[#00d2ff] transition-colors font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00d2ff] rounded-lg px-2 py-1 -ml-2">
           <ArrowLeft size={20} />
-          Back to Calculator
+          Back
         </Link>
       </div>
 
-      <motion.div 
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="flex flex-col items-center justify-center mb-16 sm:mb-20 text-center mt-6"
+      <div 
+        className="flex flex-col items-center justify-center mb-16 sm:mb-20 text-center mt-6 animate-in fade-in slide-in-from-top-4 duration-700"
       >
         <BookOpen className="text-[#00d2ff] mb-6" size={56} strokeWidth={1.5} />
         <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-5 text-white">Sleep Better Blog</h1>
         <p className="text-white/75 text-lg sm:text-xl max-w-2xl leading-relaxed">
           Learn how to optimize your rest, understand your REM cycles, and wake up feeling refreshed every single day.
         </p>
-      </motion.div>
+      </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
         {articles.map((article, index) => {
           const isFeatured = index === 0;
           return (
-          <motion.article 
+          <article 
             key={index}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            className={`group bg-[#130f2e]/60 border border-white/5 rounded-3xl backdrop-blur-md shadow-lg hover:shadow-[0_8px_30px_rgba(0,210,255,0.1)] hover:bg-[#1a153a]/90 hover:border-white/10 transition-all duration-300 ease-out hover:-translate-y-1 flex flex-col overflow-hidden relative ${isFeatured ? 'md:col-span-2 lg:col-span-3 lg:flex-row' : ''}`}
+            className={`group bg-[#130f2e] border border-white/5 rounded-3xl shadow-lg hover:shadow-xl hover:bg-[#1a153a] hover:border-white/10 transition-all duration-300 ease-out hover:-translate-y-1 flex flex-col overflow-hidden relative animate-in fade-in slide-in-from-bottom-4 fill-mode-both ${isFeatured ? 'md:col-span-2 lg:col-span-3 lg:flex-row' : ''}`}
+            style={{ animationDelay: `${index * 50}ms`, animationDuration: '600ms' }}
           >
             {/* Glow effect on hover */}
             <div className="absolute inset-0 bg-gradient-to-br from-white/0 via-white/0 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl pointer-events-none" />
             
             <div className={`p-8 sm:p-10 flex flex-col justify-between w-full h-full ${isFeatured ? 'lg:w-2/3 lg:pr-12' : ''}`}>
               <div>
-                <div className={`flex items-center gap-3 ${article.color} mb-5 bg-black/20 w-fit px-4 py-2 rounded-full border border-white/5 shadow-inner`}>
-                  {article.icon}
-                  <span className="text-xs font-bold tracking-wider uppercase">{article.topic}</span>
+                <div className={`flex flex-wrap items-center gap-3 ${article.color} mb-5 bg-black/20 w-fit px-4 py-2 rounded-full border border-white/5 shadow-inner`}>
+                  <div className="flex items-center gap-2">
+                    {article.icon}
+                    <span className="text-xs font-bold tracking-wider uppercase">{article.topic}</span>
+                  </div>
                 </div>
                 <h2 className={`${isFeatured ? 'text-3xl sm:text-4xl lg:text-5xl lg:leading-tight mb-6' : 'text-2xl mb-4'} font-bold text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-[${article.color.replace('text-[', '').replace(']', '')}] transition-all duration-300`}>
                   <Link to={article.url} className="before:absolute before:inset-0 focus-visible:outline-none">{article.title}</Link>
@@ -188,7 +186,12 @@ export default function Blog() {
                   {article.description}
                 </p>
               </div>
-              <div className="mt-auto pt-4 flex items-center justify-between border-t border-white/5">
+              <div className="mt-auto pt-4 flex flex-wrap items-center justify-between gap-4 border-t border-white/5">
+                <div className="flex items-center gap-3 text-xs sm:text-sm text-white/50 font-medium tracking-wide">
+                  <span>Sleep Expert Team</span>
+                  <span className="w-1 h-1 rounded-full bg-white/20"></span>
+                  <span>4 min read</span>
+                </div>
                 <span className="inline-flex items-center gap-2 text-white/90 font-semibold group-hover:text-[#00d2ff] transition-colors text-sm">
                   Read Article <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                 </span>
@@ -205,7 +208,7 @@ export default function Blog() {
                 )}
               </div>
             )}
-          </motion.article>
+          </article>
         )})}
       </div>
     </div>

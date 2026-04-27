@@ -3,8 +3,8 @@ import { BrowserRouter as Router, Routes, Route, Link, Navigate } from 'react-ro
 import { Moon } from 'lucide-react';
 import { HelmetProvider } from 'react-helmet-async';
 import ScrollToTop from './components/ScrollToTop';
+import Home from './pages/Home';
 
-const Home = lazy(() => import('./pages/Home'));
 const Terms = lazy(() => import('./pages/Terms'));
 const Privacy = lazy(() => import('./pages/Privacy'));
 const Blog = lazy(() => import('./pages/Blog'));
@@ -33,70 +33,48 @@ const EffectsOfOversleeping = lazy(() => import('./pages/EffectsOfOversleeping')
 const SleepForStudents = lazy(() => import('./pages/SleepForStudents'));
 
 const LoadingFallback = () => (
-  <div className="flex flex-col items-center justify-center min-h-[60vh] w-full gap-4">
-    <div className="relative flex items-center justify-center">
-      <div className="absolute inset-0 bg-[#00d2ff]/20 blur-xl rounded-full animate-pulse"></div>
-      <Moon className="text-[#00d2ff] animate-bounce z-10" size={48} fill="currentColor" />
-      <div className="absolute w-24 h-24 border-t-2 border-r-2 border-[#00d2ff]/30 rounded-full animate-spin"></div>
-      <div className="absolute w-32 h-32 border-b-2 border-l-2 border-[#fcd34d]/30 rounded-full animate-[spin_2s_linear_reverse]"></div>
-    </div>
-    <div className="flex items-center gap-1 mt-4">
-      <span className="text-[#00d2ff] font-medium tracking-widest uppercase text-sm">Loading</span>
-      <span className="text-[#00d2ff] animate-[bounce_1s_infinite_0ms] font-bold">.</span>
-      <span className="text-[#00d2ff] animate-[bounce_1s_infinite_200ms] font-bold">.</span>
-      <span className="text-[#00d2ff] animate-[bounce_1s_infinite_400ms] font-bold">.</span>
+  <div className="flex flex-col items-center justify-center min-h-[60vh] w-full gap-4 max-w-4xl mx-auto px-4">
+    <div className="w-full max-w-2xl h-12 bg-white/5 animate-pulse rounded-full mb-8"></div>
+    <div className="w-full h-64 bg-white/5 animate-pulse rounded-3xl mb-12"></div>
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 w-full">
+      <div className="w-full h-32 bg-white/5 animate-pulse rounded-2xl"></div>
+      <div className="w-full h-32 bg-white/5 animate-pulse rounded-2xl"></div>
+      <div className="w-full h-32 bg-white/5 animate-pulse rounded-2xl"></div>
     </div>
   </div>
 );
 
 const StarryBackground = () => {
-  // Generate static stars in useMemo to avoid recalculating random layouts and causing CPU/CLS issues
-  const stars = useMemo(() => Array.from({ length: 250 }).map((_, i) => ({
-    id: i,
-    cx: `${Math.random() * 100}%`,
-    cy: `${Math.random() * 100}%`,
-    r: Math.random() * 1.5 + 0.5,
-    opacity: Math.random() * 0.8 + 0.2,
-    glow: Math.random() > 0.8,
-  })), []);
-
   return (
-    <svg className="fixed inset-0 z-0 w-full h-full pointer-events-none opacity-90" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <filter id="glow">
-          <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
-          <feMerge>
-            <feMergeNode in="coloredBlur"/>
-            <feMergeNode in="SourceGraphic"/>
-          </feMerge>
-        </filter>
-      </defs>
-      {stars.map((star) => (
-        <circle
-          key={star.id}
-          cx={star.cx}
-          cy={star.cy}
-          r={star.r}
-          fill="white"
-          opacity={star.opacity}
-          filter={star.glow ? "url(#glow)" : undefined}
-        />
-      ))}
-    </svg>
+    <div className="fixed inset-0 z-0 pointer-events-none opacity-40 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#ffffff10] via-transparent to-transparent">
+      {/* Lightweight CSS pattern instead of 250 SVG circles with filters */}
+      <div 
+        className="absolute inset-0" 
+        style={{
+          backgroundImage: 'radial-gradient(circle at center, rgba(255,255,255,0.1) 1px, transparent 1px)',
+          backgroundSize: '40px 40px',
+        }}
+      />
+      <div 
+        className="absolute inset-0 opacity-50" 
+        style={{
+          backgroundImage: 'radial-gradient(circle at center, rgba(255,255,255,0.15) 1px, transparent 1px)',
+          backgroundSize: '70px 70px',
+          backgroundPosition: '20px 20px',
+        }}
+      />
+    </div>
   );
 };
 
 function Footer() {
   return (
-    <footer className="w-full py-6 mt-auto border-t border-white/10 bg-[#130f2e]/50 backdrop-blur-md z-20 relative text-center">
+    <footer className="w-full py-6 mt-auto border-t border-white/10 bg-[#130f2e] z-20 relative text-center">
       <div className="flex flex-wrap justify-center gap-x-6 gap-y-4 text-sm text-white/60 px-4">
-        <Link to="/sleep-guides" className="hover:text-[#00d2ff] transition-colors">Sleep Guides</Link>
-        <Link to="/sleep-calculator-tool" className="hover:text-[#00d2ff] transition-colors">Tool Info</Link>
-        <Link to="/blog" className="hover:text-[#00d2ff] transition-colors">Blog</Link>
-        <Link to="/about" className="hover:text-[#00d2ff] transition-colors">About Us</Link>
-        <Link to="/contact" className="hover:text-[#00d2ff] transition-colors">Contact Us</Link>
-        <Link to="/terms" className="hover:text-[#00d2ff] transition-colors">Terms of Service</Link>
+        <Link to="/" className="hover:text-[#00d2ff] transition-colors">Home</Link>
         <Link to="/privacy" className="hover:text-[#00d2ff] transition-colors">Privacy Policy</Link>
+        <Link to="/terms" className="hover:text-[#00d2ff] transition-colors">Terms of Service</Link>
+        <Link to="/contact" className="hover:text-[#00d2ff] transition-colors">Contact</Link>
         <a href="/sitemap.xml" target="_blank" rel="noopener noreferrer" className="hover:text-[#00d2ff] transition-colors">Sitemap</a>
       </div>
     </footer>
@@ -105,15 +83,16 @@ function Footer() {
 
 function Header() {
   return (
-    <header className="w-full py-4 px-6 sm:px-8 border-b border-white/5 bg-[#130f2e]/70 backdrop-blur-xl z-50 sticky top-0 flex items-center justify-between shadow-sm">
+    <header className="w-full py-4 px-6 sm:px-8 border-b border-white/5 bg-[#130f2e] z-50 sticky top-0 flex flex-wrap items-center justify-between shadow-sm gap-4">
       <Link to="/" className="flex items-center gap-2.5 text-white hover:text-[#00d2ff] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00d2ff] rounded-lg">
         <Moon className="text-[#a5b4fc]" size={26} strokeWidth={2} fill="#a5b4fc" />
         <span className="text-xl font-extrabold tracking-tight">Sleep Calculator</span>
       </Link>
-      <nav className="flex items-center gap-4 sm:gap-6 text-sm font-semibold text-white/70">
+      <nav className="flex flex-wrap items-center gap-4 sm:gap-6 text-sm font-semibold text-white/70">
         <Link to="/" className="hover:text-white transition-colors focus-visible:outline-none focus-visible:underline decoration-2 underline-offset-4">Home</Link>
-        <Link to="/sleep-guides" className="hover:text-white transition-colors focus-visible:outline-none focus-visible:underline decoration-2 underline-offset-4">Guides</Link>
         <Link to="/blog" className="hover:text-white transition-colors focus-visible:outline-none focus-visible:underline decoration-2 underline-offset-4">Blog</Link>
+        <Link to="/about" className="hover:text-white transition-colors focus-visible:outline-none focus-visible:underline decoration-2 underline-offset-4">About</Link>
+        <Link to="/contact" className="hover:text-white transition-colors focus-visible:outline-none focus-visible:underline decoration-2 underline-offset-4">Contact</Link>
       </nav>
     </header>
   );

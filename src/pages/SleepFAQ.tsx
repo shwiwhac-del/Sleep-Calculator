@@ -1,10 +1,11 @@
 import { Helmet } from 'react-helmet-async';
-import { motion } from 'motion/react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ChevronLeft } from 'lucide-react';
 import { FAQAccordion } from '../components/FAQAccordion';
 
 export default function SleepFAQ() {
+  const navigate = useNavigate();
+
   return (
     <div className="w-full max-w-4xl mx-auto px-4 py-12">
       <Helmet>
@@ -12,21 +13,19 @@ export default function SleepFAQ() {
         <meta name="description" content="Frequently asked questions about sleep cycles, how to use a sleep calculator, falling asleep faster, and waking up with more energy." />
       </Helmet>
 
-      <motion.div
-        initial={{ opacity: 0, y: 15 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
+      <div
+        className="animate-in fade-in slide-in-from-top-4 duration-500"
       >
-        <Link to="/" className="inline-flex items-center text-white/50 hover:text-[#00d2ff] mb-8 font-medium transition-colors">
-          <ChevronLeft size={16} className="mr-1" /> Back to Calculator
+        <Link to="/" className="inline-flex items-center text-white/50 hover:text-[#00d2ff] mb-8 font-medium transition-colors focus-visible:outline-none focus-visible:text-[#00d2ff]">
+          <ChevronLeft size={16} className="mr-1" /> Back
         </Link>
         
         <header className="mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-br from-white to-white/70 mb-4">Frequently Asked Questions</h1>
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-br from-white to-white/70 mb-4">FAQs</h1>
           <p className="text-xl text-white/60">Everything you need to know about optimizing your rest.</p>
         </header>
 
-        <section className="bg-[#130f2e]/60 border border-white/5 rounded-3xl p-6 md:p-10 backdrop-blur-md shadow-xl mb-12">
+        <section className="bg-[#130f2e] border border-white/5 rounded-3xl p-6 md:p-10 shadow-lg mb-12">
           <FAQAccordion />
         </section>
 
@@ -37,7 +36,7 @@ export default function SleepFAQ() {
             Read Sleep Guides
           </Link>
         </div>
-      </motion.div>
+      </div>
     </div>
   );
 }

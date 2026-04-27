@@ -1,7 +1,6 @@
 import { Helmet } from 'react-helmet-async';
-import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
-import { BookOpen, Moon, Clock, Brain, Battery, ArrowRight, Zap, Target } from 'lucide-react';
+import { BookOpen, Moon, Clock, Brain, Battery, ArrowRight, Zap, Target, ArrowLeft } from 'lucide-react';
 
 export default function SleepGuides() {
   return (
@@ -12,17 +11,19 @@ export default function SleepGuides() {
       </Helmet>
 
       {/* Hero Section */}
-      <motion.section 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="text-center mt-8 md:mt-16 mb-16 px-4"
+      <div className="w-full flex justify-start mb-4 mt-8 px-4">
+        <Link to="/" className="inline-flex items-center gap-2 text-white/60 hover:text-[#00d2ff] transition-colors font-medium focus-visible:outline-none focus-visible:text-[#00d2ff]">
+          <ArrowLeft size={16} /> Back
+        </Link>
+      </div>
+      <section 
+        className="text-center md:mt-8 mb-16 px-4 animate-in fade-in slide-in-from-top-4 duration-700"
       >
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-300 mb-6 font-medium text-sm tracking-wide">
           <BookOpen size={16} />
           <span>Knowledge Hub</span>
         </div>
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.1] text-white mb-6">
+        <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight leading-[1.1] text-white mb-6">
           The Ultimate <br className="hidden sm:block" />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-[#00d2ff]">
             Sleep Guides & Resources
@@ -31,13 +32,13 @@ export default function SleepGuides() {
         <p className="text-lg md:text-xl text-white/70 max-w-2xl mx-auto mb-10 leading-relaxed">
           Master your sleep schedule. Understand the science behind 90-minute sleep cycles and discover actionable advice to wake up with limitless energy.
         </p>
-      </motion.section>
+      </section>
 
       {/* Master Content Section - Structurally SEO Optimized */}
       <article className="w-full text-left space-y-12 sm:space-y-16">
 
         {/* Featured Snippet Target: What is Sleep Hygiene? */}
-        <section className="bg-[#130f2e]/60 p-6 md:p-10 rounded-3xl border border-white/5 backdrop-blur-md shadow-lg">
+        <section className="bg-[#130f2e] p-6 md:p-10 rounded-3xl border border-white/5 shadow-lg">
           <h2 className="text-2xl md:text-3xl font-bold text-white mb-6">What is Sleep Hygiene?</h2>
           <div className="text-white/80 leading-relaxed text-lg space-y-4">
             <p>
@@ -151,11 +152,8 @@ export default function SleepGuides() {
       </article>
 
       {/* Try the tool banner */}
-      <motion.section 
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="w-full bg-gradient-to-r from-[#00d2ff]/20 to-[#3a7bd5]/20 border border-[#00d2ff]/30 rounded-3xl p-8 md:p-12 text-center mt-20 mb-8"
+      <section 
+        className="w-full bg-gradient-to-r from-[#00d2ff]/20 to-[#3a7bd5]/20 border border-[#00d2ff]/30 rounded-3xl p-8 md:p-12 text-center mt-20 mb-8 animate-in fade-in slide-in-from-bottom-4 duration-700 fill-mode-both"
       >
         <Zap className="text-[#00d2ff] mx-auto mb-4" size={40} />
         <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">Put this knowledge to work.</h2>
@@ -168,7 +166,7 @@ export default function SleepGuides() {
         >
           Calculate Sleep Cycles
         </Link>
-      </motion.section>
+      </section>
 
     </div>
   );

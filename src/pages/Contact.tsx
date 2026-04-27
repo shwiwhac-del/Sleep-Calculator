@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { motion } from 'motion/react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ChevronLeft, Send, CheckCircle, Mail, User, MessageSquare } from 'lucide-react';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from '../lib/firebase';
@@ -11,6 +10,7 @@ export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -50,13 +50,11 @@ export default function Contact() {
         <meta name="description" content="Get in touch with the Sleep Calculator team. We are here to help you sleep better." />
       </Helmet>
 
-      <motion.div
-        initial={{ opacity: 0, y: 15 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
+      <div
+        className="animate-in fade-in slide-in-from-top-4 duration-500"
       >
-        <Link to="/" className="inline-flex items-center text-white/50 hover:text-[#00d2ff] mb-8 font-medium transition-colors">
-          <ChevronLeft size={16} className="mr-1" /> Back to Calculator
+        <Link to="/" className="inline-flex items-center text-white/50 hover:text-[#00d2ff] mb-8 font-medium transition-colors focus-visible:outline-none focus-visible:text-[#00d2ff]">
+          <ChevronLeft size={16} className="mr-1" /> Back
         </Link>
         
         <header className="mb-12 text-center md:text-left">
@@ -66,12 +64,10 @@ export default function Contact() {
           </p>
         </header>
 
-        <div className="bg-[#1a153a]/40 border border-white/5 rounded-[2rem] p-6 sm:p-10 backdrop-blur-sm shadow-xl">
+        <div className="bg-[#1a153a]/40 border border-white/5 rounded-[2rem] p-6 sm:p-10 shadow-xl">
           {isSuccess ? (
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              className="flex flex-col items-center justify-center py-12 text-center"
+            <div 
+              className="flex flex-col items-center justify-center py-12 text-center animate-in fade-in zoom-in-95 duration-300"
             >
               <div className="w-16 h-16 bg-blue-500/20 rounded-full flex items-center justify-center mb-6">
                 <CheckCircle className="text-[#00d2ff]" size={32} />
@@ -86,7 +82,7 @@ export default function Contact() {
               >
                 Send another message
               </button>
-            </motion.div>
+            </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-6">
               {error && (
@@ -176,7 +172,7 @@ export default function Contact() {
             </form>
           )}
         </div>
-      </motion.div>
+      </div>
     </div>
   );
 }

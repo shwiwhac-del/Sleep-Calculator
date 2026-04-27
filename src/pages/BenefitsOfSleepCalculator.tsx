@@ -8,8 +8,6 @@ export default function BenefitsOfSleepCalculator() {
       description="From waking up refreshed to stopping morning grogginess, discover the life-changing benefits of utilizing a sleep calculator daily."
       readingTime="3"
       date="June 8, 2024"
-      backLink="/"
-      backLabel="Back to Calculator"
     >
       <p>
         Ditching your standard alarm clock logic and switching to a <strong><Link to="/">sleep calculator</Link></strong> can dramatically transform your mornings. Here are the core benefits of tracking your 90-minute sleep cycles.

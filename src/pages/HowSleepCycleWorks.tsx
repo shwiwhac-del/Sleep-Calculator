@@ -8,8 +8,6 @@ export default function HowSleepCycleWorks() {
       description="Human sleep isn't a single block of unconsciousness. Learn about the 90-minute sleep cycles and how they dictate your energy levels."
       readingTime="4"
       date="June 5, 2024"
-      backLink="/"
-      backLabel="Back to Calculator"
     >
       <p>
         Human sleep isn't just a single block of unconsciousness. As you rest, your brain cycles through multiple stages of sleep: light sleep, deep sleep, and REM (Rapid Eye Movement) sleep.

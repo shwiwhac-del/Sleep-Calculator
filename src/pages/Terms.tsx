@@ -1,21 +1,17 @@
-import { motion } from 'motion/react';
 import { ShieldCheck, ArrowLeft } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function Terms() {
+  const navigate = useNavigate();
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20, filter: 'blur(10px)' }}
-      animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-      exit={{ opacity: 0, y: -20, filter: 'blur(10px)' }}
-      transition={{ duration: 0.5 }}
-      className="w-full max-w-3xl mx-auto"
+    <div
+      className="w-full max-w-3xl mx-auto animate-in fade-in slide-in-from-top-4 duration-500"
     >
-      <Link to="/" className="inline-flex items-center gap-2 text-white/60 hover:text-white mb-6 transition-colors">
-        <ArrowLeft size={16} /> Back to Calculator
+      <Link to="/" className="inline-flex items-center gap-2 text-white/60 hover:text-[#00d2ff] mb-6 transition-colors focus-visible:outline-none focus-visible:text-[#00d2ff]">
+        <ArrowLeft size={16} /> Back
       </Link>
       
-      <div className="bg-[#1d1842]/80 backdrop-blur-md border border-white/10 rounded-[2rem] p-8 sm:p-12 shadow-2xl relative overflow-hidden">
+      <div className="bg-[#1d1842] border border-white/10 rounded-[2rem] p-8 sm:p-12 shadow-xl relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#40c9ff] to-[#0088ff]" />
         
         <div className="flex items-center gap-4 mb-8">
@@ -59,6 +55,6 @@ export default function Terms() {
           </section>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }

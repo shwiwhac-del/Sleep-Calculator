@@ -8,8 +8,6 @@ export default function BestSleepTimes() {
       description="Calculate the best sleep times using the 90-minute cycle method. Find out if you need 4, 5, or 6 cycles for optimal morning energy."
       readingTime="4"
       date="June 12, 2024"
-      backLink="/"
-      backLabel="Back to Calculator"
     >
       <p>
         To wake up perfectly refreshed, you need to rely on math rather than arbitrary bedtimes. Since human sleep cycles last approximately 90 minutes, the "best times" to sleep are simple multiples of this duration.

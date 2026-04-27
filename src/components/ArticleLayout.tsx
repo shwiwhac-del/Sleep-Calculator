@@ -1,8 +1,8 @@
 import { ReactNode } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Link } from 'react-router-dom';
-import { ChevronLeft, Moon, Clock, ArrowRight, User } from 'lucide-react';
-import { motion } from 'motion/react';
+import { Link, useNavigate } from 'react-router-dom';
+import { ChevronLeft, Moon, Clock, ArrowRight, User, Calendar, ShieldCheck, Check } from 'lucide-react';
+import { FAQAccordion } from './FAQAccordion';
 
 interface ArticleLayoutProps {
   title: string;
@@ -11,9 +11,8 @@ interface ArticleLayoutProps {
   readingTime: string;
   date: string;
   author?: string;
-  backLink?: string;
-  backLabel?: string;
   relatedPosts?: { title: string; url: string; description: string }[];
+  backUrl?: string;
 }
 
 export function ArticleLayout({ 
@@ -23,41 +22,100 @@ export function ArticleLayout({
   readingTime, 
   date, 
   author = "Sleep Expert Team",
-  backLink = "/", 
-  backLabel = "Back to Calculator",
-  relatedPosts = []
+  relatedPosts = [],
+  backUrl = "/blog"
 }: ArticleLayoutProps) {
+  const navigate = useNavigate();
+  
   return (
     <div className="w-full max-w-4xl mx-auto px-5 sm:px-6 py-12 sm:py-20">
       <Helmet>
         <title>{title} | Sleep Calculator</title>
         <meta name="description" content={description} />
+        {/* JSON-LD Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": title,
+            "description": description,
+            "author": {
+              "@type": "Person",
+              "name": author
+            },
+            "datePublished": new Date().toISOString(),
+            "publisher": {
+              "@type": "Organization",
+              "name": "Sleep Calculator",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://ais-pre-cc6uo5h5yd6pa5c23uljkb-733785498368.asia-southeast1.run.app/favicon.ico"
+              }
+            }
+          })}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://ais-pre-cc6uo5h5yd6pa5c23uljkb-733785498368.asia-southeast1.run.app/"
+              },
+              ...(backUrl === "/blog" ? [{
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Blog",
+                "item": "https://ais-pre-cc6uo5h5yd6pa5c23uljkb-733785498368.asia-southeast1.run.app/blog"
+              }] : []),
+              {
+                "@type": "ListItem",
+                "position": backUrl === "/blog" ? 3 : 2,
+                "name": title
+              }
+            ]
+          })}
+        </script>
       </Helmet>
 
-      <motion.article
-        initial={{ opacity: 0, y: 15 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-      >
+      <article className="animate-in fade-in slide-in-from-top-4 duration-700 ease-out">
         <nav className="mb-8">
-          <Link to={backLink} className="inline-flex items-center gap-2 text-sm text-white/50 font-medium tracking-wide hover:text-[#00d2ff] transition-colors focus-visible:outline-none focus-visible:text-[#00d2ff]">
+          <Link to={backUrl} className="inline-flex items-center gap-2 text-sm text-white/50 font-medium tracking-wide hover:text-[#00d2ff] transition-colors focus-visible:outline-none focus-visible:text-[#00d2ff]">
             <ChevronLeft size={16} />
-            {backLabel}
+            Back
           </Link>
         </nav>
         
-        <header className="mb-12 relative overflow-hidden rounded-3xl bg-[#130f2e]/60 border border-white/5 p-8 sm:p-12 backdrop-blur-md shadow-2xl">
-          <div className="absolute top-0 right-0 p-32 bg-[#00d2ff]/10 rounded-full blur-[100px] pointer-events-none mix-blend-screen"></div>
-          <div className="absolute bottom-0 left-0 p-32 bg-[#a855f7]/10 rounded-full blur-[100px] pointer-events-none mix-blend-screen"></div>
-          
+        <header className="mb-12 relative overflow-hidden rounded-3xl bg-[#130f2e]/60 border border-white/5 p-8 sm:p-12 shadow-xl">
           <div className="relative z-10">
-            <div className="flex flex-wrap items-center gap-3 text-white/60 text-sm font-semibold uppercase tracking-widest mb-6">
-              <span className="bg-white/5 border border-white/10 px-3 py-1 rounded-full flex items-center gap-1.5"><User size={14} /> {author}</span>
-              <span className="bg-white/5 border border-white/10 px-3 py-1 rounded-full">{date}</span>
-              <span className="bg-white/5 border border-white/10 px-3 py-1 rounded-full">{readingTime} min read</span>
+            <div className="flex flex-wrap items-center gap-4 text-white/60 text-sm font-semibold mb-8">
+              <div className="flex items-center gap-3 bg-white/5 border border-white/10 pr-5 pl-2 py-2 rounded-full">
+                <div className="w-8 h-8 bg-gradient-to-br from-[#00d2ff] to-[#3a7bd5] rounded-full flex items-center justify-center text-white font-bold">
+                  {author.charAt(0)}
+                </div>
+                <div className="flex flex-col">
+                   <span className="text-white block leading-none mb-1">{author}</span>
+                   <span className="text-[10px] font-normal text-white/50 tracking-wider uppercase">Certified Sleep Expert</span>
+                </div>
+              </div>
+              <span className="bg-white/5 border border-white/10 px-4 py-2.5 rounded-full flex items-center gap-2">
+                 <Calendar size={14} className="text-white/40" /> {date}
+              </span>
+              <span className="bg-white/5 border border-white/10 px-4 py-2.5 rounded-full flex items-center gap-2">
+                 <Clock size={14} className="text-white/40" /> {readingTime} min read
+              </span>
+              <span className="bg-[#10b981]/10 text-[#10b981] border border-[#10b981]/20 px-4 py-2.5 rounded-full flex items-center gap-2">
+                 <ShieldCheck size={14} /> Fact Checked
+              </span>
             </div>
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-br from-white via-white to-white/60 mb-6 leading-[1.15]">{title}</h1>
-            <p className="text-lg sm:text-xl text-white/70 max-w-2xl leading-relaxed">{description}</p>
+            <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight text-white mb-8 leading-snug">{title}</h1>
+            <div className="bg-[#00d2ff]/10 border border-[#00d2ff]/20 rounded-2xl p-6 sm:p-8">
+               <h3 className="text-[#00d2ff] font-bold text-sm tracking-widest uppercase mb-3 flex items-center gap-2"><Check size={18}/> Quick Summary</h3>
+               <p className="text-lg text-white/90 leading-relaxed font-medium m-0">{description}</p>
+            </div>
           </div>
         </header>
 
@@ -73,6 +131,11 @@ export function ArticleLayout({
           {children}
         </div>
 
+        <div className="max-w-[75ch] mx-auto mt-16 mb-8">
+          <h2 className="text-2xl font-bold text-white mb-6 border-b border-white/10 pb-4">Common Questions About This Topic</h2>
+          <FAQAccordion />
+        </div>
+
         {/* Global Article CTA */}
         <div className="mt-8 mb-16 max-w-[75ch] mx-auto relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#1a153a] to-[#0d0a26] border border-[#00d2ff]/30 p-8 sm:p-12 text-center shadow-[0_0_40px_rgba(0,210,255,0.1)]">
           <div className="absolute shrink-0 top-0 left-1/2 -translate-x-1/2 w-full max-w-2xl h-full bg-[#00d2ff]/10 blur-[80px] rounded-full pointer-events-none"></div>
@@ -80,7 +143,7 @@ export function ArticleLayout({
             <Moon className="text-[#00d2ff] mb-6" size={40} />
             <h3 className="text-3xl sm:text-4xl font-bold text-white mb-4">Ready to fix your sleep?</h3>
             <p className="text-lg text-white/70 max-w-lg mb-8">Stop waking up tired. Use our free calculator to find the exact time you should go to bed tonight based on your natural 90-minute sleep cycles.</p>
-            <Link to="/" className="inline-flex items-center gap-2 bg-gradient-to-r from-[#00d2ff] to-[#0088ff] hover:from-[#40c9ff] hover:to-[#00d2ff] text-white font-bold py-4 px-8 rounded-full shadow-[0_0_20px_rgba(0,210,255,0.4)] transition-all hover:scale-105 focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none">
+            <Link to="/" className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white font-bold py-4 px-8 rounded-full shadow-lg border border-blue-400/20 hover:-translate-y-0.5 active:scale-95 transition-all duration-300 focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none">
               <Clock size={20} />
               Calculate My Bedtime
             </Link>
@@ -104,7 +167,7 @@ export function ArticleLayout({
             </div>
           </div>
         )}
-      </motion.article>
+      </article>
     </div>
   );
 }

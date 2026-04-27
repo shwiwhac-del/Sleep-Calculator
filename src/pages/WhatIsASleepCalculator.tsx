@@ -8,8 +8,6 @@ export default function WhatIsASleepCalculator() {
       description="A sleep calculator is a free digital tool designed to help you figure out the absolute best time to sleep and wake up using the science of sleep cycles."
       readingTime="3"
       date="June 1, 2024"
-      backLink="/"
-      backLabel="Back to Calculator"
     >
       <p>
         A <strong>sleep calculator</strong> is a free digital tool designed to help you figure out the absolute best time to sleep and wake up. Instead of just guessing when to set your alarm, this tool uses the science of human sleep to calculate exact bedtimes or wake-up times.
