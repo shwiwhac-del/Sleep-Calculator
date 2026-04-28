@@ -69,7 +69,7 @@ export default function Contact() {
             <div 
               className="flex flex-col items-center justify-center py-12 text-center animate-in fade-in zoom-in-95 duration-300"
             >
-              <div className="w-16 h-16 bg-blue-500/20 rounded-full flex items-center justify-center mb-6">
+              <div className="w-16 h-16 bg-[#00d2ff]/20 rounded-full flex items-center justify-center mb-6">
                 <CheckCircle className="text-[#00d2ff]" size={32} />
               </div>
               <h2 className="text-2xl font-bold text-white mb-3">Message Sent!</h2>
@@ -156,7 +156,7 @@ export default function Contact() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-gradient-to-r from-[#00d2ff] to-[#3a7bd5] rounded-full px-8 py-4 text-white font-bold text-lg shadow-[0_4px_20px_rgba(0,210,255,0.3)] hover:shadow-[0_8px_30px_rgba(0,210,255,0.5)] border border-[#00d2ff]/50 hover:-translate-y-1 active:scale-95 transition-all duration-300 focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center gap-2 mt-4"
+                className="w-full bg-gradient-to-r from-[#1a2a5c] to-[#25397a] hover:brightness-110 rounded-full px-8 py-4 text-white font-bold text-lg shadow-[0_4px_20px_rgba(37,57,122,0.4)] border border-[#00d2ff]/30 hover:-translate-y-1 active:scale-95 transition-all duration-300 focus-visible:ring-2 focus-visible:ring-[#00d2ff] focus-visible:outline-none disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center gap-2 mt-4"
               >
                 {isSubmitting ? (
                   <>

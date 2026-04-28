@@ -29,7 +29,7 @@ export default function SleepFAQ() {
           <FAQAccordion />
         </section>
 
-        <div className="text-center p-8 bg-gradient-to-r from-[#00d2ff]/10 to-[#a855f7]/10 rounded-2xl border border-white/10">
+        <div className="text-center p-8 bg-[#1a153a] border border-white/5 rounded-2xl">
           <h2 className="text-2xl font-bold text-white mb-4">Have more questions?</h2>
           <p className="text-white/70 mb-6">Check out our comprehensive guides to learn the science behind perfect sleep.</p>
           <Link to="/blog" className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white font-bold py-3 px-6 rounded-full transition-colors border border-white/10">

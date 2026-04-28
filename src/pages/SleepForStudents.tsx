@@ -22,50 +22,57 @@ export default function SleepForStudents() {
         }
       ]}
     >
+      {/* Intro */}
       <p>
-        In the pressure cooker of high school or university, sleep is historically the first thing to be sacrificed. Students routinely trade a good night's rest for four more hours of cramming in the library. 
+        In high school or university, sleep is usually the first thing you sacrifice. Students routinely trade rest for cramming in the library. 
       </p>
       <p>
-        There is a deeply ingrained academic culture that glorifies the "all-nighter." However, neurologically speaking, skipping sleep to study is one of the most counterproductive strategies you can implement.
+        Academic culture glorifies the "all-nighter," but skipping sleep to study is neurologically terrible for your grades.
       </p>
 
+      {/* Section 1 */}
       <h2>Why All-Nighters Ruin Your GPA</h2>
       <p>
-        Your brain is not a hard drive that simply saves data as you read it. Real learning and memory consolidation happen <em>while you are asleep</em>. 
+        Your brain is not a hard drive. You don't just "save" information as you read it. Real learning mostly happens <em>while you sleep</em>. 
       </p>
       <p>
-        During Stage 2 and deep sleep, your brain actively transfers the facts, equations, and vocabulary you studied from fragile short-term memory (in the hippocampus) to permanent long-term storage (in the neocortex). If you stay awake to cram, you are denying your brain the mechanical process required to actually save the information. You might recognize it at 4:00 AM, but you will draw a blank during the 9:00 AM exam.
+        During deep sleep, your brain transfers facts from short-term memory to permanent storage. If you stay awake to cram, you deny your brain the ability to save the data. You will draw a blank during the exam.
       </p>
 
+      {/* Section 2 */}
       <h2>The Optimal Strategy for Students</h2>
       <p>
-        So how do you balance an immense workload while securing enough rest to retain information? You need to become surgically precise with your sleep cycles.
+        How do you balance massive workloads with enough rest? You have to be precise with your sleep cycles.
+      </p>
+      <p>
+        If you only have 5 hours before class, do not set an alarm for 5 hours. Waking up during deep sleep will destroy your test performance. Instead, sleep for exactly 4.5 hours (3 full cycles) using a <strong><Link to="/">sleep calculator</Link></strong>. 
       </p>
 
-      <h3>1. Sleep in 90-Minute Multiples</h3>
+      {/* Section 3 */}
+      <h2>The Magic of Study Naps</h2>
       <p>
-        If an assignment took far too long and you only have five hours left before your morning class, do not blindly set an alarm for five hours. Waking up in deep sleep destroys your cognitive performance for the day. 
+        If you hit a wall while studying, stop reading. A fatigued brain cannot absorb new information. 
       </p>
       <p>
-        Use a reliable <strong><Link to="/">sleep calculator</Link></strong> to calculate an exact wake-up time. It is significantly better for your test scores to sleep for 4.5 hours (exactly 3 full cycles) than to sleep for 5 hours and wake up with severe sleep inertia and brain fog. 
-      </p>
-
-      <h3>2. The Magic of Study Naps</h3>
-      <p>
-        If you are hitting a wall during an intense afternoon study session, stop reading. The brain's ability to absorb new information drops dramatically when fatigued. 
-      </p>
-      <p>
-        Instead, set a timer for 20 minutes and take a short power nap. This clears adenosine from brain receptors and temporarily restores alertness, allowing your next hour of studying to be infinitely more productive. 
+        Take a strict 20-minute power nap. This instantly restores your alertness without grogginess, making your next hour of studying highly productive. To learn more, read our <Link to="/blog/power-nap-guide">power nap guide</Link>.
       </p>
 
-      <h3>3. Cut the Excessive Caffeine</h3>
+      {/* Section 4 */}
+      <h2>Stop the Late-Night Caffeine</h2>
       <p>
-        Energy drinks are the lifeline of a college campus, but they mask the symptoms of fatigue without addressing the cognitive decline. Drinking a massive energy drink at 8:00 PM means you will struggle to achieve the restorative deep sleep required that night to solidify what you studied. Try to limit caffeine explicitly to morning hours.
+        Energy drinks only mask your fatigue. They do not fix your brain. 
+      </p>
+      <p>
+        Drinking heavy caffeine at 8:00 PM destroys your deep sleep, meaning you won't remember what you studied anyway. Limit caffeine to the morning.
       </p>
 
-      <h2>Conclusion: Sleep is a Study Tool</h2>
+      {/* Conclusion */}
+      <h2>Summary</h2>
       <p>
-        You need to reframe how you view rest. Sleep is not a luxury or a sign of weakness; it is an active study tool. The hours you spend engaged in deep sleep and REM are actively hardwiring the material into your brain. Protect your sleep cycles, utilize our sleep calculator to prevent grogginess, and watch your academic performance naturally rise.
+        Stop viewing sleep as a luxury. Sleep is an active study tool that hardwires information into your brain.
+      </p>
+      <p>
+        Protect your sleep cycles, track them properly, and watch your exam scores naturally rise.
       </p>
     </ArticleLayout>
   );

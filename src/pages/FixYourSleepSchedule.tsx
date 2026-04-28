@@ -22,60 +22,57 @@ export default function FixYourSleepSchedule() {
         }
       ]}
     >
+      {/* Intro */}
       <p>
-        You blinked, and suddenly your bedtime shifted from 11:00 PM to 3:00 AM. Now, waking up for work or school feels like an impossible task. When your circadian rhythm falls out of alignment, your daily energy, focus, and mood plummet. 
+        So your bedtime is completely ruined, and waking up early feels impossible. Don't worry.
       </p>
       <p>
-        Fixing your sleep schedule requires consistency, biological discipline, and the understanding that you cannot simply shift your internal clock by six hours overnight. Here is a step-by-step guide to resetting your routine.
-      </p>
-
-      <h2>Understanding Your Circadian Rhythm</h2>
-      <p>
-        Your body naturally anticipates when it should be awake and when it should sleep based on environmental cues, primarily light and temperature. If you have been ignoring these cues—perhaps by staring at bright screens late into the night—your brain has delayed its release of melatonin. To fix your schedule, we have to leverage these cues to your advantage.
+        Fixing your sleep schedule fast requires a mix of discipline and biological hacks. You can reset your internal clock in just a few days if you follow these rules.
       </p>
 
-      <h2>Phase 1: Incremental Adjustments</h2>
-      <h3>Don't Shock the System</h3>
+      {/* Section 1 */}
+      <h2>Stop Trying to Fix It Overnight</h2>
       <p>
-        If you currently fall asleep at 3:00 AM, getting into bed at 10:00 PM tonight will result in hours of frustrating tossing and turning. Your brain simply isn’t ready. Instead, adjust your sleep and wake times by just 15 to 30 minutes each day. 
+        If you usually sleep at 3:00 AM, going to bed at 10:00 PM tonight will not work. You will just lay awake for hours.
       </p>
       <p>
-        Shift your alarms back slowly. It will take a few days of discipline, but this incremental approach is the most effective way to lock in a new, healthy bedtime.
-      </p>
-
-      <h2>Phase 2: Master Your Mornings</h2>
-      <h3>The Power of Morning Sunlight</h3>
-      <p>
-        The absolute fastest way to reset a broken sleep schedule is aggressive morning light exposure. The moment your alarm rings, get out of bed and get into direct sunlight for 10 to 15 minutes. This light signals your suprachiasmatic nucleus (the brain's master clock) to halt melatonin production and reset your 24-hour cycle. 
+        Instead, shift your schedule slowly. Go to bed 15 to 30 minutes earlier every night. Slow, incremental changes are much easier on your nervous system.
       </p>
 
-      <h3>Calculate Your Wake Time</h3>
+      {/* Section 2 */}
+      <h2>Use Morning Sunlight (The Ultimate Reset)</h2>
       <p>
-        When adjusting your schedule, it's critical that you don't wake up feeling exhausted. Use a <strong><Link to="/">sleep calculator</Link></strong> to ensure your new, earlier alarm aligns with the end of a 90-minute sleep cycle instead of interrupting a deep sleep phase. 
+        The absolute fastest way to reset a broken sleep schedule is bright morning light. 
+      </p>
+      <p>
+        The moment your alarm rings, get into direct sunlight for 10 to 15 minutes. This light signals your brain's master clock to halt melatonin production and reset your 24-hour cycle instantly.
       </p>
 
-      <h2>Phase 3: The Evening Protocol</h2>
-      <h3>Implement a Temporary Fast</h3>
+      {/* Section 3 */}
+      <h2>Wake Up Between Cycles</h2>
       <p>
-        Your brain also uses food digestion as a clock mechanism. Eating a massive meal at midnight sends an "awake" signal to the body. To shift your schedule earlier, try implementing a strict fasting window 3 hours before your new target bedtime.
+        When you are trying to wake up earlier, you must avoid waking up in deep sleep. This causes terrible morning grogginess.
+      </p>
+      <p>
+        Use a <strong><Link to="/">sleep calculator</Link></strong> to ensure your new alarm time aligns exactly with the end of a 90-minute sleep cycle instead of interrupting deep sleep.
       </p>
 
-      <h3>The Screen Ban</h3>
+      {/* Section 4 */}
+      <h2>Stop Eating 3 Hours Before Bed</h2>
       <p>
-        You know this rule, but it is non-negotiable when fixing your schedule. Bright blue light from phones entirely halts the natural onset of sleepiness. 60 minutes prior to your new bedtime, put the devices away. Opt for dim, warm lighting (like a reading lamp) and a physical book.
+        Food digestion tells your brain it is time to be awake. Eating late at night sends conflicting signals to your internal clock.
+      </p>
+      <p>
+        Stop eating 3 hours before your new target bedtime. Fasting helps your core body temperature drop so you can fall asleep faster.
       </p>
 
-      <h2>What If You Need to Reset Instantly?</h2>
+      {/* Conclusion */}
+      <h2>Summary</h2>
       <p>
-        If you are traveling across time zones or need an emergency reset for an early shift, there is a riskier, brute-force method: the "all-nighter" or the "hard reset." 
+        You can't force sleep, but you can control your light and food. Use bright morning light to tell your brain the cycle has started.
       </p>
       <p>
-        This involves staying awake for an entire day to build up massive sleep pressure, essentially forcing yourself to crash at your new desired bedtime. This is extremely taxing on the body and should be used rarely and cautiously. For most people, the incremental 15-minute adjustments are significantly healthier and more sustainable.
-      </p>
-
-      <h2>Conclusion: Discipline over Motivation</h2>
-      <p>
-        Resetting a sleep schedule isn't fun, and the first few mornings of earlier alarms will require discipline. However, by leveraging morning sunlight, using a sleep calculator to optimize your wake phase, and winding down appropriately at night, your internal clock will realign in just four to five days.
+        Rely on a sleep calculator to optimize your wake phase, and you will be back to normal in just 4 to 5 days.
       </p>
     </ArticleLayout>
   );

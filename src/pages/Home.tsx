@@ -266,7 +266,7 @@ export default function Home() {
                 aria-pressed={ageGroup === group.id}
                 className={`py-3 px-2 rounded-xl text-sm font-medium transition-all duration-200 focus-visible:ring-2 focus-visible:ring-[#00d2ff] focus-visible:outline-none border ${
                   ageGroup === group.id
-                    ? 'bg-blue-600 border-blue-500 text-white shadow-[0_0_15px_rgba(37,99,235,0.4)]'
+                    ? 'bg-gradient-to-r from-[#1a2a5c] to-[#25397a] border-[#00d2ff]/40 text-white shadow-[0_0_15px_rgba(37,57,122,0.4)]'
                     : 'bg-[#130f2e]/80 border-white/10 text-white/70 hover:bg-white/10 hover:text-white'
                 }`}
               >
@@ -288,7 +288,7 @@ export default function Home() {
             onClick={() => { setMode('wake'); setResults([]); }}
             className={`flex-1 flex items-center justify-center gap-2.5 py-3 sm:py-3 px-4 rounded-xl sm:rounded-full text-sm font-medium transition-all duration-200 focus-visible:ring-2 focus-visible:ring-[#00d2ff] focus-visible:outline-none ${
               mode === 'wake'
-                ? 'bg-blue-600 border border-blue-500 shadow-md text-white'
+                ? 'bg-gradient-to-r from-[#1a2a5c] to-[#25397a] border-[#00d2ff]/40 text-white shadow-[0_0_15px_rgba(37,57,122,0.4)]'
                 : 'text-white/60 hover:text-white hover:bg-white/5'
             }`}
           >
@@ -305,7 +305,7 @@ export default function Home() {
             onClick={() => { setMode('bed'); setResults([]); }}
             className={`flex-1 flex items-center justify-center gap-2.5 py-3 sm:py-3 px-4 rounded-xl sm:rounded-full text-sm font-medium transition-all duration-200 focus-visible:ring-2 focus-visible:ring-[#00d2ff] focus-visible:outline-none ${
               mode === 'bed'
-                ? 'bg-blue-600 border border-blue-500 shadow-md text-white'
+                ? 'bg-gradient-to-r from-[#1a2a5c] to-[#25397a] border-[#00d2ff]/40 text-white shadow-[0_0_15px_rgba(37,57,122,0.4)]'
                 : 'text-white/60 hover:text-white hover:bg-white/5'
             }`}
           >
@@ -346,7 +346,7 @@ export default function Home() {
         <button
           onClick={calculate}
           aria-label="Calculate optimal sleep times"
-          className="bg-blue-600 hover:bg-blue-500 rounded-full px-12 sm:px-16 py-4 sm:py-5 text-white font-bold text-lg tracking-wide shadow-lg border border-blue-400/20 hover:-translate-y-0.5 active:scale-95 transition-all duration-300 focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none w-full sm:w-auto mt-2"
+          className="bg-gradient-to-r from-[#1a2a5c] to-[#25397a] hover:brightness-110 rounded-full px-12 sm:px-16 py-4 sm:py-5 text-white font-bold text-lg tracking-wide shadow-lg border border-[#00d2ff]/30 hover:-translate-y-0.5 active:scale-95 transition-all duration-300 focus-visible:ring-2 focus-visible:ring-[#00d2ff] focus-visible:outline-none w-full sm:w-auto mt-2"
         >
           Calculate sleep schedule
         </button>
@@ -359,7 +359,7 @@ export default function Home() {
           aria-live="polite"
         >
           <div className="flex items-center gap-2 mb-6">
-            <Moon className="text-[#fcd34d]" size={20} fill="#fcd34d" />
+            <Moon className="text-[#00d2ff]" size={20} fill="#00d2ff" />
             <span className="text-white/90">
               If you want to {mode === 'wake' ? 'wake up' : 'sleep'} at <span className="font-bold">{formatTime(timeToDate(time, mode), true)}</span>, you should {mode === 'wake' ? 'sleep' : 'wake up'} at:
             </span>
@@ -448,15 +448,15 @@ export default function Home() {
             <div 
               className="bg-[#1a153a]/60 border border-white/5 p-6 rounded-2xl flex flex-col sm:flex-row gap-4 items-start sm:items-center text-left animate-in fade-in duration-500 delay-200 fill-mode-both"
             >
-              <div className="bg-blue-600/20 p-3 rounded-full shrink-0">
-                <Info size={24} className="text-blue-400" />
+              <div className="bg-[#00d2ff]/20 p-3 rounded-full shrink-0">
+                <Info size={24} className="text-[#00d2ff]" />
               </div>
               <div>
                 <h3 className="text-white font-semibold mb-1">
                   Health insight for {AGE_GROUPS.find(g => g.id === ageGroup)?.label}
                 </h3>
                 <p className="text-white/70 text-sm">
-                  Recommended sleep: <span className="text-blue-400 font-medium">{AGE_GROUPS.find(g => g.id === ageGroup)?.recText}</span>. 
+                  Recommended sleep: <span className="text-[#00d2ff] font-medium">{AGE_GROUPS.find(g => g.id === ageGroup)?.recText}</span>. 
                   {' '}{AGE_GROUPS.find(g => g.id === ageGroup)?.suggestion}
                 </p>
               </div>
@@ -469,17 +469,15 @@ export default function Home() {
       <div className="w-full mb-8 sm:mb-16" />
 
       {/* Comprehensive SEO Content Section */}
-      <article className="w-full pb-20 px-4 md:px-0 text-left max-w-4xl mx-auto space-y-12 sm:space-y-16">
+      <article className="w-full pb-20 px-4 md:px-0 text-left space-y-20">
         
         {/* Section 1: What is a Sleep Calculator? */}
-        <section className="bg-[#130f2e] p-6 md:p-8 rounded-3xl border border-white/5 shadow-md">
+        <section>
           <div className="flex items-center gap-3 mb-4">
-            <div className="bg-[#00d2ff]/10 p-2.5 rounded-xl">
-               <Moon className="text-[#00d2ff]" size={24} />
-            </div>
-            <h2 className="text-2xl md:text-3xl font-bold text-white"><Link to="/blog/what-is-a-sleep-calculator" className="hover:text-[#00d2ff] transition-colors">What is a Sleep Calculator?</Link></h2>
+            <Moon className="text-[#00d2ff]" size={28} />
+            <h2 className="text-2xl md:text-3xl font-bold text-white/95"><Link to="/blog/what-is-a-sleep-calculator" className="hover:text-[#00d2ff] transition-colors">What is a Sleep Calculator?</Link></h2>
           </div>
-          <div className="space-y-4 text-white/80 leading-relaxed sm:text-lg">
+          <div className="space-y-4 text-white/70 leading-relaxed sm:text-lg">
             <p>
               A <strong>sleep calculator</strong> is a free digital tool designed to help you figure out the absolute <Link to="/blog/best-time-to-sleep" className="text-[#00d2ff] hover:underline font-medium">best time to sleep</Link> and wake up. Instead of just guessing when to set your alarm, this tool uses the science of human sleep to calculate exact bedtimes or wake-up times.
             </p>
@@ -491,16 +489,14 @@ export default function Home() {
         </section>
 
         {/* Section 2: How Does Sleep Cycle Work? */}
-        <section className="bg-[#130f2e] p-6 md:p-8 rounded-3xl border border-white/5 shadow-md">
+        <section>
           <div className="flex items-center gap-3 mb-4">
-            <div className="bg-[#fcd34d]/10 p-2.5 rounded-xl">
-               <Clock className="text-[#fcd34d]" size={24} />
-            </div>
-            <h2 className="text-2xl md:text-3xl font-bold text-white"><Link to="/blog/how-does-your-sleep-cycle-work" className="hover:text-[#fcd34d] transition-colors">How Does Your Sleep Cycle Work?</Link></h2>
+            <Clock className="text-[#00d2ff]" size={28} />
+            <h2 className="text-2xl md:text-3xl font-bold text-white/95"><Link to="/blog/how-does-your-sleep-cycle-work" className="hover:text-[#00d2ff] transition-colors">How Does Your Sleep Cycle Work?</Link></h2>
           </div>
-          <div className="space-y-4 text-white/80 leading-relaxed sm:text-lg">
+          <div className="space-y-4 text-white/70 leading-relaxed sm:text-lg">
             <p>
-              Human sleep isn't just a single block of unconsciousness. As you rest, your brain cycles through multiple stages of sleep: light sleep, deep sleep, and REM (Rapid Eye Movement) sleep. You can read more about this in our <Link to="/blog/sleep-cycle-guide" className="text-[#fcd34d] hover:underline font-medium">sleep cycle guide</Link>.
+              Human sleep isn't just a single block of unconsciousness. As you rest, your brain cycles through multiple stages of sleep: light sleep, deep sleep, and REM (Rapid Eye Movement) sleep. You can read more about this in our <Link to="/blog/sleep-cycle-guide" className="text-[#00d2ff] hover:underline font-medium">sleep cycle guide</Link>.
             </p>
             <p>
               On average, one complete sleep cycle lasts for about <strong>90 minutes</strong>. During a normal night, a healthy adult will go through five to six of these cycles. If your alarm clock goes off while you are in the deepest stage of a sleep cycle, you will experience what scientists call "sleep inertia"—that heavy, groggy feeling that makes it nearly impossible to get out of bed.
@@ -508,67 +504,61 @@ export default function Home() {
             <p>
               By utilizing a <strong>sleep time calculator</strong>, you can align your wake-up time with the natural end of a 90-minute cycle. 
             </p>
-            <Link to="/blog/how-does-your-sleep-cycle-work" className="inline-block mt-4 text-[#fcd34d] hover:underline font-medium text-sm">Read full guide →</Link>
+            <Link to="/blog/how-does-your-sleep-cycle-work" className="inline-block mt-4 text-[#00d2ff] hover:underline font-medium text-sm">Read full guide →</Link>
           </div>
         </section>
 
         {/* Section 3: Benefits */}
-        <section className="bg-[#130f2e] p-6 md:p-8 rounded-3xl border border-white/5 shadow-md">
+        <section>
           <div className="flex items-center gap-3 mb-6">
-            <div className="bg-[#10b981]/10 p-2.5 rounded-xl">
-               <Check className="text-[#10b981]" size={24} />
-            </div>
-            <h2 className="text-2xl md:text-3xl font-bold text-white"><Link to="/blog/benefits-of-using-a-sleep-calculator" className="hover:text-[#10b981] transition-colors">Benefits of Using a Sleep Calculator</Link></h2>
+            <Check className="text-[#00d2ff]" size={28} />
+            <h2 className="text-2xl md:text-3xl font-bold text-white/95"><Link to="/blog/benefits-of-using-a-sleep-calculator" className="hover:text-[#00d2ff] transition-colors">Benefits of Using a Sleep Calculator</Link></h2>
           </div>
-          <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 text-white/80 sm:text-lg">
-            <li className="flex items-start gap-3 bg-white/5 p-4 rounded-2xl">
-              <span className="text-[#10b981] mt-1 flex-shrink-0">✦</span>
+          <ul className="grid grid-cols-1 md:grid-cols-2 gap-6 text-white/70 sm:text-lg">
+            <li className="flex items-start gap-3">
+              <span className="text-[#00d2ff] mt-1 flex-shrink-0">✦</span>
               <span><strong>Wake up instantly refreshed:</strong> Avoid sleep inertia and grogginess by waking up during light sleep.</span>
             </li>
-            <li className="flex items-start gap-3 bg-white/5 p-4 rounded-2xl">
-              <span className="text-[#10b981] mt-1 flex-shrink-0">✦</span>
-              <span><strong>Improve daily focus:</strong> Optimize your deep sleep to boost brain function and memory recall. If you struggle with focus, find out <Link to="/blog/why-you-feel-tired" className="text-[#10b981] hover:underline font-medium">why you feel tired</Link>.</span>
+            <li className="flex items-start gap-3">
+              <span className="text-[#00d2ff] mt-1 flex-shrink-0">✦</span>
+              <span><strong>Improve daily focus:</strong> Optimize your deep sleep to boost brain function and memory recall. If you struggle with focus, find out <Link to="/blog/why-you-feel-tired" className="text-[#00d2ff] hover:underline font-medium">why you feel tired</Link>.</span>
             </li>
-            <li className="flex items-start gap-3 bg-white/5 p-4 rounded-2xl">
-              <span className="text-[#10b981] mt-1 flex-shrink-0">✦</span>
+            <li className="flex items-start gap-3">
+              <span className="text-[#00d2ff] mt-1 flex-shrink-0">✦</span>
               <span><strong>Establish a healthy routine:</strong> Consistently sleeping in 90-minute intervals builds an effortless circadian rhythm.</span>
             </li>
-            <li className="flex items-start gap-3 bg-white/5 p-4 rounded-2xl">
-              <span className="text-[#10b981] mt-1 flex-shrink-0">✦</span>
+            <li className="flex items-start gap-3">
+              <span className="text-[#00d2ff] mt-1 flex-shrink-0">✦</span>
               <span><strong>Stop oversleeping:</strong> Sometime 6 hours (4 cycles) feels better than 8 hours, which wakes you up mid-cycle.</span>
             </li>
           </ul>
-          <Link to="/blog/benefits-of-using-a-sleep-calculator" className="inline-block mt-6 text-[#10b981] hover:underline font-medium text-sm">Read full guide →</Link>
+          <Link to="/blog/benefits-of-using-a-sleep-calculator" className="inline-block mt-6 text-[#00d2ff] hover:underline font-medium text-sm">Read full guide →</Link>
         </section>
 
         {/* Section 4: Best Times / Age */}
-        <section className="bg-[#130f2e] p-6 md:p-8 rounded-3xl border border-white/5 shadow-md">
+        <section>
           <div className="flex items-center gap-3 mb-4">
-            <div className="bg-[#ec4899]/10 p-2.5 rounded-xl">
-               <Bed className="text-[#ec4899]" size={24} />
-            </div>
-            <h2 className="text-2xl md:text-3xl font-bold text-white"><Link to="/blog/best-sleep-times-based-on-90-minute-cycles" className="hover:text-[#ec4899] transition-colors">Best Sleep Times Based on 90-Minute Cycles</Link></h2>
+            <Bed className="text-[#00d2ff]" size={28} />
+            <h2 className="text-2xl md:text-3xl font-bold text-white/95"><Link to="/blog/best-sleep-times-based-on-90-minute-cycles" className="hover:text-[#00d2ff] transition-colors">Best Sleep Times Based on 90-Minute Cycles</Link></h2>
           </div>
-          <div className="space-y-4 text-white/80 leading-relaxed sm:text-lg mb-6">
+          <div className="space-y-4 text-white/70 leading-relaxed sm:text-lg mb-6">
             <p>
               To wake up perfectly refreshed, you should aim for either <strong>5 or 6 full cycles</strong>. Our tool automatically factors in the average 15 minutes it takes a human to fall asleep.
             </p>
             <p>
-              If you only have a short amount of time during the day, you don't need a full night's rest. Read our <Link to="/blog/power-nap-guide" className="text-[#ec4899] hover:underline font-medium">power nap guide</Link> to learn how a 20-minute nap can save your day.
+              If you only have a short amount of time during the day, you don't need a full night's rest. Read our <Link to="/blog/power-nap-guide" className="text-[#00d2ff] hover:underline font-medium">power nap guide</Link> to learn how a 20-minute nap can save your day.
             </p>
-            <Link to="/blog/best-sleep-times-based-on-90-minute-cycles" className="inline-block mt-4 text-[#ec4899] hover:underline font-medium text-sm">Read full guide →</Link>
+            <Link to="/blog/best-sleep-times-based-on-90-minute-cycles" className="inline-block mt-4 text-[#00d2ff] hover:underline font-medium text-sm">Read full guide →</Link>
           </div>
         </section>
 
         {/* Section 5: Recommended Sleep by Age */}
-        <section className="bg-[#130f2e] p-6 md:p-8 rounded-3xl border border-white/5 shadow-md">
+        <section>
           <div className="flex items-center gap-3 mb-4">
-            <div className="bg-[#8b5cf6]/10 p-2.5 rounded-xl">
-               <BookOpen className="text-[#8b5cf6]" size={24} />
-            </div>
-            <h2 className="text-2xl md:text-3xl font-bold text-white"><Link to="/blog/sleep-by-age" className="hover:text-[#8b5cf6] transition-colors">Recommended Sleep Duration by Age</Link></h2>
+            <BookOpen className="text-[#00d2ff]" size={28} />
+            <h2 className="text-2xl md:text-3xl font-bold text-white/95"><Link to="/blog/sleep-by-age" className="hover:text-[#00d2ff] transition-colors">Recommended Sleep Duration by Age</Link></h2>
           </div>
-          <div className="space-y-4 text-white/80 leading-relaxed sm:text-lg mb-6">
+          <div className="space-y-4 text-white/70 leading-relaxed sm:text-lg mb-6">
             <p>
               Ideal sleep duration changes throughout your life. Our age-based sleep calculator helps personalize your schedule for maximum recovery. Here are the general recommendations:
             </p>
@@ -581,17 +571,15 @@ export default function Home() {
             <p>
               If you struggle to meet these targets or consistently feel tired despite hitting them, it might be a sign to re-evaluate your sleep schedule.
             </p>
-            <Link to="/blog/sleep-by-age" className="inline-block mt-4 text-[#8b5cf6] hover:underline font-medium text-sm">Read full chart & guide →</Link>
+            <Link to="/blog/sleep-by-age" className="inline-block mt-4 text-[#00d2ff] hover:underline font-medium text-sm">Read full chart & guide →</Link>
           </div>
         </section>
 
         {/* FAQs */}
-        <section className="bg-[#0f0c29] p-6 md:p-8 rounded-3xl border border-white/10 shadow-md mt-4">
+        <section>
           <div className="flex items-center gap-3 mb-8">
-            <div className="bg-white/10 p-2.5 rounded-xl">
-               <HelpCircle className="text-white" size={24} />
-            </div>
-            <h2 className="text-2xl md:text-3xl font-bold text-white">FAQs</h2>
+            <HelpCircle className="text-[#00d2ff]" size={28} />
+            <h2 className="text-2xl md:text-3xl font-bold text-white/95">FAQs</h2>
           </div>
           <FAQAccordion />
         </section>

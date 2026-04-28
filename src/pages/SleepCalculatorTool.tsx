@@ -19,7 +19,7 @@ export default function SleepCalculatorTool() {
       <section 
         className="text-center md:mt-8 mb-20 px-4 animate-in fade-in slide-in-from-bottom-4 duration-700"
       >
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-300 mb-6 font-medium text-sm tracking-wide">
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#00d2ff]/10 border border-[#00d2ff]/20 text-[#00d2ff] mb-6 font-medium text-sm tracking-wide">
           <Calculator size={16} />
           <span>Free Tool</span>
         </div>
@@ -35,7 +35,7 @@ export default function SleepCalculatorTool() {
         
         <Link 
           to="/"
-          className="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-500 rounded-full px-10 py-5 text-white font-bold text-lg shadow-lg border border-blue-400/20 hover:-translate-y-1 active:scale-95 transition-all duration-300 focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none"
+          className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#1a2a5c] to-[#25397a] border-[#00d2ff]/30 hover:brightness-110 rounded-full px-10 py-5 text-white font-bold text-lg shadow-[0_4px_20px_rgba(37,57,122,0.4)] hover:-translate-y-1 active:scale-95 transition-all duration-300 focus-visible:ring-2 focus-visible:ring-[#00d2ff] focus-visible:outline-none"
         >
           Use the Tool Now <ArrowRight size={20} />
         </Link>
@@ -62,28 +62,28 @@ export default function SleepCalculatorTool() {
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div className="bg-white/5 border border-white/10 rounded-2xl p-6 flex flex-col items-center text-center">
-              <div className="w-12 h-12 rounded-full bg-indigo-500/20 flex items-center justify-center text-indigo-400 mb-4">
+              <div className="w-12 h-12 rounded-full bg-[#00d2ff]/10 flex items-center justify-center text-[#00d2ff] mb-4">
                 <Clock size={24} />
               </div>
               <h3 className="text-white font-bold mb-2">90 Min Cycles</h3>
               <p className="text-sm text-white/60">Based on scientifically proven biological rhythms</p>
             </div>
             <div className="bg-white/5 border border-white/10 rounded-2xl p-6 flex flex-col items-center text-center">
-              <div className="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 mb-4">
+              <div className="w-12 h-12 rounded-full bg-[#00d2ff]/10 flex items-center justify-center text-[#00d2ff] mb-4">
                 <Brain size={24} />
               </div>
               <h3 className="text-white font-bold mb-2">Prevent Grogginess</h3>
               <p className="text-sm text-white/60">Avoid sleep inertia by waking at the right time</p>
             </div>
             <div className="bg-white/5 border border-white/10 rounded-2xl p-6 flex flex-col items-center text-center">
-              <div className="w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400 mb-4">
+              <div className="w-12 h-12 rounded-full bg-[#00d2ff]/10 flex items-center justify-center text-[#00d2ff] mb-4">
                 <Battery size={24} />
               </div>
               <h3 className="text-white font-bold mb-2">Maximize Energy</h3>
               <p className="text-sm text-white/60">Get more out of your day with optimal rest</p>
             </div>
             <div className="bg-white/5 border border-white/10 rounded-2xl p-6 flex flex-col items-center text-center">
-              <div className="w-12 h-12 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400 mb-4">
+              <div className="w-12 h-12 rounded-full bg-[#00d2ff]/10 flex items-center justify-center text-[#00d2ff] mb-4">
                 <Moon size={24} />
               </div>
               <h3 className="text-white font-bold mb-2">Fall Asleep Mode</h3>
@@ -125,7 +125,7 @@ export default function SleepCalculatorTool() {
 
       {/* Final CTA */}
       <section 
-        className="w-full bg-gradient-to-br from-[#1a2b5e] to-[#131d45] border border-blue-500/20 rounded-[2.5rem] p-10 md:p-16 text-center shadow-xl relative overflow-hidden"
+        className="w-full bg-gradient-to-br from-[#1a2a5c] to-[#25397a] border border-[#00d2ff]/20 rounded-[2.5rem] p-10 md:p-16 text-center shadow-[0_4px_30px_rgba(37,57,122,0.6)] relative overflow-hidden"
       >
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,210,255,0.1)_0%,transparent_60%)]" />
         <div className="relative z-10">
@@ -135,7 +135,7 @@ export default function SleepCalculatorTool() {
           </p>
           <Link 
             to="/"
-            className="inline-flex items-center justify-center gap-2 bg-white text-[#131d45] rounded-full px-10 py-5 font-bold text-lg hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] hover:-translate-y-1 active:scale-95 transition-all duration-300 focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:outline-none"
+            className="inline-flex items-center justify-center gap-2 bg-white text-[#131d45] rounded-full px-10 py-5 font-bold text-lg shadow-[0_4px_20px_rgba(255,255,255,0.2)] hover:-translate-y-1 active:scale-95 transition-all duration-300 focus-visible:ring-2 focus-visible:ring-[#00d2ff] focus-visible:outline-none"
           >
             Go to the Calculator <ArrowRight size={20} />
           </Link>

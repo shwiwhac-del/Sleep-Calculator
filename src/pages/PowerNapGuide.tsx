@@ -22,48 +22,57 @@ export default function PowerNapGuide() {
         }
       ]}
     >
+      {/* Intro */}
       <p>
-        We have all made the same mistake. You feel a massive wave of afternoon fatigue hit, so you lie down on the couch for a "quick nap." When you finally wake up, two hours have passed, you don't know what year it is, and you feel exponentially more exhausted than before you went to sleep. 
+        We've all done it: taking a "quick nap" only to wake up 2 hours later feeling completely destroyed. 
       </p>
       <p>
-        Napping is an art form driven entirely by neuroscience. To understand how to execute the perfect power nap, we have to look back at the mechanics we covered in our <Link to="/blog/sleep-cycle-guide">sleep cycle guide</Link>.
-      </p>
-
-      <h2>The Danger of the "1 Hour" Nap</h2>
-      <p>
-        The reason you wake up from long naps feeling like a zombie is due to a phenomenon called sleep inertia. When you fall asleep, your brain descends into light sleep, and then eventually into slow-wave deep sleep. 
-      </p>
-      <p>
-        Deep sleep usually begins around the 30 to 45-minute mark. If you set your alarm for 1 hour, your alarm will inevitably ring while your brain is at its absolute lowest level of electrical activity. Waking up during this stage requires immense effort, leaving you groggy, confused, and irritable. To bypass this, you need to target specific nap durations.
+        Napping is an exact science. If you understand how sleep stages work, you can use power naps to instantly boost your energy levels.
       </p>
 
-      <h2>The 10 to 20-Minute Power Nap (The Energy Boost)</h2>
+      {/* Section 1 */}
+      <h2>The Danger of the "1-Hour Nap"</h2>
       <p>
-        This is the gold standard of power naps. By sleeping for only 20 minutes, you keep your brain entirely within Stage 1 and Stage 2 light sleep. 
+        Waking up from a 1-hour nap makes you feel terrible because of "sleep inertia."
       </p>
       <p>
-        You do not enter deep sleep during this window, meaning when your alarm rings, you can wake up instantly without any sleep inertia. This length of nap is proven to dramatically increase alertness, improve motor skills, and eliminate that heavy-eyed feeling. If you need to return to work immediately after waking, this is the nap for you.
-      </p>
-
-      <h2>The 90-Minute Nap (The Full Cycle)</h2>
-      <p>
-        If you are severely sleep-deprived and 20 minutes just won't cut it, you must commit to a full 90 minutes. 90 minutes allows your brain to traverse the entire sleep cycle—from light sleep, into deep sleep, into REM, and back out into light sleep. 
-      </p>
-      <p>
-        Because you are completing a full cycle, you will wake up feeling refreshed. Waking up at the 90-minute mark is the core philosophy behind our main <strong><Link to="/">sleep calculator</Link></strong>. This length of nap is fantastic for boosting creativity and clearing out the brain's emotional cache (thanks to the REM stage). 
+        Deep sleep usually starts around the 45-minute mark. If you set an alarm for 1 hour, you are waking up during the absolute deepest part of your sleep cycle, which causes massive morning grogginess.
       </p>
 
-      <h2>The "Nappuccino" (The Coffee Nap hack)</h2>
+      {/* Section 2 */}
+      <h2>The 20-Minute Power Nap</h2>
       <p>
-        If you want the ultimate productivity boost, try the coffee nap. Caffeine takes roughly 20 minutes to metabolize and reach your brain. 
+        The 20-minute nap is the absolute gold standard for a quick energy boost.
       </p>
       <p>
-        Drink a cup of coffee relatively quickly, and immediately lie down for a 20-minute power nap. While you are sleeping (and clearing adenosine, the chemical that makes you tired, from your brain receptors), the caffeine is making its way to your brain. When your alarm rings 20 minutes later, the caffeine hits your freshly cleared receptors all at once, resulting in an incredible surge of energy.
+        By sleeping for only 20 minutes, your brain stays entirely in light sleep. You wake up instantly alert and ready to work without any groggy side effects.
       </p>
 
-      <h2>Nap Best Practices</h2>
+      {/* Section 3 */}
+      <h2>The 90-Minute Full Cycle Nap</h2>
       <p>
-        To make the most of your naps, always try to nap in the early afternoon (between 1:00 PM and 3:00 PM). Napping any later than this will destroy your body's sleep drive, making it impossible to fall asleep at night. If you struggle to fall asleep at your designated bedtime, you might need to stop napping altogether and re-evaluate your schedule using our <strong><Link to="/">sleep calculator</Link></strong> to find the <Link to="/blog/best-time-to-sleep">best time to sleep</Link>.
+        If you are completely exhausted, 20 minutes won't be enough. You must commit to a full 90 minutes.
+      </p>
+      <p>
+        90 minutes allows your brain to complete one full sleep cycle—going down into deep sleep and coming back up. You can use our <strong><Link to="/">sleep calculator</Link></strong> to time this perfectly.
+      </p>
+
+      {/* Section 4 */}
+      <h2>The "Nappuccino" Hack</h2>
+      <p>
+        For maximum productivity, try a coffee nap. Caffeine takes exactly 20 minutes to metabolize in your body.
+      </p>
+      <p>
+        Drink a coffee quickly, then immediately take a 20-minute power nap. Wake up right as the caffeine hits your brain for a massive, double-stacked energy boost.
+      </p>
+
+      {/* Conclusion */}
+      <h2>Summary</h2>
+      <p>
+        Keep naps exactly under 20 minutes to avoid deep sleep, or commit to a full 90 minutes. Never nap for 1 straight hour.
+      </p>
+      <p>
+        Also, never nap late in the day. Keep naps between 1:00 PM and 3:00 PM to protect your nighttime <Link to="/blog/best-time-to-sleep">bedtime schedule</Link>.
       </p>
     </ArticleLayout>
   );

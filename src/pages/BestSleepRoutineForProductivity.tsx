@@ -22,60 +22,68 @@ export default function BestSleepRoutineForProductivity() {
         }
       ]}
     >
+      {/* Intro */}
       <p>
-        Most discussions around productivity focus on what you do <em>after</em> you wake up—time blocking, to-do lists, and endless morning routines. However, your ability to perform at a high level is overwhelmingly determined by what you do during the eight hours before you even open your eyes.
+        Most people think productivity is about what you do <em>after</em> you wake up. But highly productive days actually start the night before.
       </p>
       <p>
-        High performers know that productive days begin the night before. If you want to wake up with relentless focus and zero brain fog, you must engineer a sleep routine specifically optimized for performance.
-      </p>
-
-      <h2>The Danger of Sleep Debt</h2>
-      <p>
-        Let's address a persistent toxic myth: "I'll sleep when I'm dead." Grinding on four hours of sleep may feel productive in the short term, but chronic sleep deprivation drastically impairs your prefrontal cortex—the area of your brain responsible for problem-solving, decision making, and emotional regulation. Over time, tasks take longer to complete, negating any extra hours you gained by skipping sleep.
+        If you want to wake up with relentless focus and zero brain fog, you need to engineer a sleep routine built for performance.
       </p>
 
-      <h2>Designing Your High-Performance Routine</h2>
+      {/* Section 1 */}
+      <h2>Stop the "Sleep Debt" Myth</h2>
       <p>
-        A productivity-focused sleep routine protects your deepest stages of rest while ensuring you wake up exactly when your brain is naturally ready to shift gears.
+        Many high-achievers believe that working late and sleeping less makes them more productive. This is completely false.
+      </p>
+      <p>
+        Chronic sleep deprivation damages your prefrontal cortex. This makes problem-solving harder and tasks take much longer, completely erasing any time you "saved."
       </p>
 
-      <h3>1. Calculate Your Exact Waketime (The 90-Minute Rule)</h3>
+      {/* Section 2 */}
+      <h2>Calculate Your Exact Wake Time</h2>
       <p>
-        The worst way to start a productive day is by hitting snooze. To wake up instantly alert, your alarm must trigger during the lightest stage of your sleep cycle, not the deepest.
+        Hitting snooze is the worst thing you can do for focus. To wake up instantly alert, your alarm must ring during the lightest stage of sleep.
       </p>
       <p>
-        Instead of arbitrary bedtimes, use a <strong><Link to="/">sleep calculator</Link></strong> to count backward in 90-minute increments from your desired wake time. Aiming for precisely 5 or 6 completed cycles ensures that you bypass morning sleep inertia entirely, allowing you to get up and execute your morning tasks immediately.
+        Use our <strong><Link to="/">sleep calculator</Link></strong> to count backward in 90-minute increments. By timing your wake-up, you skip morning grogginess and can instantly start your day.
       </p>
 
-      <h3>2. The 3-2-1 Wind Down Method</h3>
+      {/* Section 3 */}
+      <h2>Follow the 3-2-1 Wind Down Method</h2>
       <p>
-        To transition your brain from high-stress work mode to recovery mode, implement a strict countdown timeline:
+        Your brain cannot instantly switch from high-stress work to deep sleep. You need a structured shutdown routine:
       </p>
       <ul>
-        <li><strong>3 hours before bed:</strong> Stop eating large meals or drinking alcohol. Digestion keeps your core temperature elevated, preventing deep sleep.</li>
-        <li><strong>2 hours before bed:</strong> Stop all work. Close the laptop. Your brain needs time to disconnect from problems before it can rest.</li>
-        <li><strong>1 hour before bed:</strong> Turn off screens. Shift to dim lighting and read a book, journal, or stretch.</li>
+        <li><strong>3 hours before bed:</strong> Stop eating large meals. Digestion raises your body temperature, destroying deep sleep.</li>
+        <li><strong>2 hours before bed:</strong> Stop all work. Close your laptop. Let your brain disconnect.</li>
+        <li><strong>1 hour before bed:</strong> Turn off all screens. Transition to reading or stretching.</li>
       </ul>
 
-      <h3>3. The "Brain Dump" Journaling Technique</h3>
+      {/* Section 4 */}
+      <h2>Use the "Brain Dump" Journaling Trick</h2>
       <p>
-        One of the biggest productivity killers is lying awake in bed thinking about what you have to do the next day. To shut off an overactive mind, spend 5 minutes writing down every single task, worry, and idea on a piece of physical paper right before you get into bed. By transferring these thoughts from your brain to paper, your mind is given permission to power down.
+        Lying awake thinking about tomorrow is terrible for productivity. Take 5 minutes before bed to write down every task, idea, and worry on paper.
+      </p>
+      <p>
+        Once it is on paper, your brain no longer has to remember it. This gives your mind permission to finally power down and sleep.
       </p>
 
-      <h2>Morning Systems for Immediate Momentum</h2>
-      <h3>4. Avoid the Email Trap</h3>
+      {/* Section 5 */}
+      <h2>Start the Morning Right</h2>
       <p>
-        If the absolute first thing you do upon waking is check your email or Slack, you are instantly putting your brain into a reactive, stressful state. Protect your first 60 minutes. Use this time for hydration, light movement, and your highest-priority, deep-focus task before letting the world’s demands in.
+        Do not look at emails or messages within the first hour of waking up. Doing so puts your brain in a reactive, stressful state.
+      </p>
+      <p>
+        Instead, drink water immediately, expose your eyes to bright sunlight, and tackle your hardest task first. Protect your mornings for deep work.
       </p>
 
-      <h3>5. Hydrate and Seek Light</h3>
+      {/* Conclusion */}
+      <h2>Summary</h2>
       <p>
-        After 7 to 8 hours without water, your brain is dehydrated, causing immediate grogginess. Drink a large glass of water within five minutes of waking up, and immediately expose your eyes to bright light (preferably natural sunlight). This shuts off melatonin and spikes cortisol at the correct time, creating a natural wave of alertness stronger than coffee.
+        Consistency is the ultimate productivity hack. Protect your evening wind-down and never skip cycles.
       </p>
-
-      <h2>Conclusion: Consistency is the Antidote to Burnout</h2>
       <p>
-        A great sleep routine isn't complex; it is simply consistent. By protecting your wind-down time, aggressively managing morning light exposure, and trusting a sleep calculator to align your wake-ups with your biology, you can transform your mornings from a groggy struggle into your most productive hours.
+        Rely on pure biology and optimal 90-minute cycle timing to make every morning highly effective.
       </p>
     </ArticleLayout>
   );

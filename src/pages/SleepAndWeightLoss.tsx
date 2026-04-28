@@ -22,62 +22,58 @@ export default function SleepAndWeightLoss() {
         }
       ]}
     >
+      {/* Intro */}
       <p>
-        When people attempt to lose weight, they usually obsess over two variables: diet and exercise. They count calories, track macros, and spend hours in the gym. Yet, millions of people still struggle to see progress. What is the missing link? 
+        If you are dieting and exercising but still not losing weight, there is a hidden third pillar you might be ignoring: sleep.
       </p>
       <p>
-        The invisible third pillar of weight loss is <strong>sleep</strong>. The science is incredibly clear—if you are severely sleep-deprived, no amount of broccoli or cardio will outpace the biological havoc occurring in your body. 
-      </p>
-
-      <h2>The Hormonal Havoc of Sleep Deprivation</h2>
-      <p>
-        Your appetite is not just a matter of willpower; it is heavily regulated by two hormones: ghrelin and leptin.
+        The science is incredibly clear. If you are sleep-deprived, no amount of broccoli or cardio will outpace the biology of your own body.
       </p>
 
-      <h3>1. Ghrelin (The Hunger Hormone)</h3>
+      {/* Section 1 */}
+      <h2>The Hunger Hormone Trap</h2>
       <p>
-        Ghrelin tells your brain that you are hungry. When you are sleep-deprived, your body produces significantly more ghrelin. This translates directly to an increased, almost uncontrollable appetite throughout the day.
+        Your appetite is strictly controlled by two hormones: ghrelin (makes you hungry) and leptin (makes you full).
+      </p>
+      <p>
+        When you don't sleep enough, your ghrelin levels spike, making you incredibly hungry. At the same time, your leptin levels crash, meaning it takes much more food to actually feel full.
       </p>
 
-      <h3>2. Leptin (The Fullness Hormone)</h3>
+      {/* Section 2 */}
+      <h2>Why You Crave Sugar</h2>
       <p>
-        Leptin signals to your brain that you are full and can stop eating. Shockingly, poor sleep aggressively decreases your leptin levels. You are essentially fighting a two-front war: you feel hungrier than usual, and it takes longer for you to feel full.
+        Sleep deprivation damages the frontal lobe of your brain, which is responsible for self-control and good decision-making. 
+      </p>
+      <p>
+        Meanwhile, your brain's reward center gets supercharged. This biological trap makes a salad look awful, while sugary, high-carb foods become completely irresistible.
       </p>
 
-      <h2>The Carb Craving Mechanism</h2>
+      {/* Section 3 */}
+      <h2>Cortisol and Belly Fat</h2>
       <p>
-        It’s not just that you eat more when you are tired; you specifically crave worse food. Lack of sleep dulls activity in the brain's frontal lobe (responsible for complex decision-making and impulse control) while amplifying activity in the amygdala (the brain's reward center).
+        Chronic sleep deprivation puts your body in a high-stress state, flooding your system with cortisol. 
       </p>
       <p>
-        This biological combination makes a salad incredibly unappealing and makes high-calorie, sugary, and carbohydrate-dense foods practically irresistible.
-      </p>
-
-      <h2>Cortisol and Fat Storage</h2>
-      <p>
-        Continuous sleep deprivation places the body in a state of chronic stress, causing an overproduction of cortisol. Elevated cortisol levels signal to the body that it needs to conserve energy, leading it to aggressively store fat—particularly in the abdominal region. 
-      </p>
-      <p>
-        Furthermore, poor sleep limits your time in deep sleep (Stage 3), which is when your body releases human growth hormone (HGH). HGH is critical for repairing muscles and burning fat.
+        High cortisol tells your body to conserve energy and store fat, specifically around the stomach area. 
       </p>
 
+      {/* Section 4 */}
       <h2>How to Fix Your Sleep for Fat Loss</h2>
       <p>
-        If you have hit a weight loss plateau, it's time to prioritize your recovery just as highly as your workouts.
+        If you have hit a weight loss plateau, you must prioritize your recovery.
       </p>
+      <ul>
+        <li><strong>Get 5 Full Cycles:</strong> Aim for 7.5 hours of sleep. Use a <strong><Link to="/">sleep calculator</Link></strong> to align your wake-up time flawlessly.</li>
+        <li><strong>Ditch the Alcohol:</strong> Alcohol ruins the structure of your sleep cycles, destroying deep sleep and hormone repair.</li>
+      </ul>
 
-      <h3>Never Skimp on Cycles</h3>
+      {/* Conclusion */}
+      <h2>Summary</h2>
       <p>
-        Aim for 5 full sleep cycles per night (approximately 7.5 hours). By using a reliable <strong><Link to="/">sleep calculator</Link></strong>, you can ensure that you go to bed and wake up in alignment with your natural rhythm, avoiding the stressful grogginess of waking mid-cycle.
+        Trying to lose fat while sleep-deprived is like driving with the parking brake pulled up. It is an impossible fight.
       </p>
-
-      <h3>Protect Your Deep Sleep</h3>
       <p>
-        To ensure your body gets enough time to physically repair and balance hormones, keep your bedroom cool, dark, and avoid alcohol before bed. Alcohol may help you fall asleep, but it destroys the structural integrity of your sleep cycles, minimizing the restorative benefits.
-      </p>
-
-      <h2>Conclusion: Sleep is the Ultimate Multiplier</h2>
-      <p>
-        Trying to lose weight while constantly exhausted is like trying to drive a car with the parking brake on. By dialing in your sleep schedule, balancing your hunger hormones, and allowing your body to properly recover, your diet and exercise efforts will finally yield the results you deserve.
+        Balance your hormones with proper sleep, and your diet and exercise routines will finally start working.
       </p>
     </ArticleLayout>
   );

@@ -107,7 +107,7 @@ export function ArticleLayout({
               <span className="bg-white/5 border border-white/10 px-4 py-2.5 rounded-full flex items-center gap-2">
                  <Clock size={14} className="text-white/40" /> {readingTime} min read
               </span>
-              <span className="bg-[#10b981]/10 text-[#10b981] border border-[#10b981]/20 px-4 py-2.5 rounded-full flex items-center gap-2">
+              <span className="bg-[#00d2ff]/10 text-[#00d2ff] border border-[#00d2ff]/20 px-4 py-2.5 rounded-full flex items-center gap-2">
                  <ShieldCheck size={14} /> Fact Checked
               </span>
             </div>
@@ -119,15 +119,22 @@ export function ArticleLayout({
           </div>
         </header>
 
-        <div className="prose prose-invert max-w-[75ch] mx-auto 
-          prose-headings:font-bold prose-headings:tracking-tight prose-headings:text-white 
-          prose-h2:text-3xl md:prose-h2:text-[32px] prose-h2:mt-16 prose-h2:mb-6 prose-h2:border-b prose-h2:border-white/10 prose-h2:pb-4 prose-h2:text-white/95
-          prose-h3:text-2xl md:prose-h3:text-[24px] prose-h3:mt-12 prose-h3:mb-4 prose-h3:text-[#00d2ff]
-          prose-p:text-white/80 prose-p:leading-[1.8] md:prose-p:leading-[1.9] prose-p:mb-8 text-[17px] md:text-[19px] tracking-wide
+        <div className="prose prose-invert mx-auto 
+          prose-headings:font-bold prose-headings:tracking-tight prose-headings:text-white/90 
+          prose-h2:mt-16 prose-h2:mb-6 prose-h2:border-b prose-h2:border-white/10 prose-h2:pb-4 prose-h2:text-white/90
+          prose-h3:mt-12 prose-h3:mb-4 prose-h3:text-[#00d2ff]
+          prose-p:text-white/70 prose-p:mb-8 tracking-wide
           prose-a:text-[#00d2ff] prose-a:font-medium prose-a:no-underline hover:prose-a:underline prose-a:underline-offset-4 prose-a:transition-colors
-          prose-strong:text-white/95 prose-strong:font-semibold
-          prose-ul:list-disc prose-ul:pl-6 prose-ul:mb-8 prose-li:text-white/80 prose-li:mb-3 prose-li:leading-[1.8]
-          pb-16 mt-8">
+          prose-strong:text-white/90 prose-strong:font-semibold
+          prose-ul:list-disc prose-ul:pl-6 prose-ul:mb-8 prose-li:text-white/70 prose-li:mb-3 prose-li:leading-[1.8]
+          pb-16 mt-8 no-copy"
+          onContextMenu={(e) => {
+            const target = e.target as HTMLElement;
+            if (target.tagName !== 'A' && target.tagName !== 'INPUT' && target.tagName !== 'BUTTON' && target.tagName !== 'TEXTAREA') {
+              e.preventDefault();
+            }
+          }}
+        >
           {children}
         </div>
 
@@ -143,7 +150,7 @@ export function ArticleLayout({
             <Moon className="text-[#00d2ff] mb-6" size={40} />
             <h3 className="text-3xl sm:text-4xl font-bold text-white mb-4">Ready to fix your sleep?</h3>
             <p className="text-lg text-white/70 max-w-lg mb-8">Stop waking up tired. Use our free calculator to find the exact time you should go to bed tonight based on your natural 90-minute sleep cycles.</p>
-            <Link to="/" className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white font-bold py-4 px-8 rounded-full shadow-lg border border-blue-400/20 hover:-translate-y-0.5 active:scale-95 transition-all duration-300 focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none">
+            <Link to="/" className="inline-flex items-center gap-2 bg-gradient-to-r from-[#1a2a5c] to-[#25397a] hover:brightness-110 text-white font-bold py-4 px-8 rounded-full shadow-[0_4px_20px_rgba(37,57,122,0.4)] border border-[#00d2ff]/30 hover:-translate-y-0.5 active:scale-95 transition-all duration-300 focus-visible:ring-2 focus-visible:ring-[#00d2ff] focus-visible:outline-none">
               <Clock size={20} />
               Calculate My Bedtime
             </Link>

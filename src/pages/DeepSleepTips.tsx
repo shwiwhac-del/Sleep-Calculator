@@ -22,54 +22,58 @@ export default function DeepSleepTips() {
         }
       ]}
     >
+      {/* Intro */}
       <p>
-        You can stay in bed for nine hours, but if you only accumulate a few minutes of deep sleep, you will wake up feeling chronically exhausted. Deep sleep (or Stage 3 NREM sleep) is the physical repair cycle. It is when your body releases growth hormones, clears out neurotoxins, and strengthens the immune system.
+        You can sleep for hours and still feel exhausted. Why? Because you aren't getting enough deep sleep. Deep sleep is when your body repairs itself, builds immunity, and restores energy. 
       </p>
       <p>
-        Because deep sleep is so difficult to manipulate, many people accept poor sleep quality as an inevitability. However, science reveals precise ways to significantly boost your deep sleep totals. Here is what actually works.
+        If you want to wake up feeling truly refreshed, you need to extend this vital sleep stage.
       </p>
 
-      <h2>1. The Temperature Drop Protocol</h2>
+      {/* Section 1 */}
+      <h2>What is Deep Sleep?</h2>
       <p>
-        The most powerful biological trigger for initiating deep sleep is a drop in core body temperature. 
+        Deep sleep is the third stage of non-REM (NREM) sleep. Your brain waves slow down, and your body enters its deepest state of rest.
+      </p>
+      <p>
+        During deep sleep, it is very hard to wake up. This is the period when physical healing happens and neurotoxins are cleared from the brain.
+      </p>
+
+      {/* Section 2 */}
+      <h2>Lower Your Room Temperature</h2>
+      <p>
+        Your body needs to drop in temperature to fall into deep sleep. A cooler room makes this process much easier.
       </p>
       <ul>
-        <li><strong>The Cold Room:</strong> Keep your bedroom between 60°F and 67°F (15°C to 19°C). </li>
-        <li><strong>The Hot Bath Hack:</strong> Paradoxically, taking a hot bath or shower 90 minutes before bed massively aids in deep sleep. The hot water draws blood away from your core to the surface of your skin. When you exit the bath, your core temperature plummets, signaling to your brain that it is time to plunge into deep rest.</li>
+        <li><strong>Set the thermostat:</strong> Keep your room between 60°F and 67°F (15°C - 19°C).</li>
+        <li><strong>Take a hot shower:</strong> A hot bath before bed draws heat away from your core, causing a rapid temperature drop when you get out.</li>
       </ul>
 
-      <h2>2. Aerobic Exercise (The Right Timing)</h2>
+      {/* Section 3 */}
+      <h2>Time Your Exercise Correctly</h2>
       <p>
-        Consistent cardiovascular exercise is the most well-documented lifestyle intervention for increasing Stage 3 deep sleep. Running, cycling, or intense swimming creates an acute stress response and mildly elevates tissue temperature. The brain compensates for this energy expenditure by demanding highly restorative deep sleep that night.
+        Cardio workouts like running or swimming greatly increase your need for deep rest. They are excellent for boosting sleep quality.
       </p>
       <p>
-        <strong>The Rule:</strong> Make sure you complete any rigorous exercise at least 3 hours before bed. If your core temperature and adrenaline are elevated just before sleeping, you will actually delay the onset of deep sleep.
-      </p>
-
-      <h2>3. Timing Your Cycles Perfectly</h2>
-      <p>
-        The vast majority of your deep sleep occurs in the first half of the night. If your sleep is interrupted or fragmented during the first three hours, you will lose a massive percentage of your overall restorative rest.
-      </p>
-      <p>
-        Maintaining a strict bedtime is critical here. Furthermore, do not let an alarm clock ruin your recovery by waking you up in the middle of a deep sleep phase. Rely on a <strong><Link to="/">sleep calculator</Link></strong> to ensure your alarm aligns strictly with the end of a 90-minute sleep cycle, preserving your deep sleep architecture.
+        However, timing is everything. Finish any heavy exercise at least 3 hours before bed. If your heart rate is too high, falling asleep becomes difficult.
       </p>
 
-      <h2>4. Deep Breathing and Vagal Tone</h2>
+      {/* Section 4 */}
+      <h2>Block Out Disturbances with Pink Noise</h2>
       <p>
-        It is impossible to enter deep sleep if your nervous system is trapped in the "fight or flight" sympathetic state. You must transition into the parasympathetic "rest and digest" state. 
+        Unlike plain white noise, pink noise has deeper, more soothing frequencies. Examples include steady rain or strong ocean waves.
       </p>
       <p>
-        Engaging in slow, deep breathing (e.g., the 4-7-8 method or box breathing) for 5 minutes before bed stimulates the vagus nerve. This radically lowers your heart rate and sets the biochemical foundation required for your brain to comfortably descend into slow delta waves.
-      </p>
-
-      <h2>5. The Pink Noise Advantage</h2>
-      <p>
-        While white noise includes all sound frequencies playing simultaneously, <em>pink noise</em> (like the steady sound of rain or wind) has deeper, more balanced lower frequencies. Recent studies suggest that listening to pink noise at a low volume during the night can synchronize with the brain's slow delta waves, effectively enhancing the stability and duration of deep sleep.
+        Studies show that pink noise can actually sync with your brain waves. This helps to deepen your sleep and prevent you from waking up easily.
       </p>
 
-      <h2>Conclusion: Recovery requires respect</h2>
+      {/* Conclusion */}
+      <h2>Summary</h2>
       <p>
-        Increasing deep sleep requires treating your bedroom like a recovery chamber. By leveraging temperature drops, timing your exercise correctly, utilizing pink noise, and avoiding midnight awakenings with the help of a sleep calculator, you can drastically enhance the quality of your nightly repair.
+        Getting more deep sleep means creating the perfect sleep environment. Keep your room cool, exercise early, and use relaxing sounds.
+      </p>
+      <p>
+        For perfect timing, use our <strong><Link to="/">sleep calculator</Link></strong> to ensure you wake up naturally at the end of a full cycle.
       </p>
     </ArticleLayout>
   );

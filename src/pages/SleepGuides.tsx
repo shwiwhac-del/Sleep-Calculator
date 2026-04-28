@@ -86,7 +86,7 @@ export default function SleepGuides() {
         {/* Category: Quality and Restoration */}
         <section className="space-y-6">
           <div className="flex items-center gap-3">
-            <Battery className="text-[#10b981]" size={28} />
+            <Battery className="text-[#00d2ff]" size={28} />
             <h2 className="text-3xl font-bold text-white">Improving Sleep Quality</h2>
           </div>
           <p className="text-white/70 text-lg mb-8">
@@ -94,22 +94,22 @@ export default function SleepGuides() {
           </p>
 
           <div className="grid sm:grid-cols-2 gap-6">
-            <Link to="/blog/how-to-fall-asleep-fast" className="group bg-[#1a153a] border border-white/10 hover:border-[#10b981]/50 rounded-2xl p-6 transition-all hover:-translate-y-1 block">
-              <h3 className="text-xl font-bold text-white mb-3 group-hover:text-[#10b981] transition-colors">How to Fall Asleep Faster</h3>
+            <Link to="/blog/how-to-fall-asleep-fast" className="group bg-[#1a153a] border border-white/10 hover:border-[#00d2ff]/50 rounded-2xl p-6 transition-all hover:-translate-y-1 block">
+              <h3 className="text-xl font-bold text-white mb-3 group-hover:text-[#00d2ff] transition-colors">How to Fall Asleep Faster</h3>
               <p className="text-white/60 leading-relaxed mb-4">
                 Actionable tips for reducing sleep latency, including the military method, body scanning, and managing screen time.
               </p>
-              <span className="text-[#10b981] font-medium text-sm flex items-center gap-1 group-hover:gap-2 transition-all">
+              <span className="text-[#00d2ff] font-medium text-sm flex items-center gap-1 group-hover:gap-2 transition-all">
                 Read guide <ArrowRight size={16} />
               </span>
             </Link>
 
-            <Link to="/blog/why-you-feel-tired" className="group bg-[#1a153a] border border-white/10 hover:border-[#10b981]/50 rounded-2xl p-6 transition-all hover:-translate-y-1 block">
-              <h3 className="text-xl font-bold text-white mb-3 group-hover:text-[#10b981] transition-colors">Why You Always Feel Tired</h3>
+            <Link to="/blog/why-you-feel-tired" className="group bg-[#1a153a] border border-white/10 hover:border-[#00d2ff]/50 rounded-2xl p-6 transition-all hover:-translate-y-1 block">
+              <h3 className="text-xl font-bold text-white mb-3 group-hover:text-[#00d2ff] transition-colors">Why You Always Feel Tired</h3>
               <p className="text-white/60 leading-relaxed mb-4">
                 Are you getting 8 hours but still feeling fatigued? Uncover the hidden reasons behind poor sleep quality and inertia.
               </p>
-              <span className="text-[#10b981] font-medium text-sm flex items-center gap-1 group-hover:gap-2 transition-all">
+              <span className="text-[#00d2ff] font-medium text-sm flex items-center gap-1 group-hover:gap-2 transition-all">
                 Read guide <ArrowRight size={16} />
               </span>
             </Link>
@@ -119,7 +119,7 @@ export default function SleepGuides() {
         {/* Category: Advanced Optimization */}
         <section className="space-y-6">
           <div className="flex items-center gap-3">
-            <Target className="text-[#ec4899]" size={28} />
+            <Target className="text-[#00d2ff]" size={28} />
             <h2 className="text-3xl font-bold text-white">Advanced Sleep Optimization</h2>
           </div>
           <p className="text-white/70 text-lg mb-8">
@@ -127,22 +127,22 @@ export default function SleepGuides() {
           </p>
 
           <div className="grid sm:grid-cols-2 gap-6">
-            <Link to="/blog/sleep-by-age" className="group bg-[#1a153a] border border-white/10 hover:border-[#ec4899]/50 rounded-2xl p-6 transition-all hover:-translate-y-1 block">
-              <h3 className="text-xl font-bold text-white mb-3 group-hover:text-[#ec4899] transition-colors">Sleep Requirements by Age</h3>
+            <Link to="/blog/sleep-by-age" className="group bg-[#1a153a] border border-white/10 hover:border-[#00d2ff]/50 rounded-2xl p-6 transition-all hover:-translate-y-1 block">
+              <h3 className="text-xl font-bold text-white mb-3 group-hover:text-[#00d2ff] transition-colors">Sleep Requirements by Age</h3>
               <p className="text-white/60 leading-relaxed mb-4">
                 A comprehensive breakdown of how many hours of rest you need at different stages of life, from infants to seniors.
               </p>
-              <span className="text-[#ec4899] font-medium text-sm flex items-center gap-1 group-hover:gap-2 transition-all">
+              <span className="text-[#00d2ff] font-medium text-sm flex items-center gap-1 group-hover:gap-2 transition-all">
                 Read guide <ArrowRight size={16} />
               </span>
             </Link>
 
-            <Link to="/blog/power-nap-guide" className="group bg-[#1a153a] border border-white/10 hover:border-[#ec4899]/50 rounded-2xl p-6 transition-all hover:-translate-y-1 block">
-              <h3 className="text-xl font-bold text-white mb-3 group-hover:text-[#ec4899] transition-colors">The Ultimate Power Nap Guide</h3>
+            <Link to="/blog/power-nap-guide" className="group bg-[#1a153a] border border-white/10 hover:border-[#00d2ff]/50 rounded-2xl p-6 transition-all hover:-translate-y-1 block">
+              <h3 className="text-xl font-bold text-white mb-3 group-hover:text-[#00d2ff] transition-colors">The Ultimate Power Nap Guide</h3>
               <p className="text-white/60 leading-relaxed mb-4">
                 Discover the sweet spot between 20-minute energy boosts and 90-minute full cycle naps to avoid daytime grogginess.
               </p>
-              <span className="text-[#ec4899] font-medium text-sm flex items-center gap-1 group-hover:gap-2 transition-all">
+              <span className="text-[#00d2ff] font-medium text-sm flex items-center gap-1 group-hover:gap-2 transition-all">
                 Read guide <ArrowRight size={16} />
               </span>
             </Link>
@@ -162,7 +162,7 @@ export default function SleepGuides() {
         </p>
         <Link 
           to="/"
-          className="inline-flex items-center justify-center gap-2 bg-[#00d2ff] text-[#130f2e] rounded-full px-8 py-4 font-bold text-lg hover:shadow-[0_0_20px_rgba(0,210,255,0.4)] hover:-translate-y-1 transition-all duration-300"
+          className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#1a2a5c] to-[#25397a] hover:brightness-110 border border-[#00d2ff]/30 text-white rounded-full px-8 py-4 font-bold text-lg shadow-[0_4px_20px_rgba(37,57,122,0.4)] hover:-translate-y-1 active:scale-95 transition-all duration-300 focus-visible:ring-2 focus-visible:ring-[#00d2ff] focus-visible:outline-none"
         >
           Calculate Sleep Cycles
         </Link>

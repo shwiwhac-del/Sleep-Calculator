@@ -19,7 +19,7 @@ export default function Blog() {
       url: "/blog/how-does-your-sleep-cycle-work",
       icon: <Activity size={20} />,
       topic: "Sleep Science",
-      color: "text-[#fcd34d]"
+      color: "text-[#00d2ff]"
     },
     {
       title: "Benefits of Using a Sleep Calculator",
@@ -27,7 +27,7 @@ export default function Blog() {
       url: "/blog/benefits-of-using-a-sleep-calculator",
       icon: <Check size={20} />,
       topic: "Benefits",
-      color: "text-[#10b981]"
+      color: "text-[#00d2ff]"
     },
     {
       title: "Best Sleep Times Based on 90-Minute Cycles",
@@ -35,7 +35,7 @@ export default function Blog() {
       url: "/blog/best-sleep-times-based-on-90-minute-cycles",
       icon: <BedDouble size={20} />,
       topic: "Sleep Timing",
-      color: "text-[#ec4899]"
+      color: "text-[#00d2ff]"
     },
     {
       title: "The Best Time to Sleep: Finding Your Perfect Bedtime",
@@ -51,7 +51,7 @@ export default function Blog() {
       url: "/blog/sleep-cycle-guide",
       icon: <Activity size={20} />,
       topic: "Sleep Science",
-      color: "text-[#fcd34d]"
+      color: "text-[#00d2ff]"
     },
     {
       title: "How Much Sleep Do You Need? A Sleep by Age Guide",
@@ -59,7 +59,7 @@ export default function Blog() {
       url: "/blog/sleep-by-age",
       icon: <BedDouble size={20} />,
       topic: "Health",
-      color: "text-[#ec4899]"
+      color: "text-[#00d2ff]"
     },
     {
       title: "Why You Feel Tired Even After 8 Hours of Sleep",
@@ -67,7 +67,7 @@ export default function Blog() {
       url: "/blog/why-you-feel-tired",
       icon: <Battery size={20} />,
       topic: "Energy",
-      color: "text-[#10b981]"
+      color: "text-[#00d2ff]"
     },
     {
       title: "The Ultimate Power Nap Guide: How to Sleep During the Day",
@@ -75,7 +75,7 @@ export default function Blog() {
       url: "/blog/power-nap-guide",
       icon: <Moon size={20} />,
       topic: "Napping",
-      color: "text-[#a855f7]"
+      color: "text-[#00d2ff]"
     },
     {
       title: "10 Actionable Sleep Tips for Better Health",
@@ -83,7 +83,7 @@ export default function Blog() {
       url: "/blog/sleep-tips-for-better-health",
       icon: <Check size={20} />,
       topic: "Health",
-      color: "text-[#10b981]"
+      color: "text-[#00d2ff]"
     },
     {
       title: "How to Fix Your Sleep Schedule Fast",
@@ -99,7 +99,7 @@ export default function Blog() {
       url: "/blog/sleep-and-weight-loss",
       icon: <Activity size={20} />,
       topic: "Fitness",
-      color: "text-[#fcd34d]"
+      color: "text-[#00d2ff]"
     },
     {
       title: "Best Sleep Routine for Maximum Productivity",
@@ -107,7 +107,7 @@ export default function Blog() {
       url: "/blog/best-sleep-routine-for-productivity",
       icon: <Battery size={20} />,
       topic: "Performance",
-      color: "text-[#ec4899]"
+      color: "text-[#00d2ff]"
     },
     {
       title: "Deep Sleep Tips That Actually Work",
@@ -115,7 +115,7 @@ export default function Blog() {
       url: "/blog/deep-sleep-tips-that-actually-work",
       icon: <Moon size={20} />,
       topic: "Sleep Science",
-      color: "text-[#a855f7]"
+      color: "text-[#00d2ff]"
     },
     {
       title: "The Effects of Oversleeping",
@@ -131,7 +131,7 @@ export default function Blog() {
       url: "/blog/sleep-for-students",
       icon: <BookOpen size={20} />,
       topic: "Productivity",
-      color: "text-[#10b981]"
+      color: "text-[#00d2ff]"
     }
   ];
 
@@ -199,7 +199,7 @@ export default function Blog() {
             </div>
             
             {isFeatured && (
-              <div className="hidden lg:flex lg:w-1/3 bg-gradient-to-br from-[#00d2ff]/10 to-[#a855f7]/10 border-l border-white/5 items-center justify-center p-12 relative overflow-hidden">
+              <div className="hidden lg:flex lg:w-1/3 border-l border-white/5 items-center justify-center p-12 relative overflow-hidden">
                 <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#00d2ff]/20 via-transparent to-transparent opacity-50 blur-2xl"></div>
                 {article.icon && (
                   <div className="text-white/20 transform scale-[5] drop-shadow-2xl">

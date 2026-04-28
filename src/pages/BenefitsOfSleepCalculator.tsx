@@ -9,29 +9,50 @@ export default function BenefitsOfSleepCalculator() {
       readingTime="3"
       date="June 8, 2024"
     >
+      {/* Intro */}
       <p>
-        Ditching your standard alarm clock logic and switching to a <strong><Link to="/">sleep calculator</Link></strong> can dramatically transform your mornings. Here are the core benefits of tracking your 90-minute sleep cycles.
+        Ditching a standard alarm clock and using a <strong><Link to="/">sleep calculator</Link></strong> can completely change how you feel in the morning.
+      </p>
+      <p>
+        Instead of guessing when to wake up, you use simple math to align with your body's natural 90-minute sleep cycles.
       </p>
 
-      <h2>1. Wake Up Instantly Refreshed</h2>
+      {/* Section 1 */}
+      <h2>Wake Up Instantly Refreshed</h2>
       <p>
-        The most immediate benefit is the elimination of sleep inertia. By targeting the end of a sleep cycle, you ensure you wake up during light sleep. This allows you to open your eyes and get out of bed immediately, without hitting the snooze button multiple times.
+        The biggest benefit of cycle-based tracking is the end of sleep inertia. Sleep inertia is that groggy, heavy feeling you get when waking up in the wrong stage.
+      </p>
+      <p>
+        By targeting the exact end of a cycle, you naturally wake up during a light sleep stage. You can get out of bed easily, without needing to hit snooze.
       </p>
 
-      <h2>2. Improve Daily Focus and Cognitive Function</h2>
+      {/* Section 2 */}
+      <h2>Improve Focus and Brain Power</h2>
       <p>
-        When you optimize your cycles, you protect your deep sleep. Deep sleep is when your brain flushes out neurotoxins and consolidates memories. Protecting these cycles prevents that "brain fog" feeling, directly boosting your daily focus. If you suffer from frequent exhaustion, read more about <Link to="/blog/why-you-feel-tired">why you feel tired</Link>.
+        Optimizing your cycles means protecting your deep sleep. Deep sleep is when your brain flushes out toxins and stores memories.
+      </p>
+      <p>
+        Protecting these cycles stops brain fog and boosts daily focus. If you struggle with exhaustion, read about <Link to="/blog/why-you-feel-tired">why you feel tired</Link>.
       </p>
 
-      <h2>3. Establish a Healthy, Effortless Routine</h2>
+      {/* Section 3 */}
+      <h2>Build an Effortless Sleep Routine</h2>
       <p>
-        Consistently sleeping in 90-minute intervals builds a highly reliable circadian rhythm. Over time, your body will naturally anticipate your wake time, and you might find yourself waking up completely naturally just minutes before your alarm rings.
+        Sleeping in consistant 90-minute intervals builds a strong circadian rhythm. Your internal clock gets stronger.
+      </p>
+      <p>
+        Over time, your body learns the schedule perfectly. You may even start waking up naturally just minutes before your alarm.
       </p>
 
-      <h2>4. Stop Accidental Oversleeping</h2>
+      {/* Section 4 */}
+      <h2>Stop the Oversleeping Trap</h2>
       <p>
-        One of the biggest paradoxes of sleep is that <em>more</em> isn't always better. Sometimes sleeping for 6 hours (exactly 4 cycles) feels radically better than sleeping for 8 hours (which drops you directly in the middle of a continuous deep sleep cycle). A sleep calculator prevents you from oversleeping into a bad phase.
+        More sleep is not always better. Sometimes, sleeping for 7.5 hours (exactly 5 cycles) feels much better than sleeping for 8 hours (waking up mid-cycle).
       </p>
+      <p>
+        A sleep calculator stops you from accidentally oversleeping and ruining your morning recovery.
+      </p>
+
     </ArticleLayout>
   );
 }
