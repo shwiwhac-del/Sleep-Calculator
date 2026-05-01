@@ -1,20 +1,26 @@
 import { Link } from 'react-router-dom';
 import { ArticleLayout } from '../components/ArticleLayout';
 
-export default function WhatIsASleepCalculator() {
+export default function GuideWhatIsASleepCalculator() {
   return (
-    <ArticleLayout  relatedPosts={[
-        { title: "The Best Time to Sleep: Finding Your Perfect Bedtime", url: "/blog/best-sleep-time", description: "Discover the absolute best time to sleep." },
-        { title: "Why You Feel Tired Even After 8 Hours", url: "/blog/tired", description: "Constantly exhausted despite getting enough sleep? Discover why." },
-        { title: "The Ultimate Sleep Cycle Guide", url: "/blog/sleep-cycle-stages", description: "Learn about the 4 stages of sleep and how to optimize them." }
-      ]}
-      title="What is a Sleep Calculator? (And How It Fixes Your Mornings)"
+    <ArticleLayout
+      title="What is a Sleep Calculator?"
       description="A sleep calculator is a free digital tool designed to help you figure out the absolute best time to sleep and wake up using the science of sleep cycles."
       readingTime="4"
       date="June 1, 2024"
+      backUrl="/"
+      backLabel="Back to Home"
       relatedPosts={[
-        { title: "Benefits of Using a Sleep Calculator", url: "/blog/sleep-calculator-benefits", description: "Discover the amazing benefits of using a sleep calculator daily." },
-        { title: "How Does Your Sleep Cycle Work?", url: "/blog/sleep-cycle", description: "Learn about the biology of sleep cycles." }
+        {
+          title: "Why You Feel Tired Even After 8 Hours of Sleep",
+          description: "Constantly exhausted despite getting enough sleep? Discover the hidden causes of daily fatigue.",
+          url: "/guide/fix-your-sleep"
+        },
+        {
+          title: "The Best Time to Sleep for Better Health",
+          description: "Discover the optimal window for hitting the pillow according to sleep scientists.",
+          url: "/blog/best-sleep-time"
+        }
       ]}
     >
       <p>
@@ -41,7 +47,7 @@ export default function WhatIsASleepCalculator() {
       </p>
       <ul>
         <li><strong>Light Sleep (N1 & N2):</strong> Your heart rate slows and your body relaxes.</li>
-        <li><strong>Deep Sleep (N3):</strong> Your body repairs muscle tissue and strengthens your immune system. Waking up here causes severe grogginess.</li>
+        <li><strong>Deep Sleep (N3):</strong> Your body repair muscle tissue and strengthens your immune system. Waking up here causes severe grogginess.</li>
         <li><strong>REM Sleep:</strong> The dreaming stage, where your brain processes memories and emotions.</li>
       </ul>
       <p>

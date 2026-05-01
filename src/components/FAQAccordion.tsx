@@ -51,7 +51,7 @@ export function FAQAccordion() {
       {faqs.map((faq, index) => (
         <div 
           key={index} 
-          className="bg-white/5 border border-white/10 rounded-2xl overflow-hidden backdrop-blur-sm transition-colors hover:bg-white/10"
+          className="bg-white/5 border border-white/10 rounded-2xl overflow-hidden transition-colors hover:bg-white/10"
           style={{ borderLeftWidth: '4px', borderLeftColor: faq.color }}
         >
           <button

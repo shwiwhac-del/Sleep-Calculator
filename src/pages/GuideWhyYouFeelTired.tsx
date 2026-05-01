@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ArticleLayout } from '../components/ArticleLayout';
 
-export default function WhyYouFeelTired() {
+export default function GuideWhyYouFeelTired() {
   return (
     <ArticleLayout
       title="Why You Feel Tired Even After 8 Hours of Sleep"
@@ -9,10 +9,19 @@ export default function WhyYouFeelTired() {
       readingTime="5"
       date="May 22, 2024"
       author="Sleep Expert Team"
-       relatedPosts={[
-        { title: "The Best Time to Sleep: Finding Your Perfect Bedtime", url: "/blog/best-sleep-time", description: "Discover the absolute best time to sleep." },
-        { title: "The Perfect Power Nap Guide", url: "/blog/power-nap", description: "Learn the exact length a nap should be to wake up energized instead of groggy." },
-        { title: "The Ultimate Sleep Cycle Guide", url: "/blog/sleep-cycle-stages", description: "Learn about the 4 stages of sleep and how to optimize them." }
+      backUrl="/"
+      backLabel="Back to Home"
+      relatedPosts={[
+        {
+          title: "What is a Sleep Calculator?",
+          description: "Learn how to use a sleep calculator to hack your biology and wake up refreshed.",
+          url: "/guide/sleep-calculator"
+        },
+        {
+          title: "How to Hack Your Sleep Cycles",
+          description: "A deep dive into N1, N2, N3, and REM sleep phases.",
+          url: "/blog/sleep-cycle-stages"
+        }
       ]}
     >
       <p>
@@ -75,7 +84,7 @@ export default function WhyYouFeelTired() {
         Start by fixing what you can easily control. Cut out afternoon caffeine, drink water immediately in the morning, and block blue light at night.
       </p>
       <p>
-        Most importantly, stop guessing your wake-up time. Use a sleep calculator to find the <Link to="/blog/best-time-to-sleep">best time to sleep</Link> so you never wake up in the middle of a cycle again.
+        Most importantly, stop guessing your wake-up time. Use a sleep calculator to find the <Link to="/blog/best-sleep-time">best time to sleep</Link> so you never wake up in the middle of a cycle again.
       </p>
     </ArticleLayout>
   );

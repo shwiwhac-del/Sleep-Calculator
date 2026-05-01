@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- Core Pages -->
   <url>
     <loc>https://sleepcalculater.online/</loc>
     <changefreq>weekly</changefreq>
@@ -9,10 +8,15 @@
   <url>
     <loc>https://sleepcalculater.online/blog</loc>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sleepcalculater.online/terms</loc>
+    <loc>https://sleepcalculater.online/about</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sleepcalculater.online/contact</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -22,150 +26,58 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://sleepcalculater.online/about</loc>
+    <loc>https://sleepcalculater.online/terms</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://sleepcalculater.online/contact</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://sleepcalculater.online/sleep-faq</loc>
+    <loc>https://sleepcalculater.online/guide/sleep-calculator</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-
-  <!-- Blog Posts -->
   <url>
-    <loc>https://sleepcalculater.online/blog/what-is-a-sleep-calculator</loc>
+    <loc>https://sleepcalculater.online/guide/fix-your-sleep</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://sleepcalculater.online/blog/how-does-your-sleep-cycle-work</loc>
+    <loc>https://sleepcalculater.online/blog/sleep-calculator</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://sleepcalculater.online/blog/benefits-of-using-a-sleep-calculator</loc>
+    <loc>https://sleepcalculater.online/blog/best-sleep-time</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://sleepcalculater.online/blog/best-sleep-times-based-on-90-minute-cycles</loc>
+    <loc>https://sleepcalculater.online/blog/sleep-cycle-stages</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://sleepcalculater.online/blog/best-time-to-sleep</loc>
+    <loc>https://sleepcalculater.online/blog/tired</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://sleepcalculater.online/blog/sleep-cycle-guide</loc>
+    <loc>https://sleepcalculater.online/blog/power-nap</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://sleepcalculater.online/blog/sleep-by-age</loc>
+    <loc>https://sleepcalculater.online/blog/sleep-age</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://sleepcalculater.online/blog/why-you-feel-tired</loc>
+    <loc>https://sleepcalculater.online/blog/sleep-cycle</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://sleepcalculater.online/blog/power-nap-guide</loc>
+    <loc>https://sleepcalculater.online/blog/sleep-calculator-benefits</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://sleepcalculater.online/sleep-guides</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://sleepcalculater.online/sleep-calculator-tool</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://sleepcalculater.online/blog/sleep-tips-for-better-health</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://sleepcalculater.online/blog/fix-your-sleep-schedule</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://sleepcalculater.online/blog/best-sleep-routine-for-productivity</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://sleepcalculater.online/blog/sleep-and-weight-loss</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://sleepcalculater.online/blog/deep-sleep-tips-that-actually-work</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://sleepcalculater.online/blog/effects-of-oversleeping</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://sleepcalculater.online/blog/sleep-for-students</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://sleepcalculater.online/blog/how-does-your-sleep-cycle-work</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://sleepcalculater.online/blog/benefits-of-using-a-sleep-calculator</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://sleepcalculater.online/blog/best-sleep-times-based-on-90-minute-cycles</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://sleepcalculater.online/blog/best-time-to-sleep</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://sleepcalculater.online/blog/sleep-cycle-guide</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://sleepcalculater.online/blog/sleep-by-age</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://sleepcalculater.online/blog/why-you-feel-tired</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://sleepcalculater.online/blog/power-nap-guide</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
 </urlset>

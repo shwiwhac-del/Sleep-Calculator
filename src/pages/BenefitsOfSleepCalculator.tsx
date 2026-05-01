@@ -3,11 +3,19 @@ import { ArticleLayout } from '../components/ArticleLayout';
 
 export default function BenefitsOfSleepCalculator() {
   return (
-    <ArticleLayout
+    <ArticleLayout  relatedPosts={[
+        { title: "The Best Time to Sleep: Finding Your Perfect Bedtime", url: "/blog/best-sleep-time", description: "Discover the absolute best time to sleep." },
+        { title: "Why You Feel Tired Even After 8 Hours", url: "/blog/tired", description: "Constantly exhausted despite getting enough sleep? Discover why." },
+        { title: "The Ultimate Sleep Cycle Guide", url: "/blog/sleep-cycle-stages", description: "Learn about the 4 stages of sleep and how to optimize them." }
+      ]}
       title="Benefits of Using a Sleep Calculator"
       description="From waking up refreshed to stopping morning grogginess, discover the life-changing benefits of utilizing a sleep calculator daily."
       readingTime="3"
       date="June 8, 2024"
+      relatedPosts={[
+        { title: "What is a Sleep Calculator?", url: "/blog/sleep-calculator", description: "A simple introduction to sleep calculators." },
+        { title: "The Perfect Power Nap Guide", url: "/blog/power-nap", description: "Learn the exact length a nap should be to wake up energized." }
+      ]}
     >
       {/* Intro */}
       <p>
