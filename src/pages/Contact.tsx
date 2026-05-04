@@ -42,7 +42,7 @@ export default function Contact() {
   };
 
   return (
-    <div className="w-full max-w-xl mx-auto px-4">
+    <div className="w-full max-w-xl mx-auto px-4 sm:px-6">
       <Helmet>
         <title>Contact Us | Sleep Calculator</title>
         <meta name="description" content="Get in touch with the Sleep Calculator team. We are here to help you sleep better." />
@@ -50,29 +50,29 @@ export default function Contact() {
       </Helmet>
 
       <div className="mb-8 text-left">
-        <Link to="/" className="inline-flex items-center gap-2 text-sm text-white/50 font-medium tracking-wide hover:text-white transition-colors focus-visible:outline-none">
+        <Link to="/" className="inline-flex items-center gap-2 text-sm text-gray-500 font-medium tracking-wide hover:text-gray-900 transition-colors focus-visible:outline-none">
           <ArrowLeft size={16} /> Back Home
         </Link>
       </div>
 
       <div className="animate-in fade-in slide-in-from-top-4 duration-500 text-left">
-        <h1 className="text-3xl font-bold text-white mb-3">Contact Us</h1>
-        <p className="text-white/60 mb-8">
+        <h1 className="text-3xl sm:text-5xl font-bold text-gray-900 mb-6 leading-tight font-serif">Contact Us</h1>
+        <p className="text-gray-500 mb-8 text-base sm:text-lg">
           Have a question or suggestion? Fill out the form below.
         </p>
 
         {isSuccess ? (
           <div className="flex flex-col items-start py-8">
-            <div className="flex items-center gap-3 text-[#00d2ff] mb-4">
+            <div className="flex items-center gap-3 text-[#2563EB] mb-4">
               <CheckCircle size={24} />
-              <h2 className="text-xl font-bold">Message Sent</h2>
+              <h2 className="text-2xl font-bold">Message Sent</h2>
             </div>
-            <p className="text-white/70 mb-6">
+            <p className="text-gray-500 mb-6 text-base sm:text-lg">
               Thank you for reaching out. We will get back to you shortly.
             </p>
             <button 
               onClick={() => setIsSuccess(false)}
-              className="px-6 py-2 bg-white/10 hover:bg-white/20 transition-colors rounded-full text-white text-sm font-medium"
+              className="w-full sm:w-auto px-6 py-2 bg-gray-100 hover:bg-gray-200 transition-colors rounded-full text-gray-900 text-sm font-semibold"
             >
               Send another message
             </button>
@@ -80,13 +80,13 @@ export default function Contact() {
         ) : (
           <form onSubmit={handleSubmit} className="space-y-4">
             {error && (
-              <div className="bg-red-500/10 border border-red-500/50 text-red-200 rounded-xl p-4 text-sm">
+              <div className="bg-red-50 text-red-600 rounded-xl p-4 text-sm">
                 {error}
               </div>
             )}
             
             <div>
-              <label htmlFor="name" className="text-xs font-semibold text-white/60 uppercase tracking-wider block mb-1.5 ml-1">
+              <label htmlFor="name" className="text-xs font-semibold text-gray-500 uppercase tracking-wider block mb-1.5 ml-1">
                 Name
               </label>
               <input
@@ -96,13 +96,13 @@ export default function Contact() {
                 value={formData.name}
                 onChange={handleChange}
                 required
-                className="w-full bg-white/5 border border-white/10 hover:border-white/20 focus:border-[#00d2ff] rounded-xl px-4 py-3 text-white placeholder:text-white/20 focus:outline-none transition-colors"
+                className="w-full bg-white border border-gray-200 shadow-sm focus:border-[#2563EB] focus:ring-1 focus:ring-[#2563EB] rounded-xl px-4 py-3 text-gray-900 placeholder:text-gray-400 focus:outline-none transition-colors text-[16px] md:text-[18px]"
                 placeholder="Your name"
               />
             </div>
 
             <div>
-              <label htmlFor="email" className="text-xs font-semibold text-white/60 uppercase tracking-wider block mb-1.5 ml-1">
+              <label htmlFor="email" className="text-xs font-semibold text-gray-500 uppercase tracking-wider block mb-1.5 ml-1">
                 Email
               </label>
               <input
@@ -112,13 +112,13 @@ export default function Contact() {
                 value={formData.email}
                 onChange={handleChange}
                 required
-                className="w-full bg-white/5 border border-white/10 hover:border-white/20 focus:border-[#00d2ff] rounded-xl px-4 py-3 text-white placeholder:text-white/20 focus:outline-none transition-colors"
+                className="w-full bg-white border border-gray-200 shadow-sm focus:border-[#2563EB] focus:ring-1 focus:ring-[#2563EB] rounded-xl px-4 py-3 text-gray-900 placeholder:text-gray-400 focus:outline-none transition-colors text-[16px] md:text-[18px]"
                 placeholder="you@example.com"
               />
             </div>
 
             <div>
-              <label htmlFor="message" className="text-xs font-semibold text-white/60 uppercase tracking-wider block mb-1.5 ml-1">
+              <label htmlFor="message" className="text-xs font-semibold text-gray-500 uppercase tracking-wider block mb-1.5 ml-1">
                 Message
               </label>
               <textarea
@@ -128,7 +128,7 @@ export default function Contact() {
                 onChange={handleChange}
                 required
                 rows={4}
-                className="w-full bg-white/5 border border-white/10 hover:border-white/20 focus:border-[#00d2ff] rounded-xl px-4 py-3 text-white placeholder:text-white/20 focus:outline-none transition-colors resize-none"
+                className="w-full bg-white border border-gray-200 shadow-sm focus:border-[#2563EB] focus:ring-1 focus:ring-[#2563EB] rounded-xl px-4 py-3 text-gray-900 placeholder:text-gray-400 focus:outline-none transition-colors resize-none text-base sm:text-lg"
                 placeholder="How can we help?"
               />
             </div>
@@ -136,7 +136,7 @@ export default function Contact() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-white text-black hover:bg-gray-200 rounded-xl px-4 py-3 text-sm font-bold transition-all disabled:opacity-50 flex items-center justify-center gap-2 mt-2"
+              className="w-full bg-[#2563EB] text-white hover:bg-[#1D4ED8] rounded-xl px-4 py-3 text-sm font-bold transition-all disabled:opacity-50 flex items-center justify-center gap-2 mt-2 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#2563EB]"
             >
               {isSubmitting ? 'Sending...' : 'Send Message'}
             </button>

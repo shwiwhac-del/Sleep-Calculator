@@ -3,6 +3,7 @@ import { Info, BookOpen } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { FAQAccordion } from '../components/FAQAccordion';
+import TimePicker from '../components/TimePicker';
 
 export default function Home() {
   const AGE_GROUPS = [
@@ -143,126 +144,148 @@ export default function Home() {
   return (
     <div className="w-full flex flex-col items-center">
       {/* Header Info */}
-      <div className="flex flex-col items-center justify-center mb-10 mt-6 sm:mt-12">
+      <div className="flex flex-col items-center justify-center mb-16 mt-12 sm:mt-20">
         <Helmet>
           <title>Sleep Calculator: Find the Best Time to Sleep and Wake Up</title>
           <meta name="description" content="Use our free sleep calculator to find the best time to sleep, wake up refreshed, and understand your 90-minute sleep cycles." />
           {typeof window !== 'undefined' && <link rel="canonical" href="https://sleepcalculater.online/" />}
+          <script type="application/ld+json">
+            {JSON.stringify({
+              "@context": "https://schema.org",
+              "@graph": [
+                {
+                  "@type": "WebSite",
+                  "name": "Sleep Calculator",
+                  "url": "https://sleepcalculater.online/"
+                },
+                {
+                  "@type": "SoftwareApplication",
+                  "name": "Sleep Calculator",
+                  "applicationCategory": "HealthApplication",
+                  "operatingSystem": "Any",
+                  "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "USD"
+                  }
+                }
+              ]
+            })}
+          </script>
         </Helmet>
-        <div className="flex flex-col items-center justify-center gap-1 mb-4 text-center max-w-2xl mx-auto">
-          <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-white mb-2">
-            Calculate your sleep schedule
+        <div className="flex flex-col items-center justify-center gap-2 mb-4 text-center max-w-3xl mx-auto px-4">
+          <h1 className="text-4xl sm:text-6xl font-bold tracking-tight text-gray-900 mb-4 leading-tight font-serif">
+            Calculate your sleep schedule.
           </h1>
-          <p className="text-sm sm:text-lg text-white/60 mt-2">
+          <p className="text-lg sm:text-xl text-gray-600 mt-2">
             Find the perfect time to sleep or wake up based on natural 90-minute cycles.
           </p>
         </div>
       </div>
 
       {/* Main Tool Container */}
-      <div className="w-full max-w-[600px] mx-auto mb-16 flex flex-col items-center bg-[#130f2e] border border-white/10 rounded-3xl p-6 sm:p-10 shadow-2xl">
-        
-        {/* Toggle Mode */}
-        <div 
-          role="radiogroup" 
-          aria-label="Calculation mode"
-          className="flex bg-black/40 rounded-xl p-1 border border-white/5 w-full mb-6"
-        >
+      <div className="w-full max-w-[640px] mx-auto mb-20 relative px-4 sm:px-0">
+        <div className="flex flex-col items-center bg-white border border-gray-100 rounded-[24px] p-8 sm:p-12 shadow-[0_8px_30px_rgb(0,0,0,0.04)] sm:shadow-[0_20px_60px_rgb(0,0,0,0.06)] relative overflow-hidden">
+          
+          {/* Toggle Mode */}
+          <div 
+            role="radiogroup" 
+            aria-label="Calculation mode"
+            className="flex bg-gray-50 rounded-2xl p-1.5 w-full mb-10"
+          >
+            <button
+              role="radio"
+              aria-checked={mode === 'wake'}
+              onClick={() => { setMode('wake'); setResults([]); }}
+              className={`flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-sm sm:text-base font-semibold transition-all duration-300 ${
+                mode === 'wake'
+                  ? 'bg-white text-gray-900 shadow-sm border border-gray-200/60'
+                  : 'text-gray-500 hover:text-gray-700 border border-transparent'
+              }`}
+            >
+              I want to wake up at
+            </button>
+            <button
+              role="radio"
+              aria-checked={mode === 'bed'}
+              onClick={() => { setMode('bed'); setResults([]); }}
+              className={`flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-sm sm:text-base font-semibold transition-all duration-300 ${
+                mode === 'bed'
+                  ? 'bg-white text-gray-900 shadow-sm border border-gray-200/60'
+                  : 'text-gray-500 hover:text-gray-700 border border-transparent'
+              }`}
+            >
+              I want to sleep at
+            </button>
+          </div>
+
+          {/* Time Input */}
+          <div className="flex flex-col items-center justify-center w-full mb-10">
+            <TimePicker 
+              value={time} 
+              onChange={setTime} 
+              onEnter={calculate} 
+              mode={mode} 
+            />
+          </div>
+
+          {/* Age group pill selection */}
+          <div className="flex flex-col items-center w-full mb-10">
+            <span className="text-gray-400 uppercase tracking-widest text-xs font-bold mb-4">Age Group</span>
+            <div className="flex flex-wrap justify-center gap-2.5 w-full max-w-[480px]">
+              {AGE_GROUPS.map(g => (
+                <button
+                  key={g.id}
+                  onClick={() => { setAgeGroup(g.id); setResults([]); }}
+                  className={`py-2 px-5 rounded-full text-sm font-medium transition-all duration-300 ${
+                    ageGroup === g.id
+                      ? 'bg-[#2563EB] text-white shadow-md'
+                      : 'bg-gray-50 border border-gray-200 text-gray-600 hover:bg-gray-100 hover:text-gray-900'
+                  }`}
+                >
+                  {g.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Calculate Button */}
           <button
-            role="radio"
-            aria-checked={mode === 'wake'}
-            onClick={() => { setMode('wake'); setResults([]); }}
-            className={`flex-1 flex items-center justify-center gap-2 py-2 px-3 rounded-lg text-sm font-medium transition-colors ${
-              mode === 'wake'
-                ? 'bg-white/10 text-white shadow-sm'
-                : 'text-white/50 hover:text-white/80'
-            }`}
+            onClick={calculate}
+            className="w-full bg-[#2563EB] text-white hover:bg-[#1D4ED8] rounded-2xl px-6 py-5 font-semibold text-lg sm:text-xl transition-all duration-300 hover:-translate-y-1 focus-visible:outline-none shadow-lg mt-2"
           >
-            I want to wake up at
-          </button>
-          <button
-            role="radio"
-            aria-checked={mode === 'bed'}
-            onClick={() => { setMode('bed'); setResults([]); }}
-            className={`flex-1 flex items-center justify-center gap-2 py-2 px-3 rounded-lg text-sm font-medium transition-colors ${
-              mode === 'bed'
-                ? 'bg-white/10 text-white shadow-sm'
-                : 'text-white/50 hover:text-white/80'
-            }`}
-          >
-            I want to sleep at
+            Calculate Optimal Times
           </button>
         </div>
-
-        {/* Time Input */}
-        <div className="flex flex-col items-center w-full mb-8">
-          <input
-            id="time-input"
-            type="time"
-            value={time}
-            onChange={(e) => setTime(e.target.value)}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter') {
-                e.preventDefault();
-                calculate();
-              }
-            }}
-            aria-label={mode === 'wake' ? "Select wake up time" : "Select go to sleep time"}
-            className="bg-transparent border-none px-2 py-4 text-[40px] leading-tight font-bold text-white focus:outline-none focus-visible:ring-0 cursor-pointer appearance-none text-center tracking-wider"
-            style={{ colorScheme: 'dark' }}
-          />
-        </div>
-
-        {/* Age group minimal select */}
-        <div className="flex items-center gap-3 w-full mb-8 justify-center">
-          <span className="text-white/50 text-[14px]">Age:</span>
-          <select 
-            value={ageGroup}
-            onChange={(e) => { setAgeGroup(e.target.value); setResults([]); }}
-            className="bg-black/30 border border-white/10 text-white text-[14px] rounded-lg py-1.5 px-3 focus:outline-none focus:border-[#00d2ff]"
-          >
-            {AGE_GROUPS.map(g => (
-              <option key={g.id} value={g.id}>{g.label}</option>
-            ))}
-          </select>
-        </div>
-
-        {/* Calculate Button */}
-        <button
-          onClick={calculate}
-          className="w-full bg-[#00d2ff] text-black hover:bg-white rounded-xl px-6 py-4 font-bold text-[16px] transition-all hover:-translate-y-0.5 focus-visible:outline-none shadow-[0_4px_20px_rgba(0,210,255,0.2)]"
-        >
-          Calculate Optimal Times
-        </button>
       </div>
 
       {/* Results Section */}
       {results.length > 0 && (
-        <div ref={resultsRef} className="w-full max-w-2xl mx-auto flex flex-col items-center mb-16 animate-fade-in px-4">
-          <p className="text-white/70 mb-4 text-center">
+        <div ref={resultsRef} className="w-full max-w-2xl mx-auto flex flex-col items-center mb-24 animate-fade-in px-4">
+          <p className="text-gray-600 mb-6 text-center text-lg">
             {mode === 'wake' ? 'You should try to fall asleep at one of these times:' : 'You should set your alarm for one of these times:'}
           </p>
 
-          <div className="w-full flex flex-col gap-3">
+          <div className="w-full flex flex-col gap-4">
             {results.map((res, index) => {
               const recommended = isRecommended(res.cycles);
               return (
                 <div 
                   key={index}
-                  className={`flex flex-row items-center justify-between p-4 sm:p-5 rounded-2xl border transition-colors ${
-                    recommended ? 'bg-[#00d2ff]/10 border-[#00d2ff]/30 shadow-sm' : 'bg-white/5 border-white/10'
+                  className={`flex flex-row items-center justify-between p-5 sm:p-6 rounded-2xl border transition-colors ${
+                    recommended ? 'bg-[#2563EB]/5 border-[#2563EB]/20 shadow-sm' : 'bg-white border-gray-200 shadow-sm hover:shadow-md'
                   }`}
                 >
                   <div className="flex flex-col">
                     <div className="flex items-center gap-3">
-                      <span className="text-2xl sm:text-3xl font-bold text-white">{formatTime(res.date, true)}</span>
+                      <span className="text-2xl sm:text-4xl font-bold text-gray-900">{formatTime(res.date, true)}</span>
                     </div>
-                    <div className="text-white/50 text-sm mt-1">
+                    <div className="text-gray-500 text-sm sm:text-base mt-2">
                       {res.cycles} cycles &bull; {res.cycles * 1.5} hours
                     </div>
                   </div>
                   {recommended && (
-                    <div className="text-xs font-semibold text-[#00d2ff] bg-[#00d2ff]/10 px-3 py-1 rounded-full border border-[#00d2ff]/20">
+                    <div className="text-xs sm:text-sm font-semibold text-[#2563EB] bg-[#2563EB]/10 px-4 py-2 rounded-full">
                       Recommended
                     </div>
                   )}
@@ -271,51 +294,50 @@ export default function Home() {
             })}
           </div>
           
-          <p className="text-white/40 text-xs text-center mt-6 max-w-md">
+          <p className="text-gray-400 text-sm text-center mt-8 max-w-md">
             Built-in 15 minutes is factored in to allow you time to fall asleep.
           </p>
         </div>
       )}
 
-      {/* Articles Section */}
-      <div className="w-full max-w-4xl mx-auto text-left py-12 px-4 space-y-16">
-        <section>
-          <h2 className="text-2xl font-bold text-white mb-4">What is a Sleep Calculator?</h2>
-          <p className="text-white/70 mb-4 max-w-none text-base sm:text-lg leading-relaxed">
-            A sleep calculator ensures you wake up at the end of a 90-minute sleep cycle. Waking up in the middle of a sleep cycle (like deep sleep) causes sleep inertia, leaving you feeling groggy and tired regardless of how many hours you actually slept. By mapping out your sleep in 90-minute intervals, you can wake up naturally refreshed.
-          </p>
-          <Link to="/guide/sleep-calculator" className="text-[#00d2ff] text-base font-medium hover:underline inline-flex items-center gap-2">Read the full guide <BookOpen size={16}/></Link>
-        </section>
+      {/* Sleep Guides & Tools Section */}
+      <div className="w-full max-w-6xl mx-auto text-left py-16 px-4 sm:px-6">
+        <div className="flex flex-col items-center mb-12 text-center">
+          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4 font-serif">Tools & Guides</h2>
+          <p className="text-gray-600 max-w-2xl text-lg">Master your sleep with our collection of science-backed calculators and guides.</p>
+        </div>
 
-        <section>
-          <h2 className="text-2xl font-bold text-white mb-4">Why Do I Feel Tired After 8 Hours of Sleep?</h2>
-          <ul className="text-white/70 space-y-3 mb-4 list-disc pl-5 text-base sm:text-lg leading-relaxed">
-            <li><strong>Mid-Cycle Waking:</strong> Waking up in deep sleep is the #1 cause of morning grogginess.</li>
-            <li><strong>Poor Quality Rest:</strong> Alcohol, caffeine, or large meals before bed can prevent deep REM sleep.</li>
-            <li><strong>Blue Light:</strong> Staring at screens halts melatonin production.</li>
-          </ul>
-          <Link to="/guide/fix-your-sleep" className="text-[#00d2ff] text-base font-medium hover:underline inline-flex items-center gap-2">Discover how to fix your sleep <Info size={16} /></Link>
-        </section>
-
-        <section>
-          <div className="flex justify-between items-end mb-8">
-            <h2 className="text-2xl font-bold text-white">Latest from Our Blog</h2>
-            <Link to="/blog" className="text-[#00d2ff] text-sm font-medium hover:underline inline-flex items-center gap-2">View all <BookOpen size={16}/></Link>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <Link to="/blog/best-sleep-time" className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-colors">
-              <h3 className="text-xl font-bold text-white mb-2">The Best Time to Sleep for Better Health</h3>
-              <p className="text-white/60 text-sm">Discover the optimal window for hitting the pillow according to sleep scientists and natural circadian rhythms.</p>
-            </Link>
-            <Link to="/blog/power-nap" className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-colors">
-              <h3 className="text-xl font-bold text-white mb-2">The Perfect Power Nap Guide</h3>
-              <p className="text-white/60 text-sm">Learn the exact length a nap should be to wake up energized instead of groggy. Hint: it is shorter than you think.</p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
+          <div className="bg-white border border-gray-100 rounded-2xl p-8 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col items-start h-full">
+            <h3 className="text-xl font-bold text-gray-900 mb-3 font-serif">Best Time to Sleep</h3>
+            <p className="text-gray-600 text-base leading-relaxed mb-6 flex-grow">Discover the optimal window for hitting the pillow according to sleep scientists.</p>
+            <Link to="/blog/best-sleep-time" className="bg-[#F8FAFC] text-[#2563EB] hover:bg-[#2563EB] hover:text-white px-5 py-2.5 rounded-xl text-sm font-semibold transition-colors duration-300 w-full text-center">
+              Read Guide
             </Link>
           </div>
-        </section>
 
-        <section>
-          <h2 className="text-2xl font-bold text-white mb-8">Frequently Asked Questions</h2>
+          <div className="bg-white border border-gray-100 rounded-2xl p-8 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col items-start h-full">
+            <h3 className="text-xl font-bold text-gray-900 mb-3 font-serif">Power Nap Calculator</h3>
+            <p className="text-gray-600 text-base leading-relaxed mb-6 flex-grow">Learn the exact length a nap should be to wake up energized instead of groggy.</p>
+            <Link to="/blog/power-nap" className="bg-[#F8FAFC] text-[#2563EB] hover:bg-[#2563EB] hover:text-white px-5 py-2.5 rounded-xl text-sm font-semibold transition-colors duration-300 w-full text-center">
+              Read Guide
+            </Link>
+          </div>
+
+          <div className="bg-white border border-gray-100 rounded-2xl p-8 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col items-start h-full">
+            <h3 className="text-xl font-bold text-gray-900 mb-3 font-serif">Deep Sleep Fixer</h3>
+            <p className="text-gray-600 text-base leading-relaxed mb-6 flex-grow">Waking up in deep sleep is the #1 cause of morning grogginess. Fix it today.</p>
+            <Link to="/guide/fix-your-sleep" className="bg-[#F8FAFC] text-[#2563EB] hover:bg-[#2563EB] hover:text-white px-5 py-2.5 rounded-xl text-sm font-semibold transition-colors duration-300 w-full text-center">
+              Use Guide
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      {/* FAQ Section */}
+      <div className="w-full max-w-4xl mx-auto py-12 px-4 sm:px-6">
+        <section className="bg-white border border-gray-100 shadow-sm rounded-[32px] p-8 sm:p-12">
+          <h2 className="text-3xl font-bold text-gray-900 mb-10 font-serif text-center">Frequently Asked Questions</h2>
           <FAQAccordion />
         </section>
       </div>

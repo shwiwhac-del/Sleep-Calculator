@@ -1,9 +1,8 @@
-import { lazy, Suspense } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link, Navigate } from 'react-router-dom';
-import { Moon } from 'lucide-react';
+import { lazy, Suspense, useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, Link, Navigate, useLocation } from 'react-router-dom';
+import { Moon, Menu, X } from 'lucide-react';
 import { HelmetProvider } from 'react-helmet-async';
 import ScrollToTop from './components/ScrollToTop';
-import StarryBackground from './components/StarryBackground';
 import Home from './pages/Home';
 
 const Terms = lazy(() => import('./pages/Terms'));
@@ -26,27 +25,27 @@ const HowSleepCycleWorks = lazy(() => import('./pages/HowSleepCycleWorks'));
 const BenefitsOfSleepCalculator = lazy(() => import('./pages/BenefitsOfSleepCalculator'));
 
 const LoadingFallback = () => (
-  <div className="flex flex-col items-center justify-center min-h-[60vh] w-full gap-4 max-w-4xl mx-auto px-4">
-    <div className="w-full max-w-2xl h-12 bg-white/5 animate-pulse rounded-full mb-8"></div>
-    <div className="w-full h-64 bg-white/5 animate-pulse rounded-3xl mb-12"></div>
+  <div className="flex flex-col items-center justify-center min-h-[60vh] w-full gap-4 max-w-[1100px] mx-auto px-4 sm:px-6">
+    <div className="w-full max-w-2xl h-12 bg-gray-100 animate-pulse rounded-full mb-8"></div>
+    <div className="w-full h-64 bg-gray-100 animate-pulse rounded-3xl mb-12"></div>
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 w-full">
-      <div className="w-full h-32 bg-white/5 animate-pulse rounded-2xl"></div>
-      <div className="w-full h-32 bg-white/5 animate-pulse rounded-2xl"></div>
-      <div className="w-full h-32 bg-white/5 animate-pulse rounded-2xl"></div>
+      <div className="w-full h-32 bg-gray-100 animate-pulse rounded-2xl"></div>
+      <div className="w-full h-32 bg-gray-100 animate-pulse rounded-2xl"></div>
+      <div className="w-full h-32 bg-gray-100 animate-pulse rounded-2xl"></div>
     </div>
   </div>
 );
 
 function Footer() {
   return (
-    <footer className="w-full py-8 mt-auto border-t border-white/5 bg-[#0d0a26] z-20 relative flex flex-col items-center">
-      <div className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm text-white/50 px-4 mb-4">
-        <Link to="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
-        <Link to="/terms" className="hover:text-white transition-colors">Terms & Conditions</Link>
-        <Link to="/contact" className="hover:text-white transition-colors">Contact</Link>
-        <a href="/sitemap.xml" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Sitemap</a>
+    <footer className="w-full py-8 mt-auto border-t border-gray-100 bg-white z-20 relative flex flex-col items-center">
+      <div className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm text-gray-500 px-4 mb-4">
+        <Link to="/privacy" className="hover:text-[#2563EB] transition-colors">Privacy Policy</Link>
+        <Link to="/terms" className="hover:text-[#2563EB] transition-colors">Disclaimer</Link>
+        <Link to="/terms" className="hover:text-[#2563EB] transition-colors">Terms & Conditions</Link>
+        <a href="/sitemap.xml" target="_blank" rel="noopener noreferrer" className="hover:text-[#2563EB] transition-colors">Sitemap</a>
       </div>
-      <div className="text-white/30 text-xs">
+      <div className="text-gray-400 text-xs">
         &copy; {new Date().getFullYear()} Sleep Calculator. All rights reserved.
       </div>
     </footer>
@@ -54,19 +53,46 @@ function Footer() {
 }
 
 function Header() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [location.pathname]);
+
   return (
-    <header className="w-full h-[60px] border-b border-white/5 bg-[#0d0a26] z-50 sticky top-0">
-      <div className="max-w-[1100px] mx-auto h-full flex items-center justify-between px-4 sm:px-6">
-        <Link to="/" className="flex items-center gap-2 text-white hover:opacity-80 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded">
-          <Moon className="text-[#00d2ff]" size={20} strokeWidth={2.5} />
-          <span className="text-base sm:text-lg font-bold tracking-tight">Sleep Calculator</span>
+    <header className="w-full h-[70px] border-b border-gray-100 bg-white z-50 sticky top-0">
+      <div className="max-w-6xl mx-auto h-full flex items-center justify-between px-4 sm:px-6 md:px-8">
+        <Link to="/" className="flex items-center gap-2.5 text-gray-900 hover:text-[#2563EB] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] rounded">
+          <Moon className="text-[#2563EB]" size={22} strokeWidth={2.5} />
+          <span className="text-base sm:text-lg font-bold tracking-tight font-serif">Sleep Calculator</span>
         </Link>
-        <nav className="flex items-center gap-4 sm:gap-6 text-sm font-medium text-white/80">
-          <Link to="/blog" className="hover:text-white transition-colors focus-visible:outline-none">Blog</Link>
-          <Link to="/about" className="hover:text-white transition-colors focus-visible:outline-none">About</Link>
-          <Link to="/contact" className="hover:text-white transition-colors focus-visible:outline-none">Contact</Link>
+        
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex items-center gap-4 sm:gap-8 text-[15px] font-medium text-gray-600">
+          <Link to="/blog" className="hover:text-[#2563EB] transition-colors focus-visible:outline-none">Blog</Link>
+          <Link to="/about" className="hover:text-[#2563EB] transition-colors focus-visible:outline-none">About</Link>
+          <Link to="/contact" className="hover:text-[#2563EB] transition-colors focus-visible:outline-none">Contact</Link>
         </nav>
+
+        {/* Mobile Menu Toggle */}
+        <button 
+          className="md:hidden text-gray-600 hover:text-gray-900 p-1 focus-visible:outline-none"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          aria-label="Toggle menu"
+        >
+          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
       </div>
+
+      {/* Mobile Navigation Dropdown */}
+      {isMenuOpen && (
+        <div className="md:hidden absolute top-[70px] left-0 w-full bg-white border-b border-gray-100 shadow-xl flex flex-col py-4 px-4 gap-2 z-50">
+          <Link to="/blog" className="text-gray-600 hover:text-[#2563EB] hover:bg-gray-50 font-medium text-base px-4 py-3 rounded-lg transition-colors" onClick={() => setIsMenuOpen(false)}>Blog</Link>
+          <Link to="/about" className="text-gray-600 hover:text-[#2563EB] hover:bg-gray-50 font-medium text-base px-4 py-3 rounded-lg transition-colors" onClick={() => setIsMenuOpen(false)}>About</Link>
+          <Link to="/contact" className="text-gray-600 hover:text-[#2563EB] hover:bg-gray-50 font-medium text-base px-4 py-3 rounded-lg transition-colors" onClick={() => setIsMenuOpen(false)}>Contact</Link>
+        </div>
+      )}
     </header>
   );
 }
@@ -76,10 +102,19 @@ export default function App() {
     <HelmetProvider>
       <Router>
         <ScrollToTop />
-        <div className="min-h-screen flex flex-col text-white font-sans relative overflow-x-hidden bg-transparent">
-          <StarryBackground />
-          <Header />
-          <main className="relative z-10 flex-grow flex flex-col items-center justify-start w-full max-w-[1100px] mx-auto px-4 sm:px-6 py-6 sm:py-10">
+        <div className="min-h-screen flex flex-col text-gray-900 font-sans relative overflow-x-hidden bg-white">
+          <AppContent />
+        </div>
+      </Router>
+    </HelmetProvider>
+  );
+}
+
+function AppContent() {
+  return (
+    <>
+      <Header />
+      <main className="relative z-10 flex-grow flex flex-col items-center justify-start w-full py-6 sm:py-10">
             <Suspense fallback={<LoadingFallback />}>
               <Routes>
                 {/* Core Pages */}
@@ -136,8 +171,6 @@ export default function App() {
             </Suspense>
           </main>
           <Footer />
-        </div>
-      </Router>
-    </HelmetProvider>
+    </>
   );
 }

@@ -22,18 +22,19 @@ export default function StarryBackground() {
 
     setCanvasSize();
 
-    const stars: { x: number; y: number; radius: number; vx: number; vy: number; baseAlpha: number; speed: number }[] = [];
-    const numStars = Math.floor((width * height) / 4000); // adjust density
+    const stars: { x: number; y: number; radius: number; vx: number; vy: number; baseAlpha: number; speed: number; phase: number }[] = [];
+    const numStars = Math.floor((width * height) / 2500); // slightly more dense
 
     for (let i = 0; i < numStars; i++) {
       stars.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        radius: Math.random() * 1.5,
+        radius: Math.random() * 1.5 + 0.3,
         vx: (Math.random() - 0.5) * 0.1,
         vy: (Math.random() - 0.5) * 0.1,
-        baseAlpha: Math.random() * 0.5 + 0.1,
+        baseAlpha: Math.random() * 0.5 + 0.2,
         speed: Math.random() * 0.02 + 0.005,
+        phase: Math.random() * Math.PI * 2,
       });
     }
 
@@ -56,9 +57,11 @@ export default function StarryBackground() {
         if (star.y < 0) star.y = height;
         if (star.y > height) star.y = 0;
 
-        // Twinkle effect
-        const currentAlpha = star.baseAlpha + Math.sin(time * star.speed) * 0.2;
-        const boundedAlpha = Math.max(0.1, Math.min(1, currentAlpha));
+        // Enhanced twinkle effect
+        const slowPulse = Math.sin(time * star.speed + star.phase);
+        const fastPulse = Math.sin(time * star.speed * 3 + star.phase);
+        const currentAlpha = star.baseAlpha + (slowPulse * 0.3) + (fastPulse * 0.1);
+        const boundedAlpha = Math.max(0.05, Math.min(0.9, currentAlpha));
 
         ctx.beginPath();
         ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);

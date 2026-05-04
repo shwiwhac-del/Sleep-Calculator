@@ -55,7 +55,7 @@ export default function Blog() {
   ];
 
   return (
-    <div className="w-full">
+    <div className="w-full max-w-4xl mx-auto px-4 sm:px-6">
       <Helmet>
         <title>Sleep Blog & Resources | Sleep Calculator</title>
         <meta name="description" content="Read our latest guides on the best time to sleep, understanding sleep cycles, and how to stop feeling tired throughout the day." />
@@ -70,8 +70,8 @@ export default function Blog() {
       </div>
 
       <div className="mb-12 text-left animate-in fade-in slide-in-from-top-4 duration-700">
-        <h1 className="text-3xl sm:text-4xl font-bold tracking-tight mb-3 text-white">Sleep Blog</h1>
-        <p className="text-white/60 text-sm sm:text-base max-w-xl">
+        <h1 className="text-4xl sm:text-5xl font-bold tracking-tight mb-3 text-white leading-tight">Sleep Blog</h1>
+        <p className="text-white/60 text-base sm:text-lg max-w-xl">
           Learn how to optimize your rest, understand your REM cycles, and wake up feeling refreshed every day.
         </p>
       </div>
@@ -81,18 +81,18 @@ export default function Blog() {
           <Link 
             key={index}
             to={article.url}
-            className="group bg-white/5 border border-white/10 rounded-2xl p-6 transition-all duration-200 hover:bg-white/10 hover:border-white/20 flex flex-col items-start"
+            className="group bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col items-start h-full"
           >
-            <span className="text-xs font-semibold tracking-wider uppercase text-white/50 mb-3 block">
+            <span className="text-xs font-semibold tracking-wider uppercase text-gray-400 mb-3 block">
               {article.topic}
             </span>
-            <h2 className="text-xl font-bold text-white mb-3 group-hover:text-[#00d2ff] transition-colors line-clamp-2">
+            <h2 className="text-xl font-bold text-gray-900 mb-3 font-serif group-hover:text-[#2563EB] transition-colors line-clamp-2">
               {article.title}
             </h2>
-            <p className="text-white/60 text-sm leading-relaxed mb-6 flex-grow line-clamp-3">
+            <p className="text-gray-600 text-sm sm:text-base leading-relaxed mb-6 flex-grow line-clamp-3">
               {article.description}
             </p>
-            <div className="mt-auto flex items-center gap-2 text-white/80 font-medium text-sm group-hover:text-white">
+            <div className="mt-auto flex items-center gap-2 text-[#2563EB] font-medium text-sm group-hover:-translate-y-0.5 transition-transform">
               Read article <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
             </div>
           </Link>

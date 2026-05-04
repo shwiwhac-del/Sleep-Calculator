@@ -4,7 +4,7 @@ import { ArrowLeft } from 'lucide-react';
 
 export default function About() {
   return (
-    <div className="w-full max-w-3xl mx-auto px-4">
+    <div className="w-full max-w-4xl mx-auto px-4 sm:px-6">
       <Helmet>
         <title>About Us | Sleep Calculator</title>
         <meta name="description" content="Learn about Sleep Calculator, our mission to help you wake up refreshed, and why we built this free tool for better sleep health." />
@@ -12,40 +12,104 @@ export default function About() {
       </Helmet>
       
       <div className="mb-8 text-left">
-        <Link to="/" className="inline-flex items-center gap-2 text-sm text-white/50 font-medium tracking-wide hover:text-white transition-colors focus-visible:outline-none">
+        <Link to="/" className="inline-flex items-center gap-2 text-sm text-gray-500 font-medium tracking-wide hover:text-gray-900 transition-colors focus-visible:outline-none">
           <ArrowLeft size={16} /> Back Home
         </Link>
       </div>
 
       <div className="animate-in fade-in slide-in-from-top-4 duration-500 text-left">
-        <h1 className="text-3xl font-bold text-white mb-6">About Sleep Calculator</h1>
+        <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-gray-900 mb-6 leading-tight font-serif">About This Sleep Calculator</h1>
         
-        <div className="space-y-8 text-white/70 leading-relaxed text-sm sm:text-base">
-          <p className="text-lg text-white">
-            We believe everyone deserves to wake up feeling rested, energized, and ready to take on the day. Our mission is to make sleep science accessible and easy to apply.
+        <div className="space-y-8 text-gray-600 leading-relaxed text-sm sm:text-base">
+          <p className="text-base sm:text-lg font-medium text-gray-900">
+            This Sleep Calculator is designed to help you find the best time to sleep and wake up based on natural sleep cycles.
+          </p>
+          <p>
+            Instead of guessing your sleep schedule, this tool gives you optimized times so you can wake up feeling refreshed and more energized.
           </p>
 
           <section>
-            <h2 className="text-lg font-bold text-white mb-2">Our Story</h2>
+            <h2 className="text-2xl font-bold text-gray-900 mb-4 font-serif">How This Tool Helps You</h2>
             <p className="mb-4">
-              Millions of people struggle with morning grogginess, often wondering why they feel exhausted even after getting eight hours of sleep. The truth lies within our biology—specifically, our 90-minute sleep cycles.
+              Many people sleep for 7–8 hours but still wake up feeling tired. The problem is not just the duration — it’s the timing.
             </p>
+            <p className="mb-4">This sleep calculator helps you:</p>
+            <ul className="list-disc pl-5 space-y-2">
+              <li>Plan your bedtime more effectively</li>
+              <li>Wake up at the end of a sleep cycle</li>
+              <li>Avoid waking up during deep sleep</li>
+              <li>Improve your daily energy and focus</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-bold text-gray-900 mb-4 font-serif">How It Works</h2>
+            <p className="mb-4">
+              Sleep is divided into cycles, and each cycle lasts approximately 90 minutes.
+            </p>
+            <p className="mb-4">This tool calculates:</p>
+            <ul className="list-disc pl-5 space-y-2 mb-4">
+              <li>Multiple ideal sleep times</li>
+              <li>Based on your selected wake-up time</li>
+              <li>With an estimated 15-minute fall-asleep window</li>
+            </ul>
             <p>
-              We built Sleep Calculator to solve this exact problem. By aligning your wake-up times with the natural end of a sleep cycle, you can avoid "sleep inertia" and start your day with natural energy. We combine proven sleep science with a simple, free tool anyone can use.
+              By aligning your sleep with these cycles, you can wake up more naturally.
             </p>
           </section>
 
           <section>
-            <h2 className="text-lg font-bold text-white mb-2">Science-Backed</h2>
+            <h2 className="text-2xl font-bold text-gray-900 mb-4 font-serif">Why Use This Sleep Calculator</h2>
+            <p className="mb-4">
+              Most online tools are either too basic or overloaded with unnecessary features.
+            </p>
+            <p className="mb-4">This calculator is built to be:</p>
+            <ul className="list-disc pl-5 space-y-2">
+              <li>Simple and fast</li>
+              <li>Easy to use</li>
+              <li>Based on real sleep cycle logic</li>
+              <li>Clean and distraction-free</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-bold text-gray-900 mb-4 font-serif">Who Is This For?</h2>
+            <p className="mb-4">This tool is useful for:</p>
+            <ul className="list-disc pl-5 space-y-2">
+              <li>Students</li>
+              <li>Professionals</li>
+              <li>Anyone struggling with sleep timing</li>
+              <li>People who want better daily productivity</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-bold text-gray-900 mb-4 font-serif">Important Note</h2>
+            <p className="mb-4">
+              This tool provides general estimates based on average sleep cycles. Individual sleep needs may vary depending on health, lifestyle, and habits.
+            </p>
             <p>
-              Our tool calculates exact times based on the universal average 90-minute sleep cycle, helping you naturally hack your REM and deep sleep stages.
+              For serious sleep issues, it’s always best to consult a medical professional.
             </p>
           </section>
 
           <section>
-            <h2 className="text-lg font-bold text-white mb-2">Privacy First</h2>
+            <h2 className="text-2xl font-bold text-gray-900 mb-4 font-serif">Continuous Improvement</h2>
             <p>
-              We don't sell your data, require accounts, or track your habits. The calculator runs entirely in your browser. Period.
+              This is an evolving tool, and improvements are being made regularly to enhance accuracy and user experience.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-bold text-gray-900 mb-4 font-serif">Try It Yourself</h2>
+            <p className="mb-4">
+              Ready to improve your sleep schedule?
+            </p>
+            <p className="mb-4">
+              👉 <Link to="/#tools" className="text-[#2563EB] hover:text-[#1D4ED8] font-semibold transition-colors">Use the Sleep Calculator</Link> and find your ideal sleep time now.
+            </p>
+            <p className="text-gray-400 text-[14px] mt-8 pt-8 border-t border-gray-100">
+              Built to keep things simple, fast, and actually useful.
             </p>
           </section>
         </div>

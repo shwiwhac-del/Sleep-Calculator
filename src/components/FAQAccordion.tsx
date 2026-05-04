@@ -51,17 +51,17 @@ export function FAQAccordion() {
       {faqs.map((faq, index) => (
         <div 
           key={index} 
-          className="bg-white/5 border border-white/10 rounded-2xl overflow-hidden transition-colors hover:bg-white/10"
+          className="bg-white border border-gray-100 shadow-sm rounded-2xl overflow-hidden transition-all hover:border-gray-300"
           style={{ borderLeftWidth: '4px', borderLeftColor: faq.color }}
         >
           <button
             onClick={() => toggleFAQ(index)}
-            className="w-full text-left px-6 py-5 flex items-center justify-between focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50"
+            className="w-full text-left px-6 py-5 flex items-center justify-between focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB]/50"
             aria-expanded={openIndex === index}
           >
-            <h3 className="text-lg font-bold text-white pr-4">{faq.question}</h3>
+            <h3 className="text-lg sm:text-xl font-semibold text-gray-900 pr-4 font-serif">{faq.question}</h3>
             <ChevronDown 
-              className={`text-white transition-transform duration-300 flex-shrink-0 ${openIndex === index ? 'rotate-180' : ''}`} 
+              className={`text-gray-500 transition-transform duration-300 flex-shrink-0 ${openIndex === index ? 'rotate-180' : ''}`} 
               size={20} 
             />
           </button>
@@ -69,7 +69,7 @@ export function FAQAccordion() {
             className={`grid transition-all duration-300 ease-in-out ${openIndex === index ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}
           >
             <div className="overflow-hidden">
-              <div className="px-6 pb-5 text-white/70 leading-relaxed">
+              <div className="px-6 pb-5 text-gray-600 leading-relaxed text-sm sm:text-base">
                 {faq.answer}
               </div>
             </div>

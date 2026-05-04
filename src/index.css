@@ -1,8 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
 @theme {
+  --color-primary: #2563EB;
+  --color-accent: #4F46E5;
+  --color-background: #FFFFFF;
+  --color-section: #F8FAFC;
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", ui-serif, Georgia, serif;
   --animate-fade-in: fade-in 0.7s ease-out forwards;
   --animate-slide-up: slide-up 0.5s ease-out forwards;
 }
@@ -44,33 +50,6 @@
   max-width: 1100px;
   margin: 0 auto;
   padding: 0 20px;
-}
-
-/* Fix for native time input to ensure text is centered */
-input[type="time"]::-webkit-calendar-picker-indicator {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  cursor: pointer;
-  margin: 0;
-  padding: 0;
-}
-
-input[type="time"]::-webkit-clear-button {
-  display: none;
-}
-
-input[type="time"] {
-  position: relative;
-}
-
-input[type="time"]::-webkit-datetime-edit {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 @layer utilities {
