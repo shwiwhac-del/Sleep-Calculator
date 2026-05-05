@@ -3,11 +3,9 @@ import { ArticleLayout } from '../components/ArticleLayout';
 
 export default function BestTimeToSleep() {
   return (
-    <ArticleLayout  relatedPosts={[
-        { title: "The Best Time to Sleep: Finding Your Perfect Bedtime", url: "/blog/best-sleep-time", description: "Discover the absolute best time to sleep." },
-        { title: "Why You Feel Tired Even After 8 Hours", url: "/blog/tired", description: "Constantly exhausted despite getting enough sleep? Discover why." },
-        { title: "The Ultimate Sleep Cycle Guide", url: "/blog/sleep-cycle-stages", description: "Learn about the 4 stages of sleep and how to optimize them." }
-      ]}
+    <ArticleLayout
+      backUrl="/"
+      backLabel="Back to Home"
       title="The Best Time to Sleep: Finding Your Perfect Bedtime"
       description="Discover the absolute best time to sleep and wake up based on biology and 90-minute sleep cycles. Learn how a sleep calculator can fix your routine."
       readingTime="4"

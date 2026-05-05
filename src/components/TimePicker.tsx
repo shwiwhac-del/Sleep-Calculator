@@ -79,7 +79,7 @@ export default function TimePicker({ value, onChange, onEnter, mode }: TimePicke
     <div className="flex flex-col items-center gap-4 select-none w-full max-w-[400px] mx-auto">
       <div className="flex items-center justify-center gap-3 sm:gap-6 w-full">
         {/* Time Inputs */}
-        <div className="flex items-center gap-1 sm:gap-2 bg-gray-50 border border-gray-200 rounded-3xl p-5 sm:p-6 shadow-inner relative overflow-hidden">
+        <div className="flex items-center gap-1 sm:gap-2 bg-gray-50 dark:bg-[#1A1A1A] border border-gray-200 dark:border-[#333] rounded-3xl p-5 sm:p-6 shadow-inner relative overflow-hidden">
           <input
             type="text"
             inputMode="numeric"
@@ -88,7 +88,7 @@ export default function TimePicker({ value, onChange, onEnter, mode }: TimePicke
             onBlur={handleHourBlur}
             onKeyDown={handleKeyDown}
             aria-label={`Hour for ${mode === 'wake' ? 'wake up' : 'bed'} time`}
-            className="w-[80px] sm:w-[100px] bg-transparent text-center text-6xl sm:text-[80px] tracking-tight font-bold text-gray-900 focus:outline-none focus:text-[#2563EB] transition-colors placeholder:text-gray-300 select-all relative z-10"
+            className="w-[80px] sm:w-[100px] bg-transparent text-center text-6xl sm:text-[80px] tracking-tight font-bold text-gray-900 dark:text-white focus:outline-none focus:text-[#2563EB] transition-colors placeholder:text-gray-300 select-all relative z-10"
             placeholder="12"
             onClick={(e) => (e.target as HTMLInputElement).select()}
           />
@@ -101,7 +101,7 @@ export default function TimePicker({ value, onChange, onEnter, mode }: TimePicke
             onBlur={handleMinuteBlur}
             onKeyDown={handleKeyDown}
             aria-label={`Minute for ${mode === 'wake' ? 'wake up' : 'bed'} time`}
-            className="w-[80px] sm:w-[100px] bg-transparent text-center text-6xl sm:text-[80px] tracking-tight font-bold text-gray-900 focus:outline-none focus:text-[#2563EB] transition-colors placeholder:text-gray-300 select-all relative z-10"
+            className="w-[80px] sm:w-[100px] bg-transparent text-center text-6xl sm:text-[80px] tracking-tight font-bold text-gray-900 dark:text-white focus:outline-none focus:text-[#2563EB] transition-colors placeholder:text-gray-300 select-all relative z-10"
             placeholder="00"
             onClick={(e) => (e.target as HTMLInputElement).select()}
           />
@@ -118,7 +118,7 @@ export default function TimePicker({ value, onChange, onEnter, mode }: TimePicke
             className={`w-[60px] sm:w-[72px] h-[50px] sm:h-[60px] rounded-2xl font-bold text-lg sm:text-xl transition-all duration-300 flex items-center justify-center ${
               ampm === 'AM'
                 ? 'bg-[#2563EB] text-white shadow-md border border-transparent'
-                : 'bg-gray-50 border border-gray-200 text-gray-400 hover:bg-gray-100 hover:text-gray-600'
+                : 'bg-gray-50 dark:bg-[#1A1A1A] border border-gray-200 dark:border-[#333] text-gray-400 dark:text-gray-500 hover:bg-gray-100 hover:text-gray-600 dark:text-gray-300'
             }`}
           >
             AM
@@ -132,7 +132,7 @@ export default function TimePicker({ value, onChange, onEnter, mode }: TimePicke
             className={`w-[60px] sm:w-[72px] h-[50px] sm:h-[60px] rounded-2xl font-bold text-lg sm:text-xl transition-all duration-300 flex items-center justify-center ${
               ampm === 'PM'
                 ? 'bg-[#2563EB] text-white shadow-md border border-transparent'
-                : 'bg-gray-50 border border-gray-200 text-gray-400 hover:bg-gray-100 hover:text-gray-600'
+                : 'bg-gray-50 dark:bg-[#1A1A1A] border border-gray-200 dark:border-[#333] text-gray-400 dark:text-gray-500 hover:bg-gray-100 hover:text-gray-600 dark:text-gray-300'
             }`}
           >
             PM

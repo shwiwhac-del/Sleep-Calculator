@@ -3,81 +3,65 @@
   <url>
     <loc>https://sleepcalculater.online/</loc>
     <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
   </url>
   <url>
     <loc>https://sleepcalculater.online/blog</loc>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://sleepcalculater.online/about</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://sleepcalculater.online/contact</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://sleepcalculater.online/privacy</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://sleepcalculater.online/terms</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://sleepcalculater.online/guide/sleep-calculator</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://sleepcalculater.online/guide/fix-your-sleep</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://sleepcalculater.online/article/best-sleep-time</loc>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://sleepcalculater.online/article/power-nap</loc>
+    <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://sleepcalculater.online/blog/sleep-calculator</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://sleepcalculater.online/blog/best-sleep-time</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://sleepcalculater.online/blog/sleep-cycle-stages</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://sleepcalculater.online/blog/tired</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://sleepcalculater.online/blog/power-nap</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://sleepcalculater.online/blog/sleep-age</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://sleepcalculater.online/blog/sleep-cycle</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://sleepcalculater.online/blog/sleep-calculator-benefits</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <changefreq>weekly</changefreq>
   </url>
 </urlset>

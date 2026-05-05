@@ -3,11 +3,7 @@ import { ArticleLayout } from '../components/ArticleLayout';
 
 export default function WhatIsASleepCalculator() {
   return (
-    <ArticleLayout  relatedPosts={[
-        { title: "The Best Time to Sleep: Finding Your Perfect Bedtime", url: "/blog/best-sleep-time", description: "Discover the absolute best time to sleep." },
-        { title: "Why You Feel Tired Even After 8 Hours", url: "/blog/tired", description: "Constantly exhausted despite getting enough sleep? Discover why." },
-        { title: "The Ultimate Sleep Cycle Guide", url: "/blog/sleep-cycle-stages", description: "Learn about the 4 stages of sleep and how to optimize them." }
-      ]}
+    <ArticleLayout
       title="What is a Sleep Calculator? (And How It Fixes Your Mornings)"
       description="A sleep calculator is a free digital tool designed to help you figure out the absolute best time to sleep and wake up using the science of sleep cycles."
       readingTime="4"

@@ -46,36 +46,44 @@ export function FAQAccordion() {
   };
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 w-full">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      {faqs.map((faq, index) => (
-        <div 
-          key={index} 
-          className="bg-white border border-gray-100 shadow-sm rounded-2xl overflow-hidden transition-all hover:border-gray-300"
-          style={{ borderLeftWidth: '4px', borderLeftColor: faq.color }}
-        >
-          <button
-            onClick={() => toggleFAQ(index)}
-            className="w-full text-left px-6 py-5 flex items-center justify-between focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB]/50"
-            aria-expanded={openIndex === index}
-          >
-            <h3 className="text-lg sm:text-xl font-semibold text-gray-900 pr-4 font-serif">{faq.question}</h3>
-            <ChevronDown 
-              className={`text-gray-500 transition-transform duration-300 flex-shrink-0 ${openIndex === index ? 'rotate-180' : ''}`} 
-              size={20} 
-            />
-          </button>
+      {faqs.map((faq, index) => {
+        const isOpen = openIndex === index;
+        return (
           <div 
-            className={`grid transition-all duration-300 ease-in-out ${openIndex === index ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}
+            key={index} 
+            className={`bg-white dark:bg-[#111] border rounded-2xl overflow-hidden transition-all duration-300 ${
+              isOpen ? 'border-[#2563EB]/50 shadow-md ring-1 ring-[#2563EB]/20 bg-blue-50/10 dark:bg-[#2563EB]/5' : 'border-gray-100 dark:border-[#222] shadow-sm hover:border-[#2563EB]/30 hover:shadow-md'
+            }`}
           >
-            <div className="overflow-hidden">
-              <div className="px-6 pb-5 text-gray-600 leading-relaxed text-sm sm:text-base">
-                {faq.answer}
+            <button
+              onClick={() => toggleFAQ(index)}
+              className="w-full text-left px-6 py-5 flex items-center justify-between focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB]/50 group transition-colors"
+              aria-expanded={isOpen}
+            >
+              <h3 className={`text-lg sm:text-xl font-semibold pr-4 font-serif transition-colors duration-300 ${isOpen ? 'text-[#2563EB]' : 'text-gray-900 dark:text-white group-hover:text-[#2563EB] dark:group-hover:text-[#2563EB]'}`}>
+                {faq.question}
+              </h3>
+              <div className={`p-1 rounded-full transition-colors duration-300 ${isOpen ? 'bg-[#2563EB]/10' : 'bg-gray-50 dark:bg-[#1A1A1A] group-hover:bg-[#2563EB]/10'}`}>
+                <ChevronDown 
+                  className={`transition-all duration-300 flex-shrink-0 ${isOpen ? 'rotate-180 text-[#2563EB]' : 'text-gray-400 group-hover:text-[#2563EB]'}`} 
+                  size={20} 
+                />
+              </div>
+            </button>
+            <div 
+              className={`grid transition-[grid-template-rows,opacity] duration-300 ease-in-out ${isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}
+            >
+              <div className="overflow-hidden">
+                <div className="px-6 pb-6 text-gray-600 dark:text-gray-300 leading-relaxed text-sm sm:text-base">
+                  {faq.answer}
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      ))}
+        );
+      })}
     </div>
   );
 }

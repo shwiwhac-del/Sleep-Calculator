@@ -3,6 +3,16 @@ import { ArrowRight, ArrowLeft } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 
 export default function Blog() {
+  const navigate = useNavigate();
+
+  const handleBack = () => {
+    if (window.history.state && window.history.state.idx > 0) {
+      navigate(-1);
+    } else {
+      navigate('/');
+    }
+  };
+
   const articles = [
     {
       title: "What is a Sleep Calculator?",
@@ -13,7 +23,7 @@ export default function Blog() {
     {
       title: "The Best Time to Sleep: Finding Your Perfect Bedtime",
       description: "Discover the absolute best time to sleep and wake up based on biology and 90-minute sleep cycles. Learn how a sleep calculator can fix your routine.",
-      url: "/blog/best-sleep-time",
+      url: "/article/best-sleep-time",
       topic: "Sleep Timing",
     },
     {
@@ -31,7 +41,7 @@ export default function Blog() {
     {
       title: "The Ultimate Power Nap Guide: How to Sleep During the Day",
       description: "Stop waking up from naps feeling worse. Learn the optimal power nap lengths, from the 20-minute energy boost to the full 90-minute cycle.",
-      url: "/blog/power-nap",
+      url: "/article/power-nap",
       topic: "Napping",
     },
     {
@@ -63,15 +73,17 @@ export default function Blog() {
       </Helmet>
 
       <div className="mb-4 text-left">
-        <Link to="/" className="inline-flex items-center gap-2 text-sm text-white/50 font-medium tracking-wide hover:text-white transition-colors focus-visible:outline-none">
-          <ArrowLeft size={16} />
-          Back Home
-        </Link>
+        <button 
+          onClick={handleBack}
+          className="inline-flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 font-medium tracking-wide hover:text-gray-900 dark:text-white transition-colors focus-visible:outline-none"
+        >
+          <ArrowLeft size={16} /> Back
+        </button>
       </div>
 
       <div className="mb-12 text-left animate-in fade-in slide-in-from-top-4 duration-700">
-        <h1 className="text-4xl sm:text-5xl font-bold tracking-tight mb-3 text-white leading-tight">Sleep Blog</h1>
-        <p className="text-white/60 text-base sm:text-lg max-w-xl">
+        <h1 className="text-4xl sm:text-5xl font-bold tracking-tight mb-3 text-gray-900 dark:text-white leading-tight font-serif">Sleep Blog</h1>
+        <p className="text-gray-600 dark:text-gray-300 text-base sm:text-lg max-w-xl">
           Learn how to optimize your rest, understand your REM cycles, and wake up feeling refreshed every day.
         </p>
       </div>
@@ -81,15 +93,15 @@ export default function Blog() {
           <Link 
             key={index}
             to={article.url}
-            className="group bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col items-start h-full"
+            className="group bg-white dark:bg-[#111] border border-gray-100 dark:border-[#222] rounded-2xl p-6 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col items-start h-full"
           >
-            <span className="text-xs font-semibold tracking-wider uppercase text-gray-400 mb-3 block">
+            <span className="text-xs font-semibold tracking-wider uppercase text-gray-400 dark:text-gray-500 mb-3 block">
               {article.topic}
             </span>
-            <h2 className="text-xl font-bold text-gray-900 mb-3 font-serif group-hover:text-[#2563EB] transition-colors line-clamp-2">
+            <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-3 font-serif group-hover:text-[#2563EB] transition-colors line-clamp-2">
               {article.title}
             </h2>
-            <p className="text-gray-600 text-sm sm:text-base leading-relaxed mb-6 flex-grow line-clamp-3">
+            <p className="text-gray-600 dark:text-gray-300 text-sm sm:text-base leading-relaxed mb-6 flex-grow line-clamp-3">
               {article.description}
             </p>
             <div className="mt-auto flex items-center gap-2 text-[#2563EB] font-medium text-sm group-hover:-translate-y-0.5 transition-transform">
