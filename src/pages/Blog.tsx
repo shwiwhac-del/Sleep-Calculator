@@ -6,11 +6,7 @@ export default function Blog() {
   const navigate = useNavigate();
 
   const handleBack = () => {
-    if (window.history.state && window.history.state.idx > 0) {
-      navigate(-1);
-    } else {
-      navigate('/');
-    }
+    navigate('/');
   };
 
   const articles = [
@@ -77,7 +73,7 @@ export default function Blog() {
           onClick={handleBack}
           className="inline-flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 font-medium tracking-wide hover:text-gray-900 dark:text-white transition-colors focus-visible:outline-none"
         >
-          <ArrowLeft size={16} /> Back
+          <ArrowLeft size={16} /> Back to Home
         </button>
       </div>
 

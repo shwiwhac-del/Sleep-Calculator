@@ -41,7 +41,6 @@ function Footer() {
     <footer className="w-full py-8 mt-auto border-t border-gray-100 dark:border-[#222] bg-white dark:bg-[#0B0B0B] z-20 relative flex flex-col items-center">
       <div className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm text-gray-500 dark:text-gray-400 px-4 mb-4">
         <Link to="/privacy" className="hover:text-[#2563EB] transition-colors">Privacy Policy</Link>
-        <Link to="/terms" className="hover:text-[#2563EB] transition-colors">Disclaimer</Link>
         <Link to="/terms" className="hover:text-[#2563EB] transition-colors">Terms & Conditions</Link>
         <a href="/sitemap.xml" target="_blank" rel="noopener noreferrer" className="hover:text-[#2563EB] transition-colors">Sitemap</a>
       </div>

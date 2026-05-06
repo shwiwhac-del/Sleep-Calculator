@@ -159,7 +159,7 @@ export default function Home() {
   return (
     <div className="w-full flex flex-col items-center">
       {/* Header Info */}
-      <div className="flex flex-col items-center justify-center mb-8 mt-6 sm:mt-10">
+      <div className="flex flex-col items-center justify-center mb-6 mt-4 sm:mt-6">
         <Helmet>
           <title>Sleep Calculator: Find the Best Time to Sleep and Wake Up</title>
           <meta name="description" content="Use our free sleep calculator to find the best time to sleep, wake up refreshed, and understand your 90-minute sleep cycles." />
@@ -188,8 +188,8 @@ export default function Home() {
             })}
           </script>
         </Helmet>
-        <div className="flex flex-col items-center justify-center gap-2 mb-2 text-center max-w-3xl mx-auto px-4">
-          <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 dark:text-white mb-2 leading-tight font-serif">
+        <div className="flex flex-col items-center justify-center gap-2 mb-2 text-center max-w-2xl mx-auto px-4">
+          <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-gray-900 dark:text-white mb-2 leading-tight font-serif">
             Calculate your sleep schedule
           </h1>
           <p className="text-lg text-gray-600 dark:text-gray-300 mt-2">
@@ -199,14 +199,14 @@ export default function Home() {
       </div>
 
       {/* Main Tool Container */}
-      <div className="w-full max-w-[640px] mx-auto mb-12 relative px-4 sm:px-0">
-        <div className="flex flex-col items-center bg-white dark:bg-[#111] border border-gray-100 dark:border-[#222] rounded-[24px] p-6 sm:p-8 shadow-sm relative overflow-hidden">
+      <div className="w-full max-w-[580px] mx-auto mb-8 relative px-4 sm:px-0">
+        <div className="flex flex-col items-center bg-white dark:bg-[#111] border border-gray-100 dark:border-[#222] rounded-[24px] p-5 sm:p-6 shadow-sm relative overflow-hidden">
           
           {/* Toggle Mode */}
           <div 
             role="radiogroup" 
             aria-label="Calculation mode"
-            className="flex bg-gray-50 dark:bg-[#1A1A1A] rounded-2xl p-1.5 w-full mb-8"
+            className="flex bg-gray-50 dark:bg-[#1A1A1A] rounded-2xl p-1.5 w-full mb-6"
           >
             <button
               role="radio"
@@ -235,7 +235,7 @@ export default function Home() {
           </div>
 
           {/* Time Input */}
-          <div className="flex flex-col items-center justify-center w-full mb-8">
+          <div className="flex flex-col items-center justify-center w-full mb-6">
             <TimePicker 
               value={time} 
               onChange={(val) => { setTime(val); timeRef.current = val; }} 
@@ -245,14 +245,14 @@ export default function Home() {
           </div>
 
           {/* Age group pill selection */}
-          <div className="flex flex-col items-center w-full mb-8">
+          <div className="flex flex-col items-center w-full mb-6">
             <span className="text-gray-400 dark:text-gray-500 uppercase tracking-widest text-xs font-bold mb-3">Age Group</span>
             <div className="flex flex-wrap justify-center gap-2 w-full max-w-[480px]">
               {AGE_GROUPS.map(g => (
                 <button
                   key={g.id}
                   onClick={() => { setAgeGroup(g.id); setResults([]); }}
-                  className={`py-2 px-4 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 ${
+                  className={`py-1.5 px-3 sm:py-2 sm:px-4 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 ${
                     ageGroup === g.id
                       ? 'bg-[#2563EB] text-white shadow-md'
                       : 'bg-gray-50 dark:bg-[#1A1A1A] border border-gray-200 dark:border-[#333] text-gray-600 dark:text-gray-300 hover:bg-gray-100 hover:text-gray-900 dark:text-white'
@@ -265,20 +265,22 @@ export default function Home() {
           </div>
 
           {/* Calculate Button */}
-          <button
-            onClick={calculate}
-            className="w-full bg-[#2563EB] text-white hover:bg-[#1D4ED8] rounded-2xl px-6 py-4 font-semibold text-lg transition-all duration-300 hover:-translate-y-1 focus-visible:outline-none shadow-md mt-2"
-          >
-            Calculate Optimal Times
-          </button>
+          <div className="w-full flex justify-center mt-2">
+            <button
+              onClick={calculate}
+              className="w-full max-w-[280px] bg-[#2563EB] text-white hover:bg-[#1D4ED8] rounded-2xl px-6 py-3 font-semibold text-base transition-all duration-300 hover:-translate-y-1 focus-visible:outline-none shadow-md"
+            >
+              Calculate Optimal Times
+            </button>
+          </div>
         </div>
       </div>
 
       {/* Results Section */}
       {results.length > 0 && (
-        <div ref={resultsRef} className="w-full max-w-[640px] mx-auto flex flex-col items-center mb-12 animate-fade-in px-4">
-          <div className="w-full bg-[#f0fdf4] dark:bg-[#111] border border-green-200 dark:border-green-900/30 rounded-3xl p-6 sm:p-8 flex flex-col items-center shadow-sm">
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-2 font-serif text-center">
+        <div ref={resultsRef} className="w-full max-w-[580px] mx-auto flex flex-col items-center mb-8 animate-fade-in px-4">
+          <div className="w-full bg-[#f0fdf4] dark:bg-[#111] border border-green-200 dark:border-green-900/30 rounded-3xl p-5 sm:p-6 flex flex-col items-center shadow-sm">
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-2 font-serif text-center">
               Your Ideal Sleep Times
             </h2>
             <p className="text-gray-600 dark:text-gray-300 mb-6 text-center text-sm sm:text-base">
@@ -291,13 +293,13 @@ export default function Home() {
                 return (
                   <div 
                     key={index}
-                    className={`flex flex-row items-center justify-between p-4 sm:p-5 rounded-xl border transition-all duration-300 hover:shadow-md ${
+                    className={`flex flex-row items-center justify-between p-3 sm:p-4 rounded-xl border transition-all duration-300 hover:shadow-md ${
                       recommended ? 'bg-[#2563EB]/5 border-[#2563EB]/20 shadow-sm' : 'bg-white dark:bg-[#1A1A1A] border-gray-200 dark:border-[#333] shadow-sm hover:border-gray-300 dark:hover:border-[#444]'
                     }`}
                   >
                     <div className="flex flex-col">
                       <div className="flex items-center gap-2">
-                        <span className="text-xl sm:text-3xl font-bold text-gray-900 dark:text-white tracking-tight">{formatTime(res.date, true)}</span>
+                        <span className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white tracking-tight">{formatTime(res.date, true)}</span>
                       </div>
                       <div className="text-gray-500 dark:text-gray-400 text-xs sm:text-sm mt-1 font-medium">
                         {res.cycles} cycles &bull; {res.cycles * 1.5} hours
@@ -331,8 +333,8 @@ export default function Home() {
       )}
 
       {/* Sleep Guides & Tools Section */}
-      <div className="w-full max-w-5xl mx-auto text-left py-10 px-4 sm:px-6">
-        <div className="flex flex-col items-center mb-10 text-center">
+      <div className="w-full max-w-5xl mx-auto text-left py-8 px-4 sm:px-6">
+        <div className="flex flex-col items-center mb-8 text-center">
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-2 font-serif">Tools & Guides</h2>
           <p className="text-gray-600 dark:text-gray-300 max-w-xl text-sm sm:text-base">Master your sleep with our collection of science-backed calculators and guides.</p>
         </div>
@@ -365,9 +367,9 @@ export default function Home() {
       </div>
 
       {/* FAQ Section */}
-      <div className="w-full max-w-4xl mx-auto pb-10 px-4 sm:px-6">
-        <section className="bg-white dark:bg-[#1A1A1A] border border-gray-100 dark:border-[#222] shadow-sm rounded-3xl p-6 sm:p-10">
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-8 font-serif text-center">Frequently Asked Questions</h2>
+      <div className="w-full max-w-4xl mx-auto pb-8 px-4 sm:px-6">
+        <section className="bg-white dark:bg-[#1A1A1A] border border-gray-100 dark:border-[#222] shadow-sm rounded-3xl p-6 sm:p-8">
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-6 font-serif text-center">Frequently Asked Questions</h2>
           <FAQAccordion />
         </section>
       </div>
