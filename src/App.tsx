@@ -1,40 +1,30 @@
-import { lazy, Suspense, useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
-import { Moon, Sun, Menu, X, ArrowLeft } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, Link, Navigate, useLocation } from 'react-router-dom';
+import { Moon, Sun, Menu, X } from 'lucide-react';
 import { HelmetProvider } from 'react-helmet-async';
 import ScrollToTop from './components/ScrollToTop';
 import Home from './pages/Home';
 
-const Terms = lazy(() => import('./pages/Terms'));
-const Privacy = lazy(() => import('./pages/Privacy'));
-const Blog = lazy(() => import('./pages/Blog'));
-const Contact = lazy(() => import('./pages/Contact'));
-const About = lazy(() => import('./pages/About'));
+import Terms from './pages/Terms';
+import Privacy from './pages/Privacy';
+import Blog from './pages/Blog';
+import Contact from './pages/Contact';
+import About from './pages/About';
 
 // Home Guides
-const GuideWhatIsASleepCalculator = lazy(() => import('./pages/GuideWhatIsASleepCalculator'));
-const GuideWhyYouFeelTired = lazy(() => import('./pages/GuideWhyYouFeelTired'));
+import GuideWhatIsASleepCalculator from './pages/GuideWhatIsASleepCalculator';
+import GuideWhyYouFeelTired from './pages/GuideWhyYouFeelTired';
 
-const BestTimeToSleep = lazy(() => import('./pages/BestTimeToSleep'));
-const SleepCycleGuide = lazy(() => import('./pages/SleepCycleGuide'));
-const SleepByAge = lazy(() => import('./pages/SleepByAge'));
-const WhyYouFeelTired = lazy(() => import('./pages/WhyYouFeelTired'));
-const PowerNapGuide = lazy(() => import('./pages/PowerNapGuide'));
-const WhatIsASleepCalculator = lazy(() => import('./pages/WhatIsASleepCalculator'));
-const HowSleepCycleWorks = lazy(() => import('./pages/HowSleepCycleWorks'));
-const BenefitsOfSleepCalculator = lazy(() => import('./pages/BenefitsOfSleepCalculator'));
-
-const LoadingFallback = () => (
-  <div className="flex flex-col items-center justify-center min-h-[60vh] w-full gap-4 max-w-[1100px] mx-auto px-4 sm:px-6">
-    <div className="w-full max-w-2xl h-12 bg-gray-100 dark:bg-[#111] animate-pulse rounded-full mb-8"></div>
-    <div className="w-full h-64 bg-gray-100 dark:bg-[#111] animate-pulse rounded-3xl mb-12"></div>
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 w-full">
-      <div className="w-full h-32 bg-gray-100 dark:bg-[#111] animate-pulse rounded-2xl"></div>
-      <div className="w-full h-32 bg-gray-100 dark:bg-[#111] animate-pulse rounded-2xl"></div>
-      <div className="w-full h-32 bg-gray-100 dark:bg-[#111] animate-pulse rounded-2xl"></div>
-    </div>
-  </div>
-);
+import BestTimeToSleep from './pages/BestTimeToSleep';
+import SleepCycleGuide from './pages/SleepCycleGuide';
+import SleepByAge from './pages/SleepByAge';
+import FixSleepSchedule from './pages/FixSleepSchedule';
+import BlueLightSleep from './pages/BlueLightSleep';
+import WhyYouFeelTired from './pages/WhyYouFeelTired';
+import PowerNapGuide from './pages/PowerNapGuide';
+import WhatIsASleepCalculator from './pages/WhatIsASleepCalculator';
+import HowSleepCycleWorks from './pages/HowSleepCycleWorks';
+import BenefitsOfSleepCalculator from './pages/BenefitsOfSleepCalculator';
 
 function Footer() {
   return (
@@ -145,7 +135,6 @@ function AppContent() {
     <div className="min-h-screen flex flex-col text-gray-900 dark:text-white font-sans relative overflow-x-hidden bg-white dark:bg-[#0B0B0B] transition-colors">
       <Header isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
       <main className="relative z-10 flex-grow flex flex-col items-center justify-start w-full py-6 sm:py-10">
-            <Suspense fallback={<LoadingFallback />}>
               <Routes>
                 {/* Core Pages */}
                 <Route path="/" element={<Home />} />
@@ -172,6 +161,8 @@ function AppContent() {
                 <Route path="/blog/sleep-age" element={<SleepByAge />} />
                 <Route path="/blog/sleep-cycle" element={<HowSleepCycleWorks />} />
                 <Route path="/blog/sleep-calculator-benefits" element={<BenefitsOfSleepCalculator />} />
+                <Route path="/blog/fix-sleep-schedule" element={<FixSleepSchedule />} />
+                <Route path="/blog/blue-light-sleep" element={<BlueLightSleep />} />
 
                 {/* Redirects for old URLs to new structure */}
                 <Route path="/blog/what-is-a-sleep-calculator" element={<Navigate to="/blog/sleep-calculator" replace />} />
@@ -202,7 +193,6 @@ function AppContent() {
                 {/* Catch-all 404 route */}
                 <Route path="*" element={<Navigate to="/" replace />} />
               </Routes>
-            </Suspense>
           </main>
           <Footer />
     </div>

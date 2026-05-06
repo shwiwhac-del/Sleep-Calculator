@@ -22,6 +22,16 @@ const faqs: FAQ[] = [
     question: "How long does it take to fall asleep?",
     answer: "On average, it takes a healthy adult between 10 to 20 minutes to fall asleep. Our sleep calculator automatically adds 15 minutes to all bedtime equations to account for this transition.",
     color: "#10b981"
+  },
+  {
+    question: "What time should I go to bed if I want to wake up at 7 AM?",
+    answer: "To wake up refreshed at 7:00 AM, you should aim to fall asleep at 10:00 PM (for 9 hours), 11:30 PM (for 7.5 hours), or 1:00 AM (for 6 hours) to complete full 90-minute sleep cycles. Remember to add about 15 minutes to fall asleep, so get into bed at 9:45 PM, 11:15 PM, or 12:45 AM.",
+    color: "#f43f5e"
+  },
+  {
+    question: "Does age affect my sleeping cycle?",
+    answer: "Yes! While the 90-minute sleep cycle remains fairly constant throughout adulthood, overall sleep needs change. Newborns need up to 17 hours, teens need 8-10 hours, and most adults need 7-9 hours. Older adults often experience lighter sleep and earlier wake times.",
+    color: "#8b5cf6"
   }
 ];
 

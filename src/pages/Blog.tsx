@@ -57,6 +57,18 @@ export default function Blog() {
       description: "From waking up refreshed to stopping morning grogginess, discover the life-changing benefits of utilizing a sleep calculator daily.",
       url: "/blog/sleep-calculator-benefits",
       topic: "Productivity",
+    },
+    {
+      title: "How to Fix Your Sleep Schedule",
+      description: "Learn scientifically-proven methods to reset your circadian rhythm and fix your sleep schedule fast.",
+      url: "/blog/fix-sleep-schedule",
+      topic: "Sleep Habits",
+    },
+    {
+      title: "How Blue Light from Screens Steals Your Sleep",
+      description: "Learn the science behind blue light, how it tricks your brain into thinking it's daytime, and actionable steps to protect your sleep quality.",
+      url: "/blog/blue-light-sleep",
+      topic: "Health",
     }
   ];
 
@@ -64,7 +76,7 @@ export default function Blog() {
     <div className="w-full max-w-4xl mx-auto px-4 sm:px-6">
       <Helmet>
         <title>Sleep Blog & Resources | Sleep Calculator</title>
-        <meta name="description" content="Read our latest guides on the best time to sleep, understanding sleep cycles, and how to stop feeling tired throughout the day." />
+        <meta name="description" content="Explore our sleep blog for expert resources on 90-minute sleep cycles, finding your perfect bedtime, fixing your sleep schedule, and waking up refreshed." />
         {typeof window !== 'undefined' && <link rel="canonical" href="https://sleepcalculater.online/blog" />}
       </Helmet>
 

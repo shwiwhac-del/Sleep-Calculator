@@ -366,10 +366,26 @@ export default function Home() {
         </div>
       </div>
 
+      {/* SEO Optimized Content Block with Interlinks */}
+      <div className="w-full max-w-4xl mx-auto pb-12 px-4 sm:px-6">
+        <div className="prose dark:prose-invert prose-sm sm:prose-base text-gray-600 dark:text-gray-300 mx-auto">
+          <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-4 font-serif">Why Use Our Free Sleep Calculator?</h2>
+          <p className="mb-4">
+            Understanding your body's natural <Link to="/blog/sleep-cycle" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">90-minute sleep cycle</Link> is the key to waking up feeling energized. By timing your alarms to sync with the end of a REM cycle, you avoid sleep inertia and start your day without grogginess.
+          </p>
+          <p className="mb-4">
+            Whether you are struggling with a disrupted internal clock and need to <Link to="/blog/fix-sleep-schedule" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">fix your sleep schedule</Link>, or wondering about the <Link to="/article/best-sleep-time" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">best time to sleep</Link>, our tool provides precise calculations. We take into account the 15 minutes it usually takes to fall asleep. If you only have time for a quick rest during the day, check out our guide on <Link to="/article/power-nap" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">how long a power nap should be</Link>.
+          </p>
+          <p className="mb-4">
+            Age also plays a massive role in your rest requirements. Learn more about <Link to="/blog/sleep-age" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">how much sleep you need by age</Link>, and why you might still <Link to="/blog/tired" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">feel tired after 8 hours of sleep</Link>. Keep your screen exposure in check to prevent <Link to="/blog/blue-light-sleep" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">blue light from disrupting your circadian rhythm</Link>.
+          </p>
+        </div>
+      </div>
+
       {/* FAQ Section */}
       <div className="w-full max-w-4xl mx-auto pb-8 px-4 sm:px-6">
         <section className="bg-white dark:bg-[#1A1A1A] border border-gray-100 dark:border-[#222] shadow-sm rounded-3xl p-6 sm:p-8">
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-6 font-serif text-center">Frequently Asked Questions</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-6 font-serif text-center">FAQs</h2>
           <FAQAccordion />
         </section>
       </div>

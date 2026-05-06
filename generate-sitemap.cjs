@@ -18,7 +18,9 @@ const routes = [
   '/blog/tired',
   '/blog/sleep-age',
   '/blog/sleep-cycle',
-  '/blog/sleep-calculator-benefits'
+  '/blog/sleep-calculator-benefits',
+  '/blog/fix-sleep-schedule',
+  '/blog/blue-light-sleep'
 ];
 
 const xml = `<?xml version="1.0" encoding="UTF-8"?>
