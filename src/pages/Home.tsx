@@ -212,7 +212,7 @@ export default function Home() {
               role="radio"
               aria-checked={mode === 'wake'}
               onClick={() => { setMode('wake'); modeRef.current = 'wake'; setResults([]); }}
-              className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-sm font-semibold transition-all duration-300 ${
+              className={`flex-1 flex items-center justify-center gap-1.5 sm:gap-2 py-2.5 px-2 sm:px-4 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-300 ${
                 mode === 'wake'
                   ? 'bg-white dark:bg-[#111] text-gray-900 dark:text-white shadow-sm border border-gray-200 dark:border-[#333]/60'
                   : 'text-gray-500 dark:text-gray-400 hover:text-gray-700 border border-transparent'
@@ -224,7 +224,7 @@ export default function Home() {
               role="radio"
               aria-checked={mode === 'bed'}
               onClick={() => { setMode('bed'); modeRef.current = 'bed'; setResults([]); }}
-              className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-sm font-semibold transition-all duration-300 ${
+              className={`flex-1 flex items-center justify-center gap-1.5 sm:gap-2 py-2.5 px-2 sm:px-4 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-300 ${
                 mode === 'bed'
                   ? 'bg-white dark:bg-[#111] text-gray-900 dark:text-white shadow-sm border border-gray-200 dark:border-[#333]/60'
                   : 'text-gray-500 dark:text-gray-400 hover:text-gray-700 border border-transparent'

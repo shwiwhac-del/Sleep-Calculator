@@ -69,7 +69,7 @@ export function FAQAccordion() {
           >
             <button
               onClick={() => toggleFAQ(index)}
-              className="w-full text-left px-6 py-5 flex items-center justify-between focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB]/50 group transition-colors"
+              className="w-full text-left px-4 sm:px-6 py-4 sm:py-5 flex items-center justify-between focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB]/50 group transition-colors"
               aria-expanded={isOpen}
             >
               <h3 className={`text-lg sm:text-xl font-semibold pr-4 font-serif transition-colors duration-300 ${isOpen ? 'text-[#2563EB]' : 'text-gray-900 dark:text-white group-hover:text-[#2563EB] dark:group-hover:text-[#2563EB]'}`}>
@@ -86,7 +86,7 @@ export function FAQAccordion() {
               className={`grid transition-[grid-template-rows,opacity] duration-300 ease-in-out ${isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}
             >
               <div className="overflow-hidden">
-                <div className="px-6 pb-6 text-gray-600 dark:text-gray-300 leading-relaxed text-sm sm:text-base">
+                <div className="px-4 sm:px-6 pb-4 sm:pb-6 text-gray-600 dark:text-gray-300 leading-relaxed text-sm sm:text-base">
                   {faq.answer}
                 </div>
               </div>

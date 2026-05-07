@@ -50,6 +50,17 @@ function Header({ isDarkMode, toggleDarkMode }: { isDarkMode: boolean, toggleDar
     setIsMenuOpen(false);
   }, [location.pathname]);
 
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMenuOpen]);
+
   return (
     <header className="w-full h-[70px] border-b border-gray-100 dark:border-[#222] bg-white/90 dark:bg-[#0B0B0B]/90 backdrop-blur-md z-50 sticky top-0 transition-colors">
       <div className="max-w-6xl mx-auto h-full flex items-center justify-between px-4 sm:px-6 md:px-8">
@@ -88,10 +99,12 @@ function Header({ isDarkMode, toggleDarkMode }: { isDarkMode: boolean, toggleDar
 
       {/* Mobile Navigation Dropdown */}
       {isMenuOpen && (
-        <div className="md:hidden absolute top-[70px] left-0 w-full bg-white dark:bg-[#111] border-b border-gray-100 dark:border-[#222] shadow-xl flex flex-col py-4 px-4 gap-2 z-50">
-          <Link to="/blog" className="text-gray-600 dark:text-gray-300 hover:text-[#2563EB] hover:bg-gray-50 dark:hover:bg-[#1A1A1A] font-medium text-base px-4 py-3 rounded-lg transition-colors" onClick={() => setIsMenuOpen(false)}>Blog</Link>
-          <Link to="/about" className="text-gray-600 dark:text-gray-300 hover:text-[#2563EB] hover:bg-gray-50 dark:hover:bg-[#1A1A1A] font-medium text-base px-4 py-3 rounded-lg transition-colors" onClick={() => setIsMenuOpen(false)}>About</Link>
-          <Link to="/contact" className="text-gray-600 dark:text-gray-300 hover:text-[#2563EB] hover:bg-gray-50 dark:hover:bg-[#1A1A1A] font-medium text-base px-4 py-3 rounded-lg transition-colors" onClick={() => setIsMenuOpen(false)}>Contact</Link>
+        <div className="md:hidden fixed top-[70px] left-0 w-full h-[calc(100vh-70px)] bg-white/95 dark:bg-[#0B0B0B]/95 backdrop-blur-md flex flex-col pt-8 px-6 gap-4 z-40 overflow-y-auto">
+          <div className="flex flex-col space-y-2">
+            <Link to="/blog" className="text-gray-900 dark:text-white hover:text-[#2563EB] dark:hover:text-[#2563EB] font-semibold text-2xl py-3 border-b border-gray-100 dark:border-[#222] transition-colors" onClick={() => setIsMenuOpen(false)}>Blog</Link>
+            <Link to="/about" className="text-gray-900 dark:text-white hover:text-[#2563EB] dark:hover:text-[#2563EB] font-semibold text-2xl py-3 border-b border-gray-100 dark:border-[#222] transition-colors" onClick={() => setIsMenuOpen(false)}>About</Link>
+            <Link to="/contact" className="text-gray-900 dark:text-white hover:text-[#2563EB] dark:hover:text-[#2563EB] font-semibold text-2xl py-3 border-b border-gray-100 dark:border-[#222] transition-colors" onClick={() => setIsMenuOpen(false)}>Contact</Link>
+          </div>
         </div>
       )}
     </header>
