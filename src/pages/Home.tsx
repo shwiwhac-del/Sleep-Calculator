@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Info, BookOpen, MessageSquare } from 'lucide-react';
+import { MessageSquare } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { FAQAccordion } from '../components/FAQAccordion';
@@ -388,7 +388,7 @@ export default function Home() {
           <div className="bg-white dark:bg-[#111] border border-gray-100 dark:border-[#222] rounded-xl p-5 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col items-start h-full">
             <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2 font-serif">Deep Sleep Fixer</h3>
             <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-5 flex-grow">Waking up in deep sleep is the #1 cause of morning grogginess. Fix it today.</p>
-            <Link to="/guide/fix-your-sleep" className="bg-[#F8FAFC] dark:bg-[#1A1A1A] text-[#2563EB] hover:bg-[#2563EB] hover:text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors duration-300 w-full text-center shadow-sm">
+            <Link to="/blog/tired" className="bg-[#F8FAFC] dark:bg-[#1A1A1A] text-[#2563EB] hover:bg-[#2563EB] hover:text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors duration-300 w-full text-center shadow-sm">
               Use Guide
             </Link>
           </div>

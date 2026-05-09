@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, MouseEvent } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link, useNavigate } from 'react-router-dom';
 import { ChevronLeft, ArrowRight } from 'lucide-react';
@@ -31,7 +31,7 @@ export function ArticleLayout({
 }: ArticleLayoutProps) {
   const navigate = useNavigate();
 
-  const handleBack = (e: React.MouseEvent) => {
+  const handleBack = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     if (backUrl !== "/") {
       navigate(backUrl || '/blog');

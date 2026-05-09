@@ -12,8 +12,6 @@ const Contact = lazy(() => import('./pages/Contact'));
 const About = lazy(() => import('./pages/About'));
 
 // Home Guides
-const GuideWhatIsASleepCalculator = lazy(() => import('./pages/GuideWhatIsASleepCalculator'));
-const GuideWhyYouFeelTired = lazy(() => import('./pages/GuideWhyYouFeelTired'));
 
 const BestTimeToSleep = lazy(() => import('./pages/BestTimeToSleep'));
 const SleepCycleGuide = lazy(() => import('./pages/SleepCycleGuide'));
@@ -166,8 +164,6 @@ function AppContent() {
                 <Route path="/contact" element={<Contact />} />
 
                 {/* Main Tool Guides / Standalone pages */}
-                <Route path="/guide/sleep-calculator" element={<GuideWhatIsASleepCalculator />} />
-                <Route path="/guide/fix-your-sleep" element={<GuideWhyYouFeelTired />} />
 
                 {/* Separated Articles (No longer in blog) */}
                 <Route path="/article/best-sleep-time" element={<BestTimeToSleep />} />

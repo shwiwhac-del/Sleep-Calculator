@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { ArrowLeft, Clock, Moon, Sun, Brain, Battery, Zap } from 'lucide-react';
+import { ArrowLeft, Moon, Brain, Battery, Zap } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 
 export default function BestSleepCalculatorGuide() {
