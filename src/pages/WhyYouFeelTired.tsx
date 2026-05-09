@@ -5,6 +5,7 @@ export default function WhyYouFeelTired() {
   return (
     <ArticleLayout
       title="Why You Feel Tired Even After 8 Hours of Sleep"
+      keywords="sleep calculator guide, better sleep, sleep cycle, REM sleep"
       description="Constantly exhausted despite getting enough sleep? Discover the hidden causes of daily fatigue, from sleep inertia to poor sleep hygiene."
       readingTime="5"
       date="May 22, 2024"

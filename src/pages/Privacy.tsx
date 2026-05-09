@@ -18,6 +18,7 @@ export default function Privacy() {
       <Helmet>
         <title>Privacy Policy | Sleep Calculator</title>
         <meta name="description" content="Review the Privacy Policy for Sleep Calculator. We believe in complete anonymity and do not track or store your personal sleep data." />
+        <meta name="keywords" content="privacy policy, data privacy, sleep calculator privacy" />
         {typeof window !== 'undefined' && <link rel="canonical" href="https://sleepcalculater.online/privacy" />}
       </Helmet>
       

@@ -7,6 +7,7 @@ import { FAQAccordion } from './FAQAccordion';
 interface ArticleLayoutProps {
   title: string;
   description: string;
+  keywords?: string;
   children: ReactNode;
   readingTime?: string;
   date?: string;
@@ -19,6 +20,7 @@ interface ArticleLayoutProps {
 export function ArticleLayout({ 
   title, 
   description, 
+  keywords,
   children, 
   readingTime = "4", 
   date = "June 1, 2024", 
@@ -47,6 +49,7 @@ export function ArticleLayout({
       <Helmet>
         <title>{title} | Sleep Calculator</title>
         <meta name="description" content={description} />
+        {keywords && <meta name="keywords" content={keywords} />}
         {typeof window !== 'undefined' && (
           <link rel="canonical" href={`https://sleepcalculater.online${window.location.pathname}`} />
         )}

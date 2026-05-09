@@ -5,6 +5,7 @@ export default function HowSleepCycleWorks() {
   return (
     <ArticleLayout
       title="90-Minute Sleep Cycles Explained"
+      keywords="sleep calculator guide, better sleep, sleep cycle, REM sleep"
       description="Understand the 90-minute phases of sleep, deep sleep, and REM, and why waking up mid-cycle makes you groggy."
       readingTime="4"
       date="June 5, 2024"

@@ -5,6 +5,7 @@ export default function WhatIsASleepCalculator() {
   return (
     <ArticleLayout
       title="What is a Sleep Calculator? (And How It Fixes Your Mornings)"
+      keywords="sleep calculator guide, better sleep, sleep cycle, REM sleep"
       description="A sleep calculator is a free digital tool designed to help you figure out the absolute best time to sleep and wake up using the science of sleep cycles."
       readingTime="4"
       date="June 1, 2024"

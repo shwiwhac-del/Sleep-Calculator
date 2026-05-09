@@ -5,6 +5,7 @@ export default function SleepCycleGuide() {
   return (
     <ArticleLayout
       title="The Ultimate Sleep Cycle Guide: What Happens When You Sleep?"
+      keywords="sleep calculator guide, better sleep, sleep cycle, REM sleep"
       description="Learn about the 4 stages of sleep, REM, deep sleep, and how the 90-minute sleep cycle works. Stop waking up tired by mastering your biology."
       readingTime="5"
       date="May 14, 2024"

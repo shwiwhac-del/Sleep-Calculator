@@ -1,30 +1,30 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, Navigate, useLocation } from 'react-router-dom';
-import { Moon, Sun, Menu, X } from 'lucide-react';
+import { Moon, Sun, Menu, X, Loader2 } from 'lucide-react';
 import { HelmetProvider } from 'react-helmet-async';
 import ScrollToTop from './components/ScrollToTop';
 import Home from './pages/Home';
 
-import Terms from './pages/Terms';
-import Privacy from './pages/Privacy';
-import Blog from './pages/Blog';
-import Contact from './pages/Contact';
-import About from './pages/About';
+const Terms = lazy(() => import('./pages/Terms'));
+const Privacy = lazy(() => import('./pages/Privacy'));
+const Blog = lazy(() => import('./pages/Blog'));
+const Contact = lazy(() => import('./pages/Contact'));
+const About = lazy(() => import('./pages/About'));
 
 // Home Guides
-import GuideWhatIsASleepCalculator from './pages/GuideWhatIsASleepCalculator';
-import GuideWhyYouFeelTired from './pages/GuideWhyYouFeelTired';
+const GuideWhatIsASleepCalculator = lazy(() => import('./pages/GuideWhatIsASleepCalculator'));
+const GuideWhyYouFeelTired = lazy(() => import('./pages/GuideWhyYouFeelTired'));
 
-import BestTimeToSleep from './pages/BestTimeToSleep';
-import SleepCycleGuide from './pages/SleepCycleGuide';
-import SleepByAge from './pages/SleepByAge';
-import FixSleepSchedule from './pages/FixSleepSchedule';
-import BlueLightSleep from './pages/BlueLightSleep';
-import WhyYouFeelTired from './pages/WhyYouFeelTired';
-import PowerNapGuide from './pages/PowerNapGuide';
-import WhatIsASleepCalculator from './pages/WhatIsASleepCalculator';
-import HowSleepCycleWorks from './pages/HowSleepCycleWorks';
-import BenefitsOfSleepCalculator from './pages/BenefitsOfSleepCalculator';
+const BestTimeToSleep = lazy(() => import('./pages/BestTimeToSleep'));
+const SleepCycleGuide = lazy(() => import('./pages/SleepCycleGuide'));
+const SleepByAge = lazy(() => import('./pages/SleepByAge'));
+const FixSleepSchedule = lazy(() => import('./pages/FixSleepSchedule'));
+const BlueLightSleep = lazy(() => import('./pages/BlueLightSleep'));
+const WhyYouFeelTired = lazy(() => import('./pages/WhyYouFeelTired'));
+const PowerNapGuide = lazy(() => import('./pages/PowerNapGuide'));
+const WhatIsASleepCalculator = lazy(() => import('./pages/WhatIsASleepCalculator'));
+const HowSleepCycleWorks = lazy(() => import('./pages/HowSleepCycleWorks'));
+const BenefitsOfSleepCalculator = lazy(() => import('./pages/BenefitsOfSleepCalculator'));
 
 function Footer() {
   return (
@@ -148,6 +148,11 @@ function AppContent() {
     <div className="min-h-screen flex flex-col text-gray-900 dark:text-white font-sans relative overflow-x-hidden bg-white dark:bg-[#0B0B0B] transition-colors">
       <Header isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
       <main className="relative z-10 flex-grow flex flex-col items-center justify-start w-full py-6 sm:py-10">
+            <Suspense fallback={
+              <div className="flex justify-center items-center h-[50vh] w-full">
+                <Loader2 className="w-8 h-8 text-[#2563EB] animate-spin" />
+              </div>
+            }>
               <Routes>
                 {/* Core Pages */}
                 <Route path="/" element={<Home />} />
@@ -206,6 +211,7 @@ function AppContent() {
                 {/* Catch-all 404 route */}
                 <Route path="*" element={<Navigate to="/" replace />} />
               </Routes>
+            </Suspense>
           </main>
           <Footer />
     </div>

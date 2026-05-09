@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { ArrowLeft, Send, CheckCircle } from 'lucide-react';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from '../lib/firebase';
+import { handleFirestoreError, OperationType } from '../lib/firestore-error';
 
 export default function Contact() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
@@ -36,10 +37,14 @@ export default function Contact() {
       setFormData({ name: '', email: '', message: '' });
       
       setTimeout(() => setIsSuccess(false), 5000);
-    } catch (err) {
+    } catch (err: any) {
       console.error(err);
-      setError('An error occurred while sending your message. Please try again later.');
       setIsSubmitting(false);
+      if (err?.message?.includes('Missing or insufficient permissions') || err?.code === 'permission-denied') {
+        handleFirestoreError(err, OperationType.CREATE, 'contacts');
+      } else {
+        setError('An error occurred while sending your message. Please try again later.');
+      }
     }
   };
 
@@ -55,6 +60,7 @@ export default function Contact() {
       <Helmet>
         <title>Contact Us | Sleep Calculator</title>
         <meta name="description" content="Get in touch with the Sleep Calculator team. We are here to help you sleep better." />
+        <meta name="keywords" content="contact sleep calculator, support, feedback, get in touch" />
         {typeof window !== 'undefined' && <link rel="canonical" href="https://sleepcalculater.online/contact" />}
       </Helmet>
 

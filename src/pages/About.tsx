@@ -18,6 +18,7 @@ export default function About() {
       <Helmet>
         <title>About Us | Sleep Calculator</title>
         <meta name="description" content="Learn about Sleep Calculator, our mission to help you wake up refreshed, and why we built this free tool for better sleep health." />
+        <meta name="keywords" content="about sleep calculator, sleep cycle tool, mission, sleep health" />
         {typeof window !== 'undefined' && <link rel="canonical" href="https://sleepcalculater.online/about" />}
       </Helmet>
       

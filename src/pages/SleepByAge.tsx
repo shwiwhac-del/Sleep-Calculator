@@ -5,6 +5,7 @@ export default function SleepByAge() {
   return (
     <ArticleLayout
       title="How Much Sleep Do You Need? A Sleep by Age Guide"
+      keywords="sleep calculator guide, better sleep, sleep cycle, REM sleep"
       description="Find out exactly how many hours of sleep you need based on your age. From newborns to seniors, learn how sleep requirements change over time."
       readingTime="4"
       date="May 18, 2024"

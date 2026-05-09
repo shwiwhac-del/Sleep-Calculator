@@ -5,6 +5,7 @@ export default function BenefitsOfSleepCalculator() {
   return (
     <ArticleLayout
       title="Benefits of Using a Sleep Calculator"
+      keywords="sleep calculator guide, better sleep, sleep cycle, REM sleep"
       description="From waking up refreshed to stopping morning grogginess, discover the life-changing benefits of utilizing a sleep calculator daily."
       readingTime="3"
       date="June 8, 2024"

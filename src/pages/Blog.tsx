@@ -77,6 +77,7 @@ export default function Blog() {
       <Helmet>
         <title>Sleep Blog & Resources | Sleep Calculator</title>
         <meta name="description" content="Explore our sleep blog for expert resources on 90-minute sleep cycles, finding your perfect bedtime, fixing your sleep schedule, and waking up refreshed." />
+        <meta name="keywords" content="sleep blog, sleep tips, sleep cycle, circadian rhythm, better sleep" />
         {typeof window !== 'undefined' && <link rel="canonical" href="https://sleepcalculater.online/blog" />}
       </Helmet>
 

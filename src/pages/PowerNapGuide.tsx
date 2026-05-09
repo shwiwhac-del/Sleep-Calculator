@@ -7,6 +7,7 @@ export default function PowerNapGuide() {
       backUrl="/"
       backLabel="Back to Home"
       title="The Ultimate Power Nap Guide: How to Sleep During the Day"
+      keywords="sleep calculator guide, better sleep, sleep cycle, REM sleep"
       description="Stop waking up from naps feeling worse. Learn the optimal power nap lengths, from the 20-minute energy boost to the full 90-minute cycle."
       readingTime="5"
       date="May 26, 2024"

@@ -7,6 +7,7 @@ export default function BestTimeToSleep() {
       backUrl="/"
       backLabel="Back to Home"
       title="The Best Time to Sleep: Finding Your Perfect Bedtime"
+      keywords="sleep calculator guide, better sleep, sleep cycle, REM sleep"
       description="Discover the absolute best time to sleep and wake up based on biology and 90-minute sleep cycles. Learn how a sleep calculator can fix your routine."
       readingTime="4"
       date="May 12, 2024"

@@ -1,9 +1,10 @@
 import { useState, useEffect, useRef } from 'react';
-import { Info, BookOpen } from 'lucide-react';
+import { Info, BookOpen, MessageSquare } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { FAQAccordion } from '../components/FAQAccordion';
 import TimePicker from '../components/TimePicker';
+import { FeedbackModal } from '../components/FeedbackModal';
 
 export default function Home() {
   const AGE_GROUPS = [
@@ -14,6 +15,12 @@ export default function Home() {
     { id: '41-60', label: '41–60 years', minCycles: 5, maxCycles: 6 },
     { id: '60+', label: '60+ years', minCycles: 4, maxCycles: 5 }
   ];
+
+  const [isFeedbackModalOpen, setIsFeedbackModalOpen] = useState(false);
+
+  const [rememberPreferences, setRememberPreferences] = useState<boolean>(() => {
+    return localStorage.getItem('aurasleep_remember') === 'true';
+  });
 
   const [mode, setMode] = useState<'wake' | 'bed'>(() => {
     return (localStorage.getItem('aurasleep_mode') as 'wake' | 'bed') || 'wake';
@@ -55,10 +62,18 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    localStorage.setItem('aurasleep_mode', mode);
-    localStorage.setItem('aurasleep_time', time);
-    localStorage.setItem('aurasleep_age', ageGroup);
-  }, [mode, time, ageGroup]);
+    if (rememberPreferences) {
+      localStorage.setItem('aurasleep_mode', mode);
+      localStorage.setItem('aurasleep_time', time);
+      localStorage.setItem('aurasleep_age', ageGroup);
+      localStorage.setItem('aurasleep_remember', 'true');
+    } else {
+      localStorage.removeItem('aurasleep_mode');
+      localStorage.removeItem('aurasleep_time');
+      localStorage.removeItem('aurasleep_age');
+      localStorage.setItem('aurasleep_remember', 'false');
+    }
+  }, [mode, time, ageGroup, rememberPreferences]);
 
   const timeToDate = (timeStr: string, currentMode: 'wake' | 'bed' = mode) => {
     const [hours, minutes] = timeStr.split(':').map(Number);
@@ -163,6 +178,7 @@ export default function Home() {
         <Helmet>
           <title>Sleep Calculator: Find the Best Time to Sleep and Wake Up</title>
           <meta name="description" content="Use our free sleep calculator to find the best time to sleep, wake up refreshed, and understand your 90-minute sleep cycles." />
+          <meta name="keywords" content="sleep calculator, sleep cycle calculator, wake up time, bedtime calculator, REM sleep, 90 minute sleep cycle" />
           {typeof window !== 'undefined' && <link rel="canonical" href="https://sleepcalculater.online/" />}
           <script type="application/ld+json">
             {JSON.stringify({
@@ -261,6 +277,19 @@ export default function Home() {
                   {g.label}
                 </button>
               ))}
+            </div>
+            
+            <div className="mt-6 flex items-center justify-center gap-2">
+              <label className="relative inline-flex flex-row items-center cursor-pointer">
+                <input 
+                  type="checkbox" 
+                  className="sr-only peer"
+                  checked={rememberPreferences}
+                  onChange={(e) => setRememberPreferences(e.target.checked)}
+                />
+                <div className="relative w-9 h-5 bg-gray-200 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-[#2563EB]/20 dark:peer-focus:ring-[#2563EB]/30 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-[#2563EB]"></div>
+                <span className="ml-2 mt-0.5 text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-tight">Remember my preferences</span>
+              </label>
             </div>
           </div>
 
@@ -389,6 +418,21 @@ export default function Home() {
           <FAQAccordion />
         </section>
       </div>
+
+      {/* Floating Feedback Button */}
+      <button
+        onClick={() => setIsFeedbackModalOpen(true)}
+        className="fixed bottom-6 right-6 z-40 bg-[#2563EB] hover:bg-[#1D4ED8] text-white shadow-lg hover:shadow-xl transition-all duration-300 rounded-full py-3 px-5 flex items-center justify-center gap-2 font-semibold group focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#2563EB]/50"
+        aria-label="Send Feedback"
+      >
+        <MessageSquare size={20} className="group-hover:scale-110 transition-transform" />
+        <span className="hidden sm:inline">Feedback</span>
+      </button>
+
+      <FeedbackModal 
+        isOpen={isFeedbackModalOpen} 
+        onClose={() => setIsFeedbackModalOpen(false)} 
+      />
     </div>
   );
 }

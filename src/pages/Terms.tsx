@@ -18,6 +18,7 @@ export default function Terms() {
       <Helmet>
         <title>Terms of Service | Sleep Calculator</title>
         <meta name="description" content="Review the Terms of Service for Sleep Calculator. We provide free sleep cycle tools without any medical warranties." />
+        <meta name="keywords" content="terms of service, terms and conditions, sleep calculator terms" />
         {typeof window !== 'undefined' && <link rel="canonical" href="https://sleepcalculater.online/terms" />}
       </Helmet>
       
