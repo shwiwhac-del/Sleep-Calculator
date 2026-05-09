@@ -23,6 +23,7 @@ const BlueLightSleep = lazy(() => import('./pages/BlueLightSleep'));
 const WhyYouFeelTired = lazy(() => import('./pages/WhyYouFeelTired'));
 const PowerNapGuide = lazy(() => import('./pages/PowerNapGuide'));
 const WhatIsASleepCalculator = lazy(() => import('./pages/WhatIsASleepCalculator'));
+const BestSleepCalculatorGuide = lazy(() => import('./pages/BestSleepCalculatorGuide'));
 const HowSleepCycleWorks = lazy(() => import('./pages/HowSleepCycleWorks'));
 const BenefitsOfSleepCalculator = lazy(() => import('./pages/BenefitsOfSleepCalculator'));
 
@@ -173,6 +174,7 @@ function AppContent() {
                 <Route path="/article/power-nap" element={<PowerNapGuide />} />
 
                 {/* Blog Posts under proper /blog hierarchy */}
+                <Route path="/blog/best-sleep-calculator" element={<BestSleepCalculatorGuide />} />
                 <Route path="/blog/sleep-calculator" element={<WhatIsASleepCalculator />} />
                 <Route path="/blog/sleep-cycle-stages" element={<SleepCycleGuide />} />
                 <Route path="/blog/tired" element={<WhyYouFeelTired />} />

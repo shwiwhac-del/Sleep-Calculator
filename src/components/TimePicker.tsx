@@ -11,6 +11,7 @@ export default function TimePicker({ value, onChange, onEnter, mode }: TimePicke
   const [hour, setHour] = useState('07');
   const [minute, setMinute] = useState('00');
   const [ampm, setAmpm] = useState<'AM' | 'PM'>('AM');
+  const [focusedField, setFocusedField] = useState<'hour' | 'minute' | null>(null);
 
   useEffect(() => {
     if (value) {
@@ -66,42 +67,69 @@ export default function TimePicker({ value, onChange, onEnter, mode }: TimePicke
     updateParent(hour, finalMinute, ampm);
   };
 
-  const handleKeyDown = (e: React.KeyboardEvent) => {
+  const handleKeyDown = (e: React.KeyboardEvent, field: 'hour' | 'minute') => {
     if (e.key === 'Enter') {
       e.preventDefault();
       handleHourBlur();
       handleMinuteBlur();
       onEnter?.();
+    } else if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
+      e.preventDefault();
+      if (field === 'hour') {
+        let h = parseInt(hour, 10);
+        if (isNaN(h)) h = 12;
+        if (e.key === 'ArrowUp') {
+          h = h === 12 ? 1 : h + 1;
+        } else {
+          h = h === 1 ? 12 : h - 1;
+        }
+        const newHour = h.toString().padStart(2, '0');
+        setHour(newHour);
+        updateParent(newHour, minute, ampm);
+      } else {
+        let m = parseInt(minute, 10);
+        if (isNaN(m)) m = 0;
+        if (e.key === 'ArrowUp') {
+          m = m === 59 ? 0 : m + 1;
+        } else {
+          m = m === 0 ? 59 : m - 1;
+        }
+        const newMinute = m.toString().padStart(2, '0');
+        setMinute(newMinute);
+        updateParent(hour, newMinute, ampm);
+      }
     }
   };
 
   return (
     <div className="flex flex-col items-center gap-4 select-none w-full max-w-[400px] mx-auto">
-      <div className="flex items-center justify-center gap-2 sm:gap-4 w-full">
+      <div className={`flex items-center justify-center gap-2 sm:gap-4 w-full p-2 sm:p-4 rounded-[2.5rem] transition-all duration-300 ${focusedField ? 'ring-4 ring-[#2563EB]/20 bg-[#2563EB]/5 block-outline' : ''}`}>
         {/* Time Inputs */}
-        <div className="flex items-center gap-1 sm:gap-2 bg-gray-50 dark:bg-[#1A1A1A] border border-gray-200 dark:border-[#333] rounded-3xl p-4 sm:p-5 shadow-inner relative overflow-hidden">
+        <div className={`flex items-center gap-1 sm:gap-2 bg-gray-50 dark:bg-[#1A1A1A] border ${focusedField ? 'border-[#2563EB]/30' : 'border-gray-200 dark:border-[#333]'} rounded-3xl p-4 sm:p-5 shadow-inner relative overflow-hidden transition-colors duration-300`}>
           <input
             type="text"
             inputMode="numeric"
             value={hour}
             onChange={handleHourChange}
-            onBlur={handleHourBlur}
-            onKeyDown={handleKeyDown}
+            onFocus={() => setFocusedField('hour')}
+            onBlur={() => { setFocusedField(null); handleHourBlur(); }}
+            onKeyDown={(e) => handleKeyDown(e, 'hour')}
             aria-label={`Hour for ${mode === 'wake' ? 'wake up' : 'bed'} time`}
-            className="w-[70px] sm:w-[90px] bg-transparent text-center text-5xl sm:text-[64px] tracking-tight font-bold text-gray-900 dark:text-white focus:outline-none focus:text-[#2563EB] transition-colors placeholder:text-gray-300 select-all relative z-10"
+            className={`w-[70px] sm:w-[90px] bg-transparent text-center text-5xl sm:text-[64px] tracking-tight font-bold text-gray-900 dark:text-white focus:outline-none transition-colors placeholder:text-gray-300 select-all relative z-10 rounded-xl ${focusedField === 'hour' ? 'text-[#2563EB]' : ''}`}
             placeholder="12"
             onClick={(e) => (e.target as HTMLInputElement).select()}
           />
-          <span className="text-4xl sm:text-5xl font-bold text-gray-300 pb-2 sm:pb-3 animate-pulse relative z-10">:</span>
+          <span className={`text-4xl sm:text-5xl font-bold pb-2 sm:pb-3 animate-pulse relative z-10 transition-colors ${focusedField ? 'text-[#2563EB]/50' : 'text-gray-300'}`}>:</span>
           <input
             type="text"
             inputMode="numeric"
             value={minute}
             onChange={handleMinuteChange}
-            onBlur={handleMinuteBlur}
-            onKeyDown={handleKeyDown}
+            onFocus={() => setFocusedField('minute')}
+            onBlur={() => { setFocusedField(null); handleMinuteBlur(); }}
+            onKeyDown={(e) => handleKeyDown(e, 'minute')}
             aria-label={`Minute for ${mode === 'wake' ? 'wake up' : 'bed'} time`}
-            className="w-[70px] sm:w-[90px] bg-transparent text-center text-5xl sm:text-[64px] tracking-tight font-bold text-gray-900 dark:text-white focus:outline-none focus:text-[#2563EB] transition-colors placeholder:text-gray-300 select-all relative z-10"
+            className={`w-[70px] sm:w-[90px] bg-transparent text-center text-5xl sm:text-[64px] tracking-tight font-bold text-gray-900 dark:text-white focus:outline-none transition-colors placeholder:text-gray-300 select-all relative z-10 rounded-xl ${focusedField === 'minute' ? 'text-[#2563EB]' : ''}`}
             placeholder="00"
             onClick={(e) => (e.target as HTMLInputElement).select()}
           />
