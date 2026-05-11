@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Link, Navigate, useLocation } f
 import { Moon, Sun, Menu, X, Loader2 } from 'lucide-react';
 import { HelmetProvider } from 'react-helmet-async';
 import ScrollToTop from './components/ScrollToTop';
+
 import Home from './pages/Home';
 
 const Terms = lazy(() => import('./pages/Terms'));

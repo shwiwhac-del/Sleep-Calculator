@@ -1,10 +1,11 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, Suspense, lazy } from 'react';
 import { MessageSquare } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { FAQAccordion } from '../components/FAQAccordion';
 import TimePicker from '../components/TimePicker';
-import { FeedbackModal } from '../components/FeedbackModal';
+
+const FeedbackModal = lazy(() => import('../components/FeedbackModal').then(module => ({ default: module.FeedbackModal })));
 
 export default function Home() {
   const AGE_GROUPS = [
@@ -268,7 +269,7 @@ export default function Home() {
                 <button
                   key={g.id}
                   onClick={() => { setAgeGroup(g.id); setResults([]); }}
-                  className={`py-1.5 px-3 sm:py-2 sm:px-4 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 ${
+                  className={`py-2 px-3 sm:py-2 sm:px-4 rounded-full text-sm font-medium transition-all duration-300 min-h-[40px] flex items-center justify-center ${
                     ageGroup === g.id
                       ? 'bg-[#2563EB] text-white shadow-md'
                       : 'bg-gray-50 dark:bg-[#1A1A1A] border border-gray-200 dark:border-[#333] text-gray-600 dark:text-gray-300 hover:bg-gray-100 hover:text-gray-900 dark:text-white'
@@ -322,21 +323,27 @@ export default function Home() {
                 return (
                   <div 
                     key={index}
-                    className={`flex flex-row items-center justify-between p-3 sm:p-4 rounded-xl border transition-all duration-300 hover:shadow-md ${
-                      recommended ? 'bg-[#2563EB]/5 border-[#2563EB]/20 shadow-sm' : 'bg-white dark:bg-[#1A1A1A] border-gray-200 dark:border-[#333] shadow-sm hover:border-gray-300 dark:hover:border-[#444]'
+                    className={`flex flex-row items-center justify-between p-4 sm:p-5 rounded-2xl border transition-all duration-300 hover:shadow-md ${
+                      recommended 
+                        ? 'bg-gradient-to-br from-[#2563EB]/5 to-[#4F46E5]/10 border-[#2563EB]/30 shadow-md ring-1 ring-[#2563EB]/10 scale-[1.02] transform my-1' 
+                        : 'bg-white dark:bg-[#1A1A1A] border-gray-200 dark:border-[#333] shadow-sm opacity-90'
                     }`}
                   >
                     <div className="flex flex-col">
-                      <div className="flex items-center gap-2">
-                        <span className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white tracking-tight">{formatTime(res.date, true)}</span>
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className={`${recommended ? 'text-4xl text-[#2563EB] dark:text-[#4F46E5] font-black' : 'text-xl sm:text-2xl text-gray-900 dark:text-gray-100 font-bold'} tracking-tight drop-shadow-sm`}>
+                          {formatTime(res.date, true)}
+                        </span>
                       </div>
-                      <div className="text-gray-500 dark:text-gray-400 text-xs sm:text-sm mt-1 font-medium">
-                        {res.cycles} cycles &bull; {res.cycles * 1.5} hours
+                      <div className={`font-medium tracking-tight flex items-center gap-1.5 ${recommended ? 'text-[#2563EB]/80 dark:text-[#4F46E5]/80 text-sm sm:text-base' : 'text-gray-500 dark:text-gray-400 text-xs sm:text-sm'}`}>
+                        <span>{res.cycles} cycles</span>
+                        <span className="opacity-50">&bull;</span>
+                        <span>{res.cycles * 1.5} hours</span>
                       </div>
                     </div>
                     {recommended && (
-                      <div className="text-[10px] sm:text-xs font-bold uppercase tracking-wide text-[#2563EB] bg-[#2563EB]/10 px-3 py-1.5 rounded-full">
-                        Recommended
+                      <div className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-white bg-[#2563EB] shadow-sm px-3.5 py-1.5 rounded-full flex flex-col items-center">
+                        Best
                       </div>
                     )}
                   </div>
@@ -429,10 +436,14 @@ export default function Home() {
         <span className="hidden sm:inline">Feedback</span>
       </button>
 
-      <FeedbackModal 
-        isOpen={isFeedbackModalOpen} 
-        onClose={() => setIsFeedbackModalOpen(false)} 
-      />
+      <Suspense fallback={null}>
+        {isFeedbackModalOpen && (
+          <FeedbackModal 
+            isOpen={isFeedbackModalOpen} 
+            onClose={() => setIsFeedbackModalOpen(false)} 
+          />
+        )}
+      </Suspense>
     </div>
   );
 }
