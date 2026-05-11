@@ -1,11 +1,10 @@
-import { useState, useEffect, useRef, Suspense, lazy } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { MessageSquare } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { FAQAccordion } from '../components/FAQAccordion';
 import TimePicker from '../components/TimePicker';
-
-const FeedbackModal = lazy(() => import('../components/FeedbackModal').then(module => ({ default: module.FeedbackModal })));
+import { FeedbackModal } from '../components/FeedbackModal';
 
 export default function Home() {
   const AGE_GROUPS = [
@@ -269,7 +268,7 @@ export default function Home() {
                 <button
                   key={g.id}
                   onClick={() => { setAgeGroup(g.id); setResults([]); }}
-                  className={`py-2 px-3 sm:py-2 sm:px-4 rounded-full text-sm font-medium transition-all duration-300 min-h-[40px] flex items-center justify-center ${
+                  className={`py-1.5 px-3 sm:py-2 sm:px-4 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 ${
                     ageGroup === g.id
                       ? 'bg-[#2563EB] text-white shadow-md'
                       : 'bg-gray-50 dark:bg-[#1A1A1A] border border-gray-200 dark:border-[#333] text-gray-600 dark:text-gray-300 hover:bg-gray-100 hover:text-gray-900 dark:text-white'
@@ -323,27 +322,21 @@ export default function Home() {
                 return (
                   <div 
                     key={index}
-                    className={`flex flex-row items-center justify-between p-4 sm:p-5 rounded-2xl border transition-all duration-300 hover:shadow-md ${
-                      recommended 
-                        ? 'bg-gradient-to-br from-[#2563EB]/5 to-[#4F46E5]/10 border-[#2563EB]/30 shadow-md ring-1 ring-[#2563EB]/10 scale-[1.02] transform my-1' 
-                        : 'bg-white dark:bg-[#1A1A1A] border-gray-200 dark:border-[#333] shadow-sm opacity-90'
+                    className={`flex flex-row items-center justify-between p-3 sm:p-4 rounded-xl border transition-all duration-300 hover:shadow-md ${
+                      recommended ? 'bg-[#2563EB]/5 border-[#2563EB]/20 shadow-sm' : 'bg-white dark:bg-[#1A1A1A] border-gray-200 dark:border-[#333] shadow-sm hover:border-gray-300 dark:hover:border-[#444]'
                     }`}
                   >
                     <div className="flex flex-col">
-                      <div className="flex items-center gap-2 mb-1">
-                        <span className={`${recommended ? 'text-4xl text-[#2563EB] dark:text-[#4F46E5] font-black' : 'text-xl sm:text-2xl text-gray-900 dark:text-gray-100 font-bold'} tracking-tight drop-shadow-sm`}>
-                          {formatTime(res.date, true)}
-                        </span>
+                      <div className="flex items-center gap-2">
+                        <span className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white tracking-tight">{formatTime(res.date, true)}</span>
                       </div>
-                      <div className={`font-medium tracking-tight flex items-center gap-1.5 ${recommended ? 'text-[#2563EB]/80 dark:text-[#4F46E5]/80 text-sm sm:text-base' : 'text-gray-500 dark:text-gray-400 text-xs sm:text-sm'}`}>
-                        <span>{res.cycles} cycles</span>
-                        <span className="opacity-50">&bull;</span>
-                        <span>{res.cycles * 1.5} hours</span>
+                      <div className="text-gray-500 dark:text-gray-400 text-xs sm:text-sm mt-1 font-medium">
+                        {res.cycles} cycles &bull; {res.cycles * 1.5} hours
                       </div>
                     </div>
                     {recommended && (
-                      <div className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-white bg-[#2563EB] shadow-sm px-3.5 py-1.5 rounded-full flex flex-col items-center">
-                        Best
+                      <div className="text-[10px] sm:text-xs font-bold uppercase tracking-wide text-[#2563EB] bg-[#2563EB]/10 px-3 py-1.5 rounded-full">
+                        Recommended
                       </div>
                     )}
                   </div>
@@ -375,27 +368,27 @@ export default function Home() {
           <p className="text-gray-600 dark:text-gray-300 max-w-xl text-sm sm:text-base">Master your sleep with our collection of science-backed calculators and guides.</p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
-          <div className="bg-white dark:bg-[#111] border border-gray-100 dark:border-[#222] rounded-xl p-5 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col items-start h-full">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+          <div className="bg-white dark:bg-[#111] border border-gray-100 dark:border-[#222] rounded-xl p-5 sm:p-6 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col items-start h-full">
             <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2 font-serif">Best Time to Sleep</h3>
-            <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-5 flex-grow">Discover the optimal window for hitting the pillow according to sleep scientists.</p>
-            <Link to="/article/best-sleep-time" className="bg-[#F8FAFC] dark:bg-[#1A1A1A] text-[#2563EB] hover:bg-[#2563EB] hover:text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors duration-300 w-full text-center shadow-sm">
+            <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-6 flex-grow">Discover the optimal window for hitting the pillow according to sleep scientists.</p>
+            <Link to="/article/best-sleep-time" className="bg-[#F8FAFC] dark:bg-[#1A1A1A] text-[#2563EB] hover:bg-[#2563EB] hover:text-white px-4 py-2.5 rounded-lg text-sm font-semibold transition-colors duration-300 w-full text-center shadow-sm">
               Read Guide
             </Link>
           </div>
 
-          <div className="bg-white dark:bg-[#111] border border-gray-100 dark:border-[#222] rounded-xl p-5 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col items-start h-full">
+          <div className="bg-white dark:bg-[#111] border border-gray-100 dark:border-[#222] rounded-xl p-5 sm:p-6 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col items-start h-full">
             <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2 font-serif">Power Nap Calculator</h3>
-            <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-5 flex-grow">Learn the exact length a nap should be to wake up energized instead of groggy.</p>
-            <Link to="/article/power-nap" className="bg-[#F8FAFC] dark:bg-[#1A1A1A] text-[#2563EB] hover:bg-[#2563EB] hover:text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors duration-300 w-full text-center shadow-sm">
+            <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-6 flex-grow">Learn the exact length a nap should be to wake up energized instead of groggy.</p>
+            <Link to="/article/power-nap" className="bg-[#F8FAFC] dark:bg-[#1A1A1A] text-[#2563EB] hover:bg-[#2563EB] hover:text-white px-4 py-2.5 rounded-lg text-sm font-semibold transition-colors duration-300 w-full text-center shadow-sm">
               Read Guide
             </Link>
           </div>
 
-          <div className="bg-white dark:bg-[#111] border border-gray-100 dark:border-[#222] rounded-xl p-5 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col items-start h-full">
+          <div className="bg-white dark:bg-[#111] border border-gray-100 dark:border-[#222] rounded-xl p-5 sm:p-6 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col items-start h-full">
             <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2 font-serif">Deep Sleep Fixer</h3>
-            <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-5 flex-grow">Waking up in deep sleep is the #1 cause of morning grogginess. Fix it today.</p>
-            <Link to="/article/deep-sleep-fixer" className="bg-[#F8FAFC] dark:bg-[#1A1A1A] text-[#2563EB] hover:bg-[#2563EB] hover:text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors duration-300 w-full text-center shadow-sm">
+            <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-6 flex-grow">Waking up in deep sleep is the #1 cause of morning grogginess. Fix it today.</p>
+            <Link to="/article/deep-sleep-fixer" className="bg-[#F8FAFC] dark:bg-[#1A1A1A] text-[#2563EB] hover:bg-[#2563EB] hover:text-white px-4 py-2.5 rounded-lg text-sm font-semibold transition-colors duration-300 w-full text-center shadow-sm">
               Use Guide
             </Link>
           </div>
@@ -419,7 +412,7 @@ export default function Home() {
       </div>
 
       {/* FAQ Section */}
-      <div className="w-full max-w-4xl mx-auto pb-8 px-4 sm:px-6">
+      <div className="w-full max-w-4xl mx-auto pb-12 px-4 sm:px-6">
         <section className="bg-white dark:bg-[#1A1A1A] border border-gray-100 dark:border-[#222] shadow-sm rounded-3xl p-6 sm:p-8">
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-6 font-serif text-center">FAQs</h2>
           <FAQAccordion />
@@ -429,21 +422,17 @@ export default function Home() {
       {/* Floating Feedback Button */}
       <button
         onClick={() => setIsFeedbackModalOpen(true)}
-        className="fixed bottom-6 right-6 z-40 bg-[#2563EB] hover:bg-[#1D4ED8] text-white shadow-lg hover:shadow-xl transition-all duration-300 rounded-full py-3 px-5 flex items-center justify-center gap-2 font-semibold group focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#2563EB]/50"
+        className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 bg-[#2563EB] hover:bg-[#1D4ED8] text-white shadow-lg hover:shadow-xl transition-all duration-300 rounded-full py-3 px-4 sm:px-5 flex items-center justify-center gap-2 font-semibold group focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#2563EB]/50"
         aria-label="Send Feedback"
       >
         <MessageSquare size={20} className="group-hover:scale-110 transition-transform" />
         <span className="hidden sm:inline">Feedback</span>
       </button>
 
-      <Suspense fallback={null}>
-        {isFeedbackModalOpen && (
-          <FeedbackModal 
-            isOpen={isFeedbackModalOpen} 
-            onClose={() => setIsFeedbackModalOpen(false)} 
-          />
-        )}
-      </Suspense>
+      <FeedbackModal 
+        isOpen={isFeedbackModalOpen} 
+        onClose={() => setIsFeedbackModalOpen(false)} 
+      />
     </div>
   );
 }

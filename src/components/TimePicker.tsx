@@ -105,7 +105,7 @@ export default function TimePicker({ value, onChange, onEnter, mode }: TimePicke
     <div className="flex flex-col items-center gap-4 select-none w-full max-w-[400px] mx-auto">
       <div className={`flex items-center justify-center gap-2 sm:gap-4 w-full p-2 sm:p-4 rounded-[2.5rem] transition-all duration-300 ${focusedField ? 'ring-4 ring-[#2563EB]/20 bg-[#2563EB]/5 block-outline' : ''}`}>
         {/* Time Inputs */}
-        <div className={`flex items-center gap-1 sm:gap-2 bg-gray-50 dark:bg-[#1A1A1A] border ${focusedField ? 'border-[#2563EB]/30' : 'border-gray-200 dark:border-[#333]'} rounded-3xl p-4 sm:p-5 shadow-inner relative overflow-hidden transition-colors duration-300`}>
+        <div className={`flex items-center gap-2 sm:gap-3 bg-gray-50 dark:bg-[#1A1A1A] border ${focusedField ? 'border-[#2563EB]/30' : 'border-gray-200 dark:border-[#333]'} rounded-3xl p-5 sm:p-6 shadow-inner relative overflow-hidden transition-colors duration-300`}>
           <input
             type="text"
             inputMode="numeric"
@@ -115,11 +115,11 @@ export default function TimePicker({ value, onChange, onEnter, mode }: TimePicke
             onBlur={() => { setFocusedField(null); handleHourBlur(); }}
             onKeyDown={(e) => handleKeyDown(e, 'hour')}
             aria-label={`Hour for ${mode === 'wake' ? 'wake up' : 'bed'} time`}
-            className={`w-[70px] sm:w-[90px] bg-transparent text-center text-5xl sm:text-[64px] tracking-tight font-bold text-gray-900 dark:text-white focus:outline-none transition-colors placeholder:text-gray-300 select-all relative z-10 rounded-xl ${focusedField === 'hour' ? 'text-[#2563EB]' : ''}`}
+            className={`w-[76px] sm:w-[90px] bg-transparent text-center text-[56px] sm:text-[64px] tracking-tight font-bold text-gray-900 dark:text-white focus:outline-none transition-colors placeholder:text-gray-300 select-all relative z-10 rounded-xl ${focusedField === 'hour' ? 'text-[#2563EB]' : ''}`}
             placeholder="12"
             onClick={(e) => (e.target as HTMLInputElement).select()}
           />
-          <span className={`text-4xl sm:text-5xl font-bold pb-2 sm:pb-3 animate-pulse relative z-10 transition-colors ${focusedField ? 'text-[#2563EB]/50' : 'text-gray-300'}`}>:</span>
+          <span className={`text-[48px] sm:text-5xl font-bold pb-2 sm:pb-3 animate-pulse relative z-10 transition-colors ${focusedField ? 'text-[#2563EB]/50' : 'text-gray-300'}`}>:</span>
           <input
             type="text"
             inputMode="numeric"
@@ -129,7 +129,7 @@ export default function TimePicker({ value, onChange, onEnter, mode }: TimePicke
             onBlur={() => { setFocusedField(null); handleMinuteBlur(); }}
             onKeyDown={(e) => handleKeyDown(e, 'minute')}
             aria-label={`Minute for ${mode === 'wake' ? 'wake up' : 'bed'} time`}
-            className={`w-[70px] sm:w-[90px] bg-transparent text-center text-5xl sm:text-[64px] tracking-tight font-bold text-gray-900 dark:text-white focus:outline-none transition-colors placeholder:text-gray-300 select-all relative z-10 rounded-xl ${focusedField === 'minute' ? 'text-[#2563EB]' : ''}`}
+            className={`w-[76px] sm:w-[90px] bg-transparent text-center text-[56px] sm:text-[64px] tracking-tight font-bold text-gray-900 dark:text-white focus:outline-none transition-colors placeholder:text-gray-300 select-all relative z-10 rounded-xl ${focusedField === 'minute' ? 'text-[#2563EB]' : ''}`}
             placeholder="00"
             onClick={(e) => (e.target as HTMLInputElement).select()}
           />
@@ -143,7 +143,7 @@ export default function TimePicker({ value, onChange, onEnter, mode }: TimePicke
               updateParent(hour, minute, 'AM');
             }}
             aria-pressed={ampm === 'AM'}
-            className={`w-[50px] sm:w-[64px] h-[44px] sm:h-[50px] rounded-xl font-bold text-sm sm:text-base transition-all duration-300 flex items-center justify-center ${
+            className={`w-[56px] sm:w-[64px] h-[48px] sm:h-[50px] rounded-xl font-bold text-sm sm:text-base transition-all duration-300 flex items-center justify-center ${
               ampm === 'AM'
                 ? 'bg-[#2563EB] text-white shadow-md border border-transparent'
                 : 'bg-gray-50 dark:bg-[#1A1A1A] border border-gray-200 dark:border-[#333] text-gray-400 dark:text-gray-500 hover:bg-gray-100 hover:text-gray-600 dark:text-gray-300'
@@ -157,7 +157,7 @@ export default function TimePicker({ value, onChange, onEnter, mode }: TimePicke
               updateParent(hour, minute, 'PM');
             }}
             aria-pressed={ampm === 'PM'}
-            className={`w-[50px] sm:w-[64px] h-[44px] sm:h-[50px] rounded-xl font-bold text-sm sm:text-base transition-all duration-300 flex items-center justify-center ${
+            className={`w-[56px] sm:w-[64px] h-[48px] sm:h-[50px] rounded-xl font-bold text-sm sm:text-base transition-all duration-300 flex items-center justify-center ${
               ampm === 'PM'
                 ? 'bg-[#2563EB] text-white shadow-md border border-transparent'
                 : 'bg-gray-50 dark:bg-[#1A1A1A] border border-gray-200 dark:border-[#333] text-gray-400 dark:text-gray-500 hover:bg-gray-100 hover:text-gray-600 dark:text-gray-300'
