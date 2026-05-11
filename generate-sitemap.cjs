@@ -19,7 +19,10 @@ const routes = [
   '/blog/sleep-cycle',
   '/blog/sleep-calculator-benefits',
   '/blog/fix-sleep-schedule',
-  '/blog/blue-light-sleep'
+  '/blog/blue-light-sleep',
+  '/blog/sleep-cycle-calculator',
+  '/feature/smart-bedtime-calculator',
+  '/feature/power-nap-optimizer'
 ];
 
 const xml = `<?xml version="1.0" encoding="UTF-8"?>

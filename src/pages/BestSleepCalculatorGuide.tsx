@@ -15,7 +15,11 @@ export default function BestSleepCalculatorGuide() {
         <title>Best Sleep Calculator Online – Improve Your Sleep Schedule</title>
         <meta name="description" content="Find out how the best sleep calculator helps you calculate ideal bedtimes and wake-up times using sleep cycles." />
         <meta name="keywords" content="best sleep calculator, sleep cycle calculator, healthy rest, wake up refreshed" />
-        {typeof window !== 'undefined' && <link rel="canonical" href={`https://sleepcalculater.online/blog/best-sleep-calculator`} />}
+        <link rel="canonical" href="https://sleepcalculater.online/blog/best-sleep-calculator" />
+        <meta property="og:title" content="Best Sleep Calculator Online – Improve Your Sleep Schedule" />
+        <meta property="og:description" content="Find out how the best sleep calculator helps you calculate ideal bedtimes and wake-up times using sleep cycles." />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="https://sleepcalculater.online/blog/best-sleep-calculator" />
       </Helmet>
 
       <div className="mb-8">

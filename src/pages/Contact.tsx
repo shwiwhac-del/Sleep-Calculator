@@ -26,11 +26,25 @@ export default function Contact() {
     setIsSubmitting(true);
     setError(null);
     
+    // Client-side rate limiting check
+    const lastSubmitTime = localStorage.getItem('lastContactSubmission');
+    if (lastSubmitTime) {
+      const timeSinceLastSubmit = Date.now() - parseInt(lastSubmitTime, 10);
+      if (timeSinceLastSubmit < 60000) { // 1 minute
+        setError('Please wait a minute before sending another message.');
+        setIsSubmitting(false);
+        return;
+      }
+    }
+    
     try {
       await addDoc(collection(db, 'contacts'), {
         ...formData,
         createdAt: serverTimestamp(),
       });
+      
+      // Update last submission time
+      localStorage.setItem('lastContactSubmission', Date.now().toString());
       
       setIsSubmitting(false);
       setIsSuccess(true);
@@ -61,7 +75,11 @@ export default function Contact() {
         <title>Contact Sleep Calculator – Support & Questions</title>
         <meta name="description" content="Contact the Sleep Calculator team for support, feedback, bug reports, or general questions about the website." />
         <meta name="keywords" content="contact sleep calculator, support, feedback, get in touch" />
-        {typeof window !== 'undefined' && <link rel="canonical" href="https://sleepcalculater.online/contact" />}
+        <link rel="canonical" href="https://sleepcalculater.online/contact" />
+        <meta property="og:title" content="Contact Sleep Calculator – Support & Questions" />
+        <meta property="og:description" content="Contact the Sleep Calculator team for support, feedback, bug reports, or general questions about the website." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://sleepcalculater.online/contact" />
       </Helmet>
 
       <div className="mb-8 text-left">

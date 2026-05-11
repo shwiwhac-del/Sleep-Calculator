@@ -17,6 +17,25 @@ export default function Home() {
   ];
 
   const [isFeedbackModalOpen, setIsFeedbackModalOpen] = useState(false);
+  const [showFeedbackButton, setShowFeedbackButton] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      const isNearBottom = window.innerHeight + scrollY >= document.documentElement.scrollHeight - 150;
+      
+      if (scrollY > 150 && !isNearBottom) {
+        setShowFeedbackButton(true);
+      } else {
+        setShowFeedbackButton(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    // Initial check
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const [rememberPreferences, setRememberPreferences] = useState<boolean>(() => {
     return localStorage.getItem('aurasleep_remember') === 'true';
@@ -179,7 +198,7 @@ export default function Home() {
           <title>Sleep Calculator – Calculate the Best Time to Sleep & Wake Up</title>
           <meta name="description" content="Use our free sleep calculator to find the perfect bedtime and wake-up time based on natural sleep cycles for better sleep and energy." />
           <meta name="keywords" content="sleep calculator, sleep cycle calculator, wake up time, bedtime calculator, REM sleep, 90 minute sleep cycle" />
-          {typeof window !== 'undefined' && <link rel="canonical" href="https://sleepcalculater.online/" />}
+          <link rel="canonical" href="https://sleepcalculater.online/" />
           <script type="application/ld+json">
             {JSON.stringify({
               "@context": "https://schema.org",
@@ -422,7 +441,7 @@ export default function Home() {
       {/* Floating Feedback Button */}
       <button
         onClick={() => setIsFeedbackModalOpen(true)}
-        className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 bg-[#2563EB] hover:bg-[#1D4ED8] text-white shadow-lg hover:shadow-xl transition-all duration-300 rounded-full py-3 px-4 sm:px-5 flex items-center justify-center gap-2 font-semibold group focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#2563EB]/50"
+        className={`fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 bg-[#2563EB] hover:bg-[#1D4ED8] text-white shadow-lg hover:shadow-xl transition-all duration-300 rounded-full py-3 px-4 sm:px-5 flex items-center justify-center gap-2 font-semibold group focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#2563EB]/50 ${showFeedbackButton ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'}`}
         aria-label="Send Feedback"
       >
         <MessageSquare size={20} className="group-hover:scale-110 transition-transform" />

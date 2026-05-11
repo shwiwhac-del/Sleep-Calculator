@@ -1,6 +1,6 @@
 import { ReactNode, MouseEvent } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { ChevronLeft, ArrowRight } from 'lucide-react';
 import { FAQAccordion } from './FAQAccordion';
 
@@ -30,6 +30,7 @@ export function ArticleLayout({
   backLabel
 }: ArticleLayoutProps) {
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleBack = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -44,15 +45,19 @@ export function ArticleLayout({
     }
   };
 
+  const currentUrl = `https://sleepcalculater.online${location.pathname}`;
+
   return (
     <div className="w-full max-w-3xl mx-auto px-4 sm:px-6 py-8">
       <Helmet>
         <title>{title} | Sleep Calculator</title>
         <meta name="description" content={description} />
         {keywords && <meta name="keywords" content={keywords} />}
-        {typeof window !== 'undefined' && (
-          <link rel="canonical" href={`https://sleepcalculater.online${window.location.pathname}`} />
-        )}
+        <link rel="canonical" href={currentUrl} />
+        <meta property="og:title" content={`${title} | Sleep Calculator`} />
+        <meta property="og:description" content={description} />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content={currentUrl} />
       </Helmet>
 
       <article className="animate-in fade-in slide-in-from-top-4 duration-500">

@@ -19,7 +19,11 @@ export default function Terms() {
         <title>Terms and Conditions – Sleep Calculator</title>
         <meta name="description" content="Review the terms and conditions for using the Sleep Calculator website and its online sleep tools." />
         <meta name="keywords" content="terms of service, terms and conditions, sleep calculator terms" />
-        {typeof window !== 'undefined' && <link rel="canonical" href="https://sleepcalculater.online/terms" />}
+        <link rel="canonical" href="https://sleepcalculater.online/terms" />
+        <meta property="og:title" content="Terms and Conditions – Sleep Calculator" />
+        <meta property="og:description" content="Review the terms and conditions for using the Sleep Calculator website and its online sleep tools." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://sleepcalculater.online/terms" />
       </Helmet>
       
       <div className="mb-8 text-left">

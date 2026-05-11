@@ -19,7 +19,11 @@ export default function About() {
         <title>About Sleep Calculator – Sleep Cycle & Bedtime Tool</title>
         <meta name="description" content="Learn about Sleep Calculator and how our tool helps users calculate the best sleep and wake-up times using sleep cycles." />
         <meta name="keywords" content="about sleep calculator, sleep cycle tool, mission, sleep health" />
-        {typeof window !== 'undefined' && <link rel="canonical" href="https://sleepcalculater.online/about" />}
+        <link rel="canonical" href="https://sleepcalculater.online/about" />
+        <meta property="og:title" content="About Sleep Calculator – Sleep Cycle & Bedtime Tool" />
+        <meta property="og:description" content="Learn about Sleep Calculator and how our tool helps users calculate the best sleep and wake-up times using sleep cycles." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://sleepcalculater.online/about" />
       </Helmet>
       
       <div className="mb-8 text-left">

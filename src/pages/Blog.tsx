@@ -11,6 +11,12 @@ export default function Blog() {
 
   const articles = [
     {
+      title: "Sleep Cycle Calculator: How Sleep Cycles Affect Your Energy and Health",
+      description: "Learn how a Sleep Cycle Calculator helps you wake up refreshed by aligning your sleep with natural sleep cycles. Improve energy, focus, and sleep quality naturally.",
+      url: "/blog/sleep-cycle-calculator",
+      topic: "Tool Guide",
+    },
+    {
       title: "Best Sleep Calculator for Better Sleep Cycles and Healthy Rest",
       description: "Use our free Sleep Calculator to find the best time to sleep or wake up based on natural sleep cycles. Improve sleep quality, energy, focus, and daily performance.",
       url: "/blog/best-sleep-calculator",
@@ -66,7 +72,11 @@ export default function Blog() {
         <title>Sleep Blog – Sleep Tips, Sleep Cycles & Better Sleep Guides</title>
         <meta name="description" content="Explore sleep guides, bedtime tips, sleep cycle explanations, and expert advice to improve your sleep quality naturally." />
         <meta name="keywords" content="sleep blog, sleep tips, sleep cycle, circadian rhythm, better sleep" />
-        {typeof window !== 'undefined' && <link rel="canonical" href="https://sleepcalculater.online/blog" />}
+        <link rel="canonical" href="https://sleepcalculater.online/blog" />
+        <meta property="og:title" content="Sleep Blog – Sleep Tips, Sleep Cycles & Better Sleep Guides" />
+        <meta property="og:description" content="Explore sleep guides, bedtime tips, sleep cycle explanations, and expert advice to improve your sleep quality naturally." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://sleepcalculater.online/blog" />
       </Helmet>
 
       <div className="mb-4 text-left">

@@ -10,6 +10,8 @@ const Privacy = lazy(() => import('./pages/Privacy'));
 const Blog = lazy(() => import('./pages/Blog'));
 const Contact = lazy(() => import('./pages/Contact'));
 const About = lazy(() => import('./pages/About'));
+const Feature = lazy(() => import('./pages/Feature'));
+const NotFound = lazy(() => import('./pages/NotFound'));
 
 // Home Guides
 
@@ -24,6 +26,7 @@ const WhatIsASleepCalculator = lazy(() => import('./pages/WhatIsASleepCalculator
 const BestSleepCalculatorGuide = lazy(() => import('./pages/BestSleepCalculatorGuide'));
 const HowSleepCycleWorks = lazy(() => import('./pages/HowSleepCycleWorks'));
 const BenefitsOfSleepCalculator = lazy(() => import('./pages/BenefitsOfSleepCalculator'));
+const SleepCycleCalculatorBlog = lazy(() => import('./pages/SleepCycleCalculatorBlog'));
 
 function Footer() {
   return (
@@ -162,6 +165,9 @@ function AppContent() {
                 <Route path="/terms" element={<Terms />} />
                 <Route path="/privacy" element={<Privacy />} />
                 <Route path="/contact" element={<Contact />} />
+                
+                {/* Features */}
+                <Route path="/feature/:slug" element={<Feature />} />
 
                 {/* Main Tool Guides / Standalone pages */}
 
@@ -179,6 +185,7 @@ function AppContent() {
                 <Route path="/blog/sleep-calculator-benefits" element={<BenefitsOfSleepCalculator />} />
                 <Route path="/blog/fix-sleep-schedule" element={<FixSleepSchedule />} />
                 <Route path="/blog/blue-light-sleep" element={<BlueLightSleep />} />
+                <Route path="/blog/sleep-cycle-calculator" element={<SleepCycleCalculatorBlog />} />
 
                 {/* Redirects for old URLs to new structure */}
                 <Route path="/blog/what-is-a-sleep-calculator" element={<Navigate to="/blog/sleep-calculator" replace />} />
@@ -208,7 +215,7 @@ function AppContent() {
                 <Route path="/blog/benefits-of-using-a-sleep-calculator" element={<Navigate to="/blog/sleep-calculator-benefits" replace />} />
 
                 {/* Catch-all 404 route */}
-                <Route path="*" element={<Navigate to="/" replace />} />
+                <Route path="*" element={<NotFound />} />
               </Routes>
             </Suspense>
           </main>

@@ -19,7 +19,11 @@ export default function Privacy() {
         <title>Privacy Policy – Sleep Calculator</title>
         <meta name="description" content="Read the privacy policy of Sleep Calculator to understand how user data and privacy are protected on our website." />
         <meta name="keywords" content="privacy policy, data privacy, sleep calculator privacy" />
-        {typeof window !== 'undefined' && <link rel="canonical" href="https://sleepcalculater.online/privacy" />}
+        <link rel="canonical" href="https://sleepcalculater.online/privacy" />
+        <meta property="og:title" content="Privacy Policy – Sleep Calculator" />
+        <meta property="og:description" content="Read the privacy policy of Sleep Calculator to understand how user data and privacy are protected on our website." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://sleepcalculater.online/privacy" />
       </Helmet>
       
       <div className="mb-8 text-left">
