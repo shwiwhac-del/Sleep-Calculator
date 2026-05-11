@@ -23,28 +23,10 @@ export default function Blog() {
       topic: "Tool Guide",
     },
     {
-      title: "The Best Time to Sleep: Finding Your Perfect Bedtime",
-      description: "Discover the absolute best time to sleep and wake up based on biology and 90-minute sleep cycles. Learn how a sleep calculator can fix your routine.",
-      url: "/article/best-sleep-time",
-      topic: "Sleep Timing",
-    },
-    {
       title: "The Ultimate Sleep Cycle Guide: What Happens When You Sleep?",
       description: "Learn about the 4 stages of sleep, REM, deep sleep, and how the 90-minute sleep cycle works. Stop waking up tired by mastering your biology.",
       url: "/blog/sleep-cycle-stages",
       topic: "Sleep Science",
-    },
-    {
-      title: "Why You Feel Tired Even After 8 Hours of Sleep",
-      description: "Constantly exhausted despite getting enough sleep? Discover the hidden causes of daily fatigue, from sleep inertia to poor sleep hygiene.",
-      url: "/blog/tired",
-      topic: "Energy",
-    },
-    {
-      title: "The Ultimate Power Nap Guide: How to Sleep During the Day",
-      description: "Stop waking up from naps feeling worse. Learn the optimal power nap lengths, from the 20-minute energy boost to the full 90-minute cycle.",
-      url: "/article/power-nap",
-      topic: "Napping",
     },
     {
       title: "How Much Sleep Do You Need? A Sleep by Age Guide",
@@ -81,8 +63,8 @@ export default function Blog() {
   return (
     <div className="w-full max-w-4xl mx-auto px-4 sm:px-6">
       <Helmet>
-        <title>Sleep Blog & Resources | Sleep Calculator</title>
-        <meta name="description" content="Explore our sleep blog for expert resources on 90-minute sleep cycles, finding your perfect bedtime, fixing your sleep schedule, and waking up refreshed." />
+        <title>Sleep Blog – Sleep Tips, Sleep Cycles & Better Sleep Guides</title>
+        <meta name="description" content="Explore sleep guides, bedtime tips, sleep cycle explanations, and expert advice to improve your sleep quality naturally." />
         <meta name="keywords" content="sleep blog, sleep tips, sleep cycle, circadian rhythm, better sleep" />
         {typeof window !== 'undefined' && <link rel="canonical" href="https://sleepcalculater.online/blog" />}
       </Helmet>

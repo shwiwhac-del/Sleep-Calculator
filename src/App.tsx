@@ -168,12 +168,12 @@ function AppContent() {
                 {/* Separated Articles (No longer in blog) */}
                 <Route path="/article/best-sleep-time" element={<BestTimeToSleep />} />
                 <Route path="/article/power-nap" element={<PowerNapGuide />} />
+                <Route path="/article/deep-sleep-fixer" element={<WhyYouFeelTired />} />
 
                 {/* Blog Posts under proper /blog hierarchy */}
                 <Route path="/blog/best-sleep-calculator" element={<BestSleepCalculatorGuide />} />
                 <Route path="/blog/sleep-calculator" element={<WhatIsASleepCalculator />} />
                 <Route path="/blog/sleep-cycle-stages" element={<SleepCycleGuide />} />
-                <Route path="/blog/tired" element={<WhyYouFeelTired />} />
                 <Route path="/blog/sleep-age" element={<SleepByAge />} />
                 <Route path="/blog/sleep-cycle" element={<HowSleepCycleWorks />} />
                 <Route path="/blog/sleep-calculator-benefits" element={<BenefitsOfSleepCalculator />} />
@@ -195,8 +195,9 @@ function AppContent() {
                 <Route path="/blog/sleep-cycle-guide" element={<Navigate to="/blog/sleep-cycle-stages" replace />} />
                 <Route path="/sleep-cycle-guide" element={<Navigate to="/blog/sleep-cycle-stages" replace />} />
 
-                <Route path="/blog/why-you-feel-tired" element={<Navigate to="/blog/tired" replace />} />
-                <Route path="/why-you-feel-tired" element={<Navigate to="/blog/tired" replace />} />
+                <Route path="/blog/tired" element={<Navigate to="/article/deep-sleep-fixer" replace />} />
+                <Route path="/blog/why-you-feel-tired" element={<Navigate to="/article/deep-sleep-fixer" replace />} />
+                <Route path="/why-you-feel-tired" element={<Navigate to="/article/deep-sleep-fixer" replace />} />
 
                 <Route path="/blog/sleep-by-age" element={<Navigate to="/blog/sleep-age" replace />} />
                 <Route path="/sleep-by-age" element={<Navigate to="/blog/sleep-age" replace />} />

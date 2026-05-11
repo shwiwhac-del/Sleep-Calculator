@@ -4,15 +4,17 @@ import { ArticleLayout } from '../components/ArticleLayout';
 export default function WhyYouFeelTired() {
   return (
     <ArticleLayout
-      title="Why You Feel Tired Even After 8 Hours of Sleep"
+      backUrl="/"
+      backLabel="Back to Home"
+      title="Why Am I Always Tired? Common Sleep-Related Causes"
       keywords="sleep calculator guide, better sleep, sleep cycle, REM sleep"
-      description="Constantly exhausted despite getting enough sleep? Discover the hidden causes of daily fatigue, from sleep inertia to poor sleep hygiene."
+      description="Discover common reasons for constant tiredness, poor sleep quality, and unhealthy sleep habits affecting your energy."
       readingTime="5"
       date="May 22, 2024"
       author="Sleep Expert Team"
        relatedPosts={[
-        { title: "The Best Time to Sleep: Finding Your Perfect Bedtime", url: "/blog/best-sleep-time", description: "Discover the absolute best time to sleep." },
-        { title: "The Perfect Power Nap Guide", url: "/blog/power-nap", description: "Learn the exact length a nap should be to wake up energized instead of groggy." },
+        { title: "The Best Time to Sleep: Finding Your Perfect Bedtime", url: "/article/best-sleep-time", description: "Discover the absolute best time to sleep." },
+        { title: "The Perfect Power Nap Guide", url: "/article/power-nap", description: "Learn the exact length a nap should be to wake up energized instead of groggy." },
         { title: "The Ultimate Sleep Cycle Guide", url: "/blog/sleep-cycle-stages", description: "Learn about the 4 stages of sleep and how to optimize them." }
       ]}
     >

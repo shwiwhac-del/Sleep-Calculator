@@ -12,8 +12,8 @@ export default function BestSleepCalculatorGuide() {
   return (
     <div className="w-full max-w-[700px] mx-auto text-left px-4 sm:px-6 animate-in fade-in slide-in-from-top-4 duration-700">
       <Helmet>
-        <title>Best Sleep Calculator for Better Sleep Cycles and Healthy Rest</title>
-        <meta name="description" content="Use our free Sleep Calculator to find the best time to sleep or wake up based on natural sleep cycles. Improve sleep quality, energy, focus, and daily performance." />
+        <title>Best Sleep Calculator Online – Improve Your Sleep Schedule</title>
+        <meta name="description" content="Find out how the best sleep calculator helps you calculate ideal bedtimes and wake-up times using sleep cycles." />
         <meta name="keywords" content="best sleep calculator, sleep cycle calculator, healthy rest, wake up refreshed" />
         {typeof window !== 'undefined' && <link rel="canonical" href={`https://sleepcalculater.online/blog/best-sleep-calculator`} />}
       </Helmet>

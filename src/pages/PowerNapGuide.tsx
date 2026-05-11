@@ -6,15 +6,15 @@ export default function PowerNapGuide() {
     <ArticleLayout
       backUrl="/"
       backLabel="Back to Home"
-      title="The Ultimate Power Nap Guide: How to Sleep During the Day"
-      keywords="sleep calculator guide, better sleep, sleep cycle, REM sleep"
-      description="Stop waking up from naps feeling worse. Learn the optimal power nap lengths, from the 20-minute energy boost to the full 90-minute cycle."
+      title="Power Nap Guide – Best Nap Length for Energy & Focus"
+      keywords="power nap, optimal nap length, energy boost, siesta"
+      description="Learn how power naps improve focus, energy, and productivity and discover the ideal nap duration for better performance."
       readingTime="5"
       date="May 26, 2024"
       author="Sleep Expert Team"
        relatedPosts={[
-        { title: "The Best Time to Sleep: Finding Your Perfect Bedtime", url: "/blog/best-sleep-time", description: "Discover the absolute best time to sleep." },
-        { title: "Why You Feel Tired Even After 8 Hours", url: "/blog/tired", description: "Constantly exhausted despite getting enough sleep? Discover why." },
+        { title: "The Best Time to Sleep: Finding Your Perfect Bedtime", url: "/article/best-sleep-time", description: "Discover the absolute best time to sleep." },
+        { title: "Why You Feel Tired Even After 8 Hours", url: "/article/deep-sleep-fixer", description: "Constantly exhausted despite getting enough sleep? Discover why." },
         { title: "The Ultimate Sleep Cycle Guide", url: "/blog/sleep-cycle-stages", description: "Learn about the 4 stages of sleep and how to optimize them." }
       ]}
     >

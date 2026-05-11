@@ -58,8 +58,8 @@ export default function Contact() {
   return (
     <div className="w-full max-w-xl mx-auto px-4 sm:px-6">
       <Helmet>
-        <title>Contact Us | Sleep Calculator</title>
-        <meta name="description" content="Get in touch with the Sleep Calculator team. We are here to help you sleep better." />
+        <title>Contact Sleep Calculator – Support & Questions</title>
+        <meta name="description" content="Contact the Sleep Calculator team for support, feedback, bug reports, or general questions about the website." />
         <meta name="keywords" content="contact sleep calculator, support, feedback, get in touch" />
         {typeof window !== 'undefined' && <link rel="canonical" href="https://sleepcalculater.online/contact" />}
       </Helmet>

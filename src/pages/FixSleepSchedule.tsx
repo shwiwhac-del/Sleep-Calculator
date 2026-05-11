@@ -16,9 +16,9 @@ export default function FixSleepSchedule() {
 
   return (
     <ArticleLayout
-      title="How to Fix Your Sleep Schedule: A Step-by-Step Guide"
-      keywords="sleep calculator guide, better sleep, sleep cycle, REM sleep"
-      description="Struggling to wake up or falling asleep at the wrong times? Learn scientifically-proven methods to reset your circadian rhythm and fix your sleep schedule fast."
+      title="How to Fix Your Sleep Schedule Naturally"
+      keywords="fix sleep schedule, reset circadian rhythm, better sleep habits"
+      description="Learn practical ways to fix a broken sleep schedule and improve bedtime consistency naturally."
       date="May 8, 2024"
       readingTime="6"
       relatedPosts={relatedPosts}

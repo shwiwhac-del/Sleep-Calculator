@@ -4,9 +4,9 @@ import { ArticleLayout } from '../components/ArticleLayout';
 export default function BenefitsOfSleepCalculator() {
   return (
     <ArticleLayout
-      title="Benefits of Using a Sleep Calculator"
-      keywords="sleep calculator guide, better sleep, sleep cycle, REM sleep"
-      description="From waking up refreshed to stopping morning grogginess, discover the life-changing benefits of utilizing a sleep calculator daily."
+      title="Benefits of Using a Sleep Calculator for Better Sleep"
+      keywords="benefits of sleep calculator, why use a sleep calculator, better sleep"
+      description="Discover the benefits of sleep calculators and how they help improve bedtime routines and wake-up energy."
       readingTime="3"
       date="June 8, 2024"
       relatedPosts={[

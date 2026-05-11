@@ -16,9 +16,9 @@ export default function BlueLightSleep() {
 
   return (
     <ArticleLayout
-      title="How Blue Light from Screens Steals Your Sleep (And How to Fix It)"
-      keywords="sleep calculator guide, better sleep, sleep cycle, REM sleep"
-      description="Learn the science behind blue light, how it tricks your brain into thinking it's daytime, and actionable steps to protect your sleep quality."
+      title="Blue Light and Sleep – How Screens Affect Your Rest"
+      keywords="blue light sleep, screen time before bed, digital eye strain"
+      description="Learn how blue light from phones and screens affects sleep quality and how to reduce its impact before bedtime."
       date="May 9, 2024"
       readingTime="5"
       relatedPosts={relatedPosts}

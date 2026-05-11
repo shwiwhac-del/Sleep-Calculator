@@ -176,8 +176,8 @@ export default function Home() {
       {/* Header Info */}
       <div className="flex flex-col items-center justify-center mb-6 mt-4 sm:mt-6">
         <Helmet>
-          <title>Sleep Calculator: Find the Best Time to Sleep and Wake Up</title>
-          <meta name="description" content="Use our free sleep calculator to find the best time to sleep, wake up refreshed, and understand your 90-minute sleep cycles." />
+          <title>Sleep Calculator – Calculate the Best Time to Sleep & Wake Up</title>
+          <meta name="description" content="Use our free sleep calculator to find the perfect bedtime and wake-up time based on natural sleep cycles for better sleep and energy." />
           <meta name="keywords" content="sleep calculator, sleep cycle calculator, wake up time, bedtime calculator, REM sleep, 90 minute sleep cycle" />
           {typeof window !== 'undefined' && <link rel="canonical" href="https://sleepcalculater.online/" />}
           <script type="application/ld+json">
@@ -388,7 +388,7 @@ export default function Home() {
           <div className="bg-white dark:bg-[#111] border border-gray-100 dark:border-[#222] rounded-xl p-5 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col items-start h-full">
             <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2 font-serif">Deep Sleep Fixer</h3>
             <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-5 flex-grow">Waking up in deep sleep is the #1 cause of morning grogginess. Fix it today.</p>
-            <Link to="/blog/tired" className="bg-[#F8FAFC] dark:bg-[#1A1A1A] text-[#2563EB] hover:bg-[#2563EB] hover:text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors duration-300 w-full text-center shadow-sm">
+            <Link to="/article/deep-sleep-fixer" className="bg-[#F8FAFC] dark:bg-[#1A1A1A] text-[#2563EB] hover:bg-[#2563EB] hover:text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors duration-300 w-full text-center shadow-sm">
               Use Guide
             </Link>
           </div>

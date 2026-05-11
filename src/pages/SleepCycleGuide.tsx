@@ -4,9 +4,9 @@ import { ArticleLayout } from '../components/ArticleLayout';
 export default function SleepCycleGuide() {
   return (
     <ArticleLayout
-      title="The Ultimate Sleep Cycle Guide: What Happens When You Sleep?"
-      keywords="sleep calculator guide, better sleep, sleep cycle, REM sleep"
-      description="Learn about the 4 stages of sleep, REM, deep sleep, and how the 90-minute sleep cycle works. Stop waking up tired by mastering your biology."
+      title="Sleep Cycle Stages Explained – REM, Deep & Light Sleep"
+      keywords="sleep cycle guide, REM sleep, deep sleep, sleep stages"
+      description="Understand the stages of the sleep cycle including REM sleep, deep sleep, and light sleep for healthier rest."
       readingTime="5"
       date="May 14, 2024"
       author="Sleep Expert Team"
