@@ -1,7 +1,7 @@
 import { useParams, Navigate, Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
 import NotFound from './NotFound';
 import { ArrowLeft, Clock, Moon, Battery, Brain, Zap, Activity } from 'lucide-react';
+import { ArticleLayout } from '../components/ArticleLayout';
 
 const featuresData: Record<string, {
   title: string;
@@ -16,7 +16,7 @@ const featuresData: Record<string, {
     metaDescription: 'Discover our Smart Bedtime Calculator feature. Calculate exact sleep cycles to wake up feeling completely refreshed and energized every single morning.',
     icon: <Clock className="w-10 h-10 text-[#2563EB] mb-4" />,
     content: (
-      <div className="space-y-6 text-gray-700 dark:text-gray-300">
+      <div className="space-y-6">
         <p className="text-lg leading-relaxed font-medium text-gray-900 dark:text-gray-100">
           The Smart Bedtime Calculator is the cornerstone of our platform, designed to revolutionize the way you approach your nightly rest. By moving away from the outdated "eight hours a night" rule and embracing the science of 90-minute sleep cycles, this feature provides a personalized, mathematically optimized schedule for your sleep.
         </p>
@@ -83,7 +83,7 @@ const featuresData: Record<string, {
     metaDescription: 'Optimize your daytime rest with our Power Nap Optimizer feature. Avoid sleep inertia and wake up revitalized with exact nap duration calculations.',
     icon: <Battery className="w-10 h-10 text-[#2563EB] mb-4" />,
     content: (
-      <div className="space-y-6 text-gray-700 dark:text-gray-300">
+      <div className="space-y-6">
         <p className="text-lg leading-relaxed font-medium text-gray-900 dark:text-gray-100">
           The Power Nap Optimizer is an expertly engineered feature designed for anyone looking to boost their daytime energy, cognitive function, and mood without suffering from the dreaded post-nap grogginess. Napping is an art, and when guided by science, it transforms from a lazy indulgence into a high-performance biohack.
         </p>
@@ -154,57 +154,19 @@ export default function Feature() {
   const feature = featuresData[slug];
 
   return (
-    <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 py-12">
-      <Helmet>
-        <title>{feature.metaTitle} | Sleep Calculator</title>
-        <meta name="description" content={feature.metaDescription} />
-        <link rel="canonical" href={`https://sleepcalculater.online/feature/${slug}`} />
-        <meta property="og:title" content={`${feature.metaTitle} | Sleep Calculator`} />
-        <meta property="og:description" content={feature.metaDescription} />
-        <meta property="og:type" content="article" />
-        <meta property="og:url" content={`https://sleepcalculater.online/feature/${slug}`} />
-      </Helmet>
-
-      <div className="mb-8 animate-in fade-in slide-in-from-top-4 duration-700">
-        <Link 
-          to="/" 
-          className="inline-flex items-center text-sm font-medium text-gray-500 hover:text-[#2563EB] dark:text-gray-400 dark:hover:text-[#2563EB] transition-colors group"
-        >
-          <ArrowLeft size={16} className="mr-2 group-hover:-translate-x-1 transition-transform" />
-          Back to Home
-        </Link>
+    <ArticleLayout
+      title={feature.title}
+      description={feature.metaDescription}
+      backUrl="/"
+      backLabel="Home"
+      readingTime="6"
+      date="May 1, 2024"
+      author="Sleep Calculator Tools"
+    >
+      <div className="mb-8 flex justify-center sm:justify-start">
+        {feature.icon}
       </div>
-
-      <article className="bg-white dark:bg-[#1A1A1A] border border-gray-100 dark:border-[#222] rounded-3xl p-6 sm:p-10 lg:p-12 shadow-sm animate-in fade-in slide-in-from-bottom-8 duration-700">
-        <div className="flex flex-col items-center sm:items-start text-center sm:text-left mb-10 pb-10 border-b border-gray-100 dark:border-[#333]">
-          {feature.icon}
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white font-serif tracking-tight mt-4">
-            {feature.title}
-          </h1>
-          <div className="flex items-center justify-center sm:justify-start gap-4 mt-6 text-sm text-gray-500 dark:text-gray-400 font-medium">
-            <span className="flex items-center gap-1.5"><Activity size={16} /> Deep Dive Analysis</span>
-            <span className="w-1.5 h-1.5 rounded-full bg-gray-300 dark:bg-gray-700"></span>
-            <span className="flex items-center gap-1.5"><Brain size={16} /> Sleep Science</span>
-          </div>
-        </div>
-
-        <div className="prose prose-lg dark:prose-invert max-w-none prose-headings:font-serif prose-headings:font-bold prose-p:text-gray-600 dark:prose-p:text-gray-300 prose-a:text-[#2563EB] prose-li:text-gray-600 dark:prose-li:text-gray-300 marker:text-[#2563EB]">
-          {feature.content}
-        </div>
-      </article>
-      
-      <div className="mt-12 text-center">
-        <div className="inline-block p-8 bg-[#F8FAFC] dark:bg-[#111] rounded-3xl border border-gray-100 dark:border-[#222]">
-          <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 font-serif">Ready to optimize your sleep?</h3>
-          <p className="text-gray-600 dark:text-gray-400 mb-6 max-w-md mx-auto">Use our free tools to implement these strategies and wake up feeling refreshed every morning.</p>
-          <Link 
-            to="/" 
-            className="inline-flex items-center justify-center bg-[#2563EB] hover:bg-[#1D4ED8] text-white px-8 py-3 rounded-full font-semibold transition-all duration-300 shadow-md hover:shadow-xl transform hover:-translate-y-1"
-          >
-            Open Calculator
-          </Link>
-        </div>
-      </div>
-    </div>
+      {feature.content}
+    </ArticleLayout>
   );
 }

@@ -9,28 +9,28 @@ interface FAQ {
 
 const faqs: FAQ[] = [
   {
-    question: "What is the 90-minute sleep rule?",
-    answer: "The 90-minute sleep rule states that human sleep occurs in 90-minute cycles. Waking up at the end of a cycle (e.g., after 6 or 7.5 hours) helps you feel refreshed and prevents morning grogginess.",
+    question: "What is a sleep calculator and how does it work?",
+    answer: "A sleep calculator determines your exact bedtime or wake-up time based on 90-minute sleep cycles. By waking up at the end of a sleep cycle, you avoid grogginess and sleep inertia, allowing you to wake up feeling completely refreshed.",
     color: "#00d2ff"
   },
   {
-    question: "Are 6 hours of sleep enough?",
-    answer: "Six hours consists of exactly four 90-minute cycles. For many adults, waking up after 6 hours is better than 7 hours because it prevents waking mid-cycle, though 7.5 hours is typically optimal.",
-    color: "#fcd34d"
-  },
-  {
-    question: "How long does it take to fall asleep?",
-    answer: "On average, it takes a healthy adult between 10 to 20 minutes to fall asleep. Our sleep calculator automatically adds 15 minutes to all bedtime equations to account for this transition.",
-    color: "#10b981"
-  },
-  {
-    question: "What time should I go to bed if I want to wake up at 7 AM?",
-    answer: "To wake up refreshed at 7:00 AM, you should aim to fall asleep at 10:00 PM (for 9 hours), 11:30 PM (for 7.5 hours), or 1:00 AM (for 6 hours) to complete full 90-minute sleep cycles. Remember to add about 15 minutes to fall asleep, so get into bed at 9:45 PM, 11:15 PM, or 12:45 AM.",
+    question: "What is the best time to sleep and wake up?",
+    answer: "The best time to sleep depends on when you need to wake up. By using our sleep time calculator, you count backward in 90-minute blocks (sleep cycles). For example, to wake up energized at 7:00 AM, the ideal bedtimes are 10:00 PM (for 6 cycles), 11:30 PM (for 5 cycles), or 1:00 AM (for 4 cycles).",
     color: "#f43f5e"
   },
   {
-    question: "Does age affect my sleeping cycle?",
-    answer: "Yes! While the 90-minute sleep cycle remains fairly constant throughout adulthood, overall sleep needs change. Newborns need up to 17 hours, teens need 8-10 hours, and most adults need 7-9 hours. Older adults often experience lighter sleep and earlier wake times.",
+    question: "How many sleep cycles do I need for healthy sleep?",
+    answer: "A healthy sleep calculator rule of thumb is that most adults need between 4 to 6 complete sleep cycles per night, totaling 6 to 9 hours. Completing these REM and deep sleep cycles is vital for physical recovery and mental sharpness.",
+    color: "#10b981"
+  },
+  {
+    question: "How long does it take to fall asleep?",
+    answer: "On average, a healthy adult takes 15 to 20 minutes to transition from wakefulness to sleep (sleep latency). Our sleep cycle calculator automatically factors in 15 extra minutes to ensure your sleep schedule is highly accurate.",
+    color: "#fcd34d"
+  },
+  {
+    question: "How long should a power nap be using a nap calculator?",
+    answer: "For a quick energy boost without sleep inertia, a nap calculator recommends short power naps of 10-20 minutes to prevent entering deep sleep. If you need deeper recovery, aim for a full 90-minute nap to complete one exact sleep cycle.",
     color: "#8b5cf6"
   }
 ];

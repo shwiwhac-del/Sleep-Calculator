@@ -47,6 +47,44 @@ export function ArticleLayout({
 
   const currentUrl = `https://sleepcalculater.online${location.pathname}`;
 
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": title,
+    "description": description,
+    "author": {
+      "@type": "Organization",
+      "name": author
+    },
+    "datePublished": new Date(date).toISOString(),
+    "url": currentUrl,
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://sleepcalculater.online/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": backLabel || (backUrl === "/" ? "Home" : "Blog"),
+        "item": `https://sleepcalculater.online${backUrl === "/" ? "" : backUrl}`
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": title,
+        "item": currentUrl
+      }
+    ]
+  };
+
   return (
     <div className="w-full max-w-3xl mx-auto px-4 sm:px-6 py-8">
       <Helmet>
@@ -58,6 +96,9 @@ export function ArticleLayout({
         <meta property="og:description" content={description} />
         <meta property="og:type" content="article" />
         <meta property="og:url" content={currentUrl} />
+        <script type="application/ld+json">
+          {JSON.stringify([articleSchema, breadcrumbSchema])}
+        </script>
       </Helmet>
 
       <article className="animate-in fade-in slide-in-from-top-4 duration-500">

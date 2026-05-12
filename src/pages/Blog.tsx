@@ -11,8 +11,8 @@ export default function Blog() {
 
   const articles = [
     {
-      title: "Sleep Cycle Calculator: How Sleep Cycles Affect Your Energy and Health",
-      description: "Learn how a Sleep Cycle Calculator helps you wake up refreshed by aligning your sleep with natural sleep cycles. Improve energy, focus, and sleep quality naturally.",
+      title: "Sleep Cycle Calculator: How to Calculate Your Best Time to Sleep",
+      description: "Learn how a Sleep Cycle Calculator helps you wake up refreshed. Use a bedtime calculator to optimize your REM sleep cycles and stop waking up tired.",
       url: "/blog/sleep-cycle-calculator",
       topic: "Tool Guide",
     },
@@ -63,18 +63,36 @@ export default function Blog() {
       description: "Learn the science behind blue light, how it tricks your brain into thinking it's daytime, and actionable steps to protect your sleep quality.",
       url: "/blog/blue-light-sleep",
       topic: "Health",
+    },
+    {
+      title: "The Best Time to Sleep for Better Health",
+      description: "Discover the best time to sleep to align with your natural circadian rhythm and prevent morning exhaustion.",
+      url: "/article/best-sleep-time",
+      topic: "Sleep Guide",
+    },
+    {
+      title: "The Ultimate Guide to Power Naps",
+      description: "Maximize your daytime energy by understanding how to take the perfect power nap without waking up groggy.",
+      url: "/article/power-nap",
+      topic: "Sleep Guide",
+    },
+    {
+      title: "Why Do You Feel Tired After 8 Hours of Sleep?",
+      description: "Learn why deep sleep hangovers cause morning grogginess and how a sleep cycle calculator fixes it.",
+      url: "/article/deep-sleep-fixer",
+      topic: "Sleep Guide",
     }
   ];
 
   return (
     <div className="w-full max-w-4xl mx-auto px-4 sm:px-6">
       <Helmet>
-        <title>Sleep Blog – Sleep Tips, Sleep Cycles & Better Sleep Guides</title>
-        <meta name="description" content="Explore sleep guides, bedtime tips, sleep cycle explanations, and expert advice to improve your sleep quality naturally." />
-        <meta name="keywords" content="sleep blog, sleep tips, sleep cycle, circadian rhythm, better sleep" />
+        <title>Sleep Calculator Blog: Guides on Sleep Cycles, Bedtime & Wake up Time</title>
+        <meta name="description" content="Discover how to use a sleep cycle calculator, find the best time to sleep, and optimize your REM sleep. Become an expert on healthy sleep calculators." />
+        <meta name="keywords" content="sleep calculator blog, bedtime calculator, sleep cycle time, best time to sleep, healthy sleep calculator, REM sleep calculator, wake up calculator" />
         <link rel="canonical" href="https://sleepcalculater.online/blog" />
-        <meta property="og:title" content="Sleep Blog – Sleep Tips, Sleep Cycles & Better Sleep Guides" />
-        <meta property="og:description" content="Explore sleep guides, bedtime tips, sleep cycle explanations, and expert advice to improve your sleep quality naturally." />
+        <meta property="og:title" content="Sleep Calculator Blog: Guides on Sleep Cycles, Bedtime & Wake up Time" />
+        <meta property="og:description" content="Discover how to use a sleep cycle calculator, find the best time to sleep, and optimize your REM sleep. Become an expert on healthy sleep calculators." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://sleepcalculater.online/blog" />
       </Helmet>

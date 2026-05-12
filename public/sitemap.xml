@@ -25,19 +25,15 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://sleepcalculater.online/guide/sleep-calculator</loc>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://sleepcalculater.online/guide/fix-your-sleep</loc>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
     <loc>https://sleepcalculater.online/article/best-sleep-time</loc>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://sleepcalculater.online/article/power-nap</loc>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://sleepcalculater.online/article/deep-sleep-fixer</loc>
     <changefreq>weekly</changefreq>
   </url>
   <url>
@@ -50,10 +46,6 @@
   </url>
   <url>
     <loc>https://sleepcalculater.online/blog/sleep-cycle-stages</loc>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://sleepcalculater.online/blog/tired</loc>
     <changefreq>weekly</changefreq>
   </url>
   <url>
@@ -74,6 +66,18 @@
   </url>
   <url>
     <loc>https://sleepcalculater.online/blog/blue-light-sleep</loc>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://sleepcalculater.online/blog/sleep-cycle-calculator</loc>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://sleepcalculater.online/feature/smart-bedtime-calculator</loc>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://sleepcalculater.online/feature/power-nap-optimizer</loc>
     <changefreq>weekly</changefreq>
   </url>
 </urlset>

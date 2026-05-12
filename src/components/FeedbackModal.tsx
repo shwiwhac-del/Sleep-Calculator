@@ -24,11 +24,25 @@ export function FeedbackModal({ isOpen, onClose }: FeedbackModalProps) {
     setIsSubmitting(true);
     setError(null);
     
+    // Client-side rate limiting check
+    const lastSubmitTime = localStorage.getItem('lastFeedbackSubmission');
+    if (lastSubmitTime) {
+      const timeSinceLastSubmit = Date.now() - parseInt(lastSubmitTime, 10);
+      if (timeSinceLastSubmit < 60000) { // 1 minute
+        setError('Please wait a minute before sending another feedback.');
+        setIsSubmitting(false);
+        return;
+      }
+    }
+    
     try {
       await addDoc(collection(db, 'feedbacks'), {
         ...formData,
         createdAt: serverTimestamp(),
       });
+      
+      // Update last submission time
+      localStorage.setItem('lastFeedbackSubmission', Date.now().toString());
       
       setIsSubmitting(false);
       setIsSuccess(true);

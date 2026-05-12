@@ -195,9 +195,9 @@ export default function Home() {
       {/* Header Info */}
       <div className="flex flex-col items-center justify-center mb-6 mt-4 sm:mt-6">
         <Helmet>
-          <title>Sleep Calculator – Calculate the Best Time to Sleep & Wake Up</title>
-          <meta name="description" content="Use our free sleep calculator to find the perfect bedtime and wake-up time based on natural sleep cycles for better sleep and energy." />
-          <meta name="keywords" content="sleep calculator, sleep cycle calculator, wake up time, bedtime calculator, REM sleep, 90 minute sleep cycle" />
+          <title>Sleep Calculator: Exact Bedtime & Wake Up Time Calculator</title>
+          <meta name="description" content="Use our free sleep calculator to find the exact bedtime and wake up time based on 90-minute sleep cycles. Calculate your REM sleep for a healthy sleep cycle." />
+          <meta name="keywords" content="sleep calculator, bedtime calculator, sleep cycle calculator, sleep time calculator, wake up calculator, best time to sleep, healthy sleep calculator" />
           <link rel="canonical" href="https://sleepcalculater.online/" />
           <script type="application/ld+json">
             {JSON.stringify({
@@ -210,7 +210,7 @@ export default function Home() {
                 },
                 {
                   "@type": "SoftwareApplication",
-                  "name": "Sleep Calculator",
+                  "name": "Sleep Cycle Calculator",
                   "applicationCategory": "HealthApplication",
                   "operatingSystem": "Any",
                   "offers": {
@@ -225,10 +225,10 @@ export default function Home() {
         </Helmet>
         <div className="flex flex-col items-center justify-center gap-2 mb-2 text-center max-w-2xl mx-auto px-4">
           <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-gray-900 dark:text-white mb-2 leading-tight font-serif">
-            Calculate your sleep schedule
+            Free Sleep Cycle Calculator
           </h1>
           <p className="text-lg text-gray-600 dark:text-gray-300 mt-2">
-            Find the perfect time to sleep or wake up based on natural 90-minute cycles.
+            Calculate your exact bedtime and wake up time using natural 90-minute REM sleep cycles. 
           </p>
         </div>
       </div>
@@ -387,7 +387,15 @@ export default function Home() {
           <p className="text-gray-600 dark:text-gray-300 max-w-xl text-sm sm:text-base">Master your sleep with our collection of science-backed calculators and guides.</p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="bg-white dark:bg-[#111] border border-gray-100 dark:border-[#222] rounded-xl p-5 sm:p-6 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col items-start h-full">
+            <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2 font-serif">Smart Bedtime Calculator</h3>
+            <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-6 flex-grow">Calculate exact sleep cycles to wake up feeling completely refreshed and energized.</p>
+            <Link to="/feature/smart-bedtime-calculator" className="bg-[#F8FAFC] dark:bg-[#1A1A1A] text-[#2563EB] hover:bg-[#2563EB] hover:text-white px-4 py-2.5 rounded-lg text-sm font-semibold transition-colors duration-300 w-full text-center shadow-sm">
+              Use Feature
+            </Link>
+          </div>
+
           <div className="bg-white dark:bg-[#111] border border-gray-100 dark:border-[#222] rounded-xl p-5 sm:p-6 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col items-start h-full">
             <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2 font-serif">Best Time to Sleep</h3>
             <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-6 flex-grow">Discover the optimal window for hitting the pillow according to sleep scientists.</p>
@@ -397,10 +405,10 @@ export default function Home() {
           </div>
 
           <div className="bg-white dark:bg-[#111] border border-gray-100 dark:border-[#222] rounded-xl p-5 sm:p-6 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col items-start h-full">
-            <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2 font-serif">Power Nap Calculator</h3>
+            <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2 font-serif">Power Nap Optimizer</h3>
             <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-6 flex-grow">Learn the exact length a nap should be to wake up energized instead of groggy.</p>
-            <Link to="/article/power-nap" className="bg-[#F8FAFC] dark:bg-[#1A1A1A] text-[#2563EB] hover:bg-[#2563EB] hover:text-white px-4 py-2.5 rounded-lg text-sm font-semibold transition-colors duration-300 w-full text-center shadow-sm">
-              Read Guide
+            <Link to="/feature/power-nap-optimizer" className="bg-[#F8FAFC] dark:bg-[#1A1A1A] text-[#2563EB] hover:bg-[#2563EB] hover:text-white px-4 py-2.5 rounded-lg text-sm font-semibold transition-colors duration-300 w-full text-center shadow-sm">
+              Use Feature
             </Link>
           </div>
 
@@ -412,20 +420,26 @@ export default function Home() {
             </Link>
           </div>
         </div>
+        
+        <div className="mt-8 text-center flex justify-center">
+          <Link to="/blog" className="inline-flex items-center gap-2 bg-[#2563EB] text-white font-semibold py-3 px-8 rounded-full hover:bg-[#1D4ED8] transition-colors shadow-sm focus-visible:outline-none">
+            View All Sleep Guides
+          </Link>
+        </div>
       </div>
 
       {/* SEO Optimized Content Block with Interlinks */}
       <div className="w-full max-w-4xl mx-auto pb-12 px-4 sm:px-6">
         <div className="prose dark:prose-invert prose-sm sm:prose-base text-gray-600 dark:text-gray-300 mx-auto">
-          <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-4 font-serif">Why Use Our Free Sleep Calculator?</h2>
+          <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-4 font-serif">Why Use Our Free Sleep Time Calculator?</h2>
           <p className="mb-4">
-            Understanding your body's natural <Link to="/blog/sleep-cycle" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">90-minute sleep cycle</Link> is the key to waking up feeling energized. By timing your alarms to sync with the end of a REM cycle, you avoid sleep inertia and start your day without grogginess.
+            Understanding your body's natural <Link to="/blog/sleep-cycle" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">90-minute sleep cycle</Link> is the key to waking up feeling energized. By using our <strong>sleep cycle calculator</strong> to time your alarms to sync with the end of a REM cycle, you avoid sleep inertia and start your day without grogginess.
           </p>
           <p className="mb-4">
-            Whether you are struggling with a disrupted internal clock and need to <Link to="/blog/fix-sleep-schedule" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">fix your sleep schedule</Link>, or wondering about the <Link to="/article/best-sleep-time" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">best time to sleep</Link>, our tool provides precise calculations. We take into account the 15 minutes it usually takes to fall asleep. If you only have time for a quick rest during the day, check out our guide on <Link to="/article/power-nap" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">how long a power nap should be</Link>.
+            Whether you are struggling with a disrupted internal clock and need to <Link to="/blog/fix-sleep-schedule" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">fix your sleep schedule</Link>, or wondering about the <Link to="/article/best-sleep-time" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">best time to sleep</Link>, our <strong>bedtime calculator</strong> provides precise calculations. We automatically factor in the 15 minutes it usually takes to fall asleep. If you only have time for a quick rest during the day, check out our <strong>nap calculator</strong> guide on <Link to="/article/power-nap" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">how long a power nap should be</Link>.
           </p>
           <p className="mb-4">
-            Age also plays a massive role in your rest requirements. Learn more about <Link to="/blog/sleep-age" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">how much sleep you need by age</Link>, and why you might still <Link to="/blog/tired" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">feel tired after 8 hours of sleep</Link>. Keep your screen exposure in check to prevent <Link to="/blog/blue-light-sleep" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">blue light from disrupting your circadian rhythm</Link>.
+            Age also plays a massive role in your rest requirements. Learn more about <Link to="/blog/sleep-age" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">how much sleep you need by age</Link>, and why you might still <Link to="/blog/tired" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">feel tired after 8 hours of sleep</Link>. Keep your screen exposure in check to prevent <Link to="/blog/blue-light-sleep" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">blue light from disrupting your healthy sleep cycle</Link>.
           </p>
         </div>
       </div>
