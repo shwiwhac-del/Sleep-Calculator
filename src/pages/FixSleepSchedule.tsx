@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { ArticleLayout } from '../components/ArticleLayout';
 
 export default function FixSleepSchedule() {
@@ -10,7 +11,7 @@ export default function FixSleepSchedule() {
     {
       title: "Why You Feel Tired After 8 Hours",
       description: "Constantly exhausted despite getting enough sleep? Discover the hidden causes of daily fatigue.",
-      url: "/blog/tired",
+      url: "/article/deep-sleep-fixer",
     }
   ];
 
@@ -26,7 +27,7 @@ export default function FixSleepSchedule() {
       backLabel="Back to Blog"
     >
       <p>
-        Whether it's due to jet lag, shift work, or just the creeping habit of staying up too late, a broken sleep schedule can wreck your productivity, mood, and health. When your internal clock (circadian rhythm) is out of sync with your actual sleep times, you experience constant grogginess and sleep inertia.
+        Whether it's due to jet lag, shift work, or just the creeping habit of staying up too late, a broken sleep schedule can wreck your productivity, mood, and health. When your internal clock (circadian rhythm) is out of sync with your actual sleep times, you experience constant grogginess and sleep inertia. Understanding your <Link to="/blog/sleep-cycle" className="font-semibold underline text-[#2563EB]">sleep cycle</Link> is the first step to fixing this naturally.
       </p>
 
       <h2>1. Figure Out Your Target Wake-up Time</h2>
@@ -35,7 +36,7 @@ export default function FixSleepSchedule() {
       </p>
       <ul>
         <li><strong>Be consistent:</strong> Pick a time that you can realistically stick to <em>every single day</em>, including weekends.</li>
-        <li><strong>Count backward:</strong> Once you establish your wake time, use our sleep calculator to count back in 90-minute cycles to find your optimal bedtime.</li>
+        <li><strong>Count backward:</strong> Once you establish your wake time, use our <Link to="/" className="font-semibold underline text-[#2563EB]">sleep calculator</Link> to count back in 90-minute cycles to find your optimal bedtime.</li>
       </ul>
 
       <h2>2. Use Light to Your Advantage</h2>
@@ -44,7 +45,7 @@ export default function FixSleepSchedule() {
       </p>
       <ul>
         <li><strong>Morning light:</strong> Expose yourself to direct sunlight for at least 15–30 minutes immediately after waking up. If the sun isn't up, turn on bright overhead lights.</li>
-        <li><strong>Evening dimness:</strong> At least 2-3 hours before your new target bedtime, start dimming the lights in your house. Switch to warm-toned lamps and avoid bright overhead lighting.</li>
+        <li><strong>Evening dimness:</strong> At least 2-3 hours before your new target bedtime, start dimming the lights in your house. Switch to warm-toned lamps and avoid bright overhead lighting. Read more about <Link to="/blog/blue-light-sleep" className="font-semibold underline text-[#2563EB]">how blue light destroys your sleep schedule</Link>.</li>
       </ul>
 
       <h2>3. Fast Before Bedtime (The Food Clock)</h2>

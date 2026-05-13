@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { ArticleLayout } from '../components/ArticleLayout';
 
 export default function BlueLightSleep() {
@@ -5,7 +6,7 @@ export default function BlueLightSleep() {
     {
       title: "Why You Feel Tired Even After 8 Hours",
       description: "Constantly exhausted despite getting enough sleep? Discover the hidden causes of daily fatigue.",
-      url: "/blog/tired",
+      url: "/article/deep-sleep-fixer",
     },
     {
       title: "How to Fix Your Sleep Schedule",
@@ -26,7 +27,7 @@ export default function BlueLightSleep() {
       backLabel="Back to Blog"
     >
       <p>
-        In modern society, we spend our evenings bathed in the glow of smartphones, tablets, laptops, and televisions. While these devices keep us entertained and connected, the specific type of light they emit—blue light—is silently sabotaging our sleep.
+        In modern society, we spend our evenings bathed in the glow of smartphones, tablets, laptops, and televisions. While these devices keep us entertained and connected, the specific type of light they emit—blue light—is silently sabotaging our sleep. Find out <Link to="/blog/why-you-wake-up-in-the-middle-of-the-night" className="font-semibold underline text-[#2563EB]">why you might be waking up during the night</Link> because of screen habits.
       </p>
 
       <h2>What Exactly is Blue Light?</h2>
@@ -39,7 +40,7 @@ export default function BlueLightSleep() {
 
       <h2>How Devices Trick Your Brain</h2>
       <p>
-        The problem arises when the sun goes down. For most of human history, evenings meant darkness or the warm, red-orange glow of a fire. Today, our screens blast our eyes with intense blue light long after sunset.
+        The problem arises when the sun goes down. For most of human history, evenings meant darkness or the warm, red-orange glow of a fire. Today, our screens blast our eyes with intense blue light long after sunset. If you need to fix your ruined body clock, check our <Link to="/blog/fix-sleep-schedule" className="font-semibold underline text-[#2563EB]">sleep schedule guide</Link>.
       </p>
       <p>
         When you stare at a phone in bed, photoreceptors in your eyes detect the blue light and send a powerful message to your brain: <em>"The sun is up. It is daytime. Stay awake."</em>
@@ -50,7 +51,7 @@ export default function BlueLightSleep() {
 
       <h2>The Ripple Effects of Poor Sleep</h2>
       <p>
-        Melatonin suppression isn't just about taking longer to fall asleep. It disrupts your 90-minute sleep cycles. People exposed to heavy blue light before bed spend drastically less time in REM sleep (the restorative phase for memory and mood) and wake up feeling groggy, a phenomenon known as sleep inertia.
+        Melatonin suppression isn't just about taking longer to fall asleep. It disrupts your 90-minute sleep cycles. People exposed to heavy blue light before bed spend drastically less time in REM sleep (the restorative phase for memory and mood) and wake up feeling groggy, a phenomenon known as sleep inertia. Using a <Link to="/" className="font-semibold underline text-[#2563EB]">Sleep Calculator</Link> can help mitigate some of this bad timing by waking you between cycles.
       </p>
 
       <h2>Actionable Solutions: How to Protect Your Sleep</h2>

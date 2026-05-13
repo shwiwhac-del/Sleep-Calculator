@@ -27,10 +27,12 @@ const BestSleepCalculatorGuide = lazy(() => import('./pages/BestSleepCalculatorG
 const HowSleepCycleWorks = lazy(() => import('./pages/HowSleepCycleWorks'));
 const BenefitsOfSleepCalculator = lazy(() => import('./pages/BenefitsOfSleepCalculator'));
 const SleepCycleCalculatorBlog = lazy(() => import('./pages/SleepCycleCalculatorBlog'));
+const SmartSleepHabits = lazy(() => import('./pages/SmartSleepHabits'));
+const WhyYouWakeUpMiddleNight = lazy(() => import('./pages/WhyYouWakeUpMiddleNight'));
 
 function Footer() {
   return (
-    <footer className="w-full py-8 mt-auto border-t border-gray-100 dark:border-[#222] bg-white dark:bg-[#0B0B0B] z-20 relative flex flex-col items-center">
+    <footer className="w-full py-8 mt-auto border-t border-gray-200 dark:border-[#222] bg-white dark:bg-[#0B0B0B] z-20 relative flex flex-col items-center">
       <div className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm text-gray-500 dark:text-gray-400 px-4 mb-4">
         <Link to="/privacy" className="hover:text-[#2563EB] transition-colors">Privacy Policy</Link>
         <Link to="/terms" className="hover:text-[#2563EB] transition-colors">Terms & Conditions</Link>
@@ -64,8 +66,8 @@ function Header({ isDarkMode, toggleDarkMode }: { isDarkMode: boolean, toggleDar
   }, [isMenuOpen]);
 
   return (
-    <header className="w-full h-[70px] border-b border-gray-100 dark:border-[#222] bg-white/90 dark:bg-[#0B0B0B]/90 backdrop-blur-md z-50 sticky top-0 transition-colors">
-      <div className="max-w-6xl mx-auto h-full flex items-center justify-between px-4 sm:px-6 md:px-8">
+    <header className="w-full h-[64px] pb-1 border-b shadow-sm border-gray-200 dark:border-[#222] bg-white/95 dark:bg-[#0B0B0B]/95 backdrop-blur-md z-50 sticky top-0 transition-colors">
+      <div className="max-w-6xl mx-auto h-full flex items-center justify-between px-4 sm:px-6 md:px-8 tracking-tight">
         <Link to="/" className="flex items-center gap-2.5 text-gray-900 dark:text-white hover:text-[#2563EB] dark:hover:text-[#2563EB] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] rounded">
           <Moon className="text-[#2563EB]" size={22} strokeWidth={2.5} />
           <span className="text-base sm:text-lg font-bold tracking-tight font-serif">Sleep Calculator</span>
@@ -147,9 +149,9 @@ function AppContent() {
   }, [isDarkMode]);
 
   return (
-    <div className="min-h-screen flex flex-col text-gray-900 dark:text-white font-sans relative overflow-x-hidden bg-white dark:bg-[#0B0B0B] transition-colors">
+    <div className="min-h-screen flex flex-col text-gray-900 dark:text-gray-100 font-sans relative overflow-x-hidden bg-[#F5F7FA] dark:bg-[#0B0B0B] transition-colors">
       <Header isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
-      <main className="relative z-10 flex-grow flex flex-col items-center justify-start w-full py-6 sm:py-10">
+      <main className="relative z-10 flex-grow flex flex-col items-center justify-start w-full py-4 sm:py-8">
             <Suspense fallback={
               <div className="flex justify-center items-center h-[50vh] w-full">
                 <Loader2 className="w-8 h-8 text-[#2563EB] animate-spin" />
@@ -186,6 +188,8 @@ function AppContent() {
                 <Route path="/blog/fix-sleep-schedule" element={<FixSleepSchedule />} />
                 <Route path="/blog/blue-light-sleep" element={<BlueLightSleep />} />
                 <Route path="/blog/sleep-cycle-calculator" element={<SleepCycleCalculatorBlog />} />
+                <Route path="/blog/smart-sleep-habits-better-energy" element={<SmartSleepHabits />} />
+                <Route path="/blog/why-you-wake-up-in-the-middle-of-the-night" element={<WhyYouWakeUpMiddleNight />} />
 
                 {/* Redirects for old URLs to new structure */}
                 <Route path="/blog/what-is-a-sleep-calculator" element={<Navigate to="/blog/sleep-calculator" replace />} />

@@ -140,10 +140,10 @@ export function ArticleLayout({
 
         {relatedPosts.length > 0 && (
           <div className="border-t border-gray-100 dark:border-[#222] pt-12 mb-12">
-            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6 font-serif">Keep Reading</h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6 font-serif">Related Articles</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {relatedPosts.map((post, idx) => (
-                <Link key={idx} to={post.url} className="group bg-white dark:bg-[#111] border border-gray-100 dark:border-[#222] hover:border-gray-200 dark:hover:border-gray-600 shadow-sm hover:shadow-lg hover:-translate-y-1 rounded-2xl p-6 transition-all duration-300 flex flex-col h-full">
+                <Link key={idx} to={post.url} className="group bg-white dark:bg-[#111] border border-gray-200 dark:border-[#222] hover:border-gray-300 dark:hover:border-gray-600 shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:shadow-lg hover:-translate-y-1 rounded-[24px] p-6 sm:p-7 transition-all duration-300 flex flex-col h-full">
                   <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-2 group-hover:text-[#2563EB] dark:group-hover:text-[#2563EB] transition-colors font-serif">{post.title}</h4>
                   <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed max-w-full flex-grow">{post.description}</p>
                   <span className="inline-flex items-center gap-1.5 text-[#2563EB] font-semibold text-sm mt-4 transition-colors">

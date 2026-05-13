@@ -63,8 +63,8 @@ export function FAQAccordion() {
         return (
           <div 
             key={index} 
-            className={`bg-white dark:bg-[#111] border rounded-2xl overflow-hidden transition-all duration-300 ${
-              isOpen ? 'border-[#2563EB]/50 shadow-md ring-1 ring-[#2563EB]/20 bg-blue-50/10 dark:bg-[#2563EB]/5' : 'border-gray-100 dark:border-[#222] shadow-sm hover:border-[#2563EB]/30 hover:shadow-md'
+            className={`bg-white dark:bg-[#111] border rounded-[16px] xl:rounded-[20px] overflow-hidden transition-all duration-300 ${
+              isOpen ? 'border-[#2563EB]/50 shadow-md ring-1 ring-[#2563EB]/20 bg-blue-50/10 dark:bg-[#2563EB]/5' : 'border-gray-200 dark:border-[#222] shadow-[0_2px_10px_rgb(0,0,0,0.02)] hover:border-gray-300 dark:hover:border-[#333] hover:shadow-md'
             }`}
           >
             <button

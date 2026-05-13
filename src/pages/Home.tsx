@@ -193,7 +193,7 @@ export default function Home() {
   return (
     <div className="w-full flex flex-col items-center">
       {/* Header Info */}
-      <div className="flex flex-col items-center justify-center mb-6 mt-4 sm:mt-6">
+      <div className="flex flex-col items-center justify-center mb-6 mt-2 sm:mt-4">
         <Helmet>
           <title>Sleep Calculator: Exact Bedtime & Wake Up Time Calculator</title>
           <meta name="description" content="Use our free sleep calculator to find the exact bedtime and wake up time based on 90-minute sleep cycles. Calculate your REM sleep for a healthy sleep cycle." />
@@ -234,8 +234,8 @@ export default function Home() {
       </div>
 
       {/* Main Tool Container */}
-      <div className="w-full max-w-[580px] mx-auto mb-8 relative px-4 sm:px-0">
-        <div className="flex flex-col items-center bg-white dark:bg-[#111] border border-gray-100 dark:border-[#222] rounded-[24px] p-5 sm:p-6 shadow-sm relative overflow-hidden">
+      <div className="w-full max-w-[580px] mx-auto mb-10 relative px-4 sm:px-0">
+        <div className="flex flex-col items-center bg-white dark:bg-[#111] border border-gray-200 dark:border-[#222] rounded-[24px] p-6 sm:p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-none relative overflow-hidden">
           
           {/* Toggle Mode */}
           <div 
@@ -388,7 +388,7 @@ export default function Home() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div className="bg-white dark:bg-[#111] border border-gray-100 dark:border-[#222] rounded-xl p-5 sm:p-6 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col items-start h-full">
+          <div className="bg-white dark:bg-[#111] border border-gray-200 dark:border-[#222] rounded-xl p-5 sm:p-6 shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col items-start h-full">
             <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2 font-serif">Smart Bedtime Calculator</h3>
             <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-6 flex-grow">Calculate exact sleep cycles to wake up feeling completely refreshed and energized.</p>
             <Link to="/feature/smart-bedtime-calculator" className="bg-[#F8FAFC] dark:bg-[#1A1A1A] text-[#2563EB] hover:bg-[#2563EB] hover:text-white px-4 py-2.5 rounded-lg text-sm font-semibold transition-colors duration-300 w-full text-center shadow-sm">
@@ -396,7 +396,7 @@ export default function Home() {
             </Link>
           </div>
 
-          <div className="bg-white dark:bg-[#111] border border-gray-100 dark:border-[#222] rounded-xl p-5 sm:p-6 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col items-start h-full">
+          <div className="bg-white dark:bg-[#111] border border-gray-200 dark:border-[#222] rounded-xl p-5 sm:p-6 shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col items-start h-full">
             <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2 font-serif">Best Time to Sleep</h3>
             <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-6 flex-grow">Discover the optimal window for hitting the pillow according to sleep scientists.</p>
             <Link to="/article/best-sleep-time" className="bg-[#F8FAFC] dark:bg-[#1A1A1A] text-[#2563EB] hover:bg-[#2563EB] hover:text-white px-4 py-2.5 rounded-lg text-sm font-semibold transition-colors duration-300 w-full text-center shadow-sm">
@@ -404,7 +404,7 @@ export default function Home() {
             </Link>
           </div>
 
-          <div className="bg-white dark:bg-[#111] border border-gray-100 dark:border-[#222] rounded-xl p-5 sm:p-6 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col items-start h-full">
+          <div className="bg-white dark:bg-[#111] border border-gray-200 dark:border-[#222] rounded-xl p-5 sm:p-6 shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col items-start h-full">
             <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2 font-serif">Power Nap Optimizer</h3>
             <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-6 flex-grow">Learn the exact length a nap should be to wake up energized instead of groggy.</p>
             <Link to="/feature/power-nap-optimizer" className="bg-[#F8FAFC] dark:bg-[#1A1A1A] text-[#2563EB] hover:bg-[#2563EB] hover:text-white px-4 py-2.5 rounded-lg text-sm font-semibold transition-colors duration-300 w-full text-center shadow-sm">
@@ -412,7 +412,7 @@ export default function Home() {
             </Link>
           </div>
 
-          <div className="bg-white dark:bg-[#111] border border-gray-100 dark:border-[#222] rounded-xl p-5 sm:p-6 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col items-start h-full">
+          <div className="bg-white dark:bg-[#111] border border-gray-200 dark:border-[#222] rounded-xl p-5 sm:p-6 shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col items-start h-full">
             <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2 font-serif">Deep Sleep Fixer</h3>
             <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-6 flex-grow">Waking up in deep sleep is the #1 cause of morning grogginess. Fix it today.</p>
             <Link to="/article/deep-sleep-fixer" className="bg-[#F8FAFC] dark:bg-[#1A1A1A] text-[#2563EB] hover:bg-[#2563EB] hover:text-white px-4 py-2.5 rounded-lg text-sm font-semibold transition-colors duration-300 w-full text-center shadow-sm">
@@ -439,14 +439,17 @@ export default function Home() {
             Whether you are struggling with a disrupted internal clock and need to <Link to="/blog/fix-sleep-schedule" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">fix your sleep schedule</Link>, or wondering about the <Link to="/article/best-sleep-time" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">best time to sleep</Link>, our <strong>bedtime calculator</strong> provides precise calculations. We automatically factor in the 15 minutes it usually takes to fall asleep. If you only have time for a quick rest during the day, check out our <strong>nap calculator</strong> guide on <Link to="/article/power-nap" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">how long a power nap should be</Link>.
           </p>
           <p className="mb-4">
-            Age also plays a massive role in your rest requirements. Learn more about <Link to="/blog/sleep-age" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">how much sleep you need by age</Link>, and why you might still <Link to="/blog/tired" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">feel tired after 8 hours of sleep</Link>. Keep your screen exposure in check to prevent <Link to="/blog/blue-light-sleep" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">blue light from disrupting your healthy sleep cycle</Link>.
+            Age also plays a massive role in your rest requirements. Learn more about <Link to="/blog/sleep-age" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">how much sleep you need by age</Link>, and why you might still <Link to="/article/deep-sleep-fixer" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">feel tired after 8 hours of sleep</Link>. Keep your screen exposure in check to prevent <Link to="/blog/blue-light-sleep" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">blue light from disrupting your healthy sleep cycle</Link>.
+          </p>
+          <p className="mb-4">
+            If you struggle with waking up frequently, you can read our guide on <Link to="/blog/why-you-wake-up-in-the-middle-of-the-night" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">why you wake up in the middle of the night</Link>, and build <Link to="/blog/smart-sleep-habits-better-energy" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">smart sleep habits for better energy</Link> to boost your daily performance naturally.
           </p>
         </div>
       </div>
 
       {/* FAQ Section */}
       <div className="w-full max-w-4xl mx-auto pb-12 px-4 sm:px-6">
-        <section className="bg-white dark:bg-[#1A1A1A] border border-gray-100 dark:border-[#222] shadow-sm rounded-3xl p-6 sm:p-8">
+        <section className="bg-white dark:bg-[#1A1A1A] border border-gray-200 dark:border-[#222] shadow-[0_4px_20px_rgb(0,0,0,0.03)] dark:shadow-none rounded-[24px] p-6 sm:p-8">
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-6 font-serif text-center">FAQs</h2>
           <FAQAccordion />
         </section>

@@ -81,6 +81,18 @@ export default function Blog() {
       description: "Learn why deep sleep hangovers cause morning grogginess and how a sleep cycle calculator fixes it.",
       url: "/article/deep-sleep-fixer",
       topic: "Sleep Guide",
+    },
+    {
+      title: "Smart Sleep Habits for Better Energy",
+      description: "Learn simple sleep habits that improve energy, focus, and sleep quality. Discover how sleep cycles and bedtime timing affect your daily performance.",
+      url: "/blog/smart-sleep-habits-better-energy",
+      topic: "Sleep Habits",
+    },
+    {
+      title: "Why You Wake Up in the Middle of the Night",
+      description: "Waking up during the night can affect sleep quality and daily energy. Learn common reasons for interrupted sleep and simple ways to sleep better naturally.",
+      url: "/blog/why-you-wake-up-in-the-middle-of-the-night",
+      topic: "Sleep Guide",
     }
   ];
 
@@ -113,12 +125,12 @@ export default function Blog() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {articles.map((article, index) => (
           <Link 
             key={index}
             to={article.url}
-            className="group bg-white dark:bg-[#111] border border-gray-100 dark:border-[#222] rounded-2xl p-6 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col items-start h-full"
+            className="group bg-white dark:bg-[#111] border border-gray-200 dark:border-[#222] rounded-[24px] p-6 sm:p-7 shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col items-start h-full"
           >
             <span className="text-xs font-semibold tracking-wider uppercase text-gray-400 dark:text-gray-500 mb-3 block">
               {article.topic}
