@@ -14,11 +14,7 @@ export default function Contact() {
   const navigate = useNavigate();
 
   const handleBack = () => {
-    if (window.history.state && window.history.state.idx > 0) {
-      navigate(-1);
-    } else {
-      navigate('/');
-    }
+    navigate('/');
   };
 
   const handleSubmit = async (e: FormEvent) => {
@@ -38,6 +34,9 @@ export default function Contact() {
     }
     
     try {
+      if (!db) {
+        throw new Error('Database is not initialized. Please try again later.');
+      }
       await addDoc(collection(db, 'contacts'), {
         ...formData,
         createdAt: serverTimestamp(),
@@ -52,7 +51,6 @@ export default function Contact() {
       
       setTimeout(() => setIsSuccess(false), 5000);
     } catch (err: any) {
-      console.error(err);
       setIsSubmitting(false);
       if (err?.message?.includes('Missing or insufficient permissions') || err?.code === 'permission-denied') {
         handleFirestoreError(err, OperationType.CREATE, 'contacts');
@@ -93,9 +91,29 @@ export default function Contact() {
 
       <div className="animate-in fade-in slide-in-from-top-4 duration-500 text-left">
         <h1 className="text-3xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-6 leading-tight font-serif">Contact Us</h1>
-        <p className="text-gray-500 dark:text-gray-400 mb-8 text-base sm:text-lg">
-          Have a question or suggestion? Fill out the form below.
-        </p>
+        
+        <div className="flex flex-col sm:flex-row gap-8 mb-8 sm:mb-12">
+          <div className="flex-1">
+            <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-3">How can we help?</h2>
+            <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base leading-relaxed mb-4">
+              We're here to help you get the best sleep possible. Whether you have a question about how the calculator works, a feature request, or just want to share how it has improved your mornings, we'd love to hear from you.
+            </p>
+            <div className="bg-blue-50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-900/30 rounded-xl p-4 mt-6">
+              <p className="text-blue-800 dark:text-blue-300 text-sm font-medium">
+                <strong>Response Time:</strong> We are a small team, but we typically respond to all inquiries within 24–48 hours.
+              </p>
+            </div>
+          </div>
+          <div className="flex-1 sm:pl-8 sm:border-l border-gray-100 dark:border-[#222]">
+            <h3 className="text-sm font-bold text-gray-900 dark:text-white uppercase tracking-wider mb-4">Direct Contact</h3>
+            <p className="text-gray-600 dark:text-gray-400 mb-2">
+              <strong>Email:</strong> <a href="mailto:support@sleepcalculater.online" className="text-[#2563EB] hover:underline">support@sleepcalculater.online</a>
+            </p>
+            <p className="text-gray-600 dark:text-gray-400">
+              <strong>Location:</strong> San Francisco, CA
+            </p>
+          </div>
+        </div>
 
         {isSuccess ? (
           <div className="flex flex-col items-start py-8">
@@ -176,6 +194,9 @@ export default function Contact() {
             >
               {isSubmitting ? 'Sending...' : 'Send Message'}
             </button>
+            <p className="text-xs text-gray-400 dark:text-gray-500 text-center mt-4">
+              Your privacy is important to us. We will only use your email to respond to your inquiry and will never share your information with third parties.
+            </p>
           </form>
         )}
       </div>

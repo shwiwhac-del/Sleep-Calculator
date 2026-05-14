@@ -1,3 +1,4 @@
+import React from 'react';
 import { useParams, Navigate, Link } from 'react-router-dom';
 import NotFound from './NotFound';
 import { ArrowLeft, Clock, Moon, Battery, Brain, Zap, Activity } from 'lucide-react';

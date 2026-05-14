@@ -1,16 +1,31 @@
-import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
-import { getAuth } from "firebase/auth";
+import { initializeApp, FirebaseApp } from "firebase/app";
+import { getFirestore, Firestore } from "firebase/firestore";
+import { getAuth, Auth } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBZKTuh1txqL1baOcYGwNIZ_8xUUhG0l-s",
-  authDomain: "sleepcalculater.firebaseapp.com",
-  projectId: "sleepcalculater",
-  storageBucket: "sleepcalculater.firebasestorage.app",
-  messagingSenderId: "372108688211",
-  appId: "1:372108688211:web:e7cb7d7a094c50ee61ffa6"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID
 };
 
-const app = initializeApp(firebaseConfig);
-export const db = getFirestore(app);
-export const auth = getAuth(app);
+let app: FirebaseApp | undefined;
+let db: Firestore | undefined;
+let auth: Auth | undefined;
+
+try {
+  if (firebaseConfig.apiKey) {
+    app = initializeApp(firebaseConfig);
+    db = getFirestore(app);
+    auth = getAuth(app);
+  } else {
+    console.warn('Firebase API key is missing. Firebase services will not be initialized.');
+  }
+} catch (error) {
+  console.error("Error initializing Firebase:", error);
+}
+
+export { app, db, auth };
+

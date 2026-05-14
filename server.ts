@@ -1,11 +1,30 @@
 import express from "express";
 import { createServer as createViteServer } from "vite";
 import path from "path";
+import helmet from "helmet";
+import rateLimit from "express-rate-limit";
 
 async function startServer() {
   const app = express();
   app.disable('x-powered-by');
   const PORT = 3000;
+
+  // Basic security headers, but configure Content-Security-Policy to allow inline scripts/styles for React/Vite development
+  app.use(helmet({
+    contentSecurityPolicy: false,
+  }));
+
+  // Setup rate limiter
+  const limiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 1000, // limit each IP to 1000 requests per windowMs
+    message: "Too many requests from this IP, please try again after 15 minutes",
+    standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
+    legacyHeaders: false, // Disable the `X-RateLimit-*` headers
+  });
+
+  // Apply the rate limiting middleware to API calls only
+  app.use('/api', limiter);
 
   app.use(express.json());
 

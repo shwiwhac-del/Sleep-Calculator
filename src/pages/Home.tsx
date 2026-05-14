@@ -209,6 +209,17 @@ export default function Home() {
                   "url": "https://sleepcalculater.online/"
                 },
                 {
+                  "@type": "Organization",
+                  "name": "Sleep Calculator",
+                  "url": "https://sleepcalculater.online/",
+                  "logo": "https://sleepcalculater.online/icon.svg",
+                  "contactPoint": {
+                    "@type": "ContactPoint",
+                    "email": "support@sleepcalculater.online",
+                    "contactType": "customer support"
+                  }
+                },
+                {
                   "@type": "SoftwareApplication",
                   "name": "Sleep Cycle Calculator",
                   "applicationCategory": "HealthApplication",
@@ -326,36 +337,40 @@ export default function Home() {
 
       {/* Results Section */}
       {results.length > 0 && (
-        <div ref={resultsRef} className="w-full max-w-[580px] mx-auto flex flex-col items-center mb-8 animate-fade-in px-4">
-          <div className="w-full bg-[#f0fdf4] dark:bg-[#111] border border-green-200 dark:border-green-900/30 rounded-3xl p-5 sm:p-6 flex flex-col items-center shadow-sm">
+        <div ref={resultsRef} className="w-full max-w-[500px] mx-auto flex flex-col items-center mb-8 animate-fade-in px-4">
+          <div className="w-full bg-white dark:bg-[#0a0a0a] border border-gray-200/80 dark:border-[#222] rounded-[28px] p-6 sm:p-8 flex flex-col shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-none relative overflow-hidden">
             <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-2 font-serif text-center">
               Your Ideal Sleep Times
             </h2>
-            <p className="text-gray-600 dark:text-gray-300 mb-6 text-center text-sm sm:text-base">
+            <p className="text-gray-500 dark:text-gray-400 mb-8 text-center text-sm sm:text-base px-2">
               {mode === 'wake' ? 'To wake up refreshed, try to fall asleep at one of these times:' : 'To get a full night\'s rest, set your alarm for one of these times:'}
             </p>
 
-            <div className="w-full flex flex-col gap-3">
+            <div className="w-full flex flex-col gap-3 sm:gap-4">
               {results.map((res, index) => {
                 const recommended = isRecommended(res.cycles);
                 return (
                   <div 
                     key={index}
-                    className={`flex flex-row items-center justify-between p-3 sm:p-4 rounded-xl border transition-all duration-300 hover:shadow-md ${
-                      recommended ? 'bg-[#2563EB]/5 border-[#2563EB]/20 shadow-sm' : 'bg-white dark:bg-[#1A1A1A] border-gray-200 dark:border-[#333] shadow-sm hover:border-gray-300 dark:hover:border-[#444]'
+                    className={`group flex items-center justify-between p-4 sm:p-5 rounded-2xl border transition-all duration-300 hover:shadow-sm hover:-translate-y-0.5 ${
+                      recommended 
+                        ? 'bg-blue-50/50 dark:bg-blue-900/10 border-blue-200/60 dark:border-blue-800/30' 
+                        : 'bg-gray-50/50 dark:bg-[#111] border-gray-200/60 dark:border-[#222] hover:bg-white dark:hover:bg-[#1a1a1a] hover:border-gray-300 dark:hover:border-[#333]'
                     }`}
                   >
                     <div className="flex flex-col">
-                      <div className="flex items-center gap-2">
-                        <span className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white tracking-tight">{formatTime(res.date, true)}</span>
-                      </div>
-                      <div className="text-gray-500 dark:text-gray-400 text-xs sm:text-sm mt-1 font-medium">
+                      <span className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white tracking-tight leading-none mb-1.5">
+                        {formatTime(res.date, true)}
+                      </span>
+                      <span className="text-gray-500 dark:text-gray-400 text-xs sm:text-sm font-medium">
                         {res.cycles} cycles &bull; {res.cycles * 1.5} hours
-                      </div>
+                      </span>
                     </div>
                     {recommended && (
-                      <div className="text-[10px] sm:text-xs font-bold uppercase tracking-wide text-[#2563EB] bg-[#2563EB]/10 px-3 py-1.5 rounded-full">
-                        Recommended
+                      <div className="flex-shrink-0 ml-3">
+                        <span className="inline-flex items-center text-[10px] sm:text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400 bg-blue-100/50 dark:bg-blue-900/30 border border-blue-200/50 dark:border-blue-800/50 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full">
+                          Recommended
+                        </span>
                       </div>
                     )}
                   </div>
@@ -363,8 +378,8 @@ export default function Home() {
               })}
             </div>
             
-            <p className="text-gray-500 dark:text-gray-400 text-xs sm:text-sm text-center mt-6 max-w-sm">
-              We've added 15 minutes to these times to account for how long it takes the average person to fall asleep.
+            <p className="text-gray-400 dark:text-gray-500 text-xs sm:text-sm text-center mt-8 px-4 leading-relaxed">
+              We've added 15 minutes to these times to account for how long it takes to fall asleep.
             </p>
 
             <button
@@ -372,9 +387,9 @@ export default function Home() {
                 setResults([]);
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
-              className="mt-6 px-6 py-2.5 rounded-full border border-gray-200 dark:border-[#333] text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-[#1A1A1A] text-sm font-semibold transition-colors focus-visible:outline-none"
+              className="mt-6 w-full py-3.5 rounded-full bg-gray-900 dark:bg-white text-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-100 text-sm sm:text-base font-semibold shadow-sm transition-colors focus-visible:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 dark:focus:ring-white dark:focus:ring-offset-[#0a0a0a]"
             >
-              Recalculate
+              Recalculate Options
             </button>
           </div>
         </div>
@@ -391,7 +406,7 @@ export default function Home() {
           <div className="bg-white dark:bg-[#111] border border-gray-200 dark:border-[#222] rounded-xl p-5 sm:p-6 shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col items-start h-full">
             <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2 font-serif">Smart Bedtime Calculator</h3>
             <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-6 flex-grow">Calculate exact sleep cycles to wake up feeling completely refreshed and energized.</p>
-            <Link to="/feature/smart-bedtime-calculator" className="bg-[#F8FAFC] dark:bg-[#1A1A1A] text-[#2563EB] hover:bg-[#2563EB] hover:text-white px-4 py-2.5 rounded-lg text-sm font-semibold transition-colors duration-300 w-full text-center shadow-sm">
+            <Link to="/article/smart-bedtime-calculator" className="bg-[#F8FAFC] dark:bg-[#1A1A1A] text-[#2563EB] hover:bg-[#2563EB] hover:text-white px-4 py-2.5 rounded-lg text-sm font-semibold transition-colors duration-300 w-full text-center shadow-sm">
               Use Feature
             </Link>
           </div>
@@ -407,8 +422,8 @@ export default function Home() {
           <div className="bg-white dark:bg-[#111] border border-gray-200 dark:border-[#222] rounded-xl p-5 sm:p-6 shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col items-start h-full">
             <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2 font-serif">Power Nap Optimizer</h3>
             <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-6 flex-grow">Learn the exact length a nap should be to wake up energized instead of groggy.</p>
-            <Link to="/feature/power-nap-optimizer" className="bg-[#F8FAFC] dark:bg-[#1A1A1A] text-[#2563EB] hover:bg-[#2563EB] hover:text-white px-4 py-2.5 rounded-lg text-sm font-semibold transition-colors duration-300 w-full text-center shadow-sm">
-              Use Feature
+            <Link to="/article/power-nap-optimizer" className="bg-[#F8FAFC] dark:bg-[#1A1A1A] text-[#2563EB] hover:bg-[#2563EB] hover:text-white px-4 py-2.5 rounded-lg text-sm font-semibold transition-colors duration-300 w-full text-center shadow-sm">
+              Read Guide
             </Link>
           </div>
 

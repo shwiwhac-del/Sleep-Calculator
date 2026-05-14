@@ -6,11 +6,7 @@ export default function About() {
   const navigate = useNavigate();
 
   const handleBack = () => {
-    if (window.history.state && window.history.state.idx > 0) {
-      navigate(-1);
-    } else {
-      navigate('/');
-    }
+    navigate('/');
   };
 
   return (
@@ -35,24 +31,20 @@ export default function About() {
         
         <div className="space-y-8 text-gray-600 dark:text-gray-300 leading-relaxed text-sm sm:text-base">
           <p className="text-base sm:text-lg font-medium text-gray-900 dark:text-white">
-            This Sleep Calculator is designed to help you find the best time to sleep and wake up based on natural sleep cycles.
+            We built this tool because waking up shouldn't feel like a chore. Our mission is to help people optimize their energy naturally by understanding their biological rhythms.
           </p>
           <p>
-            Instead of guessing your sleep schedule, this tool gives you optimized times so you can wake up feeling refreshed and more energized.
+            Whether you are struggling with a disrupted internal clock, shift work, or just daily grogginess, we wanted to build a simple, privacy-focused tool that gives you optimized sleep times without requiring you to download an app or sign up for an account. 
           </p>
 
           <section>
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 font-serif">How This Tool Helps You</h2>
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 font-serif">Why We Created This</h2>
             <p className="mb-4">
-              Many people sleep for 7–8 hours but still wake up feeling tired. The problem is not just the duration — it’s the timing.
+              Many people sleep for a full 8 hours but still drag themselves out of bed feeling exhausted. The problem usually isn't how <em>long</em> they slept, but <em>when</em> their alarm went off.
             </p>
-            <p className="mb-4">This sleep calculator helps you:</p>
-            <ul className="list-disc pl-5 space-y-2">
-              <li>Plan your bedtime more effectively</li>
-              <li>Wake up at the end of a sleep cycle</li>
-              <li>Avoid waking up during deep sleep</li>
-              <li>Improve your daily energy and focus</li>
-            </ul>
+            <p className="mb-4">
+              Waking up in the middle of a "deep sleep" phase causes sleep inertia—that heavy, foggy feeling that takes hours to shake off. We created this calculator to do the math for you, allowing you to time your alarms perfectly so you wake up at the end of a 90-minute sleep cycle when your body is naturally ready to rise.
+            </p>
           </section>
 
           <section>

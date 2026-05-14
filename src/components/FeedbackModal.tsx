@@ -36,6 +36,9 @@ export function FeedbackModal({ isOpen, onClose }: FeedbackModalProps) {
     }
     
     try {
+      if (!db) {
+        throw new Error('Database is not initialized. Please try again later.');
+      }
       await addDoc(collection(db, 'feedbacks'), {
         ...formData,
         createdAt: serverTimestamp(),
@@ -53,7 +56,6 @@ export function FeedbackModal({ isOpen, onClose }: FeedbackModalProps) {
         onClose();
       }, 3000);
     } catch (err: any) {
-      console.error(err);
       setIsSubmitting(false);
       if (err?.message?.includes('Missing or insufficient permissions') || err?.code === 'permission-denied') {
         handleFirestoreError(err, OperationType.CREATE, 'feedbacks');

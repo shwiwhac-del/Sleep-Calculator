@@ -84,6 +84,24 @@ export default function SleepCycleGuide() {
       <p>
         Your biology demands you sleep in 90-minute increments. Never interrupt a cycle if you can avoid it. Use a <strong><Link to="/">sleep calculator</Link></strong> every night to match your alarms to your natural rhythm.
       </p>
+
+      <div className="mt-12 p-6 bg-gray-50 dark:bg-[#1A1A1A] rounded-xl border border-gray-100 dark:border-[#222]">
+        <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4 mt-0 font-serif">Scientific Sources & References</h3>
+        <ul className="text-sm text-gray-600 dark:text-gray-400 space-y-3 m-0 pl-4">
+          <li className="m-0 text-sm md:text-sm">
+            <strong>National Institute of Neurological Disorders and Stroke:</strong> 
+            <a href="https://www.ninds.nih.gov/health-information/public-education/brain-basics/brain-basics-understanding-sleep" target="_blank" rel="noopener noreferrer" className="ml-1 text-[#2563EB] hover:underline">Brain Basics: Understanding Sleep</a>
+          </li>
+          <li className="m-0 text-sm md:text-sm">
+            <strong>Harvard Medical School:</strong> 
+            <a href="https://health.harvard.edu/promotions/harvard-health-publications/improving-sleep" target="_blank" rel="noopener noreferrer" className="ml-1 text-[#2563EB] hover:underline">Improving Sleep: A guide to a good night's rest</a>
+          </li>
+          <li className="m-0 text-sm md:text-sm">
+            <strong>Sleep Foundation:</strong> 
+            <a href="https://www.sleepfoundation.org/stages-of-sleep" target="_blank" rel="noopener noreferrer" className="ml-1 text-[#2563EB] hover:underline">Stages of Sleep: What Happens in a Sleep Cycle</a>
+          </li>
+        </ul>
+      </div>
     </ArticleLayout>
   );
 }

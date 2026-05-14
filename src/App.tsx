@@ -12,6 +12,7 @@ const Contact = lazy(() => import('./pages/Contact'));
 const About = lazy(() => import('./pages/About'));
 const Feature = lazy(() => import('./pages/Feature'));
 const NotFound = lazy(() => import('./pages/NotFound'));
+const Disclaimer = lazy(() => import('./pages/Disclaimer'));
 
 // Home Guides
 
@@ -29,6 +30,8 @@ const BenefitsOfSleepCalculator = lazy(() => import('./pages/BenefitsOfSleepCalc
 const SleepCycleCalculatorBlog = lazy(() => import('./pages/SleepCycleCalculatorBlog'));
 const SmartSleepHabits = lazy(() => import('./pages/SmartSleepHabits'));
 const WhyYouWakeUpMiddleNight = lazy(() => import('./pages/WhyYouWakeUpMiddleNight'));
+const SleepDebtRecoveryGuide = lazy(() => import('./pages/SleepDebtRecoveryGuide'));
+const BestSleepScheduleForStudents = lazy(() => import('./pages/BestSleepScheduleForStudents'));
 
 function Footer() {
   return (
@@ -36,6 +39,7 @@ function Footer() {
       <div className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm text-gray-500 dark:text-gray-400 px-4 mb-4">
         <Link to="/privacy" className="hover:text-[#2563EB] transition-colors">Privacy Policy</Link>
         <Link to="/terms" className="hover:text-[#2563EB] transition-colors">Terms & Conditions</Link>
+        <Link to="/disclaimer" className="hover:text-[#2563EB] transition-colors">Medical Disclaimer</Link>
         <a href="/sitemap.xml" target="_blank" rel="noopener noreferrer" className="hover:text-[#2563EB] transition-colors">Sitemap</a>
       </div>
       <div className="text-gray-400 dark:text-gray-600 text-xs flex flex-col items-center gap-1.5">
@@ -166,10 +170,11 @@ function AppContent() {
                 {/* Utility Pages */}
                 <Route path="/terms" element={<Terms />} />
                 <Route path="/privacy" element={<Privacy />} />
+                <Route path="/disclaimer" element={<Disclaimer />} />
                 <Route path="/contact" element={<Contact />} />
                 
                 {/* Features */}
-                <Route path="/feature/:slug" element={<Feature />} />
+                <Route path="/article/:slug" element={<Feature />} />
 
                 {/* Main Tool Guides / Standalone pages */}
 
@@ -190,6 +195,8 @@ function AppContent() {
                 <Route path="/blog/sleep-cycle-calculator" element={<SleepCycleCalculatorBlog />} />
                 <Route path="/blog/smart-sleep-habits-better-energy" element={<SmartSleepHabits />} />
                 <Route path="/blog/why-you-wake-up-in-the-middle-of-the-night" element={<WhyYouWakeUpMiddleNight />} />
+                <Route path="/blog/sleep-debt-recovery-guide" element={<SleepDebtRecoveryGuide />} />
+                <Route path="/blog/best-sleep-schedule-for-students" element={<BestSleepScheduleForStudents />} />
 
                 {/* Redirects for old URLs to new structure */}
                 <Route path="/blog/what-is-a-sleep-calculator" element={<Navigate to="/blog/sleep-calculator" replace />} />

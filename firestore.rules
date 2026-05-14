@@ -1,0 +1,32 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Default deny
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    match /contacts/{documentId} {
+      // Anyone can create a contact request, but no one can read or modify them after creation.
+      allow create: if request.resource.data.keys().hasAll(['name', 'email', 'message', 'createdAt']) &&
+                    request.resource.data.name is string &&
+                    request.resource.data.name.size() > 0 &&
+                    request.resource.data.email is string &&
+                    request.resource.data.email.size() > 0 &&
+                    request.resource.data.message is string &&
+                    request.resource.data.message.size() > 0 &&
+                    request.resource.data.createdAt == request.time;
+    }
+
+    match /feedbacks/{documentId} {
+      // Anyone can post feedback, but cannot read or modify.
+      allow create: if request.resource.data.keys().hasAll(['feedbackType', 'message', 'createdAt']) &&
+                    request.resource.data.feedbackType is string &&
+                    request.resource.data.feedbackType.size() > 0 &&
+                    request.resource.data.message is string &&
+                    request.resource.data.message.size() > 0 &&
+                    request.resource.data.createdAt == request.time;
+    }
+  }
+}

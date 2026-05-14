@@ -47,14 +47,30 @@ export function ArticleLayout({
 
   const currentUrl = `https://sleepcalculater.online${location.pathname}`;
 
+  const authorProfile = {
+    name: author,
+    title: "Certified Sleep Science Coach",
+    description: "An expert in sleep hygiene, chronobiology, and productivity. Dedicated to helping people optimize their sleep cycles for better health and daily energy.",
+    img: `https://api.dicebear.com/7.x/notionists/svg?seed=Sarah&backgroundColor=e2e8f0`
+  };
+
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": title,
     "description": description,
     "author": {
+      "@type": "Person",
+      "name": authorProfile.name,
+      "url": "https://sleepcalculater.online/about"
+    },
+    "publisher": {
       "@type": "Organization",
-      "name": author
+      "name": "Sleep Calculator",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://sleepcalculater.online/icon.svg"
+      }
     },
     "datePublished": new Date(date).toISOString(),
     "url": currentUrl,
@@ -110,12 +126,19 @@ export function ArticleLayout({
         </nav>
         
         <header className="mb-12">
-          <div className="flex flex-wrap items-center gap-3 text-gray-400 dark:text-gray-500 dark:text-gray-400 text-xs font-semibold mb-6 uppercase tracking-widest">
-            <span>{author}</span>
-            <span className="w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-700"></span>
-            <span>{date}</span>
-            <span className="w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-700"></span>
-            <span>{readingTime} min read</span>
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 mb-8">
+            <div className="flex items-center gap-4">
+              <img src={authorProfile.img} alt={authorProfile.name} className="w-12 h-12 rounded-full border-2 border-gray-100 dark:border-gray-800" />
+              <div>
+                <p className="text-gray-900 dark:text-white font-bold text-sm">{authorProfile.name}</p>
+                <div className="flex items-center gap-2 text-gray-500 dark:text-gray-400 text-xs font-medium mt-0.5">
+                  <span>{date}</span>
+                  <span className="w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-700"></span>
+                  <span>{readingTime} min read</span>
+                </div>
+              </div>
+            </div>
+            {/* Social Share could go here */}
           </div>
           <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-gray-900 dark:text-white mb-6 leading-tight font-serif">{title}</h1>
           <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 leading-relaxed font-medium m-0 border-l-2 border-[#2563EB] pl-4">{description}</p>
@@ -130,7 +153,19 @@ export function ArticleLayout({
           <FAQAccordion />
         </div>
 
-        <div className="mt-16 mb-8 bg-gray-50 dark:bg-[#111] border border-gray-100 dark:border-[#222] rounded-2xl p-8 text-center flex flex-col items-center">
+        <div className="mt-12 bg-white dark:bg-[#111] border border-gray-100 dark:border-[#222] rounded-[24px] p-6 sm:p-8 flex flex-col sm:flex-row gap-6 items-start shadow-sm">
+          <img src={authorProfile.img} alt={authorProfile.name} className="w-20 h-20 sm:w-24 sm:h-24 rounded-full border border-gray-200 dark:border-gray-800 flex-shrink-0" />
+          <div>
+            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-1">{authorProfile.name}</h3>
+            <p className="text-[#2563EB] font-medium text-sm mb-3">{authorProfile.title}</p>
+            <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-4">{authorProfile.description}</p>
+            <Link to="/about" className="inline-flex items-center text-sm font-semibold text-gray-900 dark:text-white hover:text-[#2563EB] dark:hover:text-[#2563EB] transition-colors">
+              Learn more about our methodology <ArrowRight size={16} className="ml-1" />
+            </Link>
+          </div>
+        </div>
+
+        <div className="mt-12 mb-8 bg-gray-50 dark:bg-[#1A1A1A] border border-gray-100 dark:border-[#222] rounded-2xl p-8 text-center flex flex-col items-center">
           <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3 font-serif">Ready to fix your sleep?</h3>
           <p className="text-sm text-gray-600 dark:text-gray-400 max-w-sm mb-6">Use our free calculator to find the exact time you should go to bed tonight based on your natural 90-minute sleep cycles.</p>
           <Link to="/" className="inline-flex items-center gap-2 bg-[#2563EB] text-white font-semibold py-3 px-8 rounded-full hover:bg-[#1D4ED8] transition-colors shadow-sm">

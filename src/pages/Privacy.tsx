@@ -6,11 +6,7 @@ export default function Privacy() {
   const navigate = useNavigate();
 
   const handleBack = () => {
-    if (window.history.state && window.history.state.idx > 0) {
-      navigate(-1);
-    } else {
-      navigate('/');
-    }
+    navigate('/');
   };
 
   return (
@@ -36,16 +32,16 @@ export default function Privacy() {
 
         <div className="space-y-8 text-gray-600 dark:text-gray-300 leading-relaxed text-base sm:text-lg">
           <section>
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 font-serif">01. Local Processing</h2>
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 font-serif">01. Local Processing (Calculator Data)</h2>
             <p>
-              Sleep Calculator is a strictly client-side application. We do not collect, store, or transmit any personal data, sleep times, or usage information to our servers. All calculations are performed entirely locally within your web browser.
+              The core Sleep Calculator operates entirely on your device. We do not collect, store, or transmit your calculated sleep times or age group preferences to our servers. Any preferences you save (like time format or age group) are stored locally in your browser using standard built-in storage (localStorage) and never leave your device.
             </p>
           </section>
 
           <section>
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 font-serif">02. Zero Tracking</h2>
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 font-serif">02. Contact & Feedback Data</h2>
             <p>
-              We respect your digital privacy. This application does not use cookies, analytics trackers, or any third-party surveillance mechanisms. What you do on this site stays on your device.
+              When you voluntarily use our Contact or Feedback forms, we securely store the information you provide (such as your name, email address, and message) in our encrypted database (hosted by Google Firebase). We use this information strictly to respond to your inquiries or improve the application based on your feedback. We will never sell, rent, or share your contact information with third parties.
             </p>
           </section>
 
