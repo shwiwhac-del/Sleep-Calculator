@@ -5,7 +5,7 @@ export default function BestTimeToSleep() {
   return (
     <ArticleLayout
       backUrl="/"
-      backLabel="Back to Home"
+      backLabel="Home"
       title="Best Sleep Time – When Should You Sleep for Better Rest?"
       keywords="best time to sleep, sleep cycle, healthy rest"
       description="Discover the best sleep time for healthy rest, better energy, and improved sleep quality based on sleep cycles."

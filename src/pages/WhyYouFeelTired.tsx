@@ -5,7 +5,7 @@ export default function WhyYouFeelTired() {
   return (
     <ArticleLayout
       backUrl="/"
-      backLabel="Back to Home"
+      backLabel="Home"
       title="Why Am I Always Tired? Common Sleep-Related Causes"
       keywords="sleep calculator guide, better sleep, sleep cycle, REM sleep"
       description="Discover common reasons for constant tiredness, poor sleep quality, and unhealthy sleep habits affecting your energy."

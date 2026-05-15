@@ -5,7 +5,7 @@ export default function PowerNapGuide() {
   return (
     <ArticleLayout
       backUrl="/"
-      backLabel="Back to Home"
+      backLabel="Home"
       title="Power Nap Guide – Best Nap Length for Energy & Focus"
       keywords="power nap, optimal nap length, energy boost, siesta"
       description="Learn how power naps improve focus, energy, and productivity and discover the ideal nap duration for better performance."

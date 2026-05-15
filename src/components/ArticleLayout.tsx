@@ -121,7 +121,7 @@ export function ArticleLayout({
         <nav className="mb-8">
           <button onClick={handleBack} className="inline-flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 font-medium tracking-wide hover:text-gray-900 dark:hover:text-white transition-colors focus-visible:outline-none">
             <ChevronLeft size={16} />
-            {backLabel || (backUrl === "/" ? "Back to Home" : "Back to Blog")}
+            {backLabel || (backUrl === "/" ? "Home" : "Back to Blog")}
           </button>
         </nav>
         
