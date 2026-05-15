@@ -28,7 +28,7 @@ export default function SleepDebtRecoveryGuide() {
         Sleep debt is the difference between the sleep your body needs and the sleep you actually get.
       </p>
       <div className="bg-blue-50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-900/30 rounded-xl p-6 my-6">
-        <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4 mt-0">Example:</h3>
+        <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 mt-0">Example:</h3>
         <ul className="space-y-2 m-0 text-gray-700 dark:text-gray-300">
           <li className="m-0">Your body needs 8 hours</li>
           <li className="m-0">You only sleep 6 hours</li>

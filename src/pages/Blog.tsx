@@ -11,6 +11,18 @@ export default function Blog() {
 
   const articles = [
     {
+      title: "Best Bedtime Routine for Better Sleep",
+      description: "Learn the best bedtime routine for improving sleep quality naturally. Discover simple nighttime habits that help you fall asleep faster and wake up refreshed.",
+      url: "/blog/best-bedtime-routine-for-better-sleep",
+      topic: "Habits",
+    },
+    {
+      title: "How Sleep Affects Your Brain Performance",
+      description: "Discover how sleep impacts brain performance, focus, memory, and mental clarity. Learn why proper sleep is essential for productivity and daily energy.",
+      url: "/blog/how-sleep-affects-your-brain-performance",
+      topic: "Health",
+    },
+    {
       title: "Best Sleep Schedule for Students",
       description: "Discover the best sleep schedule for students to improve concentration, memory, productivity, and daily energy. Learn healthy sleeping habits for better academic performance.",
       url: "/blog/best-sleep-schedule-for-students",
@@ -106,14 +118,14 @@ export default function Blog() {
       <div className="mb-4 text-left">
         <button 
           onClick={handleBack}
-          className="inline-flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 font-medium tracking-wide hover:text-gray-900 dark:text-white transition-colors focus-visible:outline-none"
+          className="inline-flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 font-medium tracking-wide hover:text-gray-900 dark:text-gray-100 transition-colors focus-visible:outline-none"
         >
           <ArrowLeft size={16} /> Home
         </button>
       </div>
 
       <div className="mb-12 text-left animate-in fade-in slide-in-from-top-4 duration-700">
-        <h1 className="text-4xl sm:text-5xl font-bold tracking-tight mb-3 text-gray-900 dark:text-white leading-tight font-serif">Sleep Blog</h1>
+        <h1 className="text-4xl sm:text-5xl font-bold tracking-tight mb-3 text-gray-900 dark:text-gray-100 leading-tight font-serif">Sleep Blog</h1>
         <p className="text-gray-600 dark:text-gray-300 text-base sm:text-lg max-w-xl">
           Learn how to optimize your rest, understand your REM cycles, and wake up feeling refreshed every day.
         </p>
@@ -124,12 +136,12 @@ export default function Blog() {
           <Link 
             key={index}
             to={article.url}
-            className="group bg-white dark:bg-[#111] border border-gray-200 dark:border-[#222] rounded-[24px] p-6 sm:p-7 shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col items-start h-full"
+            className="group bg-white dark:bg-[#111827] border border-gray-200 dark:border-[#1e293b] rounded-[24px] p-6 sm:p-7 shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col items-start h-full"
           >
             <span className="text-xs font-semibold tracking-wider uppercase text-gray-400 dark:text-gray-500 mb-3 block">
               {article.topic}
             </span>
-            <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-3 font-serif group-hover:text-[#2563EB] transition-colors line-clamp-2">
+            <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-3 font-serif group-hover:text-[#2563EB] transition-colors line-clamp-2">
               {article.title}
             </h2>
             <p className="text-gray-600 dark:text-gray-300 text-sm sm:text-base leading-relaxed mb-6 flex-grow line-clamp-3">

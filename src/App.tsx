@@ -32,10 +32,12 @@ const SmartSleepHabits = lazy(() => import('./pages/SmartSleepHabits'));
 const WhyYouWakeUpMiddleNight = lazy(() => import('./pages/WhyYouWakeUpMiddleNight'));
 const SleepDebtRecoveryGuide = lazy(() => import('./pages/SleepDebtRecoveryGuide'));
 const BestSleepScheduleForStudents = lazy(() => import('./pages/BestSleepScheduleForStudents'));
+const HowSleepAffectsBrainPerformance = lazy(() => import('./pages/HowSleepAffectsBrainPerformance'));
+const BestBedtimeRoutine = lazy(() => import('./pages/BestBedtimeRoutine'));
 
 function Footer() {
   return (
-    <footer className="w-full py-8 mt-auto border-t border-gray-200 dark:border-[#222] bg-white dark:bg-[#0B0B0B] z-20 relative flex flex-col items-center">
+    <footer className="w-full py-8 mt-auto border-t border-gray-200 dark:border-[#1e293b] bg-white dark:bg-[#0f172a] z-20 relative flex flex-col items-center">
       <div className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm text-gray-500 dark:text-gray-400 px-4 mb-4">
         <Link to="/privacy" className="hover:text-[#2563EB] transition-colors">Privacy Policy</Link>
         <Link to="/terms" className="hover:text-[#2563EB] transition-colors">Terms & Conditions</Link>
@@ -70,9 +72,9 @@ function Header({ isDarkMode, toggleDarkMode }: { isDarkMode: boolean, toggleDar
   }, [isMenuOpen]);
 
   return (
-    <header className="w-full h-[64px] pb-1 border-b shadow-sm border-gray-200 dark:border-[#222] bg-white/95 dark:bg-[#0B0B0B]/95 backdrop-blur-md z-50 sticky top-0 transition-colors">
+    <header className="w-full h-[64px] pb-1 border-b shadow-sm border-gray-200 dark:border-[#1e293b] bg-white/95 dark:bg-[#0f172a]/95 backdrop-blur-md z-50 sticky top-0 transition-colors">
       <div className="max-w-6xl mx-auto h-full flex items-center justify-between px-4 sm:px-6 md:px-8 tracking-tight">
-        <Link to="/" className="flex items-center gap-2.5 text-gray-900 dark:text-white hover:text-[#2563EB] dark:hover:text-[#2563EB] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] rounded">
+        <Link to="/" onContextMenu={(e) => e.preventDefault()} className="flex items-center gap-2.5 text-gray-900 dark:text-gray-100 hover:text-[#2563EB] dark:hover:text-[#2563EB] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] rounded">
           <Moon className="text-[#2563EB]" size={22} strokeWidth={2.5} />
           <span className="text-base sm:text-lg font-bold tracking-tight font-serif">Sleep Calculator</span>
         </Link>
@@ -107,11 +109,11 @@ function Header({ isDarkMode, toggleDarkMode }: { isDarkMode: boolean, toggleDar
 
       {/* Mobile Navigation Dropdown */}
       {isMenuOpen && (
-        <div className="md:hidden fixed top-[70px] left-0 w-full h-[calc(100vh-70px)] bg-white/95 dark:bg-[#0B0B0B]/95 backdrop-blur-md flex flex-col pt-8 px-6 gap-4 z-40 overflow-y-auto">
+        <div className="md:hidden fixed top-[70px] left-0 w-full h-[calc(100vh-70px)] bg-white/95 dark:bg-[#0f172a]/95 backdrop-blur-md flex flex-col pt-8 px-6 gap-4 z-40 overflow-y-auto">
           <div className="flex flex-col space-y-2">
-            <Link to="/blog" className="text-gray-900 dark:text-white hover:text-[#2563EB] dark:hover:text-[#2563EB] font-semibold text-2xl py-3 border-b border-gray-100 dark:border-[#222] transition-colors" onClick={() => setIsMenuOpen(false)}>Blog</Link>
-            <Link to="/about" className="text-gray-900 dark:text-white hover:text-[#2563EB] dark:hover:text-[#2563EB] font-semibold text-2xl py-3 border-b border-gray-100 dark:border-[#222] transition-colors" onClick={() => setIsMenuOpen(false)}>About</Link>
-            <Link to="/contact" className="text-gray-900 dark:text-white hover:text-[#2563EB] dark:hover:text-[#2563EB] font-semibold text-2xl py-3 border-b border-gray-100 dark:border-[#222] transition-colors" onClick={() => setIsMenuOpen(false)}>Contact</Link>
+            <Link to="/blog" className="text-gray-900 dark:text-gray-100 hover:text-[#2563EB] dark:hover:text-[#2563EB] font-semibold text-2xl py-3 border-b border-gray-100 dark:border-[#1e293b] transition-colors" onClick={() => setIsMenuOpen(false)}>Blog</Link>
+            <Link to="/about" className="text-gray-900 dark:text-gray-100 hover:text-[#2563EB] dark:hover:text-[#2563EB] font-semibold text-2xl py-3 border-b border-gray-100 dark:border-[#1e293b] transition-colors" onClick={() => setIsMenuOpen(false)}>About</Link>
+            <Link to="/contact" className="text-gray-900 dark:text-gray-100 hover:text-[#2563EB] dark:hover:text-[#2563EB] font-semibold text-2xl py-3 border-b border-gray-100 dark:border-[#1e293b] transition-colors" onClick={() => setIsMenuOpen(false)}>Contact</Link>
           </div>
         </div>
       )}
@@ -153,7 +155,7 @@ function AppContent() {
   }, [isDarkMode]);
 
   return (
-    <div className="min-h-screen flex flex-col text-gray-900 dark:text-gray-100 font-sans relative overflow-x-hidden bg-[#F5F7FA] dark:bg-[#0B0B0B] transition-colors">
+    <div className="min-h-screen flex flex-col text-gray-900 dark:text-gray-200 font-sans relative overflow-x-hidden bg-[#F5F7FA] dark:bg-[#0f172a] transition-colors">
       <Header isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
       <main className="relative z-10 flex-grow flex flex-col items-center justify-start w-full py-4 sm:py-8">
             <Suspense fallback={
@@ -197,6 +199,8 @@ function AppContent() {
                 <Route path="/blog/why-you-wake-up-in-the-middle-of-the-night" element={<WhyYouWakeUpMiddleNight />} />
                 <Route path="/blog/sleep-debt-recovery-guide" element={<SleepDebtRecoveryGuide />} />
                 <Route path="/blog/best-sleep-schedule-for-students" element={<BestSleepScheduleForStudents />} />
+                <Route path="/blog/how-sleep-affects-your-brain-performance" element={<HowSleepAffectsBrainPerformance />} />
+                <Route path="/blog/best-bedtime-routine-for-better-sleep" element={<BestBedtimeRoutine />} />
 
                 {/* Redirects for old URLs to new structure */}
                 <Route path="/blog/what-is-a-sleep-calculator" element={<Navigate to="/blog/sleep-calculator" replace />} />

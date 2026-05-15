@@ -63,19 +63,19 @@ export function FAQAccordion() {
         return (
           <div 
             key={index} 
-            className={`bg-white dark:bg-[#111] border rounded-[16px] xl:rounded-[20px] overflow-hidden transition-all duration-300 ${
-              isOpen ? 'border-[#2563EB]/50 shadow-md ring-1 ring-[#2563EB]/20 bg-blue-50/10 dark:bg-[#2563EB]/5' : 'border-gray-200 dark:border-[#222] shadow-[0_2px_10px_rgb(0,0,0,0.02)] hover:border-gray-300 dark:hover:border-[#333] hover:shadow-md'
+            className={`bg-white dark:bg-[#111827] border rounded-[16px] xl:rounded-[20px] overflow-hidden transition-all duration-300 ${
+              isOpen ? 'border-[#2563EB]/50 shadow-md ring-1 ring-[#2563EB]/20 bg-blue-50/10 dark:bg-[#2563EB]/5' : 'border-gray-200 dark:border-[#1e293b] shadow-[0_2px_10px_rgb(0,0,0,0.02)] hover:border-gray-300 dark:hover:border-[#333] hover:shadow-md'
             }`}
           >
             <button
               onClick={() => toggleFAQ(index)}
-              className="w-full text-left px-4 sm:px-6 py-4 sm:py-5 flex items-center justify-between focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB]/50 group transition-colors"
+              className="w-full text-left px-4 sm:px-6 py-4 sm:py-5 flex items-center justify-between focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB]/20 group transition-colors"
               aria-expanded={isOpen}
             >
-              <h3 className={`text-lg sm:text-xl font-semibold pr-4 font-serif transition-colors duration-300 ${isOpen ? 'text-[#2563EB]' : 'text-gray-900 dark:text-white group-hover:text-[#2563EB] dark:group-hover:text-[#2563EB]'}`}>
+              <h3 className={`text-lg sm:text-xl font-semibold pr-4 font-serif transition-colors duration-300 ${isOpen ? 'text-[#2563EB]' : 'text-gray-900 dark:text-gray-100 group-hover:text-[#2563EB] dark:group-hover:text-[#2563EB]'}`}>
                 {faq.question}
               </h3>
-              <div className={`p-1 rounded-full transition-colors duration-300 ${isOpen ? 'bg-[#2563EB]/10' : 'bg-gray-50 dark:bg-[#1A1A1A] group-hover:bg-[#2563EB]/10'}`}>
+              <div className={`p-1 rounded-full transition-colors duration-300 ${isOpen ? 'bg-[#2563EB]/10' : 'bg-gray-50 dark:bg-[#1e293b] group-hover:bg-[#2563EB]/10'}`}>
                 <ChevronDown 
                   className={`transition-all duration-300 flex-shrink-0 ${isOpen ? 'rotate-180 text-[#2563EB]' : 'text-gray-400 group-hover:text-[#2563EB]'}`} 
                   size={20} 
@@ -86,7 +86,7 @@ export function FAQAccordion() {
               className={`grid transition-[grid-template-rows,opacity] duration-300 ease-in-out ${isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}
             >
               <div className="overflow-hidden">
-                <div className="px-4 sm:px-6 pb-4 sm:pb-6 text-gray-600 dark:text-gray-300 leading-relaxed text-sm sm:text-base">
+                <div onContextMenu={(e) => e.stopPropagation()} className="px-4 sm:px-6 pb-4 sm:pb-6 text-gray-600 dark:text-gray-300 leading-relaxed text-sm sm:text-base select-text">
                   {faq.answer}
                 </div>
               </div>

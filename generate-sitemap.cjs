@@ -9,6 +9,7 @@ const routes = [
   '/contact',
   '/privacy',
   '/terms',
+  '/disclaimer',
   '/article/best-sleep-time',
   '/article/power-nap',
   '/article/deep-sleep-fixer',
@@ -21,6 +22,12 @@ const routes = [
   '/blog/fix-sleep-schedule',
   '/blog/blue-light-sleep',
   '/blog/sleep-cycle-calculator',
+  '/blog/smart-sleep-habits-better-energy',
+  '/blog/why-you-wake-up-in-the-middle-of-the-night',
+  '/blog/sleep-debt-recovery-guide',
+  '/blog/best-sleep-schedule-for-students',
+  '/blog/how-sleep-affects-your-brain-performance',
+  '/blog/best-bedtime-routine-for-better-sleep',
   '/feature/smart-bedtime-calculator',
   '/feature/power-nap-optimizer'
 ];

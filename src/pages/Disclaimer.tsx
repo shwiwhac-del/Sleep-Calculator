@@ -18,42 +18,77 @@ export default function Disclaimer() {
       </Helmet>
       
       <div className="mb-8 text-left">
-        <button onClick={handleBack} className="inline-flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 font-medium tracking-wide hover:text-gray-900 dark:text-white transition-colors focus-visible:outline-none"><ArrowLeft size={16} /> Back</button>
+        <button onClick={handleBack} className="inline-flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 font-medium tracking-wide hover:text-gray-900 dark:text-gray-100 transition-colors focus-visible:outline-none"><ArrowLeft size={16} /> Back</button>
       </div>
 
       <div className="animate-in fade-in slide-in-from-top-4 duration-500 text-left">
-        <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-gray-900 dark:text-white mb-6 leading-tight font-serif">Medical Disclaimer</h1>
+        <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-gray-900 dark:text-gray-100 mb-2 leading-tight font-serif">Medical Disclaimer</h1>
+        <p className="text-gray-400 dark:text-gray-500 text-base mb-12">Last Updated: May 2026</p>
         
-        <div className="space-y-6 text-gray-600 dark:text-gray-300 leading-relaxed text-sm sm:text-base">
-          <p className="text-base sm:text-lg font-medium text-gray-900 dark:text-white">
-            The Sleep Calculator website (sleepcalculater.online) and its associated tools are for informational and educational purposes only.
+        <div onContextMenu={(e) => e.stopPropagation()} className="select-text space-y-8 text-gray-600 dark:text-gray-300 leading-relaxed text-base sm:text-lg">
+          <p>
+            The information provided on SleepCalculator.online is for general informational and educational purposes only.
           </p>
 
           <section>
-            <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-3 font-serif">Not Medical Advice</h2>
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4 font-serif">Not Medical Advice</h2>
+            <p className="mb-4">This website does NOT provide:</p>
+            <ul className="list-disc pl-6 space-y-2 mb-4">
+              <li>Medical diagnosis</li>
+              <li>Treatment plans</li>
+              <li>Professional healthcare advice</li>
+            </ul>
             <p>
-              The information provided on this website is not intended to be a substitute for professional medical advice, diagnosis, or treatment. Always seek the advice of your physician or other qualified health provider with any questions you may have regarding a medical condition, sleep disorder, or mental health issue.
+              The sleep calculations and recommendations are based on general sleep cycle estimates and may not be accurate for every individual.
             </p>
           </section>
 
           <section>
-            <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-3 font-serif">No Doctor-Patient Relationship</h2>
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4 font-serif">Consult a Professional</h2>
+            <p className="mb-4">Always consult a qualified healthcare provider or medical professional regarding:</p>
+            <ul className="list-disc pl-6 space-y-2 mb-4">
+              <li>Sleep disorders</li>
+              <li>Chronic fatigue</li>
+              <li>Insomnia</li>
+              <li>Medical conditions</li>
+              <li>Health concerns</li>
+            </ul>
             <p>
-              Use of this website, including its calculators, recommendations, and articles, does not establish a doctor-patient relationship. Reliance on any information provided by Sleep Calculator, its authors, or others appearing on the site is solely at your own risk.
+              Do not ignore professional medical advice because of information found on this website.
             </p>
           </section>
 
           <section>
-            <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-3 font-serif">Averages and Estimates</h2>
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4 font-serif">No Guarantees</h2>
+            <p className="mb-4">We make no guarantees regarding:</p>
+            <ul className="list-disc pl-6 space-y-2 mb-4">
+              <li>Sleep quality improvements</li>
+              <li>Health outcomes</li>
+              <li>Accuracy for all users</li>
+            </ul>
             <p>
-              Our calculators use scientifically-backed averages (such as the typical 90-minute sleep cycle and a 15-minute sleep latency period). However, human biology varies significantly. Your personal sleep cycles, exact needs, and times required to fall asleep may be longer or shorter than the averages used by our tools.
+              Every individual's sleep needs and health conditions are different.
             </p>
           </section>
 
           <section>
-            <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-3 font-serif">Emergencies</h2>
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4 font-serif">Use at Your Own Risk</h2>
             <p>
-              If you think you may have a medical emergency, call your doctor, go to the emergency department, or call emergency services immediately.
+              Your use of this website and reliance on any information provided is entirely at your own risk.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4 font-serif">Emergency Situations</h2>
+            <p>
+              If you believe you have a medical emergency, contact a licensed healthcare professional or emergency services immediately.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4 font-serif">Contact</h2>
+            <p>
+              If you have questions regarding this disclaimer, please use the Contact page on our website.
             </p>
           </section>
         </div>

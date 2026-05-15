@@ -22,7 +22,7 @@ const featuresData: Record<string, {
           The Smart Bedtime Calculator is the cornerstone of our platform, designed to revolutionize the way you approach your nightly rest. By moving away from the outdated "eight hours a night" rule and embracing the science of 90-minute sleep cycles, this feature provides a personalized, mathematically optimized schedule for your sleep.
         </p>
         
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mt-8 mb-4 font-serif">Understanding the Science Behind the Calculator</h2>
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mt-8 mb-4 font-serif">Understanding the Science Behind the Calculator</h2>
         <p className="leading-relaxed">
           Human sleep is not a uniform block of unconsciousness. Instead, it is a dynamic process composed of multiple cycles, each lasting approximately 90 minutes. During these 90 minutes, your brain and body progress through several distinct stages: light sleep, deep sleep, and Rapid Eye Movement (REM) sleep. 
         </p>
@@ -33,7 +33,7 @@ const featuresData: Record<string, {
           Our Smart Bedtime Calculator takes the guesswork out of this process. It uses established chronobiological principles to map out your sleep cycles backwards from your desired wake-up time, or forwards from your current bedtime.
         </p>
 
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mt-8 mb-4 font-serif">How the Algorithm Works</h2>
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mt-8 mb-4 font-serif">How the Algorithm Works</h2>
         <p className="leading-relaxed">
           When you input a desired wake-up time, the calculator doesn't just subtract eight hours. Instead, it calculates multiple optimal bedtimes based on completing either 4, 5, or 6 full 90-minute sleep cycles. In addition, it automatically factors in the average sleep latency—the time it takes for a typical adult to fall asleep, which is generally around 15 minutes.
         </p>
@@ -46,7 +46,7 @@ const featuresData: Record<string, {
           <li><strong>Flexibility:</strong> By providing multiple target bedtimes, it gives you the flexibility to choose a time that fits your evening schedule, whether you need to stay up late or get to bed early.</li>
         </ul>
 
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mt-8 mb-4 font-serif">Why This Feature is Essential for Daily Life</h2>
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mt-8 mb-4 font-serif">Why This Feature is Essential for Daily Life</h2>
         <p className="leading-relaxed">
           In our modern, fast-paced world, optimizing the time we spend sleeping is more crucial than ever. Poor sleep is linked to a staggering number of health and performance issues. Chronic sleep deprivation, or even consistently waking up during the wrong cycle, can lead to systemic inflammation, impaired cognitive function, mood swings, and a weakened immune system. 
         </p>
@@ -57,7 +57,7 @@ const featuresData: Record<string, {
           Furthermore, the psychological benefit of having a structured, science-backed bedtime cannot be overstated. It eliminates the anxiety of "trying to get enough sleep" and replaces it with a confident, structured routine. You know exactly when you need to be in bed, when you need to turn off the lights, and when you can expect to wake up feeling your best.
         </p>
 
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mt-8 mb-4 font-serif">Real-World Applications and Benefits</h2>
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mt-8 mb-4 font-serif">Real-World Applications and Benefits</h2>
         <p className="leading-relaxed">
           Our users find this feature invaluable for a variety of use cases:
         </p>
@@ -68,7 +68,7 @@ const featuresData: Record<string, {
           <li><strong>Athletes:</strong> Physical recovery peaks during deep sleep. Planning full cycles ensures the body gets the necessary time to repair muscle tissue and consolidate motor learning.</li>
         </ul>
         
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mt-8 mb-4 font-serif">Conclusion and Best Practices</h2>
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mt-8 mb-4 font-serif">Conclusion and Best Practices</h2>
         <p className="leading-relaxed">
           The Smart Bedtime Calculator is a powerful tool, but it works best when combined with healthy sleep hygiene. For the best results, we recommend dimming your lights 30 minutes before your calculated bedtime, avoiding blue light from screens, and keeping your sleeping environment cool and quiet. 
         </p>
@@ -89,7 +89,7 @@ const featuresData: Record<string, {
           The Power Nap Optimizer is an expertly engineered feature designed for anyone looking to boost their daytime energy, cognitive function, and mood without suffering from the dreaded post-nap grogginess. Napping is an art, and when guided by science, it transforms from a lazy indulgence into a high-performance biohack.
         </p>
         
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mt-8 mb-4 font-serif">The Science of Napping: Why Duration Matters</h2>
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mt-8 mb-4 font-serif">The Science of Napping: Why Duration Matters</h2>
         <p className="leading-relaxed">
           Have you ever laid down for a quick rest, only to wake up an hour later feeling more exhausted, confused, and irritable than before you slept? This is a common experience, and it's entirely due to waking up in the wrong stage of sleep. 
         </p>
@@ -100,7 +100,7 @@ const featuresData: Record<string, {
           To nap successfully, you must strategically time your awakening to occur either *before* you enter deep sleep, or *after* you have completed a full cycle. Our Power Nap Optimizer automates this strategy for you.
         </p>
 
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mt-8 mb-4 font-serif">The Core Nap Profiles Supported</h2>
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mt-8 mb-4 font-serif">The Core Nap Profiles Supported</h2>
         <p className="leading-relaxed">
           The optimizer provides highly specific recommendations based on decades of sleep research. It offers distinct profiles depending on what you need to achieve:
         </p>
@@ -110,7 +110,7 @@ const featuresData: Record<string, {
           <li><strong>The "Caffeine Nap" (Nappuccino):</strong> For advanced users, the optimizer can help time a caffeine nap. You consume coffee immediately before a 20-minute nap. By the time you wake up, the caffeine is just hitting your bloodstream, resulting in unparalleled alertness.</li>
         </ul>
 
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mt-8 mb-4 font-serif">Deep Dive: How the Optimizer Maximizes Your Day</h2>
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mt-8 mb-4 font-serif">Deep Dive: How the Optimizer Maximizes Your Day</h2>
         <p className="leading-relaxed">
           Our feature doesn't just give you a timer; it gives you a context-aware schedule. It calculates the exact absolute time you should set your alarm based on when you intend to close your eyes, factoring in a standard 10-15 minute buffer for falling asleep. 
         </p>
@@ -121,7 +121,7 @@ const featuresData: Record<string, {
           Furthermore, the optimizer takes the guesswork out of the process, which is critical because stress prevents sleep. If you are constantly looking at the clock, worrying about oversleeping, you will never achieve the relaxation necessary for an effective nap. By trusting the algorithm, you can fully let go.
         </p>
 
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mt-8 mb-4 font-serif">Physiological Benefits of Optimized Napping</h2>
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mt-8 mb-4 font-serif">Physiological Benefits of Optimized Napping</h2>
         <p className="leading-relaxed">
           A properly timed power nap offers systemic benefits that extend far beyond simply feeling less tired. Research has shown that routine, short napping can lower blood pressure, reduce the long-term risk of cardiovascular disease, and lower cortisol levels (stress hormones) that accumulate over the course of a demanding morning.
         </p>
@@ -129,7 +129,7 @@ const featuresData: Record<string, {
           Cognitively, a power nap acts as a reboot for your working memory. It clears the brain's "cache," allowing you to absorb new information in the afternoon at the same rate you did in the morning. This makes the Power Nap Optimizer an indispensable feature for continuous learning and high-stakes decision making.
         </p>
         
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mt-8 mb-4 font-serif">Tips for Using the Feature Effectively</h2>
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mt-8 mb-4 font-serif">Tips for Using the Feature Effectively</h2>
         <p className="leading-relaxed">
           To get the absolute most out of the Power Nap Optimizer, follow these guidelines: 
         </p>

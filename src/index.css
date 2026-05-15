@@ -46,6 +46,10 @@
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
   }
+  body {
+    user-select: none;
+    -webkit-user-select: none;
+  }
 }
 
 .container {

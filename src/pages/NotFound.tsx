@@ -15,7 +15,7 @@ export default function NotFound() {
         <Moon className="w-20 h-20 text-[#2563EB] mx-auto opacity-50" />
       </div>
       
-      <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4 font-serif">
+      <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-4 font-serif">
         404 - Page Not Found
       </h1>
       

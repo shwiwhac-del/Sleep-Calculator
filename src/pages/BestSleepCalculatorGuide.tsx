@@ -33,8 +33,8 @@ export default function BestSleepCalculatorGuide() {
         A Sleep Calculator is a smart online tool that calculates the best time to sleep or wake up using average human sleep cycles.
       </p>
 
-      <div className="my-8 bg-gray-50 dark:bg-[#111] border border-gray-100 dark:border-[#222] rounded-2xl p-6 sm:p-8">
-        <p className="m-0 font-medium text-gray-900 dark:text-white">
+      <div className="my-8 bg-gray-50 dark:bg-[#111827] border border-gray-100 dark:border-[#1e293b] rounded-2xl p-6 sm:p-8">
+        <p className="m-0 font-medium text-gray-900 dark:text-gray-100">
           A normal sleep cycle lasts around 90 minutes. During the night, your body moves through multiple sleep stages including light sleep, deep sleep, and REM sleep.
         </p>
       </div>
@@ -85,26 +85,26 @@ export default function BestSleepCalculatorGuide() {
       </p>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 my-8 not-prose">
-        <div className="bg-white dark:bg-[#111] border border-gray-100 dark:border-[#222] rounded-xl p-5 shadow-sm">
-          <h3 className="font-bold text-gray-900 dark:text-white mb-2 flex items-center gap-2">
+        <div className="bg-white dark:bg-[#111827] border border-gray-100 dark:border-[#1e293b] rounded-xl p-5 shadow-sm">
+          <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2 flex items-center gap-2">
              <Zap size={18} className="text-yellow-500" /> Better Morning Energy
           </h3>
            <p className="text-sm text-gray-600 dark:text-gray-400">Waking up at the correct sleep stage helps reduce grogginess and morning fatigue.</p>
         </div>
-        <div className="bg-white dark:bg-[#111] border border-gray-100 dark:border-[#222] rounded-xl p-5 shadow-sm">
-          <h3 className="font-bold text-gray-900 dark:text-white mb-2 flex items-center gap-2">
+        <div className="bg-white dark:bg-[#111827] border border-gray-100 dark:border-[#1e293b] rounded-xl p-5 shadow-sm">
+          <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2 flex items-center gap-2">
              <Brain size={18} className="text-blue-500" /> Improved Focus
           </h3>
            <p className="text-sm text-gray-600 dark:text-gray-400">Quality sleep improves concentration, memory, learning ability, and work performance.</p>
         </div>
-        <div className="bg-white dark:bg-[#111] border border-gray-100 dark:border-[#222] rounded-xl p-5 shadow-sm">
-          <h3 className="font-bold text-gray-900 dark:text-white mb-2 flex items-center gap-2">
+        <div className="bg-white dark:bg-[#111827] border border-gray-100 dark:border-[#1e293b] rounded-xl p-5 shadow-sm">
+          <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2 flex items-center gap-2">
              <Moon size={18} className="text-[#2563EB]" /> Healthier Sleep Routine
           </h3>
            <p className="text-sm text-gray-600 dark:text-gray-400">Consistent sleep timing helps regulate your body clock naturally.</p>
         </div>
-        <div className="bg-white dark:bg-[#111] border border-gray-100 dark:border-[#222] rounded-xl p-5 shadow-sm">
-          <h3 className="font-bold text-gray-900 dark:text-white mb-2 flex items-center gap-2">
+        <div className="bg-white dark:bg-[#111827] border border-gray-100 dark:border-[#1e293b] rounded-xl p-5 shadow-sm">
+          <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-2 flex items-center gap-2">
              <Battery size={18} className="text-green-500" /> Reduced Sleep Stress
           </h3>
            <p className="text-sm text-gray-600 dark:text-gray-400">Instead of guessing when to sleep, the calculator gives clear and accurate sleep timing recommendations.</p>
