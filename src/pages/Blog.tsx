@@ -11,6 +11,18 @@ export default function Blog() {
 
   const articles = [
     {
+      title: "Best Bedtime Habits for Better Sleep Quality",
+      description: "Discover the best bedtime habits to improve sleep quality, fall asleep faster, and wake up feeling refreshed every morning.",
+      url: "/blog/best-bedtime-habits-for-better-sleep-quality",
+      topic: "Health",
+    },
+    {
+      title: "Why Sleep Cycles Matter More Than Sleeping Longer",
+      description: "Learn why sleep cycles are more important than simply sleeping longer and how proper REM timing can improve energy, focus, and recovery.",
+      url: "/blog/why-sleep-cycles-matter-more-than-sleeping-longer",
+      topic: "Science",
+    },
+    {
       title: "Best Bedtime Routine for Better Sleep",
       description: "Learn the best bedtime routine for improving sleep quality naturally. Discover simple nighttime habits that help you fall asleep faster and wake up refreshed.",
       url: "/blog/best-bedtime-routine-for-better-sleep",

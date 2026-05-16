@@ -34,6 +34,8 @@ const SleepDebtRecoveryGuide = lazy(() => import('./pages/SleepDebtRecoveryGuide
 const BestSleepScheduleForStudents = lazy(() => import('./pages/BestSleepScheduleForStudents'));
 const HowSleepAffectsBrainPerformance = lazy(() => import('./pages/HowSleepAffectsBrainPerformance'));
 const BestBedtimeRoutine = lazy(() => import('./pages/BestBedtimeRoutine'));
+const WhySleepCyclesMatter = lazy(() => import('./pages/WhySleepCyclesMatter'));
+const BestBedtimeHabits = lazy(() => import('./pages/BestBedtimeHabits'));
 
 function Footer() {
   return (
@@ -201,6 +203,8 @@ function AppContent() {
                 <Route path="/blog/best-sleep-schedule-for-students" element={<BestSleepScheduleForStudents />} />
                 <Route path="/blog/how-sleep-affects-your-brain-performance" element={<HowSleepAffectsBrainPerformance />} />
                 <Route path="/blog/best-bedtime-routine-for-better-sleep" element={<BestBedtimeRoutine />} />
+                <Route path="/blog/why-sleep-cycles-matter-more-than-sleeping-longer" element={<WhySleepCyclesMatter />} />
+                <Route path="/blog/best-bedtime-habits-for-better-sleep-quality" element={<BestBedtimeHabits />} />
 
                 {/* Redirects for old URLs to new structure */}
                 <Route path="/blog/what-is-a-sleep-calculator" element={<Navigate to="/blog/sleep-calculator" replace />} />

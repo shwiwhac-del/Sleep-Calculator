@@ -101,11 +101,19 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://sleepcalculater.online/feature/smart-bedtime-calculator</loc>
+    <loc>https://sleepcalculater.online/blog/why-sleep-cycles-matter-more-than-sleeping-longer</loc>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://sleepcalculater.online/feature/power-nap-optimizer</loc>
+    <loc>https://sleepcalculater.online/blog/best-bedtime-habits-for-better-sleep-quality</loc>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://sleepcalculater.online/article/smart-bedtime-calculator</loc>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://sleepcalculater.online/article/power-nap-optimizer</loc>
     <changefreq>weekly</changefreq>
   </url>
 </urlset>

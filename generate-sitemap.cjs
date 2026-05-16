@@ -28,8 +28,10 @@ const routes = [
   '/blog/best-sleep-schedule-for-students',
   '/blog/how-sleep-affects-your-brain-performance',
   '/blog/best-bedtime-routine-for-better-sleep',
-  '/feature/smart-bedtime-calculator',
-  '/feature/power-nap-optimizer'
+  '/blog/why-sleep-cycles-matter-more-than-sleeping-longer',
+  '/blog/best-bedtime-habits-for-better-sleep-quality',
+  '/article/smart-bedtime-calculator',
+  '/article/power-nap-optimizer'
 ];
 
 const xml = `<?xml version="1.0" encoding="UTF-8"?>
