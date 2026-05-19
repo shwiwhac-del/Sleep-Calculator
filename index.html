@@ -5,61 +5,98 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#1c1445" />
 
-    <meta name="google-site-verification" content="FCt22TrVLV1Pr5X_AhtTap1caGwd1upMki9UrueB_ig" />
+    <meta
+      name="google-site-verification"
+      content="FCt22TrVLV1Pr5X_AhtTap1caGwd1upMki9UrueB_ig"
+    />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="apple-touch-icon" href="/favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@700&display=swap" as="style" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@700&display=swap" rel="stylesheet" />
-    <title>Free Sleep Calculator | REM Sleep Cycle & Bedtime Time Calc</title>
-    <meta name="description" content="Calculate the exact time you need to go to bed or wake up. Our free sleep cycle calculator uses 90-minute REM sleep intervals to prevent morning grogginess." />
-    <meta name="keywords" content="sleep calculator, sleep calc, sleep cycle calculator, sleepcalculator, what time should i wake up, calculator sleep, when should i wake up, what time should i go to bed, sleep time calculator, rem sleep calculator, when to wake up, sleep.calculator, sleeping calculator, sleep cal, sleepcalc, sleep calculator time" />
-    
+    <link
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@700&display=swap"
+      as="style"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Free Sleep Calculator | Wake Up Refreshed (90-Min REM Cycles)</title>
+    <meta
+      name="description"
+      content="Struggle waking up? Use our free sleep cycle calculator to find the perfect bedtime based on natural 90-minute REM cycles. Wake up energized today."
+    />
+    <meta
+      name="keywords"
+      content="sleep calculator, sleep calc, sleep cycle calculator, sleepcalculator, what time should i wake up, calculator sleep, when should i wake up, what time should i go to bed, sleep time calculator, rem sleep calculator, when to wake up, sleep.calculator, sleeping calculator, sleep cal, sleepcalc, sleep calculator time"
+    />
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Free Sleep Calculator | REM Sleep Cycle & Bedtime Time Calc" />
-    <meta property="og:description" content="Calculate the exact time you need to go to bed or wake up. Our free sleep cycle calculator uses 90-minute REM sleep intervals to prevent morning grogginess." />
-    <meta property="og:image" content="https://sleepcalculater.online/favicon.png" />
+    <meta
+      property="og:title"
+      content="Free Sleep Calculator | Wake Up Refreshed (90-Min REM Cycles)"
+    />
+    <meta
+      property="og:description"
+      content="Struggle waking up? Use our free sleep cycle calculator to find the perfect bedtime based on natural 90-minute REM cycles. Wake up energized today."
+    />
+    <meta
+      property="og:image"
+      content="https://sleepcalculater.online/favicon.png"
+    />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Free Sleep Calculator | REM Sleep Cycle & Bedtime Time Calc" />
-    <meta name="twitter:description" content="Calculate the exact time you need to go to bed or wake up. Our free sleep cycle calculator uses 90-minute REM sleep intervals to prevent morning grogginess." />
-    <meta name="twitter:image" content="https://sleepcalculater.online/favicon.png" />
+    <meta
+      name="twitter:title"
+      content="Free Sleep Calculator | Wake Up Refreshed (90-Min REM Cycles)"
+    />
+    <meta
+      name="twitter:description"
+      content="Struggle waking up? Use our free sleep cycle calculator to find the perfect bedtime based on natural 90-minute REM cycles. Wake up energized today."
+    />
+    <meta
+      name="twitter:image"
+      content="https://sleepcalculater.online/favicon.png"
+    />
 
     <!-- Structured Data -->
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Sleep Calculator",
-      "url": "https://sleepcalculater.online/",
-      "description": "Calculate the exact time you need to go to bed or wake up using 90-minute REM sleep intervals to prevent morning grogginess.",
-      "applicationCategory": "HealthAndFitnessApplication",
-      "operatingSystem": "All"
-    }
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Sleep Calculator",
+        "url": "https://sleepcalculater.online/",
+        "description": "Calculate the exact time you need to go to bed or wake up using 90-minute REM sleep intervals to prevent morning grogginess.",
+        "applicationCategory": "HealthAndFitnessApplication",
+        "operatingSystem": "All"
+      }
     </script>
   </head>
   <body>
     <div id="root"></div>
     <script defer type="module" src="/src/main.tsx"></script>
-    
+
     <!-- Google tag (gtag.js) - Deferred loading -->
     <script type="module">
-      window.addEventListener('load', () => {
+      window.addEventListener("load", () => {
         const loadGA = () => {
-          const script = document.createElement('script');
-          script.src = "https://www.googletagmanager.com/gtag/js?id=G-GS03RDZPNP";
+          const script = document.createElement("script");
+          script.src =
+            "https://www.googletagmanager.com/gtag/js?id=G-GS03RDZPNP";
           script.async = true;
           document.body.appendChild(script);
-          
+
           window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-GS03RDZPNP');
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag("js", new Date());
+          gtag("config", "G-GS03RDZPNP");
         };
-        if ('requestIdleCallback' in window) {
+        if ("requestIdleCallback" in window) {
           requestIdleCallback(loadGA);
         } else {
           setTimeout(loadGA, 100);
