@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { ArticleLayout } from '../components/ArticleLayout';
 
 export default function WhySleepCyclesMatter() {
@@ -50,16 +51,16 @@ export default function WhySleepCyclesMatter() {
       <h2>How to Improve Sleep Cycle Quality</h2>
       
       <h3>1. Sleep at Consistent Times</h3>
-      <p>Your brain performs better with a stable sleep schedule.</p>
+      <p>Your brain performs better with a stable <Link to="/blog/fix-sleep-schedule" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">sleep schedule</Link>.</p>
 
       <h3>2. Avoid Screens Before Bed</h3>
-      <p>Blue light delays melatonin production and disrupts REM timing.</p>
+      <p><Link to="/blog/blue-light-sleep" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">Blue light</Link> delays melatonin production and disrupts REM timing.</p>
 
       <h3>3. Reduce Caffeine at Night</h3>
       <p>Caffeine can reduce deep sleep quality even if you fall asleep normally.</p>
 
       <h3>4. Use a Sleep Cycle Calculator</h3>
-      <p>A sleep calculator helps you wake up between cycles instead of during deep sleep.</p>
+      <p>A <Link to="/blog/sleep-calculator" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">sleep calculator</Link> helps you wake up between cycles instead of during deep sleep.</p>
 
       <h2>Final Thoughts</h2>
       <p>

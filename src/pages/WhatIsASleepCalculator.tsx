@@ -29,10 +29,10 @@ export default function WhatIsASleepCalculator() {
         If your alarm goes off while you are in a deep sleep phase, you will experience "sleep inertia." This is the heavy, groggy feeling that takes hours to shake off.
       </p>
       <p>
-        The purpose of a sleep calculator is to ensure you only wake up at the end of a sleep cycle. When you wake up between cycles, you naturally feel alert and refreshed.
+        The purpose of a sleep calculator is to ensure you only wake up at the end of a <Link to="/blog/sleep-cycle" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">sleep cycle</Link>. When you wake up between cycles, you naturally feel alert and refreshed.
       </p>
 
-      <h2>How 90-Minute Sleep Cycles Work</h2>
+      <h2>How 90-Minute <Link to="/blog/sleep-cycle-stages" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">Sleep Cycles</Link> Work</h2>
       <p>
         To understand the tool, you must understand your brain. During the night, your brain moves through four distinct stages:
       </p>

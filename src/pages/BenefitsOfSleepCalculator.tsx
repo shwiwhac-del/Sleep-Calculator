@@ -19,7 +19,7 @@ export default function BenefitsOfSleepCalculator() {
         Ditching a standard alarm clock and using a <strong><Link to="/">sleep calculator</Link></strong> can completely change how you feel in the morning.
       </p>
       <p>
-        Instead of guessing when to wake up, you use simple math to align with your body's natural 90-minute sleep cycles.
+        Instead of guessing when to wake up, you use simple math to align with your body's natural 90-minute <Link to="/blog/sleep-cycle-stages" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">sleep cycles</Link>.
       </p>
 
       {/* Section 1 */}
@@ -43,7 +43,7 @@ export default function BenefitsOfSleepCalculator() {
       {/* Section 3 */}
       <h2>Build an Effortless Sleep Routine</h2>
       <p>
-        Sleeping in consistant 90-minute intervals builds a strong circadian rhythm. Your internal clock gets stronger.
+        Sleeping in consistant 90-minute intervals builds a strong <Link to="/blog/fix-sleep-schedule" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">circadian rhythm</Link>. Your internal clock gets stronger.
       </p>
       <p>
         Over time, your body learns the schedule perfectly. You may even start waking up naturally just minutes before your alarm.

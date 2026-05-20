@@ -27,7 +27,7 @@ export default function WhyYouFeelTired() {
 
       <h2>1. The Mid-Cycle Alarm (Sleep Inertia)</h2>
       <p>
-        This is the absolute most common reason for morning exhaustion. Human beings sleep in 90-minute blocks called sleep cycles.
+        This is the absolute most common reason for morning exhaustion. Human beings sleep in 90-minute blocks called <Link to="/blog/sleep-cycle-stages" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">sleep cycles</Link>.
       </p>
       <p>
         If your alarm rings while you are trapped at the bottom of a cycle in "Stage 3 Deep Sleep," your brain will experience severe sleep inertia.
@@ -45,7 +45,7 @@ export default function WhyYouFeelTired() {
         <li><strong>Caffeine:</strong> Coffee has a half-life of roughly 5 hours. A 3:00 PM coffee stays in your bloodstream until midnight, preventing your brain from dropping into restorative deep sleep.</li>
       </ul>
 
-      <h2>3. The Blue Light Melatonin Block</h2>
+      <h2>3. The <Link to="/blog/blue-light-sleep" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">Blue Light</Link> Melatonin Block</h2>
       <p>
         When the sun goes down, your brain produces melatonin to gently put you to sleep. 
       </p>
@@ -70,7 +70,7 @@ export default function WhyYouFeelTired() {
 
       <h3>Why do I wake up tired but feel awake at night?</h3>
       <p>
-        This indicates a delayed circadian rhythm. Your internal clock is out of sync with the sun. You need to regulate your light exposure by getting sunlight in the morning and avoiding screens at night.
+        This indicates a delayed <Link to="/blog/fix-sleep-schedule" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">circadian rhythm</Link>. Your internal clock is out of sync with the sun. You need to regulate your light exposure by getting sunlight in the morning and avoiding screens at night.
       </p>
 
       <h2>Summary</h2>
@@ -78,7 +78,7 @@ export default function WhyYouFeelTired() {
         Start by fixing what you can easily control. Cut out afternoon caffeine, drink water immediately in the morning, and block blue light at night.
       </p>
       <p>
-        Most importantly, stop guessing your wake-up time. Use a sleep calculator to find the <Link to="/blog/best-time-to-sleep">best time to sleep</Link> so you never wake up in the middle of a cycle again.
+        Most importantly, stop guessing your wake-up time. Use a <Link to="/blog/sleep-calculator" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">sleep calculator</Link> to find the <Link to="/blog/best-time-to-sleep">best time to sleep</Link> so you never wake up in the middle of a cycle again.
       </p>
     </ArticleLayout>
   );

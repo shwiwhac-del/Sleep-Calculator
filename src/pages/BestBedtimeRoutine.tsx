@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { ArticleLayout } from '../components/ArticleLayout';
 
 export default function BestBedtimeRoutine() {
@@ -35,7 +36,7 @@ export default function BestBedtimeRoutine() {
       
       <h3>Stop Using Your Phone Before Bed</h3>
       <p>
-        Phone screens produce blue light that can delay melatonin production and disturb sleep timing.
+        Phone screens produce <Link to="/blog/blue-light-sleep" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">blue light</Link> that can delay melatonin production and disturb sleep timing.
       </p>
 
       <h3>Sleep at the Same Time Daily</h3>

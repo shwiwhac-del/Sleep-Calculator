@@ -30,7 +30,7 @@ export default function PowerNapGuide() {
         Waking up from a 1-hour nap makes you feel terrible because of "sleep inertia." Remember that your brain sleeps in 90-minute blocks.
       </p>
       <p>
-        Deep sleep usually starts around the 45-minute mark. If you set an alarm for 1 hour, you are waking up during the absolute deepest part of your sleep cycle. 
+        Deep sleep usually starts around the 45-minute mark. If you set an alarm for 1 hour, you are waking up during the absolute deepest part of your <Link to="/blog/sleep-cycle" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">sleep cycle</Link>. 
       </p>
       <p>
         This causes massive morning grogginess that takes hours to shake off.
@@ -70,7 +70,7 @@ export default function PowerNapGuide() {
       
       <h3>What is the best time of day to nap?</h3>
       <p>
-        The optimal nap window is between 1:00 PM and 3:00 PM. Napping after 3:00 PM will disrupt your evening circadian rhythm and make it hard to fall asleep at night.
+        The optimal nap window is between 1:00 PM and 3:00 PM. Napping after 3:00 PM will disrupt your evening <Link to="/blog/fix-sleep-schedule" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">circadian rhythm</Link> and make it hard to fall asleep at night.
       </p>
 
       <h3>Is it normal to dream during a 20-minute nap?</h3>

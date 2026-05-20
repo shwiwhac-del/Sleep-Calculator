@@ -157,7 +157,7 @@ function AppContent() {
   }, [isDarkMode]);
 
   return (
-    <div className="min-h-screen flex flex-col text-gray-900 dark:text-gray-200 font-sans relative overflow-x-hidden bg-[#F5F7FA] dark:bg-[#0f172a] transition-colors">
+    <div className="min-h-screen flex flex-col text-gray-900 dark:text-gray-200 font-sans relative overflow-x-hidden bg-[#F5F7FA] dark:bg-[#0f172a]">
       <Header isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
       <main className="relative z-10 flex-grow flex flex-col items-center justify-start w-full py-4 sm:py-8">
             <Suspense fallback={

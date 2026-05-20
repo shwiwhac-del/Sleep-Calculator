@@ -102,7 +102,7 @@ export default function SleepDebtRecoveryGuide() {
         Sleep debt slowly damages your performance without making it obvious at first. Most people underestimate how important proper sleep really is.
       </p>
       <p>
-        Improving your sleep schedule is one of the highest ROI health decisions you can make. Use our <Link to="/">Sleep Calculator</Link> to find your ideal bedtime and start chipping away at your sleep debt tonight.
+        Improving your <Link to="/blog/fix-sleep-schedule" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">sleep schedule</Link> is one of the highest ROI health decisions you can make. Use our <Link to="/">Sleep Calculator</Link> to find your ideal bedtime and start chipping away at your sleep debt tonight.
       </p>
     </ArticleLayout>
   );

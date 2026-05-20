@@ -19,10 +19,10 @@ export default function BestSleepCalculatorGuide() {
     >
       <h2>Best Sleep Calculator to Improve Your Sleep Quality</h2>
       <p>
-        Getting enough sleep is not just about sleeping longer. The real goal is waking up at the right time during your natural sleep cycle. That is exactly where a Sleep Calculator becomes useful.
+        Getting enough sleep is not just about sleeping longer. The real goal is waking up at the right time during your natural <Link to="/blog/sleep-cycle" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">sleep cycle</Link>. That is exactly where a Sleep Calculator becomes useful.
       </p>
       <p>
-        Our <Link to="/" className="font-semibold underline">Sleep Calculator</Link> helps you find the ideal bedtime and wake-up time based on scientifically proven sleep cycles. Instead of waking up tired and exhausted, you can wake up feeling refreshed, focused, and energized.
+        Our <Link to="/" className="font-semibold underline">Sleep Calculator</Link> helps you find the ideal bedtime and wake-up time based on scientifically proven <Link to="/blog/sleep-cycle-stages" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">sleep cycles</Link>. Instead of waking up tired and exhausted, you can wake up feeling refreshed, focused, and energized.
       </p>
       <p>
         Whether you are a student, office worker, gamer, freelancer, or someone struggling with poor sleep habits, this tool can help you build a healthier sleep routine.
@@ -165,7 +165,7 @@ export default function BestSleepCalculatorGuide() {
         Sleep directly affects your health, productivity, mood, and energy levels. Poor sleep timing can leave you exhausted even after sleeping for many hours.
       </p>
       <p>
-        Using a Sleep Calculator helps align your sleep schedule with natural sleep cycles so you can wake up feeling refreshed instead of tired.
+        Using a Sleep Calculator helps align your <Link to="/blog/fix-sleep-schedule" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">sleep schedule</Link> with natural sleep cycles so you can wake up feeling refreshed instead of tired.
       </p>
       <p>
         If you want better focus, healthier sleep habits, and improved daily performance, start using our <Link to="/" className="font-semibold underline">free Sleep Calculator</Link> today.

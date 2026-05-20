@@ -70,7 +70,7 @@ export default function SleepByAge() {
       
       <h3>Can I train myself to need less sleep?</h3>
       <p>
-        No. Your sleep needs are genetically hardwired into your biology based on your age. Sleeping 5 hours a night simply causes chronic sleep debt and cognitive decline.
+        No. Your sleep needs are genetically hardwired into your biology based on your age. Sleeping 5 hours a night simply causes chronic <Link to="/blog/sleep-debt-recovery-guide" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">sleep debt</Link> and cognitive decline.
       </p>
 
       <h3>Why do I sleep so much when I am sick?</h3>
@@ -80,10 +80,10 @@ export default function SleepByAge() {
 
       <h2>Summary</h2>
       <p>
-        Do not fight your biology. Adhere to your specific age requirements and adjust your sleep schedule accordingly.
+        Do not fight your biology. Adhere to your specific age requirements and adjust your <Link to="/blog/fix-sleep-schedule" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">sleep schedule</Link> accordingly.
       </p>
       <p>
-        For adults, the smartest strategy is always to track your sleep cycles. Find your <Link to="/blog/best-time-to-sleep">best time to sleep</Link> today to optimize the 7 to 9 hours you require.
+        For adults, the smartest strategy is always to track your <Link to="/blog/sleep-cycle-stages" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">sleep cycles</Link>. Find your <Link to="/blog/best-time-to-sleep">best time to sleep</Link> today to optimize the 7 to 9 hours you require.
       </p>
     </ArticleLayout>
   );

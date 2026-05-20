@@ -68,7 +68,7 @@ export default function BestSleepScheduleForStudents() {
       
       <h3>Using Phones Before Bed</h3>
       <p>
-        Blue light delays melatonin production and makes sleep worse.
+        <Link to="/blog/blue-light-sleep" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">Blue light</Link> delays melatonin production and makes sleep worse.
       </p>
 
       <h3>Pulling All-Nighters</h3>
@@ -83,7 +83,7 @@ export default function BestSleepScheduleForStudents() {
 
       <h2>Tips to Improve Student Sleep</h2>
       <ul>
-        <li>Create a fixed bedtime routine</li>
+        <li>Create a fixed <Link to="/blog/best-bedtime-routine-for-better-sleep" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">bedtime routine</Link></li>
         <li>Reduce screen usage before bed</li>
         <li>Avoid studying in bed</li>
         <li>Wake up at the same time daily</li>

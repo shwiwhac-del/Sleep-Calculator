@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { ArticleLayout } from '../components/ArticleLayout';
 
 export default function BestBedtimeHabits() {
@@ -16,7 +17,7 @@ export default function BestBedtimeHabits() {
         Many people struggle with poor sleep because of simple habits they repeat every night without realizing the damage.
       </p>
 
-      <h2>1. Keep a Consistent Sleep Schedule</h2>
+      <h2>1. Keep a Consistent <Link to="/blog/fix-sleep-schedule" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">Sleep Schedule</Link></h2>
       <p>
         Going to bed and waking up at different times every day confuses your internal body clock.
       </p>
@@ -26,7 +27,7 @@ export default function BestBedtimeHabits() {
 
       <h2>2. Stop Using Your Phone Before Sleep</h2>
       <p>
-        Phones and tablets emit blue light that delays melatonin production. This makes falling asleep harder and reduces sleep quality.
+        Phones and tablets emit <Link to="/blog/blue-light-sleep" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">blue light</Link> that delays melatonin production. This makes falling asleep harder and reduces sleep quality.
       </p>
       <p>
         Avoid screens at least 30–60 minutes before bed.
@@ -68,7 +69,7 @@ export default function BestBedtimeHabits() {
       </p>
       <p>If needed, keep naps short.</p>
 
-      <h2>7. Create a Relaxing Bedtime Routine</h2>
+      <h2>7. Create a Relaxing <Link to="/blog/best-bedtime-routine-for-better-sleep" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">Bedtime Routine</Link></h2>
       <p>Simple relaxing activities before bed help your brain prepare for sleep.</p>
       <p>Examples:</p>
       <ul>
@@ -86,12 +87,12 @@ export default function BestBedtimeHabits() {
         Try calming your mind before sleeping instead of consuming stressful content online.
       </p>
 
-      <h2>9. Use Sleep Cycles Properly</h2>
+      <h2>9. Use <Link to="/blog/sleep-cycle-stages" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">Sleep Cycles</Link> Properly</h2>
       <p>
         Waking up between sleep cycles can help you feel more refreshed.
       </p>
       <p>
-        Using a sleep cycle calculator can improve your wake-up timing significantly.
+        Using a <Link to="/blog/sleep-cycle" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">sleep cycle</Link> calculator can improve your wake-up timing significantly.
       </p>
 
       <h2>10. Prioritize Sleep Consistently</h2>

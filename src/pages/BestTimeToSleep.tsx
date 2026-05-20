@@ -20,7 +20,7 @@ export default function BestTimeToSleep() {
         There is no such thing as a universal "perfect bedtime." The idea that everyone must be in bed by 10:00 PM ignores basic human biology.
       </p>
       <p>
-        Finding the best time to sleep depends on your genetics, your daily schedule, and understanding how human sleep cycles function. Here is how to find your optimal bedtime.
+        Finding the best time to sleep depends on your genetics, your daily schedule, and understanding how human <Link to="/blog/sleep-cycle-stages" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">sleep cycles</Link> function. Here is how to find your optimal bedtime.
       </p>
 
       <h2>The Myth of the 10 PM Bedtime</h2>
@@ -31,7 +31,7 @@ export default function BestTimeToSleep() {
         "Early birds" naturally feel sleepy at 9 PM and peak in the morning. "Night owls" naturally peak late at night and process information best after dark. Forcing a night owl to sleep at 9 PM will only result in hours of tossing and turning.
       </p>
       <p>
-        Instead of fighting your chronotype, you should build a sleep schedule that aligns with your biology while still allowing you to wake up for your morning obligations.
+        Instead of fighting your chronotype, you should build a <Link to="/blog/fix-sleep-schedule" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">sleep schedule</Link> that aligns with your biology while still allowing you to wake up for your morning obligations.
       </p>
 
       <h2>Plan with 90-Minute Cycles</h2>
@@ -81,7 +81,7 @@ export default function BestTimeToSleep() {
       
       <h3>Is it bad to go to bed at a different time every night?</h3>
       <p>
-        Yes. Inconsistency confuses your circadian rhythm. Even if you get 8 hours of sleep, doing it at erratic times will leave you feeling sluggish.
+        Yes. Inconsistency confuses your <Link to="/blog/fix-sleep-schedule" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">circadian rhythm</Link>. Even if you get 8 hours of sleep, doing it at erratic times will leave you feeling sluggish.
       </p>
 
       <h3>What if I missed my ideal bedtime?</h3>

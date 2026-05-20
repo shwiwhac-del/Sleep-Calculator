@@ -62,7 +62,7 @@ export default function SleepCycleCalculatorBlog() {
 
       <hr className="my-8" />
 
-      <h2>How a Healthy Sleep Calculator Works</h2>
+      <h2>How a Healthy <Link to="/blog/sleep-calculator" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">Sleep Calculator</Link> Works</h2>
       <p>
         When you use our free sleep tools, the engine calculates backward or forward based on:
       </p>

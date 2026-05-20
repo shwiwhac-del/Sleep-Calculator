@@ -55,7 +55,7 @@ export default function HowSleepCycleWorks() {
 
       <h2>Frequently Asked Questions</h2>
       
-      <h3>Are sleep cycles exactly 90 minutes for everyone?</h3>
+      <h3>Are <Link to="/blog/sleep-cycle-stages" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">sleep cycles</Link> exactly 90 minutes for everyone?</h3>
       <p>
         90 minutes is the universal average. Some individuals may have cycles ranging from 80 to 110 minutes, but 90 minutes is the standard used for biological baseline calculations. Ensure you aim for multiples of 90 minutes.
       </p>

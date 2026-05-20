@@ -27,7 +27,7 @@ export default function FixSleepSchedule() {
       backLabel="Back to Blog"
     >
       <p>
-        Whether it's due to jet lag, shift work, or just the creeping habit of staying up too late, a broken sleep schedule can wreck your productivity, mood, and health. When your internal clock (circadian rhythm) is out of sync with your actual sleep times, you experience constant grogginess and sleep inertia. Understanding your <Link to="/blog/sleep-cycle" className="font-semibold underline text-[#2563EB]">sleep cycle</Link> is the first step to fixing this naturally.
+        Whether it's due to jet lag, shift work, or just the creeping habit of staying up too late, a broken sleep schedule can wreck your productivity, mood, and health. When your internal clock (<Link to="/blog/fix-sleep-schedule" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">circadian rhythm</Link>) is out of sync with your actual sleep times, you experience constant grogginess and sleep inertia. Understanding your <Link to="/blog/sleep-cycle" className="font-semibold underline text-[#2563EB]">sleep cycle</Link> is the first step to fixing this naturally.
       </p>
 
       <h2>1. Figure Out Your Target Wake-up Time</h2>
@@ -62,7 +62,7 @@ export default function FixSleepSchedule() {
       </p>
       <ul>
         <li><strong>No late caffeine:</strong> Stop consuming caffeine at least 10 hours before your target bedtime. If you sleep at 11 PM, your last coffee should be at 1 PM.</li>
-        <li><strong>Nap carefully:</strong> If you absolutely must nap, restrict it to exactly 20 minutes (a power nap) or a full 90-minute cycle, and do it early in the afternoon. Late naps eliminate the "sleep pressure" needed to fall asleep at night.</li>
+        <li><strong>Nap carefully:</strong> If you absolutely must nap, restrict it to exactly 20 minutes (a <Link to="/article/power-nap" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">power nap</Link>) or a full 90-minute cycle, and do it early in the afternoon. Late naps eliminate the "sleep pressure" needed to fall asleep at night.</li>
       </ul>
 
       <h2>5. Shift Gradually or Pull an All-Nighter?</h2>

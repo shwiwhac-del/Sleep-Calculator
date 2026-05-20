@@ -19,7 +19,7 @@ export default function SmartSleepHabits() {
         Most people think sleeping longer automatically fixes tiredness. That is not true. Poor sleep timing can leave you exhausted even after 8 hours of sleep.
       </p>
       <p>
-        Your body follows natural sleep cycles. Waking up in the middle of a cycle often causes:
+        Your body follows natural <Link to="/blog/sleep-cycle-stages" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">sleep cycles</Link>. Waking up in the middle of a cycle often causes:
       </p>
       <ul>
         <li>Morning tiredness</li>
@@ -32,7 +32,7 @@ export default function SmartSleepHabits() {
         This is why sleep timing matters just as much as total sleep hours.
       </p>
 
-      <h2>What Is a Sleep Cycle?</h2>
+      <h2>What Is a <Link to="/blog/sleep-cycle" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">Sleep Cycle</Link>?</h2>
       <p>
         A normal sleep cycle lasts around 90 minutes. During this time, your body moves through:
       </p>
@@ -60,12 +60,12 @@ export default function SmartSleepHabits() {
 
       <h3>Avoid Screens Before Bed</h3>
       <p>
-        Phone and laptop screens emit blue light, which can reduce melatonin production and delay sleep. Try to put devices away at least 30 minutes before bedtime. Learn more about <Link to="/blog/blue-light-sleep" className="font-semibold underline text-[#2563EB]">how blue light affects sleep</Link>.
+        Phone and laptop screens emit <Link to="/blog/blue-light-sleep" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">blue light</Link>, which can reduce melatonin production and delay sleep. Try to put devices away at least 30 minutes before bedtime. Learn more about <Link to="/blog/blue-light-sleep" className="font-semibold underline text-[#2563EB]">how blue light affects sleep</Link>.
       </p>
 
       <h3>Sleep at a Consistent Time</h3>
       <p>
-        An irregular sleep schedule confuses your body clock and reduces sleep quality. Sleeping and waking at the same time every day trains your circadian rhythm. See our guide to <Link to="/blog/fix-sleep-schedule" className="font-semibold underline text-[#2563EB]">fix your sleep schedule</Link>.
+        An irregular <Link to="/blog/fix-sleep-schedule" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">sleep schedule</Link> confuses your body clock and reduces sleep quality. Sleeping and waking at the same time every day trains your <Link to="/blog/fix-sleep-schedule" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">circadian rhythm</Link>. See our guide to <Link to="/blog/fix-sleep-schedule" className="font-semibold underline text-[#2563EB]">fix your sleep schedule</Link>.
       </p>
 
       <h3>Avoid Heavy Meals Late at Night</h3>
@@ -78,7 +78,7 @@ export default function SmartSleepHabits() {
         A dark and slightly cool room usually helps the body fall asleep faster and stay asleep throughout the night.
       </p>
 
-      <h3>Use a Sleep Calculator</h3>
+      <h3>Use a <Link to="/blog/sleep-calculator" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">Sleep Calculator</Link></h3>
       <p>
         Instead of guessing, calculate proper sleep timings based on natural sleep cycles to ensure you wake up between sleep stages instead of during deep sleep.
       </p>

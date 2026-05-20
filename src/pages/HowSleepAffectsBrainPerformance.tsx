@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { ArticleLayout } from '../components/ArticleLayout';
 
 export default function HowSleepAffectsBrainPerformance() {
@@ -56,10 +57,10 @@ export default function HowSleepAffectsBrainPerformance() {
 
       <h2>How to Improve Brain Performance Through Better Sleep</h2>
       <ul>
-        <li><strong>Maintain a Consistent Sleep Schedule:</strong> Sleeping at random times weakens your internal body clock.</li>
-        <li><strong>Reduce Screen Time Before Bed:</strong> Blue light can affect melatonin production and delay sleep.</li>
-        <li><strong>Avoid Sleep Debt:</strong> Chronic sleep deprivation slowly damages mental performance.</li>
-        <li><strong>Use Better Sleep Timing:</strong> Following healthy sleep cycles helps the brain recover properly.</li>
+        <li><strong>Maintain a Consistent <Link to="/blog/fix-sleep-schedule" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">Sleep Schedule</Link>:</strong> Sleeping at random times weakens your internal body clock.</li>
+        <li><strong>Reduce Screen Time Before Bed:</strong> <Link to="/blog/blue-light-sleep" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">Blue light</Link> can affect melatonin production and delay sleep.</li>
+        <li><strong>Avoid <Link to="/blog/sleep-debt-recovery-guide" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">Sleep Debt</Link>:</strong> Chronic sleep deprivation slowly damages mental performance.</li>
+        <li><strong>Use Better Sleep Timing:</strong> Following healthy <Link to="/blog/sleep-cycle-stages" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">sleep cycles</Link> helps the brain recover properly.</li>
       </ul>
 
       <h2>Final Thoughts</h2>

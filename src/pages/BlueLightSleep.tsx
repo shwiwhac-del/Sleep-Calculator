@@ -51,7 +51,7 @@ export default function BlueLightSleep() {
 
       <h2>The Ripple Effects of Poor Sleep</h2>
       <p>
-        Melatonin suppression isn't just about taking longer to fall asleep. It disrupts your 90-minute sleep cycles. People exposed to heavy blue light before bed spend drastically less time in REM sleep (the restorative phase for memory and mood) and wake up feeling groggy, a phenomenon known as sleep inertia. Using a <Link to="/" className="font-semibold underline text-[#2563EB]">Sleep Calculator</Link> can help mitigate some of this bad timing by waking you between cycles.
+        Melatonin suppression isn't just about taking longer to fall asleep. It disrupts your 90-minute <Link to="/blog/sleep-cycle-stages" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">sleep cycles</Link>. People exposed to heavy blue light before bed spend drastically less time in REM sleep (the restorative phase for memory and mood) and wake up feeling groggy, a phenomenon known as sleep inertia. Using a <Link to="/" className="font-semibold underline text-[#2563EB]">Sleep Calculator</Link> can help mitigate some of this bad timing by waking you between cycles.
       </p>
 
       <h2>Actionable Solutions: How to Protect Your Sleep</h2>

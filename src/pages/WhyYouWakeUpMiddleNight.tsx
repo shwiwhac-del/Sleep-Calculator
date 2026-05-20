@@ -33,7 +33,7 @@ export default function WhyYouWakeUpMiddleNight() {
 
       <h3>Too Much Screen Time</h3>
       <p>
-        Using phones before bed can affect melatonin production and disturb sleep cycles. Read more on <Link to="/blog/blue-light-sleep" className="font-semibold underline text-[#2563EB]">how blue light affects your sleep</Link>.
+        Using phones before bed can affect melatonin production and disturb <Link to="/blog/sleep-cycle-stages" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">sleep cycles</Link>. Read more on <Link to="/blog/blue-light-sleep" className="font-semibold underline text-[#2563EB]">how blue light affects your sleep</Link>.
       </p>
 
       <h3>Caffeine Late in the Day</h3>
@@ -41,7 +41,7 @@ export default function WhyYouWakeUpMiddleNight() {
         Coffee, energy drinks, and some soft drinks can stay in the body for hours.
       </p>
 
-      <h3>Bad Sleep Schedule</h3>
+      <h3>Bad <Link to="/blog/fix-sleep-schedule" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">Sleep Schedule</Link></h3>
       <p>
         Sleeping at different times every night confuses your internal body clock.
       </p>
