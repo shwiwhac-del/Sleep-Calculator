@@ -139,13 +139,13 @@ export default function Home() {
 
     const calculatedResults = cyclesToGenerate.map((cycle) => {
       if (currentMode === "wake") {
-        const totalMinutesToSubtract = cycle * 90 + 15;
+        const totalMinutesToSubtract = cycle * 90;
         return {
           date: new Date(baseDate.getTime() - totalMinutesToSubtract * 60000),
           cycles: cycle,
         };
       } else {
-        const totalMinutesToAdd = cycle * 90 + 15;
+        const totalMinutesToAdd = cycle * 90;
         return {
           date: new Date(baseDate.getTime() + totalMinutesToAdd * 60000),
           cycles: cycle,
@@ -157,11 +157,14 @@ export default function Home() {
   };
 
   const handleCopy = () => {
-    const textLines = results.map(r => `${formatTime(r.date, true)} (${r.cycles} cycles)`).join('\n');
-    const fullText = mode === 'wake' 
-      ? `My ideal bedtimes tonight to wake up refreshed:\n${textLines}\nCalculated via sleepcalculater.online` 
-      : `My ideal wake times to get a full night's rest:\n${textLines}\nCalculated via sleepcalculater.online`;
-    
+    const textLines = results
+      .map((r) => `${formatTime(r.date)} (${r.cycles} cycles)`)
+      .join("\n");
+    const fullText =
+      mode === "wake"
+        ? `My ideal bedtimes tonight to wake up refreshed:\n${textLines}\nCalculated via https://sleepcalculater.online`
+        : `My ideal wake times to get a full night's rest:\n${textLines}\nCalculated via https://sleepcalculater.online`;
+
     navigator.clipboard.writeText(fullText);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
@@ -211,9 +214,9 @@ export default function Home() {
 
       const diffDays = Math.round((targetDay - today) / (1000 * 60 * 60 * 24));
 
-      if (diffDays === 1) return `${timeString} (+1d)`;
-      if (diffDays === -1) return `${timeString} (-1d)`;
-      if (diffDays > 1) return `${timeString} (+${diffDays}d)`;
+      if (diffDays === 1) return `${timeString} (tomorrow)`;
+      if (diffDays === -1) return `${timeString} (yesterday)`;
+      if (diffDays > 1) return `${timeString} (+${diffDays} days)`;
     }
 
     return timeString;
@@ -401,7 +404,14 @@ export default function Home() {
 
       <div className="w-full max-w-[580px] mx-auto mb-10 px-4 text-center">
         <p className="text-[11px] sm:text-xs text-gray-400 dark:text-gray-500 max-w-sm mx-auto leading-relaxed">
-          Based on standard clinical 90-minute REM sleep cycle research. Results are estimates, not medical advice. <Link to="/disclaimer" className="underline hover:text-gray-600 dark:hover:text-gray-300">Disclaimer</Link>
+          Based on standard clinical 90-minute REM sleep cycle research. Results
+          are estimates, not medical advice.{" "}
+          <Link
+            to="/disclaimer"
+            className="underline hover:text-gray-600 dark:hover:text-gray-300"
+          >
+            Disclaimer
+          </Link>
         </p>
       </div>
 
@@ -409,9 +419,9 @@ export default function Home() {
       <AnimatePresence>
         {results.length > 0 && (
           <motion.div
-            initial={{ opacity: 0, y: 30, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 20, scale: 0.95 }}
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
             ref={resultsRef}
             className="w-full max-w-[700px] mx-auto flex flex-col items-center mb-8 px-4"
@@ -457,10 +467,11 @@ export default function Home() {
                       return (
                         <motion.div
                           key={index}
-                          initial={{ opacity: 0, x: -20 }}
-                          animate={{ opacity: 1, x: 0 }}
+                          initial={{ opacity: 0, y: 15 }}
+                          animate={{ opacity: 1, y: 0 }}
                           transition={{
-                            delay: 0.1 + index * 0.08,
+                            delay: index * 0.06,
+                            duration: 0.4,
                             ease: "easeOut",
                           }}
                           className={`group flex items-center justify-between p-4 sm:p-5 rounded-2xl border transition-all duration-300 hover:shadow-md hover:-translate-y-1 ${
@@ -484,7 +495,7 @@ export default function Home() {
                           )}
                           <div className="flex flex-col relative z-10">
                             <span className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-gray-100 tracking-tight leading-none mb-1.5 flex items-center gap-2">
-                              {formatTime(res.date, true)}
+                              {formatTime(res.date)}
                               {recommended && (
                                 <Sparkles
                                   className="w-4 h-4 text-[#2563EB] sm:hidden"
@@ -510,22 +521,41 @@ export default function Home() {
                   </AnimatePresence>
                 </div>
 
-                <p className="text-gray-400 dark:text-gray-500 text-xs sm:text-sm text-center mt-8 px-4 leading-relaxed">
-                  We've added 15 minutes to these times to account for how long
-                  it takes to fall asleep.
-                </p>
-
                 <div className="flex flex-col sm:flex-row gap-3 mt-6 w-full">
                   <button
                     onClick={handleCopy}
                     className="w-full py-3.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 hover:bg-blue-200 dark:hover:bg-blue-900/50 text-sm sm:text-base font-semibold shadow-sm transition-colors focus-visible:outline-none focus:ring-2 focus:ring-blue-500 flex items-center justify-center gap-2"
                   >
                     {copied ? (
-                      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                      <svg
+                        className="w-5 h-5"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M5 13l4 4L19 7"
+                        />
+                      </svg>
                     ) : (
-                      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" /></svg>
+                      <svg
+                        className="w-5 h-5"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"
+                        />
+                      </svg>
                     )}
-                    {copied ? "Copied!" : "Copy Shareable Results"}
+                    {copied ? "Copied!" : "Copy Schedule to Clipboard"}
                   </button>
 
                   <button
@@ -656,91 +686,142 @@ export default function Home() {
           onContextMenu={(e) => e.stopPropagation()}
           className="prose dark:prose-invert prose-sm sm:prose-base text-gray-600 dark:text-gray-300 mx-auto select-text"
         >
-          <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4 font-serif">
-            Why Use Our Free Sleep Time Calculator?
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-gray-100 mt-8 mb-6 font-serif">
+            How Does a Sleep Calculator Work?
           </h2>
           <p className="mb-4">
-            Understanding your body's natural{" "}
-            <Link
-              to="/blog/sleep-cycle"
-              className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors"
-            >
-              90-minute sleep cycle
-            </Link>{" "}
-            is the key to waking up feeling energized. By using our{" "}
-            <strong>sleep cycle calculator</strong> to time your alarms to sync
-            with the end of a REM cycle, you avoid sleep inertia and start your
-            day without grogginess.
+            If you've ever slept for eight hours but still woken up feeling
+            exhausted, you might be wondering why. The answer lies in how our
+            bodies process rest. A <strong>sleep calculator</strong> or{" "}
+            <strong>sleep cycle calculator</strong> is a tool designed to find
+            the perfect time for you to fall asleep or wake up based on your
+            body's natural <strong>90-minute sleep cycles</strong>.
           </p>
           <p className="mb-4">
-            Whether you are struggling with a disrupted internal clock and need
-            to{" "}
-            <Link
-              to="/blog/fix-sleep-schedule"
-              className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors"
-            >
-              fix your sleep schedule
-            </Link>
-            , or wondering about the{" "}
-            <Link
-              to="/article/best-sleep-time"
-              className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors"
-            >
-              best time to sleep
-            </Link>
-            , our <strong>bedtime calculator</strong> provides precise
-            calculations. We automatically factor in the 15 minutes it usually
-            takes to fall asleep. If you only have time for a quick rest during
-            the day, check out our <strong>nap calculator</strong> guide on{" "}
-            <Link
-              to="/article/power-nap"
-              className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors"
-            >
-              how long a power nap should be
-            </Link>
-            .
+            Human sleep doesn't happen in one long, continuous block. Instead,
+            as we rest, our brains move through multiple distinct stages of
+            sleep, moving from light sleep to deep sleep, and eventually into
+            REM (Rapid Eye Movement) sleep. Completing this entire sequence
+            takes approximately 90 minutes. When you sleep, you repeat this
+            90-minute cycle four to six times a night.
           </p>
           <p className="mb-4">
-            Age also plays a massive role in your rest requirements. Learn more
-            about{" "}
-            <Link
-              to="/blog/sleep-age"
-              className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors"
-            >
-              how much sleep you need by age
-            </Link>
-            , and why you might still{" "}
-            <Link
-              to="/article/deep-sleep-fixer"
-              className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors"
-            >
-              feel tired after 8 hours of sleep
-            </Link>
-            . Keep your screen exposure in check to prevent{" "}
-            <Link
-              to="/blog/blue-light-sleep"
-              className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors"
-            >
-              blue light from disrupting your healthy sleep cycle
-            </Link>
-            .
+            The reason people often feel tired after oversleeping is due to
+            sleep inertia. If your alarm clock wakes you up during the deepest
+            part of your sleep cycle, your brain is abruptly pulled out of a
+            restorative state. This creates grogginess, brain fog, and a heavy
+            feeling that can take hours to shake off. Waking up <em>between</em>{" "}
+            sleep cycles—when your sleep is naturally at its lightest—helps you
+            start the day feeling completely energized and alert, even if your
+            total sleep time is slightly shorter.
+          </p>
+          <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-gray-100 mt-8 mb-4">
+            How Are Sleep Times Calculated?
+          </h3>
+          <p className="mb-4">
+            A <strong>bedtime calculator</strong> works by counting backward
+            from your desired wake-up time in 90-minute increments to find
+            optimal bedtimes. Alternatively, if you want to go to sleep right
+            now, a <strong>wake up time calculator</strong> counts forward in
+            90-minute blocks to give you the best times to set your alarm.
           </p>
           <p className="mb-4">
-            If you struggle with waking up frequently, you can read our guide on{" "}
-            <Link
-              to="/blog/why-you-wake-up-in-the-middle-of-the-night"
-              className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors"
-            >
-              why you wake up in the middle of the night
-            </Link>
-            , and build{" "}
-            <Link
-              to="/blog/smart-sleep-habits-better-energy"
-              className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors"
-            >
-              smart sleep habits for better energy
-            </Link>{" "}
-            to boost your daily performance naturally.
+            It's important to remember that you don't fall asleep the moment
+            your head hits the pillow. On average, it takes a healthy adult
+            about 15 minutes to transition from wakefulness to actual sleep. Our
+            calculator automatically factors in this 15-minute buffer so that
+            your <strong>sleep cycle timing</strong> is incredibly precise.
+          </p>
+
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-gray-100 mt-12 mb-6 font-serif">
+            Best Time to Sleep and Wake Up
+          </h2>
+          <p className="mb-4">
+            Finding the <strong>best time to sleep</strong> is crucial for your
+            long-term health and daily performance. While the exact hour can
+            vary depending on your lifestyle and work requirements, the single
+            most important factor is maintaining a consistent sleep schedule.
+            Going to sleep and waking up at the same time every day—even on
+            weekends—anchors your body's circadian rhythm, allowing your
+            internal clock to naturally regulate your energy levels and hormone
+            production.
+          </p>
+          <p className="mb-4">
+            Health experts and sleep scientists typically recommend different
+            sleep durations based on age. Adults between the ages of 18 and 64
+            generally need 7 to 9 hours of total sleep per night, which equates
+            to roughly five or six complete sleep cycles. Teenagers require 8 to
+            10 hours, while young children and infants need significantly more.
+            However, simply clocking hours in bed isn't the whole picture. Sleep
+            quality fundamentally matters more than just the duration.
+          </p>
+          <p className="mb-4">
+            Focusing on your sleep timing directly impacts how you feel the next
+            day. When you string together multiple nights of high-quality,
+            uninterrupted sleep cycles, the benefits are profound. Proper sleep
+            timing enhances cognitive brain function, leading to sharper focus,
+            better memory retention, and heightened productivity. Mentally,
+            adequate rest regulates mood, reducing stress and anxiety levels.
+            Physically, deep sleep is when the body repairs muscle tissue,
+            strengthens the immune system, and manages cellular recovery.
+            Prioritizing your bedtime habits is one of the biggest investments
+            you can make in your overall health.
+          </p>
+
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-gray-100 mt-12 mb-6 font-serif">
+            Tips for Better Sleep Quality
+          </h2>
+          <p className="mb-4">
+            Using a sleep calculator is just the first step in mastering your
+            rest. If you want to fall asleep faster and stay asleep longer,
+            building realistic and effective evening habits is entirely
+            necessary.
+          </p>
+          <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-gray-100 mt-8 mb-4">
+            Avoid Blue Light Before Bed
+          </h3>
+          <p className="mb-4">
+            One of the most common causes of delayed sleep is screen exposure.
+            Phones, tablets, and bright televisions emit blue light, which
+            tricks the brain into thinking it's still daytime. This suppresses
+            the production of melatonin, your body's natural sleep hormone. Try
+            explicitly avoiding screens for at least 30 to 60 minutes before
+            your planned bedtime. Instead, opt for reading a book or listening
+            to an audio track to wind down.
+          </p>
+          <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-gray-100 mt-8 mb-4">
+            Watch Your Caffeine Timing
+          </h3>
+          <p className="mb-4">
+            Caffeine is a powerful stimulant with a half-life of roughly five
+            hours. This means that half of the caffeine you consume at 4:00 PM
+            is still actively circulating in your bloodstream at 9:00 PM. To
+            protect your deep sleep phase, aim to avoid coffee, energy drinks,
+            and strong teas during the late afternoon and evening hours.
+          </p>
+          <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-gray-100 mt-8 mb-4">
+            Optimize Your Bedroom Environment
+          </h3>
+          <p className="mb-4">
+            A cool, dark, and quiet room heavily improves sleep continuity. Your
+            core body temperature needs to drop slightly for optimal sleep, so
+            setting the thermostat a few degrees lower is broadly recommended.
+            Consider blackout curtains or a sleep mask to block ambient street
+            lighting, and use a white noise machine or earplugs to drown out
+            unpredictable sounds.
+          </p>
+          <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-gray-100 mt-8 mb-4">
+            Reduce Nighttime Stress
+          </h3>
+          <p className="mb-4">
+            Racing thoughts keep people awake. Getting into the habit of
+            reducing stress before sleeping is critical for high-quality rest.
+            Journaling, light stretching, deep breathing exercises, or a short
+            nighttime meditation can help switch your nervous system from an
+            active, alert state into a relaxed, restful state. Establishing a
+            consistent, calming bedtime routine tells your brain that the day is
+            over, significantly improving your overall sleep efficiency and
+            cycle consistency.
           </p>
         </div>
       </div>

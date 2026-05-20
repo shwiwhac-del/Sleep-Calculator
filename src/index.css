@@ -1,14 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap");
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --color-primary: #2563EB;
-  --color-accent: #4F46E5;
-  --color-background: #FFFFFF;
-  --color-section: #F8FAFC;
+  --color-primary: #2563eb;
+  --color-accent: #4f46e5;
+  --color-background: #ffffff;
+  --color-section: #f8fafc;
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-serif: "Playfair Display", ui-serif, Georgia, serif;
   --animate-fade-in: fade-in 0.7s ease-out forwards;
@@ -16,28 +16,56 @@
 }
 
 @keyframes fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes slide-up {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes slide-down {
-  from { opacity: 0; transform: translateY(-20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes slide-up-large {
-  from { opacity: 0; transform: translateY(40px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes zoom-in-95 {
-  from { opacity: 0; transform: scale(0.95); }
-  to { opacity: 1; transform: scale(1); }
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 @layer base {
@@ -49,6 +77,18 @@
   body {
     user-select: none;
     -webkit-user-select: none;
+  }
+
+  input[type="time"]::-webkit-datetime-edit {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  input[type="time"]::-webkit-datetime-edit-fields-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
   }
 }
 
@@ -66,7 +106,8 @@
     animation-name: fade-in;
     animation-fill-mode: forwards;
   }
-  .slide-in-from-bottom-2, .slide-in-from-bottom-4 {
+  .slide-in-from-bottom-2,
+  .slide-in-from-bottom-4 {
     animation-name: slide-up;
   }
   .slide-in-from-bottom-10 {
