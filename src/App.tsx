@@ -41,14 +41,14 @@ function Footer() {
   return (
     <footer className="w-full py-8 mt-auto border-t border-gray-200 dark:border-[#1e293b] bg-white dark:bg-[#0f172a] z-20 relative flex flex-col items-center">
       <div className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm text-gray-500 dark:text-gray-400 px-4 mb-4">
+        <Link to="/about" className="hover:text-[#2563EB] transition-colors">About</Link>
+        <Link to="/contact" className="hover:text-[#2563EB] transition-colors">Contact</Link>
         <Link to="/privacy" className="hover:text-[#2563EB] transition-colors">Privacy Policy</Link>
         <Link to="/terms" className="hover:text-[#2563EB] transition-colors">Terms & Conditions</Link>
         <Link to="/disclaimer" className="hover:text-[#2563EB] transition-colors">Medical Disclaimer</Link>
-        <a href="/sitemap.xml" target="_blank" rel="noopener noreferrer" className="hover:text-[#2563EB] transition-colors">Sitemap</a>
       </div>
       <div className="text-gray-400 dark:text-gray-600 text-xs flex flex-col items-center gap-1.5">
         <span>&copy; {new Date().getFullYear()} Sleep Calculator. All rights reserved.</span>
-        <span>Build By <a href="https://shafiqbuilds.site/" target="_blank" rel="noopener noreferrer" className="hover:text-[#2563EB] transition-colors underline underline-offset-2">ShafiqBuild</a></span>
       </div>
     </footer>
   );
@@ -74,25 +74,23 @@ function Header({ isDarkMode, toggleDarkMode }: { isDarkMode: boolean, toggleDar
   }, [isMenuOpen]);
 
   return (
-    <header className="w-full h-[64px] pb-1 border-b shadow-sm border-gray-200 dark:border-[#1e293b] bg-white/95 dark:bg-[#0f172a]/95 backdrop-blur-md z-50 sticky top-0 transition-colors">
-      <div className="max-w-6xl mx-auto h-full flex items-center justify-between px-4 sm:px-6 md:px-8 tracking-tight">
-        <Link to="/" onContextMenu={(e) => e.preventDefault()} className="flex items-center gap-2.5 text-gray-900 dark:text-gray-100 hover:text-[#2563EB] dark:hover:text-[#2563EB] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] rounded">
-          <Moon className="text-[#2563EB]" size={22} strokeWidth={2.5} />
-          <span className="text-base sm:text-lg font-bold tracking-tight font-serif">Sleep Calculator</span>
+    <header className="w-full h-[60px] pb-1 border-b border-gray-100 dark:border-[#1e293b] bg-white/95 dark:bg-[#0f172a]/95 backdrop-blur-md z-50 sticky top-0 transition-colors">
+      <div className="max-w-6xl mx-auto h-full flex items-center justify-between px-4 sm:px-6 md:px-8 tracking-tight relative">
+        <Link to="/" onContextMenu={(e) => e.preventDefault()} className="flex items-center gap-2 text-gray-900 dark:text-gray-100 hover:text-[#2563EB] dark:hover:text-[#2563EB] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] rounded">
+          <Moon className="text-[#2563EB]" size={20} strokeWidth={2.5} />
+          <span className="text-base sm:text-lg font-bold tracking-tight">Sleep Calculator</span>
         </Link>
         
-        <div className="flex items-center gap-4 sm:gap-8">
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-4 sm:gap-8 text-[15px] font-medium text-gray-600 dark:text-gray-300">
-            <Link to="/blog" className="hover:text-[#2563EB] transition-colors focus-visible:outline-none">Blog</Link>
-            <Link to="/about" className="hover:text-[#2563EB] transition-colors focus-visible:outline-none">About</Link>
-            <Link to="/contact" className="hover:text-[#2563EB] transition-colors focus-visible:outline-none">Contact</Link>
-          </nav>
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center text-[15px] font-medium text-gray-600 dark:text-gray-300">
+          <Link to="/blog" className="hover:text-[#2563EB] transition-colors focus-visible:outline-none">Blog</Link>
+        </nav>
 
+        <div className="flex items-center gap-4 sm:gap-8">
           {/* Dark Mode Toggle */}
           <button
             onClick={toggleDarkMode}
-            className="text-gray-600 dark:text-gray-400 hover:text-[#2563EB] dark:hover:text-[#2563EB] transition-colors p-1 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB]"
+            className="text-gray-600 dark:text-gray-400 hover:text-[#2563EB] transition-colors p-1 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB]"
             aria-label="Toggle dark mode"
           >
             {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
@@ -111,11 +109,9 @@ function Header({ isDarkMode, toggleDarkMode }: { isDarkMode: boolean, toggleDar
 
       {/* Mobile Navigation Dropdown */}
       {isMenuOpen && (
-        <div className="md:hidden fixed top-[70px] left-0 w-full h-[calc(100vh-70px)] bg-white/95 dark:bg-[#0f172a]/95 backdrop-blur-md flex flex-col pt-8 px-6 gap-4 z-40 overflow-y-auto">
+        <div className="md:hidden fixed top-[70px] left-0 w-full h-[calc(100vh-70px)] bg-white/95 dark:bg-[#0f172a]/95 backdrop-blur-md flex flex-col pt-8 px-6 gap-4 z-40 overflow-y-auto shadow-sm">
           <div className="flex flex-col space-y-2">
-            <Link to="/blog" className="text-gray-900 dark:text-gray-100 hover:text-[#2563EB] dark:hover:text-[#2563EB] font-semibold text-2xl py-3 border-b border-gray-100 dark:border-[#1e293b] transition-colors" onClick={() => setIsMenuOpen(false)}>Blog</Link>
-            <Link to="/about" className="text-gray-900 dark:text-gray-100 hover:text-[#2563EB] dark:hover:text-[#2563EB] font-semibold text-2xl py-3 border-b border-gray-100 dark:border-[#1e293b] transition-colors" onClick={() => setIsMenuOpen(false)}>About</Link>
-            <Link to="/contact" className="text-gray-900 dark:text-gray-100 hover:text-[#2563EB] dark:hover:text-[#2563EB] font-semibold text-2xl py-3 border-b border-gray-100 dark:border-[#1e293b] transition-colors" onClick={() => setIsMenuOpen(false)}>Contact</Link>
+            <Link to="/blog" className="text-gray-900 dark:text-gray-100 hover:text-[#2563EB] font-semibold text-2xl py-3 border-b border-gray-100 dark:border-[#1e293b] transition-colors" onClick={() => setIsMenuOpen(false)}>Blog</Link>
           </div>
         </div>
       )}

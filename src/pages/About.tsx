@@ -116,6 +116,9 @@ export default function About() {
             <p className="text-gray-400 dark:text-gray-500 text-[14px] mt-8 pt-8 border-t border-gray-100 dark:border-[#1e293b]">
               Built to keep things simple, fast, and actually useful.
             </p>
+            <div className="mt-4 text-sm text-gray-500 dark:text-gray-400">
+              Build By <a href="https://shafiqbuilds.site/" target="_blank" rel="noopener noreferrer" className="hover:text-[#2563EB] transition-colors underline underline-offset-2">ShafiqBuild</a>
+            </div>
           </section>
         </div>
       </div>

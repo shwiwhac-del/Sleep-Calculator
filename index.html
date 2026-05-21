@@ -28,8 +28,12 @@
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="apple-touch-icon" href="/favicon.png" />
     <link rel="manifest" href="/manifest.webmanifest" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+    
     <link
       rel="preload"
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@700&display=swap"
@@ -38,26 +42,31 @@
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@700&display=swap"
       rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
     />
-    <title>Free Sleep Calculator | Wake Up Refreshed (90-Min REM Cycles)</title>
+    <noscript>
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@700&display=swap" rel="stylesheet" />
+    </noscript>
+    <title>Sleep Calculator – Best Sleep Cycle & Bedtime Calculator</title>
     <meta
       name="description"
-      content="Struggle waking up? Use our free sleep cycle calculator to find the perfect bedtime based on natural 90-minute REM cycles. Wake up energized today."
+      content="Calculate the best bedtime and wake-up time using natural 90-minute sleep cycles. Wake up refreshed and improve your sleep quality."
     />
     <meta
       name="keywords"
-      content="sleep calculator, sleep calc, sleep cycle calculator, sleepcalculator, what time should i wake up, calculator sleep, when should i wake up, what time should i go to bed, sleep time calculator, rem sleep calculator, when to wake up, sleep.calculator, sleeping calculator, sleep cal, sleepcalc, sleep calculator time"
+      content="sleep calculator, sleep cycle calculator, bedtime calculator, wake up time calculator, best time to sleep, sleep cycle timing, REM sleep cycles, sleep schedule calculator"
     />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta
       property="og:title"
-      content="Free Sleep Calculator | Wake Up Refreshed (90-Min REM Cycles)"
+      content="Sleep Calculator – Best Sleep Cycle & Bedtime Calculator"
     />
     <meta
       property="og:description"
-      content="Struggle waking up? Use our free sleep cycle calculator to find the perfect bedtime based on natural 90-minute REM cycles. Wake up energized today."
+      content="Calculate the best bedtime and wake-up time using natural 90-minute sleep cycles. Wake up refreshed and improve your sleep quality."
     />
     <meta
       property="og:image"
@@ -68,11 +77,11 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
-      content="Free Sleep Calculator | Wake Up Refreshed (90-Min REM Cycles)"
+      content="Sleep Calculator – Best Sleep Cycle & Bedtime Calculator"
     />
     <meta
       name="twitter:description"
-      content="Struggle waking up? Use our free sleep cycle calculator to find the perfect bedtime based on natural 90-minute REM cycles. Wake up energized today."
+      content="Calculate the best bedtime and wake-up time using natural 90-minute sleep cycles. Wake up refreshed and improve your sleep quality."
     />
     <meta
       name="twitter:image"
@@ -93,8 +102,18 @@
     </script>
   </head>
   <body>
-    <div id="root"></div>
-    <script defer type="module" src="/src/main.tsx"></script>
+    <div id="root">
+      <style>
+        .initial-loader { display: flex; justify-content: center; align-items: center; height: 100vh; font-family: system-ui, -apple-system, sans-serif; background: #f9fafb; color: #111827; }
+        html.dark .initial-loader { background: #0f172a; color: #f3f4f6; }
+        .spinner { width: 40px; height: 40px; border: 3px solid rgba(37, 99, 235, 0.2); border-radius: 50%; border-top-color: #2563eb; animation: spin 1s ease-in-out infinite; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+      </style>
+      <div class="initial-loader">
+        <div class="spinner"></div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.tsx"></script>
 
     <!-- Google tag (gtag.js) - Deferred loading -->
     <script type="module">
