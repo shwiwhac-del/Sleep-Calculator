@@ -10,19 +10,15 @@ const Privacy = lazy(() => import('./pages/Privacy'));
 const Blog = lazy(() => import('./pages/Blog'));
 const Contact = lazy(() => import('./pages/Contact'));
 const About = lazy(() => import('./pages/About'));
-const Feature = lazy(() => import('./pages/Feature'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 const Disclaimer = lazy(() => import('./pages/Disclaimer'));
 
 // Home Guides
 
-const BestTimeToSleep = lazy(() => import('./pages/BestTimeToSleep'));
 const SleepCycleGuide = lazy(() => import('./pages/SleepCycleGuide'));
 const SleepByAge = lazy(() => import('./pages/SleepByAge'));
 const FixSleepSchedule = lazy(() => import('./pages/FixSleepSchedule'));
 const BlueLightSleep = lazy(() => import('./pages/BlueLightSleep'));
-const WhyYouFeelTired = lazy(() => import('./pages/WhyYouFeelTired'));
-const PowerNapGuide = lazy(() => import('./pages/PowerNapGuide'));
 const WhatIsASleepCalculator = lazy(() => import('./pages/WhatIsASleepCalculator'));
 const BestSleepCalculatorGuide = lazy(() => import('./pages/BestSleepCalculatorGuide'));
 const HowSleepCycleWorks = lazy(() => import('./pages/HowSleepCycleWorks'));
@@ -36,6 +32,12 @@ const HowSleepAffectsBrainPerformance = lazy(() => import('./pages/HowSleepAffec
 const BestBedtimeRoutine = lazy(() => import('./pages/BestBedtimeRoutine'));
 const WhySleepCyclesMatter = lazy(() => import('./pages/WhySleepCyclesMatter'));
 const BestBedtimeHabits = lazy(() => import('./pages/BestBedtimeHabits'));
+
+const WakeUpAt6Am = lazy(() => import('./pages/WakeUpAt6Am'));
+const WakeUpAt5Am = lazy(() => import('./pages/WakeUpAt5Am'));
+const NapCalculatorTiming = lazy(() => import('./pages/NapCalculatorTiming'));
+const SleepCycleTiming = lazy(() => import('./pages/SleepCycleTiming'));
+const RemSleepCalculatorPage = lazy(() => import('./pages/RemSleepCalculatorPage'));
 
 function Footer() {
   return (
@@ -173,16 +175,6 @@ function AppContent() {
                 <Route path="/disclaimer" element={<Disclaimer />} />
                 <Route path="/contact" element={<Contact />} />
                 
-                {/* Features */}
-                <Route path="/article/:slug" element={<Feature />} />
-
-                {/* Main Tool Guides / Standalone pages */}
-
-                {/* Separated Articles (No longer in blog) */}
-                <Route path="/article/best-sleep-time" element={<BestTimeToSleep />} />
-                <Route path="/article/power-nap" element={<PowerNapGuide />} />
-                <Route path="/article/deep-sleep-fixer" element={<WhyYouFeelTired />} />
-
                 {/* Blog Posts under proper /blog hierarchy */}
                 <Route path="/blog/best-sleep-calculator" element={<BestSleepCalculatorGuide />} />
                 <Route path="/blog/sleep-calculator" element={<WhatIsASleepCalculator />} />
@@ -202,24 +194,31 @@ function AppContent() {
                 <Route path="/blog/why-sleep-cycles-matter-more-than-sleeping-longer" element={<WhySleepCyclesMatter />} />
                 <Route path="/blog/best-bedtime-habits-for-better-sleep-quality" element={<BestBedtimeHabits />} />
 
+                {/* Programmatic SEO Landing Pages */}
+                <Route path="/blog/wake-up-at-6am" element={<WakeUpAt6Am />} />
+                <Route path="/blog/wake-up-at-5am" element={<WakeUpAt5Am />} />
+                <Route path="/blog/nap-calculator-timing" element={<NapCalculatorTiming />} />
+                <Route path="/blog/sleep-cycle-timing" element={<SleepCycleTiming />} />
+                <Route path="/blog/rem-sleep-calculator" element={<RemSleepCalculatorPage />} />
+
                 {/* Redirects for old URLs to new structure */}
                 <Route path="/blog/what-is-a-sleep-calculator" element={<Navigate to="/blog/sleep-calculator" replace />} />
                 <Route path="/what-is-a-sleep-calculator" element={<Navigate to="/blog/sleep-calculator" replace />} />
 
-                <Route path="/blog/best-sleep-time" element={<Navigate to="/article/best-sleep-time" replace />} />
-                <Route path="/blog/best-time-to-sleep" element={<Navigate to="/article/best-sleep-time" replace />} />
-                <Route path="/best-time-to-sleep" element={<Navigate to="/article/best-sleep-time" replace />} />
+                <Route path="/blog/best-sleep-time" element={<Navigate to="/" replace />} />
+                <Route path="/blog/best-time-to-sleep" element={<Navigate to="/" replace />} />
+                <Route path="/best-time-to-sleep" element={<Navigate to="/" replace />} />
 
-                <Route path="/blog/power-nap" element={<Navigate to="/article/power-nap" replace />} />
-                <Route path="/blog/power-nap-guide" element={<Navigate to="/article/power-nap" replace />} />
-                <Route path="/power-nap-guide" element={<Navigate to="/article/power-nap" replace />} />
+                <Route path="/blog/power-nap" element={<Navigate to="/blog/smart-sleep-habits-better-energy" replace />} />
+                <Route path="/blog/power-nap-guide" element={<Navigate to="/blog/smart-sleep-habits-better-energy" replace />} />
+                <Route path="/power-nap-guide" element={<Navigate to="/blog/smart-sleep-habits-better-energy" replace />} />
 
                 <Route path="/blog/sleep-cycle-guide" element={<Navigate to="/blog/sleep-cycle-stages" replace />} />
                 <Route path="/sleep-cycle-guide" element={<Navigate to="/blog/sleep-cycle-stages" replace />} />
 
-                <Route path="/blog/tired" element={<Navigate to="/article/deep-sleep-fixer" replace />} />
-                <Route path="/blog/why-you-feel-tired" element={<Navigate to="/article/deep-sleep-fixer" replace />} />
-                <Route path="/why-you-feel-tired" element={<Navigate to="/article/deep-sleep-fixer" replace />} />
+                <Route path="/blog/tired" element={<Navigate to="/blog/why-sleep-cycles-matter-more-than-sleeping-longer" replace />} />
+                <Route path="/blog/why-you-feel-tired" element={<Navigate to="/blog/why-sleep-cycles-matter-more-than-sleeping-longer" replace />} />
+                <Route path="/why-you-feel-tired" element={<Navigate to="/blog/why-sleep-cycles-matter-more-than-sleeping-longer" replace />} />
 
                 <Route path="/blog/sleep-by-age" element={<Navigate to="/blog/sleep-age" replace />} />
                 <Route path="/sleep-by-age" element={<Navigate to="/blog/sleep-age" replace />} />

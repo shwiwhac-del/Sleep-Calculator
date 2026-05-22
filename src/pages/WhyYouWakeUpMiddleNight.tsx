@@ -13,7 +13,7 @@ export default function WhyYouWakeUpMiddleNight() {
       relatedPosts={[
         { title: "Smart Sleep Habits for Better Energy", url: "/blog/smart-sleep-habits-better-energy", description: "Learn simple sleep habits that improve energy, focus, and sleep quality." },
         { title: "Fix Your Sleep Schedule", url: "/blog/fix-sleep-schedule", description: "Reset your internal clock and get your sleep schedule back on track." },
-        { title: "Why You Feel Tired After 8 Hours", url: "/article/deep-sleep-fixer", description: "Learn why deep sleep hangovers cause morning grogginess." }
+        { title: "Why Sleep Cycles Matter More Than Duration", url: "/blog/why-sleep-cycles-matter-more-than-sleeping-longer", description: "Learn why proper REM timing is essential to avoid waking up tired." }
       ]}
     >
       <p>
@@ -21,7 +21,7 @@ export default function WhyYouWakeUpMiddleNight() {
         This problem can reduce sleep quality and leave you tired the next morning.
       </p>
       <p>
-        Occasional waking is normal, but frequent sleep interruptions may affect your energy, focus, and mood. If you wake up exhausted, you might be suffering from a <Link to="/article/deep-sleep-fixer" className="font-semibold underline text-[#2563EB]">deep sleep hangover</Link>.
+        Occasional waking is normal, but frequent sleep interruptions may affect your energy, focus, and mood. If you wake up exhausted, you might be suffering from a <Link to="/blog/why-sleep-cycles-matter-more-than-sleeping-longer" className="font-semibold underline text-[#2563EB]">deep sleep cycle interruption</Link>.
       </p>
 
       <h2>Common Reasons for Interrupted Sleep</h2>

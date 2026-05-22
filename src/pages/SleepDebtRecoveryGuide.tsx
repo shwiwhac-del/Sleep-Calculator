@@ -12,8 +12,8 @@ export default function SleepDebtRecoveryGuide() {
       author="Sleep Expert Team"
       relatedPosts={[
         { title: "Sleep Cycle Stages Explained", url: "/blog/sleep-cycle-stages", description: "Understand the stages of the sleep cycle including REM sleep, deep sleep, and light sleep." },
-        { title: "The Best Time to Sleep: Finding Your Perfect Bedtime", url: "/blog/best-sleep-time", description: "Discover the absolute best time to sleep based on science." },
-        { title: "Why You Feel Tired Even After 8 Hours", url: "/blog/tired", description: "Constantly exhausted despite getting enough sleep? Discover why." }
+        { title: "Calculate Your Ideal Sleep Schedule", url: "/", description: "Discover the best time to sleep and wake up based on sleep cycles." },
+        { title: "Why Sleep Cycles Matter More Than Sleeping Longer", url: "/blog/why-sleep-cycles-matter-more-than-sleeping-longer", description: "Learn why proper REM timing is essential to avoid waking up tired." }
       ]}
     >
       <p>

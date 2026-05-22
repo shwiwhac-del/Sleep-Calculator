@@ -10,9 +10,6 @@ const routes = [
   '/privacy',
   '/terms',
   '/disclaimer',
-  '/article/best-sleep-time',
-  '/article/power-nap',
-  '/article/deep-sleep-fixer',
   '/blog/best-sleep-calculator',
   '/blog/sleep-calculator',
   '/blog/sleep-cycle-stages',
@@ -30,8 +27,11 @@ const routes = [
   '/blog/best-bedtime-routine-for-better-sleep',
   '/blog/why-sleep-cycles-matter-more-than-sleeping-longer',
   '/blog/best-bedtime-habits-for-better-sleep-quality',
-  '/article/smart-bedtime-calculator',
-  '/article/power-nap-optimizer'
+  '/blog/wake-up-at-6am',
+  '/blog/wake-up-at-5am',
+  '/blog/nap-calculator-timing',
+  '/blog/sleep-cycle-timing',
+  '/blog/rem-sleep-calculator'
 ];
 
 const xml = `<?xml version="1.0" encoding="UTF-8"?>
@@ -42,5 +42,15 @@ ${routes.map(route => `  <url>
   </url>`).join('\n')}
 </urlset>`;
 
+// Ensure directories and files are written both to public and dist/ to be completely bulletproof
+if (!fs.existsSync('public')) {
+  fs.mkdirSync('public');
+}
 fs.writeFileSync('public/sitemap.xml', xml);
+
+if (!fs.existsSync('dist')) {
+  fs.mkdirSync('dist');
+}
+fs.writeFileSync('dist/sitemap.xml', xml);
+
 console.log('Sitemap generated successfully.');

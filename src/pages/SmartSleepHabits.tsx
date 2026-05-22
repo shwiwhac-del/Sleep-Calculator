@@ -11,8 +11,8 @@ export default function SmartSleepHabits() {
       date="July 10, 2024"
       author="Sleep Expert Team"
       relatedPosts={[
-        { title: "Best Time to Sleep", url: "/article/best-sleep-time", description: "Discover the optimal window for hitting the pillow according to sleep scientists." },
-        { title: "Why Do You Feel Tired After 8 Hours of Sleep?", url: "/article/deep-sleep-fixer", description: "Learn why deep sleep hangovers cause morning grogginess and how a sleep cycle calculator fixes it." }
+        { title: "Calculate Your Ideal Sleep Schedule", url: "/", description: "Discover the best time to sleep and wake up based on sleep cycle science." },
+        { title: "Why Sleep Cycles Matter More Than Sleeping Longer", url: "/blog/why-sleep-cycles-matter-more-than-sleeping-longer", description: "Learn why proper REM timing is essential to avoid waking up tired and groggy." }
       ]}
     >
       <p>

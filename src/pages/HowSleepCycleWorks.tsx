@@ -11,8 +11,8 @@ export default function HowSleepCycleWorks() {
       date="June 5, 2024"
       author="Sleep Expert Team"
        relatedPosts={[
-        { title: "The Best Time to Sleep: Finding Your Perfect Bedtime", url: "/blog/best-sleep-time", description: "Discover the absolute best time to sleep." },
-        { title: "Why You Feel Tired Even After 8 Hours", url: "/blog/tired", description: "Constantly exhausted despite getting enough sleep? Discover why." },
+        { title: "Calculate Your Ideal Sleep Schedule", url: "/", description: "Discover the best time to sleep and wake up based on sleep cycles." },
+        { title: "Why Sleep Cycles Matter More Than Sleeping Longer", url: "/blog/why-sleep-cycles-matter-more-than-sleeping-longer", description: "Learn why proper REM timing is essential to avoid waking up tired." },
         { title: "The Ultimate Sleep Cycle Guide", url: "/blog/sleep-cycle-stages", description: "Learn about the 4 stages of sleep and how to optimize them." }
       ]}
     >

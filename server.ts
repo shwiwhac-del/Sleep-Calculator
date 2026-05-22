@@ -33,6 +33,40 @@ async function startServer() {
     res.json({ status: "ok" });
   });
 
+  // Explicit route to serve sitemap.xml directly with correct Content-Type, fallback protected
+  app.get("/sitemap.xml", (req, res) => {
+    const distPath = path.join(process.cwd(), "dist", "sitemap.xml");
+    const publicPath = path.join(process.cwd(), "public", "sitemap.xml");
+
+    res.set("Content-Type", "application/xml");
+    res.sendFile(distPath, (err) => {
+      if (err) {
+        res.sendFile(publicPath, (errPublic) => {
+          if (errPublic) {
+            res.status(404).set("Content-Type", "text/plain").send("sitemap.xml not found");
+          }
+        });
+      }
+    });
+  });
+
+  // Explicit route to serve robots.txt directly with correct Content-Type, fallback protected
+  app.get("/robots.txt", (req, res) => {
+    const distPath = path.join(process.cwd(), "dist", "robots.txt");
+    const publicPath = path.join(process.cwd(), "public", "robots.txt");
+
+    res.set("Content-Type", "text/plain");
+    res.sendFile(distPath, (err) => {
+      if (err) {
+        res.sendFile(publicPath, (errPublic) => {
+          if (errPublic) {
+            res.status(404).set("Content-Type", "text/plain").send("robots.txt not found");
+          }
+        });
+      }
+    });
+  });
+
   // Vite middleware for development
   if (process.env.NODE_ENV !== "production") {
     const vite = await createViteServer({

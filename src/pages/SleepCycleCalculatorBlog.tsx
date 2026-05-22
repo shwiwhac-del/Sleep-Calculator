@@ -12,7 +12,7 @@ export default function SleepCycleCalculatorBlog() {
       author="Sleep Expert Team"
        relatedPosts={[
         { title: "What Is a Sleep Cycle? Complete Beginner Guide", url: "/blog/sleep-cycle", description: "Learn what a sleep cycle is, how long it lasts, and why completing REM sleep cycles improves your health." },
-        { title: "Best Time to Sleep Guide", url: "/article/best-sleep-time", description: "Discover the best time to sleep according to your circadian rhythm." },
+        { title: "Why Sleep Cycles Matter More Than Duration", url: "/blog/why-sleep-cycles-matter-more-than-sleeping-longer", description: "Learn why proper REM timing is essential to avoid waking up tired." },
         { title: "The Ultimate Sleep Cycle Guide", url: "/blog/sleep-cycle-stages", description: "Learn about the 4 stages of sleep and how to use a sleep time calculator effectively." }
       ]}
     >
@@ -57,7 +57,7 @@ export default function SleepCycleCalculatorBlog() {
         <li>Irritability</li>
       </ul>
       <p>
-        A <strong><Link to="/">REM sleep calculator</Link></strong> eliminates sleep inertia by calculating the exact <Link to="/article/best-sleep-time">best time to sleep</Link>. It tells your alarm to ring during Light Sleep instead of Deep Sleep.
+        A <strong><Link to="/">REM sleep calculator</Link></strong> eliminates sleep inertia by calculating the exact <Link to="/">best time to sleep</Link>. It tells your alarm to ring during Light Sleep instead of Deep Sleep.
       </p>
 
       <hr className="my-8" />
@@ -87,7 +87,7 @@ export default function SleepCycleCalculatorBlog() {
 
       <h3>Smarter Power Naps</h3>
       <p>
-        A good <Link to="/article/power-nap">nap calculator</Link> shows you how to nap for exactly 20 or 90 minutes to prevent entering deep sleep during the day.
+        A good <Link to="/">nap calculator</Link> shows you how to nap for exactly 20 or 90 minutes to prevent entering deep sleep during the day.
       </p>
 
       <h3>Improved Mental Focus</h3>
@@ -99,7 +99,7 @@ export default function SleepCycleCalculatorBlog() {
 
       <h2>Final Thoughts</h2>
       <p>
-        A <strong><Link to="/">Sleep Cycle Calculator</Link></strong> is the easiest way to improve sleep quality naturally. Instead of guessing the <Link to="/article/best-sleep-time">best time to sleep</Link>, use a scientifically backed <strong>bedtime calculator</strong> to align your schedule with your biological rhythms. Fix your sleep today and stop waking up tired!
+        A <strong><Link to="/">Sleep Cycle Calculator</Link></strong> is the easiest way to improve sleep quality naturally. Instead of guessing the <Link to="/">best time to sleep</Link>, use a scientifically backed <strong>bedtime calculator</strong> to align your schedule with your biological rhythms. Fix your sleep today and stop waking up tired!
       </p>
     </ArticleLayout>
   );

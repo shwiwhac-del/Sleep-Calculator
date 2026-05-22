@@ -111,6 +111,36 @@ export default function Blog() {
       description: "Waking up during the night can affect sleep quality and daily energy. Learn common reasons for interrupted sleep and simple ways to sleep better naturally.",
       url: "/blog/why-you-wake-up-in-the-middle-of-the-night",
       topic: "Sleep Guide",
+    },
+    {
+      title: "What Time Should I Sleep to Wake Up at 6 AM?",
+      description: "Learn the scientifically optimal times to go to sleep if you need to wake up at 6:00 AM. Calculate bedtime based on standard 90-minute REM sleep cycles.",
+      url: "/blog/wake-up-at-6am",
+      topic: "Bedtime Math",
+    },
+    {
+      title: "What Time Should I Sleep to Wake Up at 5 AM?",
+      description: "Calculate the scientific sweet spots for going to sleep if you need to wake up at 5:00 AM. Learn the rules of early rising without feeling exhausted.",
+      url: "/blog/wake-up-at-5am",
+      topic: "Bedtime Math",
+    },
+    {
+      title: "How to Time Your Naps: The Scientific Nap Calculator Guide",
+      description: "Discover how to time your naps to boost brainpower and alertness. Learn about power naps, the caffeine nap, and how to avoid morning grogginess.",
+      url: "/blog/nap-calculator-timing",
+      topic: "Nap Guides",
+    },
+    {
+      title: "Sleep Cycle Timing: Understanding Wavelengths of Rest",
+      description: "An in-depth scientific breakdown of sleep cycle timing, Stages 1 through 4, and how to use 90-minute increments to naturally skyrocket focus.",
+      url: "/blog/sleep-cycle-timing",
+      topic: "Sleep Science",
+    },
+    {
+      title: "REM Sleep Calculator: Optimize Your Deep Mind Recovery",
+      description: "The ultimate guide to calculating your REM sleep patterns. Undergo cognitive recovery, clear out brain waste, and prevent waking up tired using math.",
+      url: "/blog/rem-sleep-calculator",
+      topic: "Tool Guide",
     }
   ];
 

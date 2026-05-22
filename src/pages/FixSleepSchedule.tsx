@@ -4,14 +4,14 @@ import { ArticleLayout } from '../components/ArticleLayout';
 export default function FixSleepSchedule() {
   const relatedPosts = [
     {
-      title: "The Best Time to Sleep",
-      description: "Discover the absolute best time to sleep and wake up based on biology and 90-minute sleep cycles.",
-      url: "/article/best-sleep-time",
+      title: "Best Bedtime Habits for Sleep Quality",
+      description: "Discover the best bedtime habits to improve sleep quality, fall asleep faster, and wake up refreshed.",
+      url: "/blog/best-bedtime-habits-for-better-sleep-quality",
     },
     {
-      title: "Why You Feel Tired After 8 Hours",
-      description: "Constantly exhausted despite getting enough sleep? Discover the hidden causes of daily fatigue.",
-      url: "/article/deep-sleep-fixer",
+      title: "Why Sleep Cycles Matter More Than Duration",
+      description: "Learn why sleep cycles are more important than simply sleeping longer and how proper REM timing can improve energy.",
+      url: "/blog/why-sleep-cycles-matter-more-than-sleeping-longer",
     }
   ];
 
@@ -62,7 +62,7 @@ export default function FixSleepSchedule() {
       </p>
       <ul>
         <li><strong>No late caffeine:</strong> Stop consuming caffeine at least 10 hours before your target bedtime. If you sleep at 11 PM, your last coffee should be at 1 PM.</li>
-        <li><strong>Nap carefully:</strong> If you absolutely must nap, restrict it to exactly 20 minutes (a <Link to="/article/power-nap" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">power nap</Link>) or a full 90-minute cycle, and do it early in the afternoon. Late naps eliminate the "sleep pressure" needed to fall asleep at night.</li>
+        <li><strong>Nap carefully:</strong> If you absolutely must nap, restrict it to exactly 20 minutes (a <Link to="/" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">power nap</Link>) or a full 90-minute cycle, and do it early in the afternoon. Late naps eliminate the "sleep pressure" needed to fall asleep at night.</li>
       </ul>
 
       <h2>5. Shift Gradually or Pull an All-Nighter?</h2>

@@ -4,9 +4,9 @@ import { ArticleLayout } from '../components/ArticleLayout';
 export default function BlueLightSleep() {
   const relatedPosts = [
     {
-      title: "Why You Feel Tired Even After 8 Hours",
-      description: "Constantly exhausted despite getting enough sleep? Discover the hidden causes of daily fatigue.",
-      url: "/article/deep-sleep-fixer",
+      title: "Why Sleep Cycles Matter More Than Duration",
+      description: "Learn why sleep cycles are more important than simply sleeping longer and how proper REM timing can improve energy.",
+      url: "/blog/why-sleep-cycles-matter-more-than-sleeping-longer",
     },
     {
       title: "How to Fix Your Sleep Schedule",
