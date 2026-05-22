@@ -12,7 +12,7 @@ export default defineConfig(({ mode }) => {
       tailwindcss(),
       VitePWA({
         registerType: "autoUpdate",
-        includeAssets: ["favicon.png", "robots.txt"],
+        includeAssets: ["favicon.png", "robots.txt", "sitemap.xml"],
         manifest: {
           id: "/",
           name: "Free Sleep Calculator",
@@ -37,6 +37,9 @@ export default defineConfig(({ mode }) => {
               type: "image/png",
             },
           ],
+        },
+        workbox: {
+          navigateFallbackDenylist: [/^\/sitemap\.xml$/, /^\/robots\.txt$/, /^\/api/],
         },
         devOptions: {
           enabled: true,
