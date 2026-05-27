@@ -15,7 +15,9 @@
   "dependencies": {
     "@tailwindcss/typography": "^0.5.19",
     "@tailwindcss/vite": "^4.1.14",
+    "@types/compression": "^1.8.1",
     "@vitejs/plugin-react": "^5.0.4",
+    "compression": "^1.8.1",
     "express": "^4.21.2",
     "express-rate-limit": "^8.5.1",
     "firebase": "^12.13.0",

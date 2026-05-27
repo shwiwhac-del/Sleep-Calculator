@@ -113,6 +113,24 @@ export default function Blog() {
       topic: "Sleep Guide",
     },
     {
+      title: "What Time Should I Sleep to Wake Up at 7 AM?",
+      description: "Discover the scientifically optimal times to sleep if you need to wake up at 7:00 AM. Align your sleep with 90-minute REM cycles for high energy.",
+      url: "/blog/wake-up-at-7am",
+      topic: "Bedtime Math",
+    },
+    {
+      title: "The Absolute Best Bedtime for Students: Science-Backed Sleep Schedules",
+      description: "Calculate the best bedtime for students of all ages. Discover how dinner routines and school timings affect exam performance.",
+      url: "/blog/best-bedtime-for-students",
+      topic: "Students",
+    },
+    {
+      title: "Nap Calculator for Energy: Precise Timings for Mind Recharging",
+      description: "Learn the absolute scientific sweet spots for midday naps to maximize daily cognitive energy without feeling tired or groggy.",
+      url: "/blog/nap-calculator-for-energy",
+      topic: "Nap Guides",
+    },
+    {
       title: "What Time Should I Sleep to Wake Up at 6 AM?",
       description: "Learn the scientifically optimal times to go to sleep if you need to wake up at 6:00 AM. Calculate bedtime based on standard 90-minute REM sleep cycles.",
       url: "/blog/wake-up-at-6am",

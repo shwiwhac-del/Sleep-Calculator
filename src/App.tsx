@@ -35,9 +35,14 @@ const BestBedtimeHabits = lazy(() => import('./pages/BestBedtimeHabits'));
 
 const WakeUpAt6Am = lazy(() => import('./pages/WakeUpAt6Am'));
 const WakeUpAt5Am = lazy(() => import('./pages/WakeUpAt5Am'));
+const WakeUpAt7Am = lazy(() => import('./pages/WakeUpAt7Am'));
+const BestBedtimeForStudents = lazy(() => import('./pages/BestBedtimeForStudents'));
 const NapCalculatorTiming = lazy(() => import('./pages/NapCalculatorTiming'));
+const NapCalculatorForEnergy = lazy(() => import('./pages/NapCalculatorForEnergy'));
 const SleepCycleTiming = lazy(() => import('./pages/SleepCycleTiming'));
 const RemSleepCalculatorPage = lazy(() => import('./pages/RemSleepCalculatorPage'));
+const HowManySleepCyclesDoINeed = lazy(() => import('./pages/HowManySleepCyclesDoINeed'));
+const WhyAmITiredAfterSleeping = lazy(() => import('./pages/WhyAmITiredAfterSleeping'));
 
 function Footer() {
   return (
@@ -197,9 +202,14 @@ function AppContent() {
                 {/* Programmatic SEO Landing Pages */}
                 <Route path="/blog/wake-up-at-6am" element={<WakeUpAt6Am />} />
                 <Route path="/blog/wake-up-at-5am" element={<WakeUpAt5Am />} />
+                <Route path="/blog/wake-up-at-7am" element={<WakeUpAt7Am />} />
+                <Route path="/blog/best-bedtime-for-students" element={<BestBedtimeForStudents />} />
                 <Route path="/blog/nap-calculator-timing" element={<NapCalculatorTiming />} />
+                <Route path="/blog/nap-calculator-for-energy" element={<NapCalculatorForEnergy />} />
                 <Route path="/blog/sleep-cycle-timing" element={<SleepCycleTiming />} />
                 <Route path="/blog/rem-sleep-calculator" element={<RemSleepCalculatorPage />} />
+                <Route path="/blog/how-many-sleep-cycles-do-i-need" element={<HowManySleepCyclesDoINeed />} />
+                <Route path="/blog/why-am-i-tired-after-sleeping" element={<WhyAmITiredAfterSleeping />} />
 
                 {/* Redirects for old URLs to new structure */}
                 <Route path="/blog/what-is-a-sleep-calculator" element={<Navigate to="/blog/sleep-calculator" replace />} />

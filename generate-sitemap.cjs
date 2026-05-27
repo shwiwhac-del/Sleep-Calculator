@@ -29,9 +29,14 @@ const routes = [
   '/blog/best-bedtime-habits-for-better-sleep-quality',
   '/blog/wake-up-at-6am',
   '/blog/wake-up-at-5am',
+  '/blog/wake-up-at-7am',
+  '/blog/best-bedtime-for-students',
   '/blog/nap-calculator-timing',
+  '/blog/nap-calculator-for-energy',
   '/blog/sleep-cycle-timing',
-  '/blog/rem-sleep-calculator'
+  '/blog/rem-sleep-calculator',
+  '/blog/how-many-sleep-cycles-do-i-need',
+  '/blog/why-am-i-tired-after-sleeping'
 ];
 
 const xml = `<?xml version="1.0" encoding="UTF-8"?>

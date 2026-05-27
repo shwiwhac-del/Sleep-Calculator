@@ -1,4 +1,5 @@
 import express from "express";
+import compression from "compression";
 import { createServer as createViteServer } from "vite";
 import path from "path";
 import helmet from "helmet";
@@ -7,6 +8,10 @@ import rateLimit from "express-rate-limit";
 async function startServer() {
   const app = express();
   app.disable('x-powered-by');
+  
+  // Enable gzip/deflate compression for static content and APIs
+  app.use(compression());
+
   const PORT = 3000;
 
   // Basic security headers, but configure Content-Security-Policy to allow inline scripts/styles for React/Vite development
@@ -76,7 +81,18 @@ async function startServer() {
     app.use(vite.middlewares);
   } else {
     const distPath = path.join(process.cwd(), 'dist');
-    app.use(express.static(distPath));
+    app.use(express.static(distPath, {
+      maxAge: '1y',
+      setHeaders: (res, filePath) => {
+        if (filePath.endsWith('.html')) {
+          res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+        } else if (filePath.includes('/assets/') || filePath.endsWith('.js') || filePath.endsWith('.css') || filePath.endsWith('.woff') || filePath.endsWith('.woff2')) {
+          res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+        } else {
+          res.setHeader('Cache-Control', 'public, max-age=86400');
+        }
+      }
+    }));
     app.get('*', (req, res) => {
       res.sendFile(path.join(distPath, 'index.html'));
     });
