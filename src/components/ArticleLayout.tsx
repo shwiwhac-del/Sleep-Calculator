@@ -17,6 +17,39 @@ interface ArticleLayoutProps {
   backLabel?: string;
 }
 
+const DEFAULT_RELATED_POSTS = [
+  {
+    title: "Why Sleep Cycles Matter More Than Sleeping Longer",
+    url: "/blog/why-sleep-cycles-matter-more-than-sleeping-longer",
+    description: "Learn why proper REM timing is far more essential to avoid waking up tired than simply getting more hours of sleep."
+  },
+  {
+    title: "The Ultimate Sleep Cycle Guide: 4 Stages Of Sleep",
+    url: "/blog/sleep-cycle-stages",
+    description: "Discover the 4 stages of sleep, REM, deep sleep, and how the 90-minute sleep cycle works to restore your mind."
+  },
+  {
+    title: "How to Fix Your Sleep Schedule",
+    url: "/blog/fix-sleep-schedule",
+    description: "Learn scientifically-proven methods to reset your circadian rhythm and fix your sleep schedule fast."
+  },
+  {
+    title: "Sleep Cycle Calculator: Bedtime Logic Explained",
+    url: "/blog/sleep-cycle-calculator",
+    description: "Learn how a Sleep Cycle Calculator helps you wake up refreshed by optimizing your REM sleep cycles."
+  },
+  {
+    title: "How Much Sleep Do You Need? A Sleep by Age Guide",
+    url: "/blog/sleep-age",
+    description: "Find out exactly how many hours of sleep you need based on your age. From newborns to seniors, learn how sleep changes."
+  },
+  {
+    title: "Nap Calculator for Energy: Precise Timings",
+    url: "/blog/nap-calculator-for-energy",
+    description: "Discover the scientific sweet spots for midday naps to maximize cognitive energy without feeling groggy."
+  }
+];
+
 export function ArticleLayout({ 
   title, 
   description, 
@@ -26,26 +59,23 @@ export function ArticleLayout({
   date = "June 1, 2024", 
   author = "Sleep Expert Team",
   relatedPosts = [],
-  backUrl = "/blog",
-  backLabel
+  backUrl = "/",
+  backLabel = "Back to Calculator"
 }: ArticleLayoutProps) {
   const navigate = useNavigate();
   const location = useLocation();
 
   const handleBack = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    if (backUrl !== "/") {
-      navigate(backUrl || '/blog');
-    } else {
-      if (window.history.state && window.history.state.idx > 0) {
-        navigate(-1);
-      } else {
-        navigate('/');
-      }
-    }
+    navigate('/blog');
   };
 
   const currentUrl = `https://sleepcalculater.online${location.pathname}`;
+
+  // Fallback related posts for robust internal linking when specific ones aren't provided/empty
+  const activeRelated = relatedPosts && relatedPosts.length > 0
+    ? relatedPosts
+    : DEFAULT_RELATED_POSTS.filter(post => post.url !== location.pathname).slice(0, 2);
 
   const authorProfile = {
     name: author,
@@ -118,10 +148,16 @@ export function ArticleLayout({
       </Helmet>
 
       <article className="animate-in fade-in slide-in-from-top-4 duration-500">
-        <nav className="mb-8">
-          <button onClick={handleBack} className="inline-flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 font-medium tracking-wide hover:text-gray-900 dark:hover:text-white transition-colors focus-visible:outline-none">
-            <ChevronLeft size={16} />
-            {backLabel || (backUrl === "/" ? "Home" : "Back to Blog")}
+        <nav className="mb-8 flex flex-wrap items-center justify-between gap-y-2 text-sm text-gray-500 dark:text-gray-400 border-b border-gray-100 dark:border-slate-800/60 pb-4">
+          <div className="flex items-center gap-2">
+            <Link to="/" className="hover:text-[#2563EB] dark:hover:text-[#3b82f6] transition-colors font-semibold">Calculator</Link>
+            <span className="text-gray-300 dark:text-gray-700">/</span>
+            <Link to="/blog" className="hover:text-[#2563EB] dark:hover:text-[#3b82f6] transition-colors font-semibold">Blog</Link>
+            <span className="text-gray-300 dark:text-gray-700">/</span>
+            <span className="text-gray-400 dark:text-gray-500 font-medium truncate max-w-[180px] sm:max-w-[280px]" title={title}>{title}</span>
+          </div>
+          <button onClick={handleBack} className="inline-flex items-center gap-1.5 text-xs text-gray-450 dark:text-gray-500 font-semibold uppercase tracking-wider hover:text-[#2563EB] dark:hover:text-[#3b82f6] transition-colors focus-visible:outline-none cursor-pointer">
+            <ChevronLeft size={14} /> Back to Blog
           </button>
         </nav>
         
@@ -173,11 +209,11 @@ export function ArticleLayout({
           </Link>
         </div>
 
-        {relatedPosts.length > 0 && (
+        {activeRelated.length > 0 && (
           <div className="border-t border-gray-100 dark:border-[#1e293b] pt-12 mb-12">
             <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-6 font-serif">Related Articles</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {relatedPosts.map((post, idx) => (
+              {activeRelated.map((post, idx) => (
                 <Link key={idx} to={post.url} className="group bg-white dark:bg-[#111827] border border-gray-200 dark:border-[#1e293b] hover:border-gray-300 dark:hover:border-gray-600 shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:shadow-lg hover:-translate-y-1 rounded-[24px] p-6 sm:p-7 transition-all duration-300 flex flex-col h-full">
                   <h4 className="text-lg font-bold text-gray-900 dark:text-gray-100 mb-2 group-hover:text-[#2563EB] dark:group-hover:text-[#2563EB] transition-colors font-serif">{post.title}</h4>
                   <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed max-w-full flex-grow">{post.description}</p>

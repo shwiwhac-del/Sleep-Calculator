@@ -106,12 +106,25 @@ export default function About() {
           </section>
 
           <section>
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4 font-serif">Read Our Latest Sleep Guides</h2>
+            <p className="mb-4">
+              Explore our <Link to="/blog" className="text-[#2563EB] hover:text-[#1D4ED8] font-semibold transition-colors">Sleep Blog</Link> for detailed, science-backed guides on improving sleep hygiene:
+            </p>
+            <ul className="list-disc pl-5 space-y-2 text-[#2563EB] font-medium">
+              <li><Link to="/blog/why-sleep-cycles-matter-more-than-sleeping-longer" className="hover:underline">Why Sleep Cycles Matter More Than Sleeping Longer</Link></li>
+              <li><Link to="/blog/sleep-cycle-stages" className="hover:underline">The Ultimate Sleep Cycle Guide & Sleep Stages</Link></li>
+              <li><Link to="/blog/fix-sleep-schedule" className="hover:underline">How to Fix Your Sleep Schedule Fast</Link></li>
+              <li><Link to="/blog/sleep-age" className="hover:underline">Sleep by Age Guide: How Much Sleep Do You Need?</Link></li>
+            </ul>
+          </section>
+
+          <section>
             <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4 font-serif">Try It Yourself</h2>
             <p className="mb-4">
               Ready to improve your sleep schedule?
             </p>
             <p className="mb-4">
-              👉 <Link to="/#tools" className="text-[#2563EB] hover:text-[#1D4ED8] font-semibold transition-colors">Use the Sleep Calculator</Link> and find your ideal sleep time now.
+              👉 <Link to="/" className="text-[#2563EB] hover:text-[#1D4ED8] font-semibold transition-colors">Use the Sleep Calculator</Link> and find your ideal sleep time now.
             </p>
             <p className="text-gray-400 dark:text-gray-500 text-[14px] mt-8 pt-8 border-t border-gray-100 dark:border-[#1e293b]">
               Built to keep things simple, fast, and actually useful.

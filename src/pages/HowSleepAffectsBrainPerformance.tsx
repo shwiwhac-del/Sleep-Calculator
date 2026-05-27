@@ -4,8 +4,6 @@ import { ArticleLayout } from '../components/ArticleLayout';
 export default function HowSleepAffectsBrainPerformance() {
   return (
     <ArticleLayout
-      backUrl="/blog"
-      backLabel="Back to Blog"
       title="How Sleep Affects Your Brain Performance"
       keywords="sleep and brain performance, sleep affects focus, sleep and memory, mental clarity sleep, lack of sleep brain fog, sleep quality productivity"
       description="Discover how sleep impacts brain performance, focus, memory, and mental clarity. Learn why proper sleep is essential for productivity and daily energy."

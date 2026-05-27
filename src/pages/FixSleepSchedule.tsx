@@ -23,8 +23,6 @@ export default function FixSleepSchedule() {
       date="May 8, 2024"
       readingTime="6"
       relatedPosts={relatedPosts}
-      backUrl="/blog"
-      backLabel="Back to Blog"
     >
       <p>
         Whether it's due to jet lag, shift work, or just the creeping habit of staying up too late, a broken sleep schedule can wreck your productivity, mood, and health. When your internal clock (<Link to="/blog/fix-sleep-schedule" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">circadian rhythm</Link>) is out of sync with your actual sleep times, you experience constant grogginess and sleep inertia. Understanding your <Link to="/blog/sleep-cycle" className="font-semibold underline text-[#2563EB]">sleep cycle</Link> is the first step to fixing this naturally.

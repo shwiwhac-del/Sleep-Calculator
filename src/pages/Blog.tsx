@@ -178,16 +178,16 @@ export default function Blog() {
       <div className="mb-4 text-left">
         <button 
           onClick={handleBack}
-          className="inline-flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 font-medium tracking-wide hover:text-gray-900 dark:text-gray-100 transition-colors focus-visible:outline-none"
+          className="inline-flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 font-medium tracking-wide hover:text-gray-900 dark:text-gray-100 transition-colors focus-visible:outline-none cursor-pointer"
         >
-          <ArrowLeft size={16} /> Home
+          <ArrowLeft size={16} /> Back
         </button>
       </div>
 
       <div className="mb-12 text-left animate-in fade-in slide-in-from-top-4 duration-700">
         <h1 className="text-4xl sm:text-5xl font-bold tracking-tight mb-3 text-gray-900 dark:text-gray-100 leading-tight font-serif">Sleep Blog</h1>
         <p className="text-gray-600 dark:text-gray-300 text-base sm:text-lg max-w-xl">
-          Learn how to optimize your rest, understand your REM cycles, and wake up feeling refreshed every day.
+          Learn how to optimize your rest, understand your REM cycles, and wake up feeling refreshed every day using our free <Link to="/" className="text-[#2563EB] dark:text-[#3b82f6] font-semibold hover:underline">Sleep Calculator</Link>.
         </p>
       </div>
 

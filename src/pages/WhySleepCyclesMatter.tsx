@@ -4,8 +4,6 @@ import { ArticleLayout } from '../components/ArticleLayout';
 export default function WhySleepCyclesMatter() {
   return (
     <ArticleLayout
-      backUrl="/blog"
-      backLabel="Back to Blog"
       title="Why Sleep Cycles Matter More Than Total Sleep Time"
       keywords="sleep cycles, why sleep cycles matter, total sleep time, REM timing, energy focus recovery, 90 minute sleep cycle"
       description="Learn why sleep cycles are more important than simply sleeping longer and how proper REM timing can improve energy, focus, and recovery."

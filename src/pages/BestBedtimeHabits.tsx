@@ -4,8 +4,6 @@ import { ArticleLayout } from '../components/ArticleLayout';
 export default function BestBedtimeHabits() {
   return (
     <ArticleLayout
-      backUrl="/blog"
-      backLabel="Back to Blog"
       title="10 Best Bedtime Habits for Better Sleep Quality"
       keywords="best bedtime habits, sleep quality, fall asleep faster, wake up refreshed, bedtime routine"
       description="Discover the best bedtime habits to improve sleep quality, fall asleep faster, and wake up feeling refreshed every morning."

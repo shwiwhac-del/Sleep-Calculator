@@ -123,7 +123,7 @@ export function FAQAccordion() {
   };
 
   return (
-    <div className="space-y-3 w-full mt-6">
+    <div className="space-y-2.5 w-full max-w-[620px] mx-auto mt-4 sm:mt-5">
       <Helmet>
         <script type="application/ld+json">
           {JSON.stringify(faqSchema)}
@@ -134,22 +134,22 @@ export function FAQAccordion() {
         return (
           <div 
             key={index} 
-            className={`bg-white dark:bg-[#111827] border rounded-2xl overflow-hidden transition-all duration-300 ${
-              isOpen ? 'border-[#2563EB]/50 shadow-sm ring-1 ring-[#2563EB]/20 bg-blue-50/10 dark:bg-[#2563EB]/5' : 'border-gray-200 dark:border-[#1e293b] hover:border-gray-300 dark:hover:border-slate-700'
+            className={`bg-white dark:bg-[#111827] border rounded-lg sm:rounded-xl overflow-hidden transition-all duration-300 ${
+              isOpen ? 'border-[#2563EB]/40 shadow-sm ring-1 ring-[#2563EB]/15 bg-blue-50/5 dark:bg-[#2563EB]/2' : 'border-gray-200 dark:border-[#1e293b] hover:border-gray-350 dark:hover:border-slate-700/80 shadow-xs'
             }`}
           >
             <button
               onClick={() => toggleFAQ(index)}
-              className="w-full text-left px-4 py-3 sm:px-5 sm:py-4 flex items-center justify-between focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB]/20 group transition-colors"
+              className="w-full text-left px-3.5 py-2.5 sm:px-4.5 sm:py-3.5 flex items-center justify-between focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB]/20 group transition-colors cursor-pointer"
                aria-expanded={isOpen}
             >
-              <h3 className={`text-base sm:text-lg font-bold pr-4 transition-colors duration-300 m-0 ${isOpen ? 'text-[#2563EB]' : 'text-gray-900 dark:text-gray-100 group-hover:text-[#2563EB] dark:group-hover:text-[#2563EB]'}`}>
+              <h3 className={`text-xs sm:text-sm font-bold pr-4 transition-colors duration-300 m-0 leading-snug ${isOpen ? 'text-[#2563EB]' : 'text-gray-900 dark:text-gray-100 group-hover:text-[#2563EB] dark:group-hover:text-[#2563EB]'}`}>
                 {faq.question}
               </h3>
               <div className={`p-1 rounded-full transition-colors duration-300 ${isOpen ? 'bg-[#2563EB]/10' : 'bg-gray-50 dark:bg-[#1e293b] group-hover:bg-[#2563EB]/10'}`}>
                 <ChevronDown 
                   className={`transition-all duration-300 flex-shrink-0 ${isOpen ? 'rotate-180 text-[#2563EB]' : 'text-gray-400 group-hover:text-[#2563EB]'}`} 
-                  size={20} 
+                  size={15} 
                 />
               </div>
             </button>
@@ -157,7 +157,7 @@ export function FAQAccordion() {
               className={`grid transition-[grid-template-rows,opacity] duration-300 ease-in-out ${isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}
             >
               <div className="overflow-hidden">
-                <div onContextMenu={(e) => e.stopPropagation()} className="px-4 sm:px-5 pb-3 sm:pb-4 text-gray-600 dark:text-gray-300 leading-relaxed text-sm sm:text-base select-text">
+                <div onContextMenu={(e) => e.stopPropagation()} className="px-3.5 sm:px-4.5 pb-3 sm:pb-3.5 text-gray-600 dark:text-gray-300 leading-relaxed text-xs sm:text-[13px] select-text border-t border-gray-50/50 dark:border-slate-800/10 pt-2 sm:pt-2.5">
                   {faq.answer}
                 </div>
               </div>

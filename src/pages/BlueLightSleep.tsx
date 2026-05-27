@@ -23,8 +23,6 @@ export default function BlueLightSleep() {
       date="May 9, 2024"
       readingTime="5"
       relatedPosts={relatedPosts}
-      backUrl="/blog"
-      backLabel="Back to Blog"
     >
       <p>
         In modern society, we spend our evenings bathed in the glow of smartphones, tablets, laptops, and televisions. While these devices keep us entertained and connected, the specific type of light they emit—blue light—is silently sabotaging our sleep. Find out <Link to="/blog/why-you-wake-up-in-the-middle-of-the-night" className="font-semibold underline text-[#2563EB]">why you might be waking up during the night</Link> because of screen habits.

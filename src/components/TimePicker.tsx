@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Clock } from "lucide-react";
 
 interface TimePickerProps {
@@ -14,49 +14,76 @@ export default function TimePicker({
   onEnter,
   mode,
 }: TimePickerProps) {
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === "Enter") {
-      onEnter?.();
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  // Parse 24h format "HH:mm" to user-friendly AM/PM display
+  const [hoursStr, minutesStr] = (value || "07:30").split(":");
+  let hoursNum = parseInt(hoursStr, 10);
+  const minutesNum = parseInt(minutesStr, 10);
+
+  const displayHours = hoursNum % 12 === 0 ? 12 : hoursNum % 12;
+  const displayMinutes = String(minutesNum).padStart(2, "0");
+  const period = hoursNum >= 12 ? "PM" : "AM";
+
+  const handleContainerClick = () => {
+    // Attempt to invoke modern showPicker() natively for best experience
+    if (inputRef.current) {
+      if (typeof inputRef.current.showPicker === "function") {
+        try {
+          inputRef.current.showPicker();
+        } catch {
+          inputRef.current.focus();
+          inputRef.current.click();
+        }
+      } else {
+        inputRef.current.focus();
+        inputRef.current.click();
+      }
+    }
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter" && onEnter) {
+      onEnter();
     }
   };
 
   return (
-    <div className="flex flex-col items-center gap-4 w-full max-w-[280px] mx-auto">
-      <label
-        htmlFor={`${mode}-time`}
-        className="w-full bg-gray-50 dark:bg-[#1e293b] border border-gray-200 dark:border-slate-700/60 focus-within:border-[#2563EB] focus-within:ring-2 focus-within:ring-[#2563EB]/20 rounded-2xl py-3 px-4 sm:py-4 sm:px-5 transition-all duration-300 shadow-sm relative group cursor-pointer hover:border-gray-300 dark:hover:border-slate-600 block"
+    <div className="flex flex-col items-center justify-center w-full my-1">
+      {/* Clickable display container precisely matching the reference mockup */}
+      <button
+        type="button"
+        onClick={handleContainerClick}
+        className="relative flex items-center justify-center gap-3.5 bg-gray-50/80 dark:bg-slate-900/40 hover:bg-gray-100 dark:hover:bg-slate-850/50 text-center focus-visible:outline-none group active:scale-[0.98] transition-all duration-200 py-3.5 px-7 cursor-pointer rounded-2xl w-full max-w-[310px] sm:max-w-[330px] border border-gray-150 dark:border-slate-800/40"
       >
-        <span className="sr-only">
-          {mode === "wake"
-            ? "Wake up time"
-            : mode === "nap"
-              ? "Nap time"
-              : "Bedtime"}
-        </span>
+        {/* Hidden native time input layered on top */}
+        <input
+          ref={inputRef}
+          id={`${mode}-time`}
+          type="time"
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          onKeyDown={handleKeyDown}
+          aria-label={`Time for ${mode === "wake" ? "wake up" : mode === "nap" ? "nap" : "bed"}`}
+          className="absolute inset-0 w-full h-full opacity-0 cursor-pointer pointer-events-auto z-20 [&::-webkit-calendar-picker-indicator]:absolute [&::-webkit-calendar-picker-indicator]:inset-0 [&::-webkit-calendar-picker-indicator]:w-full [&::-webkit-calendar-picker-indicator]:h-full [&::-webkit-calendar-picker-indicator]:opacity-0 [&::-webkit-calendar-picker-indicator]:cursor-pointer"
+          style={{
+            colorScheme: "light dark",
+          }}
+        />
 
-        <div className="flex items-center justify-center w-full gap-2 sm:gap-3">
-          <Clock className="w-5 h-5 sm:w-6 sm:h-6 text-gray-400 dark:text-gray-500 group-focus-within:text-[#2563EB] transition-colors flex-shrink-0" />
-          <div className="relative flex justify-center">
-            <input
-              id={`${mode}-time`}
-              type="time"
-              required
-              value={value}
-              onChange={(e) => {
-                if (e.target.value) {
-                  onChange(e.target.value);
-                }
-              }}
-              onKeyDown={handleKeyDown}
-              aria-label={`Time for ${mode === "wake" ? "wake up" : mode === "nap" ? "nap" : "bed"}`}
-              className="bg-transparent text-center text-3xl sm:text-4xl tracking-tight font-bold text-gray-900 dark:text-gray-100 focus:outline-none cursor-pointer appearance-none [&::-webkit-calendar-picker-indicator]:absolute [&::-webkit-calendar-picker-indicator]:inset-0 [&::-webkit-calendar-picker-indicator]:w-full [&::-webkit-calendar-picker-indicator]:h-full [&::-webkit-calendar-picker-indicator]:opacity-0 w-[180px] sm:w-[200px]"
-              style={{
-                colorScheme: "light dark",
-              }}
-            />
-          </div>
+        {/* Clock icon on the left */}
+        <Clock className="w-6 h-6 sm:w-7 h-7 text-gray-400 dark:text-slate-400/80 pointer-events-none select-none relative z-10 transition-colors group-hover:text-blue-600 dark:group-hover:text-blue-400" />
+
+        {/* Clean, exact display of time matching the reference style layout */}
+        <div className="flex items-center justify-center font-bold text-gray-900 dark:text-white pointer-events-none select-none select-all relative z-10 font-sans transition-all duration-300">
+          <span className="text-3xl sm:text-4xl tracking-tight tabular-nums">
+            {displayHours}:{displayMinutes}
+          </span>
+          <span className="text-3xl sm:text-4xl tracking-tight ml-1.5 uppercase">
+            {period}
+          </span>
         </div>
-      </label>
+      </button>
     </div>
   );
 }

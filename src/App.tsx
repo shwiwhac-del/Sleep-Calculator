@@ -1,7 +1,8 @@
 import { useState, useEffect, Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, Navigate, useLocation } from 'react-router-dom';
-import { Moon, Sun, Menu, X, Loader2 } from 'lucide-react';
+import { Moon, Sun, Menu, X, Loader2, Home as HomeIcon, BookOpen, User, HelpCircle, Mail, ShieldAlert } from 'lucide-react';
 import { HelmetProvider } from 'react-helmet-async';
+import { motion, AnimatePresence } from 'motion/react';
 import ScrollToTop from './components/ScrollToTop';
 import Home from './pages/Home';
 
@@ -46,15 +47,15 @@ const WhyAmITiredAfterSleeping = lazy(() => import('./pages/WhyAmITiredAfterSlee
 
 function Footer() {
   return (
-    <footer className="w-full py-8 mt-auto border-t border-gray-200 dark:border-[#1e293b] bg-white dark:bg-[#0f172a] z-20 relative flex flex-col items-center">
-      <div className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm text-gray-500 dark:text-gray-400 px-4 mb-4">
-        <Link to="/about" className="hover:text-[#2563EB] transition-colors">About</Link>
-        <Link to="/contact" className="hover:text-[#2563EB] transition-colors">Contact</Link>
-        <Link to="/privacy" className="hover:text-[#2563EB] transition-colors">Privacy Policy</Link>
-        <Link to="/terms" className="hover:text-[#2563EB] transition-colors">Terms & Conditions</Link>
-        <Link to="/disclaimer" className="hover:text-[#2563EB] transition-colors">Medical Disclaimer</Link>
+    <footer className="w-full py-6 sm:py-8 mt-auto border-t border-gray-150 dark:border-[#1e293b]/70 bg-white dark:bg-[#0f172a] z-20 relative flex flex-col items-center">
+      <div className="flex flex-wrap justify-center gap-x-4 sm:gap-x-6 gap-y-2 text-xs sm:text-sm text-gray-500 dark:text-gray-450 px-4 mb-3">
+        <Link to="/about" className="hover:text-[#2563EB] transition-colors font-medium">About</Link>
+        <Link to="/contact" className="hover:text-[#2563EB] transition-colors font-medium">Contact</Link>
+        <Link to="/privacy" className="hover:text-[#2563EB] transition-colors font-medium">Privacy Policy</Link>
+        <Link to="/terms" className="hover:text-[#2563EB] transition-colors font-medium">Terms & Conditions</Link>
+        <Link to="/disclaimer" className="hover:text-[#2563EB] transition-colors font-medium">Medical Disclaimer</Link>
       </div>
-      <div className="text-gray-400 dark:text-gray-600 text-xs flex flex-col items-center gap-1.5">
+      <div className="text-gray-400 dark:text-gray-550 text-[10px] sm:text-xs flex flex-col items-center gap-1">
         <span>&copy; {new Date().getFullYear()} Sleep Calculator. All rights reserved.</span>
       </div>
     </footer>
@@ -81,47 +82,95 @@ function Header({ isDarkMode, toggleDarkMode }: { isDarkMode: boolean, toggleDar
   }, [isMenuOpen]);
 
   return (
-    <header className="w-full h-[60px] pb-1 border-b border-gray-100 dark:border-[#1e293b] bg-white/95 dark:bg-[#0f172a]/95 backdrop-blur-md z-50 sticky top-0 transition-colors">
-      <div className="max-w-6xl mx-auto h-full flex items-center justify-between px-4 sm:px-6 md:px-8 tracking-tight relative">
-        <Link to="/" onContextMenu={(e) => e.preventDefault()} className="flex items-center gap-2 text-gray-900 dark:text-gray-100 hover:text-[#2563EB] dark:hover:text-[#2563EB] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] rounded">
-          <Moon className="text-[#2563EB]" size={20} strokeWidth={2.5} />
+    <header className="w-full h-14 sm:h-16 border-b border-gray-100 dark:border-slate-800/80 bg-white/95 dark:bg-[#0f172a]/95 backdrop-blur-md z-50 sticky top-0 transition-colors flex items-center">
+      <div className="w-full max-w-6xl mx-auto flex items-center justify-between px-4 sm:px-6 md:px-8 tracking-tight relative">
+        <Link to="/" onContextMenu={(e) => e.preventDefault()} className="flex items-center gap-2 text-gray-900 dark:text-gray-100 hover:text-[#2563EB] dark:hover:text-[#3b82f6] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] rounded-lg p-0.5">
+          <Moon className="text-[#2563EB] dark:text-[#3b82f6]" size={20} strokeWidth={2.5} />
           <span className="text-base sm:text-lg font-bold tracking-tight">Sleep Calculator</span>
         </Link>
         
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center text-[15px] font-medium text-gray-600 dark:text-gray-300">
-          <Link to="/blog" className="hover:text-[#2563EB] transition-colors focus-visible:outline-none">Blog</Link>
+        <nav className="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center text-sm font-semibold tracking-wide text-gray-650 dark:text-gray-300">
+          <Link to="/blog" className="hover:text-[#2563EB] dark:hover:text-[#3b82f6] transition-all py-1.5 px-3 rounded-lg hover:bg-gray-50 dark:hover:bg-slate-800/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB]">Blog</Link>
         </nav>
 
-        <div className="flex items-center gap-4 sm:gap-8">
+        <div className="flex items-center gap-2 sm:gap-4">
           {/* Dark Mode Toggle */}
           <button
             onClick={toggleDarkMode}
-            className="text-gray-600 dark:text-gray-400 hover:text-[#2563EB] transition-colors p-1 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB]"
+            className="text-gray-600 dark:text-gray-400 hover:text-[#2563EB] dark:hover:text-[#3b82f6] h-10 w-10 flex items-center justify-center rounded-xl hover:bg-gray-50 dark:hover:bg-slate-850/60 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB]/40 cursor-pointer"
             aria-label="Toggle dark mode"
           >
-            {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
+            {isDarkMode ? <Sun size={18} /> : <Moon size={18} />}
           </button>
 
           {/* Mobile Menu Toggle */}
           <button 
-            className="md:hidden text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white p-1 focus-visible:outline-none"
+            className="md:hidden text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white h-10 w-10 flex items-center justify-center rounded-xl hover:bg-gray-50 dark:hover:bg-slate-850/60 transition-all focus-visible:outline-none cursor-pointer"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
           >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
       </div>
 
       {/* Mobile Navigation Dropdown */}
-      {isMenuOpen && (
-        <div className="md:hidden fixed top-[70px] left-0 w-full h-[calc(100vh-70px)] bg-white/95 dark:bg-[#0f172a]/95 backdrop-blur-md flex flex-col pt-8 px-6 gap-4 z-40 overflow-y-auto shadow-sm">
-          <div className="flex flex-col space-y-2">
-            <Link to="/blog" className="text-gray-900 dark:text-gray-100 hover:text-[#2563EB] font-semibold text-2xl py-3 border-b border-gray-100 dark:border-[#1e293b] transition-colors" onClick={() => setIsMenuOpen(false)}>Blog</Link>
-          </div>
-        </div>
-      )}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div 
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.2 }}
+            className="md:hidden fixed top-14 sm:top-16 left-0 w-full h-[calc(100vh-56px)] sm:h-[calc(100vh-64px)] bg-white dark:bg-[#0f172a] flex flex-col pt-6 px-6 pb-12 gap-6 z-40 overflow-y-auto shadow-xl"
+          >
+            <div className="flex flex-col space-y-1">
+              <span className="text-slate-400 dark:text-slate-500 uppercase tracking-widest text-[11px] font-bold mb-2">Navigation</span>
+              <Link to="/" className="flex items-center gap-3 text-gray-900 dark:text-gray-100 hover:text-[#2563EB] dark:hover:text-[#3b82f6] font-semibold text-lg py-3 transition-colors border-b border-gray-100/60 dark:border-slate-800/60" onClick={() => setIsMenuOpen(false)}>
+                <HomeIcon size={20} className="text-[#2563EB] dark:text-[#3b82f6]" />
+                Home
+              </Link>
+              <Link to="/blog" className="flex items-center gap-3 text-gray-900 dark:text-gray-100 hover:text-[#2563EB] dark:hover:text-[#3b82f6] font-semibold text-lg py-3 transition-colors border-b border-gray-100/60 dark:border-slate-800/60" onClick={() => setIsMenuOpen(false)}>
+                <BookOpen size={20} className="text-[#2563EB] dark:text-[#3b82f6]" />
+                Blog
+              </Link>
+            </div>
+
+            <div className="flex flex-col space-y-1">
+              <span className="text-slate-400 dark:text-slate-500 uppercase tracking-widest text-[11px] font-bold mb-2">About & Legal</span>
+              <div className="flex flex-col">
+                <Link to="/about" className="flex items-center gap-3 text-gray-700 dark:text-gray-300 hover:text-[#2563EB] dark:hover:text-[#3b82f6] font-semibold text-base py-3 transition-colors border-b border-gray-100/60 dark:border-slate-800/60" onClick={() => setIsMenuOpen(false)}>
+                  <User size={18} className="text-slate-400 dark:text-slate-500" />
+                  About Us
+                </Link>
+                <Link to="/contact" className="flex items-center gap-3 text-gray-700 dark:text-gray-300 hover:text-[#2563EB] dark:hover:text-[#3b82f6] font-semibold text-base py-3 transition-colors border-b border-gray-100/60 dark:border-slate-800/60" onClick={() => setIsMenuOpen(false)}>
+                  <Mail size={18} className="text-slate-400 dark:text-slate-500" />
+                  Contact
+                </Link>
+                <Link to="/privacy" className="flex items-center gap-3 text-gray-700 dark:text-gray-300 hover:text-[#2563EB] dark:hover:text-[#3b82f6] font-semibold text-base py-3 transition-colors border-b border-gray-100/60 dark:border-slate-800/60" onClick={() => setIsMenuOpen(false)}>
+                  <HelpCircle size={18} className="text-slate-400 dark:text-slate-500" />
+                  Privacy Policy
+                </Link>
+                <Link to="/terms" className="flex items-center gap-3 text-gray-700 dark:text-gray-300 hover:text-[#2563EB] dark:hover:text-[#3b82f6] font-semibold text-base py-3 transition-colors border-b border-gray-100/60 dark:border-slate-800/60" onClick={() => setIsMenuOpen(false)}>
+                  <HelpCircle size={18} className="text-slate-400 dark:text-slate-500" />
+                  Terms & Conditions
+                </Link>
+                <Link to="/disclaimer" className="flex items-center gap-3 text-gray-700 dark:text-gray-300 hover:text-[#2563EB] dark:hover:text-[#3b82f6] font-semibold text-base py-3 transition-colors border-b border-gray-100/60 dark:border-slate-800/60" onClick={() => setIsMenuOpen(false)}>
+                  <ShieldAlert size={18} className="text-amber-500" />
+                  Medical Disclaimer
+                </Link>
+              </div>
+            </div>
+
+            <div className="mt-auto pt-6 border-t border-gray-100 dark:border-[#1e293b] text-center">
+              <p className="text-xs text-gray-400 dark:text-gray-500">
+                Optimize your circadian rhythm & wake up refreshed.
+              </p>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }

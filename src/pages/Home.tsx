@@ -9,10 +9,16 @@ import { FeedbackModal } from "../components/FeedbackModal";
 
 export default function Home() {
   const AGE_GROUPS = [
-    { id: "13-17", label: "Teenagers", minCycles: 5, maxCycles: 7 },
-    { id: "18-25", label: "Adults", minCycles: 5, maxCycles: 6 },
-    { id: "student", label: "Student Mode", minCycles: 4, maxCycles: 6 },
-    { id: "adhd", label: "ADHD Mode", minCycles: 5, maxCycles: 6 },
+    { id: "0-3m", label: "0-3 Months", minCycles: 9, maxCycles: 11 },
+    { id: "4-11m", label: "4-11 Months", minCycles: 8, maxCycles: 10 },
+    { id: "1-2y", label: "1-2 Years", minCycles: 7, maxCycles: 9 },
+    { id: "3-5y", label: "3-5 Years", minCycles: 6, maxCycles: 8 },
+    { id: "6-12y", label: "6-12 Years", minCycles: 6, maxCycles: 7 },
+    { id: "13-17", label: "13-17 Years", minCycles: 5, maxCycles: 7 },
+    { id: "18-25", label: "18-25 Years", minCycles: 5, maxCycles: 6 },
+    { id: "26-40", label: "26-40 Years", minCycles: 5, maxCycles: 6 },
+    { id: "41-64", label: "41-64 Years", minCycles: 5, maxCycles: 6 },
+    { id: "65+", label: "65+ Years", minCycles: 4, maxCycles: 6 },
   ];
 
   const [isFeedbackModalOpen, setIsFeedbackModalOpen] = useState(false);
@@ -48,7 +54,7 @@ export default function Home() {
   const [mode, setMode] = useState<"wake" | "bed" | "nap">(() => {
     return (
       (localStorage.getItem("aurasleep_mode") as "wake" | "bed" | "nap") ||
-      "wake"
+      "bed"
     );
   });
   const [time, setTime] = useState<string>(() => {
@@ -264,7 +270,7 @@ export default function Home() {
   return (
     <div className="w-full flex flex-col items-center">
       {/* Header Info */}
-      <div className="flex flex-col items-center justify-center mb-6 mt-2 sm:mt-4">
+      <div className="flex flex-col items-center justify-center mb-4 mt-2 sm:mt-3">
         <Helmet>
           <title>What Time Should I Go to Bed? Free Sleep Calculator</title>
           <meta
@@ -389,27 +395,27 @@ export default function Home() {
             })}
           </script>
         </Helmet>
-        <div className="flex flex-col items-center justify-center gap-2 mb-2 text-center max-w-2xl mx-auto px-4">
-          <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-100 mb-2 leading-tight">
+        <div className="flex flex-col items-center justify-center gap-2 mb-2 text-center max-w-3xl mx-auto px-4 mt-1 sm:mt-2">
+          <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-gray-900 dark:text-gray-100 mb-1.5 leading-snug text-center">
             Sleep Calculator – Calculate Your Perfect Bedtime & Wake-Up Time
           </h1>
-          <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 mt-1 sm:mt-2">
+          <p className="text-xs sm:text-sm md:text-base text-gray-500 dark:text-gray-400 mt-0.5 max-w-xl text-center leading-relaxed">
             Calculate the best bedtime and wake-up time using natural 90-minute sleep cycles.
           </p>
         </div>
       </div>
 
       {/* Main Tool Container */}
-      <div className="w-full max-w-[440px] mx-auto mb-4 relative px-4 sm:px-0">
+      <div className="w-full max-w-[460px] mx-auto mb-4 relative px-4 sm:px-0">
         <div
           onContextMenu={(e) => e.preventDefault()}
-          className="flex flex-col items-center bg-white dark:bg-[#111827] border border-gray-200 dark:border-[#1e293b] rounded-3xl p-5"
+          className="flex flex-col items-center bg-white dark:bg-[#111827] border border-gray-200 dark:border-[#1e293b] rounded-2xl p-4 sm:p-5 shadow-sm"
         >
           {/* Toggle Mode */}
           <div
             role="radiogroup"
             aria-label="Calculation mode"
-            className="flex bg-gray-50 dark:bg-[#1e293b] rounded-[16px] p-1.5 w-full mb-6 relative overflow-x-auto"
+            className="flex bg-gray-50 dark:bg-[#1e293b] rounded-xl p-1 w-full mb-5 relative overflow-x-auto"
           >
             <button
               role="radio"
@@ -419,7 +425,7 @@ export default function Home() {
                 modeRef.current = "wake";
                 setResults([]);
               }}
-              className={`flex-1 flex items-center justify-center gap-1.5 py-2 px-2 rounded-xl text-[11px] sm:text-xs font-semibold transition-all duration-300 min-w-max whitespace-nowrap ${
+              className={`flex-1 flex items-center justify-center gap-1 py-1.5 px-1.5 rounded-lg text-[10px] sm:text-xs font-semibold transition-all duration-300 min-w-max whitespace-nowrap ${
                 mode === "wake"
                   ? "bg-white dark:bg-[#111827] text-gray-900 dark:text-gray-100 shadow-sm border border-gray-200 dark:border-slate-700/60"
                   : "text-gray-500 dark:text-gray-400 hover:text-gray-700 border border-transparent"
@@ -435,7 +441,7 @@ export default function Home() {
                 modeRef.current = "bed";
                 setResults([]);
               }}
-              className={`flex-1 flex items-center justify-center gap-1.5 py-2 px-2 rounded-xl text-[11px] sm:text-xs font-semibold transition-all duration-300 min-w-max whitespace-nowrap ${
+              className={`flex-1 flex items-center justify-center gap-1 py-1.5 px-1.5 rounded-lg text-[10px] sm:text-xs font-semibold transition-all duration-300 min-w-max whitespace-nowrap ${
                 mode === "bed"
                   ? "bg-white dark:bg-[#111827] text-gray-900 dark:text-gray-100 shadow-sm border border-gray-200 dark:border-slate-700/60"
                   : "text-gray-500 dark:text-gray-400 hover:text-gray-700 border border-transparent"
@@ -451,7 +457,7 @@ export default function Home() {
                 modeRef.current = "nap";
                 setResults([]);
               }}
-              className={`flex-1 flex items-center justify-center gap-1.5 py-2 px-2 rounded-xl text-[11px] sm:text-xs font-semibold transition-all duration-300 min-w-max whitespace-nowrap ${
+              className={`flex-1 flex items-center justify-center gap-1 py-1.5 px-1.5 rounded-lg text-[10px] sm:text-xs font-semibold transition-all duration-300 min-w-max whitespace-nowrap ${
                 mode === "nap"
                   ? "bg-white dark:bg-[#111827] text-gray-900 dark:text-gray-100 shadow-sm border border-gray-200 dark:border-slate-700/60"
                   : "text-gray-500 dark:text-gray-400 hover:text-gray-700 border border-transparent"
@@ -462,7 +468,7 @@ export default function Home() {
           </div>
 
           {/* Time Input */}
-          <div className="flex flex-col items-center justify-center w-full mb-6">
+          <div className="flex flex-col items-center justify-center w-full mb-5">
             <TimePicker
               value={time}
               onChange={(val) => {
@@ -474,32 +480,36 @@ export default function Home() {
             />
           </div>
 
-          {/* Age group pill selection */}
+          {/* Age group dropdown selection */}
           {mode !== "nap" && (
-            <div className="flex flex-col items-center w-full mb-6">
-              <span className="text-gray-400 dark:text-gray-500 uppercase tracking-widest text-[10px] sm:text-[11px] font-bold mb-3">
-                Sleep Profile
+            <div className="flex flex-col items-center w-full mb-5 z-20">
+              <span className="text-gray-400 dark:text-gray-500 uppercase tracking-widest text-[9px] sm:text-[10px] font-bold mb-2">
+                Select Your Age
               </span>
-              <div className="flex flex-wrap justify-center gap-2 w-full max-w-[400px]">
-                {AGE_GROUPS.map((g) => (
-                  <button
-                    key={g.id}
-                    onClick={() => {
-                      setAgeGroup(g.id);
-                      setResults([]);
-                    }}
-                    className={`py-1.5 px-3 sm:py-2 sm:px-4 rounded-full text-[11px] sm:text-[13px] font-semibold transition-all duration-300 border ${
-                      ageGroup === g.id
-                        ? "bg-gray-900 border-gray-900 text-white dark:bg-white dark:border-white dark:text-gray-900 shadow-sm"
-                        : "bg-transparent border-gray-200 dark:border-slate-700/60 text-gray-600 dark:text-gray-400 hover:bg-gray-50 hover:text-gray-900 dark:hover:bg-slate-800/50 dark:hover:text-gray-100"
-                    }`}
-                  >
-                    {g.label}
-                  </button>
-                ))}
+              <div className="w-full max-w-[145px] relative group mx-auto">
+                <select
+                  id="age-select"
+                  value={ageGroup}
+                  onChange={(e) => {
+                    setAgeGroup(e.target.value);
+                    setResults([]);
+                  }}
+                  className="w-full bg-gray-50 dark:bg-[#1e293b] border border-gray-200 dark:border-slate-700/60 focus:border-[#2563EB] focus:ring-2 focus:ring-[#2563EB]/20 rounded-xl py-2 pl-3.5 pr-8 transition-all duration-300 shadow-sm text-xs sm:text-sm font-semibold text-gray-800 dark:text-gray-200 cursor-pointer hover:border-gray-300 dark:hover:border-slate-600 outline-none appearance-none text-center"
+                >
+                  {AGE_GROUPS.map((g) => (
+                    <option key={g.id} value={g.id} className="bg-white dark:bg-[#0f172a] text-left text-gray-900 dark:text-gray-100 font-medium">
+                      {g.label}
+                    </option>
+                  ))}
+                </select>
+                <div className="absolute inset-y-0 right-2.5 flex items-center pointer-events-none text-gray-400 dark:text-gray-500 group-hover:text-gray-600 dark:group-hover:text-gray-400 transition-colors">
+                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </div>
               </div>
 
-              <div className="mt-5 flex items-center justify-center gap-2">
+              <div className="mt-4 flex items-center justify-center gap-2">
                 <label className="relative inline-flex flex-row items-center cursor-pointer">
                   <input
                     type="checkbox"
@@ -508,7 +518,7 @@ export default function Home() {
                     onChange={(e) => setRememberPreferences(e.target.checked)}
                   />
                   <div className="relative w-8 h-[18px] bg-gray-200 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-[#2563EB]/20 dark:peer-focus:ring-[#2563EB]/20 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[1px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-[#2563EB]"></div>
-                  <span className="ml-2 mt-[1px] text-[10px] sm:text-[11px] font-medium text-gray-500 dark:text-gray-400 uppercase tracking-tight">
+                  <span className="ml-2 mt-[1px] text-[10px] font-medium text-gray-500 dark:text-gray-400 uppercase tracking-tight">
                     Remember my preferences
                   </span>
                 </label>
@@ -517,10 +527,10 @@ export default function Home() {
           )}
 
           {/* Calculate Button */}
-          <div className="w-full flex justify-center mt-2">
+          <div className="w-full flex justify-center mt-3.5">
             <button
               onClick={calculate}
-              className="w-full max-w-[280px] bg-[#2563EB] text-white hover:bg-[#1D4ED8] rounded-2xl px-6 py-3 font-semibold text-[15px] transition-all duration-300 hover:-translate-y-0.5 focus-visible:outline-none shadow-[0_4px_14px_0_rgb(37,99,235,0.39)] hover:shadow-[0_6px_20px_rgba(37,99,235,0.23)] active:translate-y-0"
+              className="w-full max-w-[260px] sm:max-w-[280px] bg-[#2563EB] text-white hover:bg-[#1D4ED8] active:bg-[#1E40AF] rounded-full py-3 px-6 sm:py-3.5 sm:px-7 font-bold text-[#FFFFFF] text-sm sm:text-base tracking-wide transition-all duration-300 hover:shadow-[0_8px_20px_rgba(37,99,235,0.4)] hover:scale-[1.015] active:scale-[0.985] focus-visible:outline-none shadow-[0_5px_15px_rgba(37,99,235,0.3)] cursor-pointer text-center"
             >
               Calculate Optimal Times
             </button>
@@ -528,18 +538,18 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="w-full max-w-[520px] mx-auto mb-10 px-4 text-center">
-        <ul className="flex items-center justify-center flex-wrap gap-x-6 gap-y-2 text-[13px] text-gray-500 mb-4 list-disc list-inside">
+      <div className="w-full max-w-[520px] mx-auto mb-6 px-4 text-center">
+        <ul className="flex items-center justify-center flex-wrap gap-x-5 gap-y-1.5 text-xs text-gray-400 dark:text-gray-500 mb-3 list-disc list-inside">
           <li>Based on 90-minute sleep cycles</li>
           <li>Free sleep calculator</li>
           <li>No signup required</li>
           <li>Mobile-friendly planner</li>
         </ul>
-        <p className="text-[11px] sm:text-xs text-gray-400 dark:text-gray-500 max-w-sm mx-auto leading-relaxed">
+        <p className="text-[10px] sm:text-[11px] text-gray-400 dark:text-gray-500 max-w-sm mx-auto leading-relaxed">
           Results are estimates, not medical advice.{" "}
           <Link
             to="/disclaimer"
-            className="underline hover:text-gray-600 dark:hover:text-gray-300"
+            className="underline hover:text-gray-500 dark:hover:text-gray-300"
           >
             Disclaimer
           </Link>
@@ -555,21 +565,21 @@ export default function Home() {
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.3 }}
             ref={resultsRef}
-            className="w-full max-w-[580px] mx-auto flex flex-col items-center mb-8 px-4"
+            className="w-full max-w-[460px] mx-auto flex flex-col items-center mb-6 px-4"
           >
-            <div className="w-full bg-white dark:bg-[#0f172a] border border-gray-200 dark:border-[#1e293b] rounded-[28px] p-5 sm:p-6 flex flex-col relative overflow-hidden">
+            <div className="w-full bg-white dark:bg-[#0f172a] border border-gray-200 dark:border-[#1e293b] rounded-2xl p-4 sm:p-5 flex flex-col relative overflow-hidden shadow-sm">
               <div className="relative z-10">
-                <div className="flex items-center justify-center gap-2 mb-2">
+                <div className="flex items-center justify-center gap-2 mb-1.5">
                   {mode === "wake" ? (
-                    <Moon className="w-5 h-5 text-[#2563EB]" />
+                    <Moon className="w-4 h-4 text-[#2563EB]" />
                   ) : (
-                    <Sun className="w-5 h-5 text-[#2563EB]" />
+                    <Sun className="w-4 h-4 text-[#2563EB]" />
                   )}
-                  <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-gray-100 font-serif text-center">
+                  <h2 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-gray-100 font-serif text-center">
                     Your Ideal Sleep Times
                   </h2>
                 </div>
-                <p className="text-gray-500 dark:text-gray-400 mb-8 text-center text-sm sm:text-base px-2">
+                <p className="text-gray-500 dark:text-gray-400 mb-5 text-center text-xs sm:text-sm px-2 leading-relaxed">
                   {mode === "wake"
                     ? "To wake up refreshed, try to fall asleep at one of these times:"
                     : mode === "nap"
@@ -578,7 +588,7 @@ export default function Home() {
                 </p>
 
                 <div
-                  className="w-full flex flex-col gap-3 sm:gap-4 select-text"
+                  className="w-full flex flex-col gap-2.5 select-text"
                   onContextMenu={(e) => e.stopPropagation()}
                 >
                   <AnimatePresence>
@@ -587,31 +597,31 @@ export default function Home() {
                       return (
                         <div
                           key={index}
-                          className={`group flex items-center justify-between p-4 sm:p-5 rounded-2xl border transition-all duration-300 ${
+                          className={`group flex items-center justify-between p-3 sm:p-3.5 rounded-xl border transition-all duration-300 ${
                             recommended
                               ? "bg-blue-50/50 dark:bg-blue-900/10 border-blue-200 dark:border-blue-800/40"
                               : "bg-gray-50/50 dark:bg-[#111827] border-gray-200/60 dark:border-[#1e293b]"
                           }`}
                         >
                           <div className="flex flex-col relative z-10">
-                            <span className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-gray-100 tracking-tight leading-none mb-1.5 flex items-center gap-2">
+                            <span className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-gray-100 tracking-tight leading-none mb-1 flex items-center gap-1.5">
                               {formatTime(res.date)}
                               {recommended && (
                                 <Sparkles
-                                  className="w-4 h-4 text-[#2563EB] sm:block hidden"
+                                  className="w-3.5 h-3.5 text-[#2563EB] sm:block hidden"
                                   strokeWidth={2.5}
                                 />
                               )}
                             </span>
-                            <span className="text-gray-600 dark:text-gray-400 text-sm font-medium">
+                            <span className="text-gray-650 dark:text-gray-400 text-xs font-semibold">
                               {res.duration
                                 ? res.duration
                                 : `${Number(res.cycles) * 1.5} hours of sleep (${res.cycles} cycles)`}
                             </span>
                           </div>
                           {recommended && (
-                            <div className="flex-shrink-0 ml-3 relative z-10 flex items-center">
-                              <span className="inline-flex items-center text-[11px] sm:text-xs font-bold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30 px-3 py-1.5 rounded-lg">
+                            <div className="flex-shrink-0 ml-2 relative z-10 flex items-center">
+                              <span className="inline-flex items-center text-[10px] sm:text-[11px] font-bold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30 px-2 py-1 rounded-md">
                                 Optimal
                               </span>
                             </div>
@@ -622,10 +632,10 @@ export default function Home() {
                   </AnimatePresence>
                 </div>
 
-                <div className="flex flex-col sm:flex-row gap-3 mt-6 w-full">
+                <div className="flex flex-col gap-2 mt-4 w-full">
                   <button
                     onClick={handleCopy}
-                    className="w-full py-3.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 hover:bg-blue-200 dark:hover:bg-blue-900/50 text-sm sm:text-base font-semibold shadow-sm transition-colors focus-visible:outline-none focus:ring-2 focus:ring-blue-500 flex items-center justify-center gap-2"
+                    className="w-full py-2.5 rounded-xl bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 hover:bg-blue-200 dark:hover:bg-blue-900/50 text-xs sm:text-sm font-semibold shadow-sm transition-colors focus-visible:outline-none focus:ring-2 focus:ring-blue-500 flex items-center justify-center gap-2"
                   >
                     {copied ? (
                       <svg
@@ -664,14 +674,14 @@ export default function Home() {
                       setResults([]);
                       window.scrollTo({ top: 0, behavior: "smooth" });
                     }}
-                    className="w-full py-3.5 rounded-full bg-gray-900 dark:bg-white text-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-200 text-sm sm:text-base font-semibold shadow-sm transition-colors focus-visible:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 dark:focus:ring-white dark:focus:ring-offset-[#0f172a] flex items-center justify-center gap-2 group"
+                    className="w-full py-2.5 rounded-xl bg-gray-900 dark:bg-white text-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-200 text-xs sm:text-sm font-semibold shadow-sm transition-colors focus-visible:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 dark:focus:ring-white dark:focus:ring-offset-[#0f172a] flex items-center justify-center gap-2 group"
                   >
                     <motion.div
                       whileHover={{ rotate: -180 }}
                       transition={{ duration: 0.4 }}
                     >
                       <svg
-                        className="w-5 h-5 text-current opacity-70 group-hover:opacity-100 transition-opacity"
+                        className="w-4 h-4 text-current opacity-70 group-hover:opacity-100 transition-opacity"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -694,7 +704,7 @@ export default function Home() {
       </AnimatePresence>
 
             {/* Article Section */}
-      <article className="w-full max-w-3xl mx-auto py-12 px-4 sm:px-6 prose dark:prose-invert prose-blue prose-headings:font-bold prose-h2:text-2xl prose-h3:text-xl">
+      <article className="w-full max-w-2xl mx-auto py-8 sm:py-12 px-4 sm:px-6 prose prose-sm sm:prose-base dark:prose-invert prose-blue prose-headings:font-bold prose-h2:text-base sm:prose-h2:text-xl md:prose-h2:text-2xl prose-h3:text-[15px] sm:prose-h3:text-lg md:prose-h3:text-xl leading-relaxed">
         
         {/* Creator and Peer Review Metadata */}
         <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs sm:text-sm text-gray-500 dark:text-gray-400 mb-8 pb-4 border-b border-gray-100 dark:border-slate-800">
@@ -823,21 +833,45 @@ export default function Home() {
            </li>
            <li>
              <strong>For Waking Up at 8:00 AM:</strong> To rise at 8:00 AM with a clear mind, plan on falling asleep at <strong>11:00 PM</strong> (6 cycles) or <strong>12:30 AM</strong> (5 cycles).
-           </li>
-         </ul>
+            </li>
+          </ul>
+
+          <h2>8. Circadian Rhythm & Sleep Quality: Beyond the 90-Minute Rule</h2>
+          <p>While mastering the 90-minute sleep cycle is a powerful first step, achieving deep, restorative sleep also depends on the alignment of your <strong>circadian rhythm</strong>. Your circadian rhythm is a natural 24-hour internal clock that lives in your brain's hypothalamus. It responds directly to environmental signals—specifically light and dark—to regulate natural <strong>melatonin release</strong> and body temperature transitions throughout the night.</p>
+          <p>If your sleep schedule is inconsistent or you suffer from a high <strong>sleep debt</strong>, even a perfect 90-minute calculation might leave you feeling groggy. To maximize your sleep quality and experience true physical restoration, implement these proven practices to sync your internal biological clock:</p>
+          <ul>
+            <li>
+              <strong>Get Bright Morning Sun:</strong> Walk outside or open your blinds for at least 10 to 15 minutes within an hour of waking up. Direct, natural morning light exposure halts daytime melatonin production, raises cortisol levels, and programs your brain to fall asleep more easily later that night.
+            </li>
+            <li>
+              <strong>Stabilize Your Rise Time:</strong> Having a fluctuating weekend wake-up schedule acts like "social jetlag," confusing your body's circadian rhythm. Try to rise at the exact same hour every single day to establish a predictable biological anchor point.
+            </li>
+            <li>
+              <strong>Avoid Late-Night Heavy Meals:</strong> Digesting proteins or fats within two hours of rest elevates your body's core temperature and heart rate. Undergoing active digestion disrupts vital deep slow-wave Stage 3 cycles, which are crucial for physical regeneration.
+            </li>
+            <li>
+              <strong>Control Bedroom Air Quality:</strong> Stuffy bedrooms with high CO2 counts can lead to micro-awakenings, fragmenting your REM sleep patterns. Keep a window cracked or use a filter fan to maintain clean, fresh air flow throughout the night.
+            </li>
+          </ul>
+          <p>By blending the precision of our <strong>biological sleep planner</strong> with consistent sleep hygiene, you can fully align your sleep health, optimize cellular regeneration, and consistently <strong>wake up refreshed</strong> every morning.
+          </p>
+
+
          <p>Stop guessing your nightly alignment. Scroll up to our <strong>sleep cycle calculator online free</strong> (an ultimate <strong>sleep calculator with REM cycles</strong> and built-in <strong>sleep calculator with alarm</strong>) or use our <strong>ai sleep calculator</strong> to instantly find your personalized bedtimes and optimal sleep cycles in seconds! Whether you need a <strong>best sleep calculator online</strong>, a fast <strong>free online bedtime calculator</strong>, or a <strong>mobile sleep calculator</strong> with <strong>no signup</strong> required, our clean digital tool is here to help you <strong>wake up happy calculator</strong> style.</p>
 
 <hr className="my-10 border-gray-200 dark:border-gray-800" />
 
-        <h2 className="text-center text-3xl sm:text-4xl mt-12 mb-8">FAQs</h2>
+        <h2 className="text-center text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-gray-900 dark:text-white font-serif mt-16 mb-8">
+          Frequently Asked Questions (FAQs)
+        </h2>
         <FAQAccordion />
 
         {/* Trust & Methodology Section */}
-        <div className="mt-12 p-6 sm:p-8 bg-slate-50/50 dark:bg-slate-900/20 rounded-[24px] border border-gray-200 dark:border-slate-800 text-left">
-          <h3 className="text-xl font-bold mt-0 mb-3 flex items-center gap-2 text-gray-900 dark:text-gray-100">
-            <span className="w-2.5 h-2.5 rounded-full bg-[#2563EB] inline-block"></span> Trust & Methodology
+        <div className="mt-8 p-4 sm:p-5 bg-slate-50/50 dark:bg-slate-900/20 rounded-xl border border-gray-200 dark:border-slate-800 text-left">
+          <h3 className="text-sm sm:text-base font-bold mt-0 mb-2.5 flex items-center gap-2 text-gray-900 dark:text-gray-100">
+            <span className="w-2 h-2 rounded-full bg-[#2563EB] inline-block"></span> Trust & Methodology
           </h3>
-          <p className="text-base sm:text-base m-0 text-gray-600 dark:text-gray-300 leading-relaxed font-sans select-text">
+          <p className="text-xs sm:text-xs m-0 text-gray-500/90 dark:text-gray-400 leading-relaxed font-sans select-text">
             Our Sleep Calculator and sleep schedule recommendations are built on peer-reviewed chronobiology research, clinical consensus guidelines, and the standardized 90-minute Rapid Eye Movement (REM) sleep cycle model. Key references include pediatric and adult sleep standards from the <a href="https://www.sleepfoundation.org/" target="_blank" rel="noopener noreferrer" className="underline text-[#2563EB]">National Sleep Foundation</a>, pediatric recommendation schedules from the <a href="https://www.cdc.gov/" target="_blank" rel="noopener noreferrer" className="underline text-[#2563EB]">CDC</a>, and brain hygiene studies from the <a href="https://www.mayoclinic.org/" target="_blank" rel="noopener noreferrer" className="underline text-[#2563EB]">Mayo Clinic</a> and <a href="https://www.nih.gov/" target="_blank" rel="noopener noreferrer" className="underline text-[#2563EB]">National Institutes of Health (NIH)</a>. For support, custom data queries, or comments, access our <Link to="/contact" className="underline text-[#2563EB]">Contact</Link> panel.
           </p>
         </div>
