@@ -9,6 +9,38 @@ export default function Blog() {
     navigate('/');
   };
 
+  const prefetchArticle = (url: string) => {
+    switch (url) {
+      case '/blog/best-sleep-calculator': import('./BestSleepCalculatorGuide'); break;
+      case '/blog/sleep-calculator': import('./WhatIsASleepCalculator'); break;
+      case '/blog/sleep-cycle-stages': import('./SleepCycleGuide'); break;
+      case '/blog/sleep-age': import('./SleepByAge'); break;
+      case '/blog/sleep-cycle': import('./HowSleepCycleWorks'); break;
+      case '/blog/sleep-calculator-benefits': import('./BenefitsOfSleepCalculator'); break;
+      case '/blog/fix-sleep-schedule': import('./FixSleepSchedule'); break;
+      case '/blog/blue-light-sleep': import('./BlueLightSleep'); break;
+      case '/blog/sleep-cycle-calculator': import('./SleepCycleCalculatorBlog'); break;
+      case '/blog/smart-sleep-habits-better-energy': import('./SmartSleepHabits'); break;
+      case '/blog/why-you-wake-up-in-the-middle-of-the-night': import('./WhyYouWakeUpMiddleNight'); break;
+      case '/blog/sleep-debt-recovery-guide': import('./SleepDebtRecoveryGuide'); break;
+      case '/blog/best-sleep-schedule-for-students': import('./BestSleepScheduleForStudents'); break;
+      case '/blog/how-sleep-affects-your-brain-performance': import('./HowSleepAffectsBrainPerformance'); break;
+      case '/blog/best-bedtime-routine-for-better-sleep': import('./BestBedtimeRoutine'); break;
+      case '/blog/why-sleep-cycles-matter-more-than-sleeping-longer': import('./WhySleepCyclesMatter'); break;
+      case '/blog/best-bedtime-habits-for-better-sleep-quality': import('./BestBedtimeHabits'); break;
+      case '/blog/wake-up-at-6am': import('./WakeUpAt6Am'); break;
+      case '/blog/wake-up-at-5am': import('./WakeUpAt5Am'); break;
+      case '/blog/wake-up-at-7am': import('./WakeUpAt7Am'); break;
+      case '/blog/best-bedtime-for-students': import('./BestBedtimeForStudents'); break;
+      case '/blog/nap-calculator-timing': import('./NapCalculatorTiming'); break;
+      case '/blog/nap-calculator-for-energy': import('./NapCalculatorForEnergy'); break;
+      case '/blog/sleep-cycle-timing': import('./SleepCycleTiming'); break;
+      case '/blog/rem-sleep-calculator': import('./RemSleepCalculatorPage'); break;
+      case '/blog/how-many-sleep-cycles-do-i-need': import('./HowManySleepCyclesDoINeed'); break;
+      case '/blog/why-am-i-tired-after-sleeping': import('./WhyAmITiredAfterSleeping'); break;
+    }
+  };
+
   const articles = [
     {
       title: "Best Bedtime Habits for Better Sleep Quality",
@@ -196,6 +228,8 @@ export default function Blog() {
           <Link 
             key={index}
             to={article.url}
+            onMouseEnter={() => prefetchArticle(article.url)}
+            onFocus={() => prefetchArticle(article.url)}
             className="group bg-white dark:bg-[#111827] border border-gray-200 dark:border-[#1e293b] rounded-[24px] p-6 sm:p-7 shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col items-start h-full"
           >
             <span className="text-xs font-semibold tracking-wider uppercase text-gray-400 dark:text-gray-500 mb-3 block">

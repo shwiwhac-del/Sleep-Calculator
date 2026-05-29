@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { MessageSquare, Sparkles, Moon, Sun } from "lucide-react";
+import { MessageSquare, Sparkles, Moon, Sun, Calendar, Download } from "lucide-react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { FAQAccordion } from "../components/FAQAccordion";
@@ -206,6 +206,82 @@ export default function Home() {
     navigator.clipboard.writeText(fullText);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
+  };
+
+  const getGoogleCalendarUrl = (res: any) => {
+    let start: Date;
+    let end: Date;
+
+    if (mode === "wake") {
+      start = res.date; // bed time
+      end = timeToDate(time, "wake"); // wake time
+    } else if (mode === "bed") {
+      start = timeToDate(time, "bed"); // bed time
+      end = res.date; // wake time
+    } else { // nap
+      start = timeToDate(time, "nap");
+      end = res.date;
+    }
+
+    const formatGCal = (date: Date) => {
+      return date.toISOString().replace(/-|:|\.\d\d\d/g, "");
+    };
+
+    const isNap = mode === "nap";
+    const titleVal = isNap
+      ? `Power Nap (${res.cycles})`
+      : `Optimal Sleep (${res.cycles} Cycles)`;
+    const details = `Sleep schedule optimized via Sleep Calculator (https://sleepcalculater.online/). Waking up precisely at the end of a sleep cycle ensures dynamic energy and cognitive focus.`;
+
+    return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(titleVal)}&dates=${formatGCal(start)}/${formatGCal(end)}&details=${encodeURIComponent(details)}&sf=true&output=xml`;
+  };
+
+  const handleDownloadIcs = (res: any) => {
+    let start: Date;
+    let end: Date;
+
+    if (mode === "wake") {
+      start = res.date;
+      end = timeToDate(time, "wake");
+    } else if (mode === "bed") {
+      start = timeToDate(time, "bed");
+      end = res.date;
+    } else {
+      start = timeToDate(time, "nap");
+      end = res.date;
+    }
+
+    const formatIcs = (date: Date) => {
+      return date.toISOString().replace(/-|:|\.\d\d\d/g, "");
+    };
+
+    const isNap = mode === "nap";
+    const titleVal = isNap
+      ? `Power Nap - ${res.cycles}`
+      : `Optimal Sleep - ${res.cycles} Cycles`;
+    const details = `Sleep Schedule optimized via Sleep Calculator (https://sleepcalculater.online/)`;
+
+    const icsContent = [
+      "BEGIN:VCALENDAR",
+      "VERSION:2.0",
+      "BEGIN:VEVENT",
+      `SUMMARY:${titleVal}`,
+      `DESCRIPTION:${details}`,
+      `DTSTART:${formatIcs(start)}`,
+      `DTEND:${formatIcs(end)}`,
+      "END:VEVENT",
+      "END:VCALENDAR"
+    ].join("\r\n");
+
+    const blob = new Blob([icsContent], { type: "text/calendar;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.setAttribute("download", `sleep-schedule-${isNap ? "nap" : res.cycles + "-cycles"}.ics`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
   };
 
   const calculate = () => {
@@ -619,13 +695,34 @@ export default function Home() {
                                 : `${Number(res.cycles) * 1.5} hours of sleep (${res.cycles} cycles)`}
                             </span>
                           </div>
-                          {recommended && (
-                            <div className="flex-shrink-0 ml-2 relative z-10 flex items-center">
-                              <span className="inline-flex items-center text-[10px] sm:text-[11px] font-bold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30 px-2 py-1 rounded-md">
+
+                          <div className="flex items-center gap-2 ml-2 relative z-10 flex-shrink-0">
+                            {recommended && (
+                              <span className="hidden xs:inline-flex items-center text-[10px] sm:text-[11px] font-bold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30 px-2 py-1 rounded-md">
                                 Optimal
                               </span>
+                            )}
+                            
+                            {/* Calendar Sync Action Buttons */}
+                            <div className="flex items-center gap-1.5">
+                              <a
+                                href={getGoogleCalendarUrl(res)}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                title="Sync to Google Calendar"
+                                className="p-2 sm:p-2.5 rounded-xl border border-gray-250/70 dark:border-slate-800/80 bg-white dark:bg-slate-900 text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50/40 dark:hover:bg-blue-950/20 hover:border-blue-200 transition-all cursor-pointer"
+                              >
+                                <Calendar className="w-3.5 h-3.5" />
+                              </a>
+                              <button
+                                onClick={() => handleDownloadIcs(res)}
+                                title="Download ICS file for iCal/Apple"
+                                className="p-2 sm:p-2.5 rounded-xl border border-gray-250/70 dark:border-slate-800/80 bg-white dark:bg-slate-900 text-gray-500 dark:text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-emerald-50/40 dark:hover:bg-emerald-950/20 hover:border-emerald-200 transition-all cursor-pointer"
+                              >
+                                <Download className="w-3.5 h-3.5" />
+                              </button>
                             </div>
-                          )}
+                          </div>
                         </div>
                       );
                     })}
@@ -703,7 +800,9 @@ export default function Home() {
         )}
       </AnimatePresence>
 
-            {/* Article Section */}
+
+
+      {/* Article Section */}
       <article className="w-full max-w-2xl mx-auto py-8 sm:py-12 px-4 sm:px-6 prose prose-sm sm:prose-base dark:prose-invert prose-blue prose-headings:font-bold prose-h2:text-base sm:prose-h2:text-xl md:prose-h2:text-2xl prose-h3:text-[15px] sm:prose-h3:text-lg md:prose-h3:text-xl leading-relaxed">
         
         {/* Creator and Peer Review Metadata */}

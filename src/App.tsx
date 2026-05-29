@@ -49,11 +49,46 @@ function Footer() {
   return (
     <footer className="w-full py-6 sm:py-8 mt-auto border-t border-gray-150 dark:border-[#1e293b]/70 bg-white dark:bg-[#0f172a] z-20 relative flex flex-col items-center">
       <div className="flex flex-wrap justify-center gap-x-4 sm:gap-x-6 gap-y-2 text-xs sm:text-sm text-gray-500 dark:text-gray-450 px-4 mb-3">
-        <Link to="/about" className="hover:text-[#2563EB] transition-colors font-medium">About</Link>
-        <Link to="/contact" className="hover:text-[#2563EB] transition-colors font-medium">Contact</Link>
-        <Link to="/privacy" className="hover:text-[#2563EB] transition-colors font-medium">Privacy Policy</Link>
-        <Link to="/terms" className="hover:text-[#2563EB] transition-colors font-medium">Terms & Conditions</Link>
-        <Link to="/disclaimer" className="hover:text-[#2563EB] transition-colors font-medium">Medical Disclaimer</Link>
+        <Link 
+          to="/about" 
+          onMouseEnter={() => import('./pages/About')}
+          onFocus={() => import('./pages/About')}
+          className="hover:text-[#2563EB] transition-colors font-medium"
+        >
+          About
+        </Link>
+        <Link 
+          to="/contact" 
+          onMouseEnter={() => import('./pages/Contact')}
+          onFocus={() => import('./pages/Contact')}
+          className="hover:text-[#2563EB] transition-colors font-medium"
+        >
+          Contact
+        </Link>
+        <Link 
+          to="/privacy" 
+          onMouseEnter={() => import('./pages/Privacy')}
+          onFocus={() => import('./pages/Privacy')}
+          className="hover:text-[#2563EB] transition-colors font-medium"
+        >
+          Privacy Policy
+        </Link>
+        <Link 
+          to="/terms" 
+          onMouseEnter={() => import('./pages/Terms')}
+          onFocus={() => import('./pages/Terms')}
+          className="hover:text-[#2563EB] transition-colors font-medium"
+        >
+          Terms & Conditions
+        </Link>
+        <Link 
+          to="/disclaimer" 
+          onMouseEnter={() => import('./pages/Disclaimer')}
+          onFocus={() => import('./pages/Disclaimer')}
+          className="hover:text-[#2563EB] transition-colors font-medium"
+        >
+          Medical Disclaimer
+        </Link>
       </div>
       <div className="text-gray-400 dark:text-gray-550 text-[10px] sm:text-xs flex flex-col items-center gap-1">
         <span>&copy; {new Date().getFullYear()} Sleep Calculator. All rights reserved.</span>
@@ -91,7 +126,18 @@ function Header({ isDarkMode, toggleDarkMode }: { isDarkMode: boolean, toggleDar
         
         {/* Desktop Navigation */}
         <nav className="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center text-sm font-semibold tracking-wide text-gray-650 dark:text-gray-300">
-          <Link to="/blog" className="hover:text-[#2563EB] dark:hover:text-[#3b82f6] transition-all py-1.5 px-3 rounded-lg hover:bg-gray-50 dark:hover:bg-slate-800/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB]">Blog</Link>
+          <Link 
+            to="/blog" 
+            onMouseEnter={() => {
+              import('./pages/Blog');
+              import('./pages/BestSleepCalculatorGuide');
+              import('./pages/WhatIsASleepCalculator');
+            }}
+            onFocus={() => import('./pages/Blog')}
+            className="hover:text-[#2563EB] dark:hover:text-[#3b82f6] transition-all py-1.5 px-3 rounded-lg hover:bg-gray-50 dark:hover:bg-slate-800/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB]"
+          >
+            Blog
+          </Link>
         </nav>
 
         <div className="flex items-center gap-2 sm:gap-4">
@@ -131,7 +177,13 @@ function Header({ isDarkMode, toggleDarkMode }: { isDarkMode: boolean, toggleDar
                 <HomeIcon size={20} className="text-[#2563EB] dark:text-[#3b82f6]" />
                 Home
               </Link>
-              <Link to="/blog" className="flex items-center gap-3 text-gray-900 dark:text-gray-100 hover:text-[#2563EB] dark:hover:text-[#3b82f6] font-semibold text-lg py-3 transition-colors border-b border-gray-100/60 dark:border-slate-800/60" onClick={() => setIsMenuOpen(false)}>
+              <Link 
+                to="/blog" 
+                onMouseEnter={() => import('./pages/Blog')}
+                onFocus={() => import('./pages/Blog')}
+                className="flex items-center gap-3 text-gray-900 dark:text-gray-100 hover:text-[#2563EB] dark:hover:text-[#3b82f6] font-semibold text-lg py-3 transition-colors border-b border-gray-100/60 dark:border-slate-800/60" 
+                onClick={() => setIsMenuOpen(false)}
+              >
                 <BookOpen size={20} className="text-[#2563EB] dark:text-[#3b82f6]" />
                 Blog
               </Link>
@@ -140,23 +192,53 @@ function Header({ isDarkMode, toggleDarkMode }: { isDarkMode: boolean, toggleDar
             <div className="flex flex-col space-y-1">
               <span className="text-slate-400 dark:text-slate-500 uppercase tracking-widest text-[11px] font-bold mb-2">About & Legal</span>
               <div className="flex flex-col">
-                <Link to="/about" className="flex items-center gap-3 text-gray-700 dark:text-gray-300 hover:text-[#2563EB] dark:hover:text-[#3b82f6] font-semibold text-base py-3 transition-colors border-b border-gray-100/60 dark:border-slate-800/60" onClick={() => setIsMenuOpen(false)}>
+                <Link 
+                  to="/about" 
+                  onMouseEnter={() => import('./pages/About')}
+                  onFocus={() => import('./pages/About')}
+                  className="flex items-center gap-3 text-gray-700 dark:text-gray-300 hover:text-[#2563EB] dark:hover:text-[#3b82f6] font-semibold text-base py-3 transition-colors border-b border-gray-100/60 dark:border-slate-800/60" 
+                  onClick={() => setIsMenuOpen(false)}
+                >
                   <User size={18} className="text-slate-400 dark:text-slate-500" />
                   About Us
                 </Link>
-                <Link to="/contact" className="flex items-center gap-3 text-gray-700 dark:text-gray-300 hover:text-[#2563EB] dark:hover:text-[#3b82f6] font-semibold text-base py-3 transition-colors border-b border-gray-100/60 dark:border-slate-800/60" onClick={() => setIsMenuOpen(false)}>
+                <Link 
+                  to="/contact" 
+                  onMouseEnter={() => import('./pages/Contact')}
+                  onFocus={() => import('./pages/Contact')}
+                  className="flex items-center gap-3 text-gray-700 dark:text-gray-300 hover:text-[#2563EB] dark:hover:text-[#3b82f6] font-semibold text-base py-3 transition-colors border-b border-gray-100/60 dark:border-slate-800/60" 
+                  onClick={() => setIsMenuOpen(false)}
+                >
                   <Mail size={18} className="text-slate-400 dark:text-slate-500" />
                   Contact
                 </Link>
-                <Link to="/privacy" className="flex items-center gap-3 text-gray-700 dark:text-gray-300 hover:text-[#2563EB] dark:hover:text-[#3b82f6] font-semibold text-base py-3 transition-colors border-b border-gray-100/60 dark:border-slate-800/60" onClick={() => setIsMenuOpen(false)}>
+                <Link 
+                  to="/privacy" 
+                  onMouseEnter={() => import('./pages/Privacy')}
+                  onFocus={() => import('./pages/Privacy')}
+                  className="flex items-center gap-3 text-gray-700 dark:text-gray-300 hover:text-[#2563EB] dark:hover:text-[#3b82f6] font-semibold text-base py-3 transition-colors border-b border-gray-100/60 dark:border-slate-800/60" 
+                  onClick={() => setIsMenuOpen(false)}
+                >
                   <HelpCircle size={18} className="text-slate-400 dark:text-slate-500" />
                   Privacy Policy
                 </Link>
-                <Link to="/terms" className="flex items-center gap-3 text-gray-700 dark:text-gray-300 hover:text-[#2563EB] dark:hover:text-[#3b82f6] font-semibold text-base py-3 transition-colors border-b border-gray-100/60 dark:border-slate-800/60" onClick={() => setIsMenuOpen(false)}>
+                <Link 
+                  to="/terms" 
+                  onMouseEnter={() => import('./pages/Terms')}
+                  onFocus={() => import('./pages/Terms')}
+                  className="flex items-center gap-3 text-gray-700 dark:text-gray-300 hover:text-[#2563EB] dark:hover:text-[#3b82f6] font-semibold text-base py-3 transition-colors border-b border-gray-100/60 dark:border-slate-800/60" 
+                  onClick={() => setIsMenuOpen(false)}
+                >
                   <HelpCircle size={18} className="text-slate-400 dark:text-slate-500" />
                   Terms & Conditions
                 </Link>
-                <Link to="/disclaimer" className="flex items-center gap-3 text-gray-700 dark:text-gray-300 hover:text-[#2563EB] dark:hover:text-[#3b82f6] font-semibold text-base py-3 transition-colors border-b border-gray-100/60 dark:border-slate-800/60" onClick={() => setIsMenuOpen(false)}>
+                <Link 
+                  to="/disclaimer" 
+                  onMouseEnter={() => import('./pages/Disclaimer')}
+                  onFocus={() => import('./pages/Disclaimer')}
+                  className="flex items-center gap-3 text-gray-700 dark:text-gray-300 hover:text-[#2563EB] dark:hover:text-[#3b82f6] font-semibold text-base py-3 transition-colors border-b border-gray-100/60 dark:border-slate-800/60" 
+                  onClick={() => setIsMenuOpen(false)}
+                >
                   <ShieldAlert size={18} className="text-amber-500" />
                   Medical Disclaimer
                 </Link>
