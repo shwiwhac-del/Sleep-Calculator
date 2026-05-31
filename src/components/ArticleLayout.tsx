@@ -119,7 +119,7 @@ export function ArticleLayout({
       {
         "@type": "ListItem",
         "position": 2,
-        "name": backLabel || (backUrl === "/" ? "Home" : "Blog"),
+        "name": backLabel || (backUrl === "/" ? "Home" : "Articles"),
         "item": `https://sleepcalculater.online${backUrl === "/" ? "" : backUrl}`
       },
       {

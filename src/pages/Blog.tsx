@@ -1,4 +1,4 @@
-import { Link, useNavigate, useLocation, useParams } from 'react-router-dom';
+import { Link, useNavigate, useLocation, useParams, Navigate } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'motion/react';
@@ -124,17 +124,17 @@ export default function Blog() {
   const isAnyBlog = isBlog1 || isBlog2 || isBlog3 || isBlog4 || isBlog5 || isBlog6 || isBlog7 || isBlog8 || isBlog9 || isBlog10 || isBlog11 || isBlog12;
   const isAll = false; // Override isAll to false so individual articles never render stacked in /blog
 
+  if (!isAnyBlog) {
+    return <Navigate to="/" replace />;
+  }
+
   const handleBack = () => {
-    if (isAnyBlog) {
-      navigate('/blog');
-    } else {
-      navigate('/');
-    }
+    navigate('/');
   };
 
   // Metadata determination for SEO
-  let title = "Sleep Calculator Blog: Guides on Sleep Cycles, Bedtime & Wake up Time";
-  let description = "Discover how to use a sleep cycle calculator, find the best time to sleep, and optimize your rest in our sleep health blog articles.";
+  let title = "Sleep Calculator Articles: Guides on Sleep Cycles, Bedtime & Wake up Time";
+  let description = "Discover how to use a sleep cycle calculator, find the best time to sleep, and optimize your rest in our sleep health articles.";
   let canonicalUrl = `https://sleepcalculater.online${currentPath}`;
 
   if (isBlog1) {
@@ -192,7 +192,7 @@ export default function Blog() {
           onClick={handleBack}
           className="inline-flex items-center gap-2 text-base text-slate-350 dark:text-slate-300 font-semibold tracking-wide hover:text-[#2563EB] dark:hover:text-[#3b82f6] transition-colors focus-visible:outline-none cursor-pointer"
         >
-          <ArrowLeft size={18} /> {isAnyBlog ? "Back to Blog" : "Back to Calculator"}
+          <ArrowLeft size={18} /> Back to Calculator
         </button>
       </div>
 

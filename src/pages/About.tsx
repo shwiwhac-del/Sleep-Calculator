@@ -106,9 +106,9 @@ export default function About() {
           </section>
 
           <section>
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4 font-serif">Read Our Latest Sleep Guides</h2>
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4 font-serif">Read Our Latest Sleep Articles</h2>
             <p className="mb-4">
-              Explore our <Link to="/blog" className="text-[#2563EB] hover:text-[#1D4ED8] font-semibold transition-colors">Sleep Blog</Link> for detailed, science-backed guides on improving sleep hygiene:
+              Explore our detailed, science-backed articles on improving sleep hygiene:
             </p>
             <ul className="list-disc pl-5 space-y-2 text-[#2563EB] font-medium">
               <li><Link to="/sleep-cycles-explained" className="hover:underline">Sleep Cycles Explained: Understanding the Stages of Sleep</Link></li>

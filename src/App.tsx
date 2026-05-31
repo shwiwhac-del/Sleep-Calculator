@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import ScrollToTop from './components/ScrollToTop';
 import Home from './pages/Home';
 import { StarryBackground } from './components/StarryBackground';
+import InstallAppButton from './components/InstallAppButton';
 
 const Terms = lazy(() => import('./pages/Terms'));
 const Privacy = lazy(() => import('./pages/Privacy'));
@@ -113,7 +114,7 @@ function AppContent() {
               <Routes>
                 {/* Core Pages */}
                 <Route path="/" element={<Home />} />
-                <Route path="/blog" element={<Blog />} />
+                <Route path="/blog" element={<Navigate to="/" replace />} />
 
                 {/* Direct Root Paths for all articles */}
                 <Route path="/sleep-cycles-explained" element={<Blog />} />
@@ -131,7 +132,7 @@ function AppContent() {
 
                 {/* Legacy /blog and /page/blog Prefixes redirected back to clean root paths */}
                 <Route path="/blog/:slug" element={<PageBlogRedirect />} />
-                <Route path="/page/blog" element={<Navigate to="/blog" replace />} />
+                <Route path="/page/blog" element={<Navigate to="/" replace />} />
                 <Route path="/page/blog/:slug" element={<PageBlogRedirect />} />
 
                 <Route path="/about" element={<About />} />
@@ -150,6 +151,7 @@ function AppContent() {
             </Suspense>
           </main>
           <Footer />
+          <InstallAppButton />
     </div>
   );
 }

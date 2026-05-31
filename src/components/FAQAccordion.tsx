@@ -23,7 +23,7 @@ const faqs: FAQ[] = [
     question: "What time should I go to bed?",
     answer: (
       <>
-        The absolute <Link to="/blog/best-sleep-calculator" className="text-[#2563EB] hover:underline font-semibold">best bedtime</Link> depends specifically on your desired alarm time. For example, if you must wake up at 7:00 AM, sleeping at 10:00 PM or 11:30 PM (factoring in 15 minutes to fall asleep) guarantees you wake up at a clean transition point. Use our <Link to="/" className="text-[#2563EB] hover:underline font-semibold">bedtime sleep calculator</Link> to check exact times.
+        The absolute <Link to="/best-time-to-sleep-and-wake-up" className="text-[#2563EB] hover:underline font-semibold">best bedtime</Link> depends specifically on your desired alarm time. For example, if you must wake up at 7:00 AM, sleeping at 10:00 PM or 11:30 PM (factoring in 15 minutes to fall asleep) guarantees you wake up at a clean transition point. Use our <Link to="/" className="text-[#2563EB] hover:underline font-semibold">bedtime sleep calculator</Link> to check exact times.
       </>
     ),
     schemaAnswer: "The absolute best bedtime depends specifically on your desired alarm time. For example, if you must wake up at 7:00 AM, sleeping at 10:00 PM or 11:30 PM (factoring in 15 minutes to fall asleep) guarantees you wake up at a clean transition point. Use our bedtime sleep calculator to check exact times."
@@ -41,7 +41,7 @@ const faqs: FAQ[] = [
     question: "What is REM sleep?",
     answer: (
       <>
-        REM (Rapid Eye Movement) sleep is the phase of rest where active brain dreams occur, memories are solidified, and emotional health is restored. For a complete scientific breakdown, read our <Link to="/blog/rem-sleep-calculator" className="text-[#2563EB] hover:underline font-semibold">REM sleep guide</Link> and calculate your REM cycles tonight.
+        REM (Rapid Eye Movement) sleep is the phase of rest where active brain dreams occur, memories are solidified, and emotional health is restored. For a complete scientific breakdown, read our <Link to="/what-is-rem-sleep" className="text-[#2563EB] hover:underline font-semibold">REM sleep guide</Link> and calculate your REM cycles tonight.
       </>
     ),
     schemaAnswer: "REM (Rapid Eye Movement) sleep is the phase of rest where active brain dreams occur, memories are solidified, and emotional health is restored. Waking up during this cycle ensures you preserve brain health."
@@ -59,7 +59,7 @@ const faqs: FAQ[] = [
     question: "How long is a sleep cycle?",
     answer: (
       <>
-        A biological sleep cycle lasts approximately <strong>90 to 110 minutes</strong>. Each cycle is segmented into four deep electrical stages. Check out our comprehensive <Link to="/blog/sleep-cycle-timing" className="text-[#2563EB] hover:underline font-semibold">sleep cycle timing guide</Link> to explore the neural waves of Stage 1, Stage 2, deep Slow-Wave Sleep, and active REM.
+        A biological sleep cycle lasts approximately <strong>90 to 110 minutes</strong>. Each cycle is segmented into four deep electrical stages. Check out our comprehensive <Link to="/sleep-cycles-explained" className="text-[#2563EB] hover:underline font-semibold">sleep cycle timing guide</Link> to explore the neural waves of Stage 1, Stage 2, deep Slow-Wave Sleep, and active REM.
       </>
     ),
     schemaAnswer: "A biological sleep cycle lasts approximately 90 to 110 minutes on average and is segmented into four distinct stages of lighter and deeper sleep."
@@ -68,7 +68,7 @@ const faqs: FAQ[] = [
     question: "What is the best bedtime for students?",
     answer: (
       <>
-        The <Link to="/blog/best-bedtime-for-students" className="text-[#2563EB] hover:underline font-semibold">best bedtime for students</Link> is one that stays highly consistent and maps out 6 filled sleep cycles (9 hours) to maximize cognitive retention and academic attention. For details, navigate to our <Link to="/blog/best-sleep-schedule-for-students" className="text-[#2563EB] hover:underline font-semibold">sleep schedule for students</Link> guidelines.
+        The <Link to="/sleep-schedule-for-productivity" className="text-[#2563EB] hover:underline font-semibold">best bedtime for students</Link> is one that stays highly consistent and maps out 6 filled sleep cycles (9 hours) to maximize cognitive retention and academic attention. For details, navigate to our <Link to="/sleep-schedule-for-productivity" className="text-[#2563EB] hover:underline font-semibold">sleep schedule for students</Link> guidelines.
       </>
     ),
     schemaAnswer: "The best bedtime for students is one that stays highly consistent and maps out 6 filled sleep cycles (9 hours) to maximize cognitive retention and academic attention."
@@ -77,7 +77,7 @@ const faqs: FAQ[] = [
     question: "How long should a power nap be?",
     answer: (
       <>
-        For optimal physical and mental recovery, an energy nap should be exactly <strong>20 minutes</strong> (remaining within light Stage 1 and Stage 2 sleep) or a full <strong>90 minutes</strong> (completing a full cycle). Read our specialized <Link to="/blog/nap-calculator-for-energy" className="text-[#2563EB] hover:underline font-semibold">nap calculator</Link> instructions to prevent groggy napping.
+        For optimal physical and mental recovery, an energy nap should be exactly <strong>20 minutes</strong> (remaining within light Stage 1 and Stage 2 sleep) or a full <strong>90 minutes</strong> (completing a full cycle). Read our specialized <Link to="/power-nap-vs-full-sleep-cycle" className="text-[#2563EB] hover:underline font-semibold">nap calculator</Link> instructions to prevent groggy napping.
       </>
     ),
     schemaAnswer: "For optimal physical and mental recovery, an energy nap should be exactly 20 minutes (remaining within light Stage 1 and Stage 2 sleep) or a full 90 minutes (completing a full cycle)."

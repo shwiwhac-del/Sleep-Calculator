@@ -5,10 +5,6 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://sleepcalculater.online/blog</loc>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
     <loc>https://sleepcalculater.online/about</loc>
     <changefreq>weekly</changefreq>
   </url>
@@ -22,6 +18,54 @@
   </url>
   <url>
     <loc>https://sleepcalculater.online/terms</loc>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://sleepcalculater.online/sleep-cycles-explained</loc>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://sleepcalculater.online/what-is-rem-sleep</loc>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://sleepcalculater.online/how-much-sleep-do-you-need</loc>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://sleepcalculater.online/best-time-to-sleep-and-wake-up</loc>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://sleepcalculater.online/sleep-cycle-calculator-guide</loc>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://sleepcalculater.online/why-90-minute-sleep-cycles-matter</loc>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://sleepcalculater.online/how-to-wake-up-refreshed</loc>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://sleepcalculater.online/ideal-bedtime-for-adults</loc>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://sleepcalculater.online/sleep-schedule-for-productivity</loc>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://sleepcalculater.online/how-many-hours-of-sleep-is-healthy</loc>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://sleepcalculater.online/power-nap-vs-full-sleep-cycle</loc>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://sleepcalculater.online/circadian-rhythm-explained</loc>
     <changefreq>weekly</changefreq>
   </url>
 </urlset>

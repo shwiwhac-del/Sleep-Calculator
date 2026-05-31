@@ -4,7 +4,6 @@ const domain = 'https://sleepcalculater.online';
 
 const routes = [
   '/',
-  '/blog',
   '/about',
   '/contact',
   '/privacy',
