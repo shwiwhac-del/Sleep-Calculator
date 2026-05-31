@@ -20,13 +20,13 @@ const NotFound = lazy(() => import('./pages/NotFound'));
 
 function Footer() {
   return (
-    <footer className="w-full py-6 sm:py-8 mt-auto border-t border-white/5 bg-transparent z-20 relative flex flex-col items-center">
-      <div className="flex flex-wrap justify-center gap-x-4 sm:gap-x-6 gap-y-2 text-xs sm:text-sm text-gray-500 dark:text-gray-450 px-4 mb-3">
+    <footer className="w-full py-8 mt-auto border-t border-white/5 bg-transparent z-20 relative flex flex-col items-center">
+      <div className="flex flex-wrap justify-center gap-x-6 sm:gap-x-8 gap-y-3 text-sm sm:text-base text-slate-300 dark:text-slate-300 px-4 mb-4">
         <Link 
           to="/about" 
           onMouseEnter={() => import('./pages/About')}
           onFocus={() => import('./pages/About')}
-          className="hover:text-[#2563EB] transition-colors font-medium"
+          className="hover:text-blue-400 dark:hover:text-blue-400 transition-colors font-semibold"
         >
           About
         </Link>
@@ -34,7 +34,7 @@ function Footer() {
           to="/contact" 
           onMouseEnter={() => import('./pages/Contact')}
           onFocus={() => import('./pages/Contact')}
-          className="hover:text-[#2563EB] transition-colors font-medium"
+          className="hover:text-blue-400 dark:hover:text-blue-400 transition-colors font-semibold"
         >
           Contact
         </Link>
@@ -42,7 +42,7 @@ function Footer() {
           to="/privacy" 
           onMouseEnter={() => import('./pages/Privacy')}
           onFocus={() => import('./pages/Privacy')}
-          className="hover:text-[#2563EB] transition-colors font-medium"
+          className="hover:text-blue-400 dark:hover:text-blue-400 transition-colors font-semibold"
         >
           Privacy Policy
         </Link>
@@ -50,12 +50,12 @@ function Footer() {
           to="/terms" 
           onMouseEnter={() => import('./pages/Terms')}
           onFocus={() => import('./pages/Terms')}
-          className="hover:text-[#2563EB] transition-colors font-medium"
+          className="hover:text-blue-400 dark:hover:text-blue-400 transition-colors font-semibold"
         >
           Terms & Conditions
         </Link>
       </div>
-      <div className="text-gray-400 dark:text-gray-550 text-[10px] sm:text-xs flex flex-col items-center gap-1">
+      <div className="text-slate-500 dark:text-slate-500 text-xs sm:text-sm flex flex-col items-center gap-1">
         <span>&copy; {new Date().getFullYear()} Sleep Calculator. All rights reserved.</span>
       </div>
     </footer>
@@ -89,7 +89,7 @@ export default function App() {
 
 function PageBlogRedirect() {
   const { slug } = useParams();
-  return <Navigate to={`/blog/${slug}`} replace />;
+  return <Navigate to={`/${slug}`} replace />;
 }
 
 function AppContent() {
@@ -114,23 +114,23 @@ function AppContent() {
                 {/* Core Pages */}
                 <Route path="/" element={<Home />} />
                 <Route path="/blog" element={<Blog />} />
-                <Route path="/blog/:slug" element={<Blog />} />
 
-                {/* Legacy Root Paths redirected to new /blog prefix */}
-                <Route path="/sleep-cycles-explained" element={<Navigate to="/blog/sleep-cycles-explained" replace />} />
-                <Route path="/what-is-rem-sleep" element={<Navigate to="/blog/what-is-rem-sleep" replace />} />
-                <Route path="/how-much-sleep-do-you-need" element={<Navigate to="/blog/how-much-sleep-do-you-need" replace />} />
-                <Route path="/best-time-to-sleep-and-wake-up" element={<Navigate to="/blog/best-time-to-sleep-and-wake-up" replace />} />
-                <Route path="/sleep-cycle-calculator-guide" element={<Navigate to="/blog/sleep-cycle-calculator-guide" replace />} />
-                <Route path="/why-90-minute-sleep-cycles-matter" element={<Navigate to="/blog/why-90-minute-sleep-cycles-matter" replace />} />
-                <Route path="/how-to-wake-up-refreshed" element={<Navigate to="/blog/how-to-wake-up-refreshed" replace />} />
-                <Route path="/ideal-bedtime-for-adults" element={<Navigate to="/blog/ideal-bedtime-for-adults" replace />} />
-                <Route path="/sleep-schedule-for-productivity" element={<Navigate to="/blog/sleep-schedule-for-productivity" replace />} />
-                <Route path="/how-many-hours-of-sleep-is-healthy" element={<Navigate to="/blog/how-many-hours-of-sleep-is-healthy" replace />} />
-                <Route path="/power-nap-vs-full-sleep-cycle" element={<Navigate to="/blog/power-nap-vs-full-sleep-cycle" replace />} />
-                <Route path="/circadian-rhythm-explained" element={<Navigate to="/blog/circadian-rhythm-explained" replace />} />
+                {/* Direct Root Paths for all articles */}
+                <Route path="/sleep-cycles-explained" element={<Blog />} />
+                <Route path="/what-is-rem-sleep" element={<Blog />} />
+                <Route path="/how-much-sleep-do-you-need" element={<Blog />} />
+                <Route path="/best-time-to-sleep-and-wake-up" element={<Blog />} />
+                <Route path="/sleep-cycle-calculator-guide" element={<Blog />} />
+                <Route path="/why-90-minute-sleep-cycles-matter" element={<Blog />} />
+                <Route path="/how-to-wake-up-refreshed" element={<Blog />} />
+                <Route path="/ideal-bedtime-for-adults" element={<Blog />} />
+                <Route path="/sleep-schedule-for-productivity" element={<Blog />} />
+                <Route path="/how-many-hours-of-sleep-is-healthy" element={<Blog />} />
+                <Route path="/power-nap-vs-full-sleep-cycle" element={<Blog />} />
+                <Route path="/circadian-rhythm-explained" element={<Blog />} />
 
-                {/* Legacy /page/blog Paths redirected to /blog prefix */}
+                {/* Legacy /blog and /page/blog Prefixes redirected back to clean root paths */}
+                <Route path="/blog/:slug" element={<PageBlogRedirect />} />
                 <Route path="/page/blog" element={<Navigate to="/blog" replace />} />
                 <Route path="/page/blog/:slug" element={<PageBlogRedirect />} />
 

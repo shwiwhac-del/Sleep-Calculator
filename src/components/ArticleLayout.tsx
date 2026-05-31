@@ -19,33 +19,33 @@ interface ArticleLayoutProps {
 
 const DEFAULT_RELATED_POSTS = [
   {
-    title: "Why Sleep Cycles Matter More Than Sleeping Longer",
-    url: "/blog/why-sleep-cycles-matter-more-than-sleeping-longer",
-    description: "Learn why proper REM timing is far more essential to avoid waking up tired than simply getting more hours of sleep."
+    title: "Why 90-Minute Sleep Cycles Matter for Better Rest",
+    url: "/why-90-minute-sleep-cycles-matter",
+    description: "Learn why proper sleep cycle timing is far more essential to avoid waking up tired than simply getting more hours of sleep."
   },
   {
-    title: "The Ultimate Sleep Cycle Guide: 4 Stages Of Sleep",
-    url: "/blog/sleep-cycle-stages",
+    title: "Sleep Cycles Explained: Understanding the Stages",
+    url: "/sleep-cycles-explained",
     description: "Discover the 4 stages of sleep, REM, deep sleep, and how the 90-minute sleep cycle works to restore your mind."
   },
   {
-    title: "How to Fix Your Sleep Schedule",
-    url: "/blog/fix-sleep-schedule",
+    title: "Sleep Schedule for Productivity & Focus",
+    url: "/sleep-schedule-for-productivity",
     description: "Learn scientifically-proven methods to reset your circadian rhythm and fix your sleep schedule fast."
   },
   {
-    title: "Sleep Cycle Calculator: Bedtime Logic Explained",
-    url: "/blog/sleep-cycle-calculator",
+    title: "Sleep Cycle Calculator Guide and Tips",
+    url: "/sleep-cycle-calculator-guide",
     description: "Learn how a Sleep Cycle Calculator helps you wake up refreshed by optimizing your REM sleep cycles."
   },
   {
-    title: "How Much Sleep Do You Need? A Sleep by Age Guide",
-    url: "/blog/sleep-age",
+    title: "How Much Sleep Do You Need? Complete Guide",
+    url: "/how-much-sleep-do-you-need",
     description: "Find out exactly how many hours of sleep you need based on your age. From newborns to seniors, learn how sleep changes."
   },
   {
-    title: "Nap Calculator for Energy: Precise Timings",
-    url: "/blog/nap-calculator-for-energy",
+    title: "Power Nap vs Full Sleep Cycle",
+    url: "/power-nap-vs-full-sleep-cycle",
     description: "Discover the scientific sweet spots for midday naps to maximize cognitive energy without feeling groggy."
   }
 ];
@@ -67,7 +67,7 @@ export function ArticleLayout({
 
   const handleBack = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    navigate('/blog');
+    navigate(backUrl);
   };
 
   const currentUrl = `https://sleepcalculater.online${location.pathname}`;
@@ -150,7 +150,7 @@ export function ArticleLayout({
       <article className="animate-in fade-in slide-in-from-top-4 duration-500">
         <nav className="mb-8 flex items-center justify-start text-sm border-b border-gray-100 dark:border-slate-800/60 pb-4">
           <button onClick={handleBack} className="inline-flex items-center gap-1.5 text-xs text-gray-450 dark:text-gray-500 font-semibold uppercase tracking-wider hover:text-[#2563EB] dark:hover:text-[#3b82f6] transition-colors focus-visible:outline-none cursor-pointer">
-            <ChevronLeft size={14} /> Back to Blog
+            <ChevronLeft size={14} /> {backLabel}
           </button>
         </nav>
         

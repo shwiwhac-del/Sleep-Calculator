@@ -108,18 +108,18 @@ export default function Blog() {
   const { slug } = useParams();
   const currentPath = location.pathname;
 
-  const isBlog1 = slug === 'sleep-cycles-explained';
-  const isBlog2 = slug === 'what-is-rem-sleep';
-  const isBlog3 = slug === 'how-much-sleep-do-you-need';
-  const isBlog4 = slug === 'best-time-to-sleep-and-wake-up';
-  const isBlog5 = slug === 'sleep-cycle-calculator-guide';
-  const isBlog6 = slug === 'why-90-minute-sleep-cycles-matter';
-  const isBlog7 = slug === 'how-to-wake-up-refreshed';
-  const isBlog8 = slug === 'ideal-bedtime-for-adults';
-  const isBlog9 = slug === 'sleep-schedule-for-productivity';
-  const isBlog10 = slug === 'how-many-hours-of-sleep-is-healthy';
-  const isBlog11 = slug === 'power-nap-vs-full-sleep-cycle';
-  const isBlog12 = slug === 'circadian-rhythm-explained';
+  const isBlog1 = currentPath === '/sleep-cycles-explained' || slug === 'sleep-cycles-explained';
+  const isBlog2 = currentPath === '/what-is-rem-sleep' || slug === 'what-is-rem-sleep';
+  const isBlog3 = currentPath === '/how-much-sleep-do-you-need' || slug === 'how-much-sleep-do-you-need';
+  const isBlog4 = currentPath === '/best-time-to-sleep-and-wake-up' || slug === 'best-time-to-sleep-and-wake-up';
+  const isBlog5 = currentPath === '/sleep-cycle-calculator-guide' || slug === 'sleep-cycle-calculator-guide';
+  const isBlog6 = currentPath === '/why-90-minute-sleep-cycles-matter' || slug === 'why-90-minute-sleep-cycles-matter';
+  const isBlog7 = currentPath === '/how-to-wake-up-refreshed' || slug === 'how-to-wake-up-refreshed';
+  const isBlog8 = currentPath === '/ideal-bedtime-for-adults' || slug === 'ideal-bedtime-for-adults';
+  const isBlog9 = currentPath === '/sleep-schedule-for-productivity' || slug === 'sleep-schedule-for-productivity';
+  const isBlog10 = currentPath === '/how-many-hours-of-sleep-is-healthy' || slug === 'how-many-hours-of-sleep-is-healthy';
+  const isBlog11 = currentPath === '/power-nap-vs-full-sleep-cycle' || slug === 'power-nap-vs-full-sleep-cycle';
+  const isBlog12 = currentPath === '/circadian-rhythm-explained' || slug === 'circadian-rhythm-explained';
   
   const isAnyBlog = isBlog1 || isBlog2 || isBlog3 || isBlog4 || isBlog5 || isBlog6 || isBlog7 || isBlog8 || isBlog9 || isBlog10 || isBlog11 || isBlog12;
   const isAll = false; // Override isAll to false so individual articles never render stacked in /blog
@@ -218,7 +218,7 @@ export default function Blog() {
               {BLOG_POSTS.map((post) => (
                 <Link
                   key={post.slug}
-                  to={`/blog/${post.slug}`}
+                  to={`/${post.slug}`}
                   className="group flex flex-col bg-slate-900/40 hover:bg-slate-900/60 border border-white/5 hover:border-blue-500/30 rounded-2xl p-6 transition-all duration-300 transform hover:-translate-y-1.5 shadow-lg hover:shadow-blue-500/5 relative overflow-hidden h-full"
                 >
                   <div className="absolute top-0 left-0 w-1 bg-gradient-to-b from-blue-500 to-indigo-500 h-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
