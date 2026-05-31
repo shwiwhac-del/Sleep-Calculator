@@ -148,14 +148,7 @@ export function ArticleLayout({
       </Helmet>
 
       <article className="animate-in fade-in slide-in-from-top-4 duration-500">
-        <nav className="mb-8 flex flex-wrap items-center justify-between gap-y-2 text-sm text-gray-500 dark:text-gray-400 border-b border-gray-100 dark:border-slate-800/60 pb-4">
-          <div className="flex items-center gap-2">
-            <Link to="/" className="hover:text-[#2563EB] dark:hover:text-[#3b82f6] transition-colors font-semibold">Calculator</Link>
-            <span className="text-gray-300 dark:text-gray-700">/</span>
-            <Link to="/blog" className="hover:text-[#2563EB] dark:hover:text-[#3b82f6] transition-colors font-semibold">Blog</Link>
-            <span className="text-gray-300 dark:text-gray-700">/</span>
-            <span className="text-gray-400 dark:text-gray-500 font-medium truncate max-w-[180px] sm:max-w-[280px]" title={title}>{title}</span>
-          </div>
+        <nav className="mb-8 flex items-center justify-start text-sm border-b border-gray-100 dark:border-slate-800/60 pb-4">
           <button onClick={handleBack} className="inline-flex items-center gap-1.5 text-xs text-gray-450 dark:text-gray-500 font-semibold uppercase tracking-wider hover:text-[#2563EB] dark:hover:text-[#3b82f6] transition-colors focus-visible:outline-none cursor-pointer">
             <ChevronLeft size={14} /> Back to Blog
           </button>
