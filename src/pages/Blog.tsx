@@ -1,30 +1,136 @@
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { Link, useNavigate, useLocation, useParams } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'motion/react';
 
+const BLOG_POSTS = [
+  {
+    slug: 'sleep-cycles-explained',
+    title: 'Sleep Cycles Explained: Understanding the Stages of Sleep',
+    description: 'Learn how sleep cycles work, the stages of sleep, REM sleep, and why understanding your sleep cycle can help you wake up refreshed and improve sleep quality.',
+    category: 'Sleep Science',
+    readTime: '5 min read',
+    date: 'June 1, 2026'
+  },
+  {
+    slug: 'what-is-rem-sleep',
+    title: 'What Is REM Sleep? Benefits, Stages, and Why It Matters',
+    description: 'Discover what REM sleep is, why it is important, how it affects memory and learning, and how to improve REM sleep for better overall health.',
+    category: 'REM Sleep',
+    readTime: '5 min read',
+    date: 'May 28, 2026'
+  },
+  {
+    slug: 'how-much-sleep-do-you-need',
+    title: 'How Much Sleep Do You Need? Sleep Recommendations by Age',
+    description: 'Learn how much sleep you need based on your age, lifestyle, and health. Discover recommended sleep hours and tips for better sleep quality.',
+    category: 'Sleep Health',
+    readTime: '6 min read',
+    date: 'May 25, 2026'
+  },
+  {
+    slug: 'best-time-to-sleep-and-wake-up',
+    title: 'Best Time to Sleep and Wake Up for Better Energy and Health',
+    description: 'Discover the best time to sleep and wake up based on sleep cycles, circadian rhythm, and healthy sleep habits for better energy and productivity.',
+    category: 'Circadian Rhythm',
+    readTime: '5 min read',
+    date: 'May 20, 2026'
+  },
+  {
+    slug: 'sleep-cycle-calculator-guide',
+    title: 'Sleep Cycle Calculator Guide: How to Calculate the Best Time to Sleep',
+    description: 'Learn how a sleep cycle calculator works, how to calculate your ideal bedtime and wake-up time, and why sleep cycles matter for better rest.',
+    category: 'Sleep Guide',
+    readTime: '6 min read',
+    date: 'May 15, 2026'
+  },
+  {
+    slug: 'why-90-minute-sleep-cycles-matter',
+    title: 'Why 90 Minute Sleep Cycles Matter for Better Sleep and Energy',
+    description: 'Learn why 90-minute sleep cycles are important, how they affect sleep quality, and how to use them to wake up feeling refreshed.',
+    category: 'Sleep Cycles',
+    readTime: '5 min read',
+    date: 'May 10, 2026'
+  },
+  {
+    slug: 'how-to-wake-up-refreshed',
+    title: 'How to Wake Up Refreshed: 10 Science-Backed Tips for Better Mornings',
+    description: 'Learn how to wake up refreshed every morning with proven sleep tips, healthy sleep habits, and strategies to improve sleep quality.',
+    category: 'Sleep Hygiene',
+    readTime: '6 min read',
+    date: 'May 5, 2026'
+  },
+  {
+    slug: 'ideal-bedtime-for-adults',
+    title: 'Ideal Bedtime for Adults: What Time Should You Go to Sleep?',
+    description: 'Discover the ideal bedtime for adults based on sleep cycles, sleep duration, and circadian rhythm to improve sleep quality and morning energy.',
+    category: 'Bedtime Routine',
+    readTime: '5 min read',
+    date: 'April 30, 2026'
+  },
+  {
+    slug: 'sleep-schedule-for-productivity',
+    title: 'Sleep Schedule for Productivity: The Best Sleep Routine for Focus and Performance',
+    description: 'Discover the best sleep schedule for productivity, focus, energy, and mental performance. Learn how sleep habits affect work, study, and daily success.',
+    category: 'Productivity',
+    readTime: '5 min read',
+    date: 'April 25, 2026'
+  },
+  {
+    slug: 'how-many-hours-of-sleep-is-healthy',
+    title: 'How Many Hours of Sleep Is Healthy? A Complete Guide',
+    description: 'Learn how many hours of sleep are healthy for adults, teenagers, and children. Discover why sleep duration matters for health and well-being.',
+    category: 'Health & Wellness',
+    readTime: '6 min read',
+    date: 'April 20, 2026'
+  },
+  {
+    slug: 'power-nap-vs-full-sleep-cycle',
+    title: 'Power Nap vs Full Sleep Cycle: Which Is Better for Energy?',
+    description: 'Compare power naps and full sleep cycles to discover which option is better for energy, focus, productivity, and overall sleep health.',
+    category: 'Sleep Science',
+    readTime: '5 min read',
+    date: 'April 15, 2026'
+  },
+  {
+    slug: 'circadian-rhythm-explained',
+    title: "Circadian Rhythm Explained: How Your Body's Internal Clock Controls Sleep",
+    description: "Learn what the circadian rhythm is, how it affects sleep and energy levels, and how to improve your body's natural sleep-wake cycle.",
+    category: 'Circadian Rhythm',
+    readTime: '6 min read',
+    date: 'April 10, 2026'
+  }
+];
+
 export default function Blog() {
   const navigate = useNavigate();
   const location = useLocation();
+  const { slug } = useParams();
   const currentPath = location.pathname;
 
-  const handleBack = () => {
-    navigate('/');
-  };
+  const isBlog1 = slug === 'sleep-cycles-explained';
+  const isBlog2 = slug === 'what-is-rem-sleep';
+  const isBlog3 = slug === 'how-much-sleep-do-you-need';
+  const isBlog4 = slug === 'best-time-to-sleep-and-wake-up';
+  const isBlog5 = slug === 'sleep-cycle-calculator-guide';
+  const isBlog6 = slug === 'why-90-minute-sleep-cycles-matter';
+  const isBlog7 = slug === 'how-to-wake-up-refreshed';
+  const isBlog8 = slug === 'ideal-bedtime-for-adults';
+  const isBlog9 = slug === 'sleep-schedule-for-productivity';
+  const isBlog10 = slug === 'how-many-hours-of-sleep-is-healthy';
+  const isBlog11 = slug === 'power-nap-vs-full-sleep-cycle';
+  const isBlog12 = slug === 'circadian-rhythm-explained';
+  
+  const isAnyBlog = isBlog1 || isBlog2 || isBlog3 || isBlog4 || isBlog5 || isBlog6 || isBlog7 || isBlog8 || isBlog9 || isBlog10 || isBlog11 || isBlog12;
+  const isAll = false; // Override isAll to false so individual articles never render stacked in /blog
 
-  const isBlog1 = currentPath === '/sleep-cycles-explained';
-  const isBlog2 = currentPath === '/what-is-rem-sleep';
-  const isBlog3 = currentPath === '/how-much-sleep-do-you-need';
-  const isBlog4 = currentPath === '/best-time-to-sleep-and-wake-up';
-  const isBlog5 = currentPath === '/sleep-cycle-calculator-guide';
-  const isBlog6 = currentPath === '/why-90-minute-sleep-cycles-matter';
-  const isBlog7 = currentPath === '/how-to-wake-up-refreshed';
-  const isBlog8 = currentPath === '/ideal-bedtime-for-adults';
-  const isBlog9 = currentPath === '/sleep-schedule-for-productivity';
-  const isBlog10 = currentPath === '/how-many-hours-of-sleep-is-healthy';
-  const isBlog11 = currentPath === '/power-nap-vs-full-sleep-cycle';
-  const isBlog12 = currentPath === '/circadian-rhythm-explained';
-  const isAll = !isBlog1 && !isBlog2 && !isBlog3 && !isBlog4 && !isBlog5 && !isBlog6 && !isBlog7 && !isBlog8 && !isBlog9 && !isBlog10 && !isBlog11 && !isBlog12;
+  const handleBack = () => {
+    if (isAnyBlog) {
+      navigate('/blog');
+    } else {
+      navigate('/');
+    }
+  };
 
   // Metadata determination for SEO
   let title = "Sleep Calculator Blog: Guides on Sleep Cycles, Bedtime & Wake up Time";
@@ -70,7 +176,7 @@ export default function Blog() {
   }
 
   return (
-    <div className="w-full max-w-3xl mx-auto px-4 sm:px-6 relative z-10">
+    <div className={`w-full mx-auto px-4 sm:px-6 relative z-10 ${isAnyBlog ? 'max-w-3xl py-4 sm:py-6' : 'max-w-6xl py-8'}`}>
       <Helmet>
         <title>{title}</title>
         <meta name="description" content={description} />
@@ -86,7 +192,7 @@ export default function Blog() {
           onClick={handleBack}
           className="inline-flex items-center gap-2 text-base text-slate-350 dark:text-slate-300 font-semibold tracking-wide hover:text-[#2563EB] dark:hover:text-[#3b82f6] transition-colors focus-visible:outline-none cursor-pointer"
         >
-          <ArrowLeft size={18} /> Back to Calculator
+          <ArrowLeft size={18} /> {isAnyBlog ? "Back to Blog" : "Back to Calculator"}
         </button>
       </div>
 
@@ -94,8 +200,62 @@ export default function Blog() {
         initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="text-left py-4 sm:py-6 space-y-16"
+        className="text-left space-y-16"
       >
+        {/* Main Blog Cards Overview - Render when no specific blog is selected */}
+        {!isAnyBlog && (
+          <div className="space-y-12">
+            <div className="text-center space-y-4 max-w-3xl mx-auto mb-12">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-tight leading-tight">
+                Sleep Science <span className="bg-gradient-to-r from-blue-400 via-indigo-400 to-blue-300 bg-clip-text text-transparent">&amp; Guides</span>
+              </h1>
+              <p className="text-base sm:text-lg md:text-[1.125rem] text-slate-300 leading-relaxed font-medium">
+                Expert knowledge, physiological research, and actionable tips to help you calculate your optimal sleep windows, reset your internal clock, and wake up energized.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 pb-12">
+              {BLOG_POSTS.map((post) => (
+                <Link
+                  key={post.slug}
+                  to={`/blog/${post.slug}`}
+                  className="group flex flex-col bg-slate-900/40 hover:bg-slate-900/60 border border-white/5 hover:border-blue-500/30 rounded-2xl p-6 transition-all duration-300 transform hover:-translate-y-1.5 shadow-lg hover:shadow-blue-500/5 relative overflow-hidden h-full"
+                >
+                  <div className="absolute top-0 left-0 w-1 bg-gradient-to-b from-blue-500 to-indigo-500 h-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="text-xs font-bold tracking-wider text-blue-400 uppercase bg-blue-950/40 px-2.5 py-1 rounded-md border border-blue-900/30">
+                      {post.category}
+                    </span>
+                    <span className="text-xs font-medium text-slate-400">
+                      {post.readTime}
+                    </span>
+                  </div>
+
+                  <h2 className="text-xl font-bold text-gray-100 group-hover:text-blue-300 transition-colors leading-snug mb-3">
+                    {post.title}
+                  </h2>
+
+                  <p className="text-sm text-slate-400 leading-relaxed line-clamp-3 mb-6 flex-grow">
+                    {post.description}
+                  </p>
+
+                  <div className="flex items-center text-sm font-semibold text-blue-400 group-hover:text-blue-300 mt-auto">
+                    Read Article
+                    <svg 
+                      className="w-4 h-4 ml-1 transform group-hover:translate-x-1.5 transition-transform duration-300" 
+                      fill="none" 
+                      viewBox="0 0 24 24" 
+                      stroke="currentColor"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
         {/* Blog 1: Sleep Cycles Explained */}
         {(isBlog1 || isAll) && (
           <article className="space-y-6 select-text text-slate-300">

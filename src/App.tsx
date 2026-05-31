@@ -1,5 +1,5 @@
 import { useState, useEffect, Suspense, lazy } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link, Navigate, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link, Navigate, useLocation, useParams } from 'react-router-dom';
 import { Moon, Sun, Menu, X, Loader2, Home as HomeIcon, BookOpen, User, HelpCircle, Mail, ShieldAlert } from 'lucide-react';
 import { HelmetProvider } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'motion/react';
@@ -87,6 +87,11 @@ export default function App() {
   );
 }
 
+function PageBlogRedirect() {
+  const { slug } = useParams();
+  return <Navigate to={`/blog/${slug}`} replace />;
+}
+
 function AppContent() {
   const [isDarkMode] = useState(true);
 
@@ -109,18 +114,26 @@ function AppContent() {
                 {/* Core Pages */}
                 <Route path="/" element={<Home />} />
                 <Route path="/blog" element={<Blog />} />
-                <Route path="/sleep-cycles-explained" element={<Blog />} />
-                <Route path="/what-is-rem-sleep" element={<Blog />} />
-                <Route path="/how-much-sleep-do-you-need" element={<Blog />} />
-                <Route path="/best-time-to-sleep-and-wake-up" element={<Blog />} />
-                <Route path="/sleep-cycle-calculator-guide" element={<Blog />} />
-                <Route path="/why-90-minute-sleep-cycles-matter" element={<Blog />} />
-                <Route path="/how-to-wake-up-refreshed" element={<Blog />} />
-                <Route path="/ideal-bedtime-for-adults" element={<Blog />} />
-                <Route path="/sleep-schedule-for-productivity" element={<Blog />} />
-                <Route path="/how-many-hours-of-sleep-is-healthy" element={<Blog />} />
-                <Route path="/power-nap-vs-full-sleep-cycle" element={<Blog />} />
-                <Route path="/circadian-rhythm-explained" element={<Blog />} />
+                <Route path="/blog/:slug" element={<Blog />} />
+
+                {/* Legacy Root Paths redirected to new /blog prefix */}
+                <Route path="/sleep-cycles-explained" element={<Navigate to="/blog/sleep-cycles-explained" replace />} />
+                <Route path="/what-is-rem-sleep" element={<Navigate to="/blog/what-is-rem-sleep" replace />} />
+                <Route path="/how-much-sleep-do-you-need" element={<Navigate to="/blog/how-much-sleep-do-you-need" replace />} />
+                <Route path="/best-time-to-sleep-and-wake-up" element={<Navigate to="/blog/best-time-to-sleep-and-wake-up" replace />} />
+                <Route path="/sleep-cycle-calculator-guide" element={<Navigate to="/blog/sleep-cycle-calculator-guide" replace />} />
+                <Route path="/why-90-minute-sleep-cycles-matter" element={<Navigate to="/blog/why-90-minute-sleep-cycles-matter" replace />} />
+                <Route path="/how-to-wake-up-refreshed" element={<Navigate to="/blog/how-to-wake-up-refreshed" replace />} />
+                <Route path="/ideal-bedtime-for-adults" element={<Navigate to="/blog/ideal-bedtime-for-adults" replace />} />
+                <Route path="/sleep-schedule-for-productivity" element={<Navigate to="/blog/sleep-schedule-for-productivity" replace />} />
+                <Route path="/how-many-hours-of-sleep-is-healthy" element={<Navigate to="/blog/how-many-hours-of-sleep-is-healthy" replace />} />
+                <Route path="/power-nap-vs-full-sleep-cycle" element={<Navigate to="/blog/power-nap-vs-full-sleep-cycle" replace />} />
+                <Route path="/circadian-rhythm-explained" element={<Navigate to="/blog/circadian-rhythm-explained" replace />} />
+
+                {/* Legacy /page/blog Paths redirected to /blog prefix */}
+                <Route path="/page/blog" element={<Navigate to="/blog" replace />} />
+                <Route path="/page/blog/:slug" element={<PageBlogRedirect />} />
+
                 <Route path="/about" element={<About />} />
                 
                 {/* Utility Pages */}

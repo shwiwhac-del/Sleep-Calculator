@@ -111,18 +111,18 @@ export default function About() {
               Explore our <Link to="/blog" className="text-[#2563EB] hover:text-[#1D4ED8] font-semibold transition-colors">Sleep Blog</Link> for detailed, science-backed guides on improving sleep hygiene:
             </p>
             <ul className="list-disc pl-5 space-y-2 text-[#2563EB] font-medium">
-              <li><Link to="/sleep-cycles-explained" className="hover:underline">Sleep Cycles Explained: Understanding the Stages of Sleep</Link></li>
-              <li><Link to="/what-is-rem-sleep" className="hover:underline">What Is REM Sleep? Benefits, Stages, and Why It Matters</Link></li>
-              <li><Link to="/how-much-sleep-do-you-need" className="hover:underline">How Much Sleep Do You Need? Sleep Recommendations by Age</Link></li>
-              <li><Link to="/best-time-to-sleep-and-wake-up" className="hover:underline">Best Time to Sleep and Wake Up for Better Energy and Health</Link></li>
-              <li><Link to="/sleep-cycle-calculator-guide" className="hover:underline">Sleep Cycle Calculator Guide: How to Calculate the Best Time to Sleep</Link></li>
-              <li><Link to="/why-90-minute-sleep-cycles-matter" className="hover:underline">Why 90 Minute Sleep Cycles Matter for Better Sleep and Energy</Link></li>
-              <li><Link to="/how-to-wake-up-refreshed" className="hover:underline">How to Wake Up Refreshed: 10 Science-Backed Tips for Better Mornings</Link></li>
-              <li><Link to="/ideal-bedtime-for-adults" className="hover:underline">Ideal Bedtime for Adults: What Time Should You Go to Sleep?</Link></li>
-              <li><Link to="/sleep-schedule-for-productivity" className="hover:underline">Sleep Schedule for Productivity: The Best Sleep Routine for Focus and Performance</Link></li>
-              <li><Link to="/how-many-hours-of-sleep-is-healthy" className="hover:underline">How Many Hours of Sleep Is Healthy? A Complete Guide</Link></li>
-              <li><Link to="/power-nap-vs-full-sleep-cycle" className="hover:underline">Power Nap vs Full Sleep Cycle: Which Is Better for Energy?</Link></li>
-              <li><Link to="/circadian-rhythm-explained" className="hover:underline">Circadian Rhythm Explained: How Your Body's Internal Clock Controls Sleep</Link></li>
+              <li><Link to="/blog/sleep-cycles-explained" className="hover:underline">Sleep Cycles Explained: Understanding the Stages of Sleep</Link></li>
+              <li><Link to="/blog/what-is-rem-sleep" className="hover:underline">What Is REM Sleep? Benefits, Stages, and Why It Matters</Link></li>
+              <li><Link to="/blog/how-much-sleep-do-you-need" className="hover:underline">How Much Sleep Do You Need? Sleep Recommendations by Age</Link></li>
+              <li><Link to="/blog/best-time-to-sleep-and-wake-up" className="hover:underline">Best Time to Sleep and Wake Up for Better Energy and Health</Link></li>
+              <li><Link to="/blog/sleep-cycle-calculator-guide" className="hover:underline">Sleep Cycle Calculator Guide: How to Calculate the Best Time to Sleep</Link></li>
+              <li><Link to="/blog/why-90-minute-sleep-cycles-matter" className="hover:underline">Why 90 Minute Sleep Cycles Matter for Better Sleep and Energy</Link></li>
+              <li><Link to="/blog/how-to-wake-up-refreshed" className="hover:underline">How to Wake Up Refreshed: 10 Science-Backed Tips for Better Mornings</Link></li>
+              <li><Link to="/blog/ideal-bedtime-for-adults" className="hover:underline">Ideal Bedtime for Adults: What Time Should You Go to Sleep?</Link></li>
+              <li><Link to="/blog/sleep-schedule-for-productivity" className="hover:underline">Sleep Schedule for Productivity: The Best Sleep Routine for Focus and Performance</Link></li>
+              <li><Link to="/blog/how-many-hours-of-sleep-is-healthy" className="hover:underline">How Many Hours of Sleep Is Healthy? A Complete Guide</Link></li>
+              <li><Link to="/blog/power-nap-vs-full-sleep-cycle" className="hover:underline">Power Nap vs Full Sleep Cycle: Which Is Better for Energy?</Link></li>
+              <li><Link to="/blog/circadian-rhythm-explained" className="hover:underline">Circadian Rhythm Explained: How Your Body's Internal Clock Controls Sleep</Link></li>
             </ul>
           </section>
 
