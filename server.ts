@@ -44,15 +44,29 @@ async function startServer() {
     const publicPath = path.join(process.cwd(), "public", "sitemap.xml");
 
     res.set("Content-Type", "application/xml");
-    res.sendFile(distPath, (err) => {
-      if (err) {
-        res.sendFile(publicPath, (errPublic) => {
-          if (errPublic) {
-            res.status(404).set("Content-Type", "text/plain").send("sitemap.xml not found");
-          }
-        });
-      }
-    });
+    
+    // In development mode, prioritize public/sitemap.xml to avoid stale dist/sitemap.xml serving
+    if (process.env.NODE_ENV !== "production") {
+      res.sendFile(publicPath, (err) => {
+        if (err) {
+          res.sendFile(distPath, (errDist) => {
+            if (errDist) {
+              res.status(404).set("Content-Type", "text/plain").send("sitemap.xml not found");
+            }
+          });
+        }
+      });
+    } else {
+      res.sendFile(distPath, (err) => {
+        if (err) {
+          res.sendFile(publicPath, (errPublic) => {
+            if (errPublic) {
+              res.status(404).set("Content-Type", "text/plain").send("sitemap.xml not found");
+            }
+          });
+        }
+      });
+    }
   });
 
   // Explicit route to serve robots.txt directly with correct Content-Type, fallback protected
