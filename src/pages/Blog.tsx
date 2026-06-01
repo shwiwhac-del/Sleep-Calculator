@@ -638,6 +638,20 @@ export default function Blog() {
 
   const currentFaqs = activeSlug ? BLOG_FAQS[activeSlug] : [];
 
+  const currentPost = BLOG_POSTS.find(p => p.slug === activeSlug);
+  const relatedPosts = BLOG_POSTS
+    .filter(p => p.slug !== activeSlug)
+    .sort((a, b) => {
+      if (currentPost && a.category === currentPost.category && b.category !== currentPost.category) {
+        return -1;
+      }
+      if (currentPost && b.category === currentPost.category && a.category !== currentPost.category) {
+        return 1;
+      }
+      return (a.title.length + b.description.length) % 2 === 0 ? 1 : -1;
+    })
+    .slice(0, 3);
+
   if (!isAnyBlog) {
     return <Navigate to="/" replace />;
   }
@@ -852,8 +866,8 @@ export default function Blog() {
               <ul className="list-disc pl-6 space-y-2 text-slate-300">
                 <li>Light Sleep (N1)</li>
                 <li>Light Sleep (N2)</li>
-                <li>Deep Sleep (N3)</li>
-                <li>REM Sleep</li>
+                <li><Link to="/what-is-deep-sleep" className="text-blue-400 hover:text-blue-300 underline font-semibold transition-colors">Deep Sleep (N3)</Link></li>
+                <li><Link to="/what-is-rem-sleep" className="text-blue-400 hover:text-blue-300 underline font-semibold transition-colors">REM Sleep</Link></li>
               </ul>
             </div>
 
@@ -912,7 +926,7 @@ export default function Blog() {
             </h3>
 
             <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
-              Deep sleep is the most physically restorative stage.
+              Deep sleep is the most physically restorative stage of the cycle. To learn more about how it recovers your muscles and boosts your immunity, explore our specific guide on <Link to="/what-is-deep-sleep" className="text-blue-400 hover:text-blue-300 underline font-semibold transition-colors">what is deep sleep and why does your body need it?</Link>
             </p>
 
             <div className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 py-1">
@@ -934,7 +948,7 @@ export default function Blog() {
             </h3>
 
             <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
-              REM stands for Rapid Eye Movement.
+              REM stands for Rapid Eye Movement, which is the stage responsible for cognitive and creative consolidation. Explore the full details in our deep dive into <Link to="/what-is-rem-sleep" className="text-blue-400 hover:text-blue-300 underline font-semibold transition-colors">what is REM sleep and why is it important</Link>.
             </p>
 
             <div className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 py-1">
@@ -5433,6 +5447,48 @@ export default function Blog() {
               Deep sleep is a critical part of the recovery process that supports energy, health, and mental performance. By improving sleep habits and maintaining a consistent sleep schedule, you can promote deeper, more restorative sleep and wake up feeling refreshed.
             </p>
           </article>
+        )}
+
+        {/* Internal Cross-Linking: Related Guides Section */}
+        {isAnyBlog && relatedPosts.length > 0 && (
+          <div className="pt-10 mt-10 border-t border-white/10" id="blog-related-articles-section">
+            <div className="flex items-center gap-2 mb-6">
+              <Sparkles className="w-5 h-5 text-blue-400" />
+              <h2 className="text-xl sm:text-2xl font-black text-gray-100 tracking-tight">
+                Recommended Sleep Guides
+              </h2>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {relatedPosts.map((post) => (
+                <Link
+                  key={post.slug}
+                  to={`/${post.slug}`}
+                  onClick={() => {
+                    setOpenFaq(null);
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }}
+                  className="group relative flex flex-col justify-between p-5 rounded-2xl bg-slate-900/40 hover:bg-slate-950/60 border border-white/5 hover:border-blue-500/30 transition-all duration-300 shadow-lg hover:shadow-indigo-500/5 hover:-translate-y-0.5"
+                  id={`related-post-card-${post.slug}`}
+                >
+                  <div className="space-y-2">
+                    <span className="text-[10px] font-bold tracking-widest text-blue-400 uppercase block">
+                      {post.category}
+                    </span>
+                    <h3 className="text-sm font-extrabold text-gray-100 group-hover:text-blue-400 transition-colors line-clamp-2 leading-snug">
+                      {post.title}
+                    </h3>
+                    <p className="text-xs text-slate-400 line-clamp-2 leading-relaxed">
+                      {post.description}
+                    </p>
+                  </div>
+                  <div className="flex items-center gap-1.5 text-[11px] font-bold text-blue-400 group-hover:text-blue-300 mt-4 uppercase tracking-wider">
+                    <span>Read Guide</span>
+                    <span className="text-xs transform group-hover:translate-x-1 transition-transform">→</span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
         )}
 
         {/* Dynamic Contextual FAQ Accordion */}
