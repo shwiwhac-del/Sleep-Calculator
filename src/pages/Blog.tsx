@@ -3,6 +3,7 @@ import { Link, useNavigate, useLocation, useParams, Navigate } from 'react-route
 import { ArrowLeft, ChevronDown, ChevronUp, Calculator, Sparkles } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'motion/react';
+import { AutoLinker } from '../components/AutoLinker';
 
 const BLOG_POSTS = [
   {
@@ -180,6 +181,14 @@ const BLOG_POSTS = [
     category: 'Sleep Schedule',
     readTime: '5 min read',
     date: 'May 30, 2026'
+  },
+  {
+    slug: 'best-temperature-for-sleep',
+    title: 'Best Temperature for Sleep: How Ambient Temperature Affects Sleep Quality',
+    description: 'Learn the optimal room temperature for high-quality sleep, how body temperature influences sleep cycles, and practical tips to cool down your bedroom naturally.',
+    category: 'Sleep Quality',
+    readTime: '5 min read',
+    date: 'June 8, 2026'
   },
   {
     slug: 'what-is-deep-sleep',
@@ -560,6 +569,20 @@ const BLOG_FAQS: Record<string, { q: string, a: string }[]> = {
       a: "Many people begin noticing improvements within a few weeks of maintaining consistent habits."
     }
   ],
+  'best-temperature-for-sleep': [
+    {
+      q: "What is the absolute best room temperature for sleeping?",
+      a: "Most medical and sleep science professionals recommend keeping your room temperature between 60 and 67 degrees Fahrenheit (15 to 19 degrees Celsius) for the most comfortable rest."
+    },
+    {
+      q: "Why does being too hot or too cold disrupt my sleep cycle?",
+      a: "Extreme room temperatures interfere with your body's natural thermoregulation process, which can reduce deep sleep and REM sleep stages, causing frequent awakenings."
+    },
+    {
+      q: "How can I cool down my room for sleep without air conditioning?",
+      a: "You can use cross-ventilation with fans, wear lightweight breathable bamboo or cotton pajamas, use natural linen sheets, and consume a small glass of cool water right before bed."
+    }
+  ],
   'what-is-deep-sleep': [
     {
       q: "Is deep sleep the most important sleep stage?",
@@ -604,11 +627,12 @@ export default function Blog() {
   const isBlog18 = currentPath === '/improve-sleep-quality' || slug === 'improve-sleep-quality';
   const isBlog19 = currentPath === '/sleep-hygiene-tips' || slug === 'sleep-hygiene-tips';
   const isBlog20 = currentPath === '/common-sleep-mistakes' || slug === 'common-sleep-mistakes';
-  const isBlog21 = currentPath === '/fix-irregular-sleep-schedule' || slug === 'fix-irregular-sleep-schedule';
+  const isBlog21 = currentPath === '/fix-irregular-sleep-schedule' || slug === '/fix-irregular-sleep-schedule' || slug === 'fix-irregular-sleep-schedule';
   const isBlog22 = currentPath === '/consistent-sleep-schedule-benefits' || slug === 'consistent-sleep-schedule-benefits';
+  const isBlog23 = currentPath === '/best-temperature-for-sleep' || slug === 'best-temperature-for-sleep';
   const isBlog24 = currentPath === '/what-is-deep-sleep' || slug === 'what-is-deep-sleep';
   
-  const isAnyBlog = isBlog1 || isBlog2 || isBlog3 || isBlog4 || isBlog5 || isBlog6 || isBlog7 || isBlog8 || isBlog9 || isBlog10 || isBlog11 || isBlog12 || isBlog13 || isBlog14 || isBlog15 || isBlog16 || isBlog17 || isBlog18 || isBlog19 || isBlog20 || isBlog21 || isBlog22 || isBlog24;
+  const isAnyBlog = isBlog1 || isBlog2 || isBlog3 || isBlog4 || isBlog5 || isBlog6 || isBlog7 || isBlog8 || isBlog9 || isBlog10 || isBlog11 || isBlog12 || isBlog13 || isBlog14 || isBlog15 || isBlog16 || isBlog17 || isBlog18 || isBlog19 || isBlog20 || isBlog21 || isBlog22 || isBlog23 || isBlog24;
   const isAll = false; // Override isAll to false so individual articles never render stacked in /blog
 
   let activeSlug = '';
@@ -634,6 +658,7 @@ export default function Blog() {
   else if (isBlog20) activeSlug = 'common-sleep-mistakes';
   else if (isBlog21) activeSlug = 'fix-irregular-sleep-schedule';
   else if (isBlog22) activeSlug = 'consistent-sleep-schedule-benefits';
+  else if (isBlog23) activeSlug = 'best-temperature-for-sleep';
   else if (isBlog24) activeSlug = 'what-is-deep-sleep';
 
   const currentFaqs = activeSlug ? BLOG_FAQS[activeSlug] : [];
@@ -731,6 +756,9 @@ export default function Blog() {
   } else if (isBlog22) {
     title = "Benefits of Consistent Sleep and Wake Times for Better Health";
     description = "Discover the benefits of consistent sleep and wake times, including improved sleep quality, energy levels, productivity, and overall health.";
+  } else if (isBlog23) {
+    title = "Best Temperature for Sleep: How Ambient Temperature Affects Sleep Quality";
+    description = "Learn the optimal room temperature for high-quality sleep, how body temperature influences sleep cycles, and practical tips to cool down your bedroom naturally.";
   } else if (isBlog24) {
     title = "What Is Deep Sleep and Why Does Your Body Need It?";
     description = "Discover what deep sleep is, why it is important, how much deep sleep you need, and ways to improve deep sleep naturally.";
@@ -773,6 +801,7 @@ export default function Blog() {
         transition={{ duration: 0.5 }}
         className="text-left space-y-16"
       >
+        <AutoLinker currentPath={activeSlug}>
         {/* Main Blog Cards Overview - Render when no specific blog is selected */}
         {!isAnyBlog && (
           <div className="space-y-12">
@@ -5226,6 +5255,137 @@ export default function Blog() {
           </article>
         )}
 
+        {/* Blog 23: Best Temperature for Sleep: How Ambient Temperature Affects Sleep Quality */}
+        {(isBlog23 || isAll) && (
+          <article className="space-y-6 select-text text-slate-300 animate-fadeIn">
+            <header className="space-y-3 pb-6 border-b border-white/10">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-100 tracking-tight leading-tight">
+                Best Temperature for Sleep: How Ambient Temperature Affects Sleep Quality
+              </h1>
+              {isAll && (
+                <div className="text-sm font-bold tracking-wider text-blue-400 uppercase">
+                  Featured Guide • 5 min read
+                </div>
+              )}
+            </header>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              Your sleep environment plays a monumental role in how well you sleep. While many people focus entirely on mattress comfort or light pollution, ambient room temperature is often the silent culprit behind tossing and turning. 
+            </p>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              According to sleep scientists, the ideal bedroom temperature for high-quality sleep sits between <strong>60 and 67 degrees Fahrenheit (15.5 to 19.4 degrees Celsius)</strong>. Managing this can help your body transition smoother into restorative <Link to="/what-is-deep-sleep" className="text-blue-400 hover:text-blue-300 underline font-semibold transition-colors">deep sleep</Link> and maximize cognitive <Link to="/what-is-rem-sleep" className="text-blue-400 hover:text-blue-300 underline font-semibold transition-colors">REM sleep</Link> cycles.
+            </p>
+
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4">
+              The Science of Thermoregulation and Sleep
+            </h2>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              Your body naturally cools down in the evening to prepare for sleep, guided by your biological circadian rhythm. This natural temperature drop begins about two hours before you go to bed, coinciding with the release of the sleep hormone melatonin.
+            </p>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              When your bedroom is too hot or too cold, your body is forced to expend extra energy trying to regulate its internal temperature. This extra work prevents you from settling into deep slumber, leading to lighter, highly fragmented sleep.
+            </p>
+
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4">
+              Temperature Ranges and Sleep Impact
+            </h2>
+
+            <div className="overflow-x-auto pt-2">
+              <table className="w-full text-left border-collapse border border-white/10 text-xs sm:text-sm">
+                <thead>
+                  <tr className="bg-slate-950/60 border-b border-white/10">
+                    <th className="p-3 font-extrabold text-gray-100">Temperature Range</th>
+                    <th className="p-3 font-extrabold text-gray-100">Impact on Sleep Quality</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-white/5">
+                  <tr>
+                    <td className="p-3 text-slate-300 font-semibold">&lt; 60°F (&lt; 15.5°C)</td>
+                    <td className="p-3 text-slate-400">Too cold. May make it difficult to fall asleep as the body actively shivers or constricts blood vessels.</td>
+                  </tr>
+                  <tr className="bg-blue-500/5">
+                    <td className="p-3 text-emerald-400 font-bold">60°F - 67°F (15.5°C - 19.4°C)</td>
+                    <td className="p-3 text-emerald-300 font-medium">Optimal Sleep Zone. Promotes rapid sleep onset and supports uninterrupted deep sleep stages.</td>
+                  </tr>
+                  <tr>
+                    <td className="p-3 text-slate-300 font-semibold">68°F - 72°F (20.0°C - 22.2°C)</td>
+                    <td className="p-3 text-slate-400">Comfortable for some, but can be slightly warm. Might cause mild tossing and turning.</td>
+                  </tr>
+                  <tr>
+                    <td className="p-3 text-red-400 font-semibold">&gt; 72°F (&gt; 22.2°C)</td>
+                    <td className="p-3 text-red-300/80">Too hot. Severely reduces REM sleep, triggers sweating, and leads to frequent nighttime awakenings.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4">
+              Tips for Creating the Perfect Cool Sleep Haven
+            </h2>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              Creating an environment that supports natural thermoregulation is a key pillar of practicing solid <Link to="/sleep-hygiene-tips" className="text-blue-400 hover:text-blue-300 underline font-semibold transition-colors">sleep hygiene hygiene</Link>. Here are a few ways to optimize your bedroom today:
+            </p>
+
+            <div className="space-y-4">
+              <div>
+                <h3 className="text-lg sm:text-xl font-bold text-gray-100 border-l-4 border-blue-500 pl-3">
+                  1. Use Breathable Bedding
+                </h3>
+                <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 mt-1 pl-4">
+                  Swap out synthetic fabrics (like polyester) for natural, highly breathable options such as 100% long-staple cotton, bamboo, or linen. These fabrics wick moisture and allow heat to escape.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-lg sm:text-xl font-bold text-gray-100 border-l-4 border-blue-500 pl-3">
+                  2. Keep Air Circulating
+                </h3>
+                <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 mt-1 pl-4">
+                  Use ceiling fans or small bedside oscillation fans to create a cooling cross-breeze. Moving air helps cool down your skin surface more efficiently.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-lg sm:text-xl font-bold text-gray-100 border-l-4 border-blue-500 pl-3">
+                  3. Take a Warm Shower Before Bed
+                </h3>
+                <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 mt-1 pl-4">
+                  Taking a warm bath or shower about 90 minutes before bedtime increases blood circulation to your hands and feet. Once you step out, heat quickly evaporates, triggering a rapid drop in core body temperature that signals tiredness.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-lg sm:text-xl font-bold text-gray-100 border-l-4 border-blue-500 pl-3">
+                  4. Manage Daytime Heat
+                </h3>
+                <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 mt-1 pl-4">
+                  Block hot summer afternoon sun from baking your bedroom by closing blinds, blackout curtains, or thermal curtains during peak daylight hours.
+                </p>
+              </div>
+            </div>
+
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4">
+              Planning Sleep Around Your Environment
+            </h2>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              Optimizing your room temperature is just one variable. Pairing a cool room with natural circadian alignment is the ultimate recipe for boundless energy. To discover the absolute best sleep and wake windows for your biological schedule, try calculating your cycles using our online <Link to="/" className="text-blue-400 hover:text-blue-300 underline font-semibold transition-colors">Sleep Calculator</Link>.
+            </p>
+
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4">
+              Final Thoughts
+            </h2>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 pb-6">
+              When it comes to getting high-quality rest, keeping your room cool is just as vital as sleeping consistent hours. By adjusting your bedroom temperature to the optimal 60°F - 67°F zone, you will naturally support your body's recovery process, stay asleep longer, and wake up feeling entirely rejuvenated!
+            </p>
+          </article>
+        )}
+
         {/* Blog 24: What Is Deep Sleep and Why Does Your Body Need It? */}
         {(isBlog24 || isAll) && (
           <article className="space-y-6 select-text text-slate-300">
@@ -5448,6 +5608,7 @@ export default function Blog() {
             </p>
           </article>
         )}
+        </AutoLinker>
 
         {/* Internal Cross-Linking: Related Guides Section */}
         {isAnyBlog && relatedPosts.length > 0 && (

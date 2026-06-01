@@ -138,6 +138,7 @@ function AppContent() {
                 <Route path="/common-sleep-mistakes" element={<Blog />} />
                 <Route path="/fix-irregular-sleep-schedule" element={<Blog />} />
                 <Route path="/consistent-sleep-schedule-benefits" element={<Blog />} />
+                <Route path="/best-temperature-for-sleep" element={<Blog />} />
                 <Route path="/what-is-deep-sleep" element={<Blog />} />
 
                 {/* Legacy /blog and /page/blog Prefixes redirected back to clean root paths */}

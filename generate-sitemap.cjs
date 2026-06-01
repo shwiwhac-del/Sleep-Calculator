@@ -30,6 +30,7 @@ const routes = [
   '/common-sleep-mistakes',
   '/fix-irregular-sleep-schedule',
   '/consistent-sleep-schedule-benefits',
+  '/best-temperature-for-sleep',
   '/what-is-deep-sleep'
 ];
 
