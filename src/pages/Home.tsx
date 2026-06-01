@@ -726,16 +726,16 @@ export default function Home() {
       </AnimatePresence>
 
       {/* Sleep Guide & FAQ Section below the Sleep Calculator */}
-      <div className="w-full max-w-[42rem] mx-auto mt-6 mb-2 px-4 text-slate-300 select-text font-sans text-left space-y-4">
+      <div className="w-full max-w-[42rem] mx-auto mt-6 mb-2 px-4 text-slate-300 select-none font-sans text-left space-y-4">
         <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 tracking-tight leading-tight">
           Sleep Calculator – Find the Best Time to Sleep and Wake Up
         </h2>
         
-        <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+        <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 select-text">
           Getting enough sleep is important, but sleep timing matters just as much. Our free Sleep Calculator helps you find the best bedtime and wake-up time based on natural 90-minute sleep cycles. Instead of waking up in the middle of deep sleep, you can plan your rest around complete sleep cycles and wake up feeling more refreshed.
         </p>
 
-        <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+        <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 select-text">
           Whether you're wondering "what time should I go to bed?", "what time should I wake up?", or looking for a reliable sleep cycle calculator, this tool provides personalized sleep schedules in seconds.
         </p>
 
@@ -743,11 +743,11 @@ export default function Home() {
           How Does the Sleep Calculator Work?
         </h3>
 
-        <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+        <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 select-text">
           A typical sleep cycle lasts about 90 minutes and includes light sleep, deep sleep, and REM sleep. Most adults complete 4–6 sleep cycles each night. By calculating bedtime and wake-up times around these cycles, a sleep calculator can help reduce morning grogginess and improve sleep quality.
         </p>
 
-        <div className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+        <div className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 select-text">
           <p className="font-semibold text-gray-100 mb-1">Simply enter:</p>
           <ul className="list-disc pl-5 space-y-1 text-slate-300">
             <li>The time you want to wake up, or</li>
@@ -755,7 +755,7 @@ export default function Home() {
           </ul>
         </div>
 
-        <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 pb-1">
+        <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 pb-1 select-text">
           The calculator will suggest the best sleep times based on complete sleep cycles.
         </p>
 

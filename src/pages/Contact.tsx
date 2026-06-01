@@ -97,18 +97,6 @@ export default function Contact() {
 
       <div className="animate-in fade-in slide-in-from-top-4 duration-500 text-left">
         <h1 className="text-3xl sm:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-6 leading-tight font-serif">Contact Us</h1>
-        
-        <div className="mb-8 sm:mb-12">
-          <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-3">How can we help?</h2>
-          <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base leading-relaxed mb-4">
-            We're here to help you get the best sleep possible. Whether you have a question about how the calculator works, a feature request, or just want to share how it has improved your mornings, we'd love to hear from you.
-          </p>
-          <div className="bg-blue-50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-900/30 rounded-xl p-4 mt-6">
-            <p className="text-blue-800 dark:text-blue-300 text-sm font-medium">
-              <strong>Response Time:</strong> We are a small team, but we typically respond to all inquiries within 24–48 hours.
-            </p>
-          </div>
-        </div>
 
         {isSuccess ? (
           <div className="flex flex-col items-start py-8">

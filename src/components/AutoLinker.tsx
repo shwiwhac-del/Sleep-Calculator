@@ -100,50 +100,52 @@ function autoLinkText(text: string, currentPath: string): React.ReactNode[] {
   return [text];
 }
 
-export function AutoLinker({ children, currentPath }: { children: React.ReactNode; currentPath: string }): React.ReactNode {
+function autoLink(children: React.ReactNode, currentPath: string): React.ReactNode {
   if (children === null || children === undefined) {
     return null;
   }
 
   if (typeof children === 'string') {
-    return <>{autoLinkText(children, currentPath)}</>;
+    const parsed = autoLinkText(children, currentPath);
+    return parsed.length === 1 && typeof parsed[0] === 'string' ? parsed[0] : parsed;
   }
 
   if (typeof children === 'number' || typeof children === 'boolean') {
-    return <>{children}</>;
+    return children;
   }
 
   if (Array.isArray(children)) {
-    return (
-      <>
-        {children.map((child, idx) => (
-          <React.Fragment key={idx}>
-            <AutoLinker currentPath={currentPath}>
-              {child}
-            </AutoLinker>
-          </React.Fragment>
-        ))}
-      </>
-    );
+    return children.map((child) => autoLink(child, currentPath));
   }
 
   if (React.isValidElement(children)) {
-    // Avoid scanning inside anchor links and react-router links to prevent nested Links
-    const typeName = typeof children.type === 'string' ? children.type : (children.type as any)?.name || '';
-    if (typeName === 'a' || typeName === 'Link' || typeName === 'Link2' || (children.props as any)?.to) {
+    const type = children.type;
+    const typeName = typeof type === 'string' ? type : (type as any)?.name || (type as any)?.displayName || '';
+
+    // Ignore tags that shouldn't be parsed (links, buttons, SVGs, Helmet, etc.)
+    if (
+      typeName === 'svg' ||
+      typeName === 'path' ||
+      typeName === 'Helmet' ||
+      typeName === 'Link' ||
+      typeName === 'Link2' ||
+      typeName === 'a' ||
+      typeName === 'button' ||
+      (children.props as any)?.to
+    ) {
       return children;
     }
 
     if (children.props && children.props.children) {
-      const clonedChildren = (
-        <AutoLinker currentPath={currentPath}>
-          {children.props.children}
-        </AutoLinker>
-      );
+      const clonedChildren = autoLink(children.props.children, currentPath);
       return React.cloneElement(children as React.ReactElement<any>, {}, clonedChildren);
     }
     return children;
   }
 
-  return children as React.ReactNode;
+  return children;
+}
+
+export function AutoLinker({ children, currentPath }: { children: React.ReactNode; currentPath: string }): React.ReactNode {
+  return <>{autoLink(children, currentPath)}</>;
 }

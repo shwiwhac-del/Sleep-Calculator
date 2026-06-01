@@ -801,7 +801,6 @@ export default function Blog() {
         transition={{ duration: 0.5 }}
         className="text-left space-y-16"
       >
-        <AutoLinker currentPath={activeSlug}>
         {/* Main Blog Cards Overview - Render when no specific blog is selected */}
         {!isAnyBlog && (
           <div className="space-y-12">
@@ -856,8 +855,12 @@ export default function Blog() {
             </div>
           </div>
         )}
-        {/* Blog 1: Sleep Cycles Explained */}
-        {(isBlog1 || isAll) && (
+
+        {isAnyBlog && (
+          <AutoLinker currentPath={activeSlug}>
+            <>
+              {/* Blog 1: Sleep Cycles Explained */}
+              {(isBlog1 || isAll) && (
           <article className="space-y-6 select-text text-slate-300">
             <header className="space-y-3 pb-6 border-b border-white/10">
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-100 tracking-tight leading-tight">
@@ -5608,7 +5611,9 @@ export default function Blog() {
             </p>
           </article>
         )}
-        </AutoLinker>
+            </>
+          </AutoLinker>
+        )}
 
         {/* Internal Cross-Linking: Related Guides Section */}
         {isAnyBlog && relatedPosts.length > 0 && (
