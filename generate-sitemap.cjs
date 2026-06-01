@@ -19,7 +19,18 @@ const routes = [
   '/sleep-schedule-for-productivity',
   '/how-many-hours-of-sleep-is-healthy',
   '/power-nap-vs-full-sleep-cycle',
-  '/circadian-rhythm-explained'
+  '/circadian-rhythm-explained',
+  '/tired-after-8-hours-of-sleep',
+  '/best-bedtime-for-students',
+  '/sleep-and-memory',
+  '/sleep-debt-explained',
+  '/best-wake-up-time',
+  '/improve-sleep-quality',
+  '/sleep-hygiene-tips',
+  '/common-sleep-mistakes',
+  '/fix-irregular-sleep-schedule',
+  '/consistent-sleep-schedule-benefits',
+  '/what-is-deep-sleep'
 ];
 
 const xml = `<?xml version="1.0" encoding="UTF-8"?>

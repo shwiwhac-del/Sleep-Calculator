@@ -91,38 +91,32 @@ export default function InstallAppButton() {
           initial={{ opacity: 0, y: 50, scale: 0.9 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 50, scale: 0.9 }}
-          className="fixed bottom-6 right-6 sm:bottom-8 sm:right-8 z-50 max-w-sm"
+          className="fixed bottom-22 right-4 sm:bottom-26 sm:right-6 z-50"
           id="pwa-install-container"
         >
-          <div className="relative flex items-center gap-3 bg-gradient-to-r from-blue-600 via-indigo-600 to-indigo-700 text-white rounded-2xl pl-5 pr-3 py-3 shadow-xl shadow-blue-500/10 border border-white/10 backdrop-blur-md">
-            {/* Install Button Trigger */}
-            <button
-              onClick={handleInstallClick}
-              className="flex items-center gap-2.5 text-xs font-bold uppercase tracking-wider cursor-pointer font-sans"
-              id="pwa-install-trigger"
-            >
-              <div className="relative">
-                <div className="absolute inset-0 bg-white/20 rounded-full animate-ping scale-150 opacity-40" />
-                <div className="relative bg-white/15 p-1.5 rounded-lg">
-                  {isIos ? <Smartphone className="w-4 h-4 text-white" /> : <Download className="w-4 h-4 text-white" />}
-                </div>
-              </div>
-              <div className="text-left">
-                <span className="block text-[10px] text-blue-200 uppercase tracking-widest font-black leading-none">PWA App</span>
-                <span className="block font-extrabold text-sm tracking-normal capitalize mt-0.5 whitespace-nowrap">Install App</span>
-              </div>
-            </button>
-
-            {/* Split line / Dismiss button */}
-            <div className="h-6 w-[1px] bg-white/20 mx-1" />
-            
+          <div className="relative">
+            {/* Small Floating Dismiss Button */}
             <button
               onClick={handleDismiss}
-              className="p-1 text-white hover:bg-white/10 rounded-lg transition-colors cursor-pointer"
+              className="absolute -top-1.5 -right-1.5 z-10 p-1 bg-rose-600 hover:bg-rose-500 text-white rounded-full shadow-lg border border-white/10 transition-colors cursor-pointer"
               aria-label="Dismiss Install Alert"
               id="pwa-dismiss-btn"
             >
-              <X className="w-4 h-4" />
+              <X className="w-3 h-3" />
+            </button>
+
+            {/* Simple Install Pill Button */}
+            <button
+              onClick={handleInstallClick}
+              className="flex items-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white text-xs sm:text-sm font-bold py-2.5 px-4 rounded-full shadow-lg border border-white/15 transition-all duration-200 cursor-pointer active:scale-95 whitespace-nowrap font-sans uppercase tracking-wider"
+              id="pwa-install-trigger"
+            >
+              {isIos ? (
+                <Smartphone className="w-4 h-4 text-white animate-bounce" />
+              ) : (
+                <Download className="w-4 h-4 text-white animate-bounce" />
+              )}
+              <span>Install App</span>
             </button>
           </div>
         </motion.div>
