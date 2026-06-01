@@ -357,6 +357,25 @@ export default function Home() {
             content="sleep calculator, sleep cycle calculator, bedtime calculator, wake up time calculator, best time to sleep, sleep cycle timing, REM sleep cycles, sleep schedule calculator"
           />
           <link rel="canonical" href="https://sleepcalculater.online/" />
+          
+          {/* Open Graph / Facebook */}
+          <meta property="og:type" content="website" />
+          <meta property="og:title" content="What Time Should I Go to Bed? Free Sleep Calculator" />
+          <meta property="og:description" content="Calculate your perfect bedtime and wake-up times using natural 90-minute sleep cycles. Wake up refreshed and energized with our free, science-based sleep calculator." />
+          <meta property="og:url" content="https://sleepcalculater.online/" />
+          <meta property="og:image" content="https://sleepcalculater.online/og_banner.png" />
+          <meta property="og:image:secure_url" content="https://sleepcalculater.online/og_banner.png" />
+          <meta property="og:image:type" content="image/png" />
+          <meta property="og:image:width" content="1200" />
+          <meta property="og:image:height" content="630" />
+          <meta property="og:image:alt" content="Sleep Calculator - Calculate Best Bedtime & Wake-Up Time" />
+
+          {/* Twitter */}
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:title" content="What Time Should I Go to Bed? Free Sleep Calculator" />
+          <meta name="twitter:description" content="Calculate your perfect bedtime and wake-up times using natural 90-minute sleep cycles. Wake up refreshed and energized with our free, science-based sleep calculator." />
+          <meta name="twitter:image" content="https://sleepcalculater.online/og_banner.png" />
+
           <script type="application/ld+json">
             {JSON.stringify({
               "@context": "https://schema.org",
@@ -707,7 +726,7 @@ export default function Home() {
       </AnimatePresence>
 
       {/* Sleep Guide & FAQ Section below the Sleep Calculator */}
-      <div className="w-full max-w-[42rem] mx-auto mt-20 mb-28 px-4 text-slate-300 select-text font-sans text-left space-y-8">
+      <div className="w-full max-w-[42rem] mx-auto mt-6 mb-2 px-4 text-slate-300 select-text font-sans text-left space-y-4">
         <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 tracking-tight leading-tight">
           Sleep Calculator – Find the Best Time to Sleep and Wake Up
         </h2>
@@ -720,7 +739,7 @@ export default function Home() {
           Whether you're wondering "what time should I go to bed?", "what time should I wake up?", or looking for a reliable sleep cycle calculator, this tool provides personalized sleep schedules in seconds.
         </p>
 
-        <h3 className="text-xl sm:text-2xl font-bold text-gray-100 pt-3">
+        <h3 className="text-xl sm:text-2xl font-bold text-gray-100 pt-1">
           How Does the Sleep Calculator Work?
         </h3>
 
@@ -729,22 +748,22 @@ export default function Home() {
         </p>
 
         <div className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
-          <p className="font-semibold text-gray-100 mb-2">Simply enter:</p>
-          <ul className="list-disc pl-5 space-y-2 text-slate-300">
+          <p className="font-semibold text-gray-100 mb-1">Simply enter:</p>
+          <ul className="list-disc pl-5 space-y-1 text-slate-300">
             <li>The time you want to wake up, or</li>
             <li>The time you plan to go to bed</li>
           </ul>
         </div>
 
-        <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 pb-2">
+        <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 pb-1">
           The calculator will suggest the best sleep times based on complete sleep cycles.
         </p>
 
-        <h3 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-gray-100 pt-8 text-center w-full">
+        <h3 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-gray-100 pt-2 text-center w-full">
           Frequently Asked Questions
         </h3>
 
-        <div className="space-y-4 pt-4">
+        <div className="space-y-4 pt-2">
           {[
             {
               q: "What time should I go to bed?",
@@ -759,32 +778,12 @@ export default function Home() {
               a: "A sleep cycle calculator estimates bedtime and wake-up times based on average 90-minute sleep cycles, including light sleep, deep sleep, and REM sleep."
             },
             {
-              q: "What is REM sleep?",
-              a: "REM (Rapid Eye Movement) sleep is a stage of sleep associated with memory, learning, brain function, and emotional processing. It is an important part of a healthy sleep cycle."
-            },
-            {
               q: "Why am I tired after sleeping?",
               a: "You may feel tired after sleeping if you wake up during deep sleep, have an inconsistent sleep schedule, experience poor sleep quality, or do not get enough restorative sleep."
             },
             {
               q: "How many sleep cycles do I need?",
               a: "Most adults complete 5–6 sleep cycles per night, which typically equals around 7.5–9 hours of sleep."
-            },
-            {
-              q: "Is a nap good for energy?",
-              a: "Yes. Short naps of 10–30 minutes can improve alertness, concentration, and energy levels without significantly affecting nighttime sleep."
-            },
-            {
-              q: "What is the best bedtime for students?",
-              a: "Most students perform better when they maintain a consistent sleep schedule and get 8–10 hours of sleep depending on age and individual needs."
-            },
-            {
-              q: "Can a sleep calculator improve sleep quality?",
-              a: "A sleep calculator cannot guarantee better sleep, but it can help you plan bedtime and wake-up times around natural sleep cycles, which may reduce morning grogginess."
-            },
-            {
-              q: "How much sleep do adults need?",
-              a: "According to sleep experts, most adults need between 7 and 9 hours of sleep each night for optimal health, recovery, and cognitive performance."
             }
           ].map((faq, index) => {
             const isOpen = activeFaq === index;

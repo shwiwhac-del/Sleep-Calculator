@@ -21,8 +21,8 @@ const NotFound = lazy(() => import('./pages/NotFound'));
 
 function Footer() {
   return (
-    <footer className="w-full py-8 mt-auto border-t border-white/5 bg-transparent z-20 relative flex flex-col items-center">
-      <div className="flex flex-wrap justify-center gap-x-6 sm:gap-x-8 gap-y-3 text-sm sm:text-base text-slate-300 dark:text-slate-300 px-4 mb-4">
+    <footer className="w-full py-4 mt-auto border-t border-white/5 bg-transparent z-20 relative flex flex-col items-center gap-y-2">
+      <div className="flex flex-wrap items-center justify-center gap-x-5 sm:gap-x-6 text-xs sm:text-sm text-slate-350 dark:text-slate-350 px-4">
         <Link 
           to="/about" 
           onMouseEnter={() => import('./pages/About')}
@@ -56,7 +56,7 @@ function Footer() {
           Terms & Conditions
         </Link>
       </div>
-      <div className="text-slate-500 dark:text-slate-500 text-xs sm:text-sm flex flex-col items-center gap-1">
+      <div className="text-slate-500 dark:text-slate-505 text-xs flex flex-col items-center">
         <span>&copy; {new Date().getFullYear()} Sleep Calculator. All rights reserved.</span>
       </div>
     </footer>
@@ -114,7 +114,6 @@ function AppContent() {
               <Routes>
                 {/* Core Pages */}
                 <Route path="/" element={<Home />} />
-                <Route path="/blog" element={<Navigate to="/" replace />} />
 
                 {/* Direct Root Paths for all articles */}
                 <Route path="/sleep-cycles-explained" element={<Blog />} />
@@ -129,10 +128,20 @@ function AppContent() {
                 <Route path="/how-many-hours-of-sleep-is-healthy" element={<Blog />} />
                 <Route path="/power-nap-vs-full-sleep-cycle" element={<Blog />} />
                 <Route path="/circadian-rhythm-explained" element={<Blog />} />
+                <Route path="/tired-after-8-hours-of-sleep" element={<Blog />} />
+                <Route path="/best-bedtime-for-students" element={<Blog />} />
+                <Route path="/sleep-and-memory" element={<Blog />} />
+                <Route path="/sleep-debt-explained" element={<Blog />} />
+                <Route path="/best-wake-up-time" element={<Blog />} />
+                <Route path="/improve-sleep-quality" element={<Blog />} />
+                <Route path="/sleep-hygiene-tips" element={<Blog />} />
+                <Route path="/common-sleep-mistakes" element={<Blog />} />
+                <Route path="/fix-irregular-sleep-schedule" element={<Blog />} />
+                <Route path="/consistent-sleep-schedule-benefits" element={<Blog />} />
+                <Route path="/what-is-deep-sleep" element={<Blog />} />
 
                 {/* Legacy /blog and /page/blog Prefixes redirected back to clean root paths */}
                 <Route path="/blog/:slug" element={<PageBlogRedirect />} />
-                <Route path="/page/blog" element={<Navigate to="/" replace />} />
                 <Route path="/page/blog/:slug" element={<PageBlogRedirect />} />
 
                 <Route path="/about" element={<About />} />

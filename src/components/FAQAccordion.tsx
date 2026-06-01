@@ -38,15 +38,6 @@ const faqs: FAQ[] = [
     schemaAnswer: "An average healthy adult needs 5 to 6 completed sleep cycles per night, representing 7.5 to 9.0 hours of sleep. Students, athletes, and teenagers should target a minimum of 6 full cycles (9 hours) to support memory conversion and performance."
   },
   {
-    question: "What is REM sleep?",
-    answer: (
-      <>
-        REM (Rapid Eye Movement) sleep is the phase of rest where active brain dreams occur, memories are solidified, and emotional health is restored. For a complete scientific breakdown, read our <Link to="/what-is-rem-sleep" className="text-[#2563EB] hover:underline font-semibold">REM sleep guide</Link> and calculate your REM cycles tonight.
-      </>
-    ),
-    schemaAnswer: "REM (Rapid Eye Movement) sleep is the phase of rest where active brain dreams occur, memories are solidified, and emotional health is restored. Waking up during this cycle ensures you preserve brain health."
-  },
-  {
     question: "Why am I tired after sleeping?",
     answer: (
       <>
@@ -63,42 +54,6 @@ const faqs: FAQ[] = [
       </>
     ),
     schemaAnswer: "A biological sleep cycle lasts approximately 90 to 110 minutes on average and is segmented into four distinct stages of lighter and deeper sleep."
-  },
-  {
-    question: "What is the best bedtime for students?",
-    answer: (
-      <>
-        The <Link to="/sleep-schedule-for-productivity" className="text-[#2563EB] hover:underline font-semibold">best bedtime for students</Link> is one that stays highly consistent and maps out 6 filled sleep cycles (9 hours) to maximize cognitive retention and academic attention. For details, navigate to our <Link to="/sleep-schedule-for-productivity" className="text-[#2563EB] hover:underline font-semibold">sleep schedule for students</Link> guidelines.
-      </>
-    ),
-    schemaAnswer: "The best bedtime for students is one that stays highly consistent and maps out 6 filled sleep cycles (9 hours) to maximize cognitive retention and academic attention."
-  },
-  {
-    question: "How long should a power nap be?",
-    answer: (
-      <>
-        For optimal physical and mental recovery, an energy nap should be exactly <strong>20 minutes</strong> (remaining within light Stage 1 and Stage 2 sleep) or a full <strong>90 minutes</strong> (completing a full cycle). Read our specialized <Link to="/power-nap-vs-full-sleep-cycle" className="text-[#2563EB] hover:underline font-semibold">nap calculator</Link> instructions to prevent groggy napping.
-      </>
-    ),
-    schemaAnswer: "For optimal physical and mental recovery, an energy nap should be exactly 20 minutes (remaining within light Stage 1 and Stage 2 sleep) or a full 90 minutes (completing a full cycle)."
-  },
-  {
-    question: "How long does it take to fall asleep?",
-    answer: (
-      <>
-        A typical healthy adult takes about <strong>15 to 20 minutes</strong> to fall asleep. Our offline and online calculators automatically incorporate 15 minutes of sleep latency into all bedtime calculations so your results remain accurate.
-      </>
-    ),
-    schemaAnswer: "A typical healthy adult takes about 15 to 20 minutes to transition from active waking to falling asleep. This latency is factored into our sleep calculators."
-  },
-  {
-    question: "Can I catch up on sleep during the weekend?",
-    answer: (
-      <>
-        "Catching up" on sleeping hours during weekends helps lower fatigue but cannot reverse the biological damage of sleep deprivation. Plus, oversleeping on Sunday pushes back your natural sleep drive, making it harder to fall asleep on time for Monday morning. Consistency is always your best option.
-      </>
-    ),
-    schemaAnswer: "Sleeping in on the weekend can decrease fatigue but cannot reverse chronic sleep loss, and it often disrupts your internal biological cycle."
   }
 ];
 
