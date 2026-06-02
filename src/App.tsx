@@ -1,11 +1,11 @@
 import { useState, useEffect, Suspense, lazy } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link, Navigate, useLocation, useParams } from 'react-router-dom';
-import { Moon, Sun, Menu, X, Loader2, Home as HomeIcon, BookOpen, User, HelpCircle, Mail, ShieldAlert } from 'lucide-react';
+import { BrowserRouter as Router, Routes, Route, Link, Navigate, useParams } from 'react-router-dom';
+import { Loader2 } from 'lucide-react';
 import { HelmetProvider } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'motion/react';
 import ScrollToTop from './components/ScrollToTop';
 import { StarryBackground } from './components/StarryBackground';
-import InstallAppButton from './components/InstallAppButton';
+const InstallAppButton = lazy(() => import('./components/InstallAppButton'));
 
 import Home from './pages/Home';
 
@@ -174,7 +174,9 @@ function AppContent() {
             </Suspense>
           </main>
           <Footer />
-          <InstallAppButton />
+          <Suspense fallback={null}>
+            <InstallAppButton />
+          </Suspense>
     </div>
   );
 }
