@@ -4,9 +4,10 @@ import { Moon, Sun, Menu, X, Loader2, Home as HomeIcon, BookOpen, User, HelpCirc
 import { HelmetProvider } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'motion/react';
 import ScrollToTop from './components/ScrollToTop';
-import Home from './pages/Home';
 import { StarryBackground } from './components/StarryBackground';
 import InstallAppButton from './components/InstallAppButton';
+
+import Home from './pages/Home';
 
 const Terms = lazy(() => import('./pages/Terms'));
 const Privacy = lazy(() => import('./pages/Privacy'));
@@ -140,6 +141,18 @@ function AppContent() {
                 <Route path="/consistent-sleep-schedule-benefits" element={<Blog />} />
                 <Route path="/best-temperature-for-sleep" element={<Blog />} />
                 <Route path="/what-is-deep-sleep" element={<Blog />} />
+                
+                {/* 10 New Blog Articles */}
+                <Route path="/how-much-sleep-do-you-need-by-age" element={<Blog />} />
+                <Route path="/wake-up-tired-after-8-hours" element={<Blog />} />
+                <Route path="/best-bedtime-for-adults" element={<Blog />} />
+                <Route path="/how-long-does-it-take-to-fall-asleep" element={<Blog />} />
+                <Route path="/what-is-sleep-debt" element={<Blog />} />
+                <Route path="/why-do-we-dream" element={<Blog />} />
+                <Route path="/sleep-and-memory-learning" element={<Blog />} />
+                <Route path="/why-do-people-snore" element={<Blog />} />
+                <Route path="/sleep-calculator-by-age" element={<Blog />} />
+                <Route path="/90-minute-sleep-calculator" element={<Blog />} />
 
                 {/* Legacy /blog and /page/blog Prefixes redirected back to clean root paths */}
                 <Route path="/blog/:slug" element={<PageBlogRedirect />} />

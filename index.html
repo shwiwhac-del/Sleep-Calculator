@@ -21,10 +21,6 @@
       })();
     </script>
 
-    <!-- Google AdSense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9951019772606987"
-         crossorigin="anonymous"></script>
-
     <meta
       name="google-site-verification"
       content="FCt22TrVLV1Pr5X_AhtTap1caGwd1upMki9UrueB_ig"
@@ -40,17 +36,17 @@
     
     <link
       rel="preload"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
       as="style"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
       rel="stylesheet"
       media="print"
       onload="this.media='all'"
     />
     <noscript>
-      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@700&display=swap" rel="stylesheet" />
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
     </noscript>
     <title>Sleep Calculator – Best Sleep Cycle & Bedtime Calculator</title>
     <meta
@@ -124,13 +120,12 @@
     </div>
     <script type="module" src="/src/main.tsx"></script>
 
-    <!-- Google tag (gtag.js) - Deferred loading -->
+    <!-- Google tag (gtag.js) & Google AdSense - Deferred loading -->
     <script type="module">
       window.addEventListener("load", () => {
         const loadGA = () => {
           const script = document.createElement("script");
-          script.src =
-            "https://www.googletagmanager.com/gtag/js?id=G-GS03RDZPNP";
+          script.src = "https://www.googletagmanager.com/gtag/js?id=G-GS03RDZPNP";
           script.async = true;
           document.body.appendChild(script);
 
@@ -141,10 +136,24 @@
           gtag("js", new Date());
           gtag("config", "G-GS03RDZPNP");
         };
+
+        const loadAdSense = () => {
+          const script = document.createElement("script");
+          script.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9951019772606987";
+          script.async = true;
+          script.crossOrigin = "anonymous";
+          document.head.appendChild(script);
+        };
+
+        const loadDeferred = () => {
+          loadGA();
+          loadAdSense();
+        };
+
         if ("requestIdleCallback" in window) {
-          requestIdleCallback(loadGA);
+          requestIdleCallback(loadDeferred);
         } else {
-          setTimeout(loadGA, 100);
+          setTimeout(loadDeferred, 150);
         }
       });
     </script>

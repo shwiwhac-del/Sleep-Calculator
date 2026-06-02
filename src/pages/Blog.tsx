@@ -4,6 +4,7 @@ import { ArrowLeft, ChevronDown, ChevronUp, Calculator, Sparkles } from 'lucide-
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'motion/react';
 import { AutoLinker } from '../components/AutoLinker';
+import ShareScheduleWidget from '../components/ShareScheduleWidget';
 
 const BLOG_POSTS = [
   {
@@ -1034,6 +1035,74 @@ export default function Blog() {
     description = "Use a 90 minute sleep calculator to plan your bedtime and wake-up time around natural sleep cycles for better sleep quality and energy.";
   }
 
+  // Generate JSON-LD schemas for search engines
+  const jsonLdScripts: { __html: string }[] = [];
+
+  if (isAnyBlog && currentPost) {
+    const formattedDate = (() => {
+      const dateStr = currentPost.date;
+      if (!dateStr) return "2026-06-02";
+      const months: Record<string, string> = {
+        'January': '01', 'February': '02', 'March': '03', 'April': '04',
+        'May': '05', 'June': '06', 'July': '07', 'August': '08',
+        'September': '09', 'October': '10', 'November': '11', 'December': '12'
+      };
+      const parts = dateStr.replace(',', '').split(' ');
+      if (parts.length === 3) {
+        const month = months[parts[0]] || '06';
+        const day = parts[1].padStart(2, '0');
+        const year = parts[2];
+        return `${year}-${month}-${day}`;
+      }
+      return '2026-06-02';
+    })();
+
+    const articleSchema = {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": canonicalUrl
+      },
+      "headline": title || currentPost.title,
+      "description": description || currentPost.description,
+      "image": "https://sleepcalculater.online/og_banner.png",
+      "author": {
+        "@type": "Organization",
+        "name": "Sleep Calculator",
+        "url": "https://sleepcalculater.online"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Sleep Calculator",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://sleepcalculater.online/favicon.png"
+        }
+      },
+      "datePublished": formattedDate,
+      "dateModified": formattedDate
+    };
+
+    jsonLdScripts.push({ __html: JSON.stringify(articleSchema) });
+
+    if (currentFaqs && currentFaqs.length > 0) {
+      const faqSchema = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": currentFaqs.map(faq => ({
+          "@type": "Question",
+          "name": faq.q,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": faq.a
+          }
+        }))
+      };
+      jsonLdScripts.push({ __html: JSON.stringify(faqSchema) });
+    }
+  }
+
   return (
     <div className={`w-full mx-auto px-4 sm:px-6 relative z-10 ${isAnyBlog ? 'max-w-3xl py-4 sm:py-6' : 'max-w-6xl py-8'}`}>
       <Helmet>
@@ -1054,6 +1123,9 @@ export default function Blog() {
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
         <meta name="twitter:image" content="https://sleepcalculater.online/og_banner.png" />
+        {jsonLdScripts.map((script, idx) => (
+          <script key={idx} type="application/ld+json" dangerouslySetInnerHTML={script} />
+        ))}
       </Helmet>
 
       <div className="mb-8 text-left">
@@ -7236,6 +7308,9 @@ export default function Blog() {
             <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 pb-6">
               A 90 minute sleep calculator, sleep calculator cycles, and sleep calculator time to wake up can help you optimize your sleep schedule and wake up feeling more refreshed.
             </p>
+
+            {/* Dynamic Social Sharing & Calculation Widget */}
+            <ShareScheduleWidget />
           </article>
         )}
             </>
