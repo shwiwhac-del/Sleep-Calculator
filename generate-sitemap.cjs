@@ -31,7 +31,17 @@ const routes = [
   '/fix-irregular-sleep-schedule',
   '/consistent-sleep-schedule-benefits',
   '/best-temperature-for-sleep',
-  '/what-is-deep-sleep'
+  '/what-is-deep-sleep',
+  '/how-much-sleep-do-you-need-by-age',
+  '/wake-up-tired-after-8-hours',
+  '/best-bedtime-for-adults',
+  '/how-long-does-it-take-to-fall-asleep',
+  '/what-is-sleep-debt',
+  '/why-do-we-dream',
+  '/sleep-and-memory-learning',
+  '/why-do-people-snore',
+  '/sleep-calculator-by-age',
+  '/90-minute-sleep-calculator'
 ];
 
 const xml = `<?xml version="1.0" encoding="UTF-8"?>

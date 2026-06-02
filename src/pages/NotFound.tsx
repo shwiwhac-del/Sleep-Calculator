@@ -58,7 +58,7 @@ export default function NotFound() {
         initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.2 }}
-        className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4 w-full px-6 sm:px-0"
+        className="mt-8 flex flex-col items-center justify-center gap-4 w-full px-6 sm:px-0"
         id="not-found-actions"
       >
         <Link 
@@ -68,15 +68,6 @@ export default function NotFound() {
         >
           <Home className="w-4 h-4 sm:w-5 sm:h-5 text-indigo-200" />
           Back to Home Page
-        </Link>
-
-        <Link 
-          to="/about" 
-          className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-slate-900/40 hover:bg-slate-900/60 text-slate-300 hover:text-white font-semibold py-3.5 px-8 rounded-2xl transition-all duration-300 border border-white/5 hover:border-white/15 cursor-pointer text-sm sm:text-base"
-          id="not-found-guides-btn"
-        >
-          <HelpCircle className="w-4 h-4 sm:w-5 sm:h-5 text-indigo-400" />
-          Read Sleep Guides
         </Link>
       </motion.div>
     </div>
