@@ -352,7 +352,7 @@ export default function Home() {
       {/* Header Info */}
       <div className="flex flex-col items-center justify-center mb-2 mt-0">
         <Helmet>
-          <title>What Time Should I Go to Bed? Free Sleep Calculator</title>
+          <title>Sleep Calculator – Calculate Bedtime & Wake Up Time by Sleep Cycles</title>
           <meta
             name="description"
             content="Calculate your perfect bedtime and wake-up times using natural 90-minute sleep cycles. Wake up refreshed and energized with our free, science-based sleep calculator. No signup required."
@@ -365,7 +365,7 @@ export default function Home() {
           
           {/* Open Graph / Facebook */}
           <meta property="og:type" content="website" />
-          <meta property="og:title" content="What Time Should I Go to Bed? Free Sleep Calculator" />
+          <meta property="og:title" content="Sleep Calculator – Calculate Bedtime & Wake Up Time by Sleep Cycles" />
           <meta property="og:description" content="Calculate your perfect bedtime and wake-up times using natural 90-minute sleep cycles. Wake up refreshed and energized with our free, science-based sleep calculator." />
           <meta property="og:url" content="https://sleepcalculater.online/" />
           <meta property="og:image" content="https://sleepcalculater.online/og_banner.png" />
@@ -377,7 +377,7 @@ export default function Home() {
 
           {/* Twitter */}
           <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:title" content="What Time Should I Go to Bed? Free Sleep Calculator" />
+          <meta name="twitter:title" content="Sleep Calculator – Calculate Bedtime & Wake Up Time by Sleep Cycles" />
           <meta name="twitter:description" content="Calculate your perfect bedtime and wake-up times using natural 90-minute sleep cycles. Wake up refreshed and energized with our free, science-based sleep calculator." />
           <meta name="twitter:image" content="https://sleepcalculater.online/og_banner.png" />
 
@@ -495,7 +495,7 @@ export default function Home() {
           </script>
         </Helmet>
         <div className={`flex flex-col items-center justify-center gap-2 text-center max-w-3xl mx-auto px-4 mt-2 sm:mt-3 transition-all duration-300 ${showResults ? "mb-5 sm:mb-6" : "mb-12 sm:mb-16"}`}>
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-gray-400 dark:text-slate-300 leading-snug text-center">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[2.75rem] font-extrabold tracking-tight text-white dark:text-white leading-tight sm:leading-snug text-center">
             Calculate Your Perfect Bedtime & Wake-Up Time
           </h1>
         </div>
