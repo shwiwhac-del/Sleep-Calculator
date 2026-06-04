@@ -239,7 +239,10 @@ function autoLink(children: React.ReactNode, currentPath: string): React.ReactNo
 
   if (typeof children === 'string') {
     const parsed = autoLinkText(children, currentPath);
-    return parsed.length === 1 && typeof parsed[0] === 'string' ? parsed[0] : parsed;
+    if (parsed.length === 1 && typeof parsed[0] === 'string') {
+      return parsed[0];
+    }
+    return React.Children.toArray(parsed);
   }
 
   if (typeof children === 'number' || typeof children === 'boolean') {
@@ -247,7 +250,8 @@ function autoLink(children: React.ReactNode, currentPath: string): React.ReactNo
   }
 
   if (Array.isArray(children)) {
-    return children.map((child) => autoLink(child, currentPath));
+    const processed = children.map((child) => autoLink(child, currentPath));
+    return React.Children.toArray(processed);
   }
 
   if (React.isValidElement(children)) {
@@ -270,7 +274,10 @@ function autoLink(children: React.ReactNode, currentPath: string): React.ReactNo
 
     if (children.props && children.props.children) {
       const clonedChildren = autoLink(children.props.children, currentPath);
-      return React.cloneElement(children as React.ReactElement<any>, {}, clonedChildren);
+      const safeChildren = Array.isArray(clonedChildren)
+        ? React.Children.toArray(clonedChildren)
+        : clonedChildren;
+      return React.cloneElement(children as React.ReactElement<any>, { key: children.key }, safeChildren);
     }
     return children;
   }

@@ -49,7 +49,7 @@ files.forEach(file => {
       if (linkDepth > 0) continue; // inside a Link tag text
       
       if (!replacedOnce && new RegExp(`\\b(?:${keyword})\\b`, 'i').test(parts[i])) {
-         parts[i] = parts[i].replace(new RegExp(`(\\b(?:${keyword})\\b)`, 'i'), `<Link to="${url}" className="text-[#2563EB] hover:underline hover:text-[#1D4ED8] transition-colors">$1</Link>`);
+         parts[i] = parts[i].replace(new RegExp(`(\\b(?:${keyword})\\b)`, 'i'), `<Link to="${url}" className="text-[#8B5CF6] hover:underline hover:text-[#7C3AED] transition-colors">$1</Link>`);
          replacedOnce = true;
       }
     }

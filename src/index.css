@@ -4,10 +4,21 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --color-primary: #2563eb;
-  --color-accent: #4f46e5;
-  --color-background: #ffffff;
-  --color-section: #f8fafc;
+  --color-primary: #8B5CF6;
+  --color-primary-hover: #7C3AED;
+  --color-accent: #D4AF37;
+  --color-background: #F3ECE3;
+  --color-card: #FFFFFF;
+  --color-heading: #111827;
+  --color-body: #374151;
+  --color-muted: #6B7280;
+  --color-border-elegant: #E5E7EB;
+  --color-input: #F8FAFC;
+  --color-success: #10B981;
+  --color-warning: #F59E0B;
+  --color-error: #EF4444;
+
+  --color-section: #F3ECE3;
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-serif: "Playfair Display", ui-serif, Georgia, serif;
   --font-display: "Inter", system-ui, sans-serif;
@@ -15,6 +26,8 @@
   --animate-fade-in: fade-in 0.7s ease-out forwards;
   --animate-slide-up: slide-up 0.5s ease-out forwards;
   --animate-twinkle: twinkle 4s ease-in-out infinite;
+
+  --shadow-premium: 0 10px 25px -5px rgba(17, 24, 39, 0.12), 0 8px 10px -6px rgba(17, 24, 39, 0.12);
 }
 
 @keyframes twinkle {
@@ -158,3 +171,110 @@
     scrollbar-width: none;
   }
 }
+
+/* Global utility overrides to make any legacy white/slate text highly legible in Light Mode */
+.text-slate-100,
+.text-gray-100,
+.text-gray-150,
+.text-gray-155 {
+  color: #111827 !important; /* Rich Charcoal for headings */
+}
+
+.text-slate-200,
+.text-slate-300,
+.text-slate-350,
+.text-gray-250,
+.text-gray-300 {
+  color: #374151 !important; /* Premium Gray for general content */
+}
+
+.text-slate-400,
+.text-slate-500,
+.text-gray-400,
+.text-gray-450,
+.text-gray-500,
+.text-slate-350 {
+  color: #6B7280 !important; /* Soft Gray for subtext or secondary meta-info */
+}
+
+/* Fix any specifically highlighted headings and strong text in blog/faq content */
+.text-white:not(button):not(a):not(.bg-[#8B5CF6] *):not(.bg-[#7C3AED] *):not(.bg-[#25D366] *):not(.bg-green-600 *):not(.bg-slate-900 *) {
+  color: #111827 !important;
+}
+
+/* Override all dark background boxes/plates inside blog articles and guides to a bright premium card white style */
+.bg-slate-900\/30,
+.bg-slate-900\/40,
+.bg-slate-900\/45,
+.bg-slate-900\/50,
+.bg-slate-950\/40,
+.bg-slate-950\/60,
+.bg-\[\#07102e\] {
+  background-color: #ffffff !important;
+}
+
+/* Override table headers and odd rows that were dark-themed */
+tr.bg-slate-950\/60,
+tr.bg-slate-900\/50,
+tr.bg-white\/5 {
+  background-color: #f9fafb !important;
+}
+
+tr.bg-blue-500\/5 {
+  background-color: rgba(139, 92, 246, 0.05) !important;
+}
+
+/* Ensure borders are classes light grey */
+.border-white\/5,
+.border-white\/10,
+.border-white\/15,
+.border-slate-800,
+.border-slate-700 {
+  border-color: #E5E7EB !important;
+}
+
+/* Custom spacing and background for section headers within blog */
+span.bg-\[\#07102e\] {
+  background-color: #f3efe6 !important;
+  color: #8B5CF6 !important;
+}
+
+/* Override blog article lists, subheadings, and strong tags to be pitch charcoal */
+article strong,
+article h1, article h2, article h3, article h4, article h5, article h6 {
+  color: #111827 !important;
+}
+
+/* Lists and list spans */
+article li, article li span {
+  color: #374151 !important;
+}
+
+/* Highlight links inside articles to use our primary violet accent color */
+article a {
+  color: #8B5CF6 !important;
+}
+article a:hover {
+  color: #7C3AED !important;
+  text-decoration: underline !important;
+}
+
+/* Styling tables inside articles */
+article table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1.5rem 0;
+}
+
+article th, article td {
+  border: 1px solid #E5E7EB !important;
+  color: #4B5563 !important;
+  padding: 0.75rem !important;
+}
+
+article thead th {
+  background-color: #f3f4f6 !important;
+  color: #111827 !important;
+  font-weight: 700 !important;
+}
+

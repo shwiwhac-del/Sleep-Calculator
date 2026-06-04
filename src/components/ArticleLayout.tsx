@@ -149,7 +149,7 @@ export function ArticleLayout({
 
       <article className="animate-in fade-in slide-in-from-top-4 duration-500">
         <nav className="mb-8 flex items-center justify-start text-sm border-b border-gray-100 dark:border-slate-800/60 pb-4">
-          <button onClick={handleBack} className="inline-flex items-center gap-1.5 text-xs text-gray-450 dark:text-gray-500 font-semibold uppercase tracking-wider hover:text-[#2563EB] dark:hover:text-[#3b82f6] transition-colors focus-visible:outline-none cursor-pointer">
+          <button onClick={handleBack} className="inline-flex items-center gap-1.5 text-xs text-gray-450 dark:text-gray-500 font-semibold uppercase tracking-wider hover:text-[#8B5CF6] transition-colors focus-visible:outline-none cursor-pointer">
             <ChevronLeft size={14} /> {backLabel}
           </button>
         </nav>
@@ -170,10 +170,10 @@ export function ArticleLayout({
             {/* Social Share could go here */}
           </div>
           <h1 className="select-text text-3xl sm:text-5xl font-bold tracking-tight text-gray-900 dark:text-gray-100 mb-6 leading-tight font-serif">{title}</h1>
-          <p className="select-text text-base sm:text-lg text-gray-600 dark:text-gray-300 leading-relaxed font-medium m-0 border-l-2 border-[#2563EB] pl-4">{description}</p>
+          <p className="select-text text-base sm:text-lg text-gray-600 dark:text-gray-300 leading-relaxed font-medium m-0 border-l-2 border-[#8B5CF6] pl-4">{description}</p>
         </header>
 
-        <div onContextMenu={(e) => e.stopPropagation()} className="prose select-text dark:prose-invert prose-p:text-base md:prose-p:text-lg prose-p:text-gray-600 dark:prose-p:text-gray-300 prose-headings:text-gray-900 dark:prose-headings:text-white prose-a:text-[#2563EB] prose-a:no-underline hover:prose-a:underline prose-li:text-base md:prose-li:text-lg prose-li:text-gray-600 dark:prose-li:text-gray-300 prose-headings:font-bold prose-h2:text-2xl md:prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-4 prose-h2:font-serif prose-h3:mt-8 prose-h3:text-xl md:prose-h3:text-2xl prose-h3:mb-3">
+        <div onContextMenu={(e) => e.stopPropagation()} className="prose select-text dark:prose-invert prose-p:text-base md:prose-p:text-lg prose-p:text-gray-600 dark:prose-p:text-gray-300 prose-headings:text-gray-900 dark:prose-headings:text-white prose-a:text-[#8B5CF6] prose-a:no-underline hover:prose-a:underline prose-li:text-base md:prose-li:text-lg prose-li:text-gray-600 dark:prose-li:text-gray-300 prose-headings:font-bold prose-h2:text-2xl md:prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-4 prose-h2:font-serif prose-h3:mt-8 prose-h3:text-xl md:prose-h3:text-2xl prose-h3:mb-3">
           {children}
         </div>
 
@@ -186,9 +186,9 @@ export function ArticleLayout({
           <img src={authorProfile.img} alt={authorProfile.name} className="w-20 h-20 sm:w-24 sm:h-24 rounded-full border border-gray-200 dark:border-gray-800 flex-shrink-0" />
           <div>
             <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-1">{authorProfile.name}</h3>
-            <p className="text-[#2563EB] font-medium text-sm mb-3">{authorProfile.title}</p>
+            <p className="text-[#8B5CF6] font-medium text-sm mb-3">{authorProfile.title}</p>
             <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-4">{authorProfile.description}</p>
-            <Link to="/about" className="inline-flex items-center text-sm font-semibold text-gray-900 dark:text-gray-100 hover:text-[#2563EB] dark:hover:text-[#2563EB] transition-colors">
+            <Link to="/about" className="inline-flex items-center text-sm font-semibold text-gray-900 dark:text-gray-100 hover:text-[#8B5CF6] transition-colors">
               Learn more about our methodology <ArrowRight size={16} className="ml-1" />
             </Link>
           </div>
@@ -197,7 +197,7 @@ export function ArticleLayout({
         <div className="mt-12 mb-8 bg-gray-50 dark:bg-[#1e293b] border border-gray-100 dark:border-[#1e293b] rounded-2xl p-8 text-center flex flex-col items-center">
           <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-3 font-serif">Ready to fix your sleep?</h3>
           <p className="text-sm text-gray-600 dark:text-gray-400 max-w-sm mb-6">Use our free calculator to find the exact time you should go to bed tonight based on your natural 90-minute sleep cycles.</p>
-          <Link to="/" className="inline-flex items-center gap-2 bg-[#2563EB] text-white font-semibold py-3 px-8 rounded-full hover:bg-[#1D4ED8] transition-colors shadow-sm">
+          <Link to="/" className="inline-flex items-center gap-2 bg-[#8B5CF6] text-white font-semibold py-3 px-8 rounded-full hover:bg-[#7C3AED] transition-colors shadow-sm">
             Calculate My Bedtime
           </Link>
         </div>
@@ -208,9 +208,9 @@ export function ArticleLayout({
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {activeRelated.map((post, idx) => (
                 <Link key={idx} to={post.url} className="group bg-white dark:bg-[#111827] border border-gray-200 dark:border-[#1e293b] hover:border-gray-300 dark:hover:border-gray-600 shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:shadow-lg hover:-translate-y-1 rounded-[24px] p-6 sm:p-7 transition-all duration-300 flex flex-col h-full">
-                  <h4 className="text-lg font-bold text-gray-900 dark:text-gray-100 mb-2 group-hover:text-[#2563EB] dark:group-hover:text-[#2563EB] transition-colors font-serif">{post.title}</h4>
+                  <h4 className="text-lg font-bold text-gray-900 dark:text-gray-100 mb-2 group-hover:text-[#8B5CF6] transition-colors font-serif">{post.title}</h4>
                   <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed max-w-full flex-grow">{post.description}</p>
-                  <span className="inline-flex items-center gap-1.5 text-[#2563EB] font-semibold text-sm mt-4 transition-colors">
+                  <span className="inline-flex items-center gap-1.5 text-[#8B5CF6] font-semibold text-sm mt-4 transition-colors">
                     Read <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
                   </span>
                 </Link>

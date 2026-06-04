@@ -88,32 +88,29 @@ export default function ShareScheduleWidget() {
   const whatsappUrl = `https://api.whatsapp.com/send?text=${shareTextEncoded}`;
 
   return (
-    <div id="sleep-share-calculator-widget" className="relative bg-gradient-to-b from-slate-900/90 to-[#0e1630]/95 border border-white/10 hover:border-blue-500/20 rounded-3xl p-6 sm:p-8 mt-12 mb-6 shadow-2xl transition-all duration-300 overflow-hidden">
+    <div id="sleep-share-calculator-widget" className="relative bg-white border border-[#E5E7EB] rounded-3xl p-6 sm:p-8 mt-12 mb-6 shadow-premium transition-all duration-300 overflow-hidden">
       {/* Background radial highlight */}
-      <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute -bottom-10 -left-10 w-44 h-44 bg-indigo-500/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-0 right-0 w-32 h-32 bg-[#8B5CF6]/4 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute -bottom-10 -left-10 w-44 h-44 bg-[#D4AF37]/4 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-6 border-b border-white/10">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-6 border-b border-[#E5E7EB]">
         <div>
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-blue-500/10 text-blue-400 border border-blue-500/20 uppercase tracking-widest mb-3">
-            <Share2 size={12} className="animate-pulse" /> Community Share
-          </span>
-          <h3 className="text-xl sm:text-2xl font-black text-gray-100 tracking-tight leading-snug">
+          <h3 className="text-xl sm:text-2xl font-black text-[#111827] tracking-tight leading-snug font-serif">
             Share Your Perfect Sleep Schedule
           </h3>
-          <p className="text-sm text-slate-400 mt-1 max-w-xl">
+          <p className="text-sm text-[#6B7280] mt-1 max-w-xl">
             Choose a target bedtime or wake-up hour to view your scientifically optimal 90-minute sleep cycle windows and share them with friends!
           </p>
         </div>
 
         {/* Quick controls toggle */}
-        <div className="flex bg-slate-950/80 p-1.5 rounded-2xl border border-white/5 shrink-0 self-start md:self-center">
+        <div className="flex bg-[#F8FAFC] p-1.5 rounded-2xl border border-[#E5E7EB] shrink-0 self-start md:self-center">
           <button
             onClick={() => setMode('bed')}
             className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-extrabold tracking-wide uppercase transition-all cursor-pointer ${
               mode === 'bed'
-                ? 'bg-blue-600 text-white shadow-md'
-                : 'text-slate-400 hover:text-slate-200'
+                ? 'bg-[#8B5CF6] text-white shadow-md'
+                : 'text-[#6B7280] hover:text-[#111827]'
             }`}
           >
             Sleep At
@@ -122,8 +119,8 @@ export default function ShareScheduleWidget() {
             onClick={() => setMode('wake')}
             className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-extrabold tracking-wide uppercase transition-all cursor-pointer ${
               mode === 'wake'
-                ? 'bg-blue-600 text-white shadow-md'
-                : 'text-slate-400 hover:text-slate-200'
+                ? 'bg-[#8B5CF6] text-white shadow-md'
+                : 'text-[#6B7280] hover:text-[#111827]'
             }`}
           >
             Wake Up At
@@ -134,17 +131,17 @@ export default function ShareScheduleWidget() {
       {/* Input Selector and Results Grid */}
       <div className="grid grid-cols-1 md:grid-cols-12 gap-6 pt-6">
         {/* Left Side: Dynamic Selectors */}
-        <div className="md:col-span-4 flex flex-col justify-center space-y-3 bg-slate-950/40 p-5 rounded-2xl border border-white/5">
-          <label className="text-xs font-bold text-slate-400 tracking-wider uppercase flex items-center gap-1.5">
-            <Clock size={14} className="text-blue-400" /> Key Target Time
+        <div className="md:col-span-4 flex flex-col justify-center space-y-3 bg-[#F8FAFC] p-5 rounded-2xl border border-[#E5E7EB]">
+          <label className="text-xs font-bold text-[#6B7280] tracking-wider uppercase flex items-center gap-1.5">
+            <Clock size={14} className="text-[#8B5CF6]" /> Key Target Time
           </label>
           <input
             type="time"
             value={time}
             onChange={(e) => setTime(e.target.value)}
-            className="w-full bg-slate-900 border border-white/10 hover:border-blue-500/30 text-white font-extrabold rounded-2xl px-4 py-3 text-lg leading-tight focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all text-center [color-scheme:dark]"
+            className="w-full bg-white border border-[#E5E7EB] hover:border-[#8B5CF6]/30 text-[#111827] font-extrabold rounded-2xl px-4 py-3 text-lg leading-tight focus:outline-none focus:ring-2 focus:ring-[#8B5CF6]/50 transition-all text-center [color-scheme:light]"
           />
-          <p className="text-[11px] text-slate-500 text-center leading-relaxed">
+          <p className="text-[11px] text-[#6B7280] text-center leading-relaxed">
             {mode === 'bed' 
               ? 'Results factor in a 15-minute natural sleep onset delay (latency).' 
               : 'Subtracts cycles & 15-minute delay to identify your exact bedtime.'}
@@ -157,19 +154,19 @@ export default function ShareScheduleWidget() {
             {cycles.map((item, index) => (
               <div 
                 key={item.id}
-                className={`flex flex-col items-center justify-center p-3.5 bg-slate-900/30 border rounded-2xl text-center space-y-1 transition-all ${
+                className={`flex flex-col items-center justify-center p-3.5 bg-[#F8FAFC]/50 border rounded-2xl text-center space-y-1 transition-all ${
                   index === 1 
-                    ? 'border-blue-500/30 bg-blue-950/10 shadow-[0_4px_16px_rgba(59,130,246,0.05)]' 
-                    : 'border-white/5'
+                    ? 'border-[#8B5CF6]/30 bg-[#8B5CF6]/5 shadow-[0_4px_16px_rgba(139,92,246,0.05)]' 
+                    : 'border-[#E5E7EB]'
                 }`}
               >
-                <div className="text-[10px] font-black text-blue-400 uppercase tracking-widest">
+                <div className="text-[10px] font-black text-[#8B5CF6] uppercase tracking-widest">
                   {item.id} Cycles
                 </div>
-                <div className="text-base sm:text-lg md:text-xl font-black text-gray-100 tracking-tight">
+                <div className="text-base sm:text-lg md:text-xl font-black text-[#111827] tracking-tight">
                   {item.timeStr}
                 </div>
-                <div className="text-[11px] text-slate-400 font-medium font-mono">
+                <div className="text-[11px] text-[#6B7280] font-medium font-mono">
                   {item.hours} Hours
                 </div>
               </div>
@@ -184,7 +181,7 @@ export default function ShareScheduleWidget() {
               className={`flex-1 flex items-center justify-center gap-2 py-3 px-5 rounded-2xl font-bold text-xs uppercase tracking-wider select-none transition-all active:scale-[0.98] cursor-pointer ${
                 copied
                   ? 'bg-green-600 text-white shadow-lg shadow-green-600/10'
-                  : 'bg-slate-800 text-white hover:bg-slate-750 border border-white/5 hover:border-slate-700'
+                  : 'bg-slate-800 text-white hover:bg-slate-700 border border-[#E5E7EB] hover:border-slate-650'
               }`}
             >
               {copied ? (
@@ -203,7 +200,7 @@ export default function ShareScheduleWidget() {
               href={twitterUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-5 py-3 rounded-2xl bg-slate-950 text-white hover:bg-black border border-white/5 hover:border-white/10 active:scale-[0.98] font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all cursor-pointer"
+              className="px-5 py-3 rounded-2xl bg-black text-white hover:bg-slate-900 border border-[#E5E7EB] hover:border-white/10 active:scale-[0.98] font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all cursor-pointer"
             >
               {/* Custom micro-minimal SVG for Twitter/X inline */}
               <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">

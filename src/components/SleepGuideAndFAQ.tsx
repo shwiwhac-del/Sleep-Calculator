@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { ChevronDown } from "lucide-react";
+import { Link } from "react-router-dom";
+import { ChevronDown, Calendar, Clock, ArrowRight, BookOpen } from "lucide-react";
+import { BLOG_POSTS } from "../pages/Blog";
 
 export default function SleepGuideAndFAQ() {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
@@ -27,6 +29,20 @@ export default function SleepGuideAndFAQ() {
       a: "Most adults complete 5–6 sleep cycles per night, which typically equals around 7.5–9 hours of sleep."
     }
   ];
+
+  const getBlogTimestamp = (dateStr: string) => {
+    try {
+      const d = new Date(dateStr);
+      if (!isNaN(d.getTime())) return d.getTime();
+    } catch (e) {
+      // Fallback
+    }
+    return 0;
+  };
+
+  const latestBlogs = [...BLOG_POSTS]
+    .sort((a, b) => getBlogTimestamp(b.date) - getBlogTimestamp(a.date))
+    .slice(0, 3);
 
   return (
     <div className="w-full max-w-[42rem] mx-auto mt-6 mb-2 px-4 text-slate-300 select-none font-sans text-left space-y-4 content-visible-auto">
@@ -389,7 +405,309 @@ export default function SleepGuideAndFAQ() {
         By understanding sleep cycles and maintaining consistent sleep habits, you can improve sleep quality, wake up feeling more refreshed, and build a healthier daily routine.
       </p>
 
-      <h3 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-gray-100 pt-4 text-center w-full">
+      {/* Sleep Calculator: The Smarter Way to Sleep Better and Wake Up Refreshed */}
+      <h3 className="text-xl sm:text-2xl font-bold text-gray-100 pt-4">
+        Sleep Calculator: The Smarter Way to Sleep Better and Wake Up Refreshed
+      </h3>
+
+      <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 select-text">
+        Most people focus on getting more sleep. The real secret is getting better sleep.
+      </p>
+
+      <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 select-text">
+        You may spend eight hours in bed and still wake up tired. On the other hand, some people sleep less and wake up feeling energized. The difference often comes down to sleep cycles, sleep timing, and sleep quality.
+      </p>
+
+      <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 select-text">
+        That's where a Sleep Calculator can help.
+      </p>
+
+      <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 select-text">
+        A Sleep Calculator is designed to help you find the best bedtime and wake-up time based on natural sleep cycles. Instead of guessing when to sleep, you can use a Sleep Cycle Calculator, Bedtime Calculator, or Best Time to Wake Up Calculator to build a healthier sleep routine.
+      </p>
+
+      <h3 className="text-xl sm:text-2xl font-bold text-gray-100 pt-3">
+        Why Sleep Cycles Matter
+      </h3>
+
+      <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 select-text">
+        Your body doesn't stay in the same sleep stage all night. It moves through multiple sleep cycles consisting of light sleep, deep sleep, and REM sleep.
+      </p>
+
+      <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 select-text">
+        A typical sleep cycle lasts about 90 minutes.
+      </p>
+
+      <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 select-text">
+        When your alarm goes off during deep sleep, you may experience:
+      </p>
+
+      <ul className="list-disc pl-5 space-y-1 text-slate-300 text-base sm:text-lg md:text-[1.125rem] select-text">
+        <li>Morning grogginess</li>
+        <li>Low energy</li>
+        <li>Poor concentration</li>
+        <li>Difficulty waking up</li>
+      </ul>
+
+      <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 select-text">
+        This is why many people use a 90 Minute Sleep Calculator or REM Sleep Calculator to improve their sleep schedule.
+      </p>
+
+      <h3 className="text-xl sm:text-2xl font-bold text-gray-100 pt-3">
+        How a Sleep Calculator Works
+      </h3>
+
+      <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 select-text">
+        A Sleep Calculator with Sleep Cycles estimates the ideal times to go to bed or wake up based on complete sleep cycles.
+      </p>
+
+      <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 select-text">
+        Rather than simply aiming for eight hours of sleep, it helps you wake up at a point when your body is naturally ready to become alert.
+      </p>
+
+      <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 select-text">
+        Popular tools include:
+      </p>
+
+      <ul className="list-disc pl-5 space-y-1 text-slate-300 text-base sm:text-lg md:text-[1.125rem] select-text">
+        <li>Sleep Calculator</li>
+        <li>Sleep Schedule Calculator</li>
+        <li>Sleep Timing Calculator</li>
+        <li>Best Bedtime Calculator</li>
+        <li>Ideal Bedtime Calculator</li>
+        <li>Ideal Wake Up Time Calculator</li>
+        <li>Wake Up Refreshed Calculator</li>
+      </ul>
+
+      <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 select-text">
+        These tools can help create a more consistent sleep routine and improve overall sleep quality.
+      </p>
+
+      <h3 className="text-xl sm:text-2xl font-bold text-gray-100 pt-3">
+        What Time Should You Go to Bed?
+      </h3>
+
+      <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 select-text">
+        One of the most common questions people ask is:
+      </p>
+
+      <p className="text-base sm:text-lg md:text-[1.125rem] font-semibold italic text-gray-100 mt-2 select-text">
+        "What time should I go to bed?"
+      </p>
+
+      <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 select-text">
+        The answer depends on when you need to wake up and how many sleep cycles your body needs.
+      </p>
+
+      <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 select-text">
+        A What Time Should I Go to Bed Calculator or Best Time to Go to Sleep Calculator can estimate suitable bedtimes based on your desired wake-up time.
+      </p>
+
+      <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 select-text">
+        Consistency is often more important than choosing a specific bedtime.
+      </p>
+
+      <h3 className="text-xl sm:text-2xl font-bold text-gray-100 pt-3">
+        Why Do You Wake Up Tired After 8 Hours?
+      </h3>
+
+      <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 select-text">
+        Many people search:
+      </p>
+
+      <ul className="list-disc pl-5 space-y-1 text-slate-300 text-base sm:text-lg md:text-[1.125rem] select-text">
+        <li>Why do I wake up tired after 8 hours?</li>
+        <li>Why am I tired after sleeping?</li>
+      </ul>
+
+      <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 select-text">
+        Common reasons include:
+      </p>
+
+      <ul className="list-disc pl-5 space-y-1 text-slate-300 text-base sm:text-lg md:text-[1.125rem] select-text">
+        <li>Poor sleep quality</li>
+        <li>Interrupted sleep cycles</li>
+        <li>Sleep debt</li>
+        <li>Inconsistent sleep schedule</li>
+        <li>Excessive screen time</li>
+        <li>Stress and anxiety</li>
+      </ul>
+
+      <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 select-text">
+        Even if you sleep long enough, waking up during the wrong stage of sleep can leave you feeling exhausted.
+      </p>
+
+      <h3 className="text-xl sm:text-2xl font-bold text-gray-100 pt-3">
+        How Many Sleep Cycles Do You Need?
+      </h3>
+
+      <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 select-text">
+        A common question is:
+      </p>
+
+      <p className="text-base sm:text-lg md:text-[1.125rem] font-semibold text-gray-100 mt-2 select-text">
+        How many sleep cycles do I need?
+      </p>
+
+      <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 select-text">
+        Most adults complete between 4 and 6 sleep cycles per night.
+      </p>
+
+      <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 select-text">
+        Generally:
+      </p>
+
+      <ul className="list-disc pl-5 space-y-1 text-slate-300 text-base sm:text-lg md:text-[1.125rem] select-text">
+        <li>4 cycles = approximately 6 hours</li>
+        <li>5 cycles = approximately 7.5 hours</li>
+        <li>6 cycles = approximately 9 hours</li>
+      </ul>
+
+      <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 select-text">
+        However, sleep needs vary from person to person.
+      </p>
+
+      <h3 className="text-xl sm:text-2xl font-bold text-gray-100 pt-3">
+        Sleep Calculator for Students and Professionals
+      </h3>
+
+      <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 select-text">
+        Sleep is essential for productivity, focus, and learning.
+      </p>
+
+      <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 select-text">
+        A Sleep Calculator for Students can help improve concentration, memory retention, and exam performance.
+      </p>
+
+      <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 select-text">
+        Similarly, a Sleep Calculator for Productivity can help professionals maintain energy levels and stay focused throughout the day.
+      </p>
+
+      <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 select-text">
+        Whether you're preparing for exams, work, or daily responsibilities, a consistent sleep schedule can significantly improve performance.
+      </p>
+
+      <h3 className="text-xl sm:text-2xl font-bold text-gray-100 pt-3">
+        Improve Sleep Quality Naturally
+      </h3>
+
+      <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 select-text">
+        If you want to improve sleep quality naturally, focus on these habits:
+      </p>
+
+      <p className="text-base sm:text-lg md:text-[1.125rem] font-semibold text-gray-100 mt-2 select-text">
+        Follow a Consistent Sleep Routine
+      </p>
+      <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 select-text">
+        Try to sleep and wake up at the same time every day.
+      </p>
+
+      <p className="text-base sm:text-lg md:text-[1.125rem] font-semibold text-gray-100 mt-2 select-text">
+        Reduce Screen Time Before Bed
+      </p>
+      <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 select-text">
+        Blue light from electronic devices may interfere with melatonin production.
+      </p>
+
+      <p className="text-base sm:text-lg md:text-[1.125rem] font-semibold text-gray-100 mt-2 select-text">
+        Create a Healthy Bedtime Routine
+      </p>
+      <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 select-text">
+        Reading, relaxation, and limiting caffeine can support better sleep.
+      </p>
+
+      <p className="text-base sm:text-lg md:text-[1.125rem] font-semibold text-gray-100 mt-2 select-text">
+        Align Sleep With Sleep Cycles
+      </p>
+      <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 select-text">
+        Using a Natural Sleep Cycle Calculator or Sleep Cycle Planner may help reduce morning grogginess.
+      </p>
+
+      <h3 className="text-xl sm:text-2xl font-bold text-gray-100 pt-3">
+        Benefits of Better Sleep
+      </h3>
+
+      <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 select-text">
+        A healthy sleep routine may help:
+      </p>
+
+      <ul className="list-disc pl-5 space-y-1 text-slate-300 text-base sm:text-lg md:text-[1.125rem] select-text">
+        <li>Wake up refreshed</li>
+        <li>Improve concentration</li>
+        <li>Increase productivity</li>
+        <li>Support mental performance</li>
+        <li>Improve mood</li>
+        <li>Reduce fatigue</li>
+        <li>Improve overall health</li>
+      </ul>
+
+      <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 select-text">
+        Small improvements in sleep habits can create noticeable improvements in daily life.
+      </p>
+
+      <h3 className="text-xl sm:text-2xl font-bold text-gray-100 pt-3">
+        Final Thoughts
+      </h3>
+
+      <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 select-text">
+        A Sleep Calculator is more than a simple tool. It helps you understand sleep cycles, improve sleep timing, and build healthier sleep habits.
+      </p>
+
+      <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 select-text">
+        Whether you're looking for the Best Bedtime Calculator, REM Sleep Calculator, Sleep Schedule Calculator, or simply wondering what time you should sleep, understanding your natural sleep cycles can help you wake up refreshed, improve sleep quality, and create a more consistent routine.
+      </p>
+
+      <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 pb-1 select-text">
+        Better days often start with better nights.
+      </p>
+
+      {/* Latest Blog Articles Carousel/Grid component */}
+      <div className="w-full pt-8 pb-4 border-t border-[#E5E7EB] mt-8">
+        <div className="flex flex-col items-center gap-2 text-center max-w-2xl mx-auto mb-8">
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-[#111827] mt-1 text-center w-full">
+            Explore Our Latest Articles
+          </h2>
+          <p className="text-sm text-[#6B7280] text-center w-full">
+            Science-backed tips, research, and deep insights to help you build optimal habits and wake up refreshed.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {latestBlogs.map((post) => (
+            <Link
+              key={post.slug}
+              to={`/${post.slug}`}
+              className="bg-white hover:bg-slate-50 border border-[#E5E7EB] hover:border-[#8B5CF6]/50 rounded-2xl p-5 flex flex-col justify-between group shadow-md transition-all duration-300 select-text hover:shadow-premium hover:-translate-y-1 block"
+            >
+              <div>
+                <h4 className="text-base sm:text-lg font-extrabold text-[#111827] leading-snug group-hover:text-[#8B5CF6] transition-colors duration-200 line-clamp-2">
+                  {post.title}
+                </h4>
+                <p className="text-xs sm:text-sm text-[#374151] mt-2.5 line-clamp-3 leading-relaxed">
+                  {post.description}
+                </p>
+              </div>
+              <div className="mt-5 pt-4 border-t border-[#E5E7EB] flex items-center justify-between">
+                <div className="flex items-center gap-3 text-[11px] text-[#6B7280]">
+                  <span className="flex items-center gap-1">
+                    <Calendar size={12} className="text-[#6B7280]" />
+                    {post.date}
+                  </span>
+                  <span className="flex items-center gap-1">
+                    <Clock size={12} className="text-[#6B7280]" />
+                    {post.readTime}
+                  </span>
+                </div>
+                <span className="flex items-center gap-1 text-xs text-[#8B5CF6] font-bold group-hover:text-[#7C3AED] transition-colors duration-200">
+                  Read <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-200" />
+                </span>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
+
+      <h3 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-[#111827] pt-8 text-center w-full">
         Frequently Asked Questions
       </h3>
 
@@ -399,15 +717,15 @@ export default function SleepGuideAndFAQ() {
           return (
             <div
               key={index}
-              className="bg-[#0f172a]/40 dark:bg-[#1e293b]/20 border border-gray-250/20 dark:border-slate-800 rounded-xl overflow-hidden shadow-sm transition-all duration-305 hover:border-[#2563EB]/45 dark:hover:border-[#2563EB]/45"
+              className="bg-white border border-[#E5E7EB] rounded-xl overflow-hidden shadow-sm transition-all duration-305 hover:border-[#8B5CF6]/45"
             >
               <button
                 type="button"
                 onClick={() => setActiveFaq(isOpen ? null : index)}
-                className="w-full flex items-center justify-between p-4 sm:p-5 text-left font-semibold text-gray-100 dark:text-gray-100 hover:bg-gray-50/5 dark:hover:bg-slate-800/10 transition-colors focus:outline-none cursor-pointer"
+                className="w-full flex items-center justify-between p-4 sm:p-5 text-left font-semibold text-[#111827] hover:bg-slate-50 transition-colors focus:outline-none cursor-pointer"
               >
-                <span className="text-base sm:text-lg pr-4 font-bold text-gray-100">{faq.q}</span>
-                <ChevronDown className={`w-5.5 h-5.5 text-[#2563EB] shrink-0 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`} />
+                <span className="text-base sm:text-lg pr-4 font-bold text-[#111827]">{faq.q}</span>
+                <ChevronDown className={`w-5.5 h-5.5 text-[#8B5CF6] shrink-0 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`} />
               </button>
               <AnimatePresence initial={false}>
                 {isOpen && (
@@ -416,9 +734,9 @@ export default function SleepGuideAndFAQ() {
                     animate={{ height: "auto", opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
                     transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                    className="overflow-hidden border-t border-gray-200/10 dark:border-slate-800/60"
+                    className="overflow-hidden border-t border-[#E5E7EB]"
                   >
-                    <p className="p-5 text-sm sm:text-base text-slate-300 dark:text-slate-300 leading-relaxed bg-white/[0.01] dark:bg-slate-900/[0.04] select-text">
+                    <p className="p-5 text-sm sm:text-base text-[#374151] leading-relaxed bg-[#F8FAFC] select-text">
                       {faq.a}
                     </p>
                   </motion.div>

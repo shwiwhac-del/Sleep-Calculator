@@ -100,7 +100,7 @@ export default function Contact() {
 
         {isSuccess ? (
           <div className="flex flex-col items-start py-8">
-            <div className="flex items-center gap-3 text-[#2563EB] mb-4">
+            <div className="flex items-center gap-3 text-[#8B5CF6] mb-4">
               <CheckCircle size={24} />
               <h2 className="text-2xl font-bold">Message Sent</h2>
             </div>
@@ -133,7 +133,7 @@ export default function Contact() {
                 value={formData.name}
                 onChange={handleChange}
                 required
-                className="w-full bg-white dark:bg-[#111827] border border-gray-200 dark:border-slate-700 shadow-sm focus:border-[#2563EB] focus:ring-1 focus:ring-[#2563EB] rounded-xl px-4 py-3 text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:text-gray-500 focus:outline-none transition-colors text-[16px] md:text-[18px]"
+                className="w-full bg-[#F8FAFC] border border-[#E5E7EB] shadow-sm focus:border-[#8B5CF6] focus:ring-1 focus:ring-[#8B5CF6] rounded-xl px-4 py-3 text-gray-900 placeholder:text-gray-400 focus:outline-none transition-colors text-[16px] md:text-[18px]"
                 placeholder="Your name"
               />
             </div>
@@ -149,7 +149,7 @@ export default function Contact() {
                 value={formData.email}
                 onChange={handleChange}
                 required
-                className="w-full bg-white dark:bg-[#111827] border border-gray-200 dark:border-slate-700 shadow-sm focus:border-[#2563EB] focus:ring-1 focus:ring-[#2563EB] rounded-xl px-4 py-3 text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:text-gray-500 focus:outline-none transition-colors text-[16px] md:text-[18px]"
+                className="w-full bg-[#F8FAFC] border border-[#E5E7EB] shadow-sm focus:border-[#8B5CF6] focus:ring-1 focus:ring-[#8B5CF6] rounded-xl px-4 py-3 text-gray-900 placeholder:text-gray-400 focus:outline-none transition-colors text-[16px] md:text-[18px]"
                 placeholder="you@example.com"
               />
             </div>
@@ -165,7 +165,7 @@ export default function Contact() {
                 onChange={handleChange}
                 required
                 rows={4}
-                className="w-full bg-white dark:bg-[#111827] border border-gray-200 dark:border-slate-700 shadow-sm focus:border-[#2563EB] focus:ring-1 focus:ring-[#2563EB] rounded-xl px-4 py-3 text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:text-gray-500 focus:outline-none transition-colors resize-none text-base sm:text-lg"
+                className="w-full bg-[#F8FAFC] border border-[#E5E7EB] shadow-sm focus:border-[#8B5CF6] focus:ring-1 focus:ring-[#8B5CF6] rounded-xl px-4 py-3 text-gray-900 placeholder:text-gray-400 focus:outline-none transition-colors resize-none text-base sm:text-lg"
                 placeholder="How can we help?"
               />
             </div>
@@ -173,7 +173,7 @@ export default function Contact() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-[#2563EB] text-white hover:bg-[#1D4ED8] rounded-xl px-4 py-3 text-sm font-bold transition-all disabled:opacity-50 flex items-center justify-center gap-2 mt-2 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#2563EB]"
+              className="w-full bg-[#8B5CF6] text-white hover:bg-[#7C3AED] rounded-xl px-4 py-3 text-sm font-bold transition-all disabled:opacity-50 flex items-center justify-center gap-2 mt-2 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#8B5CF6]"
             >
               {isSubmitting ? 'Sending...' : 'Send Message'}
             </button>

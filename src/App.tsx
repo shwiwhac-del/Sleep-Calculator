@@ -22,13 +22,13 @@ const NotFound = lazy(() => import('./pages/NotFound'));
 
 function Footer() {
   return (
-    <footer className="w-full py-4 mt-auto border-t border-white/5 bg-transparent z-20 relative flex flex-col items-center gap-y-2">
-      <div className="flex flex-wrap items-center justify-center gap-x-5 sm:gap-x-6 text-xs sm:text-sm text-slate-350 dark:text-slate-350 px-4">
+    <footer className="w-full py-4 mt-auto border-t border-[#E5E7EB] bg-transparent z-20 relative flex flex-col items-center gap-y-2">
+      <div className="flex flex-wrap items-center justify-center gap-x-5 sm:gap-x-6 text-xs sm:text-sm text-[#6B7280] px-4">
         <Link 
           to="/about" 
           onMouseEnter={() => import('./pages/About')}
           onFocus={() => import('./pages/About')}
-          className="hover:text-blue-400 dark:hover:text-blue-400 transition-colors font-semibold"
+          className="hover:text-[#8B5CF6] transition-colors font-semibold"
         >
           About
         </Link>
@@ -36,7 +36,7 @@ function Footer() {
           to="/contact" 
           onMouseEnter={() => import('./pages/Contact')}
           onFocus={() => import('./pages/Contact')}
-          className="hover:text-blue-400 dark:hover:text-blue-400 transition-colors font-semibold"
+          className="hover:text-[#8B5CF6] transition-colors font-semibold"
         >
           Contact
         </Link>
@@ -44,7 +44,7 @@ function Footer() {
           to="/privacy" 
           onMouseEnter={() => import('./pages/Privacy')}
           onFocus={() => import('./pages/Privacy')}
-          className="hover:text-blue-400 dark:hover:text-blue-400 transition-colors font-semibold"
+          className="hover:text-[#8B5CF6] transition-colors font-semibold"
         >
           Privacy Policy
         </Link>
@@ -52,12 +52,12 @@ function Footer() {
           to="/terms" 
           onMouseEnter={() => import('./pages/Terms')}
           onFocus={() => import('./pages/Terms')}
-          className="hover:text-blue-400 dark:hover:text-blue-400 transition-colors font-semibold"
+          className="hover:text-[#8B5CF6] transition-colors font-semibold"
         >
           Terms & Conditions
         </Link>
       </div>
-      <div className="text-slate-500 dark:text-slate-505 text-xs flex flex-col items-center">
+      <div className="text-[#6B7280] text-xs flex flex-col items-center">
         <span>&copy; {new Date().getFullYear()} Sleep Calculator. All rights reserved.</span>
       </div>
     </footer>
@@ -70,7 +70,7 @@ function Header() {
       <Link 
         to="/" 
         onContextMenu={(e) => e.preventDefault()} 
-        className="font-display text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-slate-100 via-indigo-200 to-blue-300 hover:scale-[1.02] active:scale-[0.98] transition-transform duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB]/40 rounded-2xl p-2 text-center"
+        className="font-display text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-[#8B5CF6] to-[#D4AF37] hover:scale-[1.02] active:scale-[0.98] transition-transform duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B5CF6]/40 rounded-2xl p-2 text-center"
       >
         Sleep Calculator
       </Link>
@@ -95,21 +95,21 @@ function PageBlogRedirect() {
 }
 
 function AppContent() {
-  const [isDarkMode] = useState(true);
+  const [isDarkMode] = useState(false);
 
   useEffect(() => {
-    document.documentElement.classList.add('dark');
-    localStorage.setItem('theme', 'dark');
+    document.documentElement.classList.remove('dark');
+    localStorage.setItem('theme', 'light');
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col text-gray-155 dark:text-slate-100 font-sans relative overflow-x-hidden bg-[#07102e]">
+    <div className="min-h-screen flex flex-col text-[#374151] font-sans relative overflow-x-hidden bg-[#F3ECE3]">
       <StarryBackground />
       <Header />
       <main className="relative z-10 flex-grow flex flex-col items-center justify-start w-full pt-0 pb-4 sm:pb-8">
             <Suspense fallback={
               <div className="flex justify-center items-center h-[50vh] w-full">
-                <Loader2 className="w-8 h-8 text-[#2563EB] animate-spin" />
+                <Loader2 className="w-8 h-8 text-[#8B5CF6] animate-spin" />
               </div>
             }>
               <Routes>
@@ -153,6 +153,9 @@ function AppContent() {
                 <Route path="/why-do-people-snore" element={<Blog />} />
                 <Route path="/sleep-calculator-by-age" element={<Blog />} />
                 <Route path="/90-minute-sleep-calculator" element={<Blog />} />
+                <Route path="/best-sleep-schedule-for-productivity" element={<Blog />} />
+                <Route path="/sleep-calculator-for-students" element={<Blog />} />
+                <Route path="/why-am-i-tired-after-sleeping" element={<Blog />} />
 
                 {/* Legacy /blog and /page/blog Prefixes redirected back to clean root paths */}
                 <Route path="/blog/:slug" element={<PageBlogRedirect />} />
