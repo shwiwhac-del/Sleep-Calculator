@@ -4,6 +4,8 @@ import { MessageSquare } from "lucide-react";
 import { Helmet } from "react-helmet-async";
 import TimePicker from "../components/TimePicker";
 import SleepGuideAndFAQ from "../components/SleepGuideAndFAQ";
+import { QuickSleepTips } from "../components/QuickSleepTips";
+import { SleepJournal } from "../components/SleepJournal";
 
 const FeedbackModal = lazy(() =>
   import("../components/FeedbackModal").then((module) => ({
@@ -495,7 +497,7 @@ export default function Home() {
           </script>
         </Helmet>
         <div className={`flex flex-col items-center justify-center gap-2 text-center max-w-3xl mx-auto px-4 mt-2 sm:mt-3 transition-all duration-300 ${showResults ? "mb-5 sm:mb-6" : "mb-12 sm:mb-16"}`}>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[2.75rem] font-extrabold tracking-tight text-[#111827] leading-tight sm:leading-snug text-center">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-[2rem] font-extrabold tracking-tight text-[#111827] leading-tight sm:leading-snug text-center">
             Calculate Your Perfect Bedtime & Wake-Up Time
           </h1>
         </div>
@@ -624,7 +626,7 @@ export default function Home() {
               <div className="w-full p-4 sm:p-5 flex flex-col relative overflow-hidden">
                 <div className="relative z-10">
                   <div className="flex items-center justify-center mb-6">
-                    <h2 className="text-xl sm:text-2xl md:text-3xl font-black text-gray-900 dark:text-gray-100 text-center tracking-tight">
+                    <h2 className="text-lg sm:text-xl lg:text-2xl font-black text-gray-900 dark:text-gray-100 text-center tracking-tight">
                       Your Ideal Sleep Times
                     </h2>
                   </div>
@@ -637,19 +639,19 @@ export default function Home() {
                       {results.map((res, index) => {
                         const isSuggested = index === 0 || index === 1;
                         return (
-                          <div
+                           <div
                             key={index}
                             className={`group flex items-center justify-between py-3.5 px-5 rounded-2xl border transition-all duration-300 hover:shadow-premium ${
                               isSuggested
-                                ? "border-[#8B5CF6]/40 bg-[#8B5CF6]/5"
-                                : "border-[#E5E7EB] bg-white"
+                                ? "border-[#8B5CF6]/40 bg-[#8B5CF6]/5 hover:bg-[#8B5CF6]/10"
+                                : "border-[#E5E7EB] bg-white hover:bg-slate-50/85"
                             }`}
                           >
                             <div className="flex flex-col relative z-10">
-                              <span className="text-2xl sm:text-3xl font-extrabold text-[#111827] tracking-tight leading-none mb-1.5 flex items-center gap-1.5">
+                              <span className="text-xl sm:text-2xl font-extrabold text-[#111827] tracking-tight leading-none mb-1.5 flex items-center gap-1.5">
                                 {formatTime(res.date)}
                               </span>
-                              <span className="text-[#374151] text-sm sm:text-base font-bold">
+                              <span className="text-[#374151] text-xs sm:text-sm font-bold">
                                 {res.duration
                                   ? res.duration
                                   : `${Number(res.cycles) * 1.5} hours of sleep (${res.cycles} cycles)`}
@@ -734,6 +736,12 @@ export default function Home() {
           )
         )}
       </AnimatePresence>
+
+      {/* Quick Sleep Tips section */}
+      <QuickSleepTips />
+
+      {/* Personal Sleep Journal section */}
+      <SleepJournal />
 
       {/* Sleep Guide & FAQ Section below the Sleep Calculator */}
       <SleepGuideAndFAQ />

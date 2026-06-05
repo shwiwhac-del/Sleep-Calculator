@@ -96,7 +96,7 @@ export default function Contact() {
       </div>
 
       <div className="animate-in fade-in slide-in-from-top-4 duration-500 text-left">
-        <h1 className="text-3xl sm:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-6 leading-tight font-serif">Contact Us</h1>
+        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4 leading-tight font-serif">Contact Us</h1>
 
         {isSuccess ? (
           <div className="flex flex-col items-start py-8">
@@ -133,7 +133,7 @@ export default function Contact() {
                 value={formData.name}
                 onChange={handleChange}
                 required
-                className="w-full bg-[#F8FAFC] border border-[#E5E7EB] shadow-sm focus:border-[#8B5CF6] focus:ring-1 focus:ring-[#8B5CF6] rounded-xl px-4 py-3 text-gray-900 placeholder:text-gray-400 focus:outline-none transition-colors text-[16px] md:text-[18px]"
+                className="w-full bg-[#F8FAFC] border border-[#E5E7EB] shadow-sm focus:border-[#8B5CF6] focus:ring-1 focus:ring-[#8B5CF6] rounded-xl px-4 py-3 text-gray-900 placeholder:text-gray-400 focus:outline-none transition-colors text-sm md:text-base"
                 placeholder="Your name"
               />
             </div>
@@ -149,7 +149,7 @@ export default function Contact() {
                 value={formData.email}
                 onChange={handleChange}
                 required
-                className="w-full bg-[#F8FAFC] border border-[#E5E7EB] shadow-sm focus:border-[#8B5CF6] focus:ring-1 focus:ring-[#8B5CF6] rounded-xl px-4 py-3 text-gray-900 placeholder:text-gray-400 focus:outline-none transition-colors text-[16px] md:text-[18px]"
+                className="w-full bg-[#F8FAFC] border border-[#E5E7EB] shadow-sm focus:border-[#8B5CF6] focus:ring-1 focus:ring-[#8B5CF6] rounded-xl px-4 py-3 text-gray-900 placeholder:text-gray-400 focus:outline-none transition-colors text-sm md:text-base"
                 placeholder="you@example.com"
               />
             </div>
@@ -165,7 +165,7 @@ export default function Contact() {
                 onChange={handleChange}
                 required
                 rows={4}
-                className="w-full bg-[#F8FAFC] border border-[#E5E7EB] shadow-sm focus:border-[#8B5CF6] focus:ring-1 focus:ring-[#8B5CF6] rounded-xl px-4 py-3 text-gray-900 placeholder:text-gray-400 focus:outline-none transition-colors resize-none text-base sm:text-lg"
+                className="w-full bg-[#F8FAFC] border border-[#E5E7EB] shadow-sm focus:border-[#8B5CF6] focus:ring-1 focus:ring-[#8B5CF6] rounded-xl px-4 py-3 text-gray-900 placeholder:text-gray-400 focus:outline-none transition-colors resize-none text-sm md:text-base"
                 placeholder="How can we help?"
               />
             </div>

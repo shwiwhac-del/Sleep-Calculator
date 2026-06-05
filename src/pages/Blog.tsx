@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link, useNavigate, useLocation, useParams, Navigate } from 'react-router-dom';
 import { ArrowLeft, ChevronDown, ChevronUp, Calculator, Sparkles } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
-import { motion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
 import { AutoLinker } from '../components/AutoLinker';
 import ShareScheduleWidget from '../components/ShareScheduleWidget';
 
@@ -980,9 +980,22 @@ export default function Blog() {
 
   const currentFaqs = activeSlug ? BLOG_FAQS[activeSlug] : [];
 
+  const DUPLICATE_SLUGS = [
+    'how-much-sleep-do-you-need-by-age',
+    'wake-up-tired-after-8-hours',
+    'best-bedtime-for-adults',
+    'what-is-sleep-debt',
+    'sleep-and-memory-learning',
+    'sleep-calculator-by-age',
+    '90-minute-sleep-calculator',
+    'best-sleep-schedule-for-productivity',
+    'sleep-calculator-for-students',
+    'why-am-i-tired-after-sleeping'
+  ];
+
   const currentPost = BLOG_POSTS.find(p => p.slug === activeSlug);
   const relatedPosts = BLOG_POSTS
-    .filter(p => p.slug !== activeSlug)
+    .filter(p => p.slug !== activeSlug && !DUPLICATE_SLUGS.includes(p.slug))
     .sort((a, b) => {
       if (currentPost && a.category === currentPost.category && b.category !== currentPost.category) {
         return -1;
@@ -1231,17 +1244,28 @@ export default function Blog() {
         {/* Main Blog Cards Overview - Render when no specific blog is selected */}
         {!isAnyBlog && (
           <div className="space-y-12">
-            <div className="text-center space-y-4 max-w-3xl mx-auto mb-12">
-              <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-[#111827] tracking-tight leading-tight font-serif">
+            <div className="text-center space-y-4 max-w-3xl mx-auto mb-10">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#111827] tracking-tight leading-tight font-serif">
                 Sleep Science <span className="bg-gradient-to-r from-[#8B5CF6] to-[#D4AF37] bg-clip-text text-transparent">&amp; Guides</span>
               </h1>
-              <p className="text-base sm:text-lg md:text-[1.125rem] text-[#4B5563] leading-relaxed font-medium">
+              <p className="text-sm sm:text-base text-[#4B5563] leading-relaxed font-medium">
                 Expert knowledge, physiological research, and actionable tips to help you calculate your optimal sleep windows, reset your internal clock, and wake up energized.
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 pb-12">
-              {BLOG_POSTS.map((post) => (
+              {BLOG_POSTS.filter(post => ![
+                'how-much-sleep-do-you-need-by-age',
+                'wake-up-tired-after-8-hours',
+                'best-bedtime-for-adults',
+                'what-is-sleep-debt',
+                'sleep-and-memory-learning',
+                'sleep-calculator-by-age',
+                '90-minute-sleep-calculator',
+                'best-sleep-schedule-for-productivity',
+                'sleep-calculator-for-students',
+                'why-am-i-tired-after-sleeping'
+              ].includes(post.slug)).map((post) => (
                 <Link
                   key={post.slug}
                   to={`/${post.slug}`}
@@ -7836,17 +7860,26 @@ export default function Blog() {
                       className="w-full flex items-center justify-between p-4 sm:p-5 text-left text-[#111827] hover:bg-slate-50 font-bold transition-all text-sm sm:text-[1.05rem] cursor-pointer focus-visible:outline-none"
                     >
                       <span>{faq.q}</span>
-                      {isOpen ? (
-                        <ChevronUp size={18} className="text-[#8B5CF6] shrink-0 ml-3" />
-                      ) : (
-                        <ChevronDown size={18} className="text-[#6B7280] shrink-0 ml-3" />
-                      )}
+                      <ChevronDown 
+                        size={18} 
+                        className={`text-[#8B5CF6] shrink-0 ml-3 transition-transform duration-300 ${isOpen ? "rotate-180" : "text-[#6B7280]"}`} 
+                      />
                     </button>
-                    {isOpen && (
-                      <div className="p-4 sm:p-5 pt-4 border-t border-[#E5E7EB] text-[#4B5563] text-xs sm:text-sm leading-relaxed bg-white">
-                        {faq.a}
-                      </div>
-                    )}
+                    <AnimatePresence initial={false}>
+                      {isOpen && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                          className="overflow-hidden border-t border-[#E5E7EB]"
+                        >
+                          <div className="p-4 sm:p-5 text-[#4B5563] text-xs sm:text-sm leading-relaxed bg-white">
+                            {faq.a}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
                 );
               })}

@@ -27,10 +27,10 @@ export default function Terms() {
       </div>
       
       <div className="animate-in fade-in slide-in-from-top-4 duration-500 text-left">
-        <h1 className="text-3xl sm:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-2 leading-tight font-serif">Terms and Conditions</h1>
-        <p className="text-gray-400 dark:text-gray-500 text-base mb-12">Last Updated: May 2026</p>
+        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-2 leading-tight font-serif">Terms and Conditions</h1>
+        <p className="text-gray-400 dark:text-gray-500 text-xs sm:text-sm mb-6 md:mb-8">Last Updated: May 2026</p>
 
-        <div onContextMenu={(e) => e.stopPropagation()} className="select-text space-y-8 text-gray-600 dark:text-gray-300 leading-relaxed text-base sm:text-lg">
+        <div onContextMenu={(e) => e.stopPropagation()} className="select-text space-y-5 md:space-y-6 text-gray-600 dark:text-gray-300 leading-relaxed text-sm sm:text-base">
           <section>
             <p>
               By accessing and using SleepCalculator.online, you agree to the following Terms and Conditions.
@@ -38,7 +38,7 @@ export default function Terms() {
           </section>
 
           <section>
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4 font-serif">Website Usage</h2>
+            <h2 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-gray-100 mb-3 font-serif">Website Usage</h2>
             <p className="mb-4">This website is provided for informational and educational purposes only.</p>
             <p className="mb-4">Users agree not to:</p>
             <ul className="list-disc pl-6 space-y-2">
@@ -50,14 +50,14 @@ export default function Terms() {
           </section>
 
           <section>
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4 font-serif">No Professional Advice</h2>
+            <h2 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-gray-100 mb-3 font-serif">No Professional Advice</h2>
             <p>
               The sleep calculations and recommendations provided on this website are general informational estimates and should not be considered professional medical advice.
             </p>
           </section>
 
           <section>
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4 font-serif">Accuracy of Information</h2>
+            <h2 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-gray-100 mb-3 font-serif">Accuracy of Information</h2>
             <p className="mb-4">We try to provide accurate information and calculations, but we do not guarantee:</p>
             <ul className="list-disc pl-6 space-y-2 mb-4">
               <li>Complete accuracy</li>
@@ -68,21 +68,21 @@ export default function Terms() {
           </section>
 
           <section>
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4 font-serif">Intellectual Property</h2>
+            <h2 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-gray-100 mb-3 font-serif">Intellectual Property</h2>
             <p>
               All website content, branding, logos, design elements, and tools are protected by copyright and applicable laws.
             </p>
           </section>
 
           <section>
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4 font-serif">Third-Party Links</h2>
+            <h2 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-gray-100 mb-3 font-serif">Third-Party Links</h2>
             <p>
               We may include links to third-party websites. We are not responsible for their content, services, or policies.
             </p>
           </section>
 
           <section>
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4 font-serif">Limitation of Liability</h2>
+            <h2 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-gray-100 mb-3 font-serif">Limitation of Liability</h2>
             <p className="mb-4">SleepCalculator.online shall not be liable for:</p>
             <ul className="list-disc pl-6 space-y-2">
               <li>Any direct or indirect damages</li>
@@ -93,21 +93,21 @@ export default function Terms() {
           </section>
 
           <section>
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4 font-serif">Modifications</h2>
+            <h2 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-gray-100 mb-3 font-serif">Modifications</h2>
             <p>
               We reserve the right to modify or discontinue any part of the website at any time without notice.
             </p>
           </section>
 
           <section>
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4 font-serif">Termination</h2>
+            <h2 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-gray-100 mb-3 font-serif">Termination</h2>
             <p>
               We may restrict or block access to users who violate these terms.
             </p>
           </section>
 
           <section>
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4 font-serif">Governing Terms</h2>
+            <h2 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-gray-100 mb-3 font-serif">Governing Terms</h2>
             <p>
               By continuing to use this website, you agree to these Terms and Conditions.
             </p>

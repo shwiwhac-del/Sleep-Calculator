@@ -70,7 +70,7 @@ function Header() {
       <Link 
         to="/" 
         onContextMenu={(e) => e.preventDefault()} 
-        className="font-display text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-[#8B5CF6] to-[#D4AF37] hover:scale-[1.02] active:scale-[0.98] transition-transform duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B5CF6]/40 rounded-2xl p-2 text-center"
+        className="font-display text-3xl sm:text-4xl lg:text-4xl font-black tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-[#8B5CF6] to-[#D4AF37] hover:scale-[1.02] active:scale-[0.98] transition-transform duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B5CF6]/40 rounded-2xl p-2 text-center"
       >
         Sleep Calculator
       </Link>
@@ -142,20 +142,20 @@ function AppContent() {
                 <Route path="/best-temperature-for-sleep" element={<Blog />} />
                 <Route path="/what-is-deep-sleep" element={<Blog />} />
                 
-                {/* 10 New Blog Articles */}
-                <Route path="/how-much-sleep-do-you-need-by-age" element={<Blog />} />
-                <Route path="/wake-up-tired-after-8-hours" element={<Blog />} />
-                <Route path="/best-bedtime-for-adults" element={<Blog />} />
+                {/* 10 New Blog Articles - Merged same-topic duplicates redirect cleanly */}
+                <Route path="/how-much-sleep-do-you-need-by-age" element={<Navigate to="/how-much-sleep-do-you-need" replace />} />
+                <Route path="/wake-up-tired-after-8-hours" element={<Navigate to="/tired-after-8-hours-of-sleep" replace />} />
+                <Route path="/best-bedtime-for-adults" element={<Navigate to="/ideal-bedtime-for-adults" replace />} />
                 <Route path="/how-long-does-it-take-to-fall-asleep" element={<Blog />} />
-                <Route path="/what-is-sleep-debt" element={<Blog />} />
+                <Route path="/what-is-sleep-debt" element={<Navigate to="/sleep-debt-explained" replace />} />
                 <Route path="/why-do-we-dream" element={<Blog />} />
-                <Route path="/sleep-and-memory-learning" element={<Blog />} />
+                <Route path="/sleep-and-memory-learning" element={<Navigate to="/sleep-and-memory" replace />} />
                 <Route path="/why-do-people-snore" element={<Blog />} />
-                <Route path="/sleep-calculator-by-age" element={<Blog />} />
-                <Route path="/90-minute-sleep-calculator" element={<Blog />} />
-                <Route path="/best-sleep-schedule-for-productivity" element={<Blog />} />
-                <Route path="/sleep-calculator-for-students" element={<Blog />} />
-                <Route path="/why-am-i-tired-after-sleeping" element={<Blog />} />
+                <Route path="/sleep-calculator-by-age" element={<Navigate to="/how-much-sleep-do-you-need" replace />} />
+                <Route path="/90-minute-sleep-calculator" element={<Navigate to="/why-90-minute-sleep-cycles-matter" replace />} />
+                <Route path="/best-sleep-schedule-for-productivity" element={<Navigate to="/sleep-schedule-for-productivity" replace />} />
+                <Route path="/sleep-calculator-for-students" element={<Navigate to="/best-bedtime-for-students" replace />} />
+                <Route path="/why-am-i-tired-after-sleeping" element={<Navigate to="/tired-after-8-hours-of-sleep" replace />} />
 
                 {/* Legacy /blog and /page/blog Prefixes redirected back to clean root paths */}
                 <Route path="/blog/:slug" element={<PageBlogRedirect />} />

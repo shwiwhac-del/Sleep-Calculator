@@ -41,7 +41,10 @@ const routes = [
   '/sleep-and-memory-learning',
   '/why-do-people-snore',
   '/sleep-calculator-by-age',
-  '/90-minute-sleep-calculator'
+  '/90-minute-sleep-calculator',
+  '/best-sleep-schedule-for-productivity',
+  '/sleep-calculator-for-students',
+  '/why-am-i-tired-after-sleeping'
 ];
 
 const xml = `<?xml version="1.0" encoding="UTF-8"?>
