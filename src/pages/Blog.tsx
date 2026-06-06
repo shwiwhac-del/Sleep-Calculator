@@ -1184,6 +1184,58 @@ export default function Blog() {
 
     jsonLdScripts.push({ __html: JSON.stringify(articleSchema) });
 
+    if (activeSlug === 'sleep-debt-explained') {
+      const breadcrumbSchema = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://sleepcalculater.online/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Sleep Debt Explained",
+            "item": "https://sleepcalculater.online/sleep-debt-explained"
+          }
+        ]
+      };
+      jsonLdScripts.push({ __html: JSON.stringify(breadcrumbSchema) });
+
+      const medicalWebPageSchema = {
+        "@context": "https://schema.org",
+        "@type": "MedicalWebPage",
+        "@id": "https://sleepcalculater.online/sleep-debt-explained#webpage",
+        "url": "https://sleepcalculater.online/sleep-debt-explained",
+        "name": "Sleep Debt Explained: What It Is and How to Recover",
+        "description": "Learn what sleep debt is, how it affects your health and cognitive functions, and discover practical scientific ways to recover from accumulated sleep loss.",
+        "about": {
+          "@type": "MedicalCondition",
+          "name": "Sleep Deprivation",
+          "alternateName": "Sleep Debt",
+          "possibleTreatment": [
+            {
+              "@type": "MedicalTherapy",
+              "name": "Sleep Hygiene Improvement"
+            },
+            {
+              "@type": "MedicalTherapy",
+              "name": "Gradual Sleep Extension"
+            }
+          ]
+        },
+        "aspectPresented": "Physiology, symptoms, dynamic accumulation, and safe restoration of sleep deficit",
+        "audience": {
+          "@type": "PeopleAudience",
+          "suggestedAudience": "Adults experiencing chronic fatigue or irregular sleep patterns"
+        }
+      };
+      jsonLdScripts.push({ __html: JSON.stringify(medicalWebPageSchema) });
+    }
+
     if (currentFaqs && currentFaqs.length > 0) {
       const faqSchema = {
         "@context": "https://schema.org",
