@@ -432,6 +432,23 @@ export default function Home() {
                   }
                 },
                 {
+                  "@type": "BreadcrumbList",
+                  "itemListElement": [
+                    {
+                      "@type": "ListItem",
+                      "position": 1,
+                      "name": "Home",
+                      "item": "https://sleepcalculater.online/"
+                    },
+                    {
+                      "@type": "ListItem",
+                      "position": 2,
+                      "name": "Sleep Calculator",
+                      "item": "https://sleepcalculater.online/"
+                    }
+                  ]
+                },
+                {
                   "@context": "https://schema.org",
                   "@type": "FAQPage",
                   "mainEntity": [
