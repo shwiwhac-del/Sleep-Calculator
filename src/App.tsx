@@ -5,7 +5,6 @@ import { HelmetProvider } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'motion/react';
 import ScrollToTop from './components/ScrollToTop';
 import { StarryBackground } from './components/StarryBackground';
-const InstallAppButton = lazy(() => import('./components/InstallAppButton'));
 
 import Home from './pages/Home';
 
@@ -57,8 +56,9 @@ function Footer() {
           Terms & Conditions
         </Link>
       </div>
-      <div className="text-[#6B7280] text-xs flex flex-col items-center">
+      <div className="text-[#6B7280] text-xs flex flex-col items-center gap-y-1">
         <span>&copy; {new Date().getFullYear()} Sleep Calculator. All rights reserved.</span>
+        <span>Support: <a href="mailto:support@sleepcalculater.online" className="hover:text-[#8B5CF6] transition-colors font-semibold underline">support@sleepcalculater.online</a></span>
       </div>
     </footer>
   );
@@ -177,9 +177,6 @@ function AppContent() {
             </Suspense>
           </main>
           <Footer />
-          <Suspense fallback={null}>
-            <InstallAppButton />
-          </Suspense>
     </div>
   );
 }

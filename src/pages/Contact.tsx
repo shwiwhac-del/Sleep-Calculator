@@ -182,6 +182,15 @@ export default function Contact() {
             </p>
           </form>
         )}
+
+        <div className="mt-8 pt-6 border-t border-[#E5E7EB] dark:border-gray-800 text-center">
+          <p className="text-sm text-gray-500 dark:text-gray-400">
+            You can also reach us directly via email at{' '}
+            <a href="mailto:support@sleepcalculater.online" className="text-[#8B5CF6] hover:underline font-semibold">
+              support@sleepcalculater.online
+            </a>
+          </p>
+        </div>
       </div>
     </div>
   );

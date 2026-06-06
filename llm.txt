@@ -1,0 +1,82 @@
+# Sleep Calculator & Cycle Planner — LLM/Developer Specification
+
+A highly polished, high-performance Sleep Cycle Calculator, Nap Assistant, and Circadian Tracker built with React, Vite, TypeScript, and Tailwind CSS.
+
+---
+
+## 📅 Project Metadata & Purpose
+- **AppName**: Sleep Calculator – Find the Perfect Time to Sleep and Wake Up
+- **Primary Domain**: https://ais-dev-cc6uo5h5yd6pa5c23uljkb-733785498368.asia-southeast1.run.app
+- **Short Description**: Help users calculate optimal bedtime based on targeted sleep cycles, plan power-naps, evaluate age-appropriate sleep requirements, track daily sleep journals via client local state, and read highly tuned sleep hygiene resources.
+
+---
+
+## 🛠️ Tech Stack & Architecture
+- **Framework**: Client-side Single Page Application (SPA) powered by React 18 and Vite.
+- **Styling**: Tailwind CSS utility classes using custom aesthetic theme configurations.
+- **Routing**: Lightweight client-side subviews (Home, About, Blog, Contact, Privacy, Terms, NotFound) managing state seamlessly.
+- **State Management**: React State with client-side persistence (e.g. `localStorage` for Sleep Journaling and preferences).
+- **Iconography**: Clean, minimalist icons imported from `lucide-react`.
+- **Animations**: Framer Motion / Custom transition classes for high-fidelity micro-interactions and smooth accordion toggles.
+
+---
+
+## 🧮 Core Algorithms & Scientific Logic
+
+### 1. Sleep Cycle Math (The 90-Minute Rule)
+- A complete sleep cycle is assumed to average **90 minutes** (1.5 hours) for adults.
+- **Fall Asleep Offset**: An average of **15 minutes** is added to bedtime choices to account for sleep latency (time required to fall asleep).
+- **Formulas**:
+  - **Wake-up target calculated from strict bedtime**:
+    $$\text{WakeUp} = \text{Bedtime} + \text{SleepLatency (15m)} + (N \times 90 \text{ minutes})$$ where $N \in \{1, 2, 3, 4, 5, 6\}$ (representing sleep cycle counts).
+  - **Bedtime target calculated from strict wake-up time**:
+    $$\text{Bedtime} = \text{WakeUp} - \text{SleepLatency (15m)} - (N \times 90 \text{ minutes})$$
+- Optimal sleep recommendations highlight **5 cycles (7.5 hours of solid sleep)** and **6 cycles (9.0 hours of solid sleep)** as the standard healthy range.
+
+### 2. Nap Calculator Presets
+- **Power Nap (20 Minutes)**: Boosts alertness and performance without entering deep sleep (no sleep inertia).
+- **Cat Nap (30 Minutes)**: Good for relaxation, but risks mild grogginess.
+- **Restorative Nap (60 Minutes)**: Deep slow-wave sleep. Best for memory consolidation/recall, but induces temporary post-nap sleep inertia.
+- **Recovery Nap (90 Minutes)**: Full sleep cycle including REM. Eliminates morning or midday sleep debt, avoids grogginess by waking up at the cycle's biological boundary.
+
+### 3. Sleep Requirements by Age
+- **Infants (4-12 months)**: 12 to 16 hours (including naps)
+- **Toddlers (1-2 years)**: 11 to 14 hours
+- **Preschoolers (3-5 years)**: 10 to 13 hours
+- **School Age (6-12 years)**: 9 to 12 hours
+- **Teenagers (13-18 years)**: 8 to 10 hours
+- **Adults (18-64 years)**: 7 to 9 hours
+- **Older Adults (65+ years)**: 7 to 8 hours
+
+---
+
+## 📂 Web Site & Page Routing Schema
+The application structure is fully responsive, accessible, and provides client paths rendered as specific layouts under `/src/pages`:
+1. `/` (Home View) — The primary interaction console containing Bedtime inputs, Wake-up targets, Sleep Cycle visual charts, the Nap Calculator, and the Sleep logs journal database toggle.
+2. `/about` (About Page) — High-level scientific backing on why natural sleep tracking works, company objectives, and human-first sleep hygiene rules.
+3. `/blog` (Guides & FAQ Catalog) — Highly detailed internal resource sheets indexed properly regarding REM sleep, circardian rhythms, sleep debt, and night shifts.
+4. `/contact` (Contact) — Standard inquiries/feedback portals for app support.
+5. `/privacy` (Privacy Policy) — Strict privacy guarantees (All data stays local on the client's web storage; no personal profiles are ever tracked or aggregated).
+6. `/terms` (Terms of Services) — General terms of usage.
+7. `/404` (NotFound) — Graceful redirect path for invalid routes.
+
+---
+
+## 🗃️ Codebase Layout & Critical Components
+
+### Core Components (`/src/components`)
+- **`SleepGuideAndFAQ.tsx`**: Renders comprehensive user-friendly guides right under the main calculator, detailing sleep latency, why 90-minute sleep increments matter, sleep by age parameters, and sleep hygiene instructions.
+- **`SleepCycleChart.tsx`**: Provides deep visual intuition of light sleep, deep sleep, and REM phases on a custom coordinate system/recharts block helping users visualise physical phases.
+- **TimePicker.tsx**: Highly accessible, mobile-responsive custom slider or selection wheel for configuring perfect wake up hours.
+- **`SleepJournal.tsx`**: Quick client-side logger allowing users to write down nightly ratings, wake energy levels, bedtimes, and monitor sleep quality streaks over time.
+- **`StarryBackground.tsx`**: Dynamic styled backdrop creating an immersive starry night experience using hardware-accelerated animated canvases or SVG points.
+- **`AutoLinker.tsx`**: Internal custom linker matching critical keywords automatically into internal informational pages to avoid manual routing configuration.
+- **`FeedbackModal.tsx`**: Collects subjective ratings of sleep schedule recommendations with delightful animations.
+
+---
+
+## ⚡ UX Best Practices & Search Optimized Foundations
+- **HTML Layout**: Implements semantic structural elements like `<section>`, `<article>`, `<header>`, and `<details>`.
+- **SEO Ready No-Script Fallback**: A fully descriptive `<noscript>` container exists inside the index template so web crawlers index the entire body of sleep guidelines and internal links even without JavaScript execution.
+- **Local Cache**: State is serialized smoothly so returning users can view past bedtime calculation histories and customized active age parameters.
+- **Device Support**: Optimized 44px+ touch heights target mobile safari/chrome screens seamlessly while enjoying beautiful desktop animations.

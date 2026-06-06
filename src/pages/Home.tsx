@@ -6,6 +6,7 @@ import TimePicker from "../components/TimePicker";
 import SleepGuideAndFAQ from "../components/SleepGuideAndFAQ";
 import { QuickSleepTips } from "../components/QuickSleepTips";
 import { SleepJournal } from "../components/SleepJournal";
+import SleepCycleChart from "../components/SleepCycleChart";
 
 const FeedbackModal = lazy(() =>
   import("../components/FeedbackModal").then((module) => ({
@@ -670,6 +671,14 @@ export default function Home() {
                       })}
                     </AnimatePresence>
                   </div>
+
+                  <SleepCycleChart
+                    results={results}
+                    mode={mode}
+                    time={time}
+                    ageGroup={ageGroup}
+                    isRecommended={isRecommended}
+                  />
 
                   <div className="flex flex-col gap-3 mt-6 w-full items-center">
                     <button
