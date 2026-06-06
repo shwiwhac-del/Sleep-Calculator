@@ -355,7 +355,7 @@ export default function Home() {
       {/* Header Info */}
       <div className="flex flex-col items-center justify-center mb-2 mt-0">
         <Helmet>
-          <title>Sleep Calculator – Calculate Bedtime & Wake Up Time by Sleep Cycles</title>
+          <title>Sleep Calculator – Calculate Bedtime & Wake Up Times</title>
           <meta
             name="description"
             content="Calculate your perfect bedtime and wake-up times using natural 90-minute sleep cycles. Wake up refreshed and energized with our free, science-based sleep calculator. No signup required."

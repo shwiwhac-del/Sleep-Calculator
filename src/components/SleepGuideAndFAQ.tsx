@@ -63,7 +63,7 @@ export default function SleepGuideAndFAQ() {
       </h2>
       
       <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-[#374151] select-text">
-        Sleep affects everything—from your energy and focus to your mood and overall health. Yet millions of people struggle with poor sleep, inconsistent routines, and waking up tired even after spending enough hours in bed.
+        Sleep affects everything—from your energy and focus to your mood and <a href="https://www.health.harvard.edu/newsletter_article/sleep-and-mental-health" target="_blank" rel="noopener noreferrer" className="text-[#8B5CF6] hover:underline font-semibold">overall health</a>. Yet millions of people struggle with poor sleep, inconsistent routines, and waking up tired even after spending enough hours in bed.
       </p>
 
       <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-[#374151] select-text">
@@ -104,7 +104,7 @@ export default function SleepGuideAndFAQ() {
       </p>
 
       <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-[#374151] select-text">
-        The answer depends on age, lifestyle, activity level, and overall health. Most adults need between 7 and 9 hours of sleep each night, while children and teenagers usually need more.
+        The answer depends on age, lifestyle, activity level, and overall health. Most adults need between <a href="https://www.cdc.gov/sleep/about/index.html" target="_blank" rel="noopener noreferrer" className="text-[#8B5CF6] hover:underline font-semibold">7 and 9 hours of sleep each night</a>, while children and teenagers usually need more.
       </p>
 
       <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-[#374151] select-text">
@@ -139,7 +139,7 @@ export default function SleepGuideAndFAQ() {
       </h3>
 
       <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-[#374151] select-text">
-        Your body moves through several sleep stages every night, including light sleep, deep sleep, and REM sleep.
+        Your body moves through several <a href="https://www.ninds.nih.gov/health-information/public-education/brain-basics/brain-basics-understanding-sleep" target="_blank" rel="noopener noreferrer" className="text-[#8B5CF6] hover:underline font-semibold">sleep stages</a> every night, including light sleep, deep sleep, and REM sleep.
       </p>
 
       <div className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-[#374151] select-text">
@@ -376,6 +376,30 @@ export default function SleepGuideAndFAQ() {
             </div>
           );
         })}
+      </div>
+
+      {/* Contact & Support Section (EEAT Signal) */}
+      <div className="w-full pt-8 pb-4 border-t border-[#E5E7EB] mt-8 flex flex-col items-center text-center select-text">
+        <h4 className="text-xl font-extrabold text-[#111827] mb-2 tracking-tight">
+          Need Support or Have Feedback?
+        </h4>
+        <p className="text-sm sm:text-base text-[#374151] max-w-lg leading-relaxed mb-1">
+          For questions, bug reports, feature requests, or scientific inquiries, please reach out to our team at{" "}
+          <a
+            href="mailto:support@sleepcalculater.online"
+            className="text-[#8B5CF6] hover:underline font-semibold"
+          >
+            support@sleepcalculater.online
+          </a>{" "}
+          or use our structured{" "}
+          <Link
+            to="/contact"
+            className="text-[#8B5CF6] hover:underline font-semibold"
+          >
+            Contact Form
+          </Link>
+          .
+        </p>
       </div>
     </div>
   );
