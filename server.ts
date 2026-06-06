@@ -318,6 +318,16 @@ function injectSEOMetadata(html: string, originalPath: string): string {
   // Inject right after opening <head> tag using arrow helper to bypass $ regex replacement issues in JavaScript
   html = html.replace(/<head>/i, () => `<head>\n${seoBlock}`);
 
+  // Replace fallback content for subpages so users don't see the Homepage content before React loads
+  if (reqPath !== "/" && reqPath !== "") {
+    const cleanFallback = `
+          <h1>${title}</h1>
+          <p>${description}</p>
+          <p style="text-align: center; font-size: 0.9rem; opacity: 0.6; font-style: italic; margin-top: 1.5rem;">Loading content...</p>
+    `;
+    html = html.replace(/<div class="fallback-content">.*?<\/div>/gis, () => `<div class="fallback-content">${cleanFallback}</div>`);
+  }
+
   return html;
 }
 
