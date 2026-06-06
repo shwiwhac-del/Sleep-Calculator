@@ -4416,182 +4416,164 @@ export default function Blog() {
               )}
             </header>
 
-            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+            <p>
               Many people believe they can function perfectly normally after several nights of insufficient sleep, thinking they can simply push through with an extra cup of coffee. However, lost sleep does not just disappear. Instead, it accumulates hour by hour, night after night, creating what sleep scientists and medical professionals refer to as sleep debt.
             </p>
 
-            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+            <p>
               Understanding what sleep debt is, how it scientifically impacts your cognitive and physical biological systems, and how to safely pay it back is essential for improving your daily focus, sustaining high productivity, and safeguarding your long-term health.
             </p>
 
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4">
-              What Is Sleep Debt?
-            </h2>
+            <h2>What Is Sleep Debt?</h2>
 
-            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+            <p>
               In simple terms, sleep debt refers to the cumulative difference between the amount of sleep your body biologically needs and the amount of sleep you actually get over any given period. For example:
             </p>
-            <ul className="list-disc pl-6 space-y-1 text-slate-300 text-base sm:text-lg">
+            <ul className="list-disc pl-6">
               <li><strong>Optimal biological need:</strong> 8 hours</li>
               <li><strong>Actual duration obtained:</strong> 6 hours</li>
               <li><strong>Accumulated single-night sleep debt:</strong> 2 hours</li>
             </ul>
 
-            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+            <p>
               If this deficit pattern continues for several days across a busy workweek, the debt grows larger and begins to degrade essential neural functions, leading to heightened stress, fatigue, and memory decline.
             </p>
 
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4">
-              The Physiology of Sleep Debt: What Happens inside the Body?
-            </h2>
+            <h2>The Physiology of Sleep Debt: What Happens inside the Body?</h2>
 
-            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+            <p>
               At a physiological level, sleep debt acts as a metabolic liability. When you sleep, your brain undergoes a vital sewage system cleanse known as the glymphatic system. This system removes beta-amyloid plaques and metabolic waste that build up during waking hours. When you curtail your sleep, this waste remains, leading to mild neuroinflammation and diminished synaptic plasticity.
             </p>
 
-            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+            <p>
               Furthermore, sleep debt disrupts the balance of two critical hormones: adenosine and cortisol. Adenosine accumulates in your basal forebrain the longer you stay awake, creating what scientists call "sleep pressure." If you do not sleep long enough to clear this adenosine, you wake up already under the influence of residual sleep pressure, which is felt as morning grogginess or intense sleep inertia. Chronically elevated cortisol levels, a byproduct of sleep deprivation, stimulate your body's survival fight-or-flight mode, increasing blood pressure and raising resting heart rates.
             </p>
 
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4">
-              How Sleep Debt Compounds Dynamically
-            </h2>
+            <h2>How Sleep Debt Compounds Dynamically</h2>
 
-            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+            <p>
               Many sleep deprivation studies show that sleep debt builds up linearly, but its negative cognitive impacts compound exponentially. If a healthy adult requires an average of 8 hours of sleep per night but gets only 6 hours:
             </p>
-            <ul className="list-disc pl-6 space-y-1 text-slate-300 text-base sm:text-lg">
+            <ul className="list-disc pl-6">
               <li>Daily sleep deficit: 2 hours</li>
               <li>Operational sleep debt by day 5: 10 hours</li>
             </ul>
 
-            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+            <p>
               By the end of a single workweek, a missing 10 hours of sleep is equivalent to being completely awake for nearly 36 consecutive hours. During this state of chronic sleep debt, your brain suffers from what is called "microsleeps" — brief, uncontrollable lapses of attention lasting from a fraction of a second to several seconds. This drastically increases safety risks during simple daily activities like driving or operating machinery.
             </p>
 
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4">
-              Common Symptoms and Emotional Costs
-            </h2>
+            <h2>Common Symptoms and Emotional Costs</h2>
 
-            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+            <p>
               While some individuals claim they have successfully adapted to sleeping 5 or 6 hours a night, subjective assessments of performance are highly inaccurate trackers of impairment. Individuals with significant sleep debt typically experience:
             </p>
 
             <div className="space-y-4">
               <div>
-                <h3 className="text-xl font-bold text-gray-100 border-l-4 border-blue-500 pl-3">
+                <h3 className="border-l-4 border-blue-500 pl-3">
                   Mental Performance
                 </h3>
-                <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 mt-1 pl-4">
+                <p className="mt-1 pl-4">
                   Severe cognitive deficits occur, including slower physical reaction times, degraded working memory, and reduced creative problem-solving capabilities.
                 </p>
               </div>
 
               <div>
-                <h3 className="text-xl font-bold text-gray-100 border-l-4 border-blue-500 pl-3">
+                <h3 className="border-l-4 border-blue-500 pl-3">
                   Physical Health
                 </h3>
-                <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 mt-1 pl-4">
+                <p className="mt-1 pl-4">
                   Weakened cellular-mediated immune defense, leaving you highly susceptible to common viruses and slower tissue or workout recovery.
                 </p>
               </div>
 
               <div>
-                <h3 className="text-xl font-bold text-gray-100 border-l-4 border-blue-500 pl-3">
+                <h3 className="border-l-4 border-blue-500 pl-3">
                   Emotional Health & Amygdala Reactivity
                 </h3>
-                <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 mt-1 pl-4">
+                <p className="mt-1 pl-4">
                   Elevated amygdala reactivity leads to increased irritability, feelings of anxiety, mood swings, and general psychological stress amplification.
                 </p>
               </div>
             </div>
 
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4">
-              Can You Recover From Sleep Debt?
-            </h2>
+            <h2>Can You Recover From Sleep Debt?</h2>
 
-            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+            <p>
               Yes, in many cases sleep debt can be reduced through consistent, intentional sleep improvement. However, recovery often requires more than a single night of extra sleep. You cannot reclaim 45 hours of lost sleep in a single 15-hour weekend sleep binge. Attempting to "sleep in" on weekends actually worsens your situation by disrupting your circadian biological rhythms — a phenomenon known as "social jetlag." This leaves you unable to fall asleep at your usual bedtime on Sunday night, resetting the sleepless cycle.
             </p>
 
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4">
-              How to Recover From Sleep Debt Safely
-            </h2>
+            <h2>How to Recover From Sleep Debt Safely</h2>
 
             <div className="space-y-4">
               <div>
-                <h3 className="text-lg sm:text-xl font-bold text-gray-100 pl-1">
+                <h3 className="pl-1">
                   • Add Sleep Incrementally
                 </h3>
-                <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 mt-1 pl-4">
+                <p className="mt-1 pl-4">
                   Do not try to make up for lost time all at once. Instead, increase your sleep duration by 30 to 60 minutes each night until waking energy levels naturally stabilize.
                 </p>
               </div>
 
               <div>
-                <h3 className="text-lg sm:text-xl font-bold text-gray-100 pl-1">
+                <h3 className="pl-1">
                   • Align Bedtime with Sleep Cycles
                 </h3>
-                <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 mt-1 pl-4">
+                <p className="mt-1 pl-4">
                   Planning your bedtime around complete 90-minute sleep cycles (e.g., getting 7.5 or 9 hours of sleep) allows you to wake up at the end of a cycle, reducing grogginess.
                 </p>
               </div>
 
               <div>
-                <h3 className="text-lg sm:text-xl font-bold text-gray-100 pl-1">
+                <h3 className="pl-1">
                   • Utilize Tactical Power Napping
                 </h3>
-                <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 mt-1 pl-4">
+                <p className="mt-1 pl-4">
                   A brief 20-minute power nap in the early afternoon (between 1:00 PM and 3:00 PM) can temporarily discharge adenosine pressure without interfering with your night sleep onset.
                 </p>
               </div>
 
               <div>
-                <h3 className="text-lg sm:text-xl font-bold text-gray-100 pl-1">
+                <h3 className="pl-1">
                   • Optimize Sleep Latency
                 </h3>
-                <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 mt-1 pl-4">
+                <p className="mt-1 pl-4">
                   Dedicate at least 15 minutes to fully wind down in total darkness before your target bedtime to lower your heart rate and signal your circadian pacemaker to release sleep-inducing melatonin.
                 </p>
               </div>
 
               <div>
-                <h3 className="text-lg sm:text-xl font-bold text-gray-100 pl-1">
+                <h3 className="pl-1">
                   • Prioritize Dark Sleeping Environments
                 </h3>
-                <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 mt-1 pl-4">
+                <p className="mt-1 pl-4">
                   Keep your sleep environment completely dark, cool, and quiet to boost rapid-eye-movement (REM) and deep slow-wave sleep duration naturally.
                 </p>
               </div>
             </div>
 
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4">
-              How Long Does Sleep Debt Recovery Take?
-            </h2>
+            <h2>How Long Does Sleep Debt Recovery Take?</h2>
 
-            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+            <p>
               Recovery time varies fundamentally based on the severity of the accrued debt, its historical duration, and individual sleep sensitivity profiles. While a minor sleep debt of a few hours can usually be paid off in 2-3 nights of solid rest, chronic sleep deprivation that has persisted for months or years might require several weeks of consistent, disciplined sleep schedules to fully restore cognitive faculties.
             </p>
 
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4">
-              Preventing Future Sleep Debt
-            </h2>
+            <h2>Preventing Future Sleep Debt</h2>
 
-            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+            <p>
               You can protect yourself from the negative downstream consequences of sleep debt with several simple protective protocols:
             </p>
-            <ul className="list-disc pl-6 space-y-1 text-slate-300 text-base sm:text-lg">
+            <ul className="list-disc pl-6">
               <li>Following a consistent bedtime and wake time 7 days a week.</li>
               <li>Prioritizing sleep as a cornerstone of performance, rather than an afterthought.</li>
               <li>Avoiding light pollution from smartphones, tablets, or television displays near bedtimes.</li>
               <li>Using interactive planning tools like our sleep cycle clock to optimize rest windows.</li>
             </ul>
 
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4">
-              Final Thoughts
-            </h2>
+            <h2>Final Thoughts</h2>
 
-            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+            <p>
               Sleep debt can significantly compromise your neurological health, emotional stability, high-level productivity, and daily physical performance. Rather than coping with high-caffeine stimulants, the only true biologically sustainable recovery pathway is high-quality sleep consistently maintained. Prioritizing your physical sleep needs today ensures an alert, rejuvenated, and fully refreshed morning tomorrow.
             </p>
           </article>
