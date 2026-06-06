@@ -39,6 +39,7 @@
       rel="stylesheet"
     />
     <title>Sleep Calculator – Calculate Bedtime & Wake Up Time by Sleep Cycles</title>
+    <link rel="canonical" href="https://sleepcalculater.online/" />
     <meta
       name="description"
       content="Calculate the best bedtime and wake-up time using natural 90-minute sleep cycles. Wake up refreshed and improve your sleep quality."
@@ -99,13 +100,52 @@
   <body>
     <div id="root">
       <style>
-        .initial-loader { display: flex; justify-content: center; align-items: center; height: 100vh; font-family: system-ui, -apple-system, sans-serif; background: #f9fafb; color: #111827; }
+        .initial-loader { display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 100vh; font-family: system-ui, -apple-system, sans-serif; background: #f9fafb; color: #111827; padding: 2rem; box-sizing: border-box; }
         html.dark .initial-loader { background: #0f172a; color: #f3f4f6; }
-        .spinner { width: 40px; height: 40px; border: 3px solid rgba(37, 99, 235, 0.2); border-radius: 50%; border-top-color: #2563eb; animation: spin 1s ease-in-out infinite; }
+        .spinner { width: 44px; height: 44px; border: 3px solid rgba(139, 92, 246, 0.2); border-radius: 50%; border-top-color: #8b5cf6; animation: spin 1s ease-in-out infinite; margin-bottom: 2rem; }
         @keyframes spin { to { transform: rotate(360deg); } }
+        .fallback-content { max-width: 800px; width: 100%; margin: 0 auto; line-height: 1.7; color: #374151; text-align: left; }
+        html.dark .fallback-content { color: #d1d5db; }
+        .fallback-content h1 { font-size: 2.25rem; font-weight: 800; color: #111827; margin-bottom: 1.5rem; line-height: 1.25; letter-spacing: -0.025em; }
+        html.dark .fallback-content h1 { color: #f9fafb; }
+        .fallback-content h2 { font-size: 1.5rem; font-weight: 700; color: #1f2937; margin-top: 2rem; margin-bottom: 1rem; }
+        html.dark .fallback-content h2 { color: #f3f4f6; }
+        .fallback-content p { margin-bottom: 1.25rem; font-size: 1rem; }
+        .fallback-content ul { list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1.5rem; }
+        .fallback-content li { margin-bottom: 0.5rem; }
+        .fallback-content a { color: #8b5cf6; text-decoration: none; font-weight: 500; }
+        .fallback-content a:hover { text-decoration: underline; }
       </style>
       <div class="initial-loader">
         <div class="spinner"></div>
+        <div class="fallback-content">
+          <h1>Sleep Calculator – Find the Perfect Time to Sleep and Wake Up Refreshed</h1>
+          
+          <p>Our <strong>Sleep Calculator</strong> helps you find the absolute best bedtimes and wake-up times based on natural 90-minute sleep cycles. If you wake up at the end of a sleep cycle instead of in the middle of a deep sleep phase, you will prevent sleep inertia, wake up fully refreshed, alert, and energized.</p>
+          
+          <h2>What Is a Sleep Cycle?</h2>
+          <p>A natural sleep cycle is an average of <strong>90 minutes</strong> long. During this phase, your body moves through light sleep, deep sleep, and REM (Rapid Eye Movement) sleep. Waking up during deep sleep makes you feel mentally groggy and tired, even if you’ve slept for many hours. Our calculator automatically factors in an average of <strong>15 minutes</strong> of sleep latency (the time it takes a healthy adult to fall asleep) to give you the most accurate sleep schedule possible.</p>
+
+          <h2>Optimal Sleep Times Based on Your Bedtime</h2>
+          <p>Planning your night around 5 or 6 sleep cycles (7.5 to 9 hours) is the key to deep restoration and long-term health:</p>
+          <ul>
+            <li><strong>6 Sleep Cycles (9.0 Hours):</strong> The gold standard for complete cognitive and somatic restoration.</li>
+            <li><strong>5 Sleep Cycles (7.5 Hours):</strong> Recommended for healthy active adults looking to maintain cognitive sharpness.</li>
+            <li><strong>4 Sleep Cycles (6.0 Hours):</strong> The minimum required for busy days to maintain performance without substantial sleep debt.</li>
+          </ul>
+
+          <h2>Why Do We Experience Morning Grogginess?</h2>
+          <p>If you've ever asked yourself, <em>"Why do I wake up tired after 8 hours of sleep?"</em>, the reason is simple: you woke up in the middle of a deep sleep cycle. Using a sleep schedule calculator helps align your alarm time with your natural circadian biological boundaries, optimizing physical recovery, learning consolidation, and daily mood.</p>
+
+          <h2>Articles & Interactive Guides</h2>
+          <ul>
+            <li><a href="/sleep-cycles-explained">Sleep Cycles Explained</a></li>
+            <li><a href="/what-is-rem-sleep">What is REM Sleep?</a></li>
+            <li><a href="/how-much-sleep-do-you-need">How Much Sleep Do You Need?</a></li>
+            <li><a href="/why-90-minute-sleep-cycles-matter">Why 90-Minute Sleep Cycles Matter</a></li>
+            <li><a href="/circadian-rhythm-explained">Circadian Rhythm Explained</a></li>
+          </ul>
+        </div>
       </div>
     </div>
     

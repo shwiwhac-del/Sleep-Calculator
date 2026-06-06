@@ -56,9 +56,8 @@ function Footer() {
           Terms & Conditions
         </Link>
       </div>
-      <div className="text-[#6B7280] text-xs flex flex-col items-center gap-y-1">
+      <div className="text-[#6B7280] text-xs flex flex-col items-center">
         <span>&copy; {new Date().getFullYear()} Sleep Calculator. All rights reserved.</span>
-        <span>Support: <a href="mailto:support@sleepcalculater.online" className="hover:text-[#8B5CF6] transition-colors font-semibold underline">support@sleepcalculater.online</a></span>
       </div>
     </footer>
   );
