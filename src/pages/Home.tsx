@@ -365,9 +365,13 @@ export default function Home() {
             content="sleep calculator, sleep cycle calculator, bedtime calculator, wake up time calculator, best time to sleep, sleep cycle timing, REM sleep cycles, sleep schedule calculator"
           />
           <link rel="canonical" href="https://sleepcalculater.online/" />
+          <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+          <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
           
           {/* Open Graph / Facebook */}
           <meta property="og:type" content="website" />
+          <meta property="og:locale" content="en_US" />
+          <meta property="og:site_name" content="Sleep Calculator" />
           <meta property="og:title" content="Sleep Calculator – Calculate Bedtime & Wake Up Time by Sleep Cycles" />
           <meta property="og:description" content="Calculate your perfect bedtime and wake-up times using natural 90-minute sleep cycles. Wake up refreshed and energized with our free, science-based sleep calculator." />
           <meta property="og:url" content="https://sleepcalculater.online/" />
@@ -397,7 +401,7 @@ export default function Home() {
                   "@type": "Organization",
                   "name": "Sleep Calculator",
                   "url": "https://sleepcalculater.online/",
-                  "logo": "https://sleepcalculater.online/icon.svg",
+                  "logo": "https://sleepcalculater.online/favicon.png",
                   "contactPoint": {
                     "@type": "ContactPoint",
                     "email": "support@sleepcalculater.online",
