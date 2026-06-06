@@ -200,6 +200,60 @@ export const BLOG_POSTS_META: Record<string, { title: string; description: strin
     description: "Learn why you feel tired after sleeping, what causes morning fatigue, and how sleep cycles, sleep quality, and healthy habits can help you wake up refreshed.",
     date: "2026-06-04",
     category: "Sleep Quality"
+  },
+  "how-much-sleep-do-you-need-by-age": {
+    title: "How Much Sleep Do You Need by Age? Complete Sleep Requirements Chart",
+    description: "Discover how much sleep you need by age. Learn recommended sleep durations for babies, children, teens, adults, and seniors.",
+    date: "2026-06-12",
+    category: "Sleep Science"
+  },
+  "wake-up-tired-after-8-hours": {
+    title: "Why Do I Wake Up Tired After 8 Hours of Sleep?",
+    description: "Waking up tired after 8 hours of sleep? Learn the most common causes of morning fatigue and how to improve sleep quality naturally.",
+    date: "2026-06-15",
+    category: "Sleep Quality"
+  },
+  "best-bedtime-for-adults": {
+    title: "Best Bedtime for Adults Based on Sleep Cycles",
+    description: "Discover the best bedtime for adults based on sleep cycles. Learn how sleep timing affects energy, sleep quality, and morning alertness.",
+    date: "2026-06-18",
+    category: "Sleep Schedule"
+  },
+  "what-is-sleep-debt": {
+    title: "What Is Sleep Debt and Can You Repay It?",
+    description: "Learn what sleep debt is, how it affects your health, and whether you can recover lost sleep with better sleep habits.",
+    date: "2026-06-22",
+    category: "Sleep Quality"
+  },
+  "sleep-and-memory-learning": {
+    title: "How Sleep Affects Memory and Learning",
+    description: "Discover how sleep supports memory, learning, and brain performance. Learn why quality sleep is essential for students and professionals.",
+    date: "2026-06-28",
+    category: "Sleep Science"
+  },
+  "sleep-calculator-by-age": {
+    title: "Sleep Calculator by Age: How Much Sleep Do You Really Need?",
+    description: "Use a sleep calculator by age to find your ideal sleep duration. Learn how much sleep children, teens, adults, and seniors need for better health.",
+    date: "2026-07-02",
+    category: "Sleep Statistics"
+  },
+  "90-minute-sleep-calculator": {
+    title: "90 Minute Sleep Calculator: Find the Best Time to Sleep and Wake Up",
+    description: "Use a 90 minute sleep calculator to plan your bedtime and wake-up time around natural sleep cycles for better sleep quality and energy.",
+    date: "2026-07-05",
+    category: "Sleep Science"
+  },
+  "best-sleep-schedule-for-productivity": {
+    title: "Best Sleep Schedule for Maximum Productivity and Better Focus",
+    description: "Discover the best sleep schedule for productivity, focus, and energy. Learn how sleep cycles, bedtime routines, and sleep calculators can improve performance.",
+    date: "2026-06-04",
+    category: "Productivity"
+  },
+  "sleep-calculator-for-students": {
+    title: "Sleep Calculator for Students: Improve Focus, Memory, and Exam Performance",
+    description: "Discover how a sleep calculator can help students improve focus, memory, productivity, and exam performance through better sleep habits and sleep cycle planning.",
+    date: "2026-06-04",
+    category: "Productivity"
   }
 };
 
@@ -213,6 +267,5 @@ export const BLOG_REDIRECTS: Record<string, string> = {
   "sleep-calculator-by-age": "how-much-sleep-do-you-need",
   "90-minute-sleep-calculator": "why-90-minute-sleep-cycles-matter",
   "best-sleep-schedule-for-productivity": "sleep-schedule-for-productivity",
-  "sleep-calculator-for-students": "best-bedtime-for-students",
-  "why-am-i-tired-after-sleeping": "tired-after-8-hours-of-sleep"
+  "sleep-calculator-for-students": "best-bedtime-for-students"
 };

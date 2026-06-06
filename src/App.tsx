@@ -154,7 +154,7 @@ function AppContent() {
                 <Route path="/90-minute-sleep-calculator" element={<Navigate to="/why-90-minute-sleep-cycles-matter" replace />} />
                 <Route path="/best-sleep-schedule-for-productivity" element={<Navigate to="/sleep-schedule-for-productivity" replace />} />
                 <Route path="/sleep-calculator-for-students" element={<Navigate to="/best-bedtime-for-students" replace />} />
-                <Route path="/why-am-i-tired-after-sleeping" element={<Navigate to="/tired-after-8-hours-of-sleep" replace />} />
+                <Route path="/why-am-i-tired-after-sleeping" element={<Blog />} />
 
                 {/* Legacy /blog and /page/blog Prefixes redirected back to clean root paths */}
                 <Route path="/blog/:slug" element={<PageBlogRedirect />} />
