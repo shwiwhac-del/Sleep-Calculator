@@ -119,21 +119,11 @@
   <body>
     <div id="root">
       <style>
-        .initial-loader { display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 100vh; font-family: system-ui, -apple-system, sans-serif; background: #f9fafb; color: #111827; padding: 2rem; box-sizing: border-box; }
+        .initial-loader { display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 100vh; font-family: system-ui, -apple-system, sans-serif; background: #F3ECE3; color: #111827; padding: 2rem; box-sizing: border-box; }
         html.dark .initial-loader { background: #0f172a; color: #f3f4f6; }
-        .spinner { width: 44px; height: 44px; border: 3px solid rgba(139, 92, 246, 0.2); border-radius: 50%; border-top-color: #8b5cf6; animation: spin 1s ease-in-out infinite; margin-bottom: 2rem; }
+        .spinner { width: 44px; height: 44px; border: 3px solid rgba(139, 92, 246, 0.2); border-radius: 50%; border-top-color: #8b5cf6; animation: spin 1s ease-in-out infinite; }
         @keyframes spin { to { transform: rotate(360deg); } }
-        .fallback-content { max-width: 800px; width: 100%; margin: 0 auto; line-height: 1.7; color: #374151; text-align: left; }
-        html.dark .fallback-content { color: #d1d5db; }
-        .fallback-content h1 { font-size: 2.25rem; font-weight: 800; color: #111827; margin-bottom: 1.5rem; line-height: 1.25; letter-spacing: -0.025em; }
-        html.dark .fallback-content h1 { color: #f9fafb; }
-        .fallback-content h2 { font-size: 1.5rem; font-weight: 700; color: #1f2937; margin-top: 2rem; margin-bottom: 1rem; }
-        html.dark .fallback-content h2 { color: #f3f4f6; }
-        .fallback-content p { margin-bottom: 1.25rem; font-size: 1rem; }
-        .fallback-content ul { list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1.5rem; }
-        .fallback-content li { margin-bottom: 0.5rem; }
-        .fallback-content a { color: #8b5cf6; text-decoration: none; font-weight: 500; }
-        .fallback-content a:hover { text-decoration: underline; }
+        .fallback-content { position: absolute !important; width: 1px !important; height: 1px !important; padding: 0 !important; margin: -1px !important; overflow: hidden !important; clip: rect(0, 0, 0, 0) !important; white-space: nowrap !important; border: 0 !important; }
       </style>
       <div class="initial-loader">
         <div class="spinner"></div>

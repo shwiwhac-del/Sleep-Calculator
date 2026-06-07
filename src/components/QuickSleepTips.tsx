@@ -221,7 +221,7 @@ export function QuickSleepTips() {
         <div className="flex justify-end mb-3">
           <button 
             onClick={handleShuffleSpotlight}
-            className="text-[11px] font-extrabold text-[#8B5CF6] hover:text-[#7C3AED] transition-colors flex items-center gap-1 cursor-pointer select-none bg-[#F9FAFB] hover:bg-white border border-[#E5E7EB] px-2.5 py-1 rounded-lg hover:shadow-sm"
+            className="text-[11px] font-extrabold text-[#5B21B6] hover:text-[#4C1D95] transition-colors flex items-center gap-1 cursor-pointer select-none bg-indigo-50 hover:bg-indigo-100 border border-indigo-200/50 px-2.5 py-1 rounded-lg hover:shadow-sm"
           >
             Shuffle Advice
           </button>
@@ -289,13 +289,13 @@ export function QuickSleepTips() {
             <h3 className="text-sm font-black text-[#111827] uppercase tracking-wider">
               Daily Sleep Hygiene Board
             </h3>
-            <p className="text-xs text-[#6B7280]">
+            <p className="text-xs text-[#374151]">
               Unlock higher sleep quality by stacking multiple healthy actions.
             </p>
           </div>
           <div className="flex items-center gap-3 w-full sm:w-auto shrink-0">
             <span className="text-xs font-bold text-[#111827] bg-[#F3ECE3] px-3 py-1 rounded-lg border border-[#E5E7EB] inline-flex items-center gap-1">
-              <strong className="text-[#8B5CF6]">{completedCount} / {totalTips}</strong> completed
+              <strong className="text-[#4C1D95]">{completedCount} / {totalTips}</strong> completed
             </span>
             {completedCount > 0 && (
               <button
@@ -320,7 +320,7 @@ export function QuickSleepTips() {
         </div>
         <div className="flex justify-between items-center text-[10px] text-[#6B7280] font-bold">
           <span>0%</span>
-          <span className="text-[#8B5CF6] font-extrabold">
+          <span className="text-[#5B21B6] font-extrabold">
             {progressPercent === 100 ? "🏆 Perfect Sleep Shield Achieved!" : `${progressPercent}% Complete`}
           </span>
           <span>100%</span>

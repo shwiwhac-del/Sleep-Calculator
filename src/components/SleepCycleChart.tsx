@@ -27,7 +27,7 @@ export default function SleepCycleChart({
   return (
     <div className="w-full bg-[#F8FAFC] border border-[#E5E7EB] rounded-2xl p-4 sm:p-5 mt-5 shadow-sm">
       <div className="flex items-center gap-2 mb-4 pb-3 border-b border-gray-100">
-        <Moon className="w-4.5 h-4.5 text-[#8B5CF6]" />
+        <Moon className="w-4.5 h-4.5 text-[#6D28D9]" />
         <h3 className="text-sm font-bold text-[#111827] tracking-tight">
           Visual Sleep Cycle Breakdown
         </h3>
@@ -72,12 +72,12 @@ export default function SleepCycleChart({
               {/* Simple row header */}
               <div className="flex items-center justify-between text-xs font-semibold text-gray-500">
                 <span className="flex items-center gap-1.5">
-                  <span className={`w-1.5 h-1.5 rounded-full ${isSuggested ? "bg-[#8B5CF6]" : "bg-gray-300"}`} />
-                  <span className={`${isSuggested ? "text-[#8B5CF6] font-black" : "text-gray-750 font-bold"}`}>
+                  <span className={`w-1.5 h-1.5 rounded-full ${isSuggested ? "bg-[#6D28D9]" : "bg-gray-300"}`} />
+                  <span className={`${isSuggested ? "text-[#5B21B6] font-black" : "text-gray-750 font-bold"}`}>
                     {isNap ? res.cycles : `${res.cycles} Cycles`}
                   </span>
                   {isSuggested && (
-                    <span className="text-[9px] font-black tracking-wider uppercase text-[#8B5CF6]/85 bg-[#8B5CF6]/10 px-1 py-0.2 rounded">
+                    <span className="text-[9px] font-black tracking-wider uppercase text-[#5B21B6]/85 bg-[#6D28D9]/10 px-1 py-0.2 rounded">
                       Suggested
                     </span>
                   )}
@@ -94,8 +94,8 @@ export default function SleepCycleChart({
                     const isEven = sIdx % 2 === 0;
                     let bgClass = isSuggested
                       ? isEven
-                        ? "bg-[#8B5CF6]/20 border border-[#8B5CF6]/20 text-[#8B5CF6]"
-                        : "bg-[#8B5CF6]/10 border border-[#8B5CF6]/10 text-[#8B5CF6]/85"
+                        ? "bg-[#6D28D9]/20 border border-[#6D28D9]/20 text-[#5B21B6]"
+                        : "bg-[#6D28D9]/10 border border-[#6D28D9]/10 text-[#5B21B6]"
                       : isEven
                       ? "bg-slate-200 border border-slate-200/50 text-slate-500"
                       : "bg-slate-100 border border-slate-100/50 text-slate-400";

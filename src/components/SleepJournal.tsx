@@ -317,7 +317,7 @@ export function SleepJournal() {
             exit={{ opacity: 0, y: -20, scale: 0.95 }}
             className="fixed top-6 left-1/2 -translate-x-1/2 bg-slate-900 text-white text-xs font-bold py-3 px-6 rounded-2xl shadow-xl z-50 flex items-center gap-2 border border-slate-850"
           >
-            <Check className="w-4 h-4 text-[#8B5CF6]" strokeWidth={3} />
+            <Check className="w-4 h-4 text-[#6D28D9]" strokeWidth={3} />
             <span>{toastMessage}</span>
           </motion.div>
         )}
@@ -336,7 +336,7 @@ export function SleepJournal() {
         <div className="mt-2 flex flex-wrap items-center justify-center gap-3">
           <button
             onClick={() => setIsFormOpen(!isFormOpen)}
-            className="flex items-center justify-center gap-1.5 py-2.5 px-6 bg-[#8B5CF6] hover:bg-[#7C3AED] text-white text-sm font-extrabold rounded-full transition-all duration-300 shadow-md hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] select-none cursor-pointer shrink-0"
+            className="flex items-center justify-center gap-1.5 py-2.5 px-6 bg-[#6D28D9] hover:bg-[#5B21B6] text-white text-sm font-extrabold rounded-full transition-all duration-300 shadow-md hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] select-none cursor-pointer shrink-0"
           >
             <Plus className={`w-4 h-4 transition-transform duration-300 ${isFormOpen ? "rotate-45" : ""}`} strokeWidth={3} />
             <span>{isFormOpen ? "Close Journal" : "Log Night's Sleep"}</span>
@@ -698,7 +698,7 @@ export function SleepJournal() {
 
       {/* History Log Directory */}
       <div className="space-y-3 text-left">
-        <h3 className="text-xs font-black text-slate-500 uppercase tracking-widest pl-1">
+        <h3 className="text-xs font-black text-slate-700 uppercase tracking-widest pl-1">
           Recent Sleep History
         </h3>
 
@@ -730,7 +730,7 @@ export function SleepJournal() {
                           <span className="text-sm font-black text-[#111827]">
                             {getFormattedDate(log.date)}
                           </span>
-                          <span className="text-xs bg-[#8B5CF6]/10 text-[#8B5CF6] font-extrabold px-2.5 py-0.5 rounded-lg border border-[#8B5CF6]/5">
+                          <span className="text-xs bg-[#6D28D9]/10 text-[#5B21B6] font-extrabold px-2.5 py-0.5 rounded-lg border border-[#6D28D9]/5">
                             {log.hours} hours
                           </span>
                           <div className="flex items-center">

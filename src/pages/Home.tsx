@@ -595,9 +595,9 @@ export default function Home() {
               {/* Age group dropdown selection */}
               {mode !== "nap" && (
                 <div className="flex flex-col items-center w-full mb-6 z-20">
-                  <span className="text-gray-400 dark:text-gray-500 uppercase tracking-widest text-[11px] sm:text-xs font-bold mb-2">
+                  <label htmlFor="age-select" className="text-slate-600 dark:text-slate-400 uppercase tracking-widest text-[11px] sm:text-xs font-bold mb-2 block">
                     Select Your Age
-                  </span>
+                  </label>
                   <div className="w-full max-w-[11rem] relative group mx-auto">
                     <select
                       id="age-select"
@@ -606,7 +606,7 @@ export default function Home() {
                         setAgeGroup(e.target.value);
                         setResults([]);
                       }}
-                      className="w-full bg-[#F8FAFC] border border-[#E5E7EB] focus:border-[#8B5CF6] focus:ring-2 focus:ring-[#8B5CF6]/20 rounded-xl py-2.5 pl-4 pr-8 transition-all duration-300 shadow-sm text-sm sm:text-base font-bold text-[#374151] cursor-pointer hover:border-gray-300 outline-none appearance-none text-center"
+                      className="w-full bg-[#F8FAFC] border border-[#E5E7EB] focus:border-[#6D28D9] focus:ring-2 focus:ring-[#6D28D9]/20 rounded-xl py-2.5 pl-4 pr-8 transition-all duration-300 shadow-sm text-sm sm:text-base font-bold text-[#374151] cursor-pointer hover:border-gray-300 outline-none appearance-none text-center"
                     >
                       {AGE_GROUPS.map((g) => (
                         <option key={g.id} value={g.id} className="bg-white dark:bg-[#0f172a] text-left text-gray-900 dark:text-gray-100 font-medium">
@@ -627,7 +627,7 @@ export default function Home() {
               <div className="w-full flex justify-center mt-4">
                 <button
                   onClick={calculate}
-                  className="w-full max-w-[18.25rem] sm:max-w-[20rem] bg-[#8B5CF6] text-white hover:bg-[#7C3AED] active:bg-[#6D28D9] rounded-full py-3.5 px-7 sm:py-4 sm:px-8 font-extrabold text-[#FFFFFF] text-base sm:text-lg tracking-wide transition-all duration-300 hover:shadow-[0_8px_20px_rgba(139,92,246,0.4)] hover:scale-[1.015] active:scale-[0.985] focus-visible:outline-none shadow-[0_5px_15px_rgba(139,92,246,0.3)] cursor-pointer text-center"
+                  className="w-full max-w-[18.25rem] sm:max-w-[20rem] bg-[#6D28D9] text-white hover:bg-[#5B21B6] active:bg-[#4C1D95] rounded-full py-3.5 px-7 sm:py-4 sm:px-8 font-extrabold text-[#FFFFFF] text-base sm:text-lg tracking-wide transition-all duration-300 hover:shadow-[0_8px_20px_rgba(109,40,217,0.4)] hover:scale-[1.015] active:scale-[0.985] focus-visible:outline-none shadow-[0_5px_15px_rgba(109,40,217,0.3)] cursor-pointer text-center"
                 >
                   {mode === "wake" ? "Calculate Wake Up Time" : "Calculate Bed Time"}
                 </button>
@@ -665,7 +665,7 @@ export default function Home() {
                             key={index}
                             className={`group flex items-center justify-between py-3.5 px-5 rounded-2xl border transition-all duration-300 hover:shadow-premium ${
                               isSuggested
-                                ? "border-[#8B5CF6]/40 bg-[#8B5CF6]/5 hover:bg-[#8B5CF6]/10"
+                                ? "border-[#6D28D9]/40 bg-[#6D28D9]/5 hover:bg-[#6D28D9]/10"
                                 : "border-[#E5E7EB] bg-white hover:bg-slate-50/85"
                             }`}
                           >
@@ -682,7 +682,7 @@ export default function Home() {
 
                             <div className="flex items-center gap-2 ml-2 relative z-10 flex-shrink-0">
                               {isSuggested && (
-                                <span className="inline-flex items-center text-xs sm:text-sm font-extrabold text-[#8B5CF6] bg-[#8B5CF6]/15 px-3 py-1.5 rounded-lg tracking-wider">
+                                <span className="inline-flex items-center text-xs sm:text-sm font-extrabold text-[#5B21B6] bg-[#6D28D9]/15 px-3 py-1.5 rounded-lg tracking-wider">
                                   Suggested
                                 </span>
                               )}
@@ -704,7 +704,7 @@ export default function Home() {
                   <div className="flex flex-col gap-3 mt-6 w-full items-center">
                     <button
                       onClick={handleCopy}
-                      className="w-full max-w-[18.25rem] sm:max-w-[20rem] py-3.5 px-7 sm:py-4 sm:px-8 rounded-full bg-[#8B5CF6] text-white hover:bg-[#7C3AED] active:bg-[#6D28D9] font-bold text-base sm:text-lg tracking-wide transition-all duration-300 hover:shadow-[0_8px_20px_rgba(139,92,246,0.4)] hover:scale-[1.015] active:scale-[0.985] focus-visible:outline-none shadow-[0_5px_15px_rgba(139,92,246,0.3)] cursor-pointer text-center flex items-center justify-center gap-2"
+                      className="w-full max-w-[18.25rem] sm:max-w-[20rem] py-3.5 px-7 sm:py-4 sm:px-8 rounded-full bg-[#6D28D9] text-white hover:bg-[#5B21B6] active:bg-[#4C1D95] font-bold text-base sm:text-lg tracking-wide transition-all duration-300 hover:shadow-[0_8px_20px_rgba(109,40,217,0.4)] hover:scale-[1.015] active:scale-[0.985] focus-visible:outline-none shadow-[0_5px_15px_rgba(109,40,217,0.3)] cursor-pointer text-center flex items-center justify-center gap-2"
                     >
                       {copied ? (
                         <svg
@@ -779,7 +779,7 @@ export default function Home() {
       {/* Floating Feedback Button */}
       <button
         onClick={() => setIsFeedbackModalOpen(true)}
-        className={`fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 bg-[#8B5CF6] hover:bg-[#7C3AED] text-white shadow-lg hover:shadow-xl transition-all duration-300 rounded-full py-3 px-4 sm:px-5 flex items-center justify-center gap-2 font-semibold group focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#8B5CF6]/20 ${showFeedbackButton ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10 pointer-events-none"}`}
+        className={`fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 bg-[#6D28D9] hover:bg-[#5B21B6] text-white shadow-lg hover:shadow-xl transition-all duration-300 rounded-full py-3 px-4 sm:px-5 flex items-center justify-center gap-2 font-semibold group focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#6D28D9]/20 ${showFeedbackButton ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10 pointer-events-none"}`}
         aria-label="Send Feedback"
       >
         <MessageSquare
