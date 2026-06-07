@@ -63,7 +63,7 @@ export default function SleepGuideAndFAQ() {
       </h2>
       
       <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-[#374151] select-text">
-        Sleep affects everything—from your energy and focus to your mood and <a href="https://www.health.harvard.edu/newsletter_article/sleep-and-mental-health" target="_blank" rel="noopener noreferrer" className="text-[#8B5CF6] hover:underline font-semibold">overall health</a>. Yet millions of people struggle with poor sleep, inconsistent routines, and waking up tired even after spending enough hours in bed.
+        Sleep affects everything—from your energy and focus to your mood and <a href="https://www.health.harvard.edu/newsletter_article/sleep-and-mental-health" target="_blank" rel="noopener noreferrer" className="text-[#7C3AED] hover:underline font-semibold">overall health</a>. Yet millions of people struggle with poor sleep, inconsistent routines, and waking up tired even after spending enough hours in bed.
       </p>
 
       <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-[#374151] select-text">
@@ -104,7 +104,7 @@ export default function SleepGuideAndFAQ() {
       </p>
 
       <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-[#374151] select-text">
-        The answer depends on age, lifestyle, activity level, and overall health. Most adults need between <a href="https://www.cdc.gov/sleep/about/index.html" target="_blank" rel="noopener noreferrer" className="text-[#8B5CF6] hover:underline font-semibold">7 and 9 hours of sleep each night</a>, while children and teenagers usually need more.
+        The answer depends on age, lifestyle, activity level, and overall health. Most adults need between <a href="https://www.cdc.gov/sleep/about/index.html" target="_blank" rel="noopener noreferrer" className="text-[#7C3AED] hover:underline font-semibold">7 and 9 hours of sleep each night</a>, while children and teenagers usually need more.
       </p>
 
       <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-[#374151] select-text">
@@ -139,7 +139,7 @@ export default function SleepGuideAndFAQ() {
       </h3>
 
       <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-[#374151] select-text">
-        Your body moves through several <a href="https://www.ninds.nih.gov/health-information/public-education/brain-basics/brain-basics-understanding-sleep" target="_blank" rel="noopener noreferrer" className="text-[#8B5CF6] hover:underline font-semibold">sleep stages</a> every night, including light sleep, deep sleep, and REM sleep.
+        Your body moves through several <a href="https://www.ninds.nih.gov/health-information/public-education/brain-basics/brain-basics-understanding-sleep" target="_blank" rel="noopener noreferrer" className="text-[#7C3AED] hover:underline font-semibold">sleep stages</a> every night, including light sleep, deep sleep, and REM sleep.
       </p>
 
       <div className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-[#374151] select-text">
@@ -255,10 +255,10 @@ export default function SleepGuideAndFAQ() {
             <Link
               key={post.slug}
               to={`/${post.slug}`}
-              className="bg-white hover:bg-slate-50 border border-[#E5E7EB] hover:border-[#8B5CF6]/50 rounded-2xl p-5 flex flex-col justify-between group shadow-md transition-all duration-300 select-text hover:shadow-premium hover:-translate-y-1 block"
+              className="bg-white hover:bg-slate-50 border border-[#E5E7EB] hover:border-[#7C3AED]/50 rounded-2xl p-5 flex flex-col justify-between group shadow-md transition-all duration-300 select-text hover:shadow-premium hover:-translate-y-1 block"
             >
               <div>
-                <h4 className="text-base sm:text-lg font-extrabold text-[#111827] leading-snug group-hover:text-[#8B5CF6] transition-colors duration-200 line-clamp-2">
+                <h4 className="text-base sm:text-lg font-extrabold text-[#111827] leading-snug group-hover:text-[#7C3AED] transition-colors duration-200 line-clamp-2">
                   {post.title}
                 </h4>
                 <p className="text-xs sm:text-sm text-[#374151] mt-2.5 line-clamp-3 leading-relaxed">
@@ -276,7 +276,7 @@ export default function SleepGuideAndFAQ() {
                     {post.readTime}
                   </span>
                 </div>
-                <span className="flex items-center gap-1 text-xs text-[#8B5CF6] font-bold group-hover:text-[#7C3AED] transition-colors duration-200">
+                <span className="flex items-center gap-1 text-xs text-[#7C3AED] font-bold group-hover:text-[#6D28D9] transition-colors duration-200">
                   Read <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-200" />
                 </span>
               </div>
@@ -305,12 +305,12 @@ export default function SleepGuideAndFAQ() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
           <div className="flex flex-col bg-slate-50/50 dark:bg-slate-900/10 p-4 rounded-xl border border-[#E5E7EB] dark:border-slate-800/60 relative">
-            <Quote className="w-5 h-5 text-[#8B5CF6]/10 absolute top-3 right-3" />
+            <Quote className="w-5 h-5 text-[#7C3AED]/10 absolute top-3 right-3" />
             <blockquote className="text-[#374151] dark:text-gray-300 text-xs italic pr-4 leading-relaxed font-medium">
               "I used to feel exhausted even after 8 hours. Planning my nights around 90-minute sleep cycles changed everything. I wake up completely refreshed!"
             </blockquote>
             <div className="mt-3 flex items-center gap-2">
-              <div className="w-6 h-6 rounded-full bg-[#8B5CF6]/10 flex items-center justify-center text-[10px] font-bold text-[#8B5CF6]">
+              <div className="w-6 h-6 rounded-full bg-[#7C3AED]/10 flex items-center justify-center text-[10px] font-bold text-[#7C3AED]">
                 JD
               </div>
               <div>
@@ -321,12 +321,12 @@ export default function SleepGuideAndFAQ() {
           </div>
 
           <div className="flex flex-col bg-slate-50/50 dark:bg-slate-900/10 p-4 rounded-xl border border-[#E5E7EB] dark:border-slate-800/60 relative">
-            <Quote className="w-5 h-5 text-[#8B5CF6]/10 absolute top-3 right-3" />
+            <Quote className="w-5 h-5 text-[#7C3AED]/10 absolute top-3 right-3" />
             <blockquote className="text-[#374151] dark:text-gray-300 text-xs italic pr-4 leading-relaxed font-medium">
               "The sleep calculator is incredibly accurate. It helped me find the perfect bedtime for my early morning shift. No more day sluggishness."
             </blockquote>
             <div className="mt-3 flex items-center gap-2">
-              <div className="w-6 h-6 rounded-full bg-[#8B5CF6]/10 flex items-center justify-center text-[10px] font-bold text-[#8B5CF6]">
+              <div className="w-6 h-6 rounded-full bg-[#7C3AED]/10 flex items-center justify-center text-[10px] font-bold text-[#7C3AED]">
                 SM
               </div>
               <div>
@@ -348,7 +348,7 @@ export default function SleepGuideAndFAQ() {
           return (
             <div
               key={index}
-              className="bg-white border border-[#E5E7EB] rounded-xl overflow-hidden shadow-sm transition-all duration-305 hover:border-[#8B5CF6]/45"
+              className="bg-white border border-[#E5E7EB] rounded-xl overflow-hidden shadow-sm transition-all duration-305 hover:border-[#7C3AED]/45"
             >
               <button
                 type="button"
@@ -356,7 +356,7 @@ export default function SleepGuideAndFAQ() {
                 className="w-full flex items-center justify-between p-4 sm:p-5 text-left font-semibold text-[#111827] hover:bg-slate-50 transition-colors focus:outline-none cursor-pointer"
               >
                 <span className="text-base sm:text-lg pr-4 font-bold text-[#111827]">{faq.q}</span>
-                <ChevronDown className={`w-5.5 h-5.5 text-[#8B5CF6] shrink-0 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`} />
+                <ChevronDown className={`w-5.5 h-5.5 text-[#7C3AED] shrink-0 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`} />
               </button>
               <AnimatePresence initial={false}>
                 {isOpen && (
@@ -387,14 +387,14 @@ export default function SleepGuideAndFAQ() {
           For questions, bug reports, feature requests, or scientific inquiries, please reach out to our team at{" "}
           <a
             href="mailto:support@sleepcalculater.online"
-            className="text-[#8B5CF6] hover:underline font-semibold"
+            className="text-[#7C3AED] hover:underline font-semibold"
           >
             support@sleepcalculater.online
           </a>{" "}
           or use our structured{" "}
           <Link
             to="/contact"
-            className="text-[#8B5CF6] hover:underline font-semibold"
+            className="text-[#7C3AED] hover:underline font-semibold"
           >
             Contact Form
           </Link>

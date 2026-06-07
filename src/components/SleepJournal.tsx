@@ -94,9 +94,7 @@ export function SleepJournal() {
       if (stored) {
         setLogs(JSON.parse(stored));
       } else {
-        const mock = getMockLogs();
-        setLogs(mock);
-        localStorage.setItem("aurasleep_journal_logs", JSON.stringify(mock));
+        setLogs([]);
       }
     } catch (e) {
       console.error("Error reading journal from localStorage", e);
@@ -317,7 +315,7 @@ export function SleepJournal() {
             exit={{ opacity: 0, y: -20, scale: 0.95 }}
             className="fixed top-6 left-1/2 -translate-x-1/2 bg-slate-900 text-white text-xs font-bold py-3 px-6 rounded-2xl shadow-xl z-50 flex items-center gap-2 border border-slate-850"
           >
-            <Check className="w-4 h-4 text-[#6D28D9]" strokeWidth={3} />
+            <Check className="w-4 h-4 text-[#7C3AED]" strokeWidth={3} />
             <span>{toastMessage}</span>
           </motion.div>
         )}
@@ -336,7 +334,7 @@ export function SleepJournal() {
         <div className="mt-2 flex flex-wrap items-center justify-center gap-3">
           <button
             onClick={() => setIsFormOpen(!isFormOpen)}
-            className="flex items-center justify-center gap-1.5 py-2.5 px-6 bg-[#6D28D9] hover:bg-[#5B21B6] text-white text-sm font-extrabold rounded-full transition-all duration-300 shadow-md hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] select-none cursor-pointer shrink-0"
+            className="flex items-center justify-center gap-1.5 py-2.5 px-6 bg-[#7C3AED] hover:bg-[#6D28D9] text-white text-sm font-extrabold rounded-full transition-all duration-300 shadow-md hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] select-none cursor-pointer shrink-0"
           >
             <Plus className={`w-4 h-4 transition-transform duration-300 ${isFormOpen ? "rotate-45" : ""}`} strokeWidth={3} />
             <span>{isFormOpen ? "Close Journal" : "Log Night's Sleep"}</span>
@@ -346,7 +344,7 @@ export function SleepJournal() {
             onClick={handleDownloadReport}
             className="flex items-center justify-center gap-1.5 py-2.5 px-6 bg-white border border-[#E5E7EB] hover:border-gray-300 text-slate-700 hover:text-[#111827] text-sm font-extrabold rounded-full transition-all duration-300 shadow-sm hover:shadow-md hover:scale-[1.02] active:scale-[0.98] select-none cursor-pointer shrink-0"
           >
-            <Download className="w-4 h-4 text-[#8B5CF6]" />
+            <Download className="w-4 h-4 text-[#7C3AED]" />
             <span>Download Report</span>
           </button>
         </div>
@@ -384,7 +382,7 @@ export function SleepJournal() {
                       onChange={(e) => setDate(e.target.value)}
                       max={new Date().toISOString().split("T")[0]}
                       required
-                      className="w-full text-sm font-bold bg-[#F9FAFB] border border-[#E5E7EB] rounded-2xl py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#8B5CF6]/20 focus:border-[#8B5CF6] text-[#111827] transition-all"
+                      className="w-full text-sm font-bold bg-[#F9FAFB] border border-[#E5E7EB] rounded-2xl py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#7C3AED]/20 focus:border-[#7C3AED] text-[#111827] transition-all"
                     />
                   </div>
                 </div>
@@ -411,7 +409,7 @@ export function SleepJournal() {
                     <button
                       type="button"
                       onClick={() => adjustHours(0.5)}
-                      className="w-9 h-9 flex items-center justify-center rounded-xl bg-white border border-[#E5E7EB] text-[#111827] font-black text-lg hover:bg-[#8B5CF6]/10 hover:text-[#8B5CF6] hover:border-[#8B5CF6]/30 transition-all select-none cursor-pointer"
+                      className="w-9 h-9 flex items-center justify-center rounded-xl bg-white border border-[#E5E7EB] text-[#111827] font-black text-lg hover:bg-[#7C3AED]/10 hover:text-[#7C3AED] hover:border-[#7C3AED]/30 transition-all select-none cursor-pointer"
                     >
                       +
                     </button>
@@ -425,7 +423,7 @@ export function SleepJournal() {
                   <label className="text-xs font-black text-[#374151] uppercase tracking-wider">
                     Sleep Quality Rating
                   </label>
-                  <span className="text-xs font-extrabold text-[#8B5CF6] bg-[#8B5CF6]/10 py-0.5 px-2.5 rounded-full border border-[#8B5CF6]/10 transition-all duration-300">
+                  <span className="text-xs font-extrabold text-[#7C3AED] bg-[#7C3AED]/10 py-0.5 px-2.5 rounded-full border border-[#7C3AED]/10 transition-all duration-300">
                     {getStarLabel(quality)}
                   </span>
                 </div>
@@ -444,7 +442,7 @@ export function SleepJournal() {
                         <Star
                           className={`w-8 h-8 transition-transform duration-200 ${
                             isLit 
-                              ? "fill-[#8B5CF6] text-[#8B5CF6] scale-110 drop-shadow-[0_2px_8px_rgba(139,92,246,0.3)]" 
+                              ? "fill-[#7C3AED] text-[#7C3AED] scale-110 drop-shadow-[0_2px_8px_rgba(124,58,237,0.3)]" 
                               : "text-[#D1D5DB] hover:text-[#C084FC]"
                           }`}
                           strokeWidth={2}
@@ -470,13 +468,13 @@ export function SleepJournal() {
                         onClick={() => handleFactorToggle(factor.id)}
                         className={`py-2.5 px-3.5 border rounded-2xl text-xs font-extrabold text-left transition-all duration-300 flex items-center justify-between select-none cursor-pointer ${
                           isSelected 
-                            ? "bg-purple-50/55 border-[#8B5CF6] text-[#8B5CF6]"
+                            ? "bg-purple-50/55 border-[#7C3AED] text-[#7C3AED]"
                             : "bg-white border-[#E5E7EB] hover:bg-slate-50 text-gray-700"
                         }`}
                       >
                         <span className="truncate">{factor.emoji} {factor.label}</span>
                         {isSelected && (
-                          <span className="w-5 h-5 bg-[#8B5CF6] rounded-full inline-flex items-center justify-center border-none shrink-0 border-[#8B5CF6] scale-95 shadow-[0_2px_5px_rgba(139,92,246,0.3)] text-white">
+                          <span className="w-5 h-5 bg-[#7C3AED] rounded-full inline-flex items-center justify-center border-none shrink-0 border-[#7C3AED] scale-95 shadow-[0_2px_5px_rgba(124,58,237,0.3)] text-white">
                             <Check className="w-3 h-3 text-white" strokeWidth={3} />
                           </span>
                         )}
@@ -497,7 +495,7 @@ export function SleepJournal() {
                   placeholder="e.g. Woke up feeling energized. Dreamt about flying. Bedroom was peaceful and dark."
                   rows={2}
                   maxLength={180}
-                  className="w-full text-sm font-semibold bg-[#F9FAFB] border border-[#E5E7EB] rounded-2xl py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#8B5CF6]/20 focus:border-[#8B5CF6] text-[#111827] placeholder:text-[#9CA3AF] transition-all"
+                  className="w-full text-sm font-semibold bg-[#F9FAFB] border border-[#E5E7EB] rounded-2xl py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#7C3AED]/20 focus:border-[#7C3AED] text-[#111827] placeholder:text-[#9CA3AF] transition-all"
                 />
               </div>
 
@@ -525,8 +523,8 @@ export function SleepJournal() {
       {/* Stats Cards Overview */}
       <div className="grid grid-cols-2 gap-4 mb-6" id="sleep-stats-cards">
         <div className="bg-[#FAF9FF] border border-[#E5E7EB] rounded-3xl p-4 flex items-center gap-3">
-          <div className="w-10 h-10 rounded-2xl bg-[#8B5CF6]/10 border border-[#8B5CF6]/15 flex items-center justify-center shrink-0">
-            <Clock className="w-5 h-5 text-[#8B5CF6]" />
+          <div className="w-10 h-10 rounded-2xl bg-[#7C3AED]/10 border border-[#7C3AED]/15 flex items-center justify-center shrink-0">
+            <Clock className="w-5 h-5 text-[#7C3AED]" />
           </div>
           <div className="text-left leading-tight min-w-0">
             <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest truncate">Average Sleep</p>
@@ -551,7 +549,7 @@ export function SleepJournal() {
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
             <div className="space-y-0.5">
               <h3 className="text-sm font-black text-[#111827] uppercase tracking-wider flex items-center gap-1.5">
-                <TrendingUp className="w-4 h-4 text-[#8B5CF6]" />
+                <TrendingUp className="w-4 h-4 text-[#7C3AED]" />
                 Interactive Rest Trends (Last 7 Days)
               </h3>
               <p className="text-xs text-[#6B7280]">
@@ -562,7 +560,7 @@ export function SleepJournal() {
             {/* Legend guide */}
             <div className="flex items-center gap-3 self-start sm:self-center bg-[#F9FAFB] border border-[#E5E7EB]/80 px-2.5 py-1 rounded-lg">
               <div className="flex items-center gap-1">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#8B5CF6] inline-block" />
+                <span className="w-2.5 h-2.5 rounded-full bg-[#7C3AED] inline-block" />
                 <span className="text-[10px] text-[#4B5563] font-bold">Hours</span>
               </div>
               <div className="flex items-center gap-1">
@@ -584,7 +582,7 @@ export function SleepJournal() {
                   y={chartHeight - paddingY - (((8 - minHours) / Math.max(1, maxHours - minHours)) * (chartHeight - paddingY * 2))}
                   width={chartWidth - paddingX * 2} 
                   height={(((8 - 7) / Math.max(1, maxHours - minHours)) * (chartHeight - paddingY * 2))}
-                  fill="#8B5CF6"
+                  fill="#7C3AED"
                   fillOpacity="0.04"
                 />
 
@@ -609,12 +607,12 @@ export function SleepJournal() {
                 {hourPointsStr && (
                   <polyline
                     fill="none"
-                    stroke="#8B5CF6"
+                    stroke="#7C3AED"
                     strokeWidth={3}
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     points={hourPointsStr}
-                    className="drop-shadow-[0_2px_4px_rgba(139,92,246,0.15)]"
+                    className="drop-shadow-[0_2px_4px_rgba(124,58,237,0.15)]"
                   />
                 )}
 
@@ -639,7 +637,7 @@ export function SleepJournal() {
                         cy={pt.yHours}
                         r={5}
                         fill="#FFFFFF"
-                        stroke="#8B5CF6"
+                        stroke="#7C3AED"
                         strokeWidth={2.5}
                       />
                       
@@ -648,7 +646,7 @@ export function SleepJournal() {
                         x={pt.x}
                         y={pt.yHours - 10}
                         textAnchor="middle"
-                        fill="#8B5CF6"
+                        fill="#7C3AED"
                         className="text-[10px] font-black font-mono"
                       >
                         {pt.hours}h
@@ -704,7 +702,7 @@ export function SleepJournal() {
 
         {logs.length === 0 ? (
           <div className="bg-white border border-[#E5E7EB] rounded-3xl p-8 text-center text-slate-500">
-            <BookOpen className="w-8 h-8 text-[#8B5CF6] mx-auto mb-2 opacity-50" />
+            <BookOpen className="w-8 h-8 text-[#7C3AED] mx-auto mb-2 opacity-50" />
             <p className="text-sm font-semibold">No logs added yet.</p>
             <p className="text-xs text-gray-400 mt-1">Tap &quot;Log Night's Sleep&quot; above to create your first journal entry.</p>
           </div>
@@ -730,7 +728,7 @@ export function SleepJournal() {
                           <span className="text-sm font-black text-[#111827]">
                             {getFormattedDate(log.date)}
                           </span>
-                          <span className="text-xs bg-[#6D28D9]/10 text-[#5B21B6] font-extrabold px-2.5 py-0.5 rounded-lg border border-[#6D28D9]/5">
+                          <span className="text-xs bg-[#7C3AED]/10 text-[#7C3AED] font-extrabold px-2.5 py-0.5 rounded-lg border border-[#7C3AED]/5">
                             {log.hours} hours
                           </span>
                           <div className="flex items-center">

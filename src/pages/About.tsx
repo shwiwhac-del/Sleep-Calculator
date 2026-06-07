@@ -111,13 +111,13 @@ export default function About() {
               Ready to improve your sleep schedule?
             </p>
             <p className="mb-4">
-              👉 <Link to="/" className="text-[#8B5CF6] hover:text-[#7C3AED] font-semibold transition-colors">Use the Sleep Calculator</Link> and find your ideal sleep time now.
+              👉 <Link to="/" className="text-[#7C3AED] hover:text-[#6D28D9] font-semibold transition-colors">Use the Sleep Calculator</Link> and find your ideal sleep time now.
             </p>
             <p className="text-gray-400 dark:text-gray-500 text-[14px] mt-8 pt-8 border-t border-gray-100 dark:border-[#1e293b]">
               Built to keep things simple, fast, and actually useful.
             </p>
             <div className="mt-4 text-sm text-gray-500 dark:text-gray-400">
-              Build By <a href="https://shafiqbuilds.site/" target="_blank" rel="noopener noreferrer" className="hover:text-[#8B5CF6] transition-colors underline underline-offset-2">ShafiqBuild</a>
+              Build By <a href="https://shafiqbuilds.site/" target="_blank" rel="noopener noreferrer" className="hover:text-[#7C3AED] transition-colors underline underline-offset-2">ShafiqBuild</a>
             </div>
           </section>
         </div>

@@ -72,10 +72,10 @@ export default function TimePicker({
         />
 
         {/* Clock icon on the left */}
-        <Clock className="w-6 h-6 sm:w-7 h-7 text-gray-450 dark:text-slate-400/80 pointer-events-none select-none relative z-10 transition-colors group-hover:text-[#8B5CF6] dark:group-hover:text-blue-400" />
+        <Clock className="w-6 h-6 sm:w-7 h-7 text-gray-450 dark:text-slate-400/80 pointer-events-none select-none relative z-10 transition-colors group-hover:text-[#7C3AED] dark:group-hover:text-blue-400" />
 
         {/* Clean, exact display of time matching the reference style layout */}
-        <div className="flex items-center justify-center font-bold text-gray-900 dark:text-white pointer-events-none select-none select-all relative z-10 font-sans transition-all duration-300 group-hover:text-[#8B5CF6]">
+        <div className="flex items-center justify-center font-bold text-gray-900 dark:text-white pointer-events-none select-none select-all relative z-10 font-sans transition-all duration-300 group-hover:text-[#7C3AED]">
           <span className="text-3xl sm:text-4xl tracking-tight tabular-nums">
             {displayHours}:{displayMinutes}
           </span>

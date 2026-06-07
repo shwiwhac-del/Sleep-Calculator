@@ -224,7 +224,7 @@ function autoLinkText(text: string, currentPath: string, linkedPaths: Set<string
       <Link
         key={`${path}-${index}`}
         to={path}
-        className="text-[#8B5CF6] hover:text-[#7C3AED] dark:text-[#a78bfa] dark:hover:text-[#c084fc] underline transition-colors"
+        className="text-[#7C3AED] hover:text-[#6D28D9] dark:text-[#a78bfa] dark:hover:text-[#c084fc] underline transition-colors"
       >
         {matchedWord}
       </Link>

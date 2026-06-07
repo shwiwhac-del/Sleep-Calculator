@@ -185,7 +185,7 @@ export function QuickSleepTips() {
       case "Heart": return <Heart className="w-5 h-5 text-red-500" />;
       case "FileText": return <FileText className="w-5 h-5 text-blue-500" />;
       case "Moon": return <Moon className="w-5 h-5 text-sky-500" />;
-      default: return <Sparkles className="w-5 h-5 text-[#8B5CF6]" />;
+      default: return <Sparkles className="w-5 h-5 text-[#7C3AED]" />;
     }
   };
 
@@ -221,7 +221,7 @@ export function QuickSleepTips() {
         <div className="flex justify-end mb-3">
           <button 
             onClick={handleShuffleSpotlight}
-            className="text-[11px] font-extrabold text-[#5B21B6] hover:text-[#4C1D95] transition-colors flex items-center gap-1 cursor-pointer select-none bg-indigo-50 hover:bg-indigo-100 border border-indigo-200/50 px-2.5 py-1 rounded-lg hover:shadow-sm"
+            className="text-[11px] font-extrabold text-[#7C3AED] hover:text-[#6D28D9] transition-colors flex items-center gap-1 cursor-pointer select-none bg-[#F9FAFB] hover:bg-white border border-[#E5E7EB] px-2.5 py-1 rounded-lg hover:shadow-sm"
           >
             Shuffle Advice
           </button>
@@ -252,7 +252,7 @@ export function QuickSleepTips() {
             
             {/* Scientific Factlet */}
             <div className="pt-2 border-t border-dashed border-[#E5E7EB] flex gap-1.5 items-start mt-2 bg-[#F9FAFB]/50 p-2 rounded-lg border border-[#E5E7EB]/50">
-              <Info className="w-3.5 h-3.5 text-[#8B5CF6] shrink-0 mt-0.5" />
+              <Info className="w-3.5 h-3.5 text-[#7C3AED] shrink-0 mt-0.5" />
               <p className="text-[11px] italic text-[#4B5563] leading-relaxed select-text">
                 <strong className="text-[#374151] not-italic font-bold">Science fact:</strong> {spotlightTip.scientificFact}
               </p>
@@ -266,7 +266,7 @@ export function QuickSleepTips() {
             onClick={() => handleToggleComplete(spotlightTip.id)}
             className={`flex items-center gap-1.5 py-1.5 px-4 rounded-full text-xs font-extrabold transition-all duration-300 select-none cursor-pointer border ${
               completedTipIds.includes(spotlightTip.id)
-                ? "bg-[#8B5CF6] text-white opacity-95 border-transparent shadow-sm"
+                ? "bg-[#7C3AED] text-white opacity-95 border-transparent shadow-sm"
                 : "bg-white border-[#E5E7EB] text-[#374151] hover:bg-slate-50 hover:border-gray-300"
             }`}
           >
@@ -295,7 +295,7 @@ export function QuickSleepTips() {
           </div>
           <div className="flex items-center gap-3 w-full sm:w-auto shrink-0">
             <span className="text-xs font-bold text-[#111827] bg-[#F3ECE3] px-3 py-1 rounded-lg border border-[#E5E7EB] inline-flex items-center gap-1">
-              <strong className="text-[#4C1D95]">{completedCount} / {totalTips}</strong> completed
+              <strong className="text-[#5B21B6]">{completedCount} / {totalTips}</strong> completed
             </span>
             {completedCount > 0 && (
               <button
@@ -312,7 +312,7 @@ export function QuickSleepTips() {
         {/* Beautiful Interactive Progress Bar */}
         <div className="w-full bg-[#E5E7EB]/55 rounded-full h-2.5 relative overflow-hidden mb-1">
           <motion.div 
-            className="bg-gradient-to-r from-[#8B5CF6] to-[#D4AF37] h-2.5 rounded-full" 
+            className="bg-gradient-to-r from-[#7C3AED] to-[#D4AF37] h-2.5 rounded-full" 
             initial={{ width: 0 }}
             animate={{ width: `${progressPercent}%` }}
             transition={{ duration: 0.5, ease: "easeOut" }}
@@ -320,7 +320,7 @@ export function QuickSleepTips() {
         </div>
         <div className="flex justify-between items-center text-[10px] text-[#6B7280] font-bold">
           <span>0%</span>
-          <span className="text-[#5B21B6] font-extrabold">
+          <span className="text-[#7C3AED] font-extrabold">
             {progressPercent === 100 ? "🏆 Perfect Sleep Shield Achieved!" : `${progressPercent}% Complete`}
           </span>
           <span>100%</span>
@@ -364,7 +364,7 @@ export function QuickSleepTips() {
                 }}
                 className={`bg-white border text-left p-4 rounded-2xl cursor-pointer hover:shadow-premium transition-all duration-300 relative overflow-hidden group flex flex-col justify-between ${
                   isCompleted 
-                    ? "border-[#8B5CF6]/50 shadow-[0_4px_12px_rgba(139,92,246,0.06)] bg-gradient-to-b from-white to-[#8B5CF6]/2"
+                    ? "border-[#7C3AED]/50 shadow-[0_4px_12px_rgba(124,58,237,0.06)] bg-gradient-to-b from-white to-[#7C3AED]/2"
                     : "border-[#E5E7EB] shadow-sm bg-white"
                 }`}
                 onClick={() => handleToggleExpand(tip.id)}
@@ -380,8 +380,8 @@ export function QuickSleepTips() {
                         onClick={() => handleToggleComplete(tip.id)}
                         className={`w-8 h-8 rounded-full border-2 transition-all duration-350 cursor-pointer select-none flex items-center justify-center ${
                           isCompleted
-                            ? "bg-[#8B5CF6] border-[#8B5CF6] text-white scale-110 shadow-[0_3px_10px_rgba(139,92,246,0.4)]"
-                            : "bg-white border-[#C084FC]/60 hover:border-[#8B5CF6] text-transparent hover:text-[#8B5CF6]/50"
+                            ? "bg-[#7C3AED] border-[#7C3AED] text-white scale-110 shadow-[0_3px_10px_rgba(124,58,237,0.4)]"
+                            : "bg-white border-[#C084FC]/60 hover:border-[#7C3AED] text-transparent hover:text-[#7C3AED]/50"
                         }`}
                         title={isCompleted ? "Mark Incomplete" : "Mark practiced today!"}
                       >
@@ -417,7 +417,7 @@ export function QuickSleepTips() {
                           {tip.detail}
                         </p>
                         <div className="flex gap-1.5 bg-gray-50 border border-gray-150 p-2 rounded-xl">
-                          <Info className="w-3.5 h-3.5 text-[#8B5CF6] shrink-0 mt-0.5" />
+                          <Info className="w-3.5 h-3.5 text-[#7C3AED] shrink-0 mt-0.5" />
                           <p className="text-[11px] italic text-[#6B7280] leading-normal select-text">
                             <strong className="text-[#374151] not-italic font-bold">Science:</strong> {tip.scientificFact}
                           </p>
@@ -427,11 +427,11 @@ export function QuickSleepTips() {
                   </AnimatePresence>
                 </div>
 
-                <div className="mt-3 flex items-center justify-between text-[11px] font-bold text-[#8B5CF6] pt-1">
+                <div className="mt-3 flex items-center justify-between text-[11px] font-bold text-[#7C3AED] pt-1">
                   <span className="opacity-80 group-hover:opacity-100 transition-opacity">
                     {isExpanded ? "Show Less" : "Read Full Advice"}
                   </span>
-                  <ChevronRight className={`w-3.5 h-3.5 transform transition-transform duration-300 ${isExpanded ? "rotate-90 text-[#8B5CF6]/60" : "group-hover:translate-x-1"}`} />
+                  <ChevronRight className={`w-3.5 h-3.5 transform transition-transform duration-300 ${isExpanded ? "rotate-90 text-[#7C3AED]/60" : "group-hover:translate-x-1"}`} />
                 </div>
               </motion.div>
             );

@@ -27,7 +27,7 @@ function Footer() {
           to="/about" 
           onMouseEnter={() => import('./pages/About')}
           onFocus={() => import('./pages/About')}
-          className="hover:text-[#8B5CF6] transition-colors font-semibold"
+          className="hover:text-[#7C3AED] transition-colors font-semibold"
         >
           About
         </Link>
@@ -35,7 +35,7 @@ function Footer() {
           to="/contact" 
           onMouseEnter={() => import('./pages/Contact')}
           onFocus={() => import('./pages/Contact')}
-          className="hover:text-[#8B5CF6] transition-colors font-semibold"
+          className="hover:text-[#7C3AED] transition-colors font-semibold"
         >
           Contact
         </Link>
@@ -43,7 +43,7 @@ function Footer() {
           to="/privacy" 
           onMouseEnter={() => import('./pages/Privacy')}
           onFocus={() => import('./pages/Privacy')}
-          className="hover:text-[#8B5CF6] transition-colors font-semibold"
+          className="hover:text-[#7C3AED] transition-colors font-semibold"
         >
           Privacy Policy
         </Link>
@@ -51,7 +51,7 @@ function Footer() {
           to="/terms" 
           onMouseEnter={() => import('./pages/Terms')}
           onFocus={() => import('./pages/Terms')}
-          className="hover:text-[#8B5CF6] transition-colors font-semibold"
+          className="hover:text-[#7C3AED] transition-colors font-semibold"
         >
           Terms & Conditions
         </Link>
@@ -69,7 +69,7 @@ function Header() {
       <Link 
         to="/" 
         onContextMenu={(e) => e.preventDefault()} 
-        className="font-display text-3xl sm:text-4xl lg:text-4xl font-black tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-[#8B5CF6] to-[#D4AF37] hover:scale-[1.02] active:scale-[0.98] transition-transform duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B5CF6]/40 rounded-2xl p-2 text-center"
+        className="font-display text-3xl sm:text-4xl lg:text-4xl font-black tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-[#7C3AED] to-[#D4AF37] hover:scale-[1.02] active:scale-[0.98] transition-transform duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7C3AED]/40 rounded-2xl p-2 text-center"
       >
         Sleep Calculator
       </Link>
@@ -108,7 +108,7 @@ function AppContent() {
       <main className="relative z-10 flex-grow flex flex-col items-center justify-start w-full pt-0 pb-4 sm:pb-8">
             <Suspense fallback={
               <div className="flex justify-center items-center h-[50vh] w-full">
-                <Loader2 className="w-8 h-8 text-[#8B5CF6] animate-spin" />
+                <Loader2 className="w-8 h-8 text-[#7C3AED] animate-spin" />
               </div>
             }>
               <Routes>

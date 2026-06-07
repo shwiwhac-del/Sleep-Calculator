@@ -84,12 +84,12 @@ export function FeedbackModal({ isOpen, onClose }: FeedbackModalProps) {
       <div className="relative w-full max-w-md bg-white dark:bg-[#111827] rounded-2xl shadow-xl overflow-hidden animate-in fade-in zoom-in-95 duration-200 border border-gray-100 dark:border-[#1e293b]">
         <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100 dark:border-[#1e293b]">
           <h2 className="text-lg font-bold text-gray-900 dark:text-gray-100 flex items-center gap-2 font-serif">
-            <MessageSquare size={18} className="text-[#8B5CF6]" />
+            <MessageSquare size={18} className="text-[#7C3AED]" />
             Send Feedback
           </h2>
           <button 
             onClick={onClose}
-            className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B5CF6] rounded-full p-1"
+            className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7C3AED] rounded-full p-1"
           >
             <X size={20} />
           </button>
@@ -98,7 +98,7 @@ export function FeedbackModal({ isOpen, onClose }: FeedbackModalProps) {
         <div className="p-6">
           {isSuccess ? (
             <div className="flex flex-col items-center justify-center py-6 text-center">
-              <CheckCircle size={48} className="text-[#8B5CF6] mb-4" />
+              <CheckCircle size={48} className="text-[#7C3AED] mb-4" />
               <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">Thank You!</h3>
               <p className="text-gray-500 dark:text-gray-400">
                 Your feedback helps us improve the sleep calculator.
@@ -120,7 +120,7 @@ export function FeedbackModal({ isOpen, onClose }: FeedbackModalProps) {
                   id="feedbackType"
                   value={formData.feedbackType}
                   onChange={(e) => setFormData(prev => ({ ...prev, feedbackType: e.target.value }))}
-                  className="w-full bg-gray-50 dark:bg-[#1e293b] border border-gray-200 dark:border-slate-700 text-gray-900 dark:text-gray-100 text-sm rounded-xl focus:ring-[#8B5CF6] focus:border-[#8B5CF6] block p-3 min-h-[48px] focus-visible:outline-none transition-colors appearance-none"
+                  className="w-full bg-gray-50 dark:bg-[#1e293b] border border-gray-200 dark:border-slate-700 text-gray-900 dark:text-gray-100 text-sm rounded-xl focus:ring-[#7C3AED] focus:border-[#7C3AED] block p-3 min-h-[48px] focus-visible:outline-none transition-colors appearance-none"
                 >
                   <option value="general">General Feedback</option>
                   <option value="bug">Report a Bug</option>
@@ -138,7 +138,7 @@ export function FeedbackModal({ isOpen, onClose }: FeedbackModalProps) {
                   rows={4}
                   value={formData.message}
                   onChange={(e) => setFormData(prev => ({ ...prev, message: e.target.value }))}
-                  className="w-full bg-gray-50 dark:bg-[#1e293b] border border-gray-200 dark:border-slate-700 text-gray-900 dark:text-gray-100 text-sm rounded-xl focus:ring-[#8B5CF6] focus:border-[#8B5CF6] block p-3.5 focus-visible:outline-none transition-colors min-h-[100px] resize-y placeholder:text-gray-400"
+                  className="w-full bg-gray-50 dark:bg-[#1e293b] border border-gray-200 dark:border-slate-700 text-gray-900 dark:text-gray-100 text-sm rounded-xl focus:ring-[#7C3AED] focus:border-[#7C3AED] block p-3.5 focus-visible:outline-none transition-colors min-h-[100px] resize-y placeholder:text-gray-400"
                   placeholder="Tell us what you think or describe the issue..."
                 />
               </div>
@@ -146,7 +146,7 @@ export function FeedbackModal({ isOpen, onClose }: FeedbackModalProps) {
               <button
                 type="submit"
                 disabled={isSubmitting || !formData.message.trim()}
-                className="w-full text-white bg-[#8B5CF6] hover:bg-[#7C3AED] focus-visible:ring-4 focus-visible:outline-none focus-visible:ring-[#8B5CF6]/20 font-semibold rounded-xl text-sm px-5 py-3 sm:py-3.5 text-center flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed transition-colors shadow-sm mt-2"
+                className="w-full text-white bg-[#7C3AED] hover:bg-[#6D28D9] focus-visible:ring-4 focus-visible:outline-none focus-visible:ring-[#7C3AED]/20 font-semibold rounded-xl text-sm px-5 py-3 sm:py-3.5 text-center flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed transition-colors shadow-sm mt-2"
               >
                 {isSubmitting ? 'Sending...' : (
                   <>

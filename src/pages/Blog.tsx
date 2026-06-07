@@ -1281,7 +1281,7 @@ export default function Blog() {
       <div className="mb-8 text-left">
         <button 
           onClick={handleBack}
-          className="inline-flex items-center gap-2 text-base text-[#6B7280] font-semibold tracking-wide hover:text-[#8B5CF6] transition-colors focus-visible:outline-none cursor-pointer"
+          className="inline-flex items-center gap-2 text-base text-[#6B7280] font-semibold tracking-wide hover:text-[#7C3AED] transition-colors focus-visible:outline-none cursor-pointer"
         >
           <ArrowLeft size={18} /> Back to Calculator
         </button>
@@ -1298,7 +1298,7 @@ export default function Blog() {
           <div className="space-y-12">
             <div className="text-center space-y-4 max-w-3xl mx-auto mb-10">
               <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#111827] tracking-tight leading-tight font-serif">
-                Sleep Science <span className="bg-gradient-to-r from-[#8B5CF6] to-[#D4AF37] bg-clip-text text-transparent">&amp; Guides</span>
+                Sleep Science <span className="bg-gradient-to-r from-[#7C3AED] to-[#D4AF37] bg-clip-text text-transparent">&amp; Guides</span>
               </h1>
               <p className="text-sm sm:text-base text-[#4B5563] leading-relaxed font-medium">
                 Expert knowledge, physiological research, and actionable tips to help you calculate your optimal sleep windows, reset your internal clock, and wake up energized.
@@ -1321,9 +1321,9 @@ export default function Blog() {
                 <Link
                   key={post.slug}
                   to={`/${post.slug}`}
-                  className="group flex flex-col bg-white hover:bg-slate-50 border border-[#E5E7EB] hover:border-[#8B5CF6]/50 rounded-2xl p-6 transition-all duration-300 transform hover:-translate-y-1.5 shadow-md hover:shadow-premium relative overflow-hidden h-full"
+                  className="group flex flex-col bg-white hover:bg-slate-50 border border-[#E5E7EB] hover:border-[#7C3AED]/50 rounded-2xl p-6 transition-all duration-300 transform hover:-translate-y-1.5 shadow-md hover:shadow-premium relative overflow-hidden h-full"
                 >
-                  <div className="absolute top-0 left-0 w-1 bg-gradient-to-b from-[#8B5CF6] to-[#7C3AED] h-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute top-0 left-0 w-1 bg-gradient-to-b from-[#7C3AED] to-[#6D28D9] h-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   
                   <div className="flex items-center justify-end mb-4">
                     <span className="text-xs font-medium text-[#6B7280]">
@@ -1331,7 +1331,7 @@ export default function Blog() {
                     </span>
                   </div>
 
-                  <h2 className="text-xl font-bold text-[#111827] group-hover:text-[#8B5CF6] transition-colors leading-snug mb-3 font-serif">
+                  <h2 className="text-xl font-bold text-[#111827] group-hover:text-[#7C3AED] transition-colors leading-snug mb-3 font-serif">
                     {post.title}
                   </h2>
 
@@ -1339,7 +1339,7 @@ export default function Blog() {
                     {post.description}
                   </p>
 
-                  <div className="flex items-center text-sm font-semibold text-[#8B5CF6] group-hover:text-[#7C3AED] mt-auto">
+                  <div className="flex items-center text-sm font-semibold text-[#7C3AED] group-hover:text-[#6D28D9] mt-auto">
                     Read Article
                     <svg 
                       className="w-4 h-4 ml-1 transform group-hover:translate-x-1.5 transition-transform duration-300" 
@@ -7828,7 +7828,7 @@ export default function Blog() {
         {isAnyBlog && relatedPosts.length > 0 && (
           <div className="pt-10 mt-10 border-t border-[#E5E7EB]" id="blog-related-articles-section">
             <div className="flex items-center gap-2 mb-6">
-              <Sparkles className="w-5 h-5 text-[#8B5CF6]" />
+              <Sparkles className="w-5 h-5 text-[#7C3AED]" />
               <h2 className="text-xl sm:text-2xl font-bold text-[#111827] font-serif tracking-tight">
                 Recommended Sleep Guides
               </h2>
@@ -7842,18 +7842,18 @@ export default function Blog() {
                     setOpenFaq(null);
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
-                  className="group relative flex flex-col justify-between p-5 rounded-2xl bg-white hover:bg-slate-50 border border-[#E5E7EB] hover:border-[#8B5CF6]/50 transition-all duration-300 shadow-md hover:shadow-premium hover:-translate-y-1"
+                  className="group relative flex flex-col justify-between p-5 rounded-2xl bg-white hover:bg-slate-50 border border-[#E5E7EB] hover:border-[#7C3AED]/50 transition-all duration-300 shadow-md hover:shadow-premium hover:-translate-y-1"
                   id={`related-post-card-${post.slug}`}
                 >
                   <div className="space-y-2">
-                    <h3 className="text-sm font-bold text-[#111827] group-hover:text-[#8B5CF6] font-serif transition-colors line-clamp-2 leading-snug">
+                    <h3 className="text-sm font-bold text-[#111827] group-hover:text-[#7C3AED] font-serif transition-colors line-clamp-2 leading-snug">
                       {post.title}
                     </h3>
                     <p className="text-xs text-[#4B5563] line-clamp-2 leading-relaxed">
                       {post.description}
                     </p>
                   </div>
-                  <div className="flex items-center gap-1.5 text-[11px] font-bold text-[#8B5CF6] group-hover:text-[#7C3AED] mt-4 uppercase tracking-wider">
+                  <div className="flex items-center gap-1.5 text-[11px] font-bold text-[#7C3AED] group-hover:text-[#6D28D9] mt-4 uppercase tracking-wider">
                     <span>Read Guide</span>
                     <span className="text-xs transform group-hover:translate-x-1 transition-transform">→</span>
                   </div>
@@ -7885,7 +7885,7 @@ export default function Blog() {
                       <span>{faq.q}</span>
                       <ChevronDown 
                         size={18} 
-                        className={`text-[#8B5CF6] shrink-0 ml-3 transition-transform duration-300 ${isOpen ? "rotate-180" : "text-[#6B7280]"}`} 
+                        className={`text-[#7C3AED] shrink-0 ml-3 transition-transform duration-300 ${isOpen ? "rotate-180" : "text-[#6B7280]"}`} 
                       />
                     </button>
                     <AnimatePresence initial={false}>
@@ -7914,13 +7914,13 @@ export default function Blog() {
         {isAnyBlog && (
           <div className="relative mt-12 mb-6" id="blog-back-to-home-cta">
             {/* Ambient background glow effect */}
-            <div className="absolute inset-0 bg-gradient-to-r from-[#8B5CF6]/10 to-[#D4AF37]/10 rounded-3xl blur-xl pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#7C3AED]/10 to-[#D4AF37]/10 rounded-3xl blur-xl pointer-events-none" />
             
-            <div className="relative bg-white border border-[#E5E7EB] hover:border-[#8B5CF6]/30 rounded-3xl p-6 sm:p-8 text-center space-y-5 shadow-premium transition-all duration-300 overflow-hidden">
+            <div className="relative bg-white border border-[#E5E7EB] hover:border-[#7C3AED]/30 rounded-3xl p-6 sm:p-8 text-center space-y-5 shadow-premium transition-all duration-300 overflow-hidden">
               <div className="absolute -top-10 -right-10 w-40 h-40 bg-blue-500/10 rounded-full blur-2xl" />
               <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-indigo-500/10 rounded-full blur-2xl" />
 
-              <div className="inline-flex p-3 bg-[#8B5CF6]/10 rounded-2xl border border-[#8B5CF6]/20 text-[#8B5CF6] mb-2">
+              <div className="inline-flex p-3 bg-[#7C3AED]/10 rounded-2xl border border-[#7C3AED]/20 text-[#7C3AED] mb-2">
                 <Calculator className="w-6 h-6 sm:w-8 sm:h-8 drop-shadow-[0_0_8px_rgba(139,92,246,0.5)]" />
               </div>
 
@@ -7935,7 +7935,7 @@ export default function Blog() {
               <div className="pt-2">
                 <Link
                   to="/"
-                  className="inline-flex items-center gap-2 bg-[#8B5CF6] hover:bg-[#7C3AED] active:bg-[#6D28D9] text-white font-bold py-3.5 px-8 rounded-full transition-all duration-300 shadow-[0_5px_15px_rgba(139,92,246,0.3)] hover:shadow-[0_8px_20px_rgba(139,92,246,0.4)] hover:scale-[1.015] active:scale-[0.985] cursor-pointer text-sm sm:text-base uppercase tracking-wider"
+                  className="inline-flex items-center gap-2 bg-[#7C3AED] hover:bg-[#6D28D9] active:bg-[#5B21B6] text-white font-bold py-3.5 px-8 rounded-full transition-all duration-300 shadow-[0_5px_15px_rgba(124,58,237,0.3)] hover:shadow-[0_8px_20px_rgba(124,58,237,0.4)] hover:scale-[1.015] active:scale-[0.985] cursor-pointer text-sm sm:text-base uppercase tracking-wider"
                   id="blog-cta-home-btn"
                 >
                   Try This Calculator

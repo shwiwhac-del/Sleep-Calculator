@@ -90,7 +90,7 @@ export default function ShareScheduleWidget() {
   return (
     <div id="sleep-share-calculator-widget" className="relative bg-white border border-[#E5E7EB] rounded-3xl p-6 sm:p-8 mt-12 mb-6 shadow-premium transition-all duration-300 overflow-hidden">
       {/* Background radial highlight */}
-      <div className="absolute top-0 right-0 w-32 h-32 bg-[#8B5CF6]/4 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-0 right-0 w-32 h-32 bg-[#7C3AED]/4 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute -bottom-10 -left-10 w-44 h-44 bg-[#D4AF37]/4 rounded-full blur-3xl pointer-events-none" />
 
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-6 border-b border-[#E5E7EB]">
@@ -109,7 +109,7 @@ export default function ShareScheduleWidget() {
             onClick={() => setMode('bed')}
             className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-extrabold tracking-wide uppercase transition-all cursor-pointer ${
               mode === 'bed'
-                ? 'bg-[#8B5CF6] text-white shadow-md'
+                ? 'bg-[#7C3AED] text-white shadow-md'
                 : 'text-[#6B7280] hover:text-[#111827]'
             }`}
           >
@@ -119,7 +119,7 @@ export default function ShareScheduleWidget() {
             onClick={() => setMode('wake')}
             className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-extrabold tracking-wide uppercase transition-all cursor-pointer ${
               mode === 'wake'
-                ? 'bg-[#8B5CF6] text-white shadow-md'
+                ? 'bg-[#7C3AED] text-white shadow-md'
                 : 'text-[#6B7280] hover:text-[#111827]'
             }`}
           >
@@ -133,13 +133,13 @@ export default function ShareScheduleWidget() {
         {/* Left Side: Dynamic Selectors */}
         <div className="md:col-span-4 flex flex-col justify-center space-y-3 bg-[#F8FAFC] p-5 rounded-2xl border border-[#E5E7EB]">
           <label className="text-xs font-bold text-[#6B7280] tracking-wider uppercase flex items-center gap-1.5">
-            <Clock size={14} className="text-[#8B5CF6]" /> Key Target Time
+            <Clock size={14} className="text-[#7C3AED]" /> Key Target Time
           </label>
           <input
             type="time"
             value={time}
             onChange={(e) => setTime(e.target.value)}
-            className="w-full bg-white border border-[#E5E7EB] hover:border-[#8B5CF6]/30 text-[#111827] font-extrabold rounded-2xl px-4 py-3 text-lg leading-tight focus:outline-none focus:ring-2 focus:ring-[#8B5CF6]/50 transition-all text-center [color-scheme:light]"
+            className="w-full bg-white border border-[#E5E7EB] hover:border-[#7C3AED]/30 text-[#111827] font-extrabold rounded-2xl px-4 py-3 text-lg leading-tight focus:outline-none focus:ring-2 focus:ring-[#7C3AED]/50 transition-all text-center [color-scheme:light]"
           />
           <p className="text-[11px] text-[#6B7280] text-center leading-relaxed">
             {mode === 'bed' 
@@ -156,11 +156,11 @@ export default function ShareScheduleWidget() {
                 key={item.id}
                 className={`flex flex-col items-center justify-center p-3.5 bg-[#F8FAFC]/50 border rounded-2xl text-center space-y-1 transition-all ${
                   index === 1 
-                    ? 'border-[#8B5CF6]/30 bg-[#8B5CF6]/5 shadow-[0_4px_16px_rgba(139,92,246,0.05)]' 
+                    ? 'border-[#7C3AED]/30 bg-[#7C3AED]/5 shadow-[0_4px_16px_rgba(124,58,237,0.05)]' 
                     : 'border-[#E5E7EB]'
                 }`}
               >
-                <div className="text-[10px] font-black text-[#8B5CF6] uppercase tracking-widest">
+                <div className="text-[10px] font-black text-[#7C3AED] uppercase tracking-widest">
                   {item.id} Cycles
                 </div>
                 <div className="text-base sm:text-lg md:text-xl font-black text-[#111827] tracking-tight">

@@ -4,8 +4,8 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --color-primary: #8B5CF6;
-  --color-primary-hover: #7C3AED;
+  --color-primary: #7C3AED;
+  --color-primary-hover: #6D28D9;
   --color-accent: #D4AF37;
   --color-background: #F3ECE3;
   --color-card: #FFFFFF;
@@ -198,7 +198,7 @@
 }
 
 /* Fix any specifically highlighted headings and strong text in blog/faq content */
-.text-white:not(button):not(a):not(.bg-[#8B5CF6] *):not(.bg-[#7C3AED] *):not(.bg-[#25D366] *):not(.bg-green-600 *):not(.bg-slate-900 *) {
+.text-white:not(button):not(a):not(.bg-\[\#7C3AED\] *):not(.bg-\[\#6D28D9\] *):not(.bg-\[\#25D366\] *):not(.bg-green-600 *):not(.bg-slate-900 *) {
   color: #111827 !important;
 }
 
@@ -236,7 +236,7 @@ tr.bg-blue-500\/5 {
 /* Custom spacing and background for section headers within blog */
 span.bg-\[\#07102e\] {
   background-color: #f3efe6 !important;
-  color: #8B5CF6 !important;
+  color: #7C3AED !important;
 }
 
 /* Override blog article lists, subheadings, and strong tags to be pitch charcoal */
@@ -252,10 +252,10 @@ article li, article li span {
 
 /* Highlight links inside articles to use our primary violet accent color */
 article a {
-  color: #8B5CF6 !important;
+  color: #7C3AED !important;
 }
 article a:hover {
-  color: #7C3AED !important;
+  color: #6D28D9 !important;
   text-decoration: underline !important;
 }
 

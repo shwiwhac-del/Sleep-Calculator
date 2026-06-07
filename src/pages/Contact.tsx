@@ -100,7 +100,7 @@ export default function Contact() {
 
         {isSuccess ? (
           <div className="flex flex-col items-start py-8">
-            <div className="flex items-center gap-3 text-[#8B5CF6] mb-4">
+            <div className="flex items-center gap-3 text-[#7C3AED] mb-4">
               <CheckCircle size={24} />
               <h2 className="text-2xl font-bold">Message Sent</h2>
             </div>
@@ -133,7 +133,7 @@ export default function Contact() {
                 value={formData.name}
                 onChange={handleChange}
                 required
-                className="w-full bg-[#F8FAFC] border border-[#E5E7EB] shadow-sm focus:border-[#8B5CF6] focus:ring-1 focus:ring-[#8B5CF6] rounded-xl px-4 py-3 text-gray-900 placeholder:text-gray-400 focus:outline-none transition-colors text-sm md:text-base"
+                className="w-full bg-[#F8FAFC] border border-[#E5E7EB] shadow-sm focus:border-[#7C3AED] focus:ring-1 focus:ring-[#7C3AED] rounded-xl px-4 py-3 text-gray-900 placeholder:text-gray-400 focus:outline-none transition-colors text-sm md:text-base"
                 placeholder="Your name"
               />
             </div>
@@ -149,7 +149,7 @@ export default function Contact() {
                 value={formData.email}
                 onChange={handleChange}
                 required
-                className="w-full bg-[#F8FAFC] border border-[#E5E7EB] shadow-sm focus:border-[#8B5CF6] focus:ring-1 focus:ring-[#8B5CF6] rounded-xl px-4 py-3 text-gray-900 placeholder:text-gray-400 focus:outline-none transition-colors text-sm md:text-base"
+                className="w-full bg-[#F8FAFC] border border-[#E5E7EB] shadow-sm focus:border-[#7C3AED] focus:ring-1 focus:ring-[#7C3AED] rounded-xl px-4 py-3 text-gray-900 placeholder:text-gray-400 focus:outline-none transition-colors text-sm md:text-base"
                 placeholder="you@example.com"
               />
             </div>
@@ -165,7 +165,7 @@ export default function Contact() {
                 onChange={handleChange}
                 required
                 rows={4}
-                className="w-full bg-[#F8FAFC] border border-[#E5E7EB] shadow-sm focus:border-[#8B5CF6] focus:ring-1 focus:ring-[#8B5CF6] rounded-xl px-4 py-3 text-gray-900 placeholder:text-gray-400 focus:outline-none transition-colors resize-none text-sm md:text-base"
+                className="w-full bg-[#F8FAFC] border border-[#E5E7EB] shadow-sm focus:border-[#7C3AED] focus:ring-1 focus:ring-[#7C3AED] rounded-xl px-4 py-3 text-gray-900 placeholder:text-gray-400 focus:outline-none transition-colors resize-none text-sm md:text-base"
                 placeholder="How can we help?"
               />
             </div>
@@ -173,7 +173,7 @@ export default function Contact() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-[#8B5CF6] text-white hover:bg-[#7C3AED] rounded-xl px-4 py-3 text-sm font-bold transition-all disabled:opacity-50 flex items-center justify-center gap-2 mt-2 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#8B5CF6]"
+              className="w-full bg-[#7C3AED] text-white hover:bg-[#6D28D9] rounded-xl px-4 py-3 text-sm font-bold transition-all disabled:opacity-50 flex items-center justify-center gap-2 mt-2 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#7C3AED]"
             >
               {isSubmitting ? 'Sending...' : 'Send Message'}
             </button>
@@ -186,7 +186,7 @@ export default function Contact() {
         <div className="mt-8 pt-6 border-t border-[#E5E7EB] dark:border-gray-800 text-center">
           <p className="text-sm text-gray-500 dark:text-gray-400">
             You can also reach us directly via email at{' '}
-            <a href="mailto:support@sleepcalculater.online" className="text-[#8B5CF6] hover:underline font-semibold">
+            <a href="mailto:support@sleepcalculater.online" className="text-[#7C3AED] hover:underline font-semibold">
               support@sleepcalculater.online
             </a>
           </p>
