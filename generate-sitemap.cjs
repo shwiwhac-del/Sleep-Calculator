@@ -32,18 +32,9 @@ const routes = [
   '/consistent-sleep-schedule-benefits',
   '/best-temperature-for-sleep',
   '/what-is-deep-sleep',
-  '/how-much-sleep-do-you-need-by-age',
-  '/wake-up-tired-after-8-hours',
-  '/best-bedtime-for-adults',
   '/how-long-does-it-take-to-fall-asleep',
-  '/what-is-sleep-debt',
   '/why-do-we-dream',
-  '/sleep-and-memory-learning',
   '/why-do-people-snore',
-  '/sleep-calculator-by-age',
-  '/90-minute-sleep-calculator',
-  '/best-sleep-schedule-for-productivity',
-  '/sleep-calculator-for-students',
   '/why-am-i-tired-after-sleeping'
 ];
 

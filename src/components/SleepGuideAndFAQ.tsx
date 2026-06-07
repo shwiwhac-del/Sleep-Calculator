@@ -258,9 +258,9 @@ export default function SleepGuideAndFAQ() {
               className="bg-white hover:bg-slate-50 border border-[#E5E7EB] hover:border-[#7C3AED]/50 rounded-2xl p-5 flex flex-col justify-between group shadow-md transition-all duration-300 select-text hover:shadow-premium hover:-translate-y-1 block"
             >
               <div>
-                <h4 className="text-base sm:text-lg font-extrabold text-[#111827] leading-snug group-hover:text-[#7C3AED] transition-colors duration-200 line-clamp-2">
+                <h3 className="text-base sm:text-lg font-extrabold text-[#111827] leading-snug group-hover:text-[#7C3AED] transition-colors duration-200 line-clamp-2 select-text">
                   {post.title}
-                </h4>
+                </h3>
                 <p className="text-xs sm:text-sm text-[#374151] mt-2.5 line-clamp-3 leading-relaxed">
                   {post.description}
                 </p>
@@ -295,14 +295,14 @@ export default function SleepGuideAndFAQ() {
             <Star className="w-4 h-4 fill-current text-amber-500" />
             <Star className="w-4 h-4 fill-current text-amber-500" />
           </div>
-          <h4 className="text-lg font-extrabold text-[#111827] dark:text-gray-100 tracking-tight leading-snug">
+          <h3 className="text-lg font-extrabold text-[#111827] dark:text-gray-100 tracking-tight leading-snug">
             Loved by 100,000+ Smart Sleepers
-          </h4>
+          </h3>
           <p className="text-xs text-[#6B7280] dark:text-gray-400 mt-1 max-w-sm">
             94% of active users report waking up refreshed with zero grogginess when utilizing our 90-minute sleep cycle calculations.
           </p>
         </div>
-
+        
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
           <div className="flex flex-col bg-slate-50/50 dark:bg-slate-900/10 p-4 rounded-xl border border-[#E5E7EB] dark:border-slate-800/60 relative">
             <Quote className="w-5 h-5 text-[#7C3AED]/10 absolute top-3 right-3" />
@@ -338,9 +338,9 @@ export default function SleepGuideAndFAQ() {
         </div>
       </div>
 
-      <h3 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-[#111827] pt-8 text-center w-full">
+      <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-[#111827] pt-8 text-center w-full">
         Frequently Asked Questions
-      </h3>
+      </h2>
 
       <div className="space-y-4 pt-2">
         {faqs.map((faq, index) => {
@@ -380,9 +380,9 @@ export default function SleepGuideAndFAQ() {
 
       {/* Contact & Support Section (EEAT Signal) */}
       <div className="w-full pt-8 pb-4 border-t border-[#E5E7EB] mt-8 flex flex-col items-center text-center select-text">
-        <h4 className="text-xl font-extrabold text-[#111827] mb-2 tracking-tight">
+        <h3 className="text-xl font-extrabold text-[#111827] mb-2 tracking-tight">
           Need Support or Have Feedback?
-        </h4>
+        </h3>
         <p className="text-sm sm:text-base text-[#374151] max-w-lg leading-relaxed mb-1">
           For questions, bug reports, feature requests, or scientific inquiries, please reach out to our team at{" "}
           <a

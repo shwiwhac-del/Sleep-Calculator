@@ -392,9 +392,9 @@ export function QuickSleepTips() {
 
                   <div className="space-y-1">
                     <div className="flex items-center gap-2 flex-wrap">
-                      <h4 className="text-base font-extrabold text-[#111827] leading-tight">
+                      <h3 className="text-base font-extrabold text-[#111827] leading-tight select-text">
                         {tip.title}
-                      </h4>
+                      </h3>
                       <span className={`text-[9px] uppercase tracking-widest px-1.5 py-0.5 rounded font-bold border shrink-0 ${getCategoryColor(tip.category)}`}>
                         {tip.category}
                       </span>

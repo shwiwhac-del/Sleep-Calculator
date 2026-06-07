@@ -22,12 +22,12 @@ const NotFound = lazy(() => import('./pages/NotFound'));
 function Footer() {
   return (
     <footer className="w-full py-4 mt-auto border-t border-[#E5E7EB] bg-transparent z-20 relative flex flex-col items-center gap-y-2">
-      <div className="flex flex-wrap items-center justify-center gap-x-5 sm:gap-x-6 text-xs sm:text-sm text-[#6B7280] px-4">
+      <div className="flex flex-wrap items-center justify-center gap-x-5 sm:gap-x-6 text-xs sm:text-sm px-4">
         <Link 
           to="/about" 
           onMouseEnter={() => import('./pages/About')}
           onFocus={() => import('./pages/About')}
-          className="hover:text-[#7C3AED] transition-colors font-semibold"
+          className="text-[#1F2937] hover:text-[#4C1D95] hover:underline transition-colors font-bold"
         >
           About
         </Link>
@@ -35,7 +35,7 @@ function Footer() {
           to="/contact" 
           onMouseEnter={() => import('./pages/Contact')}
           onFocus={() => import('./pages/Contact')}
-          className="hover:text-[#7C3AED] transition-colors font-semibold"
+          className="text-[#1F2937] hover:text-[#4C1D95] hover:underline transition-colors font-bold"
         >
           Contact
         </Link>
@@ -43,7 +43,7 @@ function Footer() {
           to="/privacy" 
           onMouseEnter={() => import('./pages/Privacy')}
           onFocus={() => import('./pages/Privacy')}
-          className="hover:text-[#7C3AED] transition-colors font-semibold"
+          className="text-[#1F2937] hover:text-[#4C1D95] hover:underline transition-colors font-bold"
         >
           Privacy Policy
         </Link>
@@ -51,12 +51,12 @@ function Footer() {
           to="/terms" 
           onMouseEnter={() => import('./pages/Terms')}
           onFocus={() => import('./pages/Terms')}
-          className="hover:text-[#7C3AED] transition-colors font-semibold"
+          className="text-[#1F2937] hover:text-[#4C1D95] hover:underline transition-colors font-bold"
         >
           Terms & Conditions
         </Link>
       </div>
-      <div className="text-[#6B7280] text-xs flex flex-col items-center">
+      <div className="text-[#1F2937] text-xs flex flex-col items-center font-bold">
         <span>&copy; {new Date().getFullYear()} Sleep Calculator. All rights reserved.</span>
       </div>
     </footer>
