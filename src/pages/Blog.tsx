@@ -1234,6 +1234,56 @@ export default function Blog() {
         }
       };
       jsonLdScripts.push({ __html: JSON.stringify(medicalWebPageSchema) });
+    } else if (activeSlug === 'how-long-does-it-take-to-fall-asleep') {
+      const breadcrumbSchema = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://sleepcalculater.online/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "How Long Does It Take to Fall Asleep?",
+            "item": "https://sleepcalculater.online/how-long-does-it-take-to-fall-asleep"
+          }
+        ]
+      };
+      jsonLdScripts.push({ __html: JSON.stringify(breadcrumbSchema) });
+
+      const medicalWebPageSchema = {
+        "@context": "https://schema.org",
+        "@type": "MedicalWebPage",
+        "@id": "https://sleepcalculater.online/how-long-does-it-take-to-fall-asleep#webpage",
+        "url": "https://sleepcalculater.online/how-long-does-it-take-to-fall-asleep",
+        "name": "How Long Does It Take to Fall Asleep? What's Normal?",
+        "description": "Learn how long it typically takes to fall asleep, factors that affect sleep onset, and tips to fall asleep faster naturally.",
+        "about": {
+          "@type": "MedicalCondition",
+          "name": "Insomnia",
+          "alternateName": "Sleep Onset Latency",
+          "possibleTreatment": [
+            {
+              "@type": "MedicalTherapy",
+              "name": "Cognitive Behavioral Therapy for Insomnia (CBT-I)"
+            },
+            {
+              "@type": "MedicalTherapy",
+              "name": "Sleep Hygiene Improvement"
+            }
+          ]
+        },
+        "aspectPresented": "Physiology of sleep onset, average latency times, sleeping disorders, and natural solutions to fall asleep faster",
+        "audience": {
+          "@type": "PeopleAudience",
+          "suggestedAudience": "Adults experiencing difficulty falling asleep or curious about normal sleep latency"
+        }
+      };
+      jsonLdScripts.push({ __html: JSON.stringify(medicalWebPageSchema) });
     }
 
     if (currentFaqs && currentFaqs.length > 0) {

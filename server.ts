@@ -99,6 +99,23 @@ async function startServer() {
     });
   });
 
+  // Explicit route to serve favicon.ico directly from favicon.png to avoid 404 errors
+  app.get("/favicon.ico", (req, res) => {
+    const publicPath = path.join(process.cwd(), "public", "favicon.png");
+    const distPath = path.join(process.cwd(), "dist", "favicon.png");
+
+    res.set("Content-Type", "image/png");
+    res.sendFile(publicPath, (err) => {
+      if (err) {
+        res.sendFile(distPath, (errDist) => {
+          if (errDist) {
+            res.status(404).set("Content-Type", "text/plain").send("favicon.ico not found");
+          }
+        });
+      }
+    });
+  });
+
   // Vite middleware for development
   if (process.env.NODE_ENV !== "production") {
     const vite = await createViteServer({
@@ -266,6 +283,35 @@ function injectSEOMetadata(html: string, originalPath: string): string {
           "suggestedAudience": "Adults experiencing chronic fatigue or irregular sleep patterns"
         }
       });
+    } else if (slug === 'how-long-does-it-take-to-fall-asleep') {
+      schemas.push({
+        "@context": "https://schema.org",
+        "@type": "MedicalWebPage",
+        "@id": "https://sleepcalculater.online/how-long-does-it-take-to-fall-asleep#webpage",
+        "url": "https://sleepcalculater.online/how-long-does-it-take-to-fall-asleep",
+        "name": "How Long Does It Take to Fall Asleep? What's Normal?",
+        "description": "Learn how long it typically takes to fall asleep, factors that affect sleep onset, and tips to fall asleep faster naturally.",
+        "about": {
+          "@type": "MedicalCondition",
+          "name": "Insomnia",
+          "alternateName": "Sleep Onset Latency",
+          "possibleTreatment": [
+            {
+              "@type": "MedicalTherapy",
+              "name": "Cognitive Behavioral Therapy for Insomnia (CBT-I)"
+            },
+            {
+              "@type": "MedicalTherapy",
+              "name": "Sleep Hygiene Improvement"
+            }
+          ]
+        },
+        "aspectPresented": "Physiology of sleep onset, average latency times, sleeping disorders, and natural solutions to fall asleep faster",
+        "audience": {
+          "@type": "PeopleAudience",
+          "suggestedAudience": "Adults experiencing difficulty falling asleep or curious about normal sleep latency"
+        }
+      });
     }
   } else {
     // 404 or unknown subpage fallback
@@ -324,12 +370,37 @@ function injectSEOMetadata(html: string, originalPath: string): string {
 
   // Replace fallback content for subpages so users don't see the Homepage content before React loads
   if (reqPath !== "/" && reqPath !== "") {
+    const blogLinksList = Object.keys(BLOG_POSTS_META)
+      .slice(0, 8)
+      .map(s => `<li><a href="/${s}" style="color: #7C3AED; text-decoration: none;">${BLOG_POSTS_META[s].title}</a></li>`)
+      .join('\n            ');
+
     const cleanFallback = `
-          <h1>${title}</h1>
-          <p>${description}</p>
-          <p style="text-align: center; font-size: 0.9rem; opacity: 0.6; font-style: italic; margin-top: 1.5rem;">Loading content...</p>
+        <div style="padding: 20px; max-width: 800px; margin: 0 auto; font-family: system-ui, -apple-system, sans-serif; line-height: 1.7; color: #374151;">
+          <nav style="margin-bottom: 2rem; border-bottom: 1px solid #E5E7EB; padding-bottom: 1rem;">
+            <a href="/" style="margin-right: 15px; text-decoration: none; font-weight: bold; color: #7C3AED;">Home</a>
+            <a href="/about" style="margin-right: 15px; text-decoration: none; font-weight: bold; color: #374151;">About</a>
+            <a href="/contact" style="margin-right: 15px; text-decoration: none; font-weight: bold; color: #374151;">Contact</a>
+            <a href="/privacy" style="margin-right: 15px; text-decoration: none; font-weight: bold; color: #374151;">Privacy Policy</a>
+            <a href="/terms" style="margin-right: 15px; text-decoration: none; font-weight: bold; color: #374151;">Terms & Conditions</a>
+          </nav>
+          <h1 style="font-size: 2rem; font-weight: 800; color: #111827; margin-bottom: 1.5rem; line-height: 1.2;">${title}</h1>
+          <p style="font-size: 1.1rem; font-weight: 500; margin-bottom: 1rem;">${description}</p>
+          
+          <p style="margin-bottom: 1.5rem;">Welcome to Sleep Calculator, your clean, scientific resource for optimizing bedtime, wake-up routines, and natural 90-minute sleep cycles. Our free interactive diagnostic tool calculates when to go to sleep and when to wake up based on clinical sleep recommendations so you can rise refreshed and avoid grogginess.</p>
+          
+          <h2 style="font-size: 1.5rem; font-weight: 700; color: #111827; margin-top: 1.5rem; margin-bottom: 1rem;">Why Sleep Timing Matters</h2>
+          <p style="margin-bottom: 1rem;">Quality sleep is the cornerstone of brain function, memory consolidation, cell restoration, and metabolic health. Our calculation guides help students, shift-workers, active parents, and remote professionals organize their routines effectively around the body's internal circadian rhythm clock.</p>
+          
+          <h2 style="font-size: 1.5rem; font-weight: 700; color: #111827; margin-top: 1.5rem; margin-bottom: 1rem;">Read Popular Health Guides & Practical Articles</h2>
+          <ul style="line-height: 1.9; padding-left: 20px; list-style-type: square; margin-bottom: 2rem;">
+            ${blogLinksList}
+          </ul>
+          
+          <p style="text-align: center; font-size: 0.9rem; opacity: 0.6; font-style: italic; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid #E5E7EB;">Loading interactive sleep tools & comprehensive content...</p>
+        </div>
     `;
-    html = html.replace(/<div class="fallback-content">.*?<\/div>/gis, () => `<div class="fallback-content">${cleanFallback}</div>`);
+    html = html.replace(/<!-- FALLBACK_CONTENT_START -->.*?<!-- FALLBACK_CONTENT_END -->/gis, () => `<!-- FALLBACK_CONTENT_START --><div class="fallback-content">${cleanFallback}</div><!-- FALLBACK_CONTENT_END -->`);
   }
 
   return html;
