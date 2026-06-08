@@ -5,6 +5,7 @@ import { ArrowLeft, Send, CheckCircle } from 'lucide-react';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from '../lib/firebase';
 import { handleFirestoreError, OperationType } from '../lib/firestore-error';
+import { MAIN_PAGES_META } from '../blogMetadata';
 
 export default function Contact() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
@@ -16,6 +17,8 @@ export default function Contact() {
   const handleBack = () => {
     navigate('/');
   };
+
+  const meta = MAIN_PAGES_META["/contact"];
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -76,23 +79,28 @@ export default function Contact() {
   return (
     <div className="w-full max-w-xl mx-auto px-4 sm:px-6">
       <Helmet>
-        <title>Contact Sleep Calculator – Support & Questions</title>
-        <meta name="description" content="Contact the Sleep Calculator team for support, feedback, bug reports, or general questions about the website." />
+        <title>{meta.title}</title>
+        <meta name="description" content={meta.description} />
         <meta name="keywords" content="contact sleep calculator, support, feedback, get in touch" />
-        <link rel="canonical" href="https://sleepcalculater.online/contact" />
-        <meta property="og:title" content="Contact Sleep Calculator – Support & Questions" />
-        <meta property="og:description" content="Contact the Sleep Calculator team for support, feedback, bug reports, or general questions about the website." />
+        <link rel="canonical" href={meta.canonicalUrl} />
+        <meta property="og:title" content={meta.title} />
+        <meta property="og:description" content={meta.description} />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://sleepcalculater.online/contact" />
+        <meta property="og:url" content={meta.canonicalUrl} />
       </Helmet>
 
-      <div className="mb-8 text-left">
+      <div className="mb-8 text-left flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <button 
           onClick={handleBack}
           className="inline-flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 font-medium tracking-wide hover:text-gray-900 dark:text-gray-100 transition-colors focus-visible:outline-none"
         >
           <ArrowLeft size={16} /> Back
         </button>
+        <span className="text-xs sm:text-sm font-medium text-gray-400 dark:text-gray-500">
+          <Link to="/" className="hover:text-[#7C3AED] font-semibold transition-colors">Homepage</Link>
+          <span className="mx-2">&gt;</span>
+          <span className="text-gray-900 dark:text-gray-100 font-bold bg-[#7C3AED]/10 dark:bg-[#7C3AED]/20 px-2.5 py-1 rounded-md text-xs font-mono">Contact Us Page</span>
+        </span>
       </div>
 
       <div className="animate-in fade-in slide-in-from-top-4 duration-500 text-left">
@@ -183,13 +191,72 @@ export default function Contact() {
           </form>
         )}
 
-        <div className="mt-8 pt-6 border-t border-[#E5E7EB] dark:border-gray-800 text-center">
-          <p className="text-sm text-gray-500 dark:text-gray-400">
-            You can also reach us directly via email at{' '}
-            <a href="mailto:support@sleepcalculater.online" className="text-[#7C3AED] hover:underline font-semibold">
-              support@sleepcalculater.online
-            </a>
-          </p>
+        <div className="mt-12 pt-8 border-t border-[#E5E7EB] dark:border-gray-800 text-left space-y-8">
+          <div>
+            <h2 id="contact-email-heading" className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2 font-serif">Direct Email Correspondence</h2>
+            <p className="text-sm text-gray-600 dark:text-gray-300">
+              You can reach our lead developer and sleep content analysts directly via physical email at{' '}
+              <a href="mailto:support@sleepcalculater.online" className="text-[#7C3AED] hover:underline font-semibold font-mono">
+                support@sleepcalculater.online
+              </a>
+              . We generally respond to constructive queries, partnership proposals, and layout suggestions within 48 business hours.
+            </p>
+          </div>
+
+          <div>
+            <h2 id="contact-faq-heading" className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 font-serif">Frequently Asked Questions (FAQs)</h2>
+            <div className="space-y-4 text-sm text-gray-600 dark:text-gray-300">
+              <div>
+                <h3 className="font-bold text-gray-800 dark:text-gray-200 mb-1">How accurate is the 90-minute sleep cycle estimate?</h3>
+                <p>While the average sleep cycle for adults is indeed 90 minutes, individual cycles can range from 70 to 110 minutes based on diet, lifestyle, age, genetics, and stress levels. Our calculator provides a standard, clinically recognized baseline.</p>
+              </div>
+              <div>
+                <h3 className="font-bold text-gray-800 dark:text-gray-200 mb-1">What is the 15 minutes of bedtime latency?</h3>
+                <p>It takes the average healthy adult approximately 14 to 20 minutes to transition from full wakefulness into light N1 sleep. Our bedtime algorithm injects 15 minutes of default buffer to accommodate this sequence.</p>
+              </div>
+              <div>
+                <h3 className="font-bold text-gray-800 dark:text-gray-200 mb-1">How can I support Sleep Calculator?</h3>
+                <p>You can share our free web application with friends, classmates, tech students, and colleagues who struggle with morning fatigue or irregular shift work schedules!</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="pt-4">
+            <h2 id="popular-guides-heading" className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 font-serif">Detailed Sleep Guides</h2>
+            <p className="text-sm text-gray-600 dark:text-gray-300 mb-3">Optimize your sleep health and circadian metrics by reading our popular science-backed resources:</p>
+            <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-2 text-sm text-gray-700 dark:text-gray-300">
+              <li>
+                <Link to="/sleep-cycles-explained" className="text-[#7C3AED] hover:underline">
+                  👉 Sleep Cycles Explained: Science of Rest
+                </Link>
+              </li>
+              <li>
+                <Link to="/what-is-rem-sleep" className="text-[#7C3AED] hover:underline">
+                  👉 What Is REM Sleep and Why It Matters
+                </Link>
+              </li>
+              <li>
+                <Link to="/how-much-sleep-do-you-need" className="text-[#7C3AED] hover:underline">
+                  👉 Recommended Sleep Hours by Age
+                </Link>
+              </li>
+              <li>
+                <Link to="/best-time-to-sleep-and-wake-up" className="text-[#7C3AED] hover:underline">
+                  👉 Best Time to Sleep and Wake Up
+                </Link>
+              </li>
+              <li>
+                <Link to="/why-90-minute-sleep-cycles-matter" className="text-[#7C3AED] hover:underline">
+                  👉 Why 90-Minute Sleep Cycles Matter
+                </Link>
+              </li>
+              <li>
+                <Link to="/how-to-wake-up-refreshed" className="text-[#7C3AED] hover:underline">
+                  👉 How to Wake Up Refreshed
+                </Link>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>

@@ -1,6 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import { ArrowLeft } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
+import { MAIN_PAGES_META } from '../blogMetadata';
 
 export default function Privacy() {
   const navigate = useNavigate();
@@ -9,21 +10,30 @@ export default function Privacy() {
     navigate('/');
   };
 
+  const meta = MAIN_PAGES_META["/privacy"];
+
   return (
     <div className="w-full max-w-4xl mx-auto px-4 sm:px-6">
       <Helmet>
-        <title>Privacy Policy – Sleep Calculator</title>
-        <meta name="description" content="Read the privacy policy of Sleep Calculator to understand how user data and privacy are protected on our website." />
+        <title>{meta.title}</title>
+        <meta name="description" content={meta.description} />
         <meta name="keywords" content="privacy policy, data privacy, sleep calculator privacy" />
-        <link rel="canonical" href="https://sleepcalculater.online/privacy" />
-        <meta property="og:title" content="Privacy Policy – Sleep Calculator" />
-        <meta property="og:description" content="Read the privacy policy of Sleep Calculator to understand how user data and privacy are protected on our website." />
+        <link rel="canonical" href={meta.canonicalUrl} />
+        <meta property="og:title" content={meta.title} />
+        <meta property="og:description" content={meta.description} />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://sleepcalculater.online/privacy" />
+        <meta property="og:url" content={meta.canonicalUrl} />
       </Helmet>
       
-      <div className="mb-8 text-left">
-        <button onClick={handleBack} className="inline-flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 font-medium tracking-wide hover:text-gray-900 dark:text-gray-100 transition-colors focus-visible:outline-none"><ArrowLeft size={16} /> Back</button>
+      <div className="mb-8 text-left flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <button onClick={handleBack} className="inline-flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 font-medium tracking-wide hover:text-gray-900 dark:text-gray-100 transition-colors focus-visible:outline-none">
+          <ArrowLeft size={16} /> Back
+        </button>
+        <span className="text-xs sm:text-sm font-medium text-gray-400 dark:text-gray-500">
+          <Link to="/" className="hover:text-[#7C3AED] font-semibold transition-colors">Homepage</Link>
+          <span className="mx-2">&gt;</span>
+          <span className="text-gray-900 dark:text-gray-100 font-bold bg-[#7C3AED]/10 dark:bg-[#7C3AED]/20 px-2.5 py-1 rounded-md text-xs font-mono">Privacy Policy Page</span>
+        </span>
       </div>
 
       <div className="animate-in fade-in slide-in-from-top-4 duration-500 text-left">
@@ -124,10 +134,37 @@ export default function Privacy() {
           </section>
 
           <section>
-            <h2 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-gray-100 mb-3 font-serif">Contact</h2>
+            <h2 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-gray-100 mb-3 font-serif">Contact Information</h2>
             <p>
-              If you have questions regarding this Privacy Policy, please use the Contact page on our website.
+              If you have questions regarding this Privacy Policy, cookie settings, analytics, or wish to request contact data deletion, please utilize our <Link to="/contact" className="text-[#7C3AED] font-bold hover:underline">Contact details page</Link> or email us at <a href="mailto:support@sleepcalculater.online" className="text-[#7C3AED] font-mono font-bold hover:underline">support@sleepcalculater.online</a>.
             </p>
+          </section>
+
+          <section className="pt-6 border-t border-[#E5E7EB] dark:border-gray-800">
+            <h2 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-gray-100 mb-3 font-serif">Sleep Health Guides</h2>
+            <p className="mb-4 text-sm sm:text-base">To learn more about optimizing your sleep environment and bedtime schedules, read our popular science guides:</p>
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 text-sm text-gray-700 dark:text-gray-300">
+              <li>
+                <Link to="/sleep-cycles-explained" className="text-[#7C3AED] hover:underline">
+                  👉 Sleep Cycles Explained: Science of Rest
+                </Link>
+              </li>
+              <li>
+                <Link to="/what-is-rem-sleep" className="text-[#7C3AED] hover:underline">
+                  👉 What Is REM Sleep and Why It Matters
+                </Link>
+              </li>
+              <li>
+                <Link to="/how-much-sleep-do-you-need" className="text-[#7C3AED] hover:underline">
+                  👉 Recommended Sleep Hours by Age
+                </Link>
+              </li>
+              <li>
+                <Link to="/best-time-to-sleep-and-wake-up" className="text-[#7C3AED] hover:underline">
+                  👉 Best Time to Sleep and Wake Up
+                </Link>
+              </li>
+            </ul>
           </section>
         </div>
       </div>

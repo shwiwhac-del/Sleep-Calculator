@@ -151,7 +151,7 @@ function AppContent() {
                 <Route path="/sleep-and-memory-learning" element={<Navigate to="/sleep-and-memory" replace />} />
                 <Route path="/why-do-people-snore" element={<Blog />} />
                 <Route path="/sleep-calculator-by-age" element={<Navigate to="/how-much-sleep-do-you-need" replace />} />
-                <Route path="/90-minute-sleep-calculator" element={<Navigate to="/why-90-minute-sleep-cycles-matter" replace />} />
+                <Route path="/90-minute-sleep-calculator" element={<Blog />} />
                 <Route path="/best-sleep-schedule-for-productivity" element={<Navigate to="/sleep-schedule-for-productivity" replace />} />
                 <Route path="/sleep-calculator-for-students" element={<Navigate to="/best-bedtime-for-students" replace />} />
                 <Route path="/why-am-i-tired-after-sleeping" element={<Blog />} />

@@ -7,28 +7,38 @@ export interface PageSEO {
 export const MAIN_PAGES_META: Record<string, PageSEO> = {
   "/": {
     title: "Sleep Calculator – Calculate Bedtime & Wake Up Times",
-    description: "Calculate the best bedtime and wake-up time using natural 90-minute sleep cycles. Wake up refreshed and improve your sleep quality.",
+    description: "Calculate the best bedtime and wake-up time using natural 90-minute sleep cycles. Wake up refreshed, avoid morning grogginess, and improve your sleep quality.",
     canonicalUrl: "https://sleepcalculater.online/"
   },
   "/about": {
     title: "About Sleep Calculator – Sleep Cycle & Bedtime Tool",
-    description: "About the Sleep Calculator team, our mission, scientific methodology based on 90-minute sleep cycles, and sleep health dedication.",
+    description: "Learn about the Sleep Calculator team, our core mission, and the scientific research behind our 90-minute sleep cycle and bedtime calculation algorithms.",
     canonicalUrl: "https://sleepcalculater.online/about"
   },
   "/contact": {
     title: "Contact Sleep Calculator – Support & Questions",
-    description: "Contact the Sleep Calculator team for support, feedback, bug reports, or general questions about the website.",
+    description: "Contact the Sleep Calculator support and media team for feedback, feature requests, partnership inquiries, or general questions about our sleep cycle tools.",
     canonicalUrl: "https://sleepcalculater.online/contact"
   },
   "/privacy": {
     title: "Privacy Policy – Sleep Calculator",
-    description: "Privacy Policy for Sleep Calculator. Learn how we handle cookies, respect your privacy, and secure any analytical usage data.",
+    description: "Read the Sleep Calculator Privacy Policy. Learn about our commitment to data privacy, how we manage cookie policies, and protect user analytical data safely.",
     canonicalUrl: "https://sleepcalculater.online/privacy"
   },
   "/terms": {
     title: "Terms and Conditions – Sleep Calculator",
-    description: "Terms and Conditions of use for Sleep Calculator. Read our terms, usage guidelines, and free tool disclaimers.",
+    description: "Review the Terms and Conditions of Sleep Calculator. Read our terms of service, acceptable usage guidelines, liability limitations, and health disclaimers.",
     canonicalUrl: "https://sleepcalculater.online/terms"
+  },
+  "/404": {
+    title: "404 Page Not Found – Sleep Calculator",
+    description: "The requested sleep calculator guide, resource, or article could not be located. Calculate your optimal bedtime and wake-up times on our homepage.",
+    canonicalUrl: "https://sleepcalculater.online/404"
+  },
+  "/not-found": {
+    title: "404 Page Not Found – Sleep Calculator",
+    description: "The requested sleep calculator guide, resource, or article could not be located. Calculate your optimal bedtime and wake-up times on our homepage.",
+    canonicalUrl: "https://sleepcalculater.online/not-found"
   }
 };
 
@@ -265,7 +275,6 @@ export const BLOG_REDIRECTS: Record<string, string> = {
   "what-is-sleep-debt": "sleep-debt-explained",
   "sleep-and-memory-learning": "sleep-and-memory",
   "sleep-calculator-by-age": "how-much-sleep-do-you-need",
-  "90-minute-sleep-calculator": "why-90-minute-sleep-cycles-matter",
   "best-sleep-schedule-for-productivity": "sleep-schedule-for-productivity",
   "sleep-calculator-for-students": "best-bedtime-for-students"
 };

@@ -1,6 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import { ArrowLeft } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
+import { MAIN_PAGES_META } from '../blogMetadata';
 
 export default function About() {
   const navigate = useNavigate();
@@ -9,21 +10,30 @@ export default function About() {
     navigate('/');
   };
 
+  const meta = MAIN_PAGES_META["/about"];
+
   return (
     <div className="w-full max-w-4xl mx-auto px-4 sm:px-6">
       <Helmet>
-        <title>About Sleep Calculator – Sleep Cycle & Bedtime Tool</title>
-        <meta name="description" content="Learn about Sleep Calculator and how our tool helps users calculate the best sleep and wake-up times using sleep cycles." />
+        <title>{meta.title}</title>
+        <meta name="description" content={meta.description} />
         <meta name="keywords" content="about sleep calculator, sleep cycle tool, mission, sleep health" />
-        <link rel="canonical" href="https://sleepcalculater.online/about" />
-        <meta property="og:title" content="About Sleep Calculator – Sleep Cycle & Bedtime Tool" />
-        <meta property="og:description" content="Learn about Sleep Calculator and how our tool helps users calculate the best sleep and wake-up times using sleep cycles." />
+        <link rel="canonical" href={meta.canonicalUrl} />
+        <meta property="og:title" content={meta.title} />
+        <meta property="og:description" content={meta.description} />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://sleepcalculater.online/about" />
+        <meta property="og:url" content={meta.canonicalUrl} />
       </Helmet>
       
-      <div className="mb-8 text-left">
-        <button onClick={handleBack} className="inline-flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 font-medium tracking-wide hover:text-gray-900 dark:text-gray-100 transition-colors focus-visible:outline-none"><ArrowLeft size={16} /> Back</button>
+      <div className="mb-8 text-left flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <button onClick={handleBack} className="inline-flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 font-medium tracking-wide hover:text-gray-900 dark:text-gray-100 transition-colors focus-visible:outline-none">
+          <ArrowLeft size={16} /> Back
+        </button>
+        <span className="text-xs sm:text-sm font-medium text-gray-400 dark:text-gray-500">
+          <Link to="/" className="hover:text-[#7C3AED] font-semibold transition-colors">Homepage</Link>
+          <span className="mx-2">&gt;</span>
+          <span className="text-gray-900 dark:text-gray-100 font-bold bg-[#7C3AED]/10 dark:bg-[#7C3AED]/20 px-2.5 py-1 rounded-md text-xs font-mono">About Us Page</span>
+        </span>
       </div>
 
       <div className="animate-in fade-in slide-in-from-top-4 duration-500 text-left">

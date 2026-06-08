@@ -5,6 +5,7 @@ import { Helmet } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'motion/react';
 import { AutoLinker } from '../components/AutoLinker';
 import ShareScheduleWidget from '../components/ShareScheduleWidget';
+import { BLOG_POSTS_META } from '../blogMetadata';
 
 export const BLOG_POSTS = [
   {
@@ -1020,117 +1021,9 @@ export default function Blog() {
   let description = "Discover how to use a sleep cycle calculator, find the best time to sleep, and optimize your rest in our sleep health articles.";
   let canonicalUrl = `https://sleepcalculater.online${currentPath}`;
 
-  if (isBlog1) {
-    title = "Sleep Cycles Explained | Sleep Cycle Calculator Guide";
-    description = "Learn how sleep cycles work, how many sleep cycles you need, and how a sleep cycle calculator can help improve sleep quality and morning energy.";
-  } else if (isBlog2) {
-    title = "What Is REM Sleep? Benefits, Stages, and Why It Matters";
-    description = "Discover what REM sleep is, why it is important, how it affects memory and learning, and how to improve REM sleep for better overall health.";
-  } else if (isBlog3) {
-    title = "How Much Sleep Do You Need? Sleep Recommendations by Age";
-    description = "Learn how much sleep you need based on your age, lifestyle, and health. Discover recommended sleep hours and tips for better sleep quality.";
-  } else if (isBlog4) {
-    title = "Best Time to Sleep and Wake Up | Sleep Calculator Guide";
-    description = "Discover the best time to sleep and wake up based on sleep cycles, circadian rhythm, and healthy sleep habits. Improve sleep quality naturally.";
-  } else if (isBlog5) {
-    title = "Sleep Cycle Calculator Guide: How to Calculate the Best Time to Sleep";
-    description = "Learn how a sleep cycle calculator works, how to calculate your ideal bedtime and wake-up time, and why sleep cycles matter for better rest.";
-  } else if (isBlog6) {
-    title = "Why 90 Minute Sleep Cycles Matter for Better Sleep and Energy";
-    description = "Learn why 90-minute sleep cycles are important, how they affect sleep quality, and how to use them to wake up feeling refreshed.";
-  } else if (isBlog7) {
-    title = "How to Wake Up Refreshed Every Morning | Sleep Calculator Guide";
-    description = "Learn how to wake up refreshed every morning using sleep cycles, better bedtime habits, and a sleep calculator. Improve energy, focus, and sleep quality naturally.";
-  } else if (isBlog8) {
-    title = "Ideal Bedtime for Adults: What Time Should You Go to Sleep?";
-    description = "Discover the ideal bedtime for adults based on sleep cycles, sleep duration, and circadian rhythm to improve sleep quality and morning energy.";
-  } else if (isBlog9) {
-    title = "Sleep Schedule for Productivity: The Best Sleep Routine for Focus and Performance";
-    description = "Discover the best sleep schedule for productivity, focus, energy, and mental performance. Learn how sleep habits affect work, study, and daily success.";
-  } else if (isBlog10) {
-    title = "How Many Hours of Sleep Is Healthy? A Complete Guide";
-    description = "Learn how many hours of sleep are healthy for adults, teenagers, and children. Discover why sleep duration matters for health and well-being.";
-  } else if (isBlog11) {
-    title = "Power Nap vs Full Sleep Cycle: Which Is Better for Energy?";
-    description = "Compare power naps and full sleep cycles to discover which option is better for energy, focus, productivity, and overall sleep health.";
-  } else if (isBlog12) {
-    title = "Circadian Rhythm Explained: How Your Body's Internal Clock Controls Sleep";
-    description = "Learn what the circadian rhythm is, how it affects sleep and energy levels, and how to improve your body's natural sleep-wake cycle.";
-  } else if (isBlog13) {
-    title = "Why Am I Still Tired After 8 Hours of Sleep? Common Causes and Solutions";
-    description = "Wondering why you're still tired after 8 hours of sleep? Learn the common causes of morning fatigue and practical ways to improve sleep quality.";
-  } else if (isBlog14) {
-    title = "Best Bedtime for Students and Exam Preparation";
-    description = "Discover the best bedtime for students, how sleep affects exam performance, memory, concentration, and study effectiveness.";
-  } else if (isBlog15) {
-    title = "How Sleep Affects Memory and Learning: The Science Behind Better Brain Performance";
-    description = "Learn how sleep affects memory, learning, focus, and academic performance. Discover why quality sleep is essential for brain function and knowledge retention.";
-  } else if (isBlog16) {
-    title = "Sleep Debt Explained: What It Is and How to Recover";
-    description = "Learn what sleep debt is, how it affects health, productivity, and energy levels, and discover practical ways to recover from lost sleep.";
-  } else if (isBlog17) {
-    title = "Best Wake Up Time for Maximum Energy and Productivity";
-    description = "Discover the best wake up time for maximum energy, productivity, and better sleep health. Learn how sleep cycles and consistency affect your mornings.";
-  } else if (isBlog18) {
-    title = "How to Improve Sleep Quality Naturally: 12 Proven Tips for Better Sleep";
-    description = "Learn how to improve sleep quality naturally with practical sleep tips that help you fall asleep faster and wake up feeling refreshed.";
-  } else if (isBlog19) {
-    title = "Sleep Hygiene Tips for Better Sleep: Simple Habits for Restful Nights";
-    description = "Discover the best sleep hygiene tips to improve sleep quality, fall asleep faster, and wake up refreshed with healthy sleep habits.";
-  } else if (isBlog20) {
-    title = "Common Sleep Mistakes That Make You Tired Every Day";
-    description = "Learn the most common sleep mistakes that cause fatigue and discover how to improve sleep quality, energy levels, and overall health.";
-  } else if (isBlog21) {
-    title = "How to Fix an Irregular Sleep Schedule and Improve Sleep Quality";
-    description = "Learn how to fix an irregular sleep schedule with proven strategies that help improve sleep quality, energy levels, and overall health.";
-  } else if (isBlog22) {
-    title = "Benefits of Consistent Sleep and Wake Times for Better Health";
-    description = "Discover the benefits of consistent sleep and wake times, including improved sleep quality, energy levels, productivity, and overall health.";
-  } else if (isBlog23) {
-    title = "Best Temperature for Sleep: How Ambient Temperature Affects Sleep Quality";
-    description = "Learn the optimal room temperature for high-quality sleep, how body temperature influences sleep cycles, and practical tips to cool down your bedroom naturally.";
-  } else if (isBlog24) {
-    title = "What Is Deep Sleep and Why Does Your Body Need It?";
-    description = "Discover what deep sleep is, why it is important, how much deep sleep you need, and ways to improve deep sleep naturally.";
-  } else if (isBlog25) {
-    title = "How Much Sleep Do You Need by Age? Complete Sleep Requirements Chart";
-    description = "Discover how much sleep you need by age. Learn recommended sleep durations for babies, children, teens, adults, and older adults.";
-  } else if (isBlog26) {
-    title = "Why Do I Wake Up Tired After 8 Hours of Sleep?";
-    description = "Waking up tired after 8 hours of sleep? Learn the most common causes of morning fatigue and how to improve sleep quality naturally.";
-  } else if (isBlog27) {
-    title = "Best Bedtime for Adults Based on Sleep Cycles";
-    description = "Discover the best bedtime for adults based on sleep cycles. Learn how sleep timing affects energy, sleep quality, and morning alertness.";
-  } else if (isBlog28) {
-    title = "How Long Does It Take to Fall Asleep? What's Normal?";
-    description = "Learn how long it typically takes to fall asleep, factors that affect sleep onset, and tips to fall asleep faster naturally.";
-  } else if (isBlog29) {
-    title = "What Is Sleep Debt and Can You Repay It?";
-    description = "Learn what sleep debt is, how it affects your health, and whether you can recover lost sleep with better sleep habits.";
-  } else if (isBlog30) {
-    title = "Why Do We Dream? Understanding the Science of Dreams";
-    description = "Discover why people dream, the role of REM sleep, and what scientists know about dreams and sleep cycles.";
-  } else if (isBlog31) {
-    title = "How Sleep Affects Memory and Learning";
-    description = "Discover how sleep supports memory, learning, and brain performance. Learn why quality sleep is essential for students and professionals.";
-  } else if (isBlog32) {
-    title = "Why Do People Snore While Sleeping?";
-    description = "Learn what causes snoring, common risk factors, and practical tips that may help reduce snoring during sleep.";
-  } else if (isBlog33) {
-    title = "Sleep Calculator by Age: How Much Sleep Do You Really Need?";
-    description = "Use a sleep calculator by age to find your ideal sleep duration. Learn how much sleep children, teens, adults, and seniors need for better health.";
-  } else if (isBlog34) {
-    title = "90 Minute Sleep Calculator: Find the Best Time to Sleep and Wake Up";
-    description = "Use a 90 minute sleep calculator to plan your bedtime and wake-up time around natural sleep cycles for better sleep quality and energy.";
-  } else if (isBlog35) {
-    title = "Best Sleep Schedule for Productivity | Sleep Calculator Guide";
-    description = "Discover the best sleep schedule for productivity, focus, and energy. Learn how sleep cycles, bedtime routines, and sleep calculators can improve performance.";
-  } else if (isBlog36) {
-    title = "Sleep Calculator for Students | Better Sleep for Exams";
-    description = "Discover how a sleep calculator can help students improve focus, memory, productivity, and exam performance through better sleep habits and sleep cycle planning.";
-  } else if (isBlog37) {
-    title = "Why Am I Tired After Sleeping? Causes and Solutions";
-    description = "Learn why you feel tired after sleeping, what causes morning fatigue, and how sleep cycles, sleep quality, and healthy habits can help you wake up refreshed.";
+  if (activeSlug && BLOG_POSTS_META[activeSlug]) {
+    title = BLOG_POSTS_META[activeSlug].title;
+    description = BLOG_POSTS_META[activeSlug].description;
   }
 
   // Generate JSON-LD schemas for search engines
@@ -1328,13 +1221,20 @@ export default function Blog() {
         ))}
       </Helmet>
 
-      <div className="mb-8 text-left">
+      <div className="mb-8 text-left flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <button 
           onClick={handleBack}
           className="inline-flex items-center gap-2 text-base text-[#6B7280] font-semibold tracking-wide hover:text-[#7C3AED] transition-colors focus-visible:outline-none cursor-pointer"
         >
           <ArrowLeft size={18} /> Back to Calculator
         </button>
+        <span className="text-xs sm:text-sm font-medium text-gray-400 dark:text-gray-500">
+          <Link to="/" className="hover:text-[#7C3AED] font-semibold transition-colors">Homepage</Link>
+          <span className="mx-2">&gt;</span>
+          <span className="text-gray-900 dark:text-gray-100 font-bold bg-[#7C3AED]/10 dark:bg-[#7C3AED]/20 px-2.5 py-1 rounded-md text-xs font-mono">
+            {currentPost ? `${currentPost.title} Page` : (isAnyBlog ? "Blog Article Page" : "Blog Guides Page")}
+          </span>
+        </span>
       </div>
 
       <motion.div 
