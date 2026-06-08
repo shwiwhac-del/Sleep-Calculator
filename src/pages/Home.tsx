@@ -1,20 +1,21 @@
-import { useState, useEffect, useRef, lazy, Suspense } from "react";
+import { useState, useEffect, useRef } from "react";
+import { useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "motion/react";
 import { MessageSquare } from "lucide-react";
 import { Helmet } from "react-helmet-async";
+import { getCanonicalUrl } from "../lib/seo";
+import { OpenGraphTags } from "../components/OpenGraphTags";
 import TimePicker from "../components/TimePicker";
 import SleepGuideAndFAQ from "../components/SleepGuideAndFAQ";
 import { QuickSleepTips } from "../components/QuickSleepTips";
 import { SleepJournal } from "../components/SleepJournal";
 import SleepCycleChart from "../components/SleepCycleChart";
-
-const FeedbackModal = lazy(() =>
-  import("../components/FeedbackModal").then((module) => ({
-    default: module.FeedbackModal,
-  }))
-);
+import { FeedbackModal } from "../components/FeedbackModal";
 
 export default function Home() {
+  const location = useLocation();
+  const canonicalUrl = getCanonicalUrl(location.pathname);
+
   const AGE_GROUPS = [
     { id: "0-3m", label: "0-3 Months", minCycles: 9, maxCycles: 11 },
     { id: "4-11m", label: "4-11 Months", minCycles: 8, maxCycles: 10 },
@@ -354,6 +355,11 @@ export default function Home() {
     <div className="w-full flex flex-col items-center">
       {/* Header Info */}
       <div className="flex flex-col items-center justify-center mb-2 mt-0">
+        <OpenGraphTags
+          title="Sleep Calculator – Calculate Bedtime & Wake Up Time by Sleep Cycles"
+          description="Calculate your perfect bedtime and wake-up times using natural 90-minute sleep cycles. Wake up refreshed and energized with our free, science-based sleep calculator."
+          url={canonicalUrl}
+        />
         <Helmet>
           <title>Sleep Calculator – Calculate Bedtime & Wake Up Times</title>
           <meta
@@ -364,30 +370,10 @@ export default function Home() {
             name="keywords"
             content="sleep calculator, sleep cycle calculator, bedtime calculator, wake up time calculator, best time to sleep, sleep cycle timing, REM sleep cycles, sleep schedule calculator"
           />
-          <link rel="canonical" href="https://sleepcalculater.online/" />
+          <link rel="canonical" href={canonicalUrl} />
           <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
           <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
           
-          {/* Open Graph / Facebook */}
-          <meta property="og:type" content="website" />
-          <meta property="og:locale" content="en_US" />
-          <meta property="og:site_name" content="Sleep Calculator" />
-          <meta property="og:title" content="Sleep Calculator – Calculate Bedtime & Wake Up Time by Sleep Cycles" />
-          <meta property="og:description" content="Calculate your perfect bedtime and wake-up times using natural 90-minute sleep cycles. Wake up refreshed and energized with our free, science-based sleep calculator." />
-          <meta property="og:url" content="https://sleepcalculater.online/" />
-          <meta property="og:image" content="https://sleepcalculater.online/og_banner.png" />
-          <meta property="og:image:secure_url" content="https://sleepcalculater.online/og_banner.png" />
-          <meta property="og:image:type" content="image/png" />
-          <meta property="og:image:width" content="1200" />
-          <meta property="og:image:height" content="630" />
-          <meta property="og:image:alt" content="Sleep Calculator - Calculate Best Bedtime & Wake-Up Time" />
-
-          {/* Twitter */}
-          <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:title" content="Sleep Calculator – Calculate Bedtime & Wake Up Time by Sleep Cycles" />
-          <meta name="twitter:description" content="Calculate your perfect bedtime and wake-up times using natural 90-minute sleep cycles. Wake up refreshed and energized with our free, science-based sleep calculator." />
-          <meta name="twitter:image" content="https://sleepcalculater.online/og_banner.png" />
-
           <script type="application/ld+json">
             {JSON.stringify({
               "@context": "https://schema.org",
@@ -790,12 +776,10 @@ export default function Home() {
       </button>
 
       {isFeedbackModalOpen && (
-        <Suspense fallback={null}>
-          <FeedbackModal
-            isOpen={isFeedbackModalOpen}
-            onClose={() => setIsFeedbackModalOpen(false)}
-          />
-        </Suspense>
+        <FeedbackModal
+          isOpen={isFeedbackModalOpen}
+          onClose={() => setIsFeedbackModalOpen(false)}
+        />
       )}
     </div>
   );

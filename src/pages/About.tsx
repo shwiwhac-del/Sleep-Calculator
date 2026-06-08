@@ -1,10 +1,14 @@
 import { Helmet } from 'react-helmet-async';
 import { ArrowLeft } from 'lucide-react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { MAIN_PAGES_META } from '../blogMetadata';
+import { getCanonicalUrl } from '../lib/seo';
+import { OpenGraphTags } from '../components/OpenGraphTags';
 
 export default function About() {
   const navigate = useNavigate();
+  const location = useLocation();
+  const canonicalUrl = getCanonicalUrl(location.pathname);
 
   const handleBack = () => {
     navigate('/');
@@ -14,15 +18,16 @@ export default function About() {
 
   return (
     <div className="w-full max-w-4xl mx-auto px-4 sm:px-6">
+      <OpenGraphTags
+        title={meta.title}
+        description={meta.description}
+        url={canonicalUrl}
+      />
       <Helmet>
         <title>{meta.title}</title>
         <meta name="description" content={meta.description} />
         <meta name="keywords" content="about sleep calculator, sleep cycle tool, mission, sleep health" />
-        <link rel="canonical" href={meta.canonicalUrl} />
-        <meta property="og:title" content={meta.title} />
-        <meta property="og:description" content={meta.description} />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={meta.canonicalUrl} />
+        <link rel="canonical" href={canonicalUrl} />
       </Helmet>
       
       <div className="mb-8 text-left">

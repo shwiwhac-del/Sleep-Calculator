@@ -6,6 +6,8 @@ import { motion, AnimatePresence } from 'motion/react';
 import { AutoLinker } from '../components/AutoLinker';
 import ShareScheduleWidget from '../components/ShareScheduleWidget';
 import { BLOG_POSTS_META } from '../blogMetadata';
+import { getCanonicalUrl } from '../lib/seo';
+import { OpenGraphTags } from '../components/OpenGraphTags';
 
 export const BLOG_POSTS = [
   {
@@ -1019,7 +1021,7 @@ export default function Blog() {
   // Metadata determination for SEO
   let title = "Sleep Calculator Articles: Guides on Sleep Cycles, Bedtime & Wake up Time";
   let description = "Discover how to use a sleep cycle calculator, find the best time to sleep, and optimize your rest in our sleep health articles.";
-  let canonicalUrl = `https://sleepcalculater.online${currentPath}`;
+  let canonicalUrl = getCanonicalUrl(currentPath);
 
   if (activeSlug && BLOG_POSTS_META[activeSlug]) {
     title = BLOG_POSTS_META[activeSlug].title;
@@ -1050,7 +1052,7 @@ export default function Blog() {
 
     const articleSchema = {
       "@context": "https://schema.org",
-      "@type": "BlogPosting",
+      "@type": "Article",
       "mainEntityOfPage": {
         "@type": "WebPage",
         "@id": canonicalUrl
@@ -1072,7 +1074,10 @@ export default function Blog() {
         }
       },
       "datePublished": formattedDate,
-      "dateModified": formattedDate
+      "dateModified": formattedDate,
+      "articleSection": currentPost.category || "Sleep Health",
+      "wordCount": parseInt(currentPost.readTime) ? parseInt(currentPost.readTime) * 180 : 1000,
+      "inLanguage": "en-US"
     };
 
     jsonLdScripts.push({ __html: JSON.stringify(articleSchema) });
@@ -1198,24 +1203,16 @@ export default function Blog() {
 
   return (
     <div className={`w-full mx-auto px-4 sm:px-6 relative z-10 ${isAnyBlog ? 'max-w-3xl py-4 sm:py-6' : 'max-w-6xl py-8'}`}>
+      <OpenGraphTags
+        title={title}
+        description={description}
+        url={canonicalUrl}
+        type="article"
+      />
       <Helmet>
         <title>{title}</title>
         <meta name="description" content={description} />
         <link rel="canonical" href={canonicalUrl} />
-        <meta property="og:title" content={title} />
-        <meta property="og:description" content={description} />
-        <meta property="og:type" content="article" />
-        <meta property="og:url" content={canonicalUrl} />
-        <meta property="og:image" content="https://sleepcalculater.online/og_banner.png" />
-        <meta property="og:image:secure_url" content="https://sleepcalculater.online/og_banner.png" />
-        <meta property="og:image:type" content="image/png" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta property="og:image:alt" content={title} />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={title} />
-        <meta name="twitter:description" content={description} />
-        <meta name="twitter:image" content="https://sleepcalculater.online/og_banner.png" />
         {jsonLdScripts.map((script, idx) => (
           <script key={idx} type="application/ld+json" dangerouslySetInnerHTML={script} />
         ))}
@@ -6189,32 +6186,32 @@ export default function Blog() {
 
             <div className="space-y-4">
               <div className="border border-white/5 bg-slate-900/30 rounded-xl p-4">
-                <p className="text-slate-100 font-bold text-base">1. Poor Sleep Quality</p>
+                <h3 className="text-slate-100 font-bold text-base">1. Poor Sleep Quality</h3>
                 <p className="text-slate-300 text-sm mt-1">Even if you spend eight hours in bed, frequent interruptions or sleeping in an unfavorable environment may prevent restorative deep sleep and REM sleep, which are critical for physiological and mental recovery.</p>
               </div>
 
               <div className="border border-white/5 bg-slate-900/30 rounded-xl p-4">
-                <p className="text-slate-100 font-bold text-base">2. Waking Up During Deep Sleep</p>
+                <h3 className="text-slate-100 font-bold text-base">2. Waking Up During Deep Sleep</h3>
                 <p className="text-slate-300 text-sm mt-1">Sleep occurs in cycles lasting approximately 90 minutes. If your alarm interrupts deep sleep, you will experience heavy mental grogginess (sleep inertia), morning fatigue, and difficulty concentrating.</p>
               </div>
 
               <div className="border border-white/5 bg-slate-900/30 rounded-xl p-4">
-                <p className="text-slate-100 font-bold text-base">3. Irregular Sleep Schedule</p>
+                <h3 className="text-slate-100 font-bold text-base">3. Irregular Sleep Schedule</h3>
                 <p className="text-slate-300 text-sm mt-1">Going to bed and waking up at different times each day can heavily disrupt your circadian rhythm, resulting in lower-quality sleep overall.</p>
               </div>
 
               <div className="border border-white/5 bg-slate-900/30 rounded-xl p-4">
-                <p className="text-slate-100 font-bold text-base">4. Accumulated Sleep Debt</p>
+                <h3 className="text-slate-100 font-bold text-base">4. Accumulated Sleep Debt</h3>
                 <p className="text-slate-300 text-sm mt-1">Accumulated sleep loss from previous days continues affecting your daily energy. Experiencing just one good night of sleep may not completely eliminate high sleep debt.</p>
               </div>
 
               <div className="border border-white/5 bg-slate-900/30 rounded-xl p-4">
-                <p className="text-slate-100 font-bold text-base">5. Excessive Screen Time Before Bed</p>
+                <h3 className="text-slate-100 font-bold text-base">5. Excessive Screen Time Before Bed</h3>
                 <p className="text-slate-300 text-sm mt-1">The harmful blue light from phone and computer devices may delay melatonin release, sleep onset, and reduce deep sleep quality.</p>
               </div>
 
               <div className="border border-white/5 bg-slate-900/30 rounded-xl p-4">
-                <p className="text-slate-100 font-bold text-base">6. High Stress and Anxiety</p>
+                <h3 className="text-slate-100 font-bold text-base">6. High Stress and Anxiety</h3>
                 <p className="text-slate-300 text-sm mt-1">Mental stress can interfere with restful sleep stages, keeping your body in a lighter state of sleep even when total sleep duration appears sufficient.</p>
               </div>
             </div>
@@ -6348,17 +6345,17 @@ export default function Blog() {
 
             <div className="space-y-4">
               <div className="border border-white/5 bg-slate-900/30 rounded-xl p-4">
-                <p className="text-slate-100 font-bold text-base">If You Wake Up at 6:00 AM</p>
+                <h3 className="text-slate-100 font-bold text-base">If You Wake Up at 6:00 AM</h3>
                 <p className="text-slate-300 text-sm mt-1">Recommended bedtimes: <strong className="text-gray-100">9:00 PM</strong> (9 hours / 6 full cycles) or <strong className="text-gray-100">10:30 PM</strong> (7.5 hours / 5 full cycles).</p>
               </div>
 
               <div className="border border-white/5 bg-slate-900/30 rounded-xl p-4">
-                <p className="text-slate-100 font-bold text-base">If You Wake Up at 7:00 AM</p>
+                <h3 className="text-slate-100 font-bold text-base">If You Wake Up at 7:00 AM</h3>
                 <p className="text-slate-300 text-sm mt-1">Recommended bedtimes: <strong className="text-gray-100">10:00 PM</strong> (9 hours / 6 full cycles) or <strong className="text-gray-100">11:30 PM</strong> (7.5 hours / 5 full cycles).</p>
               </div>
 
               <div className="border border-white/5 bg-slate-900/30 rounded-xl p-4">
-                <p className="text-slate-100 font-bold text-base">If You Wake Up at 8:00 AM</p>
+                <h3 className="text-slate-100 font-bold text-base">If You Wake Up at 8:00 AM</h3>
                 <p className="text-slate-300 text-sm mt-1">Recommended bedtimes: <strong className="text-gray-100">11:00 PM</strong> (9 hours / 6 full cycles) or <strong className="text-gray-100">12:30 AM</strong> (7.5 hours / 5 full cycles).</p>
               </div>
             </div>
@@ -6576,19 +6573,19 @@ export default function Blog() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="border border-white/5 bg-slate-900/30 rounded-xl p-4">
-                <p className="text-slate-100 font-bold text-sm">Late Bedtimes</p>
+                <h3 className="text-slate-100 font-bold text-sm">Late Bedtimes</h3>
                 <p className="text-slate-300 text-xs mt-1">Staying up late to watch TV, scroll on social media, or work can chip away at essential rest.</p>
               </div>
               <div className="border border-white/5 bg-slate-900/30 rounded-xl p-4">
-                <p className="text-slate-100 font-bold text-sm">Busy Work Schedules</p>
+                <h3 className="text-slate-100 font-bold text-sm">Busy Work Schedules</h3>
                 <p className="text-slate-300 text-xs mt-1">Demanding professional workloads and early mornings often squeeze sleep duration.</p>
               </div>
               <div className="border border-white/5 bg-slate-900/30 rounded-xl p-4">
-                <p className="text-slate-100 font-bold text-sm">Poor Sleep Habits</p>
+                <h3 className="text-slate-100 font-bold text-sm">Poor Sleep Habits</h3>
                 <p className="text-slate-300 text-xs mt-1">An uncomfortable bedroom setup, noise, or high evening caffeine complicates falling asleep easily.</p>
               </div>
               <div className="border border-white/5 bg-slate-900/30 rounded-xl p-4">
-                <p className="text-slate-100 font-bold text-sm">Screen and Blue Light</p>
+                <h3 className="text-slate-100 font-bold text-sm">Screen and Blue Light</h3>
                 <p className="text-slate-300 text-xs mt-1">Hardware displays emit blue light which blocks natural bedtime melatonin release.</p>
               </div>
             </div>
@@ -6736,22 +6733,22 @@ export default function Blog() {
 
             <div className="space-y-4">
               <div className="border border-white/5 bg-slate-900/30 rounded-xl p-4">
-                <p className="text-slate-100 font-bold text-base">Memory Processing</p>
+                <h3 className="text-slate-100 font-bold text-base">Memory Processing</h3>
                 <p className="text-slate-300 text-sm mt-1">Dreaming may help organize, index, and store information learned during the day, transforming short-term memories into long-term ones.</p>
               </div>
 
               <div className="border border-white/5 bg-slate-900/30 rounded-xl p-4">
-                <p className="text-slate-100 font-bold text-base">Emotional Regulation</p>
+                <h3 className="text-slate-100 font-bold text-base">Emotional Regulation</h3>
                 <p className="text-slate-300 text-sm mt-1">Dreams may serve as a safe psychological theater, helping your brain navigate and process stress, fear, and daily life emotions.</p>
               </div>
 
               <div className="border border-white/5 bg-slate-900/30 rounded-xl p-4">
-                <p className="text-slate-100 font-bold text-base">Learning and Creativity</p>
+                <h3 className="text-slate-100 font-bold text-base">Learning and Creativity</h3>
                 <p className="text-slate-300 text-sm mt-1">Some studies suggest dreaming supports problem-solving and creative thinking by connecting distant memories or ideas in abstract ways.</p>
               </div>
 
               <div className="border border-white/5 bg-slate-900/30 rounded-xl p-4">
-                <p className="text-slate-100 font-bold text-base">Brain Activity Maintenance</p>
+                <h3 className="text-slate-100 font-bold text-base">Brain Activity Maintenance</h3>
                 <p className="text-slate-300 text-sm mt-1">Dreaming may simply be a natural byproduct of ongoing neurological activity during sleep, keeping the brain tuned.</p>
               </div>
             </div>
@@ -6971,19 +6968,19 @@ export default function Blog() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="border border-white/5 bg-slate-900/30 rounded-xl p-4">
-                <p className="text-slate-100 font-bold text-sm">Sleeping on the Back</p>
+                <h3 className="text-slate-100 font-bold text-sm">Sleeping on the Back</h3>
                 <p className="text-slate-300 text-xs mt-1">Gravity pulls the tongue and throat tissues backward, narrowing the airway.</p>
               </div>
               <div className="border border-white/5 bg-slate-900/30 rounded-xl p-4">
-                <p className="text-slate-100 font-bold text-sm">Nasal Congestion</p>
+                <h3 className="text-slate-100 font-bold text-sm">Nasal Congestion</h3>
                 <p className="text-slate-300 text-xs mt-1">Allergies, sinus infections, or simple colds reduce nasal airflow, forcing mouth breathing.</p>
               </div>
               <div className="border border-white/5 bg-slate-900/30 rounded-xl p-4">
-                <p className="text-slate-100 font-bold text-sm">Excess Body Weight</p>
+                <h3 className="text-slate-100 font-bold text-sm">Excess Body Weight</h3>
                 <p className="text-slate-300 text-xs mt-1">Extra fatty tissue around the neck can compress the airways during rest.</p>
               </div>
               <div className="border border-white/5 bg-slate-900/30 rounded-xl p-4">
-                <p className="text-slate-100 font-bold text-sm">Alcohol Consumption</p>
+                <h3 className="text-slate-100 font-bold text-sm">Alcohol Consumption</h3>
                 <p className="text-slate-300 text-xs mt-1">Drinking alcohol before bed over-relaxes the upper throat muscles, causing severe snoring.</p>
               </div>
             </div>
@@ -7151,19 +7148,19 @@ export default function Blog() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="border border-white/5 bg-slate-900/30 rounded-xl p-4">
-                <p className="text-slate-100 font-bold text-sm">Better Sleep Planning</p>
+                <h3 className="text-slate-100 font-bold text-sm">Better Sleep Planning</h3>
                 <p className="text-slate-300 text-xs mt-1">Accurately timing bedtimes helps synchronize alertness with daily commitments.</p>
               </div>
               <div className="border border-white/5 bg-slate-900/30 rounded-xl p-4">
-                <p className="text-slate-100 font-bold text-sm">Improved Sleep Quality</p>
+                <h3 className="text-slate-100 font-bold text-sm">Improved Sleep Quality</h3>
                 <p className="text-slate-300 text-xs mt-1">Waking up at the completion of a full sleep cycle prevents midnight drag.</p>
               </div>
               <div className="border border-white/5 bg-slate-900/30 rounded-xl p-4">
-                <p className="text-slate-100 font-bold text-sm">Consistent Bedtime Routine</p>
+                <h3 className="text-slate-100 font-bold text-sm">Consistent Bedtime Routine</h3>
                 <p className="text-slate-300 text-xs mt-1">Encourages standard habits which signal the nervous system to relax naturally.</p>
               </div>
               <div className="border border-white/5 bg-slate-900/30 rounded-xl p-4">
-                <p className="text-slate-100 font-bold text-sm">Healthier Sleep Schedule</p>
+                <h3 className="text-slate-100 font-bold text-sm">Healthier Sleep Schedule</h3>
                 <p className="text-slate-300 text-xs mt-1">Locks in circadian rhythms to secure stable afternoon energy levels.</p>
               </div>
             </div>
@@ -7232,19 +7229,19 @@ export default function Blog() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="border border-white/5 bg-slate-900/30 rounded-xl p-4">
-                <p className="text-slate-100 font-bold text-sm">Wake-Up Time</p>
+                <h3 className="text-slate-100 font-bold text-sm">Wake-Up Time</h3>
                 <p className="text-slate-300 text-xs mt-1">Starting with when you need to be awake and working backward in 90-minute chunks.</p>
               </div>
               <div className="border border-white/5 bg-slate-900/30 rounded-xl p-4">
-                <p className="text-slate-100 font-bold text-sm">Sleep Cycles</p>
+                <h3 className="text-slate-100 font-bold text-sm">Sleep Cycles</h3>
                 <p className="text-slate-300 text-xs mt-1">Aligning with integer sleep cycle intervals to wake up in light sleep stages.</p>
               </div>
               <div className="border border-white/5 bg-slate-900/30 rounded-xl p-4">
-                <p className="text-slate-100 font-bold text-sm">REM Periods</p>
+                <h3 className="text-slate-100 font-bold text-sm">REM Periods</h3>
                 <p className="text-slate-300 text-xs mt-1">Making sure you get sufficient rapid-eye-movement cycles for memory.</p>
               </div>
               <div className="border border-white/5 bg-slate-900/30 rounded-xl p-4">
-                <p className="text-slate-100 font-bold text-sm">Latency Overhead</p>
+                <h3 className="text-slate-100 font-bold text-sm">Latency Overhead</h3>
                 <p className="text-slate-300 text-xs mt-1">Adding an average of 15 minutes of time needed to fall asleep to sleep calculations.</p>
               </div>
             </div>

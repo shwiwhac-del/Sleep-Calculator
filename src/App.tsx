@@ -1,19 +1,17 @@
-import { useState, useEffect, Suspense, lazy } from 'react';
+import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, Navigate, useParams } from 'react-router-dom';
-import { Loader2 } from 'lucide-react';
 import { HelmetProvider } from 'react-helmet-async';
-import { motion, AnimatePresence } from 'motion/react';
 import ScrollToTop from './components/ScrollToTop';
 import { StarryBackground } from './components/StarryBackground';
 
 import Home from './pages/Home';
-
-const Terms = lazy(() => import('./pages/Terms'));
-const Privacy = lazy(() => import('./pages/Privacy'));
-const Blog = lazy(() => import('./pages/Blog'));
-const Contact = lazy(() => import('./pages/Contact'));
-const About = lazy(() => import('./pages/About'));
-const NotFound = lazy(() => import('./pages/NotFound'));
+import Terms from './pages/Terms';
+import Privacy from './pages/Privacy';
+import Blog from './pages/Blog';
+import Contact from './pages/Contact';
+import About from './pages/About';
+import NotFound from './pages/NotFound';
+import { OpenGraphTags } from './components/OpenGraphTags';
 
 
 // Home Guides
@@ -104,13 +102,9 @@ function AppContent() {
   return (
     <div className="min-h-screen flex flex-col text-[#374151] font-sans relative overflow-x-hidden bg-[#F3ECE3]">
       <StarryBackground />
+      <OpenGraphTags />
       <Header />
       <main className="relative z-10 flex-grow flex flex-col items-center justify-start w-full pt-0 pb-4 sm:pb-8">
-            <Suspense fallback={
-              <div className="flex justify-center items-center h-[50vh] w-full">
-                <Loader2 className="w-8 h-8 text-[#7C3AED] animate-spin" />
-              </div>
-            }>
               <Routes>
                 {/* Core Pages */}
                 <Route path="/" element={<Home />} />
@@ -173,7 +167,6 @@ function AppContent() {
                 {/* Catch-all 404 route */}
                 <Route path="*" element={<NotFound />} />
               </Routes>
-            </Suspense>
           </main>
           <Footer />
     </div>

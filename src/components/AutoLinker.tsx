@@ -283,7 +283,7 @@ function autoLink(children: React.ReactNode, currentPath: string, linkedPaths: S
       const safeChildren = Array.isArray(clonedChildren)
         ? React.Children.toArray(clonedChildren)
         : clonedChildren;
-      return React.cloneElement(children as React.ReactElement<any>, { key: children.key }, safeChildren);
+      return React.cloneElement(children as React.ReactElement<any>, {}, safeChildren);
     }
     return children;
   }

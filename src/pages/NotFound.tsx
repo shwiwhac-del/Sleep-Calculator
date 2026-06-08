@@ -1,15 +1,26 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { Moon, Home, ArrowLeft, HelpCircle } from 'lucide-react';
 import { motion } from 'motion/react';
+import { getCanonicalUrl } from '../lib/seo';
+import { OpenGraphTags } from '../components/OpenGraphTags';
 
 export default function NotFound() {
+  const location = useLocation();
+  const canonicalUrl = getCanonicalUrl(location.pathname);
+
   return (
     <div className="min-h-[75vh] flex flex-col items-center justify-center px-4 sm:px-6 py-12 text-center relative z-10 w-full max-w-2xl mx-auto">
+      <OpenGraphTags
+        title="404 Page Not Found – Sleep Calculator"
+        description="The requested sleep calculator guide, resource, or article could not be located."
+        url={canonicalUrl}
+      />
       <Helmet>
         <title>The page does not exist | Sleep Calculator</title>
         <meta name="description" content="This page does not exist. Back to Sleep Calculator." />
         <meta name="robots" content="noindex, follow" />
+        <link rel="canonical" href={canonicalUrl} />
       </Helmet>
 
       {/* Floating Glowing Moon / Celestial Icon */}
