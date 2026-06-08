@@ -348,20 +348,6 @@ function injectSEOMetadata(html: string, originalPath: string): string {
     description = MAIN_PAGES_META["/"].description;
     canonicalUrl = MAIN_PAGES_META["/"].canonicalUrl;
     schemas.push(defaultAppSchema);
-    
-    // Explicit Breadcrumb for the Homepage itself
-    schemas.push({
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Homepage",
-          "item": "https://sleepcalculater.online/"
-        }
-      ]
-    });
   } else if (MAIN_PAGES_META[reqPath]) {
     title = MAIN_PAGES_META[reqPath].title;
     description = MAIN_PAGES_META[reqPath].description;
@@ -373,32 +359,6 @@ function injectSEOMetadata(html: string, originalPath: string): string {
       "url": canonicalUrl,
       "name": title,
       "description": description
-    });
-
-    // Semantic Breadcrumb matching visual page title to prevent auditing tools classifying as '/'
-    let breadcrumbName = "Page";
-    if (reqPath === "/about") breadcrumbName = "About Us Page";
-    else if (reqPath === "/contact") breadcrumbName = "Contact Us Page";
-    else if (reqPath === "/privacy") breadcrumbName = "Privacy Policy Page";
-    else if (reqPath === "/terms") breadcrumbName = "Terms & Conditions Page";
-
-    schemas.push({
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Homepage",
-          "item": "https://sleepcalculater.online/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": breadcrumbName,
-          "item": canonicalUrl
-        }
-      ]
     });
   } else if (BLOG_POSTS_META[slug]) {
     const post = BLOG_POSTS_META[slug];
@@ -434,7 +394,7 @@ function injectSEOMetadata(html: string, originalPath: string): string {
       "dateModified": post.date
     });
 
-    // 2. BreadcrumbList Schema linked to root Homepage
+    // 2. BreadcrumbList Schema
     schemas.push({
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
@@ -442,13 +402,13 @@ function injectSEOMetadata(html: string, originalPath: string): string {
         {
           "@type": "ListItem",
           "position": 1,
-          "name": "Homepage",
+          "name": "Home",
           "item": "https://sleepcalculater.online/"
         },
         {
           "@type": "ListItem",
           "position": 2,
-          "name": `${post.title} Page`,
+          "name": title,
           "item": canonicalUrl
         }
       ]

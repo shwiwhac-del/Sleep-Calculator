@@ -25,15 +25,8 @@ export default function Terms() {
         <meta property="og:url" content={meta.canonicalUrl} />
       </Helmet>
       
-      <div className="mb-8 text-left flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-        <button onClick={handleBack} className="inline-flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 font-medium tracking-wide hover:text-gray-900 dark:text-gray-100 transition-colors focus-visible:outline-none">
-          <ArrowLeft size={16} /> Back
-        </button>
-        <span className="text-xs sm:text-sm font-medium text-gray-400 dark:text-gray-500">
-          <Link to="/" className="hover:text-[#7C3AED] font-semibold transition-colors">Homepage</Link>
-          <span className="mx-2">&gt;</span>
-          <span className="text-gray-900 dark:text-gray-100 font-bold bg-[#7C3AED]/10 dark:bg-[#7C3AED]/20 px-2.5 py-1 rounded-md text-xs font-mono">Terms & Conditions Page</span>
-        </span>
+      <div className="mb-8 text-left">
+        <button onClick={handleBack} className="inline-flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 font-medium tracking-wide hover:text-gray-900 dark:text-gray-100 transition-colors focus-visible:outline-none"><ArrowLeft size={16} /> Back</button>
       </div>
       
       <div className="animate-in fade-in slide-in-from-top-4 duration-500 text-left">

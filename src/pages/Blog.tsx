@@ -1221,20 +1221,13 @@ export default function Blog() {
         ))}
       </Helmet>
 
-      <div className="mb-8 text-left flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+      <div className="mb-8 text-left">
         <button 
           onClick={handleBack}
           className="inline-flex items-center gap-2 text-base text-[#6B7280] font-semibold tracking-wide hover:text-[#7C3AED] transition-colors focus-visible:outline-none cursor-pointer"
         >
           <ArrowLeft size={18} /> Back to Calculator
         </button>
-        <span className="text-xs sm:text-sm font-medium text-gray-400 dark:text-gray-500">
-          <Link to="/" className="hover:text-[#7C3AED] font-semibold transition-colors">Homepage</Link>
-          <span className="mx-2">&gt;</span>
-          <span className="text-gray-900 dark:text-gray-100 font-bold bg-[#7C3AED]/10 dark:bg-[#7C3AED]/20 px-2.5 py-1 rounded-md text-xs font-mono">
-            {currentPost ? `${currentPost.title} Page` : (isAnyBlog ? "Blog Article Page" : "Blog Guides Page")}
-          </span>
-        </span>
       </div>
 
       <motion.div 
