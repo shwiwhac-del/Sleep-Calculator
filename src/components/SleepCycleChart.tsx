@@ -2,7 +2,7 @@ import { Moon } from "lucide-react";
 
 interface SleepCycleChartProps {
   results: { date: Date; cycles: number | string; duration?: string }[];
-  mode: "wake" | "bed" | "nap";
+  mode: "wake" | "bed" | "nap" | "rem";
   time: string;
   ageGroup: string;
   isRecommended: (cycles: number | string) => boolean;
@@ -47,7 +47,7 @@ export default function SleepCycleChart({
             // results are Bedtimes, we want to sleep at bedTime and wake up at end of cycles
             endTime = new Date(res.date.getTime() + (typeof res.cycles === "number" ? res.cycles * 90 : 90) * 60000);
             startTime = res.date;
-          } else if (mode === "bed") {
+          } else if (mode === "bed" || mode === "rem") {
             // results are WakeUp times, we sleep at input bedtime, wake up at return time
             startTime = new Date(res.date.getTime() - (typeof res.cycles === "number" ? res.cycles * 90 : 90) * 60000);
             endTime = res.date;

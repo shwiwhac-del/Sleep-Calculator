@@ -54,7 +54,7 @@ export default function TimePicker({
       <button
         type="button"
         onClick={handleContainerClick}
-        className="relative flex items-center justify-center gap-3 bg-[#F9FAFB]/90 dark:bg-[#1e293b]/70 hover:bg-[#F3F4F6] dark:hover:bg-[#334155] text-center focus-visible:outline-none group active:scale-[0.98] transition-all duration-200 py-2.5 px-6 sm:py-3 sm:px-7 cursor-pointer rounded-2xl w-full max-w-[17.5rem] sm:max-w-[18.75rem] border border-[#E5E7EB] dark:border-[#334155]/60 shadow-sm"
+        className="relative flex items-center justify-center gap-3 bg-[#F9FAFB]/90 dark:bg-[#1e293b]/70 hover:bg-[#F3F4F6] dark:hover:bg-[#334155] text-center focus-visible:outline-none group active:scale-[0.98] transition-all duration-200 py-3 px-7 sm:py-3.5 sm:px-8 cursor-pointer rounded-2xl w-full max-w-[18rem] sm:max-w-[19.5rem] border border-[#E5E7EB] dark:border-[#334155]/60 shadow-sm hover:border-[#7C3AED]/35 dark:hover:border-violet-500/35"
       >
         {/* Hidden native time input layered on top */}
         <input
@@ -72,14 +72,14 @@ export default function TimePicker({
         />
 
         {/* Clock icon on the left */}
-        <Clock className="w-6 h-6 sm:w-7 h-7 text-gray-450 dark:text-slate-400/80 pointer-events-none select-none relative z-10 transition-colors group-hover:text-[#7C3AED] dark:group-hover:text-blue-400" />
+        <Clock className="w-[26px] h-[26px] sm:w-[30px] sm:h-[30px] text-gray-400 dark:text-slate-400 pointer-events-none select-none relative z-10 transition-colors group-hover:text-[#7C3AED] dark:group-hover:text-blue-400" />
 
         {/* Clean, exact display of time matching the reference style layout */}
         <div className="flex items-center justify-center font-bold text-gray-900 dark:text-white pointer-events-none select-none select-all relative z-10 font-sans transition-all duration-300 group-hover:text-[#7C3AED]">
-          <span className="text-3xl sm:text-4xl tracking-tight tabular-nums">
+          <span className="text-[1.95rem] sm:text-[2.35rem] tracking-tight tabular-nums font-black leading-none">
             {displayHours}:{displayMinutes}
           </span>
-          <span className="text-3xl sm:text-4xl tracking-tight ml-2 uppercase">
+          <span className="text-[1.95rem] sm:text-[2.35rem] tracking-tight ml-2 uppercase font-black leading-none">
             {period}
           </span>
         </div>

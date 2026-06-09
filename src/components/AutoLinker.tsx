@@ -45,6 +45,7 @@ const CROSS_LINKS = [
   { keyword: 'epworth sleep score calculator', path: '/' },
 
   // 25-29 Characters
+  { keyword: 'why am i tired after sleeping', path: '/why-am-i-tired-after-sleeping' },
   { keyword: 'best time to sleep calculator', path: '/' },
   { keyword: 'sleep calculator wake up time', path: '/' },
   { keyword: 'sleep habits for productivity', path: '/sleep-schedule-for-productivity' },
@@ -68,7 +69,8 @@ const CROSS_LINKS = [
   { keyword: 'amount of sleep calculator', path: '/' },
   { keyword: 'best bedtime for students', path: '/best-bedtime-for-students' },
   { keyword: 'consistent sleep schedule', path: '/consistent-sleep-schedule-benefits' },
-  { keyword: '90 minute sleep calculator', path: '/why-90-minute-sleep-cycles-matter' },
+  { keyword: '90-minute sleep calculator', path: '/90-minute-sleep-calculator' },
+  { keyword: '90 minute sleep calculator', path: '/90-minute-sleep-calculator' },
   { keyword: 'sleep requirements by age', path: '/how-much-sleep-do-you-need' },
   { keyword: 'sleep duration calculator', path: '/' },
   { keyword: 'sleep calculator app free', path: '/' },
@@ -78,6 +80,7 @@ const CROSS_LINKS = [
   { keyword: 'hillarys sleep calculator', path: '/' },
 
   // 20-24 Characters
+  { keyword: 'tired after sleeping', path: '/why-am-i-tired-after-sleeping' },
   { keyword: 'optimal room temperature', path: '/best-temperature-for-sleep' },
   { keyword: 'sleep calculator by age', path: '/how-much-sleep-do-you-need' },
   { keyword: 'best bedtime for adults', path: '/ideal-bedtime-for-adults' },

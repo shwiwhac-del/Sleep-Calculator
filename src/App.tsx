@@ -63,11 +63,11 @@ function Footer() {
 
 function Header() {
   return (
-    <header className="w-full pt-6 sm:pt-8 pb-1 sm:pb-2 flex justify-center items-center bg-transparent z-50 relative">
+    <header className="w-full pt-5 sm:pt-6 pb-2 flex justify-center items-center bg-transparent z-50 relative">
       <Link 
         to="/" 
         onContextMenu={(e) => e.preventDefault()} 
-        className="font-display text-3xl sm:text-4xl lg:text-4xl font-black tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-[#7C3AED] to-[#D4AF37] hover:scale-[1.02] active:scale-[0.98] transition-transform duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7C3AED]/40 rounded-2xl p-2 text-center"
+        className="font-display text-4xl sm:text-5xl lg:text-[2.75rem] font-black tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-[#7C3AED] to-[#D4AF37] hover:scale-[1.02] active:scale-[0.98] transition-transform duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7C3AED]/40 rounded-2xl p-2 text-center leading-tight"
       >
         Sleep Calculator
       </Link>

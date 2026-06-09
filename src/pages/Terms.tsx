@@ -4,6 +4,7 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { MAIN_PAGES_META } from '../blogMetadata';
 import { getCanonicalUrl } from '../lib/seo';
 import { OpenGraphTags } from '../components/OpenGraphTags';
+import { Breadcrumbs } from '../components/Breadcrumbs';
 
 export default function Terms() {
   const navigate = useNavigate();
@@ -31,6 +32,7 @@ export default function Terms() {
       </Helmet>
       
       <div className="mb-8 text-left">
+        <Breadcrumbs />
         <button onClick={handleBack} className="inline-flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 font-medium tracking-wide hover:text-gray-900 dark:text-gray-100 transition-colors focus-visible:outline-none"><ArrowLeft size={16} /> Back</button>
       </div>
       

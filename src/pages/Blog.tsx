@@ -8,6 +8,7 @@ import ShareScheduleWidget from '../components/ShareScheduleWidget';
 import { BLOG_POSTS_META } from '../blogMetadata';
 import { getCanonicalUrl } from '../lib/seo';
 import { OpenGraphTags } from '../components/OpenGraphTags';
+import { Breadcrumbs } from '../components/Breadcrumbs';
 
 export const BLOG_POSTS = [
   {
@@ -1219,6 +1220,7 @@ export default function Blog() {
       </Helmet>
 
       <div className="mb-8 text-left">
+        <Breadcrumbs />
         <button 
           onClick={handleBack}
           className="inline-flex items-center gap-2 text-base text-[#6B7280] font-semibold tracking-wide hover:text-[#7C3AED] transition-colors focus-visible:outline-none cursor-pointer"

@@ -39,6 +39,22 @@ export default function SleepGuideAndFAQ() {
     {
       q: "How many sleep cycles in 8 hours, and why do I wake up tired after 8 hours?",
       a: "If you want to know how many sleep cycles in 8 hours, 8 hours of sleep equals about 5.3 sleep cycles. When you wake up exactly on the 8th hour, you are often waking up in the middle of a deep sleep cycle, which explains why do i wake up tired after 8 hours. To wake up refreshed, you should use an optimal sleep time calculator or ideal wake up time calculator to wake up precisely between cycles. Factoring in a circadian rhythm calculator, deep sleep cycle calculator, rem sleep timing calculator, sleep debt calculator, recovery sleep calculator, sleep quality calculator, and sleep efficiency calculator will help you manage your morning energy calculator results for a better day."
+    },
+    {
+      q: "How long does it take to fall asleep?",
+      a: "On average, a healthy adult takes 15 to 20 minutes to fall asleep (sleep latency). The sleep calculator automatically incorporates a standard 15-minute sleep latency to provide the most precise sleep schedules."
+    },
+    {
+      q: "How long should a power nap be?",
+      a: "A power nap should ideally be 20 minutes to boost alertness without entering groggy deep sleep. Alternatively, you can take a full 90-minute nap to complete one full sleep cycle."
+    },
+    {
+      q: "Can I catch up on sleep during the weekend?",
+      a: "While extra weekend sleep feels refreshing, it does not fully reverse chronic sleep debt and can disrupt your biological clock (circadian rhythm) for the week ahead. Consistency is key."
+    },
+    {
+      q: "Is sleep quality or sleep quantity more important?",
+      a: "Both are crucial, but high-quality sleep is often more restorative than a longer duration of interrupted, low-quality sleep. Aligning your sleep timing with natural 90-minute cycle endpoints optimizes sleep quality by ensuring you wake up at a transition state, not in deep sleep."
     }
   ];
 
