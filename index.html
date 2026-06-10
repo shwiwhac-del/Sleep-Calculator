@@ -6,7 +6,6 @@
     <meta name="theme-color" content="#1c1445" />
     <style>
       html { background-color: #F3ECE3; color: #111827; }
-      html.dark { background-color: #111827; color: #f3f4f6; }
       body { margin: 0; background-color: #F3ECE3; font-family: "Inter", system-ui, -apple-system, sans-serif; }
 
       /* Zero-Layout-Shift Loading Skeleton */
@@ -22,11 +21,16 @@
       }
       .sk-header {
         width: 100%;
-        padding-top: 1.125rem;
-        padding-bottom: 0.375rem;
+        padding-top: 1.25rem;
+        padding-bottom: 0.5rem;
         display: flex;
         justify-content: center;
         align-items: center;
+      }
+      @media (min-width: 640px) {
+        .sk-header {
+          padding-top: 1.5rem;
+        }
       }
       .sk-logo {
         font-family: "Inter", system-ui, sans-serif;
@@ -39,6 +43,16 @@
         -webkit-text-fill-color: transparent;
         line-height: 1.2;
         padding: 0.5rem;
+      }
+      @media (min-width: 640px) {
+        .sk-logo {
+          font-size: 3rem;
+        }
+      }
+      @media (min-width: 1024px) {
+        .sk-logo {
+          font-size: 2.75rem;
+        }
       }
       .sk-hero {
         display: flex;
@@ -53,26 +67,47 @@
         box-sizing: border-box;
       }
       .sk-title {
-        font-size: 2rem;
+        font-size: 1.875rem;
         font-weight: 800;
         color: #111827;
         margin: 0;
-        line-height: 1.25;
+        line-height: 1.2;
         letter-spacing: -0.025em;
+        text-align: center;
       }
       @media (min-width: 640px) {
+        .sk-title {
+          font-size: 2.25rem;
+        }
+      }
+      @media (min-width: 768px) {
+        .sk-title {
+          font-size: 3rem;
+        }
+      }
+      @media (min-width: 1024px) {
         .sk-title {
           font-size: 2.5rem;
         }
       }
       .sk-subtitle {
-        font-size: 0.875rem;
+        font-size: 0.75rem;
         color: #4B5563;
         max-width: 36rem;
         margin: 0;
         font-weight: 500;
-        line-height: 1.6;
+        line-height: 1.625;
         opacity: 0.95;
+      }
+      @media (min-width: 640px) {
+        .sk-subtitle {
+          font-size: 0.875rem;
+        }
+      }
+      @media (min-width: 768px) {
+        .sk-subtitle {
+          font-size: 1rem;
+        }
       }
       .sk-card {
         width: 100%;
@@ -92,102 +127,326 @@
       .sk-tabs {
         display: flex;
         flex-direction: row;
-        background-color: #E2D9C8;
+        background-color: #f9fafb;
         border-radius: 0.75rem;
         padding: 0.375rem;
         width: 100%;
         margin-bottom: 1rem;
         box-sizing: border-box;
         gap: 0.25rem;
-        border: 1px solid rgba(229, 231, 233, 0.4);
       }
       .sk-tab {
         flex: 1;
         text-align: center;
         padding: 0.5rem 0.25rem;
         font-size: 0.8125rem;
-        font-weight: 750;
+        font-weight: 700;
         border-radius: 0.5rem;
-        color: #4B5563;
+        color: #6b7280;
         white-space: nowrap;
       }
       .sk-tab-active {
-        background-color: #FFFFFF;
+        background-color: #ffffff;
         color: #111827;
-        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
-        border: 1px solid #E5E7EB;
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        border: 1px solid #e5e7eb;
       }
       .sk-input-group {
         width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin-bottom: 1.5rem;
+        margin-bottom: 1rem;
+      }
+      .sk-small-label {
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: #374151;
+        margin-bottom: 0.25rem;
+        text-align: center;
       }
       .sk-picker {
         display: flex;
         align-items: center;
         justify-content: center;
         gap: 0.75rem;
-        background-color: #E2D9C8;
-        border: 1px solid #D4C5B3;
-        padding: 1.5rem 2rem;
+        background-color: rgba(249, 250, 251, 0.9);
+        border: 1px solid #E5E7EB;
+        padding: 0.75rem 1.75rem;
         border-radius: 1rem;
         width: 100%;
-        max-width: 22rem;
+        max-width: 18rem;
         box-sizing: border-box;
-        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.02);
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      }
+      @media (min-width: 640px) {
+        .sk-picker {
+          padding: 0.875rem 2rem;
+          max-width: 19.5rem;
+        }
+      }
+      .sk-clock-icon {
+        color: #9ca3af;
+        flex-shrink: 0;
+      }
+      @media (min-width: 640px) {
+        .sk-clock-icon {
+          width: 30px;
+          height: 30px;
+        }
+      }
+      .sk-time-display {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #111827;
+        font-weight: 900;
       }
       .sk-time-text {
-        font-size: 2.5rem;
-        font-weight: 800;
-        color: #111827;
+        font-size: 1.95rem;
+        font-weight: 900;
         letter-spacing: -0.025em;
+        line-height: 1;
+      }
+      .sk-period-text {
+        font-size: 1.95rem;
+        font-weight: 900;
+        letter-spacing: -0.025em;
+        line-height: 1;
+        margin-left: 0.5rem;
+      }
+      @media (min-width: 640px) {
+        .sk-time-text, .sk-period-text {
+          font-size: 2.35rem;
+        }
       }
       .sk-label {
-        font-size: 0.75rem;
+        font-size: 11px;
         font-weight: 700;
         text-transform: uppercase;
-        letter-spacing: 0.05em;
-        color: #374151;
-        margin-bottom: 0.625rem;
+        letter-spacing: 0.1em;
+        color: #475569;
+        margin-bottom: 0.375rem;
+        text-align: center;
+      }
+      @media (min-width: 640px) {
+        .sk-label {
+          font-size: 12px;
+        }
+      }
+      .sk-select-wrapper {
+        position: relative;
+        width: 100%;
+        max-width: 11rem;
+        display: flex;
+        justify-content: center;
       }
       .sk-select {
-        background-color: #E2D9C8;
-        border: 1px solid #D4C5B3;
-        padding: 0.75rem 1.25rem;
+        background-color: #F8FAFC;
+        border: 1px solid #E5E7EB;
+        padding: 0.625rem 2rem 0.625rem 1rem;
         border-radius: 0.75rem;
         font-size: 0.875rem;
-        font-weight: 600;
+        font-weight: 700;
         width: 100%;
-        max-width: 15rem;
         text-align: center;
         color: #374151;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 2.5rem;
+      }
+      @media (min-width: 640px) {
+        .sk-select {
+          font-size: 1rem;
+          height: 2.875rem;
+        }
+      }
+      .sk-chevron-icon {
+        position: absolute;
+        right: 0.625rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #9ca3af;
+        pointer-events: none;
+      }
+      .sk-btn-wrapper {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-top: 1rem;
       }
       .sk-btn {
         background-color: #7C3AED;
         color: #FFFFFF;
-        font-weight: 750;
+        font-weight: 800;
         font-size: 1rem;
-        padding: 1rem 2rem;
-        border-radius: 1rem;
+        padding: 0.875rem 1.75rem;
+        border-radius: 9999px;
         width: 100%;
-        max-width: 22rem;
+        max-width: 18.25rem;
         text-align: center;
-        box-shadow: 0 4px 6px -1px rgba(124, 58, 237, 0.2), 0 2px 4px -1px rgba(124, 58, 237, 0.1);
-        margin-top: 1.5rem;
+        box-shadow: 0 5px 15px rgba(124, 58, 237, 0.3);
         border: none;
+        letter-spacing: 0.015em;
+        line-height: normal;
+        height: 3.25rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      @media (min-width: 640px) {
+        .sk-btn {
+          font-size: 1.125rem;
+          padding: 1rem 2rem;
+          max-width: 20rem;
+          height: 3.625rem;
+        }
       }
     </style>
     <script>
       (function() {
-        try {
-          var savedTheme = localStorage.getItem('theme');
-          var isDark = savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches);
-          if (isDark) {
-            document.documentElement.classList.add('dark');
+        document.documentElement.classList.remove('dark');
+        
+        var savedMode = localStorage.getItem('aurasleep_mode') || 'bed';
+        if (!['wake', 'bed', 'cycles', 'nap', 'rem'].includes(savedMode)) {
+          savedMode = 'bed';
+        }
+        
+        var resolvedTime = '';
+        var savedTime = localStorage.getItem('aurasleep_time');
+        if (savedTime && /^\d{2}:\d{2}$/.test(savedTime)) {
+          resolvedTime = savedTime;
+        } else {
+          var now = new Date();
+          var ms = 1000 * 60 * 15;
+          var roundedDate = new Date(Math.round(now.getTime() / ms) * ms);
+          var hours = String(roundedDate.getHours()).padStart(2, '0');
+          var mins = String(roundedDate.getMinutes()).padStart(2, '0');
+          resolvedTime = hours + ':' + mins;
+        }
+        
+        var savedWake = localStorage.getItem('aurasleep_waketime') || '07:00';
+        var savedAge = localStorage.getItem('aurasleep_age') || '18-25';
+        
+        var ageGroups = {
+          '0-3m': '0-3 Months',
+          '4-11m': '4-11 Months',
+          '1-2y': '1-2 Years',
+          '3-5y': '3-5 Years',
+          '6-12y': '6-12 Years',
+          '13-17': '13-17 Years',
+          '18-25': '18-25 Years',
+          '26-40': '26-40 Years',
+          '41-64': '41-64 Years',
+          '65+': '65+ Years'
+        };
+        var ageLabel = ageGroups[savedAge] || '18-25 Years';
+
+        function formatTimeParts(timeStr) {
+          var parts = timeStr.split(':');
+          var h = parseInt(parts[0], 10);
+          var m = parts[1] || '00';
+          var period = h >= 12 ? 'PM' : 'AM';
+          var displayH = h % 12 === 0 ? 12 : h % 12;
+          return {
+            hours: String(displayH).padStart(2, '0'),
+            minutes: m,
+            period: period
+          };
+        }
+
+        window.__initSkeleton = function() {
+          try {
+            var tabsContainer = document.getElementById('sk-tabs-container');
+            var inputFormContainer = document.getElementById('sk-inputs-container');
+            var ageGroupContainer = document.getElementById('sk-age-container');
+            var calcBtn = document.getElementById('sk-calc-btn');
+            
+            if (!tabsContainer || !inputFormContainer) return;
+            
+            var tabs = tabsContainer.children;
+            var tabIdMap = ['wake', 'bed', 'cycles', 'nap', 'rem'];
+            for (var i = 0; i < tabs.length; i++) {
+              var tMode = tabIdMap[i];
+              if (tMode === savedMode) {
+                tabs[i].className = 'sk-tab sk-tab-active';
+              } else {
+                tabs[i].className = 'sk-tab';
+              }
+            }
+            
+            var innerHTML = '';
+            if (savedMode === 'cycles') {
+              var pt1 = formatTimeParts(resolvedTime);
+              var pt2 = formatTimeParts(savedWake);
+              innerHTML = 
+                '<div class="sk-input-group">' +
+                  '<span class="sk-small-label">1. Planned Bedtime</span>' +
+                  '<div class="sk-picker">' +
+                    '<svg class="sk-clock-icon" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" width="26" height="26">' +
+                      '<circle cx="12" cy="12" r="10"></circle>' +
+                      '<polyline points="12 6 12 12 16 14"></polyline>' +
+                    '</svg>' +
+                    '<div class="sk-time-display">' +
+                      '<span class="sk-time-text">' + pt1.hours + ':' + pt1.minutes + '</span>' +
+                      '<span class="sk-period-text">' + pt1.period + '</span>' +
+                    '</div>' +
+                  '</div>' +
+                '</div>' +
+                '<div class="sk-input-group">' +
+                  '<span class="sk-small-label">2. Planned Wake-up Time</span>' +
+                  '<div class="sk-picker">' +
+                    '<svg class="sk-clock-icon" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" width="26" height="26">' +
+                      '<circle cx="12" cy="12" r="10"></circle>' +
+                      '<polyline points="12 6 12 12 16 14"></polyline>' +
+                    '</svg>' +
+                    '<div class="sk-time-display">' +
+                      '<span class="sk-time-text">' + pt2.hours + ':' + pt2.minutes + '</span>' +
+                      '<span class="sk-period-text">' + pt2.period + '</span>' +
+                    '</div>' +
+                  '</div>' +
+                '</div>';
+            } else {
+              var pTime = formatTimeParts(resolvedTime);
+              innerHTML = 
+                '<div class="sk-input-group">' +
+                  '<div class="sk-picker">' +
+                    '<svg class="sk-clock-icon" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" width="26" height="26">' +
+                      '<circle cx="12" cy="12" r="10"></circle>' +
+                      '<polyline points="12 6 12 12 16 14"></polyline>' +
+                    '</svg>' +
+                    '<div class="sk-time-display">' +
+                      '<span class="sk-time-text">' + pTime.hours + ':' + pTime.minutes + '</span>' +
+                      '<span class="sk-period-text">' + pTime.period + '</span>' +
+                    '</div>' +
+                  '</div>' +
+                '</div>';
+            }
+            inputFormContainer.innerHTML = innerHTML;
+            
+            if (savedMode !== 'nap' && savedMode !== 'cycles' && savedMode !== 'rem') {
+              ageGroupContainer.style.display = 'flex';
+              var ageValEl = document.getElementById('sk-age-val');
+              if (ageValEl) ageValEl.textContent = ageLabel;
+            } else {
+              ageGroupContainer.style.display = 'none';
+            }
+            
+            var btnText = 'Calculate Bed Time';
+            if (savedMode === 'wake') btnText = 'Calculate Wake Up Time';
+            else if (savedMode === 'cycles') btnText = 'Calculate Sleep Cycles';
+            else if (savedMode === 'nap') btnText = 'Calculate Nap Time';
+            else if (savedMode === 'rem') btnText = 'Calculate REM Sleep';
+            
+            if (calcBtn) calcBtn.textContent = btnText;
+          } catch (err) {
+            console.warn('Skeleton config failed', err);
           }
-        } catch (e) {}
+        };
       })();
     </script>
 
@@ -290,35 +549,46 @@
         <header class="sk-header">
           <div class="sk-logo">Sleep Calculator</div>
         </header>
-        <main style="flex-grow: 1; display: flex; flex-direction: column; align-items: center; width: 100%;">
+        <main style="flex-grow: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; width: 100%; padding-bottom: 2rem;">
           <div class="sk-hero">
             <h1 class="sk-title">Calculate Your Perfect Bedtime & Wake-Up Time</h1>
             <p class="sk-subtitle">Optimize your rest using scientific 90-minute sleep cycles to wake up refreshed, energized, and ready for your day.</p>
           </div>
           <div class="sk-card">
             <div class="sk-form">
-              <div class="sk-tabs">
-                <div class="sk-tab sk-tab-active">Wake up at</div>
+              <div id="sk-tabs-container" class="sk-tabs">
+                <div class="sk-tab">Wake up at</div>
                 <div class="sk-tab">Sleep at</div>
                 <div class="sk-tab">Sleep Cycles</div>
                 <div class="sk-tab">Nap Calc</div>
                 <div class="sk-tab">REM Calc</div>
               </div>
-              <div class="sk-input-group">
-                <div class="sk-label">1. Set alarm wake time</div>
-                <div class="sk-picker">
-                  <div class="sk-time-text">07:00 AM</div>
+              <div id="sk-inputs-container" style="width: 100%; display: flex; flex-direction: column; align-items: center;">
+                <!-- Filled dynamically by JavaScript before first paint -->
+              </div>
+              
+              <div id="sk-age-container" class="sk-input-group" style="display: none; margin-top: 0.5rem;">
+                <span class="sk-label">Select Your Age</span>
+                <div class="sk-select-wrapper">
+                  <div id="sk-age-val" class="sk-select">18-25 Years</div>
+                  <svg class="sk-chevron-icon" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                  </svg>
                 </div>
               </div>
-              <div class="sk-input-group">
-                <div class="sk-label">2. Select Your Age Group</div>
-                <div class="sk-select">18-25 Years</div>
+              
+              <div class="sk-btn-wrapper">
+                <button id="sk-calc-btn" class="sk-btn">Calculate Bed Time</button>
               </div>
-              <button class="sk-btn">Calculate Bedtime</button>
             </div>
           </div>
         </main>
       </div>
+      <script>
+        if (typeof window.__initSkeleton === 'function') {
+          window.__initSkeleton();
+        }
+      </script>
     <!-- FALLBACK_CONTENT_END --></div>
     
     <noscript>
