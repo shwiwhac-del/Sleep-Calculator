@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, lazy, Suspense } from "react";
 import { useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "motion/react";
 import { MessageSquare } from "lucide-react";
@@ -6,11 +6,13 @@ import { Helmet } from "react-helmet-async";
 import { getCanonicalUrl } from "../lib/seo";
 import { OpenGraphTags } from "../components/OpenGraphTags";
 import TimePicker from "../components/TimePicker";
+import SleepCycleChart from "../components/SleepCycleChart";
+
 import SleepGuideAndFAQ from "../components/SleepGuideAndFAQ";
 import { QuickSleepTips } from "../components/QuickSleepTips";
 import { SleepJournal } from "../components/SleepJournal";
-import SleepCycleChart from "../components/SleepCycleChart";
-import { FeedbackModal } from "../components/FeedbackModal";
+
+const FeedbackModal = lazy(() => import("../components/FeedbackModal").then((m) => ({ default: m.FeedbackModal })));
 
 export interface CyclesReport {
   bedTime: string;
@@ -684,7 +686,7 @@ export default function Home() {
         </div>
       </div>
 
-      <AnimatePresence mode="wait">
+      <AnimatePresence mode="wait" initial={false}>
         {!showResults ? (
           <motion.div
             key="calculator-inputs"
@@ -1176,14 +1178,17 @@ export default function Home() {
         )}
       </AnimatePresence>
 
-      {/* Quick Sleep Tips section */}
-      <QuickSleepTips />
+      {/* Below-the-fold content loaded synchronously for instant load and zero layout shift */}
+      <div className="w-full">
+        {/* Quick Sleep Tips section */}
+        <QuickSleepTips />
 
-      {/* Personal Sleep Journal section */}
-      <SleepJournal />
+        {/* Personal Sleep Journal section */}
+        <SleepJournal />
 
-      {/* Sleep Guide & FAQ Section below the Sleep Calculator */}
-      <SleepGuideAndFAQ />
+        {/* Sleep Guide & FAQ Section below the Sleep Calculator */}
+        <SleepGuideAndFAQ />
+      </div>
 
       {/* Floating Feedback Button */}
       <button
@@ -1199,10 +1204,12 @@ export default function Home() {
       </button>
 
       {isFeedbackModalOpen && (
-        <FeedbackModal
-          isOpen={isFeedbackModalOpen}
-          onClose={() => setIsFeedbackModalOpen(false)}
-        />
+        <Suspense fallback={null}>
+          <FeedbackModal
+            isOpen={isFeedbackModalOpen}
+            onClose={() => setIsFeedbackModalOpen(false)}
+          />
+        </Suspense>
       )}
     </div>
   );

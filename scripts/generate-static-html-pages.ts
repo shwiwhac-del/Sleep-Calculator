@@ -1,196 +1,41 @@
-import express from "express";
-import compression from "compression";
-import { createServer as createViteServer } from "vite";
-import path from "path";
-import helmet from "helmet";
-import rateLimit from "express-rate-limit";
-import fs from "fs";
-import { MAIN_PAGES_META, BLOG_POSTS_META, BLOG_REDIRECTS } from "./src/blogMetadata";
+import fs from 'fs';
+import path from 'path';
+import { MAIN_PAGES_META, BLOG_POSTS_META } from '../src/blogMetadata';
 
-async function startServer() {
-  const app = express();
-  app.disable('x-powered-by');
-  
-  // Enable gzip/deflate compression for static content and APIs
-  app.use(compression());
+console.log("Starting build-time static HTML file generation for all routes...");
 
-  const PORT = 3000;
+const distPath = path.resolve('./dist');
+const templatePath = path.join(distPath, 'index.html');
 
-  // Basic security headers, but configure Content-Security-Policy to allow inline scripts/styles for React/Vite development
-  app.use(helmet({
-    contentSecurityPolicy: false,
-  }));
-
-  // Setup rate limiter
-  const limiter = rateLimit({
-    windowMs: 15 * 60 * 1000, // 15 minutes
-    max: 1000, // limit each IP to 1000 requests per windowMs
-    message: "Too many requests from this IP, please try again after 15 minutes",
-    standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
-    legacyHeaders: false, // Disable the `X-RateLimit-*` headers
-  });
-
-  // Apply the rate limiting middleware to API calls only
-  app.use('/api', limiter);
-
-  app.use(express.json());
-
-  // API routes FIRST
-  app.get("/api/health", (req, res) => {
-    res.json({ status: "ok" });
-  });
-
-  // 301 SEO redirects for legacy blog URLs / double routes
-  app.use((req, res, next) => {
-    const reqPath = req.path.split('?')[0].replace(/\/$/, "");
-    const slug = reqPath.split('/').pop() || "";
-    if (slug && BLOG_REDIRECTS[slug]) {
-      res.redirect(301, "/" + BLOG_REDIRECTS[slug]);
-      return;
-    }
-    next();
-  });
-
-  // Explicit route to serve sitemap.xml directly with correct Content-Type, fallback protected
-  app.get("/sitemap.xml", (req, res) => {
-    const distPath = path.join(process.cwd(), "dist", "sitemap.xml");
-    const publicPath = path.join(process.cwd(), "public", "sitemap.xml");
-
-    res.set("Content-Type", "application/xml");
-    
-    // In development mode, prioritize public/sitemap.xml to avoid stale dist/sitemap.xml serving
-    if (process.env.NODE_ENV !== "production") {
-      res.sendFile(publicPath, (err) => {
-        if (err) {
-          res.sendFile(distPath, (errDist) => {
-            if (errDist) {
-              res.status(404).set("Content-Type", "text/plain").send("sitemap.xml not found");
-            }
-          });
-        }
-      });
-    } else {
-      res.sendFile(distPath, (err) => {
-        if (err) {
-          res.sendFile(publicPath, (errPublic) => {
-            if (errPublic) {
-              res.status(404).set("Content-Type", "text/plain").send("sitemap.xml not found");
-            }
-          });
-        }
-      });
-    }
-  });
-
-  // Explicit route to serve robots.txt directly with correct Content-Type, fallback protected
-  app.get("/robots.txt", (req, res) => {
-    const distPath = path.join(process.cwd(), "dist", "robots.txt");
-    const publicPath = path.join(process.cwd(), "public", "robots.txt");
-
-    res.set("Content-Type", "text/plain");
-    res.sendFile(distPath, (err) => {
-      if (err) {
-        res.sendFile(publicPath, (errPublic) => {
-          if (errPublic) {
-            res.status(404).set("Content-Type", "text/plain").send("robots.txt not found");
-          }
-        });
-      }
-    });
-  });
-
-  // Explicit route to serve favicon.ico directly from favicon.png to avoid 404 errors
-  app.get("/favicon.ico", (req, res) => {
-    const publicPath = path.join(process.cwd(), "public", "favicon.png");
-    const distPath = path.join(process.cwd(), "dist", "favicon.png");
-
-    res.set("Content-Type", "image/png");
-    res.sendFile(publicPath, (err) => {
-      if (err) {
-        res.sendFile(distPath, (errDist) => {
-          if (errDist) {
-            res.status(404).set("Content-Type", "text/plain").send("favicon.ico not found");
-          }
-        });
-      }
-    });
-  });
-
-  // Vite middleware for development
-  if (process.env.NODE_ENV !== "production") {
-    const vite = await createViteServer({
-      server: { middlewareMode: true },
-      appType: "spa",
-    });
-    app.use(vite.middlewares);
-  } else {
-    const distPath = path.join(process.cwd(), 'dist');
-    app.use(express.static(distPath, {
-      maxAge: '1y',
-      index: false, // Ensure our app.get('*') can intercept and inject metadata into "/" requests
-      setHeaders: (res, filePath) => {
-        if (filePath.endsWith('.html')) {
-          res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
-        } else if (filePath.includes('/assets/') || filePath.endsWith('.js') || filePath.endsWith('.css') || filePath.endsWith('.woff') || filePath.endsWith('.woff2')) {
-          res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
-        } else {
-          res.setHeader('Cache-Control', 'public, max-age=86400');
-        }
-      }
-    }));
-
-    app.get('*', async (req, res) => {
-      try {
-        const reqPath = req.path.split('?')[0].replace(/\/$/, "") || "/";
-        if (reqPath !== "/" && reqPath !== "") {
-          const staticHtmlPath = path.join(distPath, reqPath, 'index.html');
-          if (fs.existsSync(staticHtmlPath)) {
-            res.setHeader('Content-Type', 'text/html');
-            res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
-            return res.sendFile(staticHtmlPath);
-          }
-        }
-
-        const filePath = path.join(distPath, 'index.html');
-        if (!fs.existsSync(filePath)) {
-          return res.status(500).send("Build index.html not found. Run npm run build first.");
-        }
-        let html = await fs.promises.readFile(filePath, 'utf-8');
-        html = injectSEOMetadata(html, req.path);
-        res.setHeader('Content-Type', 'text/html');
-        res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
-        res.status(req.path === "/not-found" || req.path === "/404" ? 404 : 200).send(html);
-      } catch (err) {
-        console.error("Error in server-side SEO engine:", err);
-        res.sendFile(path.join(distPath, 'index.html'));
-      }
-    });
-  }
-
-  app.listen(PORT, "0.0.0.0", () => {
-    console.log(`Server running on http://localhost:${PORT}`);
-  });
+if (!fs.existsSync(templatePath)) {
+  console.error(`[Static Gen] Error: Base built template index.html not found at ${templatePath}. Build frontend first.`);
+  process.exit(1);
 }
 
-// Helper function to build rich, SEO and AEO optimized pre-rendered HTML fallback content
-function getRichFallbackContent(reqPath: string, slug: string, title: string, description: string): string {
-  // Check if we have pre-rendered static React-to-HTML content for this blog post slug
-  if (slug && BLOG_POSTS_META[slug]) {
-    try {
-      const preRenderedPath = path.resolve('./src/blog-pre-rendered.json');
-      if (fs.existsSync(preRenderedPath)) {
-        const preRenderedData = JSON.parse(fs.readFileSync(preRenderedPath, 'utf8'));
-        if (preRenderedData[slug]) {
-          return preRenderedData[slug];
-        }
-      }
-    } catch (e) {
-      console.error("[Server] Error loading pre-rendered blog content for " + slug, e);
-    }
-  }
+const htmlTemplate = fs.readFileSync(templatePath, 'utf-8');
 
-  // Pre-Rendered Navigation Menu
-  const navMenu = `
+// Load the pre-rendered blog react-to-html mappings from build payload
+let preRenderedBlogContent: Record<string, string> = {};
+const preRenderedPath = path.resolve('./src/blog-pre-rendered.json');
+if (fs.existsSync(preRenderedPath)) {
+  try {
+    preRenderedBlogContent = JSON.parse(fs.readFileSync(preRenderedPath, 'utf8'));
+    console.log(`[Static Gen] Successfully loaded ${Object.keys(preRenderedBlogContent).length} pre-rendered blog articles.`);
+  } catch (e) {
+    console.error(`[Static Gen] Error loading pre-rendered blog json:`, e);
+  }
+} else {
+  console.warn(`[Static Gen] Warning: ${preRenderedPath} not found! Static blog files might not contain full React content area fallback.`);
+}
+
+// 1. Get List of Popular articles for Fallback cross-linking
+const blogKeys = Object.keys(BLOG_POSTS_META);
+const internalLinksList = blogKeys
+  .slice(0, 10)
+  .map(key => `<li>👉 <a href="/${key}" style="color: #7C3AED; text-decoration: underline; font-weight: 500;">${BLOG_POSTS_META[key].title}</a></li>`)
+  .join('\n            ');
+
+const navMenu = `
           <nav style="margin-bottom: 2.5rem; border-bottom: 1px solid #E5E7EB; padding-bottom: 1.25rem; display: flex; flex-wrap: wrap; gap: 15px;">
             <a href="/" style="text-decoration: none; font-weight: bold; color: #7C3AED; font-family: system-ui, sans-serif;">Home/Calculator</a>
             <a href="/about" style="text-decoration: none; font-weight: bold; color: #374151; font-family: system-ui, sans-serif; transition: color 0.2s;">About us</a>
@@ -198,20 +43,19 @@ function getRichFallbackContent(reqPath: string, slug: string, title: string, de
             <a href="/privacy" style="text-decoration: none; font-weight: bold; color: #374151; font-family: system-ui, sans-serif; transition: color 0.2s;">Privacy Policy</a>
             <a href="/terms" style="text-decoration: none; font-weight: bold; color: #374151; font-family: system-ui, sans-serif; transition: color 0.2s;">Terms of Service</a>
           </nav>
-  `;
+`;
 
-  const footerBanner = `
+const footerBanner = `
           <p style="text-align: center; font-size: 0.9rem; opacity: 0.6; font-style: italic; margin-top: 3.5rem; padding-top: 1.5rem; border-top: 1px solid #E5E7EB; font-family: system-ui, sans-serif;">
             Loading interactive diagnostics & visual sleep aids...
           </p>
-  `;
+`;
 
-  // Get a list of popular articles for cross-linking
-  const blogKeys = Object.keys(BLOG_POSTS_META);
-  const internalLinksList = blogKeys
-    .slice(0, 10)
-    .map(key => `<li>👉 <a href="/${key}" style="color: #7C3AED; text-decoration: underline; font-weight: 500;">${BLOG_POSTS_META[key].title}</a></li>`)
-    .join('\n            ');
+function getStaticFallbackContent(reqPath: string, slug: string): string {
+  // Try to use full React component server-side pre-rendered output
+  if (slug && preRenderedBlogContent[slug]) {
+    return preRenderedBlogContent[slug];
+  }
 
   let bodyContent = "";
 
@@ -326,17 +170,6 @@ function getRichFallbackContent(reqPath: string, slug: string, title: string, de
             ${internalLinksList}
           </ul>
     `;
-  } else {
-    bodyContent = `
-          <h1 style="font-size: 2.25rem; font-weight: 800; color: #111827; margin-bottom: 1.5rem; font-family: 'Playfair Display', Georgia, serif;">404 Page Not Found</h1>
-          <p style="font-size: 1.15rem; line-height: 1.8; margin-bottom: 1.5rem;">The requested sleep resource, article, or tool could not be located in our system.</p>
-          <p style="margin-bottom: 1.5rem;">Return to the <a href="/" style="color: #7C3AED; font-weight: bold; text-decoration: underline;">Sleep Calculator Homepage</a> to calculate your optimal bedtime and wake-up times utilizing the natural 90-minute REM sleep cycle algorithm.</p>
-          
-          <h2 style="font-size: 1.5rem; font-weight: 700; color: #111827; margin-top: 2rem; margin-bottom: 1rem; font-family: 'Playfair Display', Georgia, serif;">Read Healthy Sleep Guides & Articles</h2>
-          <ul style="line-height: 1.9; padding-left: 0; list-style-type: none; margin-bottom: 2rem; font-weight: 500;">
-            ${internalLinksList}
-          </ul>
-    `;
   }
 
   return `
@@ -348,8 +181,8 @@ function getRichFallbackContent(reqPath: string, slug: string, title: string, de
   `;
 }
 
-// Full-Stack Server-Side SEO & AEO Metadata and Rich Schema Injection engine
-function injectSEOMetadata(html: string, originalPath: string): string {
+// Full SEO metadata and Schema build-time injection helper
+function injectSEOMetadataStatic(html: string, originalPath: string): string {
   const reqPath = originalPath.split('?')[0].replace(/\/$/, "") || "/";
   const slug = reqPath.split('/').pop() || "";
 
@@ -439,7 +272,6 @@ function injectSEOMetadata(html: string, originalPath: string): string {
       ]
     });
 
-    // 3. MedicalWebPage structured data schema for "/sleep-debt-explained" page
     if (slug === 'sleep-debt-explained') {
       schemas.push({
         "@context": "https://schema.org",
@@ -499,12 +331,9 @@ function injectSEOMetadata(html: string, originalPath: string): string {
         }
       });
     }
-  } else {
-    // 404 or unknown subpage fallback
-    schemas.push(defaultAppSchema);
   }
 
-  // Strip standard SEO / Social card boilerplate to prevent crawlers seeing duplicate title/meta tags
+  // Clear standard SEO / Social tags
   html = html.replace(/<title>.*?<\/title>/gis, "");
   html = html.replace(/<link\s+rel="canonical"\s+href="[^"]*"\s*\/?>/gis, "");
   html = html.replace(/<meta\s+name="description"\s+content=".*?"\s*\/?>/gis, "");
@@ -518,11 +347,9 @@ function injectSEOMetadata(html: string, originalPath: string): string {
   html = html.replace(/<meta\s+name="twitter:title"\s+content=".*?"\s*\/?>/gis, "");
   html = html.replace(/<meta\s+name="twitter:description"\s+content=".*?"\s*\/?>/gis, "");
   
-  // Clean default Structured Data Block
   html = html.replace(/<!-- Structured Data -->.*?<\/script>/gis, "");
   html = html.replace(/<script\s+type="application\/ld\+json">.*?<\/script>/gis, "");
 
-  // Assemble absolute-optimal SEO + AEO Tags Block
   let seoBlock = `
     <title>${title}</title>
     <link rel="canonical" href="${canonicalUrl}" />
@@ -546,21 +373,66 @@ function injectSEOMetadata(html: string, originalPath: string): string {
     <meta name="twitter:image" content="https://sleepcalculater.online/og_banner.png" />
   `;
 
-  // Inject Schemas
   schemas.forEach(schema => {
     seoBlock += `\n    <script type="application/ld+json">\n      ${JSON.stringify(schema, null, 2)}\n    </script>`;
   });
 
-  // Inject right after opening <head> tag using arrow helper to bypass $ regex replacement issues in JavaScript
   html = html.replace(/<head>/i, () => `<head>\n${seoBlock}`);
 
-  // Replace fallback content for subpages so users don't see the Homepage content before React loads
   if (reqPath !== "/" && reqPath !== "") {
-    const cleanFallback = getRichFallbackContent(reqPath, slug, title, description);
+    const cleanFallback = getStaticFallbackContent(reqPath, slug);
+    // Suppress hydrations since we will hydrate React cleanly on top of it.
     html = html.replace(/<!-- FALLBACK_CONTENT_START -->.*?<!-- FALLBACK_CONTENT_END -->/gis, () => `<!-- FALLBACK_CONTENT_START --><div class="fallback-content">${cleanFallback}</div><!-- FALLBACK_CONTENT_END -->`);
   }
 
   return html;
 }
 
-startServer();
+// Ensure the directory exists
+function ensureDirectoryExistence(filePath: string) {
+  const dirname = path.dirname(filePath);
+  if (fs.existsSync(dirname)) {
+    return true;
+  }
+  ensureDirectoryExistence(dirname);
+  fs.mkdirSync(dirname);
+}
+
+// Generate static routes
+const REDIRECT_SLUGS = [
+  'how-much-sleep-do-you-need-by-age',
+  'wake-up-tired-after-8-hours',
+  'best-bedtime-for-adults',
+  'what-is-sleep-debt',
+  'sleep-and-memory-learning',
+  'sleep-calculator-by-age',
+  'best-sleep-schedule-for-productivity',
+  'sleep-calculator-for-students'
+];
+
+const staticRoutes = [
+  ...Object.keys(MAIN_PAGES_META).map(p => p.replace(/\/$/, "")).filter(Boolean),
+  ...Object.keys(BLOG_POSTS_META).map(slug => `/${slug}`).filter(p => !REDIRECT_SLUGS.some(s => p.endsWith(s)))
+];
+
+console.log(`[Static Gen] Found ${staticRoutes.length} routes to pre-render statically:`, staticRoutes);
+
+for (const route of staticRoutes) {
+  const reqPath = route;
+  const slug = route.split('/').pop() || "";
+  
+  console.log(`[Static Gen] Generating pre-rendered page for: ${reqPath}`);
+  const preRenderedHtml = injectSEOMetadataStatic(htmlTemplate, reqPath);
+  
+  // Save both slug.html and slug/index.html to be served correctly by any SPA/multi-router server
+  const outputFilePath1 = path.join(distPath, `${slug}.html`);
+  const outputFilePath2 = path.join(distPath, slug, 'index.html');
+  
+  ensureDirectoryExistence(outputFilePath2);
+  fs.writeFileSync(outputFilePath2, preRenderedHtml, 'utf-8');
+  fs.writeFileSync(outputFilePath1, preRenderedHtml, 'utf-8');
+  
+  console.log(`[Static Gen] Successfully pre-rendered static HTML files for ${reqPath}`);
+}
+
+console.log("[Static Gen] Complete! Generated build-time static HTML payloads successfully.");

@@ -1,17 +1,17 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, Navigate, useParams } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import ScrollToTop from './components/ScrollToTop';
 import { StarryBackground } from './components/StarryBackground';
 
 import Home from './pages/Home';
+import { OpenGraphTags } from './components/OpenGraphTags';
 import Terms from './pages/Terms';
 import Privacy from './pages/Privacy';
 import Blog from './pages/Blog';
 import Contact from './pages/Contact';
 import About from './pages/About';
 import NotFound from './pages/NotFound';
-import { OpenGraphTags } from './components/OpenGraphTags';
 
 
 // Home Guides
@@ -105,6 +105,7 @@ function AppContent() {
       <OpenGraphTags />
       <Header />
       <main className="relative z-10 flex-grow flex flex-col items-center justify-start w-full pt-0 pb-4 sm:pb-8">
+          <Suspense fallback={null}>
               <Routes>
                 {/* Core Pages */}
                 <Route path="/" element={<Home />} />
@@ -149,6 +150,11 @@ function AppContent() {
                 <Route path="/best-sleep-schedule-for-productivity" element={<Navigate to="/sleep-schedule-for-productivity" replace />} />
                 <Route path="/sleep-calculator-for-students" element={<Navigate to="/best-bedtime-for-students" replace />} />
                 <Route path="/why-am-i-tired-after-sleeping" element={<Blog />} />
+                <Route path="/rem-sleep-calculator-bedtime-cycles" element={<Blog />} />
+                <Route path="/sleep-deprivation-calculator-recovery-guide" element={<Blog />} />
+                <Route path="/bedtime-calculator-by-age" element={<Blog />} />
+                <Route path="/shift-work-sleep-calculator-guide" element={<Blog />} />
+                <Route path="/adhd-sleep-schedule-calculator-tips" element={<Blog />} />
 
                 {/* Legacy /blog and /page/blog Prefixes redirected back to clean root paths */}
                 <Route path="/blog/:slug" element={<PageBlogRedirect />} />
@@ -167,6 +173,7 @@ function AppContent() {
                 {/* Catch-all 404 route */}
                 <Route path="*" element={<NotFound />} />
               </Routes>
+            </Suspense>
           </main>
           <Footer />
     </div>

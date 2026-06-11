@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation, useParams, Navigate } from 'react-router-dom';
 import { ArrowLeft, ChevronDown, ChevronUp, Calculator, Sparkles } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
@@ -306,6 +306,46 @@ export const BLOG_POSTS = [
     category: 'Sleep Quality',
     readTime: '5 min read',
     date: 'June 4, 2026'
+  },
+  {
+    slug: 'rem-sleep-calculator-bedtime-cycles',
+    title: 'REM Sleep Calculator: How to Calculate Bedtime Using Sleep Cycles',
+    description: 'Learn how to use a REM sleep calculator to calculate your optimum bedtime. Maximize restorative REM sleep, align sleep cycles, and wake up refreshed.',
+    category: 'Sleep Science',
+    readTime: '6 min read',
+    date: 'June 11, 2026'
+  },
+  {
+    slug: 'sleep-deprivation-calculator-recovery-guide',
+    title: 'Sleep Deprivation Calculator: How to Calculate Sleep Debt & Recovery Hours',
+    description: 'Calculate your cumulative sleep debt with our sleep deprivation calculator. Learn how much recovery sleep you need and how to safely repay lost sleep hours.',
+    category: 'Sleep Health',
+    readTime: '6 min read',
+    date: 'June 11, 2026'
+  },
+  {
+    slug: 'bedtime-calculator-by-age',
+    title: 'Bedtime Calculator by Age: Sleep Schedules for Every Stage of Life',
+    description: 'Use our science-backed bedtime calculator by age to determine the ideal sleep window and age-specific sleep cycle targets from childhood to older adulthood.',
+    category: 'Sleep Science',
+    readTime: '7 min read',
+    date: 'June 11, 2026'
+  },
+  {
+    slug: 'shift-work-sleep-calculator-guide',
+    title: 'Shift Work Sleep Calculator: How to Design a Healthy Night Shift Sleep Schedule',
+    description: 'Learn how a shift work sleep calculator helps night shift workers align daytime sleep with circadian rhythms. Fix daytime fatigue and sleeping patterns.',
+    category: 'Sleep Health',
+    readTime: '7 min read',
+    date: 'June 11, 2026'
+  },
+  {
+    slug: 'adhd-sleep-schedule-calculator-tips',
+    title: 'ADHD Sleep Schedule Calculator: Calm Your Mind and Build a Consistent Routine',
+    description: 'Struggling with sleep onset and ADHD? Learn how an ADHD sleep schedule calculator can help you design consistency, reduce evening anxiety, and feel refreshed.',
+    category: 'Productivity',
+    readTime: '7 min read',
+    date: 'June 11, 2026'
   }
 ];
 
@@ -891,6 +931,76 @@ const BLOG_FAQS: Record<string, { q: string, a: string }[]> = {
       q: "What are some ways to improve sleep quality naturally?",
       a: "Keep your room dark and cool, reduce electronic screen use before bed, avoid late caffeine, and follow a highly consistent sleep-wake schedule daily."
     }
+  ],
+  'rem-sleep-calculator-bedtime-cycles': [
+    {
+      q: "What is a REM sleep calculator?",
+      a: "A REM sleep calculator is an online tool that estimates the best times to go to sleep and wake up based on 90-minute sleep cycles. By aligning your sleep with these cycles, you wake up at the end of light sleep instead of deep REM sleep, helping you avoid morning grogginess and sleep inertia."
+    },
+    {
+      q: "How do you calculate your best bedtime using sleep cycles?",
+      a: "To calculate your best bedtime, start with your desired wake-up time and count backward in 90-minute increments (usually 5 or 6 cycles, equivalent to 7.5 or 9 hours of sleep), then subtract 15 minutes (the average time it takes to fall asleep). The resulting times are your optimal bedtimes."
+    },
+    {
+      q: "How many hours of sleep constitutes a healthy nightly routine?",
+      a: "Most healthy adults require 7.5 to 9 hours of sleep per night, which corresponds to 5 to 6 full 90-minute cycles. Staying consistent with your sleep-wake schedule—even on weekends—promotes deep, nourishing, and restorative rest."
+    }
+  ],
+  'sleep-deprivation-calculator-recovery-guide': [
+    {
+      q: "How does a sleep deprivation calculator measure sleep debt?",
+      a: "A sleep deprivation calculator measures sleep debt by comparing the total hours of sleep your body actually received over a given period against your target sleep requirements (e.g., getting 6 hours instead of 8 hours creates a 2-hour daily deficit). The sum of these daily deficits over a week represents your accumulated sleep debt."
+    },
+    {
+      q: "Can you fully recover from severe sleep deprivation?",
+      a: "Yes, you can recover from sleep deprivation, but it requires a gradual recovery approach. Instead of sleeping in for half a day on weekends (which disrupts your biological circadian rhythm), try adding 1 to 2 extra hours of sleep per night over several days, or taking structured 20-minute power naps."
+    },
+    {
+      q: "What are the common symptoms of high sleep debt?",
+      a: "Symptom of elevated sleep debt include chronic daytime fatigue, brain fog, decreased mental focus, slowed physical reaction times, mood swings, and weakened immune function."
+    }
+  ],
+  'bedtime-calculator-by-age': [
+    {
+      q: "What is an age-appropriate bedtime according to a bedtime calculator by age?",
+      a: "Age-appropriate bedtimes vary widely by development stage. For instance, toddlers (1-2 years) typically require bedtime between 7:00 PM and 8:00 PM to hit their 11-14 hour target, whereas healthy teenagers need a bedtime around 9:00 PM to 11:00 PM to ensure 8 to 10 hours of rest daily."
+    },
+    {
+      q: "Why do older adults sleep less than teenagers?",
+      a: "Older adults don't necessarily need less sleep, but their physiological ability to sustain deep, restorative stages decreases. This biological change can make nighttime rest more fragmented, leading to early waking. A bedtime calculator by age helps older adults optimize sleep timing and consistency to preserve cellular healing."
+    },
+    {
+      q: "How do sleep cycles change as we age?",
+      a: "Infants spend about 50% of their sleep in active REM stages. As we mature, deep slow-wave sleep dominates adolescent development before gradually decreasing in adulthood and old age. Older adults experience shorter sleep cycle cycles and lighter transitions, making pristine sleep consistency crucial."
+    }
+  ],
+  'shift-work-sleep-calculator-guide': [
+    {
+      q: "How does a shift work sleep calculator help night shift workers?",
+      a: "A shift work sleep calculator schedules two primary resting blocks or anchored sleep routines around night shift work hours. By designing structured sleep targets (either a continuous sleep block or split sleep blocks), shift workers can artificially align their rest cycles and prevent severe cognitive brain fog."
+    },
+    {
+      q: "What is the best daytime sleep schedule for a night shift worker?",
+      a: "The best strategy is to sleep immediately after finishing a night shift, usually starting around 8:00 AM using heavy blackout curtains and white noise. Some shift workers thrive better on split-phase sleep: sleeping for 4-5 hours in the morning and taking a 90-minute sleep cycle nap right before their evening shift."
+    },
+    {
+      q: "How can night shift workers minimize circadian rhythm disruption?",
+      a: "To keep circadian rhythms consistent, shift workers should use bright light exposure during evening working hours, wear blue-blocking glasses during their morning commute home, sleep in cold dark rooms, and maintain the same sleep intervals even on days off."
+    }
+  ],
+  'adhd-sleep-schedule-calculator-tips': [
+    {
+      q: "Why do individuals with ADHD struggle with sleep onset?",
+      a: "Individuals with ADHD often suffer from delayed sleep phase syndrome (DSPS), meaning their natural circadian rhythm runs 2 to 3 hours later than average. Along with late-night brain hyperactivity and altered biological melatonin production, this delays sleep onset and creates morning exhaustion."
+    },
+    {
+      q: "How does an ADHD sleep schedule calculator support consistency?",
+      a: "An ADHD sleep schedule calculator provides absolute, predictable guide rails. By specifying exact wake-up targets, it reverse-calculates bedtimes and inserts strict sensory down-regulation blocks (e.g., 60-minute warm baths, electronics shutdown, reading) to ease transition anxiety."
+    },
+    {
+      q: "What are some practical tips to quiet a hyperactive ADHD mind before bed?",
+      a: "Practical strategies include taking warm baths 90 minutes before sleep to trigger a natural body temperature drop, using high-weight weighted blankets, playing soft ambient pink noise, and committing to an absolute sunset of digital stimulation at least one hour before bed."
+    }
   ]
 };
 
@@ -901,6 +1011,25 @@ export default function Blog() {
   const currentPath = location.pathname;
 
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+
+  // High performance static injection detection
+  const isStaticGen = typeof global !== 'undefined' && (global as any).IS_STATIC_GEN;
+
+  // Track the static HTML injected onto the screen to bypass React hydration
+  const [staticHtml, setStaticHtml] = useState<string>(() => {
+    if (typeof window !== 'undefined') {
+      const existing = document.getElementById('blog-static-content');
+      // If client is loading a slug, and the DOM already has matching pre-rendered content, re-use it instantly!
+      if (existing) {
+        const storedSlug = existing.getAttribute('data-slug');
+        const activeSlugValue = slug || currentPath.split('/').pop() || '';
+        if (storedSlug === activeSlugValue) {
+          return existing.innerHTML;
+        }
+      }
+    }
+    return '';
+  });
 
   const isBlog1 = currentPath === '/sleep-cycles-explained' || slug === 'sleep-cycles-explained';
   const isBlog2 = currentPath === '/what-is-rem-sleep' || slug === 'what-is-rem-sleep';
@@ -939,8 +1068,13 @@ export default function Blog() {
   const isBlog35 = currentPath === '/best-sleep-schedule-for-productivity' || slug === 'best-sleep-schedule-for-productivity';
   const isBlog36 = currentPath === '/sleep-calculator-for-students' || slug === 'sleep-calculator-for-students';
   const isBlog37 = currentPath === '/why-am-i-tired-after-sleeping' || slug === 'why-am-i-tired-after-sleeping';
+  const isBlog38 = currentPath === '/rem-sleep-calculator-bedtime-cycles' || slug === 'rem-sleep-calculator-bedtime-cycles';
+  const isBlog39 = currentPath === '/sleep-deprivation-calculator-recovery-guide' || slug === 'sleep-deprivation-calculator-recovery-guide';
+  const isBlog40 = currentPath === '/bedtime-calculator-by-age' || slug === 'bedtime-calculator-by-age';
+  const isBlog41 = currentPath === '/shift-work-sleep-calculator-guide' || slug === 'shift-work-sleep-calculator-guide';
+  const isBlog42 = currentPath === '/adhd-sleep-schedule-calculator-tips' || slug === 'adhd-sleep-schedule-calculator-tips';
   
-  const isAnyBlog = isBlog1 || isBlog2 || isBlog3 || isBlog4 || isBlog5 || isBlog6 || isBlog7 || isBlog8 || isBlog9 || isBlog10 || isBlog11 || isBlog12 || isBlog13 || isBlog14 || isBlog15 || isBlog16 || isBlog17 || isBlog18 || isBlog19 || isBlog20 || isBlog21 || isBlog22 || isBlog23 || isBlog24 || isBlog25 || isBlog26 || isBlog27 || isBlog28 || isBlog29 || isBlog30 || isBlog31 || isBlog32 || isBlog33 || isBlog34 || isBlog35 || isBlog36 || isBlog37;
+  const isAnyBlog = isBlog1 || isBlog2 || isBlog3 || isBlog4 || isBlog5 || isBlog6 || isBlog7 || isBlog8 || isBlog9 || isBlog10 || isBlog11 || isBlog12 || isBlog13 || isBlog14 || isBlog15 || isBlog16 || isBlog17 || isBlog18 || isBlog19 || isBlog20 || isBlog21 || isBlog22 || isBlog23 || isBlog24 || isBlog25 || isBlog26 || isBlog27 || isBlog28 || isBlog29 || isBlog30 || isBlog31 || isBlog32 || isBlog33 || isBlog34 || isBlog35 || isBlog36 || isBlog37 || isBlog38 || isBlog39 || isBlog40 || isBlog41 || isBlog42;
   const isAll = false; // Override isAll to false so individual articles never render stacked in /blog
 
   let activeSlug = '';
@@ -981,8 +1115,47 @@ export default function Blog() {
   else if (isBlog35) activeSlug = 'best-sleep-schedule-for-productivity';
   else if (isBlog36) activeSlug = 'sleep-calculator-for-students';
   else if (isBlog37) activeSlug = 'why-am-i-tired-after-sleeping';
+  else if (isBlog38) activeSlug = 'rem-sleep-calculator-bedtime-cycles';
+  else if (isBlog39) activeSlug = 'sleep-deprivation-calculator-recovery-guide';
+  else if (isBlog40) activeSlug = 'bedtime-calculator-by-age';
+  else if (isBlog41) activeSlug = 'shift-work-sleep-calculator-guide';
+  else if (isBlog42) activeSlug = 'adhd-sleep-schedule-calculator-tips';
 
   const currentFaqs = activeSlug ? BLOG_FAQS[activeSlug] : [];
+
+  // Load and fetch static content when navigating client-side
+  useEffect(() => {
+    if (isStaticGen || !activeSlug) return;
+
+    // Check if the DOM already has matching pre-rendered content (instant landing)
+    if (typeof window !== 'undefined') {
+      const existing = document.getElementById('blog-static-content');
+      if (existing) {
+        const storedSlug = existing.getAttribute('data-slug');
+        if (storedSlug === activeSlug) {
+          setStaticHtml(existing.innerHTML);
+          return;
+        }
+      }
+    }
+
+    // Otherwise, fetch the individual pre-rendered chunk asynchronously
+    let isCurrent = true;
+    fetch(`/blog-html/${activeSlug}.json`)
+      .then(res => res.json())
+      .then(data => {
+        if (isCurrent && data && data.html) {
+          setStaticHtml(data.html);
+        }
+      })
+      .catch(err => {
+        console.error("[Blog] Error fetching static blog content:", err);
+      });
+
+    return () => {
+      isCurrent = false;
+    };
+  }, [activeSlug, isStaticGen]);
 
   const DUPLICATE_SLUGS = [
     'how-much-sleep-do-you-need-by-age',
@@ -1183,6 +1356,252 @@ export default function Blog() {
         }
       };
       jsonLdScripts.push({ __html: JSON.stringify(medicalWebPageSchema) });
+    } else if (activeSlug === 'rem-sleep-calculator-bedtime-cycles') {
+      const breadcrumbSchema = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://sleepcalculater.online/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "REM Sleep Calculator Bedtime Cycles",
+            "item": "https://sleepcalculater.online/rem-sleep-calculator-bedtime-cycles"
+          }
+        ]
+      };
+      jsonLdScripts.push({ __html: JSON.stringify(breadcrumbSchema) });
+
+      const howToSchema = {
+        "@context": "https://schema.org",
+        "@type": "HowTo",
+        "name": "How to Calculate bedtime cycles with REM Sleep Calculator",
+        "description": "Calculate your optimum night resting windows based on natural repeating sleep patterns.",
+        "step": [
+          {
+            "@type": "HowToStep",
+            "name": "Determine Target Wake-Up Time",
+            "text": "Identify when you must wake up feeling alert and refreshed in the morning (e.g. 7:00 AM).",
+            "url": "https://sleepcalculater.online/rem-sleep-calculator-bedtime-cycles#step1"
+          },
+          {
+            "@type": "HowToStep",
+            "name": "Multiply by 90-Minute Intervals",
+            "text": "Calculate 90-minute sleep cycle groups backward (e.g. 5 cycles = 7.5 hours; 6 cycles = 9 hours).",
+            "url": "https://sleepcalculater.online/rem-sleep-calculator-bedtime-cycles#step2"
+          },
+          {
+            "@type": "HowToStep",
+            "name": "Subtract Average Sleep Latency",
+            "text": "Subtract 15 minutes (the average time it takes a human to fall asleep) from the bedtime.",
+            "url": "https://sleepcalculater.online/rem-sleep-calculator-bedtime-cycles#step3"
+          }
+        ]
+      };
+      jsonLdScripts.push({ __html: JSON.stringify(howToSchema) });
+    } else if (activeSlug === 'sleep-deprivation-calculator-recovery-guide') {
+      const breadcrumbSchema = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://sleepcalculater.online/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Sleep Deprivation Calculator Recovery Guide",
+            "item": "https://sleepcalculater.online/sleep-deprivation-calculator-recovery-guide"
+          }
+        ]
+      };
+      jsonLdScripts.push({ __html: JSON.stringify(breadcrumbSchema) });
+
+      const howToSchema = {
+        "@context": "https://schema.org",
+        "@type": "HowTo",
+        "name": "How to Calculate Sleep Debt and Plan Recovery Hours",
+        "description": "Learn to compute accumulated sleeping deficits and safe methods to reclaim focus and physical cellular regeneration.",
+        "step": [
+          {
+            "@type": "HowToStep",
+            "name": "Establish Baseline Need",
+            "text": "Identify your daily target resting baseline (e.g. 8 hours per night).",
+            "url": "https://sleepcalculater.online/sleep-deprivation-calculator-recovery-guide#step1"
+          },
+          {
+            "@type": "HowToStep",
+            "name": "Compare Against Actual Hours",
+            "text": "Compare actual nightly sleep over a 7-day span against the baseline.",
+            "url": "https://sleepcalculater.online/sleep-deprivation-calculator-recovery-guide#step2"
+          },
+          {
+            "@type": "HowToStep",
+            "name": "Sum Up Deficient Hours",
+            "text": "Add up cumulative daily deficits to discover your aggregate sleep debt.",
+            "url": "https://sleepcalculater.online/sleep-deprivation-calculator-recovery-guide#step3"
+          },
+          {
+            "@type": "HowToStep",
+            "name": "Execute Gradual Deficit Recovery",
+            "text": "Reclaim recovery hours gradually by extending sleep 1-2 hours per night over several days.",
+            "url": "https://sleepcalculater.online/sleep-deprivation-calculator-recovery-guide#step4"
+          }
+        ]
+      };
+      jsonLdScripts.push({ __html: JSON.stringify(howToSchema) });
+    } else if (activeSlug === 'bedtime-calculator-by-age') {
+      const breadcrumbSchema = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://sleepcalculater.online/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Bedtime Calculator by Age",
+            "item": "https://sleepcalculater.online/bedtime-calculator-by-age"
+          }
+        ]
+      };
+      jsonLdScripts.push({ __html: JSON.stringify(breadcrumbSchema) });
+
+      const howToSchema = {
+        "@context": "https://schema.org",
+        "@type": "HowTo",
+        "name": "How to Calculate Bedtime by Age",
+        "description": "Step-by-step instructions to find your ideal age-based slumber targets.",
+        "step": [
+          {
+            "@type": "HowToStep",
+            "name": "Identify Developmental Age Group",
+            "text": "Determine the age group: Toddlers (11-14 hrs), Children (9-11 hrs), Teens (8-10 hrs), Adults (7-9 hrs), Seniors (7-8 hrs).",
+            "url": "https://sleepcalculater.online/bedtime-calculator-by-age#step1"
+          },
+          {
+            "@type": "HowToStep",
+            "name": "Establish Daily Target Sleep Hours",
+            "text": "Select average hours within age group targets (e.g., 8 hours for a typical adult).",
+            "url": "https://sleepcalculater.online/bedtime-calculator-by-age#step2"
+          },
+          {
+            "@type": "HowToStep",
+            "name": "Count Cycles backward",
+            "text": "Align bedtime to match natural complete sleep cycles (e.g. 5 complete cycles = 7.5 hours).",
+            "url": "https://sleepcalculater.online/bedtime-calculator-by-age#step3"
+          }
+        ]
+      };
+      jsonLdScripts.push({ __html: JSON.stringify(howToSchema) });
+    } else if (activeSlug === 'shift-work-sleep-calculator-guide') {
+      const breadcrumbSchema = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://sleepcalculater.online/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Shift Work Sleep Calculator Guide",
+            "item": "https://sleepcalculater.online/shift-work-sleep-calculator-guide"
+          }
+        ]
+      };
+      jsonLdScripts.push({ __html: JSON.stringify(breadcrumbSchema) });
+
+      const howToSchema = {
+        "@context": "https://schema.org",
+        "@type": "HowTo",
+        "name": "How to Design a Shift Work Bedtime Schedule",
+        "description": "Instructions for night shift professionals to block circadian sleep windows successfully.",
+        "step": [
+          {
+            "@type": "HowToStep",
+            "name": "Map Night Shift Duty Windows",
+            "text": "Define active midnight hours and commute timelines to home.",
+            "url": "https://sleepcalculater.online/shift-work-sleep-calculator-guide#step1"
+          },
+          {
+            "@type": "HowToStep",
+            "name": "Plan Light Exposure Transitions",
+            "text": "Wear blue-light stopping glasses immediately upon shift completion to prepare melatonin receptors.",
+            "url": "https://sleepcalculater.online/shift-work-sleep-calculator-guide#step2"
+          },
+          {
+            "@type": "HowToStep",
+            "name": "Anchor Sleep Blocks",
+            "text": "Enter darkened quiet bedroom immediately, aiming for either a direct 7-hour block or two split blocks.",
+            "url": "https://sleepcalculater.online/shift-work-sleep-calculator-guide#step3"
+          }
+        ]
+      };
+      jsonLdScripts.push({ __html: JSON.stringify(howToSchema) });
+    } else if (activeSlug === 'adhd-sleep-schedule-calculator-tips') {
+      const breadcrumbSchema = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://sleepcalculater.online/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "ADHD Sleep Schedule Calculator Tips",
+            "item": "https://sleepcalculater.online/adhd-sleep-schedule-calculator-tips"
+          }
+        ]
+      };
+      jsonLdScripts.push({ __html: JSON.stringify(breadcrumbSchema) });
+
+      const howToSchema = {
+        "@context": "https://schema.org",
+        "@type": "HowTo",
+        "name": "How to Formulate an ADHD Sleep schedule",
+        "description": "Design a calming bedtime schedule tailored specifically to the hyperactive ADHD mind.",
+        "step": [
+          {
+            "@type": "HowToStep",
+            "name": "Fix Desired Morning Alarm Time",
+            "text": "Establish a highly rigid, uncompromising wake-up alarm time to anchor the circadian cycle.",
+            "url": "https://sleepcalculater.online/adhd-sleep-schedule-calculator-tips#step1"
+          },
+          {
+            "@type": "HowToStep",
+            "name": "Reverse Calculate Sleep Cycle Windows",
+            "text": "Count backward 5 or 6 90-minute sleep intervals to find the core bedtime point.",
+            "url": "https://sleepcalculater.online/adhd-sleep-schedule-calculator-tips#step2"
+          },
+          {
+            "@type": "HowToStep",
+            "name": "Establish Wind-down Buffer Boundaries",
+            "text": "Add a mandatory 1-hour screen and sensory curfew before the reverse-calculated bedtime.",
+            "url": "https://sleepcalculater.online/adhd-sleep-schedule-calculator-tips#step3"
+          }
+        ]
+      };
+      jsonLdScripts.push({ __html: JSON.stringify(howToSchema) });
     }
 
     if (currentFaqs && currentFaqs.length > 0) {
@@ -1298,7 +1717,29 @@ export default function Blog() {
           </div>
         )}
 
-        {isAnyBlog && (
+        {isAnyBlog && !isStaticGen && (
+          <div 
+            id="blog-static-content"
+            data-slug={activeSlug}
+            className="prose prose-invert max-w-none shadow-premium select-text text-slate-300 space-y-6"
+            onClick={(e) => {
+              const target = e.target as HTMLElement;
+              const anchor = target.closest('a');
+              if (anchor) {
+                const href = anchor.getAttribute('href');
+                if (href && href.startsWith('/') && !href.startsWith('//')) {
+                  e.preventDefault();
+                  navigate(href);
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+              }
+            }}
+            dangerouslySetInnerHTML={{ __html: staticHtml }}
+            suppressHydrationWarning
+          />
+        )}
+
+        {isAnyBlog && isStaticGen && (
           <AutoLinker currentPath={activeSlug}>
             <>
               {/* Blog 1: Sleep Cycles Explained */}
@@ -7756,6 +8197,508 @@ export default function Blog() {
 
             <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 pb-6">
               If you're asking, "Why am I tired after sleeping?" the answer may involve more than simply getting more sleep. Sleep quality, sleep cycles, sleep efficiency, and consistent routines all play important roles. By improving these areas, you can wake up feeling more refreshed, energized, and ready for the day ahead.
+            </p>
+
+            {/* Dynamic Social Sharing & Calculation Widget */}
+            <ShareScheduleWidget />
+          </article>
+        )}
+
+        {/* Blog 38: REM Sleep Calculator: How to Calculate Bedtime Using Sleep Cycles */}
+        {(isBlog38 || isAll) && (
+          <article className="space-y-6 select-text text-slate-300 pt-1">
+            <header className="space-y-3 pb-6 border-b border-white/10">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-100 tracking-tight leading-tight">
+                REM Sleep Calculator: How to Calculate Bedtime Using Sleep Cycles
+              </h1>
+              {isAll && (
+                <div className="text-sm font-bold tracking-wider text-blue-400 uppercase">
+                  Sleep Science • 6 min read
+                </div>
+              )}
+            </header>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              Have you ever slept for nine hours but still woken up feeling completely exhausted? The secret to waking up refreshed isn't just about the quantity of hours you sleep—it is about aligning your bedtime with your natural sleep cycles.
+            </p>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              A <strong>REM sleep calculator</strong> is an invaluable tool designed to solve this mystery. By calculating backward or forward in 90-minute sleep cycles, you can pick the perfect moment to slip into bed and ensure you wake up at the easiest stage of sleep.
+            </p>
+
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4" id="step1">
+              What is REM Sleep and Why Does Waking Up During It Cause Grogginess?
+            </h2>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              During the night, your brain moves through several sleep cycles. One full cycle lasts around 90 minutes on average, transitioning you between light sleep, deep sleep, and REM (Rapid Eye Movement) sleep.
+            </p>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              Waking up during deep sleep or deep REM stages triggers <em>sleep inertia</em>—that heavy, disoriented feeling where you feel half-asleep. To avoid this, you should try to wake up at the transition point when a sleep cycle is ending and light sleep is beginning. Waking at the end of a 90-minute cycle leaves you feeling light, clear-headed, and energized.
+            </p>
+
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4" id="step2">
+              How Does a REM Sleep Calculator App Calculate Your Bedtime?
+            </h2>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              A REM sleep calculator works by dividing your rest into standard 90-minute intervals and adding 15 minutes as a buffer, which is the average sleep latency (the time it takes a normal adult to fall asleep).
+            </p>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              The formula for calculating bedtime backward from a desired waking time is:
+            </p>
+
+            <div className="bg-slate-800/50 border border-white/10 rounded-2xl p-5 mb-4 text-center font-mono text-sm sm:text-base text-gray-200">
+              Optimal Bedtime = Wake Up Time - (N × 90 minutes) - 15 minutes
+            </div>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              Where <strong>N</strong> is the number of full sleep cycles. For a highly restorative rest, N is usually 5 cycles (7.5 hours of sleep) or 6 cycles (9 hours of sleep).
+            </p>
+
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4" id="step3">
+              Step-by-Step: How to Calculate Bedtime Yourself
+            </h2>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              If you want to design a healthy sleep routine manually, follow this simple process:
+            </p>
+
+            <div className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 py-1">
+              <ol className="list-decimal pl-6 space-y-4 text-slate-300">
+                <li>
+                  <strong className="text-gray-100">Set your morning wake-up time:</strong> Decide on a consistent wake up time, for example, 3:30 AM or 6:30 AM.
+                </li>
+                <li>
+                  <strong className="text-gray-100">Count backward in 90-minute intervals:</strong>
+                  <ul className="list-disc pl-6 mt-1.5 space-y-1 text-slate-400 text-sm sm:text-base">
+                    <li>5 cycles (7.5 hours): Counts back to 11:00 PM (for a 6:30 AM wake up)</li>
+                    <li>6 cycles (9 hours): Counts back to 9:30 PM (for a 6:30 AM wake up)</li>
+                  </ul>
+                </li>
+                <li>
+                  <strong className="text-gray-100">Subtract sleep latency:</strong> Subtract 15 minutes for falling asleep. You should be in bed ready to sleep by 10:45 PM or 9:15 PM.
+                </li>
+              </ol>
+            </div>
+
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4">
+              AEO Direct Answers about REM Sleep Cycles
+            </h2>
+
+            <div className="space-y-4 pt-2">
+              <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+                <strong className="text-gray-100 block mb-1">Q: How many sleep cycles do adults need per night?</strong>
+                A: Most healthy adults need between 5 and 6 sleep cycles per night, which translates to 7.5 to 9 hours of quality sleep to maintain physical fitness, cognitive memory consolidation, and deep metabolic healing.
+              </p>
+              <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+                <strong className="text-gray-100 block mb-1">Q: Does an irregular sleep schedule affect REM sleep?</strong>
+                A: Yes. Sleeping at erratic hours disrupts your biological clock or circadian rhythm. This reduces the proportion of restorative REM sleep, which can lead to fatigue, decreased brain focus, and chronic morning sleep debt.
+              </p>
+            </div>
+
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4">
+              Final Thoughts on REM Sleep Alignment
+            </h2>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 pb-6">
+              Transitioning to a cycle-based routine is one of the easiest ways to improve sleep quality naturally. Rather than simply fighting fatigue with caffeine or forcing yourself to sleep longer, plan your bedtimes strategically. Employing a sleep cycle calculator will help you take control of your nights, wake up refreshed, and conquer morning exhaustion.
+            </p>
+
+            {/* Dynamic Social Sharing & Calculation Widget */}
+            <ShareScheduleWidget />
+          </article>
+        )}
+
+        {/* Blog 39: Sleep Deprivation Calculator: How to Calculate Sleep Debt & Recovery Hours */}
+        {(isBlog39 || isAll) && (
+          <article className="space-y-6 select-text text-slate-300 pt-1">
+            <header className="space-y-3 pb-6 border-b border-white/10">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-100 tracking-tight leading-tight">
+                Sleep Deprivation Calculator: How to Calculate Sleep Debt & Recovery Hours
+              </h1>
+              {isAll && (
+                <div className="text-sm font-bold tracking-wider text-blue-400 uppercase">
+                  Sleep Health • 6 min read
+                </div>
+              )}
+            </header>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              If you routinely cut your sleep short to study, handle work deadlines, or binge-watch shows, you are likely suffering from chronic sleep deprivation. Each hour of sleep you lose doesn't simply disappear; it builds up as a debt that your brain and body desperately demand you repay.
+            </p>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              A <strong>sleep deprivation calculator</strong> helps you measure this accumulated sleep debt. By understanding exactly how many hours of recovery sleep your biological rhythm requires, you can plan a realistic recovery strategy and reclaim your daytime productivity and health.
+            </p>
+
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4" id="step1">
+              What is Sleep Debt and How Does it Accumulate?
+            </h2>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              Sleep debt represents the difference between the hours of sleep your body biologically needs (usually 8 hours for most adults) and the actual hours you get.
+            </p>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              For example, if your personal sleep requirement is 8 hours, but you only sleep for 6 hours on Monday night, you have accumulated a 2-hour sleep debt. If this pattern repeats over five consecutive weekdays, you will head into the weekend with a massive 10-hour sleep deficit.
+            </p>
+
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4" id="step2">
+              The Fallacy of Weekend Catch-up Sleep
+            </h2>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              Many believe they can fully recover from weekdays of sleeplessness by sleeping in late on Saturdays and Sundays. Unfortunately, sleep science shows this doesn't work well.
+            </p>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              Sleeping in for 4 or 5 extra hours on weekends throws off your biological clock. This makes it incredibly difficult to fall asleep on Sunday night, initiating another vicious cycle of sleep deprivation on Monday morning.
+            </p>
+
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4" id="step3">
+              Step-by-Step: How to Calculate Sleep Debt
+            </h2>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              To calculate your sleep debt over the course of a week, use this step-by-step process:
+            </p>
+
+            <div className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 py-1">
+              <ol className="list-decimal pl-6 space-y-4 text-slate-300">
+                <li>
+                  <strong className="text-gray-100">Establish your baseline need:</strong> Determine your optimal daily sleep requirement (typically 8 hours).
+                </li>
+                <li>
+                  <strong className="text-gray-100">Log actual daily sleep:</strong> Note the actual hours you slept each night for 7 days.
+                </li>
+                <li>
+                  <strong className="text-gray-100">Calculate individual deficits:</strong> For each day, subtract actual sleep from your baseline (e.g., 8 hours - 6 hours = 2 hours debt). If you slept more, you subtract the surplus.
+                </li>
+                <li>
+                  <strong className="text-gray-100">Sum up total sleep debt:</strong> Add all 7 days' deficits together to determine your total weekly sleep debt.
+                </li>
+              </ol>
+            </div>
+
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4" id="step4">
+              How to Safely Recover from Sleep Deprivation
+            </h2>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              If your sleep deprivation calculator reveals a high sleep debt, you must repay the deficit gradually and strategically rather than all at once:
+            </p>
+
+            <div className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 py-1">
+              <ul className="list-disc pl-6 space-y-3 text-slate-300">
+                <li>
+                  <strong className="text-gray-100">Extend sleep by 1 to 2 hours:</strong> Instead of sleeping late, try going to bed 1 to 2 hours earlier over several consecutive nights. This lets you safely repay sleep debt.
+                </li>
+                <li>
+                  <strong className="text-gray-100">Take disciplined power naps:</strong> An early afternoon power nap lasting exactly 20 minutes can restore mental focus and energy without entering deep stages of sleep that disrupt nightly rest.
+                </li>
+                <li>
+                  <strong className="text-gray-100">Keep bedroom habits pristine:</strong> Maintaining perfect sleep hygiene—keeping bedrooms dark, cold, quiet, and phone-free—enhances sleep quality and efficiency, shortening recovery time.
+                </li>
+              </ul>
+            </div>
+
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4">
+              Final Thoughts on Sleep Debt Recovery
+            </h2>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 pb-6">
+              Sleep debt acts like a financial debit card—the more hours you borrow, the harder it is to recover. Rather than letting chronic fatigue drain your daytime energy and cognitive performance, calculate your sleep debt baseline. Repay your deficit gradually, utilize a sleep cycle calculator, and keep your circadian rhythm in balance for sustained, healthy energy.
+            </p>
+
+            {/* Dynamic Social Sharing & Calculation Widget */}
+            <ShareScheduleWidget />
+          </article>
+        )}
+
+        {/* Blog 40: Bedtime Calculator by Age: Sleep Schedules for Every Stage of Life */}
+        {(isBlog40 || isAll) && (
+          <article className="space-y-6 select-text text-slate-300 pt-1">
+            <header className="space-y-3 pb-6 border-b border-white/10">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-100 tracking-tight leading-tight">
+                Bedtime Calculator by Age: Sleep Schedules for Every Stage of Life
+              </h1>
+              {isAll && (
+                <div className="text-sm font-bold tracking-wider text-blue-400 uppercase">
+                  Sleep Science • 7 min read
+                </div>
+              )}
+            </header>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              Have you ever wondered why your toddler bounces out of bed at dawn, your teenager refuses to wake up before noon, or you find yourself waking up at 5:00 AM as an adult? Sleeptime requirements are anything but static. They evolve constantly over our lifespans.
+            </p>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              A scientific <strong>bedtime calculator by age</strong> solves these dynamic discrepancies. By aligning circadian biology and optimal sleep durations, researchers and healthcare professionals have established highly personalized sleep cycle recommenders. Let's break down the optimal sleep charts and cycle alignment for every stage of human development.
+            </p>
+
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4" id="step1">
+              Developing Age-by-Age Sleep Duration Targets
+            </h2>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              According to major clinical sleep organizations (such as the American Academy of Sleep Medicine), recommended overall nightly sleep spans change dramatically as neural pathways develop:
+            </p>
+
+            <div className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 py-1">
+              <ul className="list-disc pl-6 space-y-3 text-slate-300">
+                <li>
+                  <strong className="text-gray-100">Toddlers (1 to 2 Years):</strong> 11 to 14 hours of total daily rest. This is often split between standard night sleep and a structured afternoon nap.
+                </li>
+                <li>
+                  <strong className="text-gray-100">Preschoolers (3 to 5 Years):</strong> 10 to 13 hours. Perfect for cognitive neural pruning and active physical stamina building.
+                </li>
+                <li>
+                  <strong className="text-gray-100">School-age Kids (6 to 12 Years):</strong> 9 to 11 hours. Essential for memory consolidations, growth hormone production, and academic engagement.
+                </li>
+                <li>
+                  <strong className="text-gray-100">Teenagers (13 to 18 Years):</strong> 8 to 10 hours. Adolescents shift biologically to a later sleep-wake cycle phase. They must adjust their bedtimes accordingly.
+                </li>
+                <li>
+                  <strong className="text-gray-100">Adults (19 to 64 Years):</strong> 7 to 9 hours (typically 5 to 6 full 90-minute cycles). This promotes emotional recovery, metabolic stability, and heart fitness.
+                </li>
+                <li>
+                  <strong className="text-gray-100">Seniors (65+ Years):</strong> 7 to 8 hours. While sleep stays biologically lighter and more fragmented in older adults, healthy consistency remains critical to support cognitive longevity.
+                </li>
+              </ul>
+            </div>
+
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4" id="step2">
+              Why Does Your Bedtime Align to Sleep Cycle Groups?
+            </h2>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              Regardless of your specific category, a bedtime calculator by age functions by breaking sleep down into repeating 90-minute sequences. Every complete loop transitions you through light, deep, and rapid eye movement (REM) phases. Waking at the end of a full loop minimizes groggy mornings.
+            </p>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              For healthy adults, we prioritize getting either 7.5 hours (5 sleep cycles) or 9.0 hours (6 sleep cycles) of sleep. Choosing a bedtime calculator by age is made simpler by utilizing our integrated <Link to="/" className="text-violet-400 hover:text-violet-300 underline underline-offset-4">Sleep Calculator</Link> which lets you reverse-engineer the precise minutes you should hit your mattress to align with these limits.
+            </p>
+
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4" id="step3">
+              Step-by-Step: How to Calculate Your Ideal Bedtime by Age
+            </h2>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              If you want to construct customized wellness parameters manually, follow this clinically supported progression:
+            </p>
+
+            <div className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 py-1">
+              <ol className="list-decimal pl-6 space-y-4 text-slate-300">
+                <li>
+                  <strong className="text-gray-100">Determine Your Specific Target Hours:</strong> Locate your age-specific target above (e.g., an adult aiming for 7.5 hours of solid sleep).
+                </li>
+                <li>
+                  <strong className="text-gray-100">Identify Your Morning Wake-Up Time:</strong> Pick a fixed wake-up hour (e.g., 6:30 AM). Keep this alarm consistent even on Saturdays or Sundays.
+                </li>
+                <li>
+                  <strong className="text-gray-100">Count Backwards in 90-Minute Cycles:</strong> To achieve 7.5 hours of sleep, count back 5 intervals to land precisely at 11:00 PM.
+                </li>
+                <li>
+                  <strong className="text-gray-100">Account for Falling Asleep (Sleep Latency):</strong> Subtract the average 15 minutes it takes a normal human to fall asleep. Your optimal bedtime window is 10:45 PM.
+                </li>
+              </ol>
+            </div>
+
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4">
+              AEO Direct Q&A: Calculating Sleep by Age Groups
+            </h2>
+
+            <div className="space-y-4 pt-2">
+              <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+                <strong className="text-gray-100 block mb-1">Q: Does an older adult require less overall sleep?</strong>
+                A: No. While medical records show seniors sleep for fewer hours during the night, their overall biological need for rest remains around 7 to 8 hours. The decrease is due to neurological changes making deep sleep harder to maintain, causing more early awakenings.
+              </p>
+              <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+                <strong className="text-gray-100 block mb-1">Q: Are teenager sleeping schedules lazy or biological?</strong>
+                A: They are biological. During adolescent puberty, melatonin secretion shifts about two hours later in the evening. This makes fall-asleep times before 11:00 PM physically challenging. Consequently, teenagers naturally need to sleep in later in the mornings to reach their baseline.
+              </p>
+            </div>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 pb-6">
+              Transitioning sleep schedules to match age-specific circadian trends is one of the most effective ways to cure constant daytime fatigue. Balance your body's biological clock, maintain consistent sleep targets, and enjoy mornings filled with energy.
+            </p>
+
+            {/* Dynamic Social Sharing & Calculation Widget */}
+            <ShareScheduleWidget />
+          </article>
+        )}
+
+        {/* Blog 41: Shift Work Sleep Calculator: How to Design a Healthy Night Shift Sleep Schedule */}
+        {(isBlog41 || isAll) && (
+          <article className="space-y-6 select-text text-slate-300 pt-1">
+            <header className="space-y-3 pb-6 border-b border-white/10">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-100 tracking-tight leading-tight">
+                Shift Work Sleep Calculator: Design a Healthy Night Shift Sleep Routine
+              </h1>
+              {isAll && (
+                <div className="text-sm font-bold tracking-wider text-blue-400 uppercase">
+                  Sleep Health • 7 min read
+                </div>
+              )}
+            </header>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              Working the night shift, graveyard shifts, or rotating schedules places your physical body in direct conflict with nature. Humans are naturally diurnal creatures. Our cells, hormones, and organs rely on Sunlight cues to coordinate deep recovery at night and alert focus during the day.
+            </p>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              This biological conflict can lead to shift work sleep disorder (SWSD), characterized by chronic insomnias and daytime fatigue. Fortunately, a specialized <strong>shift work sleep calculator</strong> method allows non-traditional professionals to artificialized schedules, align sleep cycles during midday hours, and wake up feeling alert.
+            </p>
+
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4" id="step1">
+              How Does Shift Work Disrupt Your Circadian Biology?
+            </h2>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              Inside your brain, the suprachiasmatic nucleus (SCN) acts as a primary master clock. The SCN registers light entering your eyes and suppresses melatonin, the hormone that promotes sleep. When you work at night and sleep during the day, your eyes register morning sunrise during your commute home, which signals your brain to wake up. This leaves you feeling restless and wired when you try to sleep.
+            </p>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              To minimize this, shift workers should use dark-room environmental triggers and structured 90-minute sleep cycles. If you routinely find yourself <Link to="/tired-after-8-hours-of-sleep" className="text-violet-400 hover:text-violet-300 underline underline-offset-4">tired after 8 hours of sleep</Link>, the culprit is likely a disrupted circadian rhythm rather than an issue with sleep duration.
+            </p>
+
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4" id="step2">
+              Step-by-Step: How to Calculate a Night Shift Sleep Schedule
+            </h2>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              To design a healthy sleeping routine around your work shifts, follow this science-backed process:
+            </p>
+
+            <div className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 py-1">
+              <ol className="list-decimal pl-6 space-y-4 text-slate-300">
+                <li>
+                  <strong className="text-gray-100">Set Your Wake-Up Target:</strong> Identify the time you need to wake up before your night shift begins (e.g., 5:00 PM).
+                </li>
+                <li>
+                  <strong className="text-gray-100">Choose Your Sleep Schedule Style:</strong> 
+                  <ul className="list-disc pl-6 mt-1.5 space-y-1 text-slate-400 text-sm sm:text-base">
+                    <li><strong className="text-gray-300">Continuous Block Rest:</strong> Sleep immediately after returning home, from 8:30 AM to 4:00 PM (equivalent to 5 full cycles).</li>
+                    <li><strong className="text-gray-300">Split-Phase Sleep:</strong> Rest for 4 hours in the morning (from 9:00 AM to 1:00 PM), and take a 90-minute sleep cycle nap later in the afternoon (from 3:30 PM to 5:00 PM).</li>
+                  </ul>
+                </li>
+                <li>
+                  <strong className="text-gray-100">Minimize Morning Light Exposure:</strong> Wear dark sunglasses or blue-blocking lenses during your morning commute home. This blocks light cues from reaching your brain's biological clock.
+                </li>
+                <li>
+                  <strong className="text-gray-100">Opt for a Cold, Quiet Bedroom:</strong> Set your bedroom temperature between 60°F and 67°F (15°C to 19°C) and use heavy blackout curtains to simulate nighttime darkness.
+                </li>
+              </ol>
+            </div>
+
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4" id="step3">
+              Direct AEO-Optimized Q&A for Night Shift Sleep
+            </h2>
+
+            <div className="space-y-4 pt-2">
+              <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+                <strong className="text-gray-100 block mb-1">Q: Should I maintain my night shift sleep schedule on my days off?</strong>
+                A: Ideally, yes. Shifting your sleep times back and forth on weekends creates "social jet lag." This disrupts your circadian rhythm and leads to insomnia. If you can't keep the same schedule, try a split sleep approach: sleep late on the morning of your first day off, and take a power nap before returning to work.
+              </p>
+              <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+                <strong className="text-gray-100 block mb-1">Q: Does split sleep provide the same recovery quality as continuous block sleep?</strong>
+                A: Under ideal conditions, continuous sleep blocks are best. However, split-phase sleep can be a useful alternative for shift workers struggling to fall asleep. It helps ensure they accumulate a total of 7 to 8 hours of sleep per 24-hour period.
+              </p>
+            </div>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 pb-6">
+              Night shifts present unique challenges, but using a shift sleep schedule method lets you design structured sleep windows that protect your longevity, cognitive sharpness, and overall physical health.
+            </p>
+
+            {/* Dynamic Social Sharing & Calculation Widget */}
+            <ShareScheduleWidget />
+          </article>
+        )}
+
+        {/* Blog 42: ADHD Sleep Schedule Calculator: Calm Your Mind and Build a Consistent Routine */}
+        {(isBlog42 || isAll) && (
+          <article className="space-y-6 select-text text-slate-300 pt-1">
+            <header className="space-y-3 pb-6 border-b border-white/10">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-100 tracking-tight leading-tight">
+                ADHD Sleep Schedule Calculator: Calm Your Mind and Build Consistency
+              </h1>
+              {isAll && (
+                <div className="text-sm font-bold tracking-wider text-blue-400 uppercase">
+                  Productivity • 7 min read
+                </div>
+              )}
+            </header>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              For individuals with ADHD (Attention Deficit Hyperactivity Disorder), bedtime can often feel like a daily battle. As nighttime approaches, many experience a hyperactive rush of thoughts, late-night creative energy, and evening anxiety.
+            </p>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              This sleep-onset lag is closely linked to Delayed Sleep Phase Syndrome (DSPS), a circadian biological shift common in ADHD where the body releases melatonin 2 to 3 hours later than average. An <strong>adhd sleep schedule calculator</strong> method provides structured bedtime guide rails to help ease this transition and establish a healthy sleep routine.
+            </p>
+
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4" id="step1">
+              Why Does Bedtime Elicit Anxiety in the ADHD Mind?
+            </h2>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              Bedtime requires sensory deprivation—lying alone in a dark room with minimal external stimulation. For an under-stimulated ADHD brain, this lack of sensory input can lead to racing thoughts as the mind searches for stimulation. This makes it difficult to settle down and sleep.
+            </p>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              To quiet late-night brain activity, we must replace mental clutter with structured, predictable routines. If you find yourself struggling with <Link to="/fix-irregular-sleep-schedule" className="text-violet-400 hover:text-violet-300 underline underline-offset-4">fix sleep schedule</Link> goals, having clear guide rails is an essential step toward restoring consistency.
+            </p>
+
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4" id="step2">
+              Step-by-Step: How to Formulate an ADHD Sleep Schedule
+            </h2>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              Ready to take control of your evening routine? Use this step-by-step method to organize your bedtimes around natural sleep cycles:
+            </p>
+
+            <div className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 py-1">
+              <ol className="list-decimal pl-6 space-y-4 text-slate-300">
+                <li>
+                  <strong className="text-gray-100">Set an Uncompromised Wake-Up Time:</strong> Start by picking a fixed wake-up time (e.g., 7:00 AM) and stick to it daily. This helps stable your body's biological clock.
+                </li>
+                <li>
+                  <strong className="text-gray-100">Calculate Bedtimes in 90-Minute Blocks:</strong> 
+                  <ul className="list-disc pl-6 mt-1.5 space-y-1 text-slate-400 text-sm sm:text-base">
+                    <li>For 7.5 hours of sleep (5 cycles): Count back to 11:30 PM.</li>
+                    <li>For 9 hours of sleep (6 cycles): Count back to 10:00 PM.</li>
+                  </ul>
+                </li>
+                <li>
+                  <strong className="text-gray-100">Subtract an ADHD-Specific Fall-Asleep Buffer:</strong> Since sleep onset latency is often longer with ADHD, subtract a 30 to 45-minute buffer instead of the standard 15 minutes. To sleep by 11:30 PM, aim to be in bed by 10:45 PM.
+                </li>
+                <li>
+                  <strong className="text-gray-100">Implement a Mandatory Evening Transition Checklist:</strong> Start winding down one hour before bed. Shut down digital screens, dim building lights, run a warm bath, and put on soft pink or white ambient noise.
+                </li>
+              </ol>
+            </div>
+
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4" id="step3">
+              AEO Direct Q&A: Quieting the Nighttime ADHD Mind
+            </h2>
+
+            <div className="space-y-4 pt-2">
+              <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+                <strong className="text-gray-100 block mb-1">Q: Does pink noise or white noise work better for calming ADHD brains before bed?</strong>
+                A: Many find pink or brown noise particularly soothing. Unlike high-frequency white noise, pink and brown noise focus on deeper frequencies (like a low rumble of rain or wind). This helps mask distracting background sounds and provides a relaxing backdrop for an overactive mind.
+              </p>
+              <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+                <strong className="text-gray-100 block mb-1">Q: Can a weighted blanket improve sleep with ADHD?</strong>
+                A: Yes. Weighted blankets leverage deep pressure stimulation (DPS) to encourage cortisol regulation and elevate melatonin, providing physical comfort that helps settle late-night jitteriness.
+              </p>
+            </div>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 pb-6">
+              Bedtime struggles don't have to be a permanent obstacle. By using an ADHD sleep schedule approach, you can create a structured evening routine that works with your brain, making it easier to slip into restful transitions and wake up refreshed.
             </p>
 
             {/* Dynamic Social Sharing & Calculation Widget */}

@@ -9,6 +9,8 @@ const CROSS_LINKS = [
   { keyword: 'sleep calculator how much sleep do i need', path: '/' },
 
   // 35-39 Characters
+  { keyword: 'sleep deprivation calculator recovery', path: '/sleep-deprivation-calculator-recovery-guide' },
+  { keyword: 'rem sleep calculator bedtime cycles', path: '/rem-sleep-calculator-bedtime-cycles' },
   { keyword: 'how much sleep should i get calculator', path: '/' },
   { keyword: 'sleep calculator based on wake up time', path: '/' },
   { keyword: 'sleep calculator how long did i sleep', path: '/' },
@@ -37,6 +39,7 @@ const CROSS_LINKS = [
   { keyword: 'sleep calculator when to wake up', path: '/' },
   { keyword: 'total hours of sleep calculator', path: '/' },
   { keyword: 'get 8 hours of sleep calculator', path: '/' },
+  { keyword: 'adhd sleep schedule calculator', path: '/adhd-sleep-schedule-calculator-tips' },
   { keyword: 'fix an irregular sleep schedule', path: '/fix-irregular-sleep-schedule' },
   { keyword: 'sleep schedule for productivity', path: '/sleep-schedule-for-productivity' },
   { keyword: 'consistent sleep and wake times', path: '/consistent-sleep-schedule-benefits' },
@@ -46,9 +49,12 @@ const CROSS_LINKS = [
 
   // 25-29 Characters
   { keyword: 'why am i tired after sleeping', path: '/why-am-i-tired-after-sleeping' },
+  { keyword: 'shift work sleep calculator', path: '/shift-work-sleep-calculator-guide' },
+  { keyword: 'bedtime calculator by age', path: '/bedtime-calculator-by-age' },
   { keyword: 'best time to sleep calculator', path: '/' },
   { keyword: 'sleep calculator wake up time', path: '/' },
   { keyword: 'sleep habits for productivity', path: '/sleep-schedule-for-productivity' },
+  { keyword: 'sleep deprivation calculator', path: '/sleep-deprivation-calculator-recovery-guide' },
   { keyword: 'waking up tired after 8 hours', path: '/tired-after-8-hours-of-sleep' },
   { keyword: 'sleep hours calculator by age', path: '/how-much-sleep-do-you-need' },
   { keyword: 'free sleep calculator by age', path: '/how-much-sleep-do-you-need' },
@@ -112,7 +118,7 @@ const CROSS_LINKS = [
   { keyword: '90 minute sleep cycle', path: '/why-90-minute-sleep-cycles-matter' },
   { keyword: 'sleep calculator age', path: '/how-much-sleep-do-you-need' },
   { keyword: 'takes to fall asleep', path: '/how-long-does-it-take-to-fall-asleep' },
-  { keyword: 'rem sleep calculator', path: '/why-90-minute-sleep-cycles-matter' },
+  { keyword: 'rem sleep calculator', path: '/rem-sleep-calculator-bedtime-cycles' },
   { keyword: 'sleep calculator app', path: '/' },
 
   // 15-19 Characters

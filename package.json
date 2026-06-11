@@ -6,8 +6,9 @@
   "scripts": {
     "dev": "tsx server.ts",
     "start": "NODE_ENV=production node dist/server.js",
+    "build:blog": "esbuild scripts/generate-blog-static.ts --bundle --platform=node --format=cjs --target=node22 --outfile=scripts/generate-blog-static.cjs && node scripts/generate-blog-static.cjs",
     "build:server": "esbuild server.ts --bundle --platform=node --format=esm --target=node22 --outfile=dist/server.js --external:express",
-    "build": "vite build && node generate-sitemap.cjs && npm run build:server",
+    "build": "npm run build:blog && vite build && npx tsx scripts/generate-static-html-pages.ts && node generate-sitemap.cjs && npm run build:server",
     "preview": "NODE_ENV=production node dist/server.js",
     "clean": "rm -rf dist",
     "lint": "tsc --noEmit"

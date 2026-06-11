@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Link } from "react-router-dom";
 import { ChevronDown, Calendar, Clock, ArrowRight, BookOpen, Star, Quote } from "lucide-react";
-import { BLOG_POSTS } from "../pages/Blog";
+import { BLOG_POSTS_META } from "../blogMetadata";
 
 export default function SleepGuideAndFAQ() {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
@@ -58,18 +58,21 @@ export default function SleepGuideAndFAQ() {
     }
   ];
 
-  const getBlogTimestamp = (dateStr: string) => {
-    try {
-      const d = new Date(dateStr);
-      if (!isNaN(d.getTime())) return d.getTime();
-    } catch (e) {
-      // Fallback
-    }
-    return 0;
-  };
-
-  const latestBlogs = [...BLOG_POSTS]
-    .sort((a, b) => getBlogTimestamp(b.date) - getBlogTimestamp(a.date))
+  const latestBlogs = Object.entries(BLOG_POSTS_META)
+    .map(([slug, meta]) => ({
+      slug,
+      title: meta.title,
+      description: meta.description,
+      rawDate: meta.date,
+      date: new Date(meta.date + "T00:00:00").toLocaleDateString("en-US", {
+        month: "short",
+        day: "numeric",
+        year: "numeric"
+      }),
+      readTime: "5 min read",
+      category: meta.category
+    }))
+    .sort((a, b) => b.rawDate.localeCompare(a.rawDate))
     .slice(0, 3);
 
   return (

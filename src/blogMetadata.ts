@@ -264,6 +264,36 @@ export const BLOG_POSTS_META: Record<string, { title: string; description: strin
     description: "Discover how a sleep calculator can help students improve focus, memory, productivity, and exam performance through better sleep habits and sleep cycle planning.",
     date: "2026-06-04",
     category: "Productivity"
+  },
+  "rem-sleep-calculator-bedtime-cycles": {
+    title: "REM Sleep Calculator: How to Calculate Bedtime Using Sleep Cycles",
+    description: "Learn how to use a REM sleep calculator to calculate your optimum bedtime. Maximize restorative REM sleep, align sleep cycles, and wake up refreshed.",
+    date: "2026-06-11",
+    category: "Sleep Science"
+  },
+  "sleep-deprivation-calculator-recovery-guide": {
+    title: "Sleep Deprivation Calculator: How to Calculate Sleep Debt & Recovery Hours",
+    description: "Calculate your cumulative sleep debt with our sleep deprivation calculator. Learn how much recovery sleep you need and how to safely repay lost sleep hours.",
+    date: "2026-06-11",
+    category: "Sleep Health"
+  },
+  "bedtime-calculator-by-age": {
+    title: "Bedtime Calculator by Age: Sleep Schedules for Every Stage of Life",
+    description: "Use our science-backed bedtime calculator by age to determine the ideal sleep window and age-specific sleep cycle targets from childhood to older adulthood.",
+    date: "2026-06-11",
+    category: "Sleep Science"
+  },
+  "shift-work-sleep-calculator-guide": {
+    title: "Shift Work Sleep Calculator: How to Design a Healthy Night Shift Sleep Schedule",
+    description: "Learn how a shift work sleep calculator helps night shift workers align daytime sleep with circadian rhythms. Fix daytime fatigue and sleeping patterns.",
+    date: "2026-06-11",
+    category: "Sleep Health"
+  },
+  "adhd-sleep-schedule-calculator-tips": {
+    title: "ADHD Sleep Schedule Calculator: Calm Your Mind and Build a Consistent Routine",
+    description: "Struggling with sleep onset and ADHD? Learn how an ADHD sleep schedule calculator can help you design consistency, reduce evening anxiety, and feel refreshed.",
+    date: "2026-06-11",
+    category: "Productivity"
   }
 };
 
