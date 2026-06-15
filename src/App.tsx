@@ -6,12 +6,13 @@ import { StarryBackground } from './components/StarryBackground';
 
 import Home from './pages/Home';
 import { OpenGraphTags } from './components/OpenGraphTags';
-import Terms from './pages/Terms';
-import Privacy from './pages/Privacy';
-import Blog from './pages/Blog';
-import Contact from './pages/Contact';
-import About from './pages/About';
-import NotFound from './pages/NotFound';
+
+const Terms = lazy(() => import('./pages/Terms'));
+const Privacy = lazy(() => import('./pages/Privacy'));
+const Blog = lazy(() => import('./pages/Blog'));
+const Contact = lazy(() => import('./pages/Contact'));
+const About = lazy(() => import('./pages/About'));
+const NotFound = lazy(() => import('./pages/NotFound'));
 
 
 // Home Guides

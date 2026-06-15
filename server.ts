@@ -372,7 +372,53 @@ function injectSEOMetadata(html: string, originalPath: string): string {
     title = MAIN_PAGES_META["/"].title;
     description = MAIN_PAGES_META["/"].description;
     canonicalUrl = MAIN_PAGES_META["/"].canonicalUrl;
-    schemas.push(defaultAppSchema);
+    schemas.push({
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "@id": "https://sleepcalculater.online/#website",
+      "url": "https://sleepcalculater.online/",
+      "name": "Sleep Calculator",
+      "alternateName": [
+        "Sleep Calculator",
+        "Sleep Cycle Calculator",
+        "Bedtime Calculator",
+        "REM Sleep Calculator"
+      ],
+      "publisher": {
+        "@id": "https://sleepcalculater.online/#organization"
+      }
+    });
+    schemas.push({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "@id": "https://sleepcalculater.online/#organization",
+      "name": "Sleep Calculator",
+      "url": "https://sleepcalculater.online/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://sleepcalculater.online/favicon.png",
+        "width": "512",
+        "height": "512"
+      },
+      "sameAs": [
+        "https://sleepcalculater.online/"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "support@sleepcalculater.online",
+        "contactType": "customer support"
+      }
+    });
+    schemas.push({
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "@id": "https://sleepcalculater.online/#webapplication",
+      "name": "Sleep Calculator",
+      "url": "https://sleepcalculater.online/",
+      "description": "Calculate the exact time you need to go to bed or wake up using 90-minute REM sleep intervals to prevent morning grogginess.",
+      "applicationCategory": "HealthAndFitnessApplication",
+      "operatingSystem": "All"
+    });
   } else if (MAIN_PAGES_META[reqPath]) {
     title = MAIN_PAGES_META[reqPath].title;
     description = MAIN_PAGES_META[reqPath].description;

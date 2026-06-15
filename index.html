@@ -534,12 +534,52 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "WebApplication",
-        "name": "Sleep Calculator",
-        "url": "https://sleepcalculater.online/",
-        "description": "Calculate the exact time you need to go to bed or wake up using 90-minute REM sleep intervals to prevent morning grogginess.",
-        "applicationCategory": "HealthAndFitnessApplication",
-        "operatingSystem": "All"
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://sleepcalculater.online/#website",
+            "url": "https://sleepcalculater.online/",
+            "name": "Sleep Calculator",
+            "alternateName": [
+              "Sleep Calculator",
+              "Sleep Cycle Calculator",
+              "Bedtime Calculator",
+              "REM Sleep Calculator"
+            ],
+            "publisher": {
+              "@id": "https://sleepcalculater.online/#organization"
+            }
+          },
+          {
+            "@type": "Organization",
+            "@id": "https://sleepcalculater.online/#organization",
+            "name": "Sleep Calculator",
+            "url": "https://sleepcalculater.online/",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://sleepcalculater.online/favicon.png",
+              "width": "512",
+              "height": "512"
+            },
+            "sameAs": [
+              "https://sleepcalculater.online/"
+            ],
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "email": "support@sleepcalculater.online",
+              "contactType": "customer support"
+            }
+          },
+          {
+            "@type": "WebApplication",
+            "@id": "https://sleepcalculater.online/#webapplication",
+            "name": "Sleep Calculator",
+            "url": "https://sleepcalculater.online/",
+            "description": "Calculate the exact time you need to go to bed or wake up using 90-minute REM sleep intervals to prevent morning grogginess.",
+            "applicationCategory": "HealthAndFitnessApplication",
+            "operatingSystem": "All"
+          }
+        ]
       }
     </script>
   </head>
@@ -721,40 +761,60 @@
 
     <!-- Google tag (gtag.js) & Google AdSense - Deferred loading -->
     <script type="module">
-      window.addEventListener("load", () => {
-        const loadGA = () => {
-          const script = document.createElement("script");
-          script.src = "https://www.googletagmanager.com/gtag/js?id=G-GS03RDZPNP";
-          script.async = true;
-          document.body.appendChild(script);
+      let loaded = false;
+      const loadGA = () => {
+        const script = document.createElement("script");
+        script.src = "https://www.googletagmanager.com/gtag/js?id=G-GS03RDZPNP";
+        script.async = true;
+        document.body.appendChild(script);
 
-          window.dataLayer = window.dataLayer || [];
-          function gtag() {
-            dataLayer.push(arguments);
-          }
-          gtag("js", new Date());
-          gtag("config", "G-GS03RDZPNP");
-        };
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+          dataLayer.push(arguments);
+        }
+        gtag("js", new Date());
+        gtag("config", "G-GS03RDZPNP");
+      };
 
-        const loadAdSense = () => {
-          const script = document.createElement("script");
-          script.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9951019772606987";
-          script.async = true;
-          script.crossOrigin = "anonymous";
-          document.head.appendChild(script);
-        };
+      const loadAdSense = () => {
+        const script = document.createElement("script");
+        script.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9951019772606987";
+        script.async = true;
+        script.crossOrigin = "anonymous";
+        document.head.appendChild(script);
+      };
 
-        const loadDeferred = () => {
-          loadGA();
-          loadAdSense();
-        };
+      const loadThirdPartyScripts = () => {
+        if (loaded) return;
+        loaded = true;
+
+        // Clean up triggering events
+        triggerEvents.forEach(event => {
+          window.removeEventListener(event, loadThirdPartyScripts, { passive: true });
+        });
+        clearTimeout(fallbackTimeout);
 
         if ("requestIdleCallback" in window) {
-          requestIdleCallback(loadDeferred);
+          requestIdleCallback(() => {
+            loadGA();
+            loadAdSense();
+          });
         } else {
-          setTimeout(loadDeferred, 150);
+          setTimeout(() => {
+            loadGA();
+            loadAdSense();
+          }, 100);
         }
+      };
+
+      const triggerEvents = ["scroll", "click", "keydown", "mousemove", "touchstart"];
+
+      triggerEvents.forEach(event => {
+        window.addEventListener(event, loadThirdPartyScripts, { passive: true });
       });
+
+      // Strict performance safety ceiling fallback
+      const fallbackTimeout = setTimeout(loadThirdPartyScripts, 3500);
     </script>
   </body>
 </html>

@@ -6,11 +6,11 @@ import { Helmet } from "react-helmet-async";
 import { getCanonicalUrl } from "../lib/seo";
 import { OpenGraphTags } from "../components/OpenGraphTags";
 import TimePicker from "../components/TimePicker";
-import SleepCycleChart from "../components/SleepCycleChart";
+const SleepCycleChart = lazy(() => import("../components/SleepCycleChart"));
 
-import SleepGuideAndFAQ from "../components/SleepGuideAndFAQ";
-import { QuickSleepTips } from "../components/QuickSleepTips";
-import { SleepJournal } from "../components/SleepJournal";
+const SleepGuideAndFAQ = lazy(() => import("../components/SleepGuideAndFAQ"));
+const QuickSleepTips = lazy(() => import("../components/QuickSleepTips").then((m) => ({ default: m.QuickSleepTips })));
+const SleepJournal = lazy(() => import("../components/SleepJournal").then((m) => ({ default: m.SleepJournal })));
 
 const FeedbackModal = lazy(() => import("../components/FeedbackModal").then((m) => ({ default: m.FeedbackModal })));
 
@@ -513,11 +513,22 @@ export default function Home() {
               "@graph": [
                 {
                   "@type": "WebSite",
+                  "@id": "https://sleepcalculater.online/#website",
                   "name": "Sleep Calculator",
-                  "url": "https://sleepcalculater.online/"
+                  "alternateName": [
+                    "Sleep Calculator",
+                    "Sleep Cycle Calculator",
+                    "Bedtime Calculator",
+                    "REM Sleep Calculator"
+                  ],
+                  "url": "https://sleepcalculater.online/",
+                  "publisher": {
+                    "@id": "https://sleepcalculater.online/#organization"
+                  }
                 },
                 {
                   "@type": "Organization",
+                  "@id": "https://sleepcalculater.online/#organization",
                   "name": "Sleep Calculator",
                   "url": "https://sleepcalculater.online/",
                   "logo": "https://sleepcalculater.online/favicon.png",
@@ -1101,13 +1112,15 @@ export default function Home() {
                       </div>
 
                       {mode !== "wake" && mode !== "bed" && mode !== "rem" && (
-                        <SleepCycleChart
-                          results={results}
-                          mode={mode as "wake" | "bed" | "nap" | "rem"}
-                          time={time}
-                          ageGroup={ageGroup}
-                          isRecommended={isRecommended}
-                        />
+                        <Suspense fallback={<div className="h-[300px] w-full animate-pulse bg-[#7C3AED]/5 rounded-2xl border border-[#7C3AED]/10 flex items-center justify-center text-sm text-[#7C3AED]/60">Analyzing sleep stages and charting REM cycles...</div>}>
+                          <SleepCycleChart
+                            results={results}
+                            mode={mode as "wake" | "bed" | "nap" | "rem"}
+                            time={time}
+                            ageGroup={ageGroup}
+                            isRecommended={isRecommended}
+                          />
+                        </Suspense>
                       )}
                     </>
                   )}
@@ -1178,16 +1191,19 @@ export default function Home() {
         )}
       </AnimatePresence>
 
-      {/* Below-the-fold content loaded synchronously for instant load and zero layout shift */}
-      <div className="w-full">
-        {/* Quick Sleep Tips section */}
-        <QuickSleepTips />
+      {/* Below-the-fold content loaded asynchronously with Suspense for optimized PageSpeed and first-input responsiveness */}
+      <div className="w-full space-y-8">
+        <Suspense fallback={<div className="min-h-[100px] animate-pulse bg-[#7C3AED]/5 rounded-2xl border border-[#7C3AED]/10 m-4 flex items-center justify-center text-xs opacity-50">Loading Quick Sleep Tips...</div>}>
+          <QuickSleepTips />
+        </Suspense>
 
-        {/* Personal Sleep Journal section */}
-        <SleepJournal />
+        <Suspense fallback={<div className="min-h-[150px] animate-pulse bg-[#7C3AED]/5 rounded-2xl border border-[#7C3AED]/10 m-4 flex items-center justify-center text-xs opacity-50">Preparing Sleep & Mood Journaling Applet...</div>}>
+          <SleepJournal />
+        </Suspense>
 
-        {/* Sleep Guide & FAQ Section below the Sleep Calculator */}
-        <SleepGuideAndFAQ />
+        <Suspense fallback={<div className="min-h-[200px] animate-pulse bg-[#7C3AED]/5 rounded-2xl border border-[#7C3AED]/10 m-4 flex items-center justify-center text-xs opacity-50">Compiling interactive sleep diagnostics database...</div>}>
+          <SleepGuideAndFAQ />
+        </Suspense>
       </div>
 
       {/* Floating Feedback Button */}

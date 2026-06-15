@@ -67,6 +67,7 @@ export function OpenGraphTags({
       <link rel="canonical" href={finalUrl} />
 
       {/* Dynamic Open Graph / Facebook Meta Tags */}
+      <meta property="og:site_name" content="Sleep Calculator" />
       <meta property="og:title" content={finalTitle} />
       <meta property="og:description" content={finalDescription} />
       <meta property="og:url" content={finalUrl} />
