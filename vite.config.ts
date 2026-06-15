@@ -11,7 +11,7 @@ export default defineConfig(({ mode }) => {
       react(),
       tailwindcss(),
       VitePWA({
-        injectRegister: "inline",
+        injectRegister: null,
         registerType: "autoUpdate",
         includeAssets: ["favicon.png", "robots.txt", "sitemap.xml"],
         manifest: {

@@ -43,7 +43,7 @@ export default function Privacy() {
         <div onContextMenu={(e) => e.stopPropagation()} className="select-text space-y-5 md:space-y-6 text-gray-600 dark:text-gray-300 leading-relaxed text-sm sm:text-base">
           <section>
             <p>
-              Welcome to SleepCalculator.online. Your privacy is important to us. This Privacy Policy explains what information we collect, how we use it, and how we protect it.
+              Welcome to sleepcalculater.online. Your privacy is important to us. This Privacy Policy explains what information we collect, how we use it, and how we protect it.
             </p>
           </section>
 

@@ -43,7 +43,7 @@ export default function Terms() {
         <div onContextMenu={(e) => e.stopPropagation()} className="select-text space-y-5 md:space-y-6 text-gray-600 dark:text-gray-300 leading-relaxed text-sm sm:text-base">
           <section>
             <p>
-              By accessing and using SleepCalculator.online, you agree to the following Terms and Conditions.
+              By accessing and using sleepcalculater.online, you agree to the following Terms and Conditions.
             </p>
           </section>
 
@@ -93,7 +93,7 @@ export default function Terms() {
 
           <section>
             <h2 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-gray-100 mb-3 font-serif">Limitation of Liability</h2>
-            <p className="mb-4">SleepCalculator.online shall not be liable for:</p>
+            <p className="mb-4">sleepcalculater.online shall not be liable for:</p>
             <ul className="list-disc pl-6 space-y-2">
               <li>Any direct or indirect damages</li>
               <li>Health-related decisions</li>

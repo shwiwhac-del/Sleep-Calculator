@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Link, Navigate, useParams } fro
 import { HelmetProvider } from 'react-helmet-async';
 import ScrollToTop from './components/ScrollToTop';
 import { StarryBackground } from './components/StarryBackground';
+import { usePerformanceMonitoring } from './hooks/usePerformanceMonitoring';
 
 import Home from './pages/Home';
 import { OpenGraphTags } from './components/OpenGraphTags';
@@ -13,6 +14,12 @@ const Blog = lazy(() => import('./pages/Blog'));
 const Contact = lazy(() => import('./pages/Contact'));
 const About = lazy(() => import('./pages/About'));
 const NotFound = lazy(() => import('./pages/NotFound'));
+
+const StudentSleepCalculator = lazy(() => import('./pages/StudentSleepCalculator'));
+const ShiftWorkSleepCalculator = lazy(() => import('./pages/ShiftWorkSleepCalculator'));
+const NinetyMinSleepCalculator = lazy(() => import('./pages/NinetyMinSleepCalculator'));
+const WakeUpBetweenCyclesCalculator = lazy(() => import('./pages/WakeUpBetweenCyclesCalculator'));
+const IdealBedtimeCalculator = lazy(() => import('./pages/IdealBedtimeCalculator'));
 
 
 // Home Guides
@@ -93,6 +100,7 @@ function PageBlogRedirect() {
 }
 
 function AppContent() {
+  usePerformanceMonitoring();
   const [isDarkMode] = useState(false);
 
   useEffect(() => {
@@ -118,7 +126,7 @@ function AppContent() {
                 <Route path="/best-time-to-sleep-and-wake-up" element={<Blog />} />
                 <Route path="/sleep-cycle-calculator-guide" element={<Blog />} />
                 <Route path="/why-90-minute-sleep-cycles-matter" element={<Blog />} />
-                <Route path="/how-to-wake-up-refreshed" element={<Blog />} />
+                <Route path="/how-to-wake-up-refreshed" element={<Navigate to="/wake-up-between-sleep-cycles" replace />} />
                 <Route path="/ideal-bedtime-for-adults" element={<Blog />} />
                 <Route path="/sleep-schedule-for-productivity" element={<Blog />} />
                 <Route path="/how-many-hours-of-sleep-is-healthy" element={<Blog />} />
@@ -147,15 +155,21 @@ function AppContent() {
                 <Route path="/sleep-and-memory-learning" element={<Navigate to="/sleep-and-memory" replace />} />
                 <Route path="/why-do-people-snore" element={<Blog />} />
                 <Route path="/sleep-calculator-by-age" element={<Navigate to="/how-much-sleep-do-you-need" replace />} />
-                <Route path="/90-minute-sleep-calculator" element={<Blog />} />
+                <Route path="/90-minute-sleep-calculator" element={<Navigate to="/sleep-cycle-calculator-90-minutes" replace />} />
                 <Route path="/best-sleep-schedule-for-productivity" element={<Navigate to="/sleep-schedule-for-productivity" replace />} />
-                <Route path="/sleep-calculator-for-students" element={<Navigate to="/best-bedtime-for-students" replace />} />
+                <Route path="/sleep-calculator-for-students" element={<StudentSleepCalculator />} />
                 <Route path="/why-am-i-tired-after-sleeping" element={<Blog />} />
                 <Route path="/rem-sleep-calculator-bedtime-cycles" element={<Blog />} />
                 <Route path="/sleep-deprivation-calculator-recovery-guide" element={<Blog />} />
-                <Route path="/bedtime-calculator-by-age" element={<Blog />} />
-                <Route path="/shift-work-sleep-calculator-guide" element={<Blog />} />
+                <Route path="/bedtime-calculator-by-age" element={<Navigate to="/ideal-bedtime-based-on-wake-up-time" replace />} />
+                <Route path="/shift-work-sleep-calculator-guide" element={<Navigate to="/sleep-calculator-for-night-shift-workers" replace />} />
                 <Route path="/adhd-sleep-schedule-calculator-tips" element={<Blog />} />
+
+                {/* The 5 Dedicated Interactive Calculator Landing Pages */}
+                <Route path="/sleep-calculator-for-night-shift-workers" element={<ShiftWorkSleepCalculator />} />
+                <Route path="/sleep-cycle-calculator-90-minutes" element={<NinetyMinSleepCalculator />} />
+                <Route path="/wake-up-between-sleep-cycles" element={<WakeUpBetweenCyclesCalculator />} />
+                <Route path="/ideal-bedtime-based-on-wake-up-time" element={<IdealBedtimeCalculator />} />
 
                 {/* Legacy /blog and /page/blog Prefixes redirected back to clean root paths */}
                 <Route path="/blog/:slug" element={<PageBlogRedirect />} />

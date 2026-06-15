@@ -89,61 +89,146 @@ export default function SleepGuideAndFAQ() {
         Our Sleep Calculator helps you find the best time to go to bed and the ideal wake up time based on natural sleep cycles. Whether you're looking for a Sleep Cycle Calculator, REM Sleep Calculator, Nap Calculator, or Sleep Calculator by Age, this tool helps you build a healthier sleep schedule and improve sleep quality.
       </p>
 
+      {/* Specialized Calculators Block */}
+      <div className="my-10" id="specialized-calculators-links">
+        <h3 className="text-xl sm:text-2xl font-extrabold text-[#111827] tracking-tight mb-3 flex items-center gap-2 font-sans">
+          <span className="p-1.5 bg-[#7C3AED]/10 rounded-lg inline-flex items-center justify-center">
+            <Star className="w-5 h-5 text-[#D4AF37] fill-[#D4AF37]" />
+          </span>
+          Specialized Sleep Planners & Calculators
+        </h3>
+        <p className="text-[#374151] mb-6 text-sm sm:text-base leading-relaxed">
+          Select one of our highly customized biological planners below to manage unique life schedules and circadian targets directly:
+        </p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3" id="links-grid">
+          <Link
+            to="/sleep-calculator-for-students"
+            className="group flex items-center justify-between p-4 bg-white rounded-2xl border border-neutral-200 hover:border-[#7C3AED] hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
+          >
+            <div className="flex flex-col gap-0.5">
+              <span className="font-bold text-sm sm:text-base text-[#111827] group-hover:text-[#7C3AED] transition-colors">Student & Exam Planner</span>
+              <span className="text-xs text-[#6B7280]">For teenagers, kids, and study routines</span>
+            </div>
+            <span className="p-1 bg-[#7C3AED]/5 group-hover:bg-[#7C3AED] rounded-lg transition-colors duration-200">
+              <ArrowRight className="w-4 h-4 text-[#7C3AED] group-hover:text-white transition-colors duration-200" />
+            </span>
+          </Link>
+          <Link
+            to="/sleep-calculator-for-night-shift-workers"
+            className="group flex items-center justify-between p-4 bg-white rounded-2xl border border-neutral-200 hover:border-[#7C3AED] hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
+          >
+            <div className="flex flex-col gap-0.5">
+              <span className="font-bold text-sm sm:text-base text-[#111827] group-hover:text-[#7C3AED] transition-colors">Night Shift Work Planner</span>
+              <span className="text-xs text-[#6B7280]">For doctors, security, and split shifts</span>
+            </div>
+            <span className="p-1 bg-[#7C3AED]/5 group-hover:bg-[#7C3AED] rounded-lg transition-colors duration-200">
+              <ArrowRight className="w-4 h-4 text-[#7C3AED] group-hover:text-white transition-colors duration-200" />
+            </span>
+          </Link>
+          <Link
+            to="/sleep-cycle-calculator-90-minutes"
+            className="group flex items-center justify-between p-4 bg-white rounded-2xl border border-neutral-200 hover:border-[#7C3AED] hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
+          >
+            <div className="flex flex-col gap-0.5">
+              <span className="font-bold text-sm sm:text-base text-[#111827] group-hover:text-[#7C3AED] transition-colors">90-Min Cycle Customizer</span>
+              <span className="text-xs text-[#6B7280]">Adjust latency & custom cycle durations</span>
+            </div>
+            <span className="p-1 bg-[#7C3AED]/5 group-hover:bg-[#7C3AED] rounded-lg transition-colors duration-200">
+              <ArrowRight className="w-4 h-4 text-[#7C3AED] group-hover:text-white transition-colors duration-200" />
+            </span>
+          </Link>
+          <Link
+            to="/wake-up-between-sleep-cycles"
+            className="group flex items-center justify-between p-4 bg-white rounded-2xl border border-neutral-200 hover:border-[#7C3AED] hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
+          >
+            <div className="flex flex-col gap-0.5">
+              <span className="font-bold text-sm sm:text-base text-[#111827] group-hover:text-[#7C3AED] transition-colors">Refresh Fatigue Planner</span>
+              <span className="text-xs text-[#6B7280]">Avoid waking up in deep slow-wave stages</span>
+            </div>
+            <span className="p-1 bg-[#7C3AED]/5 group-hover:bg-[#7C3AED] rounded-lg transition-colors duration-200">
+              <ArrowRight className="w-4 h-4 text-[#7C3AED] group-hover:text-white transition-colors duration-200" />
+            </span>
+          </Link>
+          <Link
+            to="/ideal-bedtime-based-on-wake-up-time"
+            className="sm:col-span-2 group flex items-center justify-between p-4 bg-white rounded-2xl border border-neutral-200 hover:border-[#7C3AED] hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
+          >
+            <div className="flex flex-col gap-0.5">
+              <span className="font-bold text-sm sm:text-base text-[#111827] group-hover:text-[#7C3AED] transition-colors">Ideal Bedtime Calculator (All Ages)</span>
+              <span className="text-xs text-[#6B7280]">Toddlers, teenagers, adults, and seniors schedules</span>
+            </div>
+            <span className="p-1 bg-[#7C3AED]/5 group-hover:bg-[#7C3AED] rounded-lg transition-colors duration-200">
+              <ArrowRight className="w-4 h-4 text-[#7C3AED] group-hover:text-white transition-colors duration-200" />
+            </span>
+          </Link>
+        </div>
+      </div>
+
       <h3 className="text-xl sm:text-2xl font-bold text-[#111827] pt-3">
         What Is a Sleep Calculator?
       </h3>
 
       <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-[#374151] select-text">
-        A Sleep Calculator estimates the best sleep time and wake-up time using complete sleep cycles. Instead of simply counting hours, it helps you plan your sleep around how your body naturally rests and recovers during the night.
+        A Sleep Calculator estimates the best sleep time and wake-up time using complete sleep cycles. Instead of simply counting hours, it helps you plan your sleep around how your body naturally rests and recovers during the night. Waking up at the right time is easier when you calculate the <strong>ideal bedtime based on wake up time</strong>.
       </p>
 
-      <div className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-[#374151] select-text">
-        <p className="font-semibold text-[#111827] mb-1">Many people search for:</p>
-        <ul className="list-disc pl-5 space-y-1 text-[#374151]">
-          <li>Calculator Sleep</li>
-          <li>Sleep Time Calculator</li>
-          <li>Sleepy Time Calculator</li>
-          <li>Bed Time Calculator</li>
-          <li>REM Calculator</li>
-          <li>REM Cycle Calculator</li>
-          <li>Sleep Timer</li>
+      <div className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-[#374151] select-text my-4 space-y-4">
+        <p>
+          Circadian requirements shift heavily across different stages of life. Here is how sleep cycles can be optimized for specific ages:
+        </p>
+        <ul className="list-disc pl-5 space-y-3 text-base">
+          <li>
+            <strong>Sleep calculator for students</strong>: Studying for finals requires maximum memory retention. Using a dedicated <strong>sleep calculator for students</strong> ensures that late-night preparation sessions end at optimal cycle points to protect cognitive functioning.
+          </li>
+          <li>
+            <strong>Sleep calculator for exams</strong>: When cramming for critical tests, a reliable <strong>sleep calculator for exams</strong> prevents heavy morning brain-fog, helping kids and young adults maintain razor-sharp focus during key morning exams.
+          </li>
+          <li>
+            <strong>Sleep calculator for night shift workers</strong>: Aligning sleep when natural sunshine suggests waking is difficult. An interactive <strong>sleep calculator for night shift workers</strong> maps multiple daytime resting phases and anchors consistent circadian alignments.
+          </li>
+          <li>
+            <strong>Sleep calculator for babies</strong>: Infant sleep schedules require unique split structures. A customized <strong>sleep calculator for babies</strong> guides parents through multiple short naps and feeding sleep alignments.
+          </li>
+          <li>
+            <strong>Sleep calculator for toddlers</strong>: Toddler developmental milestones are deeply connected to restorative sleep. A <strong>sleep calculator for toddlers</strong> assists in calculating morning wake-up times and afternoon rest periods.
+          </li>
+          <li>
+            <strong>Sleep calculator for teenagers</strong>: Melatonin naturally releases later in the evening for teens. Aligning their school schedules with a <strong>sleep calculator for teenagers</strong> makes waking up on school mornings much easier.
+          </li>
         </ul>
       </div>
 
-      <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-[#374151] select-text">
-        These tools all have one goal: helping you wake up feeling more refreshed and less groggy.
-      </p>
-
       <h3 className="text-xl sm:text-2xl font-bold text-[#111827] pt-3">
-        How Much Sleep Do I Need?
+        How Many Sleep Cycles Do I Need?
       </h3>
 
       <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-[#374151] select-text">
-        One of the most common sleep questions is: How much sleep do I need?
+        If you have ever asked yourself, <strong>how many sleep cycles do i need</strong>, the scientific answer is that most healthy adults benefit from <strong>5 to 6 completed sleep cycles</strong> per night. This translates to approximately 7.5 to 9 hours of total sleep. Each complete human sleep cycle lasts approximately 90 minutes.
       </p>
 
       <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-[#374151] select-text">
-        The answer depends on age, lifestyle, activity level, and overall health. Most adults need between <a href="https://www.cdc.gov/sleep/about/index.html" target="_blank" rel="noopener noreferrer" className="text-[#7C3AED] hover:underline font-semibold">7 and 9 hours of sleep each night</a>, while children and teenagers usually need more.
-      </p>
-
-      <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-[#374151] select-text">
-        Our Sleep Calculator by Age provides guidance based on different age groups, making it easier to create a healthy sleep routine.
+        Using the <strong>best bedtime calculator</strong> to sync your sleep schedules makes it easy to set consistent, healthy standards.
       </p>
 
       <h3 className="text-xl sm:text-2xl font-bold text-[#111827] pt-3">
-        What Time Should I Go to Bed?
+        How to Wake Up Feeling Refreshed
       </h3>
 
-      <div className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-[#374151] select-text">
-        <p className="font-semibold text-[#111827] mb-1">If you've ever asked:</p>
-        <ul className="list-disc pl-5 space-y-1 text-[#374151]">
-          <li>What time should I go to bed?</li>
-          <li>What time should I wake up?</li>
-          <li>When to wake up?</li>
-          <li>What time to wake?</li>
-          <li>Time to wake up?</li>
-        </ul>
-      </div>
+      <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-[#374151] select-text">
+        To understand exactly <strong>how to wake up feeling refreshed</strong>, the secret lies in avoiding waking up during the middle of deep slow-wave sleep. If your alarm sounds while your brain is in deep deep sleep, you will suffer from severe morning sleep inertia, leaving you feeling weary and sluggish for hours.
+      </p>
+
+      <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-[#374151] select-text">
+        By matching your bedtime to complete sleep cycles, you can learn to <strong>wake up between sleep cycles</strong> naturally, keeping your mornings bright, energetic, and fully restored.
+      </p>
+
+      <h3 className="text-xl sm:text-2xl font-bold text-[#111827] pt-3">
+        Sleep Cycle Calculator 90 Minutes Standard
+      </h3>
+
+      <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-[#374151] select-text">
+        Every standard <strong>sleep cycle calculator 90 minutes</strong> algorithm coordinates bedtime plans based on the natural human sleep loop. Each sleep loop flows through light sleep, deep sleep, and REM stages. Using the standard 90 minutes sleep cycle calculator pattern makes determining the <strong>ideal bedtime based on wake up time</strong> clean and reliable.
+      </p>
 
       <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-[#374151] select-text font-semibold">
         You're not alone.

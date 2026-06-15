@@ -424,27 +424,21 @@ export default function Home() {
   };
 
   const calculate = () => {
-    setResults([]);
-    setCyclesReport(null);
-    setTimeout(() => {
-      calculateForTime(timeRef.current, modeRef.current);
-      setShowResults(true);
-      setTimeout(() => {
+    calculateForTime(timeRef.current, modeRef.current);
+    setShowResults(true);
+    
+    // Use double requestAnimationFrame to wait for the browser's layout pass to complete
+    // before triggering smooth scrolling, completely avoiding layout-thrashing and forced reflows
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
         if (resultsRef.current) {
-          const rect = resultsRef.current.getBoundingClientRect();
-          const isVisible =
-            rect.top >= 0 &&
-            rect.bottom <=
-              (window.innerHeight || document.documentElement.clientHeight);
-          if (!isVisible) {
-            resultsRef.current.scrollIntoView({
-              behavior: "smooth",
-              block: "center",
-            });
-          }
+          resultsRef.current.scrollIntoView({
+            behavior: "smooth",
+            block: "nearest",
+          });
         }
-      }, 100);
-    }, 50);
+      });
+    });
   };
 
   const formatTime = (date: Date, showDayIndicator: boolean = false) => {

@@ -39,6 +39,31 @@ export const MAIN_PAGES_META: Record<string, PageSEO> = {
     title: "404 Page Not Found – Sleep Calculator",
     description: "The requested sleep calculator guide, resource, or article could not be located. Calculate your optimal bedtime and wake-up times on our homepage.",
     canonicalUrl: "https://sleepcalculater.online/not-found"
+  },
+  "/sleep-calculator-for-students": {
+    title: "Sleep Calculator for Students – Optimize Your Exam Bedtime",
+    description: "Use our interactive sleep calculator for students, teenagers, and kids to schedule bedtimes for exams, high school schedules, and toddlers.",
+    canonicalUrl: "https://sleepcalculater.online/sleep-calculator-for-students"
+  },
+  "/sleep-calculator-for-night-shift-workers": {
+    title: "Sleep Calculator for Night Shift Workers – Day Sleep Schedule",
+    description: "Calculate sleep cycles for night shifts. Optimize diurnal sleep, split schedules, and anchors blocks with our interactive sleep calculator for shift workers.",
+    canonicalUrl: "https://sleepcalculater.online/sleep-calculator-for-night-shift-workers"
+  },
+  "/sleep-cycle-calculator-90-minutes": {
+    title: "Sleep Cycle Calculator 90 Minutes – Calculate Cycles & Bedtime",
+    description: "Calculate sleep cycles based on the 90-minute formula. Adjust custom cycle lengths and fall asleep latency with our interactive sleep cycle calculator.",
+    canonicalUrl: "https://sleepcalculater.online/sleep-cycle-calculator-90-minutes"
+  },
+  "/wake-up-between-sleep-cycles": {
+    title: "Wake Up Between Sleep Cycles Calculator – Morning Refreshment",
+    description: "Learn how to wake up between sleep cycles to conquer morning grogginess. Calculate exact bedtime and alarm times with our interactive refresh calculator.",
+    canonicalUrl: "https://sleepcalculater.online/wake-up-between-sleep-cycles"
+  },
+  "/ideal-bedtime-based-on-wake-up-time": {
+    title: "Ideal Bedtime Based on Wake Up Time – Custom Age Calculator",
+    description: "Calculate your ideal bedtime based on your wake up time. Select customized settings for adults, babies, toddlers, and teenagers using sleep cycle calculators.",
+    canonicalUrl: "https://sleepcalculater.online/ideal-bedtime-based-on-wake-up-time"
   }
 };
 

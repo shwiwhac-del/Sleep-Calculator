@@ -356,13 +356,25 @@
       (function() {
         document.documentElement.classList.remove('dark');
         
-        var savedMode = localStorage.getItem('aurasleep_mode') || 'bed';
+        var savedMode = 'bed';
+        var savedTime = null;
+        var savedWake = '07:00';
+        var savedAge = '18-25';
+        
+        try {
+          savedMode = localStorage.getItem('aurasleep_mode') || 'bed';
+          savedTime = localStorage.getItem('aurasleep_time');
+          savedWake = localStorage.getItem('aurasleep_waketime') || '07:00';
+          savedAge = localStorage.getItem('aurasleep_age') || '18-25';
+        } catch (storageError) {
+          console.warn('LocalStorage is blocked or unsupported', storageError);
+        }
+        
         if (!['wake', 'bed', 'cycles', 'nap', 'rem'].includes(savedMode)) {
           savedMode = 'bed';
         }
         
         var resolvedTime = '';
-        var savedTime = localStorage.getItem('aurasleep_time');
         if (savedTime && /^\d{2}:\d{2}$/.test(savedTime)) {
           resolvedTime = savedTime;
         } else {
@@ -373,9 +385,6 @@
           var mins = String(roundedDate.getMinutes()).padStart(2, '0');
           resolvedTime = hours + ':' + mins;
         }
-        
-        var savedWake = localStorage.getItem('aurasleep_waketime') || '07:00';
-        var savedAge = localStorage.getItem('aurasleep_age') || '18-25';
         
         var ageGroups = {
           '0-3m': '0-3 Months',
@@ -513,6 +522,7 @@
       rel="preload"
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;650;700&family=Playfair+Display:wght@600;700&display=swap"
       as="style"
+      crossorigin="anonymous"
     />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;650;700&family=Playfair+Display:wght@600;700&display=swap"
@@ -629,6 +639,12 @@
     </script>
   </head>
   <body>
+    <!-- Persistent Static Ambient Background (Zero Layout Shift) -->
+    <div class="bg-backdrop">
+      <div style="position: absolute; inset: 0; background-color: #F3ECE3;"></div>
+      <div class="ambient-glow-1"></div>
+      <div class="ambient-glow-2"></div>
+    </div>
     <div id="root"><!-- FALLBACK_CONTENT_START -->
       <div class="sk-container">
         <header class="sk-header">
