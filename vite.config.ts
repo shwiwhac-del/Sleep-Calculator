@@ -56,15 +56,27 @@ export default defineConfig(({ mode }) => {
       },
     },
     build: {
+      target: "esnext",
+      minify: "esbuild",
+      cssCodeSplit: true,
+      sourcemap: false,
+      assetsInlineLimit: 8192,
+      modulePreload: {
+        polyfill: false,
+      },
       rollupOptions: {
         output: {
           manualChunks: {
-            "vendor-react": ["react", "react-dom", "react-router-dom", "react-helmet-async"],
-            "vendor-lucide": ["lucide-react"],
-            "vendor-motion": ["motion/react"],
+            "vendor-core": ["react", "react-dom", "react-router-dom", "react-helmet-async"],
+            "vendor-ui": ["lucide-react", "motion/react"],
           },
         },
       },
+    },
+    esbuild: {
+      legalComments: "none",
+      drop: ["console", "debugger"],
+      keepNames: false,
     },
     server: {
       // HMR is disabled in AI Studio via DISABLE_HMR env var.

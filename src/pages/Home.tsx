@@ -65,7 +65,7 @@ export default function Home() {
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     // Initial check
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
