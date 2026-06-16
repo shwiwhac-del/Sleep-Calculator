@@ -346,6 +346,22 @@ export const BLOG_POSTS = [
     category: 'Productivity',
     readTime: '7 min read',
     date: 'June 11, 2026'
+  },
+  {
+    slug: 'sleep-calculator-for-exams',
+    title: 'Sleep Calculator for Exams: Optimize Bedtime for Peak Test Day Performance',
+    description: 'Calculate your perfect bedtime the night before a major exam. Discover why sleep cycle planning outperforms late-night cramming for GPA scores and cognitive recall.',
+    category: 'Study & Focus',
+    readTime: '6 min read',
+    date: 'June 16, 2026'
+  },
+  {
+    slug: 'sleep-calculator-for-night-shift-workers',
+    title: 'Sleep Calculator for Night Shift Workers: Aligning Daytime Rest with Circadian Rhythms',
+    description: 'Master shift-work sleep schedules using a sleep cycle calculator for night shifts. Learn anchor sleep blocks, split routines, and dark bedroom setups to defeat fatigue.',
+    category: 'Sleep Health',
+    readTime: '7 min read',
+    date: 'June 16, 2026'
   }
 ];
 
@@ -1073,8 +1089,10 @@ export default function Blog() {
   const isBlog40 = currentPath === '/bedtime-calculator-by-age' || slug === 'bedtime-calculator-by-age';
   const isBlog41 = currentPath === '/shift-work-sleep-calculator-guide' || slug === 'shift-work-sleep-calculator-guide';
   const isBlog42 = currentPath === '/adhd-sleep-schedule-calculator-tips' || slug === 'adhd-sleep-schedule-calculator-tips';
+  const isBlog43 = currentPath === '/sleep-calculator-for-exams' || slug === 'sleep-calculator-for-exams';
+  const isBlog44 = currentPath === '/sleep-calculator-for-night-shift-workers' || slug === 'sleep-calculator-for-night-shift-workers';
   
-  const isAnyBlog = isBlog1 || isBlog2 || isBlog3 || isBlog4 || isBlog5 || isBlog6 || isBlog7 || isBlog8 || isBlog9 || isBlog10 || isBlog11 || isBlog12 || isBlog13 || isBlog14 || isBlog15 || isBlog16 || isBlog17 || isBlog18 || isBlog19 || isBlog20 || isBlog21 || isBlog22 || isBlog23 || isBlog24 || isBlog25 || isBlog26 || isBlog27 || isBlog28 || isBlog29 || isBlog30 || isBlog31 || isBlog32 || isBlog33 || isBlog34 || isBlog35 || isBlog36 || isBlog37 || isBlog38 || isBlog39 || isBlog40 || isBlog41 || isBlog42;
+  const isAnyBlog = isBlog1 || isBlog2 || isBlog3 || isBlog4 || isBlog5 || isBlog6 || isBlog7 || isBlog8 || isBlog9 || isBlog10 || isBlog11 || isBlog12 || isBlog13 || isBlog14 || isBlog15 || isBlog16 || isBlog17 || isBlog18 || isBlog19 || isBlog20 || isBlog21 || isBlog22 || isBlog23 || isBlog24 || isBlog25 || isBlog26 || isBlog27 || isBlog28 || isBlog29 || isBlog30 || isBlog31 || isBlog32 || isBlog33 || isBlog34 || isBlog35 || isBlog36 || isBlog37 || isBlog38 || isBlog39 || isBlog40 || isBlog41 || isBlog42 || isBlog43 || isBlog44;
   const isAll = false; // Override isAll to false so individual articles never render stacked in /blog
 
   let activeSlug = '';
@@ -1120,6 +1138,8 @@ export default function Blog() {
   else if (isBlog40) activeSlug = 'bedtime-calculator-by-age';
   else if (isBlog41) activeSlug = 'shift-work-sleep-calculator-guide';
   else if (isBlog42) activeSlug = 'adhd-sleep-schedule-calculator-tips';
+  else if (isBlog43) activeSlug = 'sleep-calculator-for-exams';
+  else if (isBlog44) activeSlug = 'sleep-calculator-for-night-shift-workers';
 
   const currentFaqs = activeSlug ? BLOG_FAQS[activeSlug] : [];
 
@@ -1166,7 +1186,6 @@ export default function Blog() {
     'sleep-calculator-by-age',
     '90-minute-sleep-calculator',
     'best-sleep-schedule-for-productivity',
-    'sleep-calculator-for-students',
     'why-am-i-tired-after-sleeping'
   ];
 
@@ -8699,6 +8718,271 @@ export default function Blog() {
 
             <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 pb-6">
               Bedtime struggles don't have to be a permanent obstacle. By using an ADHD sleep schedule approach, you can create a structured evening routine that works with your brain, making it easier to slip into restful transitions and wake up refreshed.
+            </p>
+
+            {/* Dynamic Social Sharing & Calculation Widget */}
+            <ShareScheduleWidget />
+          </article>
+        )}
+
+        {/* Blog 43: Sleep Calculator for Exams */}
+        {(isBlog43 || isAll) && (
+          <article className="space-y-6 select-text text-slate-300 pt-1">
+            <header className="space-y-3 pb-6 border-b border-white/10">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-100 tracking-tight leading-tight">
+                Sleep Calculator for Exams: Optimize Bedtime for Peak Test Day Performance
+              </h1>
+              {isAll && (
+                <div className="text-sm font-bold tracking-wider text-blue-400 uppercase">
+                  Study & Focus • 6 min read
+                </div>
+              )}
+            </header>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 font-medium">
+              We have all been tempted to pull an all-nighter before a major exam, sacrificing sleep to cram a few last facts into our brains. However, sleep science reveals a different reality: sleep cycle planning consistently outperforms late-night cramming, boosting GPA scores, memory recall, and critical thinking on test day.
+            </p>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              Using a specialized <strong>sleep calculator for exams</strong> helps you calculate the exact minute you should sleep to wake up refreshed. By timing your rest in sync with natural 90-minute sleep cycles, you prevent sleep inertia and ensure your brain is operating at maximum computational power.
+            </p>
+
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4">
+              Direct Answer: Should You Cram or Sleep Before an Exam?
+            </h2>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              <strong>The scientific answer is clear: sleep is superior.</strong> Research consistently demonstrates that students who prioritize a full night of sleep (7.5 to 9 hours) achieve higher exam scores than those who pull all-nighters. When you are sleep-deprived, your analytical thinking, working memory, and attention span degrade significantly, making it difficult to process complex test questions, even if you spent the entire night reading.
+            </p>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              Sleep is not empty, passive rest—it is an active cognitive process. While you sleep, your brain consolidates what you learned during the day, locking facts and math formulas into your long-term memory.
+            </p>
+
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4">
+              The Critical Sleep Stages That Unlock Exam Success
+            </h2>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              To understand why sleep is crucial for academic performance, we have to look at the individual sleep stages and how they influence learning:
+            </p>
+
+            <div className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 py-1">
+              <ul className="list-disc pl-6 space-y-3 text-slate-300">
+                <li>
+                  <strong className="text-gray-100 font-semibold">Stage N3 Deep Sleep (Slow-Wave):</strong> This stage is responsible for factual memory consolidation. During N3, the brain transfers newly learned academic facts from the fragile hippocampus (short-term memory storage) to the highly robust neocortex (long-term storage). If you cut deep sleep short, you struggle with fundamental fact recall the next day.
+                </li>
+                <li>
+                  <strong className="text-gray-100 font-semibold">REM (Rapid Eye Movement) Sleep:</strong> REM sleep plays a vital role in complex analytical synthesis, integration, and creative problem-solving. This is where your brain processes deep conceptual connections. If you are solving advanced math equations, writing essay prompts, or analyzing scientific data, robust REM sleep is your greatest academic asset.
+                </li>
+              </ul>
+            </div>
+
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4">
+              How to Calculate Your Exam Bedtime
+            </h2>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              To calculate your optimal exam-night sleep window, you need to use a simple formula based on 90-minute sleep cycles. A complete human sleep cycle lasts approximately 90 minutes. Waking up at the end of a cycle, rather than in the middle of deep sleep, prevents morning brain fog.
+            </p>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-400 font-mono bg-white/5 p-4 rounded-2xl border border-white/10">
+              Optimal Bedtime = Target Wake-Up Time - (Number of Cycles × 90 Minutes) - Wind-Down Buffer
+            </p>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              For example, if you need to wake up at <strong className="text-gray-100">7:00 AM</strong> for your exam, and you want to get 5 complete sleep cycles (7.5 hours of sleep):
+            </p>
+
+            <div className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 py-1">
+              <ol className="list-decimal pl-6 space-y-2 text-slate-300 font-mono">
+                <li>Calculate sleep duration: 5 cycles × 90 minutes = 450 minutes (7.5 hours).</li>
+                <li>Subtract sleep duration from wake-up time: 7:00 AM - 7.5 hours = 11:30 PM.</li>
+                <li>Add a wind-down buffer: Subtract an extra 20-30 minutes of time to fall asleep under pre-exam anxiety = 11:00 PM or 11:10 PM lights out bedtime.</li>
+              </ol>
+            </div>
+
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4">
+              Tested Exam Night Target Schedules
+            </h2>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              Here are direct, read-friendly guides showing optimal exam-night lights-out times based on standard school wake up schedules:
+            </p>
+
+            <div className="space-y-4 pt-1">
+              <div className="border border-white/10 p-5 rounded-2xl bg-white/5 space-y-2">
+                <span className="text-[#D4AF37] font-bold uppercase tracking-wider text-xs">Wake Up at 6:00 AM (Early Exam Session)</span>
+                <p className="text-slate-300 text-sm">
+                  - <strong>6 Cycles (9 Hours of Sleep):</strong> Bedtime at 8:45 PM (Lights out by 8:30 PM)
+                </p>
+                <p className="text-slate-300 text-sm">
+                  - <strong>5 Cycles (7.5 Hours of Sleep):</strong> Bedtime at 10:15 PM (Lights out by 10:00 PM) - <strong>RECOMMENDED FOR GENERAL TESTS</strong>
+                </p>
+                <p className="text-slate-300 text-sm">
+                  - <strong>4 Cycles (6 Hours of Sleep):</strong> Bedtime at 11:45 PM (Lights out by 11:30 PM)
+                </p>
+              </div>
+
+              <div className="border border-white/10 p-5 rounded-2xl bg-white/5 space-y-2">
+                <span className="text-[#D4AF37] font-bold uppercase tracking-wider text-xs">Wake Up at 7:00 AM (Standard Exam Session)</span>
+                <p className="text-slate-300 text-sm">
+                  - <strong>6 Cycles (9 Hours of Sleep):</strong> Bedtime at 9:45 PM (Lights out by 9:30 PM)
+                </p>
+                <p className="text-slate-300 text-sm">
+                  - <strong>5 Cycles (7.5 Hours of Sleep):</strong> Bedtime at 11:15 PM (Lights out by 11:00 PM) - <strong>RECOMMENDED FOR PEAK FOCUS</strong>
+                </p>
+                <p className="text-slate-300 text-sm">
+                  - <strong>4 Cycles (6 Hours of Sleep):</strong> Bedtime at 12:45 AM (Lights out by 12:30 AM)
+                </p>
+              </div>
+            </div>
+
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4">
+              Peak Recall Habits: Test Day Morning Routine
+            </h2>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              Waking up refreshed is only the first half of the cognitive puzzle. To fully leverage your prepared sleep cycles on test day morning:
+            </p>
+
+            <div className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 py-1">
+              <ul className="list-disc pl-6 space-y-2 text-slate-300">
+                <li>
+                  <strong className="text-gray-100 font-semibold">Expose Your Eyes to Bright Light:</strong> Stepping outside, opening your window, or turning on white indoor lights instantly suppresses melatonin (the sleep hormone), signaling your biological clock that the day has officially begun.
+                </li>
+                <li>
+                  <strong className="text-gray-100 font-semibold">Never Hit the Snooze Button:</strong> Hitting snooze triggers fragmented, poor-quality sleep cycles. This leaves you feeling groggy and sluggish due to sleep inertia.
+                </li>
+                <li>
+                  <strong className="text-gray-100 font-semibold">Fuel Your Brain Correctly:</strong> Avoid high-sugar pastries that invite mid-exam glucose crashes. Choose a high-protein, clean-carb breakfast (like eggs, almonds, and oatmeal) to sustain cognitive processes.
+                </li>
+              </ul>
+            </div>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 pb-6">
+              In academic performance, study preparation and structured rest go hand in hand. Plan your bedtime carefully before your next exam, trust your memory consolidation processes, and let high-quality resting sleep do the hard work for you.
+            </p>
+
+            {/* Dynamic Social Sharing & Calculation Widget */}
+            <ShareScheduleWidget />
+          </article>
+        )}
+
+        {/* Blog 44: Sleep Calculator for Night Shift Workers */}
+        {(isBlog44 || isAll) && (
+          <article className="space-y-6 select-text text-slate-300 pt-1">
+            <header className="space-y-3 pb-6 border-b border-white/10">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-100 tracking-tight leading-tight">
+                Sleep Calculator for Night Shift Workers: Aligning Daytime Rest with Circadian Rhythms
+              </h1>
+              {isAll && (
+                <div className="text-sm font-bold tracking-wider text-blue-400 uppercase">
+                  Sleep Health • 7 min read
+                </div>
+              )}
+            </header>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 font-medium">
+              Working the graveyard shift or rotating hospital duty slots presents major biological hurdles. Human physiology is naturally wired to sleep when dark and wake when light—meaning night shift workers constantly fight their biological clocks. Without strategic planning, daytime sleep becomes fragmented, leading to exhaustion, insomnia, and chronic brain fog.
+            </p>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              A specialized <strong>sleep calculator for night shift workers</strong> provides concrete timelines to manage non-standard shifts. By applying core sleep science techniques, including anchor sleep blocks and strategic bright light exposure, you can organize daytime resting hours into highly restorative sleep cycle windows.
+            </p>
+
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4">
+              Direct Answer: How Do Shift Workers Calculate Sleep Cycles?
+            </h2>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              <strong>Night shift workers should structure daytime rest in two primary ways:</strong> either a single, consolidated 7.5-to-9 hour block starting immediately after their shift, or a split sleep routine consisting of a 4-to-5 hour "anchor block" in the morning and a 1.5-to-2 hour nap before their next shift. Both options should be aligned with natural 90-minute sleep cycles to ensure you wake up fresh and avoid waking up during deep sleep stages.
+            </p>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              Because daytime sleep experiences frequent interruptions from temperature increases and environmental noise, maintaining consistency in your selected routine is essential to assist metabolic and circadian regulation.
+            </p>
+
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4">
+              Consolidated vs. Split Sleep: Selecting Your Strategy
+            </h2>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              Depending on personal domestic duties and family schedules, night shifts require chosen rest styles:
+            </p>
+
+            <div className="space-y-4 pt-1">
+              <div className="border border-white/10 p-5 rounded-2xl bg-white/5 space-y-2">
+                <span className="text-[#D4AF37] font-bold uppercase tracking-wider text-xs">Strategy A: Single Consolidated block (Daytime Anchor)</span>
+                <p className="text-slate-300 text-sm">
+                  You sleep for a single prolonged segment of 7.5 to 9 hours (5 to 6 cycles) starting soon after heading home (e.g., sleeping from 8:30 AM to 4:30 PM). This most closely resembles natural nighttime rest and is ideal if your domestic environment remains quiet during the daytime.
+                </p>
+              </div>
+
+              <div className="border border-white/10 p-5 rounded-2xl bg-white/5 space-y-2">
+                <span className="text-[#D4AF37] font-bold uppercase tracking-wider text-xs">Strategy B: Split Anchor Sleep Routine</span>
+                <p className="text-slate-300 text-sm">
+                  You divide your daily rest into two distinct segments. You sleep representing 3 complete cycles (4.5 hours) in the morning (e.g., 9:00 AM to 1:30 PM) to allow family interaction during the afternoon, then take a full 90-minute cycle nap in the evening before starting your next shift (e.g., 7:00 PM to 8:30 PM).
+                </p>
+              </div>
+            </div>
+
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4">
+              How Daytime Micro-Awakenings Hurt You
+            </h2>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              During daytime sleep, human endocrine pathways are programmed to secrete high amounts of cortisol and raise core body temperatures. This biological reality means daytime sleep is naturally lighter than night sleep.
+            </p>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              As a result, even tiny environmental cues—like delivery vans, daylight leaks, or children playing—cause micro-awakenings. This breaks your sleep cycles and prevents your body from reaching restorative deep N3 and REM stages. Proper environmental control is critical.
+            </p>
+
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4">
+              Daytime Sleep Environment: The Three Essentials
+            </h2>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              To keep daytime sleep unbroken, you must configure your bedroom as a sensory-isolated sanctuary:
+            </p>
+
+            <div className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 py-1">
+              <ul className="list-disc pl-6 space-y-3 text-slate-300">
+                <li>
+                  <strong className="text-gray-100 font-semibold">100% Blackout Bedroom:</strong> Human skin cells and optical nerves detect ambient light even through closed eyelids. Use heavy-duty, side-sealed blackout curtains or a comfortable, contoured eye-mask to block all light leaks.
+                </li>
+                <li>
+                  <strong className="text-gray-100 font-semibold">Continuous Auditory Noise Cover:</strong> Use a physical white noise machine or stream continuous pink-noise frequencies. White noise creates an auditory barrier that masks sudden daytime sounds (like sirens or traffic), keeping your brain asleep.
+                </li>
+                <li>
+                  <strong className="text-gray-100 font-semibold">Cool Ambient Temperatures:</strong> The human circadian rhythm naturally triggers sleep when body temperature cools. Since daytime weather raises house temperatures, utilize air-conditioning or fans to keep your bedroom at a comfortable <strong className="text-gray-100">65–68°F (18–20°C)</strong>.
+                </li>
+              </ul>
+            </div>
+
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4">
+              Transitioning Back on Off-Days: The Phase Shift Protocol
+            </h2>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              One of the hardest parts of night shift work is returning to a normal social schedule on off-days. Many workers suffer from "social jetlag" as they swing between sleep routines.
+            </p>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              To minimize this strain, use a transition protocol on your last day of shift work:
+            </p>
+
+            <div className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 py-1">
+              <ol className="list-decimal pl-6 space-y-2 text-slate-300">
+                <li>On your last shift morning, take a short, 90-minute nap (1 cycle) from 8:30 AM to 10:00 AM.</li>
+                <li>Stay awake during the afternoon to accumulate sleep pressure.</li>
+                <li>Go to sleep at an early nighttime hour (e.g., 10:00 PM), and wake up normally the next morning.</li>
+              </ol>
+            </div>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 pb-6">
+              Organizing sleep for unconventional shift schedules is challenging, but manageable with consistent, biology-aligned habits. Use our sleep planning methods, control your environment, and give your body the restorative rest it deserves.
             </p>
 
             {/* Dynamic Social Sharing & Calculation Widget */}

@@ -22,8 +22,7 @@ const REDIRECT_SLUGS = [
   'what-is-sleep-debt',
   'sleep-and-memory-learning',
   'sleep-calculator-by-age',
-  'best-sleep-schedule-for-productivity',
-  'sleep-calculator-for-students'
+  'best-sleep-schedule-for-productivity'
 ];
 
 const activeSlugs = Object.keys(BLOG_POSTS_META).filter(slug => !REDIRECT_SLUGS.includes(slug));

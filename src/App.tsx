@@ -157,7 +157,9 @@ function AppContent() {
                 <Route path="/sleep-calculator-by-age" element={<Navigate to="/how-much-sleep-do-you-need" replace />} />
                 <Route path="/90-minute-sleep-calculator" element={<Navigate to="/sleep-cycle-calculator-90-minutes" replace />} />
                 <Route path="/best-sleep-schedule-for-productivity" element={<Navigate to="/sleep-schedule-for-productivity" replace />} />
-                <Route path="/sleep-calculator-for-students" element={<StudentSleepCalculator />} />
+                <Route path="/sleep-calculator-for-students" element={<Blog />} />
+                <Route path="/sleep-calculator-for-exams" element={<Blog />} />
+                <Route path="/student-sleep-calculator" element={<StudentSleepCalculator />} />
                 <Route path="/why-am-i-tired-after-sleeping" element={<Blog />} />
                 <Route path="/rem-sleep-calculator-bedtime-cycles" element={<Blog />} />
                 <Route path="/sleep-deprivation-calculator-recovery-guide" element={<Blog />} />
@@ -166,7 +168,8 @@ function AppContent() {
                 <Route path="/adhd-sleep-schedule-calculator-tips" element={<Blog />} />
 
                 {/* The 5 Dedicated Interactive Calculator Landing Pages */}
-                <Route path="/sleep-calculator-for-night-shift-workers" element={<ShiftWorkSleepCalculator />} />
+                <Route path="/sleep-calculator-for-night-shift-workers" element={<Blog />} />
+                <Route path="/shift-work-sleep-calculator" element={<ShiftWorkSleepCalculator />} />
                 <Route path="/sleep-cycle-calculator-90-minutes" element={<NinetyMinSleepCalculator />} />
                 <Route path="/wake-up-between-sleep-cycles" element={<WakeUpBetweenCyclesCalculator />} />
                 <Route path="/ideal-bedtime-based-on-wake-up-time" element={<IdealBedtimeCalculator />} />

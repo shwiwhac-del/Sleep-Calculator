@@ -265,8 +265,8 @@ function autoLink(children: React.ReactNode, currentPath: string, linkedPaths: S
   }
 
   if (Array.isArray(children)) {
-    const processed = children.map((child) => autoLink(child, currentPath, linkedPaths));
-    return React.Children.toArray(processed);
+    const processed = React.Children.map(children, (child) => autoLink(child, currentPath, linkedPaths));
+    return processed || [];
   }
 
   if (React.isValidElement(children)) {

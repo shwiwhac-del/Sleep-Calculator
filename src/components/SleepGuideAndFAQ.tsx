@@ -102,7 +102,7 @@ export default function SleepGuideAndFAQ() {
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3" id="links-grid">
           <Link
-            to="/sleep-calculator-for-students"
+            to="/student-sleep-calculator"
             className="group flex items-center justify-between p-4 bg-white rounded-2xl border border-neutral-200 hover:border-[#7C3AED] hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
           >
             <div className="flex flex-col gap-0.5">
@@ -114,7 +114,7 @@ export default function SleepGuideAndFAQ() {
             </span>
           </Link>
           <Link
-            to="/sleep-calculator-for-night-shift-workers"
+            to="/shift-work-sleep-calculator"
             className="group flex items-center justify-between p-4 bg-white rounded-2xl border border-neutral-200 hover:border-[#7C3AED] hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
           >
             <div className="flex flex-col gap-0.5">

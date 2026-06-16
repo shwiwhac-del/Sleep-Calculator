@@ -40,15 +40,15 @@ export const MAIN_PAGES_META: Record<string, PageSEO> = {
     description: "The requested sleep calculator guide, resource, or article could not be located. Calculate your optimal bedtime and wake-up times on our homepage.",
     canonicalUrl: "https://sleepcalculater.online/not-found"
   },
-  "/sleep-calculator-for-students": {
+  "/student-sleep-calculator": {
     title: "Sleep Calculator for Students – Optimize Your Exam Bedtime",
     description: "Use our interactive sleep calculator for students, teenagers, and kids to schedule bedtimes for exams, high school schedules, and toddlers.",
-    canonicalUrl: "https://sleepcalculater.online/sleep-calculator-for-students"
+    canonicalUrl: "https://sleepcalculater.online/student-sleep-calculator"
   },
-  "/sleep-calculator-for-night-shift-workers": {
+  "/shift-work-sleep-calculator": {
     title: "Sleep Calculator for Night Shift Workers – Day Sleep Schedule",
     description: "Calculate sleep cycles for night shifts. Optimize diurnal sleep, split schedules, and anchors blocks with our interactive sleep calculator for shift workers.",
-    canonicalUrl: "https://sleepcalculater.online/sleep-calculator-for-night-shift-workers"
+    canonicalUrl: "https://sleepcalculater.online/shift-work-sleep-calculator"
   },
   "/sleep-cycle-calculator-90-minutes": {
     title: "Sleep Cycle Calculator 90 Minutes – Calculate Cycles & Bedtime",
@@ -319,6 +319,18 @@ export const BLOG_POSTS_META: Record<string, { title: string; description: strin
     description: "Struggling with sleep onset and ADHD? Learn how an ADHD sleep schedule calculator can help you design consistency, reduce evening anxiety, and feel refreshed.",
     date: "2026-06-11",
     category: "Productivity"
+  },
+  "sleep-calculator-for-exams": {
+    title: "Sleep Calculator for Exams: Optimize Bedtime for Peak Test Day Performance",
+    description: "Calculate your perfect bedtime the night before a major exam. Discover why sleep cycle planning outperforms late-night cramming for GPA scores and cognitive recall.",
+    date: "2026-06-16",
+    category: "Study & Focus"
+  },
+  "sleep-calculator-for-night-shift-workers": {
+    title: "Sleep Calculator for Night Shift Workers: Aligning Daytime Rest with Circadian Rhythms",
+    description: "Master shift-work sleep schedules using a sleep cycle calculator for night shifts. Learn anchor sleep blocks, split routines, and dark bedroom setups to defeat fatigue.",
+    date: "2026-06-16",
+    category: "Sleep Health"
   }
 };
 
@@ -330,6 +342,5 @@ export const BLOG_REDIRECTS: Record<string, string> = {
   "what-is-sleep-debt": "sleep-debt-explained",
   "sleep-and-memory-learning": "sleep-and-memory",
   "sleep-calculator-by-age": "how-much-sleep-do-you-need",
-  "best-sleep-schedule-for-productivity": "sleep-schedule-for-productivity",
-  "sleep-calculator-for-students": "best-bedtime-for-students"
+  "best-sleep-schedule-for-productivity": "sleep-schedule-for-productivity"
 };
