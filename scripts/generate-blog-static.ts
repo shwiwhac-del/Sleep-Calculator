@@ -15,17 +15,8 @@ console.log("Starting build-time HTML pre-rendering of blog posts...");
 
 const preRendered: Record<string, string> = {};
 
-const REDIRECT_SLUGS = [
-  'how-much-sleep-do-you-need-by-age',
-  'wake-up-tired-after-8-hours',
-  'best-bedtime-for-adults',
-  'what-is-sleep-debt',
-  'sleep-and-memory-learning',
-  'sleep-calculator-by-age',
-  'best-sleep-schedule-for-productivity'
-];
-
-const activeSlugs = Object.keys(BLOG_POSTS_META).filter(slug => !REDIRECT_SLUGS.includes(slug));
+// We pre-render all blog slugs to ensure static SEO coverage is 100% complete so no blank fallbacks happen
+const activeSlugs = Object.keys(BLOG_POSTS_META);
 
 // Ensure public/blog-html folder exists
 const publicBlogDir = path.resolve('./public/blog-html');
@@ -69,7 +60,7 @@ for (const slug of activeSlugs) {
       JSON.stringify({ html: articleHtml })
     );
 
-    console.log(`[SSR Pre-render] Successfully generated content for: ${slug} (${html.length} characters)`);
+    console.log(`[SSR Pre-render] Successfully generated content for: ${slug} (${articleHtml.length} characters)`);
   } catch (error) {
     console.error(`[SSR Pre-render] Failed to generate content for: ${slug}:`, error);
   }

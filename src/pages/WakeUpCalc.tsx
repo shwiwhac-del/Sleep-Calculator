@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { Activity, ShieldAlert, Check, RefreshCw, Sun, Clock, Eye, Sparkles, ArrowLeft } from "lucide-react";
 import { getCanonicalUrl } from "../lib/seo";
 
-export default function WakeUpBetweenCyclesCalculator() {
+export default function WakeUpCalc() {
   const canonicalUrl = getCanonicalUrl("/wake-up-between-sleep-cycles");
 
   const [bedtimeMode, setBedtimeMode] = useState<"now" | "specific">("specific");

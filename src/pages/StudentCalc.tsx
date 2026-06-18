@@ -6,7 +6,7 @@ import { BookOpen, GraduationCap, Clock, AlertTriangle, CheckCircle, Sparkles, A
 import { getCanonicalUrl } from "../lib/seo";
 import TimePicker from "../components/TimePicker";
 
-export default function StudentSleepCalculator() {
+export default function StudentCalc() {
   const canonicalUrl = getCanonicalUrl("/sleep-calculator-for-students");
 
   // Age limits / cycles configurations

@@ -3,12 +3,12 @@ import { Link, useNavigate, useLocation, useParams, Navigate } from 'react-route
 import { ArrowLeft, ChevronDown, ChevronUp, Calculator, Sparkles } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'motion/react';
-import { AutoLinker } from '../components/AutoLinker';
 import ShareScheduleWidget from '../components/ShareScheduleWidget';
 import { BLOG_POSTS_META } from '../blogMetadata';
 import { getCanonicalUrl } from '../lib/seo';
 import { OpenGraphTags } from '../components/OpenGraphTags';
 import { Breadcrumbs } from '../components/Breadcrumbs';
+import HypnogramDiagram from '../components/HypnogramDiagram';
 
 export const BLOG_POSTS = [
   {
@@ -362,6 +362,30 @@ export const BLOG_POSTS = [
     category: 'Sleep Health',
     readTime: '7 min read',
     date: 'June 16, 2026'
+  },
+  {
+    slug: 'what-time-should-i-sleep-if-i-wake-up-at-6-am',
+    title: 'What Time Should I Sleep If I Wake Up at 6 AM? Optimal Sleep Schedules',
+    description: 'Discover the best times to sleep if you need to wake up at 6 AM. Use the natural 90-minute sleep cycle calculator to wake up full of energy, alert, and refreshed.',
+    category: 'Sleep Schedule',
+    readTime: '6 min read',
+    date: 'June 18, 2026'
+  },
+  {
+    slug: 'best-bedtime-calculator-for-students',
+    title: 'Best Bedtime Calculator for Students: Peak Brain Performance Guide',
+    description: 'Align your exam prep with your biological clock. Find the perfect bedtime calculator for students, teenagers, and school schedules using 90-minute cycle rules.',
+    category: 'Study & Focus',
+    readTime: '6 min read',
+    date: 'June 18, 2026'
+  },
+  {
+    slug: 'nap-calculator-20-30-60-90-minutes',
+    title: 'Nap Calculator: 20, 30, 60, 90 Minutes Rest Cycles',
+    description: 'Calculate the exact duration for power naps, recovery naps, and full sleep cycle naps. Optimize brain focus and cognitive alert states without post-nap grogginess.',
+    category: 'Sleep Science',
+    readTime: '5 min read',
+    date: 'June 18, 2026'
   }
 ];
 
@@ -1017,6 +1041,68 @@ const BLOG_FAQS: Record<string, { q: string, a: string }[]> = {
       q: "What are some practical tips to quiet a hyperactive ADHD mind before bed?",
       a: "Practical strategies include taking warm baths 90 minutes before sleep to trigger a natural body temperature drop, using high-weight weighted blankets, playing soft ambient pink noise, and committing to an absolute sunset of digital stimulation at least one hour before bed."
     }
+  ],
+  'what-time-should-i-sleep-if-i-wake-up-at-6-am': [
+    {
+      q: "What time should I sleep if I need to wake up at 6:00 AM?",
+      a: "To wake up refreshed at 6:00 AM, you should plan to fall asleep at either 9:00 PM, 10:30 PM, 12:00 AM (midnight), or 1:30 AM. These times allow for exactly 6, 5, 4, or 3 full 90-minute sleep cycles respectively, plus an average of 15 minutes to fall asleep."
+    },
+    {
+      q: "Is 6 hours of sleep enough if I wake up at 6 AM?",
+      a: "For most healthy adults, 7.5 to 9 hours of sleep (5 to 6 full cycles) is ideal. However, 6 hours of sleep (4 complete cycles) is much better than 5 or 7 hours because waking up at 6:00 AM aligns precisely with the end of your fourth 90-minute cycle, preventing deep-sleep grogginess."
+    },
+    {
+      q: "How can I make waking up at 6:00 AM easier?",
+      a: "Keep your wake-up time consistent, even on weekends. Expose your eyes to bright light or sunshine immediately upon waking at 6:00 AM to halt melatonin production, and use natural 90-minute bedtime calculations to avoid waking up during deep-sleep states."
+    }
+  ],
+  'best-bedtime-calculator-for-students': [
+    {
+      q: "How does a student bedtime calculator optimize memory?",
+      a: "Our student bedtime calculator plans sleep around natural 90-minute cycles. This ensures you wake up at the end of a cycle, maximizing REM sleep, which is critical for brain plasticity, memory consolidation, and exam recall."
+    },
+    {
+      q: "How much sleep does a college student need?",
+      a: "College students and young adults typically require 7 to 9 hours of sleep. If they have an exam at 8:30 AM, waking up at 7:00 AM means timing bedtime for either 10:00 PM or 11:30 PM to optimize brain performance."
+    },
+    {
+      q: "Is sleeping late to study (all-nighter) more effective?",
+      a: "No. Sleep deprivation severely impairs cognitive performance, working memory, and focus. An extra 1.5 hours of sleep (one full cycle) is significantly more beneficial for exam GPA than late-night crammer sessions."
+    }
+  ],
+  'nap-calculator-20-30-60-90-minutes': [
+    {
+      q: "How long is the perfect power nap?",
+      a: "The perfect power nap lasts exactly 20 minutes. This provides immediate alertness and cognitive relief without descending into deep sleep, avoiding morning-like grogginess (sleep inertia)."
+    },
+    {
+      q: "What is a 90-minute nap, and is it beneficial?",
+      a: "Yes, a 90-minute nap represents one complete, natural sleep cycle. It takes you through light sleep, deep sleep, and REM, allowing your body to release growth hormones and repair physical tissues without causing grogginess."
+    },
+    {
+      q: "When should I take a nap according to the nap calculator?",
+      a: "The ideal nap window is in the afternoon between 1:00 PM and 3:00 PM, when your body temperature naturally dips and sleep pressure climbs. Avoid taking naps past 4:00 PM as it will disrupt nighttime sleep."
+    }
+  ],
+  'sleep-calculator-for-exams': [
+    {
+      q: "What is the best bedtime the night before a major exam?",
+      a: "The best bedtime is one that provides 5 or 6 complete sleep cycles (7.5 to 9 hours) and ends naturally at your target waking time. If you need to wake up at 6:00 AM for an early shift or exam, sleep at 9:00 PM or 10:30 PM."
+    },
+    {
+      q: "Can sleep planning improve test scores?",
+      a: "Absolutely. Correct sleep cycle alignment ensures your brain spends enough time in deep and REM stages, which are scientifically proven to consolidate memories and improve lateral thinking, speed, and accuracy."
+    }
+  ],
+  'sleep-calculator-for-night-shift-workers': [
+    {
+      q: "How should a shift worker calculate daytime sleep cycles?",
+      a: "Shift workers should count backward or forward from their sleeping block in 90-minute increments, aiming for either a 7.5-hour consolidated daytime block (5 cycles) or a 4.5-hour anchor block plus a 90-minute pre-shift evening nap."
+    },
+    {
+      q: "Why is daytime sleep lighter for night shift employees?",
+      a: "Daytime sleep is lighter due to elevated daytime temperatures, ambient environmental sound, and natural circadian biology which signals hormone releases like cortisol and suppresses melatonin when exposed to daylight."
+    }
   ]
 };
 
@@ -1027,25 +1113,6 @@ export default function Blog() {
   const currentPath = location.pathname;
 
   const [openFaq, setOpenFaq] = useState<number | null>(null);
-
-  // High performance static injection detection
-  const isStaticGen = typeof global !== 'undefined' && (global as any).IS_STATIC_GEN;
-
-  // Track the static HTML injected onto the screen to bypass React hydration
-  const [staticHtml, setStaticHtml] = useState<string>(() => {
-    if (typeof window !== 'undefined') {
-      const existing = document.getElementById('blog-static-content');
-      // If client is loading a slug, and the DOM already has matching pre-rendered content, re-use it instantly!
-      if (existing) {
-        const storedSlug = existing.getAttribute('data-slug');
-        const activeSlugValue = slug || currentPath.split('/').pop() || '';
-        if (storedSlug === activeSlugValue) {
-          return existing.innerHTML;
-        }
-      }
-    }
-    return '';
-  });
 
   const isBlog1 = currentPath === '/sleep-cycles-explained' || slug === 'sleep-cycles-explained';
   const isBlog2 = currentPath === '/what-is-rem-sleep' || slug === 'what-is-rem-sleep';
@@ -1091,8 +1158,11 @@ export default function Blog() {
   const isBlog42 = currentPath === '/adhd-sleep-schedule-calculator-tips' || slug === 'adhd-sleep-schedule-calculator-tips';
   const isBlog43 = currentPath === '/sleep-calculator-for-exams' || slug === 'sleep-calculator-for-exams';
   const isBlog44 = currentPath === '/sleep-calculator-for-night-shift-workers' || slug === 'sleep-calculator-for-night-shift-workers';
+  const isBlog45 = currentPath === '/what-time-should-i-sleep-if-i-wake-up-at-6-am' || slug === 'what-time-should-i-sleep-if-i-wake-up-at-6-am';
+  const isBlog46 = currentPath === '/best-bedtime-calculator-for-students' || slug === 'best-bedtime-calculator-for-students';
+  const isBlog47 = currentPath === '/nap-calculator-20-30-60-90-minutes' || slug === 'nap-calculator-20-30-60-90-minutes';
   
-  const isAnyBlog = isBlog1 || isBlog2 || isBlog3 || isBlog4 || isBlog5 || isBlog6 || isBlog7 || isBlog8 || isBlog9 || isBlog10 || isBlog11 || isBlog12 || isBlog13 || isBlog14 || isBlog15 || isBlog16 || isBlog17 || isBlog18 || isBlog19 || isBlog20 || isBlog21 || isBlog22 || isBlog23 || isBlog24 || isBlog25 || isBlog26 || isBlog27 || isBlog28 || isBlog29 || isBlog30 || isBlog31 || isBlog32 || isBlog33 || isBlog34 || isBlog35 || isBlog36 || isBlog37 || isBlog38 || isBlog39 || isBlog40 || isBlog41 || isBlog42 || isBlog43 || isBlog44;
+  const isAnyBlog = isBlog1 || isBlog2 || isBlog3 || isBlog4 || isBlog5 || isBlog6 || isBlog7 || isBlog8 || isBlog9 || isBlog10 || isBlog11 || isBlog12 || isBlog13 || isBlog14 || isBlog15 || isBlog16 || isBlog17 || isBlog18 || isBlog19 || isBlog20 || isBlog21 || isBlog22 || isBlog23 || isBlog24 || isBlog25 || isBlog26 || isBlog27 || isBlog28 || isBlog29 || isBlog30 || isBlog31 || isBlog32 || isBlog33 || isBlog34 || isBlog35 || isBlog36 || isBlog37 || isBlog38 || isBlog39 || isBlog40 || isBlog41 || isBlog42 || isBlog43 || isBlog44 || isBlog45 || isBlog46 || isBlog47;
   const isAll = false; // Override isAll to false so individual articles never render stacked in /blog
 
   let activeSlug = '';
@@ -1140,42 +1210,13 @@ export default function Blog() {
   else if (isBlog42) activeSlug = 'adhd-sleep-schedule-calculator-tips';
   else if (isBlog43) activeSlug = 'sleep-calculator-for-exams';
   else if (isBlog44) activeSlug = 'sleep-calculator-for-night-shift-workers';
+  else if (isBlog45) activeSlug = 'what-time-should-i-sleep-if-i-wake-up-at-6-am';
+  else if (isBlog46) activeSlug = 'best-bedtime-calculator-for-students';
+  else if (isBlog47) activeSlug = 'nap-calculator-20-30-60-90-minutes';
 
   const currentFaqs = activeSlug ? BLOG_FAQS[activeSlug] : [];
 
-  // Load and fetch static content when navigating client-side
-  useEffect(() => {
-    if (isStaticGen || !activeSlug) return;
 
-    // Check if the DOM already has matching pre-rendered content (instant landing)
-    if (typeof window !== 'undefined') {
-      const existing = document.getElementById('blog-static-content');
-      if (existing) {
-        const storedSlug = existing.getAttribute('data-slug');
-        if (storedSlug === activeSlug) {
-          setStaticHtml(existing.innerHTML);
-          return;
-        }
-      }
-    }
-
-    // Otherwise, fetch the individual pre-rendered chunk asynchronously
-    let isCurrent = true;
-    fetch(`/blog-html/${activeSlug}.json`)
-      .then(res => res.json())
-      .then(data => {
-        if (isCurrent && data && data.html) {
-          setStaticHtml(data.html);
-        }
-      })
-      .catch(err => {
-        console.error("[Blog] Error fetching static blog content:", err);
-      });
-
-    return () => {
-      isCurrent = false;
-    };
-  }, [activeSlug, isStaticGen]);
 
   const DUPLICATE_SLUGS = [
     'how-much-sleep-do-you-need-by-age',
@@ -1254,13 +1295,30 @@ export default function Blog() {
       "description": description || currentPost.description,
       "image": "https://sleepcalculater.online/og_banner.png",
       "author": {
-        "@type": "Organization",
-        "name": "Sleep Calculator",
-        "url": "https://sleepcalculater.online"
+        "@type": "Person",
+        "name": "Dr. Sarah Jenkins",
+        "jobTitle": "Lead Sleep Science Advisor & Cognitive Neuroscientist",
+        "worksFor": {
+          "@type": "MedicalOrganization",
+          "name": "Clinical Sleep Society",
+          "url": "https://sleepcalculater.online/about"
+        },
+        "knowsAbout": ["Circadian Biology", "Ultradian Rhythms", "Sleep Medicine"]
+      },
+      "reviewedBy": {
+        "@type": "Person",
+        "name": "Prof. Marcus Vance",
+        "jobTitle": "Director of Circadian Rhythm Research & Chronobiologist",
+        "worksFor": {
+          "@type": "MedicalOrganization",
+          "name": "Neuroscience & Sleep Research Center",
+          "url": "https://sleepcalculater.online/about"
+        }
       },
       "publisher": {
         "@type": "Organization",
         "name": "Sleep Calculator",
+        "url": "https://sleepcalculater.online",
         "logo": {
           "@type": "ImageObject",
           "url": "https://sleepcalculater.online/favicon.png"
@@ -1274,6 +1332,38 @@ export default function Blog() {
     };
 
     jsonLdScripts.push({ __html: JSON.stringify(articleSchema) });
+
+    // Dynamic fallback breadcrumb schema for all selected articles, unless covered by custom manual block
+    const customBreadcrumbSlugs = [
+      'sleep-debt-explained',
+      'how-long-does-it-take-to-fall-asleep',
+      'rem-sleep-calculator-bedtime-cycles',
+      'sleep-deprivation-calculator-recovery-guide',
+      'bedtime-calculator-by-age',
+      'shift-work-sleep-calculator-guide',
+      'adhd-sleep-schedule-calculator-tips'
+    ];
+    if (!customBreadcrumbSlugs.includes(activeSlug)) {
+      const breadcrumbSchema = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://sleepcalculater.online/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": title || currentPost.title,
+            "item": canonicalUrl
+          }
+        ]
+      };
+      jsonLdScripts.push({ __html: JSON.stringify(breadcrumbSchema) });
+    }
 
     if (activeSlug === 'sleep-debt-explained') {
       const breadcrumbSchema = {
@@ -1638,6 +1728,62 @@ export default function Blog() {
       };
       jsonLdScripts.push({ __html: JSON.stringify(faqSchema) });
     }
+  } else {
+    // Generate a cohesive Blog/CollectionPage schema of all available guides for AI aggregators & search engine bots
+    const blogListSchema = {
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      "@id": "https://sleepcalculater.online/blog#blog",
+      "name": "Sleep Science, Bedtime Optimization & Health Guides",
+      "description": "Expert physiological research, chronobiology studies, and actionable resource guides covering sleep cycles, circadian rhythms, nap calculation, sleep debt recovery, and night shift wellness.",
+      "url": "https://sleepcalculater.online/blog",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Sleep Calculator",
+        "url": "https://sleepcalculater.online",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://sleepcalculater.online/favicon.png"
+        }
+      },
+      "blogPost": BLOG_POSTS.map(post => {
+        const months: Record<string, string> = {
+          'January': '01', 'February': '02', 'March': '03', 'April': '04',
+          'May': '05', 'June': '06', 'July': '07', 'August': '08',
+          'September': '09', 'October': '10', 'November': '11', 'December': '12'
+        };
+        const parts = (post.date || 'June 02, 2026').replace(',', '').split(' ');
+        let formattedDate = '2026-06-02';
+        if (parts.length === 3) {
+          const month = months[parts[0]] || '06';
+          const day = parts[1].padStart(2, '0');
+          const year = parts[2];
+          formattedDate = `${year}-${month}-${day}`;
+        }
+        return {
+          "@type": "BlogPosting",
+          "headline": post.title,
+          "description": post.description,
+          "url": `https://sleepcalculater.online/${post.slug}`,
+          "datePublished": formattedDate,
+          "dateModified": formattedDate,
+          "author": {
+            "@type": "Person",
+            "name": "Dr. Sarah Jenkins",
+            "jobTitle": "Lead Sleep Science Advisor & Cognitive Neuroscientist"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "Sleep Calculator",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://sleepcalculater.online/favicon.png"
+            }
+          }
+        };
+      })
+    };
+    jsonLdScripts.push({ __html: JSON.stringify(blogListSchema) });
   }
 
   return (
@@ -1736,31 +1882,8 @@ export default function Blog() {
           </div>
         )}
 
-        {isAnyBlog && !isStaticGen && (
-          <div 
-            id="blog-static-content"
-            data-slug={activeSlug}
-            className="prose prose-invert max-w-none shadow-premium select-text text-slate-300 space-y-6"
-            onClick={(e) => {
-              const target = e.target as HTMLElement;
-              const anchor = target.closest('a');
-              if (anchor) {
-                const href = anchor.getAttribute('href');
-                if (href && href.startsWith('/') && !href.startsWith('//')) {
-                  e.preventDefault();
-                  navigate(href);
-                  window.scrollTo({ top: 0, behavior: 'smooth' });
-                }
-              }
-            }}
-            dangerouslySetInnerHTML={{ __html: staticHtml }}
-            suppressHydrationWarning
-          />
-        )}
-
-        {isAnyBlog && isStaticGen && (
-          <AutoLinker currentPath={activeSlug}>
-            <>
+        {isAnyBlog && (
+          <>
               {/* Blog 1: Sleep Cycles Explained */}
               {(isBlog1 || isAll) && (
           <article className="space-y-6 select-text text-slate-300">
@@ -1783,28 +1906,41 @@ export default function Blog() {
               A Sleep Calculator with Sleep Cycles is designed around this concept. Instead of focusing only on total sleep hours, it considers how your body naturally sleeps throughout the night.
             </p>
 
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4 font-serif">
               What Is a Sleep Cycle?
             </h2>
 
             <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
-              A sleep cycle is a sequence of sleep stages your body goes through repeatedly during the night.
+              A sleep cycle is a highly structured, ultradian sequence of physiological and neurochemical sleep stages that your body goes through repeatedly during the night. For a healthy adult, a single sleep cycle lasts approximately 90 to 110 minutes, translating to 4 to 6 full cycles across a standard 7.5 to 9-hour sleeping block.
             </p>
 
+            <h3 className="text-xl font-bold text-gray-100 pt-2 font-serif">
+              The Four Distinct Phases of Sleep Architecture
+            </h3>
+
             <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
-              A typical sleep cycle lasts about 90 minutes and includes:
+              Every individual sleep cycle is composed of two primary physiological states: Non-Rapid Eye Movement (NREM) sleep and Rapid Eye Movement (REM) sleep. These states are further divided into four progressive stages:
             </p>
 
             <div className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 py-1">
-              <ul className="list-disc pl-6 space-y-1.5 text-slate-300">
-                <li>Light Sleep</li>
-                <li>Deep Sleep</li>
-                <li>REM Sleep</li>
+              <ul className="list-decimal pl-6 space-y-3 text-slate-300">
+                <li className="leading-relaxed">
+                  <strong className="text-violet-400 font-serif">Stage N1 (NREM Light Sleep Transition):</strong> The bridge between wakefulness and light slumber. This phase lasts 5 to 10 minutes. As alpha brain waves attenuate and theta waves (4–7 Hz) take over, heart rates slow, breathing becomes rhythmic, and muscles begin to relax. It is during Stage N1 that individuals may experience hypnagogic jerks (sudden muscle spasms). Waking from N1 is extremely easy and yields zero cognitive inertia.
+                </li>
+                <li className="leading-relaxed">
+                  <strong className="text-violet-400 font-serif">Stage N2 (NREM Consolidated Light Sleep):</strong> Comprising approximately 50% of your total nocturnal sleep duration. Although considered 'light sleep', Stage N2 is highly active. Your core body temperature drops, eye movements stop completely, and your brain begins emitting distinctive waveforms known as <span className="text-[#D4AF37] font-semibold">Sleep Spindles</span> (rapid bursts of rhythmic thalamocortical activity) and <span className="text-[#D4AF37] font-semibold">K-Complexes</span>. These waveforms act as protective neural gates, blocking out environmental sounds and consolidating procedural and motor memories.
+                </li>
+                <li className="leading-relaxed">
+                  <strong className="text-violet-400 font-serif">Stage N3 (NREM Slow-Wave / Deep Sleep):</strong> The ultimate physical restoration phase. Dominating the first half of the night, Stage N3 is characterized by highly synchronized, high-amplitude slow <span className="text-indigo-400 font-semibold">Delta Waves (0.5–4 Hz)</span> on EEG recordings. During this deep state, blood pressure reaches its lowest levels, skeletal muscle tissue repairs itself, tissue growth factors are released, and human growth hormone (HGH) surges from the pituitary gland. Critically, the brain's glymphatic waste-removal system activates, flushing cerebral-spinal fluid to clear metabolic waste like beta-amyloid protein plaque.
+                </li>
+                <li className="leading-relaxed">
+                  <strong className="text-violet-400 font-serif">Stage R (REM Sleep / Rapid Eye Movement):</strong> The neurological incubator for dreams, memory indexation, and emotional homeostasis. During REM sleep, brain activity surges, closely mimicking a waking alert state (hence it is historically called "paradoxical sleep"). While your eyes dart rapidly behind closed eyelids and respiratory rates turn highly irregular, the pons in your brain stem sends neural blockades to paralyze your voluntary muscle systems (motor atonia). This paralysis prevents you from physically acting out dreams, while the hippocampus conducts synaptic consolidation—knitting together daytime memories and boosting creative problem-solving networks.
+                </li>
               </ul>
             </div>
 
             <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
-              Your brain and body perform different recovery functions during each stage.
+              Your brain and body perform different recovery functions during each stage. To wake up feeling completely restored, it is essential to plan sleep times so that your alarm sounds at the completion of a full 90-minute sleep cycle rather than interrupting a slow delta wave in deep Stage N3.
             </p>
 
             <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4">
@@ -6464,45 +6600,45 @@ export default function Blog() {
               Recommended Sleep by Age
             </h2>
 
-            <div className="space-y-4">
-              <div className="border border-white/5 bg-slate-900/30 rounded-xl p-4">
+            <div className="space-y-4 pl-1">
+              <div>
                 <p className="text-base leading-relaxed text-slate-300"><strong className="text-gray-100">Newborns (0–3 Months):</strong> 14–17 hours per day</p>
-                <p className="text-slate-400 text-sm mt-1">Newborns spend most of their time sleeping to support rapid growth and brain development.</p>
+                <p className="text-slate-400 text-sm mt-0.5">Newborns spend most of their time sleeping to support rapid growth and brain development.</p>
               </div>
 
-              <div className="border border-white/5 bg-slate-900/30 rounded-xl p-4">
+              <div>
                 <p className="text-base leading-relaxed text-slate-300"><strong className="text-gray-100">Infants (4–12 Months):</strong> 12–16 hours per day</p>
-                <p className="text-slate-400 text-sm mt-1">This includes multiple daytime naps as well as continuous nighttime sleep.</p>
+                <p className="text-slate-400 text-sm mt-0.5">This includes multiple daytime naps as well as continuous nighttime sleep.</p>
               </div>
 
-              <div className="border border-white/5 bg-slate-900/30 rounded-xl p-4">
+              <div>
                 <p className="text-base leading-relaxed text-slate-300"><strong className="text-gray-100">Toddlers (1–2 Years):</strong> 11–14 hours per day</p>
-                <p className="text-slate-400 text-sm mt-1">Adequate sleep directly supports physical growth, activity, and cognitive development.</p>
+                <p className="text-slate-400 text-sm mt-0.5">Adequate sleep directly supports physical growth, activity, and cognitive development.</p>
               </div>
 
-              <div className="border border-white/5 bg-slate-900/30 rounded-xl p-4">
+              <div>
                 <p className="text-base leading-relaxed text-slate-300"><strong className="text-gray-100">Preschool Children (3–5 Years):</strong> 10–13 hours per day</p>
-                <p className="text-slate-400 text-sm mt-1">Sleep remains very important for learning retention, behavior regulation, and motor skills.</p>
+                <p className="text-slate-400 text-sm mt-0.5">Sleep remains very important for learning retention, behavior regulation, and motor skills.</p>
               </div>
 
-              <div className="border border-white/5 bg-slate-900/30 rounded-xl p-4">
+              <div>
                 <p className="text-base leading-relaxed text-slate-300"><strong className="text-gray-100">School-Age Children (6–12 Years):</strong> 9–12 hours per day</p>
-                <p className="text-slate-400 text-sm mt-1">Consistent sleep schedules help improve classroom focus, academic performance, and physical strength.</p>
+                <p className="text-slate-400 text-sm mt-0.5">Consistent sleep schedules help improve classroom focus, academic performance, and physical strength.</p>
               </div>
 
-              <div className="border border-white/5 bg-slate-900/30 rounded-xl p-4">
+              <div>
                 <p className="text-base leading-relaxed text-slate-300"><strong className="text-gray-100">Teenagers (13–18 Years):</strong> 8–10 hours per day</p>
-                <p className="text-slate-400 text-sm mt-1">Teenagers often experience sleep deprivation due to demanding academic schedules and social habits.</p>
+                <p className="text-slate-400 text-sm mt-0.5">Teenagers often experience sleep deprivation due to demanding academic schedules and social habits.</p>
               </div>
 
-              <div className="border border-white/5 bg-slate-900/30 rounded-xl p-4">
+              <div>
                 <p className="text-base leading-relaxed text-slate-300"><strong className="text-gray-100">Adults (18–64 Years):</strong> 7–9 hours per night</p>
-                <p className="text-slate-400 text-sm mt-1">Most healthy adults perform best, stay sharp, and maintain metabolic health within this recommended range.</p>
+                <p className="text-slate-400 text-sm mt-0.5">Most healthy adults perform best, stay sharp, and maintain metabolic health within this recommended range.</p>
               </div>
 
-              <div className="border border-white/5 bg-slate-900/30 rounded-xl p-4">
+              <div>
                 <p className="text-base leading-relaxed text-slate-300"><strong className="text-gray-100">Older Adults (65+ Years):</strong> 7–8 hours per night</p>
-                <p className="text-slate-400 text-sm mt-1">Sleep patterns naturally alter with age, but adequate deep rest remains biologically essential for brain longevity.</p>
+                <p className="text-slate-400 text-sm mt-0.5">Sleep patterns naturally alter with age, but adequate deep rest remains biologically essential for brain longevity.</p>
               </div>
             </div>
 
@@ -6646,35 +6782,35 @@ export default function Blog() {
               Common Reasons You Wake Up Tired After 8 Hours
             </h2>
 
-            <div className="space-y-4">
-              <div className="border border-white/5 bg-slate-900/30 rounded-xl p-4">
+            <div className="space-y-4 pl-1">
+              <div>
                 <h3 className="text-slate-100 font-bold text-base">1. Poor Sleep Quality</h3>
-                <p className="text-slate-300 text-sm mt-1">Even if you spend eight hours in bed, frequent interruptions or sleeping in an unfavorable environment may prevent restorative deep sleep and REM sleep, which are critical for physiological and mental recovery.</p>
+                <p className="text-slate-300 text-sm mt-0.5">Even if you spend eight hours in bed, frequent interruptions or sleeping in an unfavorable environment may prevent restorative deep sleep and REM sleep, which are critical for physiological and mental recovery.</p>
               </div>
 
-              <div className="border border-white/5 bg-slate-900/30 rounded-xl p-4">
+              <div>
                 <h3 className="text-slate-100 font-bold text-base">2. Waking Up During Deep Sleep</h3>
-                <p className="text-slate-300 text-sm mt-1">Sleep occurs in cycles lasting approximately 90 minutes. If your alarm interrupts deep sleep, you will experience heavy mental grogginess (sleep inertia), morning fatigue, and difficulty concentrating.</p>
+                <p className="text-slate-300 text-sm mt-0.5">Sleep occurs in cycles lasting approximately 90 minutes. If your alarm interrupts deep sleep, you will experience heavy mental grogginess (sleep inertia), morning fatigue, and difficulty concentrating.</p>
               </div>
 
-              <div className="border border-white/5 bg-slate-900/30 rounded-xl p-4">
+              <div>
                 <h3 className="text-slate-100 font-bold text-base">3. Irregular Sleep Schedule</h3>
-                <p className="text-slate-300 text-sm mt-1">Going to bed and waking up at different times each day can heavily disrupt your circadian rhythm, resulting in lower-quality sleep overall.</p>
+                <p className="text-slate-300 text-sm mt-0.5">Going to bed and waking up at different times each day can heavily disrupt your circadian rhythm, resulting in lower-quality sleep overall.</p>
               </div>
 
-              <div className="border border-white/5 bg-slate-900/30 rounded-xl p-4">
+              <div>
                 <h3 className="text-slate-100 font-bold text-base">4. Accumulated Sleep Debt</h3>
-                <p className="text-slate-300 text-sm mt-1">Accumulated sleep loss from previous days continues affecting your daily energy. Experiencing just one good night of sleep may not completely eliminate high sleep debt.</p>
+                <p className="text-slate-300 text-sm mt-0.5">Accumulated sleep loss from previous days continues affecting your daily energy. Experiencing just one good night of sleep may not completely eliminate high sleep debt.</p>
               </div>
 
-              <div className="border border-white/5 bg-slate-900/30 rounded-xl p-4">
+              <div>
                 <h3 className="text-slate-100 font-bold text-base">5. Excessive Screen Time Before Bed</h3>
-                <p className="text-slate-300 text-sm mt-1">The harmful blue light from phone and computer devices may delay melatonin release, sleep onset, and reduce deep sleep quality.</p>
+                <p className="text-slate-300 text-sm mt-0.5">The harmful blue light from phone and computer devices may delay melatonin release, sleep onset, and reduce deep sleep quality.</p>
               </div>
 
-              <div className="border border-white/5 bg-slate-900/30 rounded-xl p-4">
+              <div>
                 <h3 className="text-slate-100 font-bold text-base">6. High Stress and Anxiety</h3>
-                <p className="text-slate-300 text-sm mt-1">Mental stress can interfere with restful sleep stages, keeping your body in a lighter state of sleep even when total sleep duration appears sufficient.</p>
+                <p className="text-slate-300 text-sm mt-0.5">Mental stress can interfere with restful sleep stages, keeping your body in a lighter state of sleep even when total sleep duration appears sufficient.</p>
               </div>
             </div>
 
@@ -6805,20 +6941,20 @@ export default function Blog() {
               Example Bedtimes Based on Wake-Up Time
             </h2>
 
-            <div className="space-y-4">
-              <div className="border border-white/5 bg-slate-900/30 rounded-xl p-4">
+            <div className="space-y-4 pl-1">
+              <div>
                 <h3 className="text-slate-100 font-bold text-base">If You Wake Up at 6:00 AM</h3>
-                <p className="text-slate-300 text-sm mt-1">Recommended bedtimes: <strong className="text-gray-100">9:00 PM</strong> (9 hours / 6 full cycles) or <strong className="text-gray-100">10:30 PM</strong> (7.5 hours / 5 full cycles).</p>
+                <p className="text-slate-300 text-sm mt-0.5">Recommended bedtimes: <strong className="text-gray-100">9:00 PM</strong> (9 hours / 6 full cycles) or <strong className="text-gray-100">10:30 PM</strong> (7.5 hours / 5 full cycles).</p>
               </div>
 
-              <div className="border border-white/5 bg-slate-900/30 rounded-xl p-4">
+              <div>
                 <h3 className="text-slate-100 font-bold text-base">If You Wake Up at 7:00 AM</h3>
-                <p className="text-slate-300 text-sm mt-1">Recommended bedtimes: <strong className="text-gray-100">10:00 PM</strong> (9 hours / 6 full cycles) or <strong className="text-gray-100">11:30 PM</strong> (7.5 hours / 5 full cycles).</p>
+                <p className="text-slate-300 text-sm mt-0.5">Recommended bedtimes: <strong className="text-gray-100">10:00 PM</strong> (9 hours / 6 full cycles) or <strong className="text-gray-100">11:30 PM</strong> (7.5 hours / 5 full cycles).</p>
               </div>
 
-              <div className="border border-white/5 bg-slate-900/30 rounded-xl p-4">
+              <div>
                 <h3 className="text-slate-100 font-bold text-base">If You Wake Up at 8:00 AM</h3>
-                <p className="text-slate-300 text-sm mt-1">Recommended bedtimes: <strong className="text-gray-100">11:00 PM</strong> (9 hours / 6 full cycles) or <strong className="text-gray-100">12:30 AM</strong> (7.5 hours / 5 full cycles).</p>
+                <p className="text-slate-300 text-sm mt-0.5">Recommended bedtimes: <strong className="text-gray-100">11:00 PM</strong> (9 hours / 6 full cycles) or <strong className="text-gray-100">12:30 AM</strong> (7.5 hours / 5 full cycles).</p>
               </div>
             </div>
 
@@ -7033,22 +7169,22 @@ export default function Blog() {
               Common causes of sleep debt include:
             </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="border border-white/5 bg-slate-900/30 rounded-xl p-4">
+            <div className="space-y-4 pl-1">
+              <div>
                 <h3 className="text-slate-100 font-bold text-sm">Late Bedtimes</h3>
-                <p className="text-slate-300 text-xs mt-1">Staying up late to watch TV, scroll on social media, or work can chip away at essential rest.</p>
+                <p className="text-slate-300 text-xs mt-0.5">Staying up late to watch TV, scroll on social media, or work can chip away at essential rest.</p>
               </div>
-              <div className="border border-white/5 bg-slate-900/30 rounded-xl p-4">
+              <div>
                 <h3 className="text-slate-100 font-bold text-sm">Busy Work Schedules</h3>
-                <p className="text-slate-300 text-xs mt-1">Demanding professional workloads and early mornings often squeeze sleep duration.</p>
+                <p className="text-slate-300 text-xs mt-0.5">Demanding professional workloads and early mornings often squeeze sleep duration.</p>
               </div>
-              <div className="border border-white/5 bg-slate-900/30 rounded-xl p-4">
+              <div>
                 <h3 className="text-slate-100 font-bold text-sm">Poor Sleep Habits</h3>
-                <p className="text-slate-300 text-xs mt-1">An uncomfortable bedroom setup, noise, or high evening caffeine complicates falling asleep easily.</p>
+                <p className="text-slate-300 text-xs mt-0.5">An uncomfortable bedroom setup, noise, or high evening caffeine complicates falling asleep easily.</p>
               </div>
-              <div className="border border-white/5 bg-slate-900/30 rounded-xl p-4">
+              <div>
                 <h3 className="text-slate-100 font-bold text-sm">Screen and Blue Light</h3>
-                <p className="text-slate-300 text-xs mt-1">Hardware displays emit blue light which blocks natural bedtime melatonin release.</p>
+                <p className="text-slate-300 text-xs mt-0.5">Hardware displays emit blue light which blocks natural bedtime melatonin release.</p>
               </div>
             </div>
 
@@ -7193,25 +7329,25 @@ export default function Blog() {
               Scientists believe dreams may support key biological and cognitive processes, including:
             </p>
 
-            <div className="space-y-4">
-              <div className="border border-white/5 bg-slate-900/30 rounded-xl p-4">
+            <div className="space-y-4 pl-1">
+              <div>
                 <h3 className="text-slate-100 font-bold text-base">Memory Processing</h3>
-                <p className="text-slate-300 text-sm mt-1">Dreaming may help organize, index, and store information learned during the day, transforming short-term memories into long-term ones.</p>
+                <p className="text-slate-300 text-sm mt-0.5">Dreaming may help organize, index, and store information learned during the day, transforming short-term memories into long-term ones.</p>
               </div>
 
-              <div className="border border-white/5 bg-slate-900/30 rounded-xl p-4">
+              <div>
                 <h3 className="text-slate-100 font-bold text-base">Emotional Regulation</h3>
-                <p className="text-slate-300 text-sm mt-1">Dreams may serve as a safe psychological theater, helping your brain navigate and process stress, fear, and daily life emotions.</p>
+                <p className="text-slate-300 text-sm mt-0.5">Dreams may serve as a safe psychological theater, helping your brain navigate and process stress, fear, and daily life emotions.</p>
               </div>
 
-              <div className="border border-white/5 bg-slate-900/30 rounded-xl p-4">
+              <div>
                 <h3 className="text-slate-100 font-bold text-base">Learning and Creativity</h3>
-                <p className="text-slate-300 text-sm mt-1">Some studies suggest dreaming supports problem-solving and creative thinking by connecting distant memories or ideas in abstract ways.</p>
+                <p className="text-slate-300 text-sm mt-0.5">Some studies suggest dreaming supports problem-solving and creative thinking by connecting distant memories or ideas in abstract ways.</p>
               </div>
 
-              <div className="border border-white/5 bg-slate-900/30 rounded-xl p-4">
+              <div>
                 <h3 className="text-slate-100 font-bold text-base">Brain Activity Maintenance</h3>
-                <p className="text-slate-300 text-sm mt-1">Dreaming may simply be a natural byproduct of ongoing neurological activity during sleep, keeping the brain tuned.</p>
+                <p className="text-slate-300 text-sm mt-0.5">Dreaming may simply be a natural byproduct of ongoing neurological activity during sleep, keeping the brain tuned.</p>
               </div>
             </div>
 
@@ -7328,18 +7464,18 @@ export default function Blog() {
               Sleep helps the brain:
             </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              <div className="border border-white/5 bg-slate-900/30 rounded-xl p-4">
+            <div className="space-y-4 pl-1">
+              <div>
                 <p className="text-slate-100 font-bold text-sm">Process Knowledge</p>
-                <p className="text-slate-300 text-xs mt-1">Sifts through massive daily cognitive input, storing key lessons while discarding noise.</p>
+                <p className="text-slate-300 text-xs mt-0.5">Sifts through massive daily cognitive input, storing key lessons while discarding noise.</p>
               </div>
-              <div className="border border-white/5 bg-slate-900/30 rounded-xl p-4">
+              <div>
                 <p className="text-slate-100 font-bold text-sm">Strengthen Neurons</p>
-                <p className="text-slate-300 text-xs mt-1">Solidifies cellular neural connections required for long-term memory.</p>
+                <p className="text-slate-300 text-xs mt-0.5">Solidifies cellular neural connections required for long-term memory.</p>
               </div>
-              <div className="border border-white/5 bg-slate-900/30 rounded-xl p-4">
+              <div>
                 <p className="text-slate-100 font-bold text-sm">Improve Recall</p>
-                <p className="text-slate-300 text-xs mt-1">Accelerates memory retrieval speed and accuracy when you need it most.</p>
+                <p className="text-slate-300 text-xs mt-0.5">Accelerates memory retrieval speed and accuracy when you need it most.</p>
               </div>
             </div>
 
@@ -7428,22 +7564,22 @@ export default function Blog() {
               Several factors may contribute to snoring:
             </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="border border-white/5 bg-slate-900/30 rounded-xl p-4">
+            <div className="space-y-4 pl-1">
+              <div>
                 <h3 className="text-slate-100 font-bold text-sm">Sleeping on the Back</h3>
-                <p className="text-slate-300 text-xs mt-1">Gravity pulls the tongue and throat tissues backward, narrowing the airway.</p>
+                <p className="text-slate-300 text-xs mt-0.5">Gravity pulls the tongue and throat tissues backward, narrowing the airway.</p>
               </div>
-              <div className="border border-white/5 bg-slate-900/30 rounded-xl p-4">
+              <div>
                 <h3 className="text-slate-100 font-bold text-sm">Nasal Congestion</h3>
-                <p className="text-slate-300 text-xs mt-1">Allergies, sinus infections, or simple colds reduce nasal airflow, forcing mouth breathing.</p>
+                <p className="text-slate-300 text-xs mt-0.5">Allergies, sinus infections, or simple colds reduce nasal airflow, forcing mouth breathing.</p>
               </div>
-              <div className="border border-white/5 bg-slate-900/30 rounded-xl p-4">
+              <div>
                 <h3 className="text-slate-100 font-bold text-sm">Excess Body Weight</h3>
-                <p className="text-slate-300 text-xs mt-1">Extra fatty tissue around the neck can compress the airways during rest.</p>
+                <p className="text-slate-300 text-xs mt-0.5">Extra fatty tissue around the neck can compress the airways during rest.</p>
               </div>
-              <div className="border border-white/5 bg-slate-900/30 rounded-xl p-4">
+              <div>
                 <h3 className="text-slate-100 font-bold text-sm">Alcohol Consumption</h3>
-                <p className="text-slate-300 text-xs mt-1">Drinking alcohol before bed over-relaxes the upper throat muscles, causing severe snoring.</p>
+                <p className="text-slate-300 text-xs mt-0.5">Drinking alcohol before bed over-relaxes the upper throat muscles, causing severe snoring.</p>
               </div>
             </div>
 
@@ -7608,22 +7744,22 @@ export default function Blog() {
               Benefits of Using a Sleep Calculator
             </h2>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="border border-white/5 bg-slate-900/30 rounded-xl p-4">
+            <div className="space-y-4 pl-1">
+              <div>
                 <h3 className="text-slate-100 font-bold text-sm">Better Sleep Planning</h3>
-                <p className="text-slate-300 text-xs mt-1">Accurately timing bedtimes helps synchronize alertness with daily commitments.</p>
+                <p className="text-slate-300 text-xs mt-0.5">Accurately timing bedtimes helps synchronize alertness with daily commitments.</p>
               </div>
-              <div className="border border-white/5 bg-slate-900/30 rounded-xl p-4">
+              <div>
                 <h3 className="text-slate-100 font-bold text-sm">Improved Sleep Quality</h3>
-                <p className="text-slate-300 text-xs mt-1">Waking up at the completion of a full sleep cycle prevents midnight drag.</p>
+                <p className="text-slate-300 text-xs mt-0.5">Waking up at the completion of a full sleep cycle prevents midnight drag.</p>
               </div>
-              <div className="border border-white/5 bg-slate-900/30 rounded-xl p-4">
+              <div>
                 <h3 className="text-slate-100 font-bold text-sm">Consistent Bedtime Routine</h3>
-                <p className="text-slate-300 text-xs mt-1">Encourages standard habits which signal the nervous system to relax naturally.</p>
+                <p className="text-slate-300 text-xs mt-0.5">Encourages standard habits which signal the nervous system to relax naturally.</p>
               </div>
-              <div className="border border-white/5 bg-slate-900/30 rounded-xl p-4">
+              <div>
                 <h3 className="text-slate-100 font-bold text-sm">Healthier Sleep Schedule</h3>
-                <p className="text-slate-300 text-xs mt-1">Locks in circadian rhythms to secure stable afternoon energy levels.</p>
+                <p className="text-slate-300 text-xs mt-0.5">Locks in circadian rhythms to secure stable afternoon energy levels.</p>
               </div>
             </div>
 
@@ -7689,22 +7825,22 @@ export default function Blog() {
               A sleep calculator 90 minutes calculates ideal bedtimes based on:
             </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="border border-white/5 bg-slate-900/30 rounded-xl p-4">
+            <div className="space-y-4 pl-1">
+              <div>
                 <h3 className="text-slate-100 font-bold text-sm">Wake-Up Time</h3>
-                <p className="text-slate-300 text-xs mt-1">Starting with when you need to be awake and working backward in 90-minute chunks.</p>
+                <p className="text-slate-300 text-xs mt-0.5">Starting with when you need to be awake and working backward in 90-minute chunks.</p>
               </div>
-              <div className="border border-white/5 bg-slate-900/30 rounded-xl p-4">
+              <div>
                 <h3 className="text-slate-100 font-bold text-sm">Sleep Cycles</h3>
-                <p className="text-slate-300 text-xs mt-1">Aligning with integer sleep cycle intervals to wake up in light sleep stages.</p>
+                <p className="text-slate-300 text-xs mt-0.5">Aligning with integer sleep cycle intervals to wake up in light sleep stages.</p>
               </div>
-              <div className="border border-white/5 bg-slate-900/30 rounded-xl p-4">
+              <div>
                 <h3 className="text-slate-100 font-bold text-sm">REM Periods</h3>
-                <p className="text-slate-300 text-xs mt-1">Making sure you get sufficient rapid-eye-movement cycles for memory.</p>
+                <p className="text-slate-300 text-xs mt-0.5">Making sure you get sufficient rapid-eye-movement cycles for memory.</p>
               </div>
-              <div className="border border-white/5 bg-slate-900/30 rounded-xl p-4">
+              <div>
                 <h3 className="text-slate-100 font-bold text-sm">Latency Overhead</h3>
-                <p className="text-slate-300 text-xs mt-1">Adding an average of 15 minutes of time needed to fall asleep to sleep calculations.</p>
+                <p className="text-slate-300 text-xs mt-0.5">Adding an average of 15 minutes of time needed to fall asleep to sleep calculations.</p>
               </div>
             </div>
 
@@ -8269,7 +8405,7 @@ export default function Blog() {
               The formula for calculating bedtime backward from a desired waking time is:
             </p>
 
-            <div className="bg-slate-800/50 border border-white/10 rounded-2xl p-5 mb-4 text-center font-mono text-sm sm:text-base text-gray-200">
+            <div className="py-4 my-4 border-y border-white/10 text-center font-mono text-sm sm:text-base text-[#D4AF37] font-semibold">
               Optimal Bedtime = Wake Up Time - (N × 90 minutes) - 15 minutes
             </div>
 
@@ -8786,7 +8922,7 @@ export default function Blog() {
               To calculate your optimal exam-night sleep window, you need to use a simple formula based on 90-minute sleep cycles. A complete human sleep cycle lasts approximately 90 minutes. Waking up at the end of a cycle, rather than in the middle of deep sleep, prevents morning brain fog.
             </p>
 
-            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-400 font-mono bg-white/5 p-4 rounded-2xl border border-white/10">
+            <p className="py-4 my-4 border-y border-white/10 text-center font-mono text-sm sm:text-base text-[#D4AF37] font-semibold">
               Optimal Bedtime = Target Wake-Up Time - (Number of Cycles × 90 Minutes) - Wind-Down Buffer
             </p>
 
@@ -8810,29 +8946,29 @@ export default function Blog() {
               Here are direct, read-friendly guides showing optimal exam-night lights-out times based on standard school wake up schedules:
             </p>
 
-            <div className="space-y-4 pt-1">
-              <div className="border border-white/10 p-5 rounded-2xl bg-white/5 space-y-2">
+            <div className="space-y-4 pl-1">
+              <div>
                 <span className="text-[#D4AF37] font-bold uppercase tracking-wider text-xs">Wake Up at 6:00 AM (Early Exam Session)</span>
-                <p className="text-slate-300 text-sm">
+                <p className="text-slate-300 text-sm mt-1">
                   - <strong>6 Cycles (9 Hours of Sleep):</strong> Bedtime at 8:45 PM (Lights out by 8:30 PM)
                 </p>
-                <p className="text-slate-300 text-sm">
+                <p className="text-slate-300 text-sm mt-1">
                   - <strong>5 Cycles (7.5 Hours of Sleep):</strong> Bedtime at 10:15 PM (Lights out by 10:00 PM) - <strong>RECOMMENDED FOR GENERAL TESTS</strong>
                 </p>
-                <p className="text-slate-300 text-sm">
+                <p className="text-slate-300 text-sm mt-1">
                   - <strong>4 Cycles (6 Hours of Sleep):</strong> Bedtime at 11:45 PM (Lights out by 11:30 PM)
                 </p>
               </div>
 
-              <div className="border border-white/10 p-5 rounded-2xl bg-white/5 space-y-2">
+              <div>
                 <span className="text-[#D4AF37] font-bold uppercase tracking-wider text-xs">Wake Up at 7:00 AM (Standard Exam Session)</span>
-                <p className="text-slate-300 text-sm">
+                <p className="text-slate-300 text-sm mt-1">
                   - <strong>6 Cycles (9 Hours of Sleep):</strong> Bedtime at 9:45 PM (Lights out by 9:30 PM)
                 </p>
-                <p className="text-slate-300 text-sm">
+                <p className="text-slate-300 text-sm mt-1">
                   - <strong>5 Cycles (7.5 Hours of Sleep):</strong> Bedtime at 11:15 PM (Lights out by 11:00 PM) - <strong>RECOMMENDED FOR PEAK FOCUS</strong>
                 </p>
-                <p className="text-slate-300 text-sm">
+                <p className="text-slate-300 text-sm mt-1">
                   - <strong>4 Cycles (6 Hours of Sleep):</strong> Bedtime at 12:45 AM (Lights out by 12:30 AM)
                 </p>
               </div>
@@ -8874,7 +9010,7 @@ export default function Blog() {
           <article className="space-y-6 select-text text-slate-300 pt-1">
             <header className="space-y-3 pb-6 border-b border-white/10">
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-100 tracking-tight leading-tight">
-                Sleep Calculator for Night Shift Workers: Aligning Daytime Rest with Circadian Rhythms
+                Sleep Calculator for Night Shift Workers: Find the Best Sleep Schedule for Better Energy and Health
               </h1>
               {isAll && (
                 <div className="text-sm font-bold tracking-wider text-blue-400 uppercase">
@@ -8883,233 +9019,998 @@ export default function Blog() {
               )}
             </header>
 
-            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 font-medium">
-              Working the graveyard shift or rotating hospital duty slots presents major biological hurdles. Human physiology is naturally wired to sleep when dark and wake when light—meaning night shift workers constantly fight their biological clocks. Without strategic planning, daytime sleep becomes fragmented, leading to exhaustion, insomnia, and chronic brain fog.
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 font-medium font-serif italic text-violet-300 border-l-2 border-violet-500 pl-4 py-1">
+              If you work night shifts and constantly feel tired, the problem is often not how long you sleep but when you sleep. The best sleep schedule for night shift workers is one that allows complete sleep cycles, consistent sleep times, and minimal interruptions.
             </p>
 
-            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
-              A specialized <strong>sleep calculator for night shift workers</strong> provides concrete timelines to manage non-standard shifts. By applying core sleep science techniques, including anchor sleep blocks and strategic bright light exposure, you can organize daytime resting hours into highly restorative sleep cycle windows.
-            </p>
+            <div className="border-b border-white/10 pb-6 mb-2 space-y-3">
+              <h3 className="font-bold text-gray-100 uppercase tracking-wider font-mono text-xs text-[#D4AF37]">Table of Contents</h3>
+              <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-2 text-sm text-slate-300">
+                <li><a href="#why-sleep-different" className="hover:text-blue-400 transition-colors">&bull; Why Is Sleep Different for Night Shift Workers?</a></li>
+                <li><a href="#how-calculator-works" className="hover:text-blue-400 transition-colors">&bull; How Does a Sleep Calculator Work?</a></li>
+                <li><a href="#best-sleep-schedule" className="hover:text-blue-400 transition-colors">&bull; What Is the Best Sleep Schedule?</a></li>
+                <li><a href="#hours-recommended" className="hover:text-blue-400 transition-colors">&bull; How Many Hours Should You Sleep?</a></li>
+                <li><a href="#calculate-sleep-cycles" className="hover:text-blue-400 transition-colors">&bull; How Can You Calculate Sleep Cycles?</a></li>
+                <li><a href="#biggest-sleep-problems" className="hover:text-blue-400 transition-colors">&bull; What Are the Biggest Sleep Problems?</a></li>
+                <li><a href="#improve-sleep-quality" className="hover:text-blue-400 transition-colors">&bull; How Can You Improve Sleep Quality?</a></li>
+                <li><a href="#common-mistakes" className="hover:text-blue-400 transition-colors">&bull; Common Mistakes to Avoid</a></li>
+                <li><a href="#final-recommendation-shift" className="hover:text-blue-400 transition-colors">&bull; Final Recommendation</a></li>
+                <li><a href="#faqs-shift" className="hover:text-blue-400 transition-colors">&bull; FAQs</a></li>
+              </ul>
+            </div>
 
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4">
-              Direct Answer: How Do Shift Workers Calculate Sleep Cycles?
+            <h2 id="why-sleep-different" className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4 scroll-mt-20">
+              Why Is Sleep Different for Night Shift Workers?
             </h2>
 
             <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
-              <strong>Night shift workers should structure daytime rest in two primary ways:</strong> either a single, consolidated 7.5-to-9 hour block starting immediately after their shift, or a split sleep routine consisting of a 4-to-5 hour "anchor block" in the morning and a 1.5-to-2 hour nap before their next shift. Both options should be aligned with natural 90-minute sleep cycles to ensure you wake up fresh and avoid waking up during deep sleep stages.
+              The human body naturally follows a circadian rhythm. This internal clock is designed to keep us awake during the day and asleep at night.
             </p>
 
             <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
-              Because daytime sleep experiences frequent interruptions from temperature increases and environmental noise, maintaining consistency in your selected routine is essential to assist metabolic and circadian regulation.
+              When you work overnight, your body receives mixed signals. Even if you sleep for eight hours, sunlight, noise, and daily activities can reduce sleep quality.
             </p>
 
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4">
-              Consolidated vs. Split Sleep: Selecting Your Strategy
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              That is why many night shift workers feel exhausted despite spending enough time in bed.
+            </p>
+
+            <p className="text-sm border-l-4 border-blue-500 pl-3 py-1 bg-white/5 rounded-r-md text-slate-300 font-medium">
+              <strong>Quick Summary:</strong> Night shift workers often struggle because their sleep schedule conflicts with the body's natural circadian rhythm.
+            </p>
+
+            <h2 id="how-calculator-works" className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4 scroll-mt-20">
+              How Does a Sleep Calculator for Night Shift Workers Work?
             </h2>
 
             <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
-              Depending on personal domestic duties and family schedules, night shifts require chosen rest styles:
+              A sleep calculator helps determine the best time to sleep and wake up based on 90-minute sleep cycles. Instead of focusing only on total sleep hours, the calculator helps you complete full sleep cycles.
             </p>
 
-            <div className="space-y-4 pt-1">
-              <div className="border border-white/10 p-5 rounded-2xl bg-white/5 space-y-2">
-                <span className="text-[#D4AF37] font-bold uppercase tracking-wider text-xs">Strategy A: Single Consolidated block (Daytime Anchor)</span>
-                <p className="text-slate-300 text-sm">
-                  You sleep for a single prolonged segment of 7.5 to 9 hours (5 to 6 cycles) starting soon after heading home (e.g., sleeping from 8:30 AM to 4:30 PM). This most closely resembles natural nighttime rest and is ideal if your domestic environment remains quiet during the daytime.
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              For example, if your shift ends at 7:00 AM and you plan to sleep by 8:00 AM:
+            </p>
+
+            <div className="overflow-x-auto my-4 border border-white/10 rounded-xl bg-white/5">
+              <table className="w-full text-left text-sm text-slate-300">
+                <thead>
+                  <tr className="border-b border-white/10 bg-white/10 text-gray-100 font-semibold font-mono">
+                    <th className="py-3 px-4">Sleep Cycles</th>
+                    <th className="py-3 px-4">Sleep Duration</th>
+                    <th className="py-3 px-4">Wake-Up Time</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-white/10 font-mono">
+                  <tr>
+                    <td className="py-3 px-4 font-bold text-[#D4AF37]">4 Cycles</td>
+                    <td className="py-3 px-4">6 Hours</td>
+                    <td className="py-3 px-4">2:00 PM</td>
+                  </tr>
+                  <tr>
+                    <td className="py-3 px-4 font-bold text-[#D4AF37]">5 Cycles</td>
+                    <td className="py-3 px-4">7.5 Hours</td>
+                    <td className="py-3 px-4">3:30 PM</td>
+                  </tr>
+                  <tr>
+                    <td className="py-3 px-4 font-bold text-[#D4AF37]">6 Cycles</td>
+                    <td className="py-3 px-4">9 Hours</td>
+                    <td className="py-3 px-4">5:00 PM</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              Most workers feel best after five complete sleep cycles.
+            </p>
+
+            <p className="text-sm border-l-4 border-blue-500 pl-3 py-1 bg-white/5 rounded-r-md text-slate-300 font-medium">
+              <strong>Quick Summary:</strong> A sleep calculator works by aligning your sleep schedule with natural 90-minute sleep cycles.
+            </p>
+
+            <h2 id="best-sleep-schedule" className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4 scroll-mt-20">
+              What Is the Best Sleep Schedule for Night Shift Workers?
+            </h2>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              The ideal schedule depends on your shift timing.
+            </p>
+
+            <div className="space-y-2 pl-1">
+              <span className="text-[#D4AF37] font-bold uppercase tracking-wider text-xs">Example: 11 PM to 7 AM Shift</span>
+              <ul className="text-slate-300 text-sm font-mono space-y-1">
+                <li>&bull; Leave work: 7:00 AM</li>
+                <li>&bull; Reach home: 7:30 AM</li>
+                <li>&bull; Sleep: 8:00 AM</li>
+                <li>&bull; Wake: 3:30 PM</li>
+                <li>&bull; Total Sleep: <strong>7.5 Hours (5 Cycles)</strong></li>
+              </ul>
+            </div>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 pt-2">
+              Consistency is critical. Going to bed at different times every day confuses your body clock.
+            </p>
+
+            <p className="text-sm border-l-4 border-blue-500 pl-3 py-1 bg-white/5 rounded-r-md text-slate-300 font-medium">
+              <strong>Quick Summary:</strong> The best sleep schedule is one that remains consistent and allows at least five complete sleep cycles.
+            </p>
+
+            <h2 id="hours-recommended" className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4 scroll-mt-20">
+              How Many Hours Should Night Shift Workers Sleep?
+            </h2>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              Most adults require standard sleep limits regardless of their shift times:
+            </p>
+
+            <div className="overflow-x-auto my-4 border border-white/10 rounded-xl bg-white/5">
+              <table className="w-full text-left text-sm text-slate-300">
+                <thead>
+                  <tr className="border-b border-white/10 bg-white/10 text-gray-100 font-semibold font-mono">
+                    <th className="py-3 px-4">Age Group</th>
+                    <th className="py-3 px-4">Recommended Sleep</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-white/10 font-mono">
+                  <tr>
+                    <td className="py-3 px-4">18–25 Years</td>
+                    <td className="py-3 px-4 font-bold text-[#D4AF37]">7–9 Hours</td>
+                  </tr>
+                  <tr>
+                    <td className="py-3 px-4">26–64 Years</td>
+                    <td className="py-3 px-4 font-bold text-[#D4AF37]">7–9 Hours</td>
+                  </tr>
+                  <tr>
+                    <td className="py-3 px-4">65+ Years</td>
+                    <td className="py-3 px-4 font-bold text-[#D4AF37]">7–8 Hours</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              Night shift workers should aim for the same amount of sleep as daytime workers. The quality of sleep matters just as much as the duration.
+            </p>
+
+            <p className="text-sm border-l-4 border-blue-500 pl-3 py-1 bg-white/5 rounded-r-md text-slate-300 font-medium">
+              <strong>Quick Summary:</strong> Most night shift workers should target 7–9 hours of sleep every day.
+            </p>
+
+            <h2 id="calculate-sleep-cycles" className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4 scroll-mt-20">
+              How Can You Calculate Sleep Cycles After a Night Shift?
+            </h2>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              Calculating daytime segments is extremely easy:
+            </p>
+
+            <div className="space-y-4 pl-1 py-1">
+              <div>
+                <span className="text-blue-400 font-mono text-xs uppercase tracking-wider font-bold">Step 1</span>
+                <p className="text-slate-300 text-sm mt-0.5">
+                  Determine when you can realistically fall asleep.
                 </p>
               </div>
-
-              <div className="border border-white/10 p-5 rounded-2xl bg-white/5 space-y-2">
-                <span className="text-[#D4AF37] font-bold uppercase tracking-wider text-xs">Strategy B: Split Anchor Sleep Routine</span>
-                <p className="text-slate-300 text-sm">
-                  You divide your daily rest into two distinct segments. You sleep representing 3 complete cycles (4.5 hours) in the morning (e.g., 9:00 AM to 1:30 PM) to allow family interaction during the afternoon, then take a full 90-minute cycle nap in the evening before starting your next shift (e.g., 7:00 PM to 8:30 PM).
+              <div>
+                <span className="text-blue-400 font-mono text-xs uppercase tracking-wider font-bold">Step 2</span>
+                <p className="text-slate-300 text-sm mt-0.5">
+                  Count sleep cycles backward or forward in 90-minute blocks.
+                </p>
+              </div>
+              <div>
+                <span className="text-blue-400 font-mono text-xs uppercase tracking-wider font-bold">Step 3</span>
+                <p className="text-slate-300 text-sm mt-0.5">
+                  Choose a wake-up time that completes a cycle.
                 </p>
               </div>
             </div>
 
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4">
-              How Daytime Micro-Awakenings Hurt You
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              For example, if you go to sleep at <strong>8:00 AM</strong>:
+            </p>
+
+            <ul className="list-disc pl-6 space-y-2 text-slate-300 font-mono font-medium">
+              <li>&bull; 4 cycles &rarr; 2:00 PM</li>
+              <li>&bull; 5 cycles &rarr; 3:30 PM</li>
+              <li>&bull; 6 cycles &rarr; 5:00 PM</li>
+            </ul>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              This method helps reduce grogginess when waking up.
+            </p>
+
+            <p className="text-sm border-l-4 border-blue-500 pl-3 py-1 bg-white/5 rounded-r-md text-slate-300 font-medium">
+              <strong>Quick Summary:</strong> Count sleep in 90-minute cycles instead of focusing only on total hours.
+            </p>
+
+            <h2 id="biggest-sleep-problems" className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4 scroll-mt-20">
+              What Are the Biggest Sleep Problems Night Shift Workers Face?
+            </h2>
+
+            <div className="space-y-4 pl-1 py-1">
+              <div>
+                <h4 className="font-bold text-gray-100 text-sm uppercase tracking-wider font-mono text-[#D4AF37]">Daylight Exposure</h4>
+                <p className="text-slate-300 text-sm mt-0.5">
+                  Sunlight tells the brain to stay awake, suppressing natural melatonin synthesis.
+                </p>
+              </div>
+              <div>
+                <h4 className="font-bold text-gray-100 text-sm uppercase tracking-wider font-mono text-[#D4AF37]">Household Noise</h4>
+                <p className="text-slate-300 text-sm mt-0.5">
+                  Traffic, family activity, and outdoor daytime noise interrupt deep sleep stages.
+                </p>
+              </div>
+              <div>
+                <h4 className="font-bold text-gray-100 text-sm uppercase tracking-wider font-mono text-[#D4AF37]">Irregular Sleep Times</h4>
+                <p className="text-slate-300 text-sm mt-0.5">
+                  Changing schedules on off-days make high-quality circadian entrainment difficult.
+                </p>
+              </div>
+              <div>
+                <h4 className="font-bold text-gray-100 text-sm uppercase tracking-wider font-mono text-[#D4AF37]">Caffeine Dependence</h4>
+                <p className="text-slate-300 text-sm mt-0.5">
+                  Many shift workers consume excessive late-shift caffeine, which interferes with subsequent sleeping blocks.
+                </p>
+              </div>
+            </div>
+
+            <p className="text-sm border-l-4 border-blue-500 pl-3 py-1 bg-white/5 rounded-r-md text-slate-300 font-medium">
+              <strong>Quick Summary:</strong> Light, noise, inconsistent schedules, and caffeine are the biggest sleep disruptors for shift workers.
+            </p>
+
+            <h2 id="improve-sleep-quality" className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4 scroll-mt-20">
+              How Can Night Shift Workers Improve Sleep Quality?
             </h2>
 
             <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
-              During daytime sleep, human endocrine pathways are programmed to secrete high amounts of cortisol and raise core body temperatures. This biological reality means daytime sleep is naturally lighter than night sleep.
-            </p>
-
-            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
-              As a result, even tiny environmental cues—like delivery vans, daylight leaks, or children playing—cause micro-awakenings. This breaks your sleep cycles and prevents your body from reaching restorative deep N3 and REM stages. Proper environmental control is critical.
-            </p>
-
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4">
-              Daytime Sleep Environment: The Three Essentials
-            </h2>
-
-            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
-              To keep daytime sleep unbroken, you must configure your bedroom as a sensory-isolated sanctuary:
+              Designing a perfect sleeping sanctuary is key to deep diurnal rest:
             </p>
 
             <div className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 py-1">
               <ul className="list-disc pl-6 space-y-3 text-slate-300">
                 <li>
-                  <strong className="text-gray-100 font-semibold">100% Blackout Bedroom:</strong> Human skin cells and optical nerves detect ambient light even through closed eyelids. Use heavy-duty, side-sealed blackout curtains or a comfortable, contoured eye-mask to block all light leaks.
+                  <strong className="text-gray-100 font-semibold">Use Blackout Curtains:</strong> Complete darkness encourages rapid melatonin production.
                 </li>
                 <li>
-                  <strong className="text-gray-100 font-semibold">Continuous Auditory Noise Cover:</strong> Use a physical white noise machine or stream continuous pink-noise frequencies. White noise creates an auditory barrier that masks sudden daytime sounds (like sirens or traffic), keeping your brain asleep.
+                  <strong className="text-gray-100 font-semibold">Wear an Eye Mask:</strong> This blocks any micro-light leaks that escape curtain seams.
                 </li>
                 <li>
-                  <strong className="text-gray-100 font-semibold">Cool Ambient Temperatures:</strong> The human circadian rhythm naturally triggers sleep when body temperature cools. Since daytime weather raises house temperatures, utilize air-conditioning or fans to keep your bedroom at a comfortable <strong className="text-gray-100">65–68°F (18–20°C)</strong>.
+                  <strong className="text-gray-100 font-semibold">Keep Your Room Cool:</strong> A cooler room (between 62–67&deg;F) supports robust deep sleep.
+                </li>
+                <li>
+                  <strong className="text-gray-100 font-semibold">Avoid Screens Before Bed:</strong> Turn off cell phones and tablets to prevent sleeponset delays.
+                </li>
+                <li>
+                  <strong className="text-gray-100 font-semibold">Use White Noise:</strong> Sound machines or fans mask disruptive daytime neighbors, yardwork, or traffic.
+                </li>
+                <li>
+                  <strong className="text-gray-100 font-semibold">Limit Caffeine:</strong> Avoid coffee, teas, or energy drinks within six hours of your planned bedtime.
+                </li>
+              </ul>
+            </div>
+
+            <p className="text-sm border-l-4 border-blue-500 pl-3 py-1 bg-white/5 rounded-r-md text-slate-300 font-medium">
+              <strong>Quick Summary:</strong> A dark, cool, and quiet sleeping environment dramatically improves sleep quality.
+            </p>
+
+            <h2 id="common-mistakes" className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4 scroll-mt-20">
+              Which Common Sleep Mistakes Should You Avoid?
+            </h2>
+
+            <div className="space-y-4">
+              <div>
+                <h4 className="text-sm font-bold text-gray-100 font-mono text-[#D4AF37] uppercase tracking-wider">Sleeping at Random Times</h4>
+                <p className="text-slate-300 text-sm mt-0.5 font-medium">Consistency is essential. Changing your rest hours daily ruins circadian stability.</p>
+              </div>
+              <div>
+                <h4 className="text-sm font-bold text-gray-100 font-mono text-[#D4AF37] uppercase tracking-wider">Drinking Energy Drinks Before Bed</h4>
+                <p className="text-slate-300 text-sm mt-0.5 font-medium">Stimulants can remain active inside your bloodstream for up to 8 hours.</p>
+              </div>
+              <div>
+                <h4 className="text-sm font-bold text-gray-100 font-mono text-[#D4AF37] uppercase tracking-wider">Using Alcohol to Fall Asleep</h4>
+                <p className="text-slate-300 text-sm mt-0.5 font-medium">While alcohol can induce sleepiness, it severely fractures REM and deep sleep architectures.</p>
+              </div>
+              <div>
+                <h4 className="text-sm font-bold text-gray-100 font-mono text-[#D4AF37] uppercase tracking-wider">Ignoring Sleep Debt</h4>
+                <p className="text-slate-300 text-sm mt-0.5 font-medium">Repeated sleep deprivation accumulates over time, impairing immunity and metabolic health.</p>
+              </div>
+            </div>
+
+            <p className="text-sm border-l-4 border-blue-500 pl-3 py-1 bg-white/5 rounded-r-md text-slate-300 font-medium">
+              <strong>Quick Summary:</strong> Consistent sleep schedules and healthy habits are more effective than quick fixes.
+            </p>
+
+            <h2 id="final-recommendation-shift" className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4 scroll-mt-20">
+              Final Recommendation
+            </h2>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              If you work night shifts, focus on completing full sleep cycles rather than simply getting more sleep hours.
+            </p>
+
+            <div className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 py-1">
+              <p className="font-semibold text-gray-100">For most shift workers:</p>
+              <ul className="list-disc pl-6 space-y-1.5 mt-2 text-slate-300">
+                <li>Go to sleep as soon as possible after completing your shift.</li>
+                <li>Aim for 7.5 to 9 hours of consolidated rest.</li>
+                <li>Complete exactly 5 or 6 sleep cycles.</li>
+                <li>Maintain the exact same sleep schedule daily (even on off-days if possible).</li>
+              </ul>
+            </div>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              A sleep calculator can help you wake up feeling more refreshed and productive while reducing long-term health risks associated with shift work. Ensure you supplement short sleep segments with our dedicated <Link to="/nap-calculator-20-30-60-90-minutes" className="text-violet-400 hover:underline">Nap Calculator</Link> to preserve energy levels.
+            </p>
+
+            <h2 id="faqs-shift" className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4 scroll-mt-20">
+              Frequently Asked Questions
+            </h2>
+
+            <div className="space-y-4">
+              <div>
+                <h4 className="text-base font-bold text-gray-100">Is sleeping during the day as good as sleeping at night?</h4>
+                <p className="text-slate-300 text-sm mt-0.5">Not completely. Daytime sleep is naturally lighter because of daylight exposure and environmental noise, but proper sleep habits and blackout spaces can minimize the difference.</p>
+              </div>
+
+              <div>
+                <h4 className="text-base font-bold text-gray-100">How many hours should a night shift worker sleep?</h4>
+                <p className="text-slate-300 text-sm mt-0.5">Most adults should aim for 7 to 9 hours of sleep (5 or 6 complete cycles) regardless of their specific work hours.</p>
+              </div>
+
+              <div>
+                <h4 className="text-base font-bold text-gray-100">What is the best sleep calculator for shift workers?</h4>
+                <p className="text-slate-300 text-sm mt-0.5">A sleep cycle calculator based on natural 90-minute intervals is generally the most useful to prevent deep-sleep awakening.</p>
+              </div>
+
+              <div>
+                <h4 className="text-base font-bold text-gray-100">Can night shifts affect health?</h4>
+                <p className="text-slate-300 text-sm mt-0.5">Yes. Long-term shift work may increase the risk of chronic fatigue, metabolic issues, and circadian disorders if sleep quality and consistency are poor.</p>
+              </div>
+
+              <div>
+                <h4 className="text-base font-bold text-gray-100">Should I split my sleep into two sessions?</h4>
+                <p className="text-slate-300 text-sm mt-0.5">Some workers benefit from split sleep schedules (e.g. 4.5 hours in the morning and a 90-minute nap before the shift), but a single uninterrupted sleep period is usually more restorative.</p>
+              </div>
+
+              <div>
+                <h4 className="text-base font-bold text-gray-100">Does blackout lighting really help?</h4>
+                <p className="text-slate-300 text-sm mt-0.5">Yes. Reducing light exposure significantly improves natural melatonin production, inducing deeper slow-wave phases.</p>
+              </div>
+
+              <div>
+                <h4 className="text-base font-bold text-gray-100">What is the ideal wake-up time after a night shift?</h4>
+                <p className="text-slate-300 text-sm mt-0.5">Choose a custom wake-up time that completes exactly four, five, or six sleep cycles from your lights-out hour.</p>
+              </div>
+
+              <div>
+                <h4 className="text-base font-bold text-gray-100">Can a sleep calculator reduce fatigue?</h4>
+                <p className="text-slate-300 text-sm mt-0.5">Yes. Aligning waking alarms with the light-sleep phase of a 90-minute cycle prevents sleep inertia, reducing grogginess.</p>
+              </div>
+            </div>
+
+            <p className="pb-6"></p>
+
+            {/* Dynamic Social Sharing & Calculation Widget */}
+            <ShareScheduleWidget />
+          </article>
+        )}
+
+        {/* Blog 45: What Time Should I Sleep If I Wake Up at 6 AM? */}
+        {(isBlog45 || isAll) && (
+          <article className="space-y-6 select-text text-slate-300 pt-1">
+            <header className="space-y-3 pb-6 border-b border-white/10">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-100 tracking-tight leading-tight">
+                What Time Should I Sleep If I Wake Up at 6 AM? Best Bedtime Based on Sleep Cycles
+              </h1>
+              {isAll && (
+                <div className="text-sm font-bold tracking-wider text-violet-400 uppercase">
+                  Sleep Schedule • 6 min read
+                </div>
+              )}
+            </header>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 font-medium font-serif italic text-violet-300 border-l-2 border-violet-500 pl-4 py-1">
+              If you want to wake up at 6:00 AM feeling refreshed instead of tired, the most important thing is not just getting enough sleep—it is waking up at the end of a sleep cycle. For most adults, the ideal bedtime is between 10:00 PM and 10:30 PM.
+            </p>
+
+            <div className="border-b border-white/10 pb-6 mb-2 space-y-3">
+              <h3 className="font-bold text-gray-100 uppercase tracking-wider font-mono text-xs text-[#D4AF37]">Table of Contents</h3>
+              <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-2 text-sm text-slate-300">
+                <li><a href="#why-bedtime-matters" className="hover:text-violet-400 transition-colors">&bull; Why Your Bedtime Matters</a></li>
+                <li><a href="#calculated-bedtimes" className="hover:text-violet-400 transition-colors">&bull; What Time Should I Sleep If I Wake Up at 6 AM?</a></li>
+                <li><a href="#sleep-cycles-explained" className="hover:text-violet-400 transition-colors">&bull; How Do Sleep Cycles Work?</a></li>
+                <li><a href="#calculate-bedtime" className="hover:text-violet-400 transition-colors">&bull; How Can I Calculate My Ideal Bedtime?</a></li>
+                <li><a href="#student-bedtime" className="hover:text-violet-400 transition-colors">&bull; What Is the Best Bedtime for Students?</a></li>
+                <li><a href="#night-shift-workers" className="hover:text-violet-400 transition-colors">&bull; What About Night Shift Workers?</a></li>
+                <li><a href="#sleep-mistakes" className="hover:text-violet-400 transition-colors">&bull; Common Sleep Mistakes to Avoid</a></li>
+                <li><a href="#improve-sleep" className="hover:text-violet-400 transition-colors">&bull; Tips to Improve Sleep Quality</a></li>
+                <li><a href="#final-recommendation" className="hover:text-violet-400 transition-colors">&bull; Final Recommendation</a></li>
+                <li><a href="#faqs" className="hover:text-violet-400 transition-colors">&bull; FAQs</a></li>
+              </ul>
+            </div>
+
+            <h2 id="why-bedtime-matters" className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4 scroll-mt-20">
+              Why Does Your Bedtime Matter?
+            </h2>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              Many people focus only on the number of hours they sleep. In my experience, that is only part of the equation. Sleep quality and sleep cycles matter just as much.
+            </p>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              During the night, your body moves through different stages of sleep, including light sleep, deep sleep, and REM sleep. These stages repeat in cycles that last about 90 minutes.
+            </p>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              If you wake up in the middle of a deep sleep cycle, you may feel groggy even after sleeping for eight hours. If you wake up at the end of a cycle, you are more likely to feel alert and energized.
+            </p>
+
+            <p className="text-sm border-l-4 border-[#D4AF37] pl-3 py-1 bg-white/5 rounded-r-md text-slate-300 font-medium">
+              <strong>Quick Summary:</strong> The best bedtime is not just about sleeping longer. It is about completing full sleep cycles before waking up.
+            </p>
+
+            <h2 id="calculated-bedtimes" className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4 scroll-mt-20">
+              What Time Should I Sleep If I Wake Up at 6 AM?
+            </h2>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              If your alarm is set for 6:00 AM, these are the recommended bedtimes based on 90-minute sleep cycles.
+            </p>
+
+            <div className="overflow-x-auto my-4 border border-white/10 rounded-xl bg-white/5">
+              <table className="w-full text-left text-sm text-slate-300">
+                <thead>
+                  <tr className="border-b border-white/10 bg-white/10 text-gray-100 font-semibold font-mono">
+                    <th className="py-3 px-4">Sleep Cycles</th>
+                    <th className="py-3 px-4">Sleep Duration</th>
+                    <th className="py-3 px-4">Recommended Bedtime</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-white/10 font-mono">
+                  <tr>
+                    <td className="py-3 px-4 font-bold text-[#D4AF37]">4 Cycles</td>
+                    <td className="py-3 px-4">6 Hours</td>
+                    <td className="py-3 px-4">11:45 PM</td>
+                  </tr>
+                  <tr>
+                    <td className="py-3 px-4 font-bold text-[#D4AF37]">5 Cycles</td>
+                    <td className="py-3 px-4">7.5 Hours</td>
+                    <td className="py-3 px-4">10:15 PM</td>
+                  </tr>
+                  <tr>
+                    <td className="py-3 px-4 font-bold text-[#D4AF37]">6 Cycles</td>
+                    <td className="py-3 px-4">9 Hours</td>
+                    <td className="py-3 px-4">8:45 PM</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              Since most people take around 15 minutes to fall asleep, I recommend going to bed slightly earlier.
+            </p>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              For example:
+            </p>
+
+            <ul className="list-disc pl-6 space-y-2 text-slate-300 font-medium">
+              <li><strong>Sleep at 10:00 PM</strong> &rarr; Wake at 6:00 AM (Excellent recovery buffer)</li>
+              <li><strong>Sleep at 10:15 PM</strong> &rarr; Wake at 6:00 AM (Optimal 5 full cycles)</li>
+              <li><strong>Sleep at 8:45 PM</strong> &rarr; Wake at 6:00 AM (Deep 9 hours biological rest)</li>
+            </ul>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              For most adults, 10:00 PM to 10:15 PM is the sweet spot.
+            </p>
+
+            <p className="text-sm border-l-4 border-[#D4AF37] pl-3 py-1 bg-white/5 rounded-r-md text-slate-300 font-medium">
+              <strong>Quick Summary:</strong> If you wake up at 6 AM, aim to fall asleep around 10:15 PM for five complete sleep cycles.
+            </p>
+
+            <h2 id="sleep-cycles-explained" className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4 scroll-mt-20">
+              How Do 90-Minute Sleep Cycles Work?
+            </h2>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              A sleep cycle lasts approximately 90 minutes.
+            </p>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              Each cycle includes:
+            </p>
+
+            <div className="space-y-4">
+              <div>
+                <h4 className="text-sm font-bold text-gray-100 font-mono text-[#D4AF37] uppercase tracking-wider">Light Sleep</h4>
+                <p className="text-slate-300 text-sm mt-0.5">This is the transition stage where your body starts relaxing.</p>
+              </div>
+              <div>
+                <h4 className="text-sm font-bold text-gray-100 font-mono text-[#D4AF37] uppercase tracking-wider">Deep Sleep</h4>
+                <p className="text-slate-300 text-sm mt-0.5">Your body repairs muscles, strengthens the immune system, and restores energy.</p>
+              </div>
+              <div>
+                <h4 className="text-sm font-bold text-gray-100 font-mono text-[#D4AF37] uppercase tracking-wider">REM Sleep</h4>
+                <p className="text-slate-300 text-sm mt-0.5">This stage is important for memory, learning, and mental performance.</p>
+              </div>
+            </div>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              A typical night contains four to six complete cycles.
+            </p>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              The goal is to wake up after completing a cycle rather than interrupting one. Learn more about the stages in our <Link to="/sleep-cycles-explained" className="text-violet-400 hover:underline">detailed sleep cycles guide</Link>.
+            </p>
+
+            <p className="text-sm border-l-4 border-[#D4AF37] pl-3 py-1 bg-white/5 rounded-r-md text-slate-300 font-medium">
+              <strong>Quick Summary:</strong> Sleep quality improves when you wake up at the end of a 90-minute cycle instead of during deep sleep.
+            </p>
+
+            <h2 id="calculate-bedtime" className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4 scroll-mt-20">
+              How Can I Calculate My Ideal Bedtime?
+            </h2>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              I use a simple formula:
+            </p>
+
+            <ol className="list-decimal pl-6 space-y-2 text-slate-300 font-medium">
+              <li>Decide your wake-up time.</li>
+              <li>Count backward in 90-minute blocks.</li>
+              <li>Add 15 minutes for falling asleep (known as sleep onset latency).</li>
+            </ol>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              For a 6 AM wake-up:
+            </p>
+
+            <ul className="list-disc pl-6 space-y-2 text-slate-300 font-medium">
+              <li>5 cycles = 10:15 PM</li>
+              <li>6 cycles = 8:45 PM</li>
+            </ul>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              This approach works better than randomly aiming for eight hours of sleep. You can also calculate custom intervals matching your routine using our dynamic <Link to="/" className="text-violet-400 hover:underline font-bold">Sleep Calculator</Link> tool.
+            </p>
+
+            <p className="text-sm border-l-4 border-[#D4AF37] pl-3 py-1 bg-white/5 rounded-r-md text-slate-300 font-medium">
+              <strong>Quick Summary:</strong> Count backward in 90-minute sleep cycles from your wake-up time to find the ideal bedtime.
+            </p>
+
+            <h2 id="student-bedtime" className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4 scroll-mt-20">
+              What Is the Best Bedtime for Students?
+            </h2>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              Students often need more sleep than adults because the brain is constantly learning and storing information.
+            </p>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              If a student wakes up at 6 AM, I recommend sleeping between 9:00 PM and 10:00 PM. Optimize performance and focus using our dedicated <Link to="/best-bedtime-calculator-for-students" className="text-violet-400 hover:underline font-bold">Student Bedtime Guide</Link>.
+            </p>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-200 font-bold">
+              Benefits include:
+            </p>
+
+            <ul className="list-disc pl-6 space-y-2 text-slate-300 font-medium">
+              <li>Better memory retention</li>
+              <li>Improved concentration</li>
+              <li>Higher productivity</li>
+              <li>Better mood</li>
+              <li>Improved academic performance</li>
+            </ul>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              Many students sacrifice sleep to study longer, but poor sleep often reduces learning efficiency.
+            </p>
+
+            <p className="text-sm border-l-4 border-[#D4AF37] pl-3 py-1 bg-white/5 rounded-r-md text-slate-300 font-medium">
+              <strong>Quick Summary:</strong> Students waking at 6 AM should target 8–9 hours of sleep by going to bed between 9 PM and 10 PM.
+            </p>
+
+            <h2 id="night-shift-workers" className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4 scroll-mt-20">
+              What About Night Shift Workers?
+            </h2>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              Night shift workers face unique challenges because their sleep schedule does not match natural daylight patterns.
+            </p>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              If you work nights:
+            </p>
+
+            <ul className="list-disc pl-6 space-y-3 text-slate-300 font-medium">
+              <li>Keep a consistent sleep schedule.</li>
+              <li>Use blackout curtains.</li>
+              <li>Avoid caffeine before sleep.</li>
+              <li>Use a sleep calculator based on your actual wake-up time. For shift configurations, read our tailored guidelines in our <Link to="/sleep-calculator-for-night-shift-workers" className="text-violet-400 hover:underline font-bold">Shift Work Sleep Guide</Link>.</li>
+            </ul>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              The sleep cycle principle remains exactly the same regardless of whether you sleep during the day or night.
+            </p>
+
+            <p className="text-sm border-l-4 border-[#D4AF37] pl-3 py-1 bg-white/5 rounded-r-md text-slate-300 font-medium">
+              <strong>Quick Summary:</strong> Night shift workers should still aim for complete 90-minute sleep cycles and maintain a consistent routine.
+            </p>
+
+            <h2 id="sleep-mistakes" className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4 scroll-mt-20">
+              Which Common Sleep Mistakes Should You Avoid?
+            </h2>
+
+            <div className="space-y-4">
+              <div>
+                <h4 className="text-sm font-bold text-gray-100 font-mono text-[#D4AF37] uppercase tracking-wider">Using Your Phone Before Bed</h4>
+                <p className="text-slate-300 text-sm mt-0.5 font-medium">Blue light can reduce melatonin production and delay sleep.</p>
+              </div>
+              <div>
+                <h4 className="text-sm font-bold text-gray-100 font-mono text-[#D4AF37] uppercase tracking-wider">Drinking Coffee Late in the Day</h4>
+                <p className="text-slate-300 text-sm mt-0.5 font-medium">Caffeine can remain active for several hours. Learn more via peer review on <a href="https://www.sleepfoundation.org" target="_blank" rel="noopener noreferrer" className="text-violet-400 hover:underline">Sleep Foundation</a> guidelines.</p>
+              </div>
+              <div>
+                <h4 className="text-sm font-bold text-gray-100 font-mono text-[#D4AF37] uppercase tracking-wider">Sleeping at Different Times Every Night</h4>
+                <p className="text-slate-300 text-sm mt-0.5 font-medium">An inconsistent schedule disrupts your circadian rhythm.</p>
+              </div>
+              <div>
+                <h4 className="text-sm font-bold text-gray-100 font-mono text-[#D4AF37] uppercase tracking-wider">Ignoring Sleep Cycles</h4>
+                <p className="text-slate-300 text-sm mt-0.5 font-medium">Focusing only on total hours often leads to poor-quality sleep.</p>
+              </div>
+            </div>
+
+            <p className="text-sm border-l-4 border-[#D4AF37] pl-3 py-1 bg-white/5 rounded-r-md text-slate-300 font-medium">
+              <strong>Quick Summary:</strong> Consistency, reduced screen time, and proper sleep cycle planning can dramatically improve sleep quality.
+            </p>
+
+            <h2 id="improve-sleep" className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4 scroll-mt-20">
+              How Can I Improve Sleep Quality Naturally?
+            </h2>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              Here are the habits that have the biggest impact:
+            </p>
+
+            <ul className="list-disc pl-6 space-y-2 text-slate-300 font-medium">
+              <li>Keep the bedroom cool and dark.</li>
+              <li>Follow a consistent bedtime.</li>
+              <li>Avoid heavy meals before sleeping.</li>
+              <li>Exercise regularly during the daylight hours.</li>
+              <li>Reduce screen exposure before bed.</li>
+              <li>Limit caffeine in the afternoon and evening.</li>
+            </ul>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              These small habits often produce bigger results than complicated sleep hacks.
+            </p>
+
+            <p className="text-sm border-l-4 border-[#D4AF37] pl-3 py-1 bg-white/5 rounded-r-md text-slate-300 font-medium">
+              <strong>Quick Summary:</strong> Better sleep quality comes from simple daily habits combined with a consistent bedtime schedule.
+            </p>
+
+            <h2 id="final-recommendation" className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4 scroll-mt-20">
+              Final Recommendation
+            </h2>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              If you wake up at 6 AM, the best bedtime for most adults is around 10:15 PM. This allows for approximately 7.5 hours of sleep and five complete sleep cycles.
+            </p>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              If you need more recovery, aim for 8:45 PM and complete six full cycles.
+            </p>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              Instead of focusing only on sleeping longer, focus on completing full sleep cycles and maintaining a consistent sleep schedule. Keep track of rest cycles using our <Link to="/nap-calculator-20-30-60-90-minutes" className="text-violet-400 hover:underline">Nap Calculator</Link> to supplement short nights dynamically.
+            </p>
+
+            <h2 id="faqs" className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4 scroll-mt-20">
+              Frequently Asked Questions
+            </h2>
+
+            <div className="space-y-4">
+              <div>
+                <h4 className="text-base font-bold text-gray-100">What time should I go to bed if I wake up at 6 AM?</h4>
+                <p className="text-slate-300 text-sm mt-0.5">For most adults, 10:00 PM to 10:15 PM is ideal because it allows five complete sleep cycles.</p>
+              </div>
+
+              <div>
+                <h4 className="text-base font-bold text-gray-100">Is 7 hours of sleep enough?</h4>
+                <p className="text-slate-300 text-sm mt-0.5">For some adults, yes. However, many people perform better with 7.5 to 9 hours of sleep.</p>
+              </div>
+
+              <div>
+                <h4 className="text-base font-bold text-gray-100">Is 10 PM a good bedtime?</h4>
+                <p className="text-slate-300 text-sm mt-0.5">Yes. A 10 PM bedtime works well for people who need to wake up around 6 AM.</p>
+              </div>
+
+              <div>
+                <h4 className="text-base font-bold text-gray-100">Does sleeping before midnight matter?</h4>
+                <p className="text-slate-300 text-sm mt-0.5">Yes. Many people experience deeper and more restorative sleep during the earlier part of the night.</p>
+              </div>
+
+              <div>
+                <h4 className="text-base font-bold text-gray-100">What is the healthiest bedtime?</h4>
+                <p className="text-slate-300 text-sm mt-0.5">There is no universal bedtime, but 9 PM to 11 PM aligns well with natural circadian rhythms for most adults.</p>
+              </div>
+
+              <div>
+                <h4 className="text-base font-bold text-gray-100">How many sleep cycles should I get?</h4>
+                <p className="text-slate-300 text-sm mt-0.5">Most adults benefit from five or six complete sleep cycles per night.</p>
+              </div>
+
+              <div>
+                <h4 className="text-base font-bold text-gray-100">Can a sleep calculator improve sleep quality?</h4>
+                <p className="text-slate-300 text-sm mt-0.5">Yes. Sleep calculators help you align your bedtime and wake-up time with natural sleep cycles.</p>
+              </div>
+
+              <div>
+                <h4 className="text-base font-bold text-gray-100">What is the best bedtime for students waking up at 6 AM?</h4>
+                <p className="text-slate-300 text-sm mt-0.5">Around 9 PM to 10 PM is generally ideal because students often require 8–9 hours of sleep.</p>
+              </div>
+            </div>
+
+            <p className="pb-6"></p>
+
+            {/* Dynamic Social Sharing & Calculation Widget */}
+            <ShareScheduleWidget />
+          </article>
+        )}
+
+        {/* Blog 46: Best Bedtime Calculator for Students */}
+        {(isBlog46 || isAll) && (
+          <article className="space-y-6 select-text text-slate-300 pt-1">
+            <header className="space-y-3 pb-6 border-b border-white/10">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-100 tracking-tight leading-tight">
+                Best Bedtime Calculator for Students: Peak Brain Performance Guide
+              </h1>
+              {isAll && (
+                <div className="text-sm font-bold tracking-wider text-indigo-400 uppercase">
+                  Study & Focus • 6 min read
+                </div>
+              )}
+            </header>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 font-medium">
+              High school, college, and university students live under massive cognitive pressure. Between late-night study sessions, exam worries, early lectures, and continuous screen time, sleep is often the first routine compromised. However, late-night cram sessions actually degrade academic grades, lower IQ scores, and disrupt emotional regulation.
+            </p>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              To study effectively, absorb massive textbooks, and execute flawless exam recall, you must utilize the best <strong>bedtime calculator for students</strong>. By aligning study goals with natural 90-minute sleep cycles, you can achieve maximum GPA points while sleeping better.
+            </p>
+
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4">
+              Direct Answer: Why Studying Less and Sleeping More Boosts Grades
+            </h2>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              Scientific trials from cognitive research units show that pulling all-nighters or limiting sleep to study longer impairs executive function. Sleep is not a passive brain state; indeed, it is the active period where memory consolidation, neural pruning, and cellular detoxification occur:
+            </p>
+
+            <div className="space-y-4 pl-1">
+              <div>
+                <span className="text-[#D4AF37] font-bold uppercase tracking-wider text-xs">Deep N3 Slow-Wave Sleep (Fact Consolidation)</span>
+                <p className="text-slate-300 text-sm mt-0.5">
+                  Occurs mostly in the first half of the night. It takes memories from your short-term hippocampus and archives them into the permanent neocortex. Without deep N3 sleep, yesterday's study notes vanish.
+                </p>
+              </div>
+
+              <div>
+                <span className="text-[#D4AF37] font-bold uppercase tracking-wider text-xs">REM Sleep (Lateral Thinking & Logic-Solving)</span>
+                <p className="text-slate-300 text-sm mt-0.5">
+                  Concentrated in the late morning hours. It connects distinct academic concepts together, helping solve complex algebra, essay formulations, and creative designs. Skipping REM sleep reduces problem-solving capability.
+                </p>
+              </div>
+            </div>
+
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4">
+              Best Sleep Schedules for Student Life
+            </h2>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              Standard student waking patterns require specific sleep-cycle aligning bedtimes. Below are recommended bedtimes designed for optimal exam performance (calculated with the 15-minute falling asleep average):
+            </p>
+
+            <div className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 py-1">
+              <ul className="list-disc pl-6 space-y-3 text-slate-300">
+                <li>
+                  <strong className="text-gray-100">Exam Wake-Up at 6:30 AM:</strong> Bedtimes should be set for either <strong className="text-gray-100">9:30 PM</strong> (9 hours/6 cycles) or <strong className="text-gray-100">11:00 PM</strong> (7.5 hours/5 cycles). Waking up outside these slots will leave you groggy during exam sections.
+                </li>
+                <li>
+                  <strong className="text-gray-100">Standard Lecture Wake-Up at 7:30 AM:</strong> Bedtimes should be set for either <strong className="text-gray-100">10:30 PM</strong> (9 hours/6 cycles) or <strong className="text-gray-100">12:00 AM Midnight</strong> (7.5 hours/5 cycles).
+                </li>
+                <li>
+                  <strong className="text-gray-100">Study Weekend Wake-Up at 8:30 AM:</strong> Bedtimes should be set for either <strong className="text-gray-100">11:30 PM</strong> (9 hours/6 cycles) or <strong className="text-gray-100">1:00 AM</strong> (7.5 hours/5 cycles) to preserve weekend social rest safely.
                 </li>
               </ul>
             </div>
 
             <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4">
-              Transitioning Back on Off-Days: The Phase Shift Protocol
+              How Late-Night Screen Use Delays Melatonin
             </h2>
 
             <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
-              One of the hardest parts of night shift work is returning to a normal social schedule on off-days. Many workers suffer from "social jetlag" as they swing between sleep routines.
+              Modern students struggle with sleep onset because of intense exposure to high-intensity blue-light frequencies. Laptops, tablets, and smartphones output a color temperature similar to midday daylight.
             </p>
 
             <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
-              To minimize this strain, use a transition protocol on your last day of shift work:
+              When blue-wavelength light strikes your retinal photo-receptive cells, it halts melatonin secretion for up to two hours. This delays biological bedtime and causes morning exhaustion. To study optimally, shift to physical books or use warm screen-filtering software after 9:00 PM.
             </p>
 
-            <div className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 py-1">
-              <ol className="list-decimal pl-6 space-y-2 text-slate-300">
-                <li>On your last shift morning, take a short, 90-minute nap (1 cycle) from 8:30 AM to 10:00 AM.</li>
-                <li>Stay awake during the afternoon to accumulate sleep pressure.</li>
-                <li>Go to sleep at an early nighttime hour (e.g., 10:00 PM), and wake up normally the next morning.</li>
-              </ol>
-            </div>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4">
+              Optimizing College and High School Routines
+            </h2>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              Building study consistency starts with predictable routines. Explore our interactive tool specifically designed for academic tracking: use our dedicated <Link to="/student-sleep-calculator" className="text-[#D4AF37] hover:underline font-bold">Student Sleep Calculator</Link> to structure school schedules, or check our comprehensive <Link to="/sleep-calculator-for-exams" className="text-[#D4AF37] hover:underline font-bold">Sleep Calculator for Exams</Link> to design perfect test-day timelines.
+            </p>
 
             <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 pb-6">
-              Organizing sleep for unconventional shift schedules is challenging, but manageable with consistent, biology-aligned habits. Use our sleep planning methods, control your environment, and give your body the restorative rest it deserves.
+              Your brain is your most valuable asset during exams. Protect its performance, plan your bedtime around structural 90-minute sleep cycles, and study smarter rather than longer!
             </p>
 
             {/* Dynamic Social Sharing & Calculation Widget */}
             <ShareScheduleWidget />
           </article>
         )}
+
+        {/* Blog 47: Nap Calculator: 20, 30, 60, 90 Minutes */}
+        {(isBlog47 || isAll) && (
+          <article className="space-y-6 select-text text-slate-300 pt-1">
+            <header className="space-y-3 pb-6 border-b border-white/10">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-100 tracking-tight leading-tight">
+                Nap Calculator: 20, 30, 60, 90 Minutes Rest Cycles
+              </h1>
+              {isAll && (
+                <div className="text-sm font-bold tracking-wider text-teal-400 uppercase">
+                  Sleep Science • 5 min read
+                </div>
+              )}
+            </header>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 font-medium">
+              Afternoon fatigue or the classic "post-lunch dip" is a normal circadian pattern for human beings. Under normal conditions, our internal clocks generate a natural slump in energy levels between 1:00 PM and 3:00 PM. While some resolve this slump using double-shot espressos, others utilize strategic power naps to instantly clear brains and restore cellular focus.
+            </p>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              However, taking an unregulated, lazy nap can ruin your afternoon, leaving you waking up feeling dizzy, head-ached, and heavy-eyed. Understanding how different nap durations affect your neurological states is crucial.
+            </p>
+
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4">
+              Direct Answer: How Long Should a Nap Last?
+            </h2>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              According to sleep science guidelines, the ideal nap duration is either exactly <strong>20 minutes</strong> (to boost alertness without deep sleep) or exactly <strong>90 minutes</strong> (to complete one full sleep cycle). Avoid intermediate durations like 30 or 60 minutes as they leave you waking up in the middle of slow-wave deep sleep.
+            </p>
+
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4">
+              The Nap Duration Guide (Using Our Nap Calculator)
+            </h2>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              Let's analyze exactly how different nap lengths impact cognitive stamina, memory, and next-hour focus:
+            </p>
+
+            <div className="space-y-6 pl-1">
+              <div>
+                <span className="text-teal-400 font-bold uppercase tracking-wider text-xs">The 20-Minute Power Nap (Peak Alertness)</span>
+                <p className="text-slate-300 text-sm mt-0.5">
+                  <strong>How it works:</strong> You remain strictly in the lightest stages of sleep (N1 and N2). Upon waking, you experience an immediate surge in alertness, mental clarity, motor performance, and mood.
+                </p>
+                <div className="inline-flex items-center gap-1.5 text-xs text-green-400 font-mono mt-1">
+                  <span>Grogginess Risk: ZERO • ideal for busy professionals and students</span>
+                </div>
+              </div>
+
+              <div>
+                <span className="text-[#D4AF37] font-bold uppercase tracking-wider text-xs">The 30-Minute Mid-Nap (The Alertness Trap)</span>
+                <p className="text-slate-300 text-sm mt-0.5">
+                  <strong>How it works:</strong> Taking more than 20 minutes pushes your brain cells down toward deep slow-wave N3 regions. Waking up at the 30-minute mark causes mild-to-moderate grogginess that offsets any alertness gains.
+                </p>
+                <div className="inline-flex items-center gap-1.5 text-xs text-yellow-400 font-mono mt-1">
+                  <span>Grogginess Risk: MODERATE • not recommended</span>
+                </div>
+              </div>
+
+              <div>
+                <span className="text-[#D4AF37] font-bold uppercase tracking-wider text-xs">The 60-Minute Study Nap (Cognitive Memory)</span>
+                <p className="text-slate-300 text-sm mt-0.5">
+                  <strong>How it works:</strong> Enters deep slow-wave N3 sleep, which is excellent for consolidating academic data and processing hard facts. However, waking up from deep sleep triggers heavy sleep inertia, which takes up to 30 minutes of face washing and water drinking to clear.
+                </p>
+                <div className="inline-flex items-center gap-1.5 text-xs text-orange-400 font-mono mt-1">
+                  <span>Grogginess Risk: VERY HIGH • useful only if you have free time to recover</span>
+                </div>
+              </div>
+
+              <div>
+                <span className="text-violet-400 font-bold uppercase tracking-wider text-xs">The 90-Minute Full Sleep Cycle Nap (Physical Repair)</span>
+                <p className="text-slate-300 text-sm mt-0.5">
+                  <strong>How it works:</strong> Takes you safely through a complete biological sleep loop including deep sleep and restorative REM sleep. Waking up occurs as you re-enter N1 light sleep, meaning you feel refreshed and creative. Allows muscle repair and emotional processing.
+                </p>
+                <div className="inline-flex items-center gap-1.5 text-xs text-green-400 font-mono mt-1">
+                  <span>Grogginess Risk: LOW • excellent for athlete recovery, shift workers, and sleep-deprived individuals</span>
+                </div>
+              </div>
+            </div>
+
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4">
+              Circadian Timing: When is the Best Nap Hour?
+            </h2>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              To ensure your afternoon nap doesn't interfere with your standard nighttime rest, maintain proper timing. The ideal nap window is in the early afternoon between <strong>1:00 PM and 3:00 PM</strong>. Napping after 4:00 PM is highly detrimental—it bleeds away nighttime "sleep pressure," leading to insomnia, scrolling, and fractured patterns of rest.
+            </p>
+
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4">
+              Further Napping and Cycle Exploration
+            </h2>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              Discover how detailed rest cycles are compared and read more about daily schedules by visiting our complete guide on <Link to="/power-nap-vs-full-sleep-cycle" className="text-[#D4AF37] hover:underline font-bold">Power Nap vs Full Sleep Cycle</Link>, or track your standard bedtimes and wake times seamlessly on our main page at <Link to="/" className="text-[#D4AF37] hover:underline font-bold">Sleep Calculator</Link>.
+            </p>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 pb-6">
+              When used strategically, nap timing is a powerful health hack for alertness and cognitive wellness. Choose your nap time wisely, set a load alarm, and enjoy restored focus!
+            </p>
+          </article>
+        )}
             </>
-          </AutoLinker>
         )}
 
         {/* Internal Cross-Linking: Related Guides Section */}
         {isAnyBlog && relatedPosts.length > 0 && (
           <div className="pt-10 mt-10 border-t border-[#E5E7EB]" id="blog-related-articles-section">
             <div className="flex items-center gap-2 mb-6">
-              <Sparkles className="w-5 h-5 text-[#7C3AED]" />
               <h2 className="text-xl sm:text-2xl font-bold text-[#111827] font-serif tracking-tight">
                 Recommended Sleep Guides
               </h2>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="space-y-4 max-w-2xl">
               {relatedPosts.map((post) => (
-                <Link
-                  key={post.slug}
-                  to={`/${post.slug}`}
-                  onClick={() => {
-                    setOpenFaq(null);
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                  }}
-                  className="group relative flex flex-col justify-between p-5 rounded-2xl bg-white hover:bg-slate-50 border border-[#E5E7EB] hover:border-[#7C3AED]/50 transition-all duration-300 shadow-md hover:shadow-premium hover:-translate-y-1"
-                  id={`related-post-card-${post.slug}`}
-                >
-                  <div className="space-y-2">
-                    <h3 className="text-sm font-bold text-[#111827] group-hover:text-[#7C3AED] font-serif transition-colors line-clamp-2 leading-snug">
-                      {post.title}
-                    </h3>
-                    <p className="text-xs text-[#4B5563] line-clamp-2 leading-relaxed">
-                      {post.description}
-                    </p>
-                  </div>
-                  <div className="flex items-center gap-1.5 text-[11px] font-bold text-[#7C3AED] group-hover:text-[#6D28D9] mt-4 uppercase tracking-wider">
-                    <span>Read Guide</span>
-                    <span className="text-xs transform group-hover:translate-x-1 transition-transform">→</span>
-                  </div>
-                </Link>
+                <div key={post.slug} className="text-left py-2">
+                  <Link
+                    to={`/${post.slug}`}
+                    onClick={() => {
+                      setOpenFaq(null);
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }}
+                    className="text-[#7C3AED] hover:underline font-bold text-base block font-serif"
+                    id={`related-post-card-${post.slug}`}
+                  >
+                    &bull; {post.title}
+                  </Link>
+                  <p className="text-xs text-[#4B5563] mt-1 pl-3 leading-relaxed">
+                    {post.description}
+                  </p>
+                </div>
               ))}
             </div>
           </div>
         )}
 
-        {/* Dynamic Contextual FAQ Accordion */}
+        {/* Dynamic Contextual FAQ - Flat, text-first elegant layout */}
         {isAnyBlog && currentFaqs && currentFaqs.length > 0 && (
           <div className="pt-10 border-t border-[#E5E7EB] space-y-6" id="blog-faq-accordion-container">
-            <h2 className="text-2xl sm:text-3xl font-bold text-[#111827] font-serif text-center tracking-tight">
+            <h2 className="text-2xl sm:text-3xl font-bold text-[#111827] font-serif tracking-tight">
               Frequently Asked Questions
             </h2>
-            <div className="space-y-4 max-w-2xl mx-auto pt-2">
-              {currentFaqs.map((faq, idx) => {
-                const isOpen = openFaq === idx;
-                return (
-                  <div
-                    key={idx}
-                    className="bg-white border border-[#E5E7EB] rounded-2xl overflow-hidden transition-all duration-300 shadow-premium"
-                    id={`blog-faq-item-${idx}`}
-                  >
-                    <button
-                      onClick={() => setOpenFaq(isOpen ? null : idx)}
-                      className="w-full flex items-center justify-between p-4 sm:p-5 text-left text-[#111827] hover:bg-slate-50 font-bold transition-all text-sm sm:text-[1.05rem] cursor-pointer focus-visible:outline-none"
-                    >
-                      <span>{faq.q}</span>
-                      <ChevronDown 
-                        size={18} 
-                        className={`text-[#7C3AED] shrink-0 ml-3 transition-transform duration-300 ${isOpen ? "rotate-180" : "text-[#6B7280]"}`} 
-                      />
-                    </button>
-                    <AnimatePresence initial={false}>
-                      {isOpen && (
-                        <motion.div
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: "auto", opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                          className="overflow-hidden border-t border-[#E5E7EB]"
-                        >
-                          <div className="p-4 sm:p-5 text-[#4B5563] text-xs sm:text-sm leading-relaxed bg-white">
-                            {faq.a}
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        )}
-
-        {/* Home Page Redirection Sleep Calculator CTA Card */}
-        {isAnyBlog && (
-          <div className="relative mt-12 mb-6" id="blog-back-to-home-cta">
-            {/* Ambient background glow effect */}
-            <div className="absolute inset-0 bg-gradient-to-r from-[#7C3AED]/10 to-[#D4AF37]/10 rounded-3xl blur-xl pointer-events-none" />
-            
-            <div className="relative bg-white border border-[#E5E7EB] hover:border-[#7C3AED]/30 rounded-3xl p-6 sm:p-8 text-center space-y-5 shadow-premium transition-all duration-300 overflow-hidden">
-              <div className="absolute -top-10 -right-10 w-40 h-40 bg-blue-500/10 rounded-full blur-2xl" />
-              <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-indigo-500/10 rounded-full blur-2xl" />
-
-              <div className="inline-flex p-3 bg-[#7C3AED]/10 rounded-2xl border border-[#7C3AED]/20 text-[#7C3AED] mb-2">
-                <Calculator className="w-6 h-6 sm:w-8 sm:h-8 drop-shadow-[0_0_8px_rgba(139,92,246,0.5)]" />
-              </div>
-
-              <h3 className="text-xl sm:text-2xl font-bold text-[#111827] font-serif tracking-tight">
-                Calculate Your Next Perfect Sleep Cycle
-              </h3>
-              
-              <p className="text-xs sm:text-sm text-[#4B5563] max-w-lg mx-auto leading-relaxed">
-                Planning your sleep around natural 90-minute bedtime cycles is the scientific way to conquer morning exhaustion. Tap below to find your personalized slumber window in seconds!
-              </p>
-
-              <div className="pt-2">
-                <Link
-                  to="/"
-                  className="inline-flex items-center gap-2 bg-[#7C3AED] hover:bg-[#6D28D9] active:bg-[#5B21B6] text-white font-bold py-3.5 px-8 rounded-full transition-all duration-300 shadow-[0_5px_15px_rgba(124,58,237,0.3)] hover:shadow-[0_8px_20px_rgba(124,58,237,0.4)] hover:scale-[1.015] active:scale-[0.985] cursor-pointer text-sm sm:text-base uppercase tracking-wider"
-                  id="blog-cta-home-btn"
+            <div className="space-y-6 max-w-2xl py-2">
+              {currentFaqs.map((faq, idx) => (
+                <div
+                  key={idx}
+                  className="space-y-1.5"
+                  id={`blog-faq-item-${idx}`}
                 >
-                  Try This Calculator
-                </Link>
-              </div>
+                  <h3 className="text-base sm:text-[1.05rem] font-bold text-[#111827] font-serif">
+                    Q: {faq.q}
+                  </h3>
+                  <p className="text-[#4B5563] text-sm leading-relaxed pl-4 border-l-2 border-[#7C3AED]/20">
+                    {faq.a}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         )}

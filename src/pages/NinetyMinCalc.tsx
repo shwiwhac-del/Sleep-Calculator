@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { Layers, HelpCircle, Activity, Hourglass, ArrowLeft, Plus, Minus, Info, Sparkles } from "lucide-react";
 import { getCanonicalUrl } from "../lib/seo";
 
-export default function NinetyMinSleepCalculator() {
+export default function NinetyMinCalc() {
   const canonicalUrl = getCanonicalUrl("/sleep-cycle-calculator-90-minutes");
 
   const [wakeTime, setWakeTime] = useState("07:00");

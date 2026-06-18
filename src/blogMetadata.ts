@@ -331,6 +331,24 @@ export const BLOG_POSTS_META: Record<string, { title: string; description: strin
     description: "Master shift-work sleep schedules using a sleep cycle calculator for night shifts. Learn anchor sleep blocks, split routines, and dark bedroom setups to defeat fatigue.",
     date: "2026-06-16",
     category: "Sleep Health"
+  },
+  "what-time-should-i-sleep-if-i-wake-up-at-6-am": {
+    title: "What Time Should I Sleep If I Wake Up at 6 AM? Optimal Sleep Schedules",
+    description: "Discover the best times to sleep if you need to wake up at 6 AM. Use the natural 90-minute sleep cycle calculator to wake up full of energy, alert, and refreshed.",
+    date: "2026-06-18",
+    category: "Sleep Schedule"
+  },
+  "best-bedtime-calculator-for-students": {
+    title: "Best Bedtime Calculator for Students: Peak Brain Performance Guide",
+    description: "Align your exam prep with your biological clock. Find the perfect bedtime calculator for students, teenagers, and school schedules using 90-minute cycle rules.",
+    date: "2026-06-18",
+    category: "Study & Focus"
+  },
+  "nap-calculator-20-30-60-90-minutes": {
+    title: "Nap Calculator: 20, 30, 60, 90 Minutes Rest Cycles",
+    description: "Calculate the exact duration for power naps, recovery naps, and full sleep cycle naps. Optimize brain focus and cognitive alert states without post-nap grogginess.",
+    date: "2026-06-18",
+    category: "Sleep Science"
   }
 };
 

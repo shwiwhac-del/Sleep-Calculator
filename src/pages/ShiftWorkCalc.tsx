@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { Moon, Sun, Clock, Coffee, ShieldAlert, Sparkles, Footprints, Flame, EyeOff, ArrowLeft } from "lucide-react";
 import { getCanonicalUrl } from "../lib/seo";
 
-export default function ShiftWorkSleepCalculator() {
+export default function ShiftWorkCalc() {
   const canonicalUrl = getCanonicalUrl("/sleep-calculator-for-night-shift-workers");
 
   const SHIFTS = [

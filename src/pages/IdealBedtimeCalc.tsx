@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { Clock, HelpCircle, Activity, Heart, ArrowLeft, Baby, Flame, CheckCircle, Sparkles } from "lucide-react";
 import { getCanonicalUrl } from "../lib/seo";
 
-export default function IdealBedtimeCalculator() {
+export default function IdealBedtimeCalc() {
   const canonicalUrl = getCanonicalUrl("/ideal-bedtime-based-on-wake-up-time");
 
   const DEMOGRAPHICS = [
