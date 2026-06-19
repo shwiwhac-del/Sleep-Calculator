@@ -137,12 +137,12 @@
       }
       .sk-subtitle {
         font-size: 0.75rem;
-        color: #4B5563;
+        color: #374151;
         max-width: 36rem;
         margin: 0;
         font-weight: 500;
         line-height: 1.625;
-        opacity: 0.95;
+        opacity: 1;
       }
       @media (min-width: 640px) {
         .sk-subtitle {
@@ -187,7 +187,7 @@
         font-size: 0.8125rem;
         font-weight: 700;
         border-radius: 0.5rem;
-        color: #6b7280;
+        color: #4b5563;
         white-space: nowrap;
       }
       .sk-tab-active {
@@ -352,15 +352,193 @@
         }
       }
     </style>
-    <script src="/skeleton-init.js"></script>
+    <script>
+      (function() {
+        document.documentElement.classList.remove('dark');
+        
+        var savedMode = 'bed';
+        var savedTime = null;
+        var savedWake = '07:00';
+        var savedAge = '18-25';
+        
+        try {
+          savedMode = localStorage.getItem('aurasleep_mode') || 'bed';
+          savedTime = localStorage.getItem('aurasleep_time');
+          savedWake = localStorage.getItem('aurasleep_waketime') || '07:00';
+          savedAge = localStorage.getItem('aurasleep_age') || '18-25';
+        } catch (storageError) {
+          console.warn('LocalStorage is blocked or unsupported', storageError);
+        }
+        
+        if (!['wake', 'bed', 'cycles', 'nap', 'rem'].includes(savedMode)) {
+          savedMode = 'bed';
+        }
+        
+        var resolvedTime = '';
+        if (savedTime && /^\d{2}:\d{2}$/.test(savedTime)) {
+          resolvedTime = savedTime;
+        } else {
+          var now = new Date();
+          var ms = 1000 * 60 * 15;
+          var roundedDate = new Date(Math.round(now.getTime() / ms) * ms);
+          var hours = String(roundedDate.getHours()).padStart(2, '0');
+          var mins = String(roundedDate.getMinutes()).padStart(2, '0');
+          resolvedTime = hours + ':' + mins;
+        }
+        
+        var ageGroups = {
+          '0-3m': '0-3 Months',
+          '4-11m': '4-11 Months',
+          '1-2y': '1-2 Years',
+          '3-5y': '3-5 Years',
+          '6-12y': '6-12 Years',
+          '13-17': '13-17 Years',
+          '18-25': '18-25 Years',
+          '26-40': '26-40 Years',
+          '41-64': '41-64 Years',
+          '65+': '65+ Years'
+        };
+        var ageLabel = ageGroups[savedAge] || '18-25 Years';
+
+        function formatTimeParts(timeStr) {
+          var parts = timeStr.split(':');
+          var h = parseInt(parts[0], 10);
+          var m = parts[1] || '00';
+          var period = h >= 12 ? 'PM' : 'AM';
+          var displayH = h % 12 === 0 ? 12 : h % 12;
+          return {
+            hours: String(displayH).padStart(2, '0'),
+            minutes: m,
+            period: period
+          };
+        }
+
+        window.__initSkeleton = function() {
+          try {
+            var tabsContainer = document.getElementById('sk-tabs-container');
+            var inputFormContainer = document.getElementById('sk-inputs-container');
+            var ageGroupContainer = document.getElementById('sk-age-container');
+            var calcBtn = document.getElementById('sk-calc-btn');
+            
+            if (!tabsContainer || !inputFormContainer) return;
+            
+            var tabs = tabsContainer.children;
+            var tabIdMap = ['wake', 'bed', 'cycles', 'nap', 'rem'];
+            for (var i = 0; i < tabs.length; i++) {
+              var tMode = tabIdMap[i];
+              if (tMode === savedMode) {
+                tabs[i].className = 'sk-tab sk-tab-active';
+              } else {
+                tabs[i].className = 'sk-tab';
+              }
+            }
+            
+            var innerHTML = '';
+            if (savedMode === 'cycles') {
+              var pt1 = formatTimeParts(resolvedTime);
+              var pt2 = formatTimeParts(savedWake);
+              innerHTML = 
+                '<div class="sk-input-group">' +
+                  '<span class="sk-small-label">1. Planned Bedtime</span>' +
+                  '<div class="sk-picker">' +
+                    '<svg class="sk-clock-icon" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" width="26" height="26">' +
+                      '<circle cx="12" cy="12" r="10"></circle>' +
+                      '<polyline points="12 6 12 12 16 14"></polyline>' +
+                    '</svg>' +
+                    '<div class="sk-time-display">' +
+                      '<span class="sk-time-text">' + pt1.hours + ':' + pt1.minutes + '</span>' +
+                      '<span class="sk-period-text">' + pt1.period + '</span>' +
+                    '</div>' +
+                  '</div>' +
+                '</div>' +
+                '<div class="sk-input-group">' +
+                  '<span class="sk-small-label">2. Planned Wake-up Time</span>' +
+                  '<div class="sk-picker">' +
+                    '<svg class="sk-clock-icon" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" width="26" height="26">' +
+                      '<circle cx="12" cy="12" r="10"></circle>' +
+                      '<polyline points="12 6 12 12 16 14"></polyline>' +
+                    '</svg>' +
+                    '<div class="sk-time-display">' +
+                      '<span class="sk-time-text">' + pt2.hours + ':' + pt2.minutes + '</span>' +
+                      '<span class="sk-period-text">' + pt2.period + '</span>' +
+                    '</div>' +
+                  '</div>' +
+                '</div>';
+            } else {
+              var pTime = formatTimeParts(resolvedTime);
+              innerHTML = 
+                '<div class="sk-input-group">' +
+                  '<div class="sk-picker">' +
+                    '<svg class="sk-clock-icon" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" width="26" height="26">' +
+                      '<circle cx="12" cy="12" r="10"></circle>' +
+                      '<polyline points="12 6 12 12 16 14"></polyline>' +
+                    '</svg>' +
+                    '<div class="sk-time-display">' +
+                      '<span class="sk-time-text">' + pTime.hours + ':' + pTime.minutes + '</span>' +
+                      '<span class="sk-period-text">' + pTime.period + '</span>' +
+                    '</div>' +
+                  '</div>' +
+                '</div>';
+            }
+            inputFormContainer.innerHTML = innerHTML;
+            
+            if (savedMode !== 'nap' && savedMode !== 'cycles' && savedMode !== 'rem') {
+              ageGroupContainer.style.display = 'flex';
+              var ageValEl = document.getElementById('sk-age-val');
+              if (ageValEl) ageValEl.textContent = ageLabel;
+            } else {
+              ageGroupContainer.style.display = 'none';
+            }
+            
+            var btnText = 'Calculate Bed Time';
+            if (savedMode === 'wake') btnText = 'Calculate Wake Up Time';
+            else if (savedMode === 'cycles') btnText = 'Calculate Sleep Cycles';
+            else if (savedMode === 'nap') btnText = 'Calculate Nap Time';
+            else if (savedMode === 'rem') btnText = 'Calculate REM Sleep';
+            
+            if (calcBtn) calcBtn.textContent = btnText;
+          } catch (err) {
+            console.warn('Skeleton config failed', err);
+          }
+        };
+
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', window.__initSkeleton);
+        } else {
+          window.__initSkeleton();
+        }
+      })();
+    </script>
 
     <meta
       name="google-site-verification"
       content="FCt22TrVLV1Pr5X_AhtTap1caGwd1upMki9UrueB_ig"
     />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
+    
+    <!-- Branding & Device Optimization Meta Tags -->
+    <meta name="application-name" content="Sleep Calculator" />
+    <meta name="apple-mobile-web-app-title" content="Sleep Calculator" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    
+    <!-- Standard & Device Favicons / Icons -->
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon.png" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon.png" />
+    <link rel="icon" type="image/png" sizes="144x144" href="/favicon.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/favicon.png" />
+    <link rel="icon" type="image/png" href="/logo.png" />
+    <link rel="shortcut icon" type="image/png" href="/favicon.png" />
+    <link rel="shortcut icon" href="/favicon.png" />
+    
+    <!-- Apple Touch Icons with Premium Logo Reference -->
+    <link rel="apple-touch-icon" href="/logo.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/logo.png" />
+    <link rel="apple-touch-icon" sizes="512x512" href="/logo.png" />
+    
     <link rel="manifest" href="/manifest.webmanifest" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -368,38 +546,25 @@
     <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
     <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
     
-    <link
+     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;650;700&family=Playfair+Display:wght@600;700&display=swap"
       rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
     />
     <title>Sleep Calculator – Calculate Bedtime & Wake Up Times</title>
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-    <meta
-      name="description"
-      content="Calculate the best bedtime and wake-up time using natural 90-minute sleep cycles. Wake up refreshed and improve your sleep quality."
-    />
-    <meta
-      name="keywords"
-      content="sleep calculator, sleep cycle calculator, bedtime calculator, wake up time calculator, best time to sleep, sleep cycle timing, REM sleep cycles, sleep schedule calculator"
-    />
+    <meta name="description" content="Calculate the best bedtime and wake-up time using natural 90-minute sleep cycles. Wake up refreshed and improve your sleep quality." />
+    <meta name="keywords" content="sleep calculator, sleep cycle calculator, bedtime calculator, wake up time calculator, best time to sleep, sleep cycle timing, REM sleep cycles, sleep schedule calculator" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:site_name" content="Sleep Calculator" />
-    <meta
-      property="og:title"
-      content="Sleep Calculator – Best Sleep Cycle & Bedtime Calculator"
-    />
-    <meta
-      property="og:description"
-      content="Calculate the best bedtime and wake-up time using natural 90-minute sleep cycles. Wake up refreshed and improve your sleep quality."
-    />
-    <meta
-      property="og:image"
-      content="https://sleepcalculater.online/og_banner.png"
-    />
+    <meta property="og:title" content="Sleep Calculator – Best Sleep Cycle & Bedtime Calculator" />
+    <meta property="og:description" content="Calculate the best bedtime and wake-up time using natural 90-minute sleep cycles. Wake up refreshed and improve your sleep quality." />
+    <meta property="og:image" content="https://sleepcalculater.online/og_banner.png" />
     <meta property="og:image:secure_url" content="https://sleepcalculater.online/og_banner.png" />
     <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1200" />
@@ -408,18 +573,9 @@
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta
-      name="twitter:title"
-      content="Sleep Calculator – Best Sleep Cycle & Bedtime Calculator"
-    />
-    <meta
-      name="twitter:description"
-      content="Calculate the best bedtime and wake-up time using natural 90-minute sleep cycles. Wake up refreshed and improve your sleep quality."
-    />
-    <meta
-      name="twitter:image"
-      content="https://sleepcalculater.online/og_banner.png"
-    />
+    <meta name="twitter:title" content="Sleep Calculator – Best Sleep Cycle & Bedtime Calculator" />
+    <meta name="twitter:description" content="Calculate the best bedtime and wake-up time using natural 90-minute sleep cycles. Wake up refreshed and improve your sleep quality." />
+    <meta name="twitter:image" content="https://sleepcalculater.online/og_banner.png" />
 
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -448,7 +604,7 @@
             "url": "https://sleepcalculater.online/",
             "logo": {
               "@type": "ImageObject",
-              "url": "https://sleepcalculater.online/favicon.png",
+              "url": "https://sleepcalculater.online/logo.png",
               "width": "512",
               "height": "512"
             },
@@ -619,32 +775,53 @@
         <p style="margin-bottom: 1rem;">Whether you need a Sleep Calculator, Sleep Cycle Calculator, Sleep Time Calculator, Sleepy Time Calculator, Bed Time Calculator, REM Sleep Calculator, REM Cycle Calculator, Nap Calculator, or guidance on when to wake up, our tool helps you make smarter sleep decisions.</p>
         <p style="margin-bottom: 1.5rem;">Use the calculator today to discover your ideal sleep time, create a better sleep schedule, and wake up refreshed every morning.</p>
 
-        <h3 style="font-size: 1.25rem; font-weight: bold; color: #111827; margin-top: 2rem; margin-bottom: 0.5rem;">Articles & Guides:</h3>
+        <h3 style="font-size: 1.25rem; font-weight: bold; color: #111827; margin-top: 2rem; margin-bottom: 0.5rem;">Interactive Sleep Planners & Calculators:</h3>
+        <ul style="list-style-type: none; padding-left: 0; line-height: 2; margin-bottom: 1.5rem;">
+          <li><a href="/student-sleep-calculator" style="color: #7C3AED; text-decoration: none; font-weight: 600;">Student & Exam Sleep Planner</a></li>
+          <li><a href="/shift-work-sleep-calculator" style="color: #7C3AED; text-decoration: none; font-weight: 600;">Night Shift Work Planner</a></li>
+          <li><a href="/sleep-cycle-calculator-90-minutes" style="color: #7C3AED; text-decoration: none; font-weight: 600;">90-Minute Sleep Cycle Customizer</a></li>
+          <li><a href="/wake-up-between-sleep-cycles" style="color: #7C3AED; text-decoration: none; font-weight: 600;">Conquering Morning Fatigue Planner</a></li>
+          <li><a href="/ideal-bedtime-based-on-wake-up-time" style="color: #7C3AED; text-decoration: none; font-weight: 600;">Ideal Bedtime Calculator (All Ages)</a></li>
+        </ul>
+
+        <h3 style="font-size: 1.25rem; font-weight: bold; color: #111827; margin-top: 2rem; margin-bottom: 0.5rem;">Articles, Sleep Guides & Research Journals:</h3>
         <ul style="list-style-type: none; padding-left: 0; line-height: 2;">
-          <li><a href="/sleep-cycles-explained" style="color: #7C3AED; text-decoration: none;">Sleep Cycles Explained</a></li>
-          <li><a href="/what-is-rem-sleep" style="color: #7C3AED; text-decoration: none;">What is REM Sleep?</a></li>
-          <li><a href="/how-much-sleep-do-you-need" style="color: #7C3AED; text-decoration: none;">How Much Sleep Do You Need?</a></li>
-          <li><a href="/best-time-to-sleep-and-wake-up" style="color: #7C3AED; text-decoration: none;">Best Time to Sleep and Wake Up</a></li>
+          <li><a href="/sleep-cycles-explained" style="color: #7C3AED; text-decoration: none;">Sleep Cycles Explained: Science of Mornings</a></li>
+          <li><a href="/what-is-rem-sleep" style="color: #7C3AED; text-decoration: none;">What Is REM Sleep and Why Is It Important?</a></li>
+          <li><a href="/how-much-sleep-do-you-need" style="color: #7C3AED; text-decoration: none;">How Much Sleep Do You Need? Recommendations by Age</a></li>
+          <li><a href="/best-time-to-sleep-and-wake-up" style="color: #7C3AED; text-decoration: none;">Best Time to Sleep and Wake Up: Healthy Guideline</a></li>
           <li><a href="/sleep-cycle-calculator-guide" style="color: #7C3AED; text-decoration: none;">Sleep Cycle Calculator Guide</a></li>
           <li><a href="/why-90-minute-sleep-cycles-matter" style="color: #7C3AED; text-decoration: none;">Why 90-Minute Sleep Cycles Matter</a></li>
-          <li><a href="/how-to-wake-up-refreshed" style="color: #7C3AED; text-decoration: none;">How to Wake Up Refreshed</a></li>
-          <li><a href="/ideal-bedtime-for-adults" style="color: #7C3AED; text-decoration: none;">Ideal Bedtime for Adults</a></li>
-          <li><a href="/sleep-schedule-for-productivity" style="color: #7C3AED; text-decoration: none;">Sleep Schedule for Productivity</a></li>
-          <li><a href="/how-many-hours-of-sleep-is-healthy" style="color: #7C3AED; text-decoration: none;">How Many Hours of Sleep is Healthy?</a></li>
-          <li><a href="/power-nap-vs-full-sleep-cycle" style="color: #7C3AED; text-decoration: none;">Power Nap vs. Full Sleep Cycle</a></li>
-          <li><a href="/circadian-rhythm-explained" style="color: #7C3AED; text-decoration: none;">Circadian Rhythm Explained</a></li>
-          <li><a href="/tired-after-8-hours-of-sleep" style="color: #7C3AED; text-decoration: none;">Tired After 8 Hours of Sleep</a></li>
-          <li><a href="/best-bedtime-for-students" style="color: #7C3AED; text-decoration: none;">Best Bedtime for Students</a></li>
-          <li><a href="/sleep-and-memory" style="color: #7C3AED; text-decoration: none;">Sleep and Memory</a></li>
-          <li><a href="/sleep-debt-explained" style="color: #7C3AED; text-decoration: none;">Sleep Debt Explained</a></li>
-          <li><a href="/best-wake-up-time" style="color: #7C3AED; text-decoration: none;">Best Wake-Up Time</a></li>
-          <li><a href="/improve-sleep-quality" style="color: #7C3AED; text-decoration: none;">Improve Sleep Quality</a></li>
-          <li><a href="/sleep-hygiene-tips" style="color: #7C3AED; text-decoration: none;">Sleep Hygiene Tips</a></li>
-          <li><a href="/common-sleep-mistakes" style="color: #7C3AED; text-decoration: none;">Common Sleep Mistakes</a></li>
-          <li><a href="/fix-irregular-sleep-schedule" style="color: #7C3AED; text-decoration: none;">Fix Irregular Sleep Schedule</a></li>
-          <li><a href="/consistent-sleep-schedule-benefits" style="color: #7C3AED; text-decoration: none;">Consistent Sleep Schedule Benefits</a></li>
-          <li><a href="/best-temperature-for-sleep" style="color: #7C3AED; text-decoration: none;">Best Temperature for Sleep</a></li>
-          <li><a href="/what-is-deep-sleep" style="color: #7C3AED; text-decoration: none;">What is Deep Sleep</a></li>
+          <li><a href="/ideal-bedtime-for-adults" style="color: #7C3AED; text-decoration: none;">Ideal Bedtime for Adults: Go to Sleep Timing</a></li>
+          <li><a href="/sleep-schedule-for-productivity" style="color: #7C3AED; text-decoration: none;">Sleep Schedule for Productivity: Peak Performance</a></li>
+          <li><a href="/how-many-hours-of-sleep-is-healthy" style="color: #7C3AED; text-decoration: none;">How Many Hours of Sleep Is Healthy?</a></li>
+          <li><a href="/power-nap-vs-full-sleep-cycle" style="color: #7C3AED; text-decoration: none;">Power Nap vs. Full Sleep Cycle: Boost Energy</a></li>
+          <li><a href="/circadian-rhythm-explained" style="color: #7C3AED; text-decoration: none;">Circadian Rhythm Explained: Internal biological Clocks</a></li>
+          <li><a href="/tired-after-8-hours-of-sleep" style="color: #7C3AED; text-decoration: none;">Why Am I Still Tired After 8 Hours of Sleep?</a></li>
+          <li><a href="/best-bedtime-for-students" style="color: #7C3AED; text-decoration: none;">Best Bedtime for Students and Exam Preparation</a></li>
+          <li><a href="/sleep-and-memory" style="color: #7C3AED; text-decoration: none;">How Sleep Affects Memory and Learning</a></li>
+          <li><a href="/sleep-debt-explained" style="color: #7C3AED; text-decoration: none;">Sleep Debt Explained: How to Safely Recover</a></li>
+          <li><a href="/best-wake-up-time" style="color: #7C3AED; text-decoration: none;">Best Wake Up Time for Maximum Energy</a></li>
+          <li><a href="/improve-sleep-quality" style="color: #7C3AED; text-decoration: none;">How to Improve Sleep Quality Naturally: 12 Tips</a></li>
+          <li><a href="/sleep-hygiene-tips" style="color: #7C3AED; text-decoration: none;">Sleep Hygiene Tips for Restful Nights</a></li>
+          <li><a href="/common-sleep-mistakes" style="color: #7C3AED; text-decoration: none;">Common Sleep Mistakes That Ruin Your Rest</a></li>
+          <li><a href="/fix-irregular-sleep-schedule" style="color: #7C3AED; text-decoration: none;">How to Fix an Irregular Sleep Schedule</a></li>
+          <li><a href="/consistent-sleep-schedule-benefits" style="color: #7C3AED; text-decoration: none;">Benefits of Following a Consistent Sleep Schedule</a></li>
+          <li><a href="/best-temperature-for-sleep" style="color: #7C3AED; text-decoration: none;">What Is the Best Temperature for Sleep?</a></li>
+          <li><a href="/what-is-deep-sleep" style="color: #7C3AED; text-decoration: none;">What Is Deep Sleep and Why You Need It</a></li>
+          <li><a href="/how-long-does-it-take-to-fall-asleep" style="color: #7C3AED; text-decoration: none;">How Long Does It Take to Fall Asleep? What's Normal?</a></li>
+          <li><a href="/why-do-we-dream" style="color: #7C3AED; text-decoration: none;">Why Do We Dream? Cognitive and Emotional Purpose</a></li>
+          <li><a href="/why-do-people-snore" style="color: #7C3AED; text-decoration: none;">Why Do People Snore? Solutions and Causes</a></li>
+          <li><a href="/sleep-calculator-for-students" style="color: #7C3AED; text-decoration: none;">Sleep Calculator for Students during Exams</a></li>
+          <li><a href="/sleep-calculator-for-exams" style="color: #7C3AED; text-decoration: none;">Sleep Calculator for Exams and Focus Optimization</a></li>
+          <li><a href="/why-am-i-tired-after-sleeping" style="color: #7C3AED; text-decoration: none;">Why Am I Still Tired After Sleeping? Core Symptoms</a></li>
+          <li><a href="/rem-sleep-calculator-bedtime-cycles" style="color: #7C3AED; text-decoration: none;">REM Sleep Calculator: Optimize Bedtime Cycles</a></li>
+          <li><a href="/sleep-deprivation-calculator-recovery-guide" style="color: #7C3AED; text-decoration: none;">Sleep Deprivation Calculator & Recovery Guide</a></li>
+          <li><a href="/adhd-sleep-schedule-calculator-tips" style="color: #7C3AED; text-decoration: none;">ADHD Sleep Schedule Calculator & Rest Tips</a></li>
+          <li><a href="/what-time-should-i-sleep-if-i-wake-up-at-6-am" style="color: #7C3AED; text-decoration: none;">What Time Should I Sleep if I Wake up at 6 AM?</a></li>
+          <li><a href="/best-bedtime-calculator-for-students" style="color: #7C3AED; text-decoration: none;">Best Bedtime Calculator for College & Teen Students</a></li>
+          <li><a href="/nap-calculator-20-30-60-90-minutes" style="color: #7C3AED; text-decoration: none;">Nap Calculator: Optimize Power Naps (20, 30, 60, 90 mins)</a></li>
+          <li><a href="/sleep-calculator-for-night-shift-workers" style="color: #7C3AED; text-decoration: none;">Sleep Calculator for Night Shift Workers: Day Routines</a></li>
         </ul>
       </div>
     </noscript>

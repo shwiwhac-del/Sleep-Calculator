@@ -913,7 +913,7 @@ export default function Home() {
                       </div>
 
                       {/* Diagnostic Score Circle / Badge */}
-                      <div className="flex flex-col items-center justify-center py-5 bg-white border border-[#E5E7EB] rounded-3xl shadow-sm">
+                      <div className="flex flex-col items-center justify-center py-5 bg-[#FAF6F0] border border-[#E1D8CC] rounded-3xl shadow-xs">
                         <div className="relative flex items-center justify-center w-24 h-24 sm:w-28 sm:h-28 rounded-full border-4 border-dashed border-[#7C3AED]/20">
                           <div className="absolute inset-2 rounded-full bg-[#F3ECE3]/45 shadow-sm flex flex-col items-center justify-center">
                             <span className="text-3xl sm:text-4xl font-extrabold text-[#7C3AED] leading-none font-mono">
@@ -954,28 +954,28 @@ export default function Home() {
 
                       {/* Stat Grid */}
                       <div className="grid grid-cols-2 gap-3 mt-1">
-                        <div className="bg-white border border-[#E5E7EB] rounded-2xl p-4 flex flex-col justify-between hover:shadow-xs duration-200">
+                        <div className="bg-[#FAF6F0] border border-[#E1D8CC] rounded-2xl p-4 flex flex-col justify-between hover:shadow-sm duration-200">
                           <span className="text-[#6B7280] text-[10px] font-bold leading-none uppercase tracking-wider font-mono">Bedtime</span>
                           <span className="text-lg font-extrabold text-[#111827] mt-1.5">{formatTime(timeToDate(cyclesReport.bedTime, "bed"))}</span>
                         </div>
-                        <div className="bg-white border border-[#E5E7EB] rounded-2xl p-4 flex flex-col justify-between hover:shadow-xs duration-200">
+                        <div className="bg-[#FAF6F0] border border-[#E1D8CC] rounded-2xl p-4 flex flex-col justify-between hover:shadow-sm duration-200">
                           <span className="text-[#6B7280] text-[10px] font-bold leading-none uppercase tracking-wider font-mono">Wake-Up Time</span>
                           <span className="text-lg font-extrabold text-[#111827] mt-1.5">{formatTime(timeToDate(cyclesReport.wakeTime, "wake"))}</span>
                         </div>
-                        <div className="bg-white border border-[#E5E7EB] rounded-2xl p-4 flex flex-col justify-between hover:shadow-xs duration-200">
+                        <div className="bg-[#FAF6F0] border border-[#E1D8CC] rounded-2xl p-4 flex flex-col justify-between hover:shadow-sm duration-200">
                           <span className="text-[#6B7280] text-[10px] font-bold leading-none uppercase tracking-wider font-mono">Slept Duration</span>
                           <span className="text-lg font-extrabold text-[#111827] mt-1.5">
                             {Math.floor(cyclesReport.sleepDurationMinutes / 60)}h {cyclesReport.sleepDurationMinutes % 60}m
                           </span>
                         </div>
-                        <div className="bg-white border border-[#E5E7EB] rounded-2xl p-4 flex flex-col justify-between hover:shadow-xs duration-200">
+                        <div className="bg-[#FAF6F0] border border-[#E1D8CC] rounded-2xl p-4 flex flex-col justify-between hover:shadow-sm duration-200">
                           <span className="text-[#6B7280] text-[10px] font-bold leading-none uppercase tracking-wider font-mono">Sleep Cycles</span>
                           <span className="text-lg font-extrabold text-[#7C3AED] mt-1.5 font-mono">{cyclesReport.cycles} Cycles</span>
                         </div>
                       </div>
 
                       {/* Interactive Sleep Stage Breakdown */}
-                      <div className="bg-white border border-[#E5E7EB] rounded-2xl p-4 sm:p-5 mt-1 shadow-xs">
+                      <div className="bg-[#FAF6F0] border border-[#E1D8CC] rounded-2xl p-4 sm:p-5 mt-1 shadow-xs">
                         <span className="text-xs font-black uppercase text-[#111827] block mb-3.5 tracking-wider font-sans">
                           Estimated Sleep Phase Breakdown
                         </span>
@@ -1025,18 +1025,18 @@ export default function Home() {
                             Sleep Doctor Calibration Advice
                           </span>
 
-                          <p className="text-xs text-slate-705 leading-relaxed font-semibold">
+                          <p className="text-xs text-slate-750 leading-relaxed font-semibold">
                             You are completing {cyclesReport.cycles} cycles. To reach a perfect <strong className="text-[#111827] font-extrabold">{cyclesReport.perfectCycles}.0</strong> cycles and wake up at a clean transition point, we highly suggest one of the following simple bio-clock calibrations:
                           </p>
 
                           <div className="space-y-2 mt-1">
-                            <div className="bg-white p-3 rounded-xl border border-[#E5E7EB] flex flex-col justify-center text-left">
+                            <div className="bg-[#FCFAF7] p-3 rounded-xl border border-[#E1D8CC] flex flex-col justify-center text-left">
                               <span className="text-[10px] text-[#6B7280] font-extrabold uppercase tracking-wide font-mono">Option A: Recalibrate Bedtime</span>
                               <p className="text-xs font-bold text-gray-800 mt-0.5">
                                 Shift bedtime to <strong className="text-[#7C3AED] font-extrabold">{cyclesReport.recalibrateBedtime}</strong> while keeping your wake-up time at {formatTime(timeToDate(cyclesReport.wakeTime, "wake"))}.
                               </p>
                             </div>
-                            <div className="bg-white p-3 rounded-xl border border-[#E5E7EB] flex flex-col justify-center text-left">
+                            <div className="bg-[#FCFAF7] p-3 rounded-xl border border-[#E1D8CC] flex flex-col justify-center text-left">
                               <span className="text-[10px] text-[#6B7280] font-extrabold uppercase tracking-wide font-mono">Option B: Recalibrate Wakeup Time</span>
                               <p className="text-xs font-bold text-gray-800 mt-0.5">
                                 Keep bedtime at {formatTime(timeToDate(cyclesReport.bedTime, "bed"))}, but wake up at <strong className="text-[#7C3AED] font-extrabold">{cyclesReport.recalibrateWakeup}</strong> instead.
@@ -1075,10 +1075,10 @@ export default function Home() {
                             return (
                                <div
                                 key={index}
-                                className={`group flex items-center justify-between py-3.5 px-5 rounded-2xl border transition-all duration-300 hover:shadow-premium ${
+                                className={`group flex items-center justify-between py-3.5 px-5 rounded-2xl border transition-all duration-300 hover:shadow-sm ${
                                   isSuggested
                                     ? "border-[#7C3AED]/40 bg-[#7C3AED]/5 hover:bg-[#7C3AED]/10"
-                                    : "border-[#E5E7EB] bg-white hover:bg-slate-50/85"
+                                    : "border-[#E1D8CC] bg-[#FAF6F0] hover:bg-[#FCFAF7]"
                                 }`}
                               >
                                 <div className="flex flex-col relative z-10">

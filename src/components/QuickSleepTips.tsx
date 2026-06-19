@@ -345,7 +345,7 @@ export function QuickSleepTips() {
       </div>
 
       {/* Grid containing list of tips under filtered category */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4" id="sleep-tips-cards-grid">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 items-start" id="sleep-tips-cards-grid">
         <AnimatePresence mode="popLayout">
           {filteredTips.map((tip) => {
             const isCompleted = completedTipIds.includes(tip.id);

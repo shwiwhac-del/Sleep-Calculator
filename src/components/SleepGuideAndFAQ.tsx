@@ -103,7 +103,7 @@ export default function SleepGuideAndFAQ() {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3" id="links-grid">
           <Link
             to="/student-sleep-calculator"
-            className="group flex items-center justify-between p-4 bg-white rounded-2xl border border-neutral-200 hover:border-[#7C3AED] hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
+            className="group flex items-center justify-between p-4 bg-[#FAF6F0] rounded-2xl border border-[#E1D8CC] hover:border-[#7C3AED] hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
           >
             <div className="flex flex-col gap-0.5">
               <span className="font-bold text-sm sm:text-base text-[#111827] group-hover:text-[#7C3AED] transition-colors">Student & Exam Planner</span>
@@ -115,7 +115,7 @@ export default function SleepGuideAndFAQ() {
           </Link>
           <Link
             to="/shift-work-sleep-calculator"
-            className="group flex items-center justify-between p-4 bg-white rounded-2xl border border-neutral-200 hover:border-[#7C3AED] hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
+            className="group flex items-center justify-between p-4 bg-[#FAF6F0] rounded-2xl border border-[#E1D8CC] hover:border-[#7C3AED] hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
           >
             <div className="flex flex-col gap-0.5">
               <span className="font-bold text-sm sm:text-base text-[#111827] group-hover:text-[#7C3AED] transition-colors">Night Shift Work Planner</span>
@@ -127,7 +127,7 @@ export default function SleepGuideAndFAQ() {
           </Link>
           <Link
             to="/sleep-cycle-calculator-90-minutes"
-            className="group flex items-center justify-between p-4 bg-white rounded-2xl border border-neutral-200 hover:border-[#7C3AED] hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
+            className="group flex items-center justify-between p-4 bg-[#FAF6F0] rounded-2xl border border-[#E1D8CC] hover:border-[#7C3AED] hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
           >
             <div className="flex flex-col gap-0.5">
               <span className="font-bold text-sm sm:text-base text-[#111827] group-hover:text-[#7C3AED] transition-colors">90-Min Cycle Customizer</span>
@@ -139,7 +139,7 @@ export default function SleepGuideAndFAQ() {
           </Link>
           <Link
             to="/wake-up-between-sleep-cycles"
-            className="group flex items-center justify-between p-4 bg-white rounded-2xl border border-neutral-200 hover:border-[#7C3AED] hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
+            className="group flex items-center justify-between p-4 bg-[#FAF6F0] rounded-2xl border border-[#E1D8CC] hover:border-[#7C3AED] hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
           >
             <div className="flex flex-col gap-0.5">
               <span className="font-bold text-sm sm:text-base text-[#111827] group-hover:text-[#7C3AED] transition-colors">Refresh Fatigue Planner</span>
@@ -151,7 +151,7 @@ export default function SleepGuideAndFAQ() {
           </Link>
           <Link
             to="/ideal-bedtime-based-on-wake-up-time"
-            className="sm:col-span-2 group flex items-center justify-between p-4 bg-white rounded-2xl border border-neutral-200 hover:border-[#7C3AED] hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
+            className="sm:col-span-2 group flex items-center justify-between p-4 bg-[#FAF6F0] rounded-2xl border border-[#E1D8CC] hover:border-[#7C3AED] hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
           >
             <div className="flex flex-col gap-0.5">
               <span className="font-bold text-sm sm:text-base text-[#111827] group-hover:text-[#7C3AED] transition-colors">Ideal Bedtime Calculator (All Ages)</span>
@@ -359,7 +359,7 @@ export default function SleepGuideAndFAQ() {
             <Link
               key={post.slug}
               to={`/${post.slug}`}
-              className="bg-white hover:bg-slate-50 border border-[#E5E7EB] hover:border-[#7C3AED]/50 rounded-2xl p-5 flex flex-col justify-between group shadow-md transition-all duration-300 select-text hover:shadow-premium hover:-translate-y-1 block"
+              className="bg-[#FAF6F0] hover:bg-[#FCFAF7] border border-[#E1D8CC] hover:border-[#7C3AED] rounded-2xl p-5 flex flex-col justify-between group shadow-sm transition-all duration-300 select-text hover:shadow-md hover:-translate-y-1 block"
             >
               <div>
                 <h3 className="text-base sm:text-lg font-extrabold text-[#111827] leading-snug group-hover:text-[#7C3AED] transition-colors duration-200 line-clamp-2 select-text">
@@ -369,7 +369,7 @@ export default function SleepGuideAndFAQ() {
                   {post.description}
                 </p>
               </div>
-              <div className="mt-5 pt-4 border-t border-[#E5E7EB] flex items-center justify-between">
+              <div className="mt-5 pt-4 border-t border-[#E1D8CC] flex items-center justify-between">
                 <div className="flex items-center gap-3 text-[11px] text-[#6B7280]">
                   <span className="flex items-center gap-1">
                     <Calendar size={12} className="text-[#6B7280]" />
@@ -452,12 +452,12 @@ export default function SleepGuideAndFAQ() {
           return (
             <div
               key={index}
-              className="bg-white border border-[#E5E7EB] rounded-xl overflow-hidden shadow-sm transition-all duration-305 hover:border-[#7C3AED]/45"
+              className="bg-[#FAF6F0] border border-[#E1D8CC] rounded-2xl overflow-hidden shadow-xs transition-all duration-300 hover:border-[#7C3AED]"
             >
               <button
                 type="button"
                 onClick={() => setActiveFaq(isOpen ? null : index)}
-                className="w-full flex items-center justify-between p-4 sm:p-5 text-left font-semibold text-[#111827] hover:bg-slate-50 transition-colors focus:outline-none cursor-pointer"
+                className="w-full flex items-center justify-between p-4 sm:p-5 text-left font-semibold text-[#111827] hover:bg-[#FCFAF7] transition-colors focus:outline-none cursor-pointer"
               >
                 <span className="text-base sm:text-lg pr-4 font-bold text-[#111827]">{faq.q}</span>
                 <ChevronDown className={`w-5.5 h-5.5 text-[#7C3AED] shrink-0 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`} />
@@ -469,9 +469,9 @@ export default function SleepGuideAndFAQ() {
                     animate={{ height: "auto", opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
                     transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                    className="overflow-hidden border-t border-[#E5E7EB]"
+                    className="overflow-hidden border-t border-[#E1D8CC]"
                   >
-                    <p className="p-5 text-sm sm:text-base text-[#374151] leading-relaxed bg-[#F8FAFC] select-text">
+                    <p className="p-5 text-sm sm:text-base text-[#374151] leading-relaxed bg-[#FAF6F0] select-text">
                       {faq.a}
                     </p>
                   </motion.div>

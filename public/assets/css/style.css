@@ -1,0 +1,21 @@
+/*
+ * Sleep Calculator - Core Styles Sheet
+ * Matches Design System Design Tokens
+ */
+
+:root {
+  --color-primary: #7C3AED;      /* Deep, eye-friendly Violet */
+  --color-primary-hover: #6D28D9;
+  --color-accent: #D4AF37;       /* Soft, premium gold */
+  --color-bg: #F3ECE3;           /* Warm Ivory / Beige */
+  --color-text-main: #111827;    /* Deep charcoal */
+  --color-text-muted: #6B7280;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text-main);
+  margin: 0;
+  padding: 0;
+}

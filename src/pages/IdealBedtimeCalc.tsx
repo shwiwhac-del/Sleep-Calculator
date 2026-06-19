@@ -109,7 +109,7 @@ export default function IdealBedtimeCalc() {
       </div>
 
       {/* Calculator widget frame */}
-      <div className="bg-white/80 backdrop-blur-md rounded-3xl p-6 sm:p-8 border border-neutral-200 shadow-xl mb-12" id="ideal-widget">
+      <div className="bg-[#FAF6F0]/90 backdrop-blur-md rounded-3xl p-6 sm:p-8 border border-[#E1D8CC] shadow-md mb-12" id="ideal-widget">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           
           {/* Inputs Section */}
@@ -142,7 +142,7 @@ export default function IdealBedtimeCalc() {
                       className={`w-full p-3.5 text-left rounded-2xl border transition-all cursor-pointer flex items-center justify-between ${
                         selectedDemo === demo.id
                           ? "border-[#7C3AED] bg-[#7C3AED]/5 text-gray-900 shadow-xs"
-                          : "border-neutral-200 bg-white text-gray-600 hover:bg-neutral-50"
+                          : "border-[#E1D8CC] bg-[#FCFAF7] text-gray-600 hover:bg-[#FAF6F0]"
                       }`}
                     >
                       <div className="flex items-center gap-3">
@@ -195,7 +195,7 @@ export default function IdealBedtimeCalc() {
                   {(() => {
                     const heroOption = bedtimeOptions[1] || bedtimeOptions[0];
                     return (
-                      <div className="p-6 sm:p-7 rounded-3xl bg-white border-2 border-[#7C3AED] shadow-md relative overflow-hidden" id="ideal-hero-card">
+                      <div className="p-6 sm:p-7 rounded-3xl bg-[#FCFAF7] border-2 border-[#7C3AED] shadow-sm relative overflow-hidden" id="ideal-hero-card">
                         <div className="absolute right-0 top-0 w-24 h-24 bg-[#7C3AED]/4 rounded-full blur-2xl pointer-events-none" />
                         
                         <div className="flex items-center justify-between mb-3.5 relative z-10">
@@ -246,7 +246,7 @@ export default function IdealBedtimeCalc() {
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: -10 }}
                           transition={{ duration: 0.2, delay: idx * 0.05 }}
-                          className="p-4 bg-white rounded-2xl border border-neutral-200 hover:border-[#7C3AED]/70 hover:shadow-xs transition-all flex items-center justify-between"
+                          className="p-4 bg-[#FAF6F0] rounded-2xl border border-[#E1D8CC] hover:border-[#7C3AED]/70 hover:shadow-xs transition-all flex items-center justify-between"
                           id={`ideal-card-alt-${idx}`}
                         >
                           <div>
@@ -288,7 +288,7 @@ export default function IdealBedtimeCalc() {
       </div>
 
       {/* SEO deep explanations */}
-      <div className="space-y-12 select-text text-gray-700 leading-relaxed text-sm sm:text-base bg-white/40 p-6 sm:p-10 rounded-3xl border border-neutral-200" id="ideal-seo-content">
+      <div className="space-y-12 select-text text-gray-700 leading-relaxed text-sm sm:text-base bg-[#FAF6F0]/40 p-6 sm:p-10 rounded-3xl border border-[#E1D8CC]" id="ideal-seo-content">
         
         <section className="space-y-3">
           <h2 className="text-xl sm:text-2xl font-bold font-serif text-gray-900">

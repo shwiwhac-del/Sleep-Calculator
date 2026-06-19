@@ -1,0 +1,27 @@
+[
+  {
+    "question": "What is a sleep cycle and how long does it last?",
+    "answer": "A complete sleep cycle lasts approximately 90 minutes. It progresses through four key biological stages: N1, N2, N3 (slow-wave deep sleep), and REM sleep. Waking up at the completion of a cycle leaves you feeling energetic and refreshed, while waking up mid-deep sleep causes severe sleep inertia and grogginess.",
+    "category": "Sleep Science"
+  },
+  {
+    "question": "How much sleep do I actually need based on my age?",
+    "answer": "Sleep requirements vary by stage of life: Newborns require 14-17 hours, children require 9-11 hours, teenagers require 8-10 hours, and adults need 7-9 hours of consistent resting cycles.",
+    "category": "Sleep Health"
+  },
+  {
+    "question": "What is the science behind sleep latency offsets?",
+    "answer": "It takes the average healthy adult approximately 14 to 20 minutes to transition from wakefulness into full light sleep. Our calculator applies a standard 15-minute default buffer to ensure your bedtime calculations align with when you actually drop off to sleep.",
+    "category": "Sleep Guide"
+  },
+  {
+    "question": "How can I calculate the best time to wake up?",
+    "answer": "To wake up refreshed, count forward in 90-minute blocks (circadian sleep cycles) from your bedtime, or count backward in 90-minute blocks from your required wake up time, and subtract 15 minutes for sleep latency.",
+    "category": "Sleep Guide"
+  },
+  {
+    "question": "How do night shift workers optimize sleep?",
+    "answer": "Night shift workers should employ the 'Anchor Sleep Method' by keeping a fixed 4-hour core window of sleep at the same time every day, block out sunlight with black-out curtains, and adjust melatonin offsets to align with day-rest cycles.",
+    "category": "Night Shift Sleep"
+  }
+]

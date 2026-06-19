@@ -1,0 +1,17 @@
+/*
+ * Sleep Calculator - Calculator & Visual Slider Component Styles Sheet
+ */
+
+.calculator-card {
+  background-color: #FAF6F0;
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 20px -2px rgba(124, 58, 237, 0.08);
+  border: 1px solid rgba(124, 58, 237, 0.1);
+  padding: 2rem;
+}
+
+.cycle-indicator {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.875rem;
+  color: var(--color-primary);
+}

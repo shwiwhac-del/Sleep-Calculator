@@ -182,7 +182,7 @@ export default function ShiftWorkCalc() {
       </div>
 
       {/* Active Calculator Box */}
-      <div className="bg-white/80 backdrop-blur-md rounded-3xl p-6 sm:p-8 border border-neutral-200 shadow-xl mb-12" id="shift-widget">
+      <div className="bg-[#FAF6F0]/90 backdrop-blur-md rounded-3xl p-6 sm:p-8 border border-[#E1D8CC] shadow-md mb-12" id="shift-widget">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           
           {/* Controls */}
@@ -200,10 +200,10 @@ export default function ShiftWorkCalc() {
                       setActiveShift(shift.id);
                       if (shift.id !== "night") setUseSplitSleep(false);
                     }}
-                    className={`w-full p-3.5 text-left rounded-2xl border transition-all cursor-pointer flex flex-col justify-center ${
+                    className={`w-full p-3.5 text-left rounded-2xl border transition-all cursor-pointer flex items-center justify-between ${
                       activeShift === shift.id
                         ? "border-[#7C3AED] bg-[#7C3AED]/5 text-gray-900"
-                        : "border-neutral-200 bg-white text-gray-600 hover:bg-neutral-50"
+                        : "border-[#E1D8CC] bg-[#FCFAF7] hover:bg-[#FAF6F0]"
                     }`}
                   >
                     <div className="flex items-center justify-between w-full">
@@ -228,7 +228,7 @@ export default function ShiftWorkCalc() {
                     className={`flex-1 py-3 px-4 rounded-xl border font-semibold text-center text-sm transition-all duration-200 cursor-pointer ${
                       !useSplitSleep
                         ? "border-[#7C3AED] bg-[#7C3AED]/5 text-neutral-900"
-                        : "border-neutral-200 bg-white text-neutral-600 hover:bg-neutral-50"
+                        : "border-[#E1D8CC] bg-[#FCFAF7] text-neutral-600 hover:bg-[#FAF6F0]"
                     }`}
                   >
                     Consolidated 7.5 hrs
@@ -239,7 +239,7 @@ export default function ShiftWorkCalc() {
                     className={`flex-1 py-3 px-4 rounded-xl border font-semibold text-center text-sm transition-all duration-200 cursor-pointer ${
                       useSplitSleep
                         ? "border-[#7C3AED] bg-[#7C3AED]/5 text-neutral-900"
-                        : "border-neutral-200 bg-white text-neutral-600 hover:bg-neutral-50"
+                        : "border-[#E1D8CC] bg-[#FCFAF7] text-neutral-600 hover:bg-[#FAF6F0]"
                     }`}
                   >
                     Split Routine (Anchor + Nap)
@@ -256,7 +256,7 @@ export default function ShiftWorkCalc() {
                 <Clock className="w-5 h-5 text-neutral-400" />
                 <input
                   type="time"
-                  className="bg-white border border-neutral-300 rounded-xl px-4 py-2 font-mono text-gray-800 focus:outline-[#7C3AED]"
+                  className="bg-[#FCFAF7] border border-[#E1D8CC] rounded-xl px-4 py-2 font-mono text-gray-800 focus:outline-[#7C3AED]"
                   value={returnHomeTime}
                   onChange={(e) => setReturnHomeTime(e.target.value)}
                   id="shift-time-picker"
@@ -291,8 +291,8 @@ export default function ShiftWorkCalc() {
                         transition={{ duration: 0.2, delay: i * 0.05 }}
                         className={`p-5 rounded-3xl border transition-all ${
                           isCore
-                            ? "bg-white border-2 border-[#7C3AED] shadow-md"
-                            : "bg-white border border-neutral-200 hover:border-[#7C3AED]/40 hover:shadow-xs"
+                            ? "bg-[#FCFAF7] border-2 border-[#7C3AED] shadow-sm"
+                            : "bg-[#FAF6F0] border border-[#E1D8CC] hover:border-[#7C3AED]"
                         }`}
                         id={`shift-res-card-${i}`}
                       >
@@ -349,7 +349,7 @@ export default function ShiftWorkCalc() {
       </div>
 
       {/* SEO Deep content pages */}
-      <div className="space-y-12 select-text text-gray-700 leading-relaxed text-sm sm:text-base bg-white/40 p-6 sm:p-10 rounded-3xl border border-neutral-200" id="shift-seo-content">
+      <div className="space-y-12 select-text text-gray-700 leading-relaxed text-sm sm:text-base bg-[#FAF6F0]/40 p-6 sm:p-10 rounded-3xl border border-[#E1D8CC]" id="shift-seo-content">
         <section className="space-y-3">
           <h2 className="text-xl sm:text-2xl font-bold font-serif text-gray-900">
             How Shift Work Affects Circadian Rhythms

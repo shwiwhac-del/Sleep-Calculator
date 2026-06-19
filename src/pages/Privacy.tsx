@@ -146,22 +146,22 @@ export default function Privacy() {
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 text-sm text-gray-700 dark:text-gray-300">
               <li>
                 <Link to="/sleep-cycles-explained" className="text-[#7C3AED] hover:underline">
-                  👉 Sleep Cycles Explained: Science of Rest
+                  Sleep Cycles Explained: Science of Rest
                 </Link>
               </li>
               <li>
                 <Link to="/what-is-rem-sleep" className="text-[#7C3AED] hover:underline">
-                  👉 What Is REM Sleep and Why It Matters
+                  What Is REM Sleep and Why It Matters
                 </Link>
               </li>
               <li>
                 <Link to="/how-much-sleep-do-you-need" className="text-[#7C3AED] hover:underline">
-                  👉 Recommended Sleep Hours by Age
+                  Recommended Sleep Hours by Age
                 </Link>
               </li>
               <li>
                 <Link to="/best-time-to-sleep-and-wake-up" className="text-[#7C3AED] hover:underline">
-                  👉 Best Time to Sleep and Wake Up
+                  Best Time to Sleep and Wake Up
                 </Link>
               </li>
             </ul>

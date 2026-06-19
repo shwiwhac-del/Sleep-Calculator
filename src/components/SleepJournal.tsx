@@ -28,12 +28,12 @@ export interface SleepLog {
 }
 
 const PRESET_FACTORS = [
-  { id: "no-coffee", label: "No tea/caffeine late", emoji: "🚫☕" },
-  { id: "cool-room", label: "Cool sleep space", emoji: "❄️" },
-  { id: "no-screens", label: "No late screens", emoji: "📱" },
-  { id: "fixed-schedule", label: "Consistent bedtime", emoji: "⏰" },
-  { id: "exercise", label: "Physical exercise", emoji: "🏃" },
-  { id: "meditation", label: "Wound down / PMR", emoji: "🧘" }
+  { id: "no-coffee", label: "No tea/caffeine late" },
+  { id: "cool-room", label: "Cool sleep space" },
+  { id: "no-screens", label: "No late screens" },
+  { id: "fixed-schedule", label: "Consistent bedtime" },
+  { id: "exercise", label: "Physical exercise" },
+  { id: "meditation", label: "Wound down / PMR" }
 ];
 
 // 5 initial mock logs to prevent empty charts on first load, referencing the last few days
@@ -165,7 +165,7 @@ export function SleepJournal() {
       const parsedFactors = log.factors
         ? log.factors.map(id => {
             const match = PRESET_FACTORS.find(f => f.id === id);
-            return match ? `${match.emoji} ${match.label}` : id;
+            return match ? match.label : id;
           }).join("; ")
         : "";
       
@@ -472,7 +472,7 @@ export function SleepJournal() {
                             : "bg-white border-[#E5E7EB] hover:bg-slate-50 text-gray-700"
                         }`}
                       >
-                        <span className="truncate">{factor.emoji} {factor.label}</span>
+                        <span className="truncate">{factor.label}</span>
                         {isSelected && (
                           <span className="w-5 h-5 bg-[#7C3AED] rounded-full inline-flex items-center justify-center border-none shrink-0 border-[#7C3AED] scale-95 shadow-[0_2px_5px_rgba(124,58,237,0.3)] text-white">
                             <Check className="w-3 h-3 text-white" strokeWidth={3} />
@@ -763,7 +763,6 @@ export function SleepJournal() {
                                   key={factorId}
                                   className="text-[10px] sm:text-xs font-semibold text-slate-700 bg-gray-100 border border-gray-150 px-2 py-0.5 rounded-md inline-flex items-center gap-1 shrink-0"
                                 >
-                                  <span>{f.emoji}</span>
                                   <span>{f.label}</span>
                                 </span>
                               );

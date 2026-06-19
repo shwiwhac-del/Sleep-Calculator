@@ -1,0 +1,40 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://sleepcalculater.online/#webapp",
+      "url": "https://sleepcalculater.online/",
+      "name": "Sleep Calculator",
+      "applicationCategory": "HealthApplication",
+      "operatingSystem": "All",
+      "browserRequirements": "Requires HTML5 compatible web browser with JavaScript enabled.",
+      "description": "Calculate the best bedtime and wake-up times using natural 90-minute sleep cycles to wake up rested and refreshed.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0.00",
+        "priceCurrency": "USD"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "Sleep Calculator Research Team",
+        "url": "https://sleepcalculater.online/about"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://sleepcalculater.online/#website",
+      "url": "https://sleepcalculater.online/",
+      "name": "Sleep Calculator",
+      "description": "Circadian rhythm biological sleep calculator tool for better bedtime planning.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Sleep Calculator",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://sleepcalculater.online/logo.png"
+        }
+      }
+    }
+  ]
+}

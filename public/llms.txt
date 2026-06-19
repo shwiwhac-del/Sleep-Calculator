@@ -1,76 +1,46 @@
-# Sleep Calculator & Cycle Planner — LLM/Developer Specification
+# Sleep Calculator & Cycle Planner
 
-A highly polished, high-performance Sleep Cycle Calculator, Nap Assistant, and Circadian Tracker built with React, Vite, TypeScript, and Tailwind CSS. It allows users to optimize their sleep hygiene using scientific sleep data, cycle analysis, power nap planners, and interactive age-based guidelines.
+> A highly polished, science-based suite of Sleep Cycle Calculators, Nap Helpers, and Circadian Hygiene planners to help you calculate bedtimes, track sleep logs, and wake up refreshed.
 
-## 📅 Project Metadata & Primary Info
-- **AppName**: Sleep Calculator – Calculate Bedtime & Wake Up Time by Sleep Cycles
-- **Primary Domain (Live URL)**: https://ais-dev-cc6uo5h5yd6pa5c23uljkb-733785498368.asia-southeast1.run.app
-- **Target Audience**: Individuals looking to eliminate morning grogginess, adjust to nighttime shifts, track historical sleep quality diaries, and research deep sleep architecture.
-- **Key Metric**: 94% of users report feeling significantly more rested by waking up at natural sleep cycle breaks (90-minute boundaries) rather than arbitrary times.
+## Core Calculators
 
-## 🛠️ Tech Stack & Architecture
-- **Framework & Runtime**: React 18+ client-side SPA bootstrapped with Vite, fully optimized for fast execution, responsive interaction, high-fidelity UX, and clean bundle sizes.
-- **Styling Method**: Modern Tailwind CSS utility layer utilizing standard light/dark modes and soft neon sleep-ambient background elements.
-- **State Management**: Scalable local React State coupled with reliable client-side `localStorage` caching for the Sleep Log Diary and custom age settings.
-- **Asset / Package Icons**: Imported precisely from `lucide-react`. Includes icons for Sleep Cycles, Bedtime, Naps, History Logs, and FAQs.
-- **Micro-Animations**: Uses hardware-accelerated transitions via `motion` (imported from `motion/react`) for highly elegant page transitions, accordion slides, and rating scale modals.
+- [Sleep Calculator (Home)](https://sleepcalculater.online/) - Calculate optimal bedtime & wake up times based on natural 90-minute sleep cycles.
+- [90-Minute Sleep Cycle Calculator](https://sleepcalculater.online/sleep-cycle-calculator-90-minutes) - Calculate custom sleep intervals and exact bedtime/wake-up alignments.
+- [Student Sleep Calculator](https://sleepcalculater.online/student-sleep-calculator) - Optimize exam-night bedtimes for peak memory retrieval and visual focus.
+- [Night Shift Sleep Calculator](https://sleepcalculater.online/shift-work-sleep-calculator) - Custom daytime sleep schedules and anchor rest periods for shift workers.
+- [Wake Up Between Cycles Calculator](https://sleepcalculater.online/wake-up-between-sleep-cycles) - Find exact alarm settings to wake up during natural cycle transitions.
+- [Ideal Bedtime by Wake-Up Time](https://sleepcalculater.online/ideal-bedtime-based-on-wake-up-time) - Calculate customized bedtime schedules tailored to your age demographic.
 
-## 🧮 Core Algorithms & Scientific Models
+## Auxiliary Pages
 
-### 1. The 90-Minute Sleep Cycle Rule
-A standard sleep cycle consists of multi-phase cognitive and physiological renewal:
-- **Phase 1 & 2 (Light Sleep)**: Gradual slowing of heart rate and brain activity, transition phase.
-- **Phase 3 & 4 (Deep Sleep / Slow Wave Sleep)**: Cellular repair, physical growth hormone release, and immune system rejuvenation.
-- **Phase 5 (REM Sleep - Dreaming State)**: Brain waves increase, cognitive consolidation, and emotional sorting occurs.
-- On average, a complete cycle takes **90 minutes** for adults.
-- **Sleep Latency Factor**: Our math incorporates a default **15 minute offset** to represent the average time a healthy human takes to transition from fully alert to asleep.
+- [About Sleep Calculator](https://sleepcalculater.online/about) - Learn about our mission and scientific methodology behind calculations.
+- [Contact Support](https://sleepcalculater.online/contact) - Get in touch with our team for questions, suggestions, or feedback.
+- [Privacy Policy](https://sleepcalculater.online/privacy) - Information on our server-free local data storage policy.
+- [Terms & Conditions](https://sleepcalculater.online/terms) - Standard terms of utilization.
 
-### 2. Precise Scientific Calculator Mathematical Formulas
-- **Calculating Optimal Wake-Up Times (from targeted Bedtime)**:
-  $$\text{WakeUp} = \text{Bedtime} + \text{SleepLatency (15m)} + (N \times 90 \text{ minutes})$$
-  Where $N \in \{1, 2, 3, 4, 5, 6\}$ representing complete intervals. (e.g., 5 cycles = 7.5 hours of solid rest).
-- **Calculating Best Bedtimes (from targeted Wake-Up Time)**:
-  $$\text{Bedtime} = \text{WakeUp} - \text{SleepLatency (15m)} - (N \times 90 \text{ minutes})$$
-  Recommended bedtimes emphasize 5 cycles (7.5 hours) or 6 cycles (9.0 hours) to maximize standard biological rest standards.
+## Research & Circadian Science Guides
 
-### 3. Sleep Requirements by Age Group
-- **Infants (4-12 months)**: 12 to 16 hours (including multiple naps)
-- **Toddlers (1-2 years)**: 11 to 14 hours
-- **Preschoolers (3-5 years)**: 10 to 13 hours
-- **School Age (6-12 years)**: 9 to 12 hours
-- **Teenagers (13-18 years)**: 8 to 10 hours
-- **Adults (18-64 years)**: 7 to 9 hours
-- **Older Adults (65+ years)**: 7 to 8 hours
-
-### 4. Direct Nap Calculator Sleep Presets
-- **The Power Nap (20 Minutes)**: Boosts alertness, limits motor skill errors, and improves learning capacity without triggering sleep inertia (grogginess associated with entering deep slow-wave stages).
-- **The Cat Nap (30 Minutes)**: Excellent for relaxation and stress reduction, though some light sleep inertia may be experienced.
-- **The Restorative Nap (60 Minutes)**: Good for clearing cognitive brain clutter, boosting motor/visual recall, and supporting memory consolidation. Involves some deep sleep; user may experience mild brief grogginess upon waking.
-- **The Recovery Nap (90 Minutes)**: Explores a complete physical cycle (light, deep, and REM sleep). Eliminates acute midday sleep debt, avoids grogginess by terminating sleep at the natural stage transition boundary.
-
-## 📂 Internal App Route Layout & Pages
-The application utilizes a lightweight, extremely well structured, SEO-friendly layout designed around subviews inside `/src/pages`:
-- **Home (`/`)**: Core hub layout displaying customizable sleep calculator panels, nap selector cards, circular sleep progress charts, and the responsive local Sleep Diary logging database.
-- **About (`/about`)**: Detailed background explaining the science of natural sleep schedules, company objective manifestos, and medical disclaimers.
-- **Blog & Guides (`/blog`)**: An in-depth directory detailing individual articles for REM, Sleep Debt, Night Shifts, Circadian Health, and optimal hygiene tips.
-- **Contact (`/contact`)**: Customer feedback portal incorporating formal interaction loops and supporting official support channels via `support@sleepcalculater.online`.
-- **Privacy (`/privacy`)**: Informational notice of strictly server-less user data; no tracking cookies or outer profiles are ever serialized.
-- **Terms (`/terms`)**: Legal conditions of calculated recommendations.
-
-## 🗃️ Codebase Components Directory Map
-
-### Interactive Components (`/src/components`)
-- **`SleepGuideAndFAQ.tsx`**: Renders comprehensive user-friendly guides right under the main calculator, detailing sleep latency, why 90-minute sleep increments matter, sleep by age parameters, and sleep hygiene instructions.
-- **`SleepCycleChart.tsx`**: Provides deep visual intuition of light sleep, deep sleep, and REM phases on a custom coordinate system/recharts block helping users visualise physical phases.
-- **`TimePicker.tsx`**: Highly accessible, mobile-responsive custom slider or selection wheel for configuring perfect wake up hours.
-- **`SleepJournal.tsx`**: Quick client-side logger allowing users to write down nightly ratings, wake energy levels, bedtimes, and monitor sleep quality streaks over time.
-- **`StarryBackground.tsx`**: Dynamic styled backdrop creating an immersive starry night experience using hardware-accelerated animated canvases or SVG points.
-- **`AutoLinker.tsx`**: Internal custom linker matching critical keywords automatically into internal informational pages to avoid manual routing configuration.
-- **`FeedbackModal.tsx`**: Collects subjective ratings of sleep schedule recommendations with delightful animations.
-
-## ⚡ Technical SEO & Search Engine Optimization Practices
-- **Logical H1/H2 Heading Hierarchies**: All pages incorporate descriptive semantic tags (`<h1>` and `<h2>`) prioritizing key search queries such as "Sleep Calculator", "Bedtime planner", and "90-minute cycle calculator".
-- **Dynamic Meta Tags & OpenGraph Hooks**: Enabled through server-independent configuration to optimize visibility and search crawler indexing on social apps and standard engines.
-- **Fully Embedded `<noscript>` Fallback**: Includes the complete body text of critical sleep hygiene guidelines directly within raw `index.html` structure. This ensures search crawl engines can access and index full informational resources without relying on JS execution.
-- **Trust and Safety Section**: Incorporated dedicated, authenticated, lightweight user testimonial grids underneath guides showcasing genuine feedback from verified active users waking up refreshed.
-- **High Contrast Responsive Standard**: Touch target sizing utilizes 44px+ height profiles to optimize mobile interaction on standard Safari, Chrome, and desktop platforms.
+- [Sleep Cycles Explained](https://sleepcalculater.online/sleep-cycles-explained) - In-depth guide on the phases of NREM/REM brain activity.
+- [What is REM Sleep](https://sleepcalculater.online/what-is-rem-sleep) - Exploring Rapid Eye Movement phase, dreaming, and memory consolidation.
+- [How Much Sleep Do You Need?](https://sleepcalculater.online/how-much-sleep-do-you-need) - Review sleep guidelines and average daily rest recommendations by age.
+- [Best Time to Sleep and Wake Up](https://sleepcalculater.online/best-time-to-sleep-and-wake-up) - Complete guide on finding optimal bedtime windows for modern health.
+- [Sleep Cycle Calculator Guide](https://sleepcalculater.online/sleep-cycle-calculator-guide) - Comprehensive tutorial on applying sleep cycle intervals to your daily calendar.
+- [Why 90-Minute Sleep Cycles Matter](https://sleepcalculater.online/why-90-minute-sleep-cycles-matter) - Scientific exploration of why sleep quality is determined by completed sleep cycles.
+- [How to Wake Up Refreshed](https://sleepcalculater.online/how-to-wake-up-refreshed) - Practical lifestyle adjustments to eliminate morning fatigue and sleep inertia.
+- [Ideal Bedtime for Adults](https://sleepcalculater.online/ideal-bedtime-for-adults) - Discover the precise hours adults should fall asleep based on biology.
+- [Sleep Schedule for Productivity](https://sleepcalculater.online/sleep-schedule-for-productivity) - How matching your daily workflow with circadian clocks boosts daytime alertness.
+- [How Many Hours of Sleep is Healthy](https://sleepcalculater.online/how-many-hours-of-sleep-is-healthy) - Comprehensive breakdown of sleep needs, limits, and risks of oversleeping.
+- [Power Nap vs Full Sleep Cycle](https://sleepcalculater.online/power-nap-vs-full-sleep-cycle) - Compare quick 20-minute power sessions with full 90-minute physical recovery cycles.
+- [Circadian Rhythm Explained](https://sleepcalculater.online/circadian-rhythm-explained) - How your body's suprachiasmatic nucleus controls body temperature and hormones.
+- [Why You Are Tired After 8 Hours](https://sleepcalculater.online/tired-after-8-hours-of-sleep) - Common underlying issues such as sleep fragmentation, apnea, and poor sleep environment.
+- [Best Bedtime for Students](https://sleepcalculater.online/best-bedtime-for-students) - Sleep schedules aligned with optimal brain executive function, recall, and stress tolerance.
+- [Sleep and Memory](https://sleepcalculater.online/sleep-and-memory) - Educational piece on how slow-wave sleep strengthens synaptic connections.
+- [Sleep Debt Explained](https://sleepcalculater.online/sleep-debt-explained) - Cumulative effects of sleep deprivation and how to safely pay back sleep hours.
+- [Best Wake Up Time](https://sleepcalculater.online/best-wake-up-time) - How aligning your wake alarm with dawn or sleep cycles maximizes energy.
+- [Improve Sleep Quality Naturally](https://sleepcalculater.online/improve-sleep-quality) - Actionable habits including diet adjustments, timing of workouts, and dimming red light.
+- [Sleep Hygiene Tips](https://sleepcalculater.online/sleep-hygiene-tips) - Setting up the ultimate dark, quiet, cold, and relaxing sleep environment.
+- [Common Sleep Mistakes to Avoid](https://sleepcalculater.online/common-sleep-mistakes) - Destructive night patterns such as late-day caffeine or blue screen exposure.
+- [Fix an Irregular Sleep Schedule](https://sleepcalculater.online/fix-irregular-sleep-schedule) - Resetting sleep phase delays using consistent wake times and light therapy.
+- [Benefits of Consistent Sleep Schedules](https://sleepcalculater.online/consistent-sleep-schedule-benefits) - Heart rate, insulin, and emotional stabilization perks of waking up at the exact same hour.
+- [Ideal Room Temperature for Sleep](https://sleepcalculater.online/best-temperature-for-sleep) - Why a cool 65°F (18°C) room is biologically ideal for triggering deep sleep cycle transitions.
+- [Understanding Deep Sleep](https://sleepcalculater.online/what-is-deep-sleep) - Explaining delta waves, human hormone synthesis, and physical recovery phases.

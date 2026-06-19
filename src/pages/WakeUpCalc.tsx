@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "motion/react";
-import { Activity, ShieldAlert, Check, RefreshCw, Sun, Clock, Eye, Sparkles, ArrowLeft } from "lucide-react";
+import { Activity, ShieldAlert, Check, RefreshCw, Sun, Clock, Eye, Sparkles, ArrowLeft, ChevronDown, ChevronUp } from "lucide-react";
 import { getCanonicalUrl } from "../lib/seo";
 
 export default function WakeUpCalc() {
@@ -12,6 +12,7 @@ export default function WakeUpCalc() {
   const [targetTime, setTargetTime] = useState("23:00");
   const [latency, setLatency] = useState(15);
   const [results, setResults] = useState<{ cycle: number; time: Date; score: number; text: string; optimal: boolean }[]>([]);
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   // Calculate perfect alarm wake times to wake up between cycles
   const calculateAlarms = () => {
@@ -121,7 +122,7 @@ export default function WakeUpCalc() {
       </div>
 
       {/* Interactive module block */}
-      <div className="bg-white/80 backdrop-blur-md rounded-3xl p-6 sm:p-8 border border-neutral-200 shadow-xl mb-12" id="wake-cycles-widget">
+      <div className="bg-[#FAF6F0]/90 backdrop-blur-md rounded-3xl p-6 sm:p-8 border border-[#E1D8CC] shadow-md mb-12" id="wake-cycles-widget">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           
           {/* Controls column */}
@@ -137,7 +138,7 @@ export default function WakeUpCalc() {
                   className={`flex-1 py-3 px-4 rounded-xl border font-semibold text-center text-sm transition cursor-pointer ${
                     bedtimeMode === "now"
                       ? "border-[#7C3AED] bg-[#7C3AED]/5 text-black"
-                      : "border-neutral-200 bg-white text-[#6B7280] hover:bg-neutral-50"
+                      : "border-[#E1D8CC] bg-[#FCFAF7] text-[#6B7280] hover:bg-[#FAF6F0]"
                   }`}
                 >
                   If I Sleep Now
@@ -148,7 +149,7 @@ export default function WakeUpCalc() {
                   className={`flex-1 py-3 px-4 rounded-xl border font-semibold text-center text-sm transition cursor-pointer ${
                     bedtimeMode === "specific"
                       ? "border-[#7C3AED] bg-[#7C3AED]/5 text-black"
-                      : "border-neutral-200 bg-white text-[#6B7280] hover:bg-neutral-50"
+                      : "border-[#E1D8CC] bg-[#FCFAF7] text-[#6B7280] hover:bg-[#FAF6F0]"
                   }`}
                 >
                   Plan Custom Bedtime
@@ -165,7 +166,7 @@ export default function WakeUpCalc() {
                   <Clock className="w-5 h-5 text-neutral-400" />
                   <input
                     type="time"
-                    className="bg-white border border-neutral-300 rounded-xl px-4 py-2 font-mono text-gray-800 text-lg focus:outline-[#7C3AED]"
+                    className="bg-[#FCFAF7] border border-[#E1D8CC] rounded-xl px-4 py-2 font-mono text-gray-800 text-lg focus:outline-[#7C3AED]"
                     value={targetTime}
                     onChange={(e) => setTargetTime(e.target.value)}
                     id="specific-bedtime-picker"
@@ -218,7 +219,7 @@ export default function WakeUpCalc() {
                   {(() => {
                     const heroRes = results.find(r => r.cycle === 5) || results[2] || results[0];
                     return (
-                      <div className="p-6 sm:p-7 rounded-3xl bg-white border-2 border-[#7C3AED] shadow-md relative overflow-hidden" id="wake-hero-card">
+                      <div className="p-6 sm:p-7 rounded-3xl bg-[#FCFAF7] border-2 border-[#7C3AED] shadow-sm relative overflow-hidden" id="wake-hero-card">
                         <div className="absolute right-0 top-0 w-24 h-24 bg-[#7C3AED]/4 rounded-full blur-2xl pointer-events-none" />
                         
                         <div className="flex items-center justify-between mb-3.5 relative z-10">
@@ -269,7 +270,7 @@ export default function WakeUpCalc() {
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: -10 }}
                           transition={{ duration: 0.2, delay: idx * 0.05 }}
-                          className="p-4 bg-white rounded-2xl border border-neutral-200 hover:border-[#7C3AED]/70 hover:shadow-xs transition-all flex items-center justify-between"
+                          className="p-4 bg-[#FAF6F0] rounded-2xl border border-[#E1D8CC] hover:border-[#7C3AED]/70 hover:shadow-xs transition-all flex items-center justify-between"
                           id={`alarm-card-alt-${idx}`}
                         >
                           <div>
@@ -310,7 +311,7 @@ export default function WakeUpCalc() {
       </div>
 
       {/* SEO copy content targeting key terms */}
-      <div className="space-y-12 select-text text-gray-700 leading-relaxed text-sm sm:text-base bg-white/40 p-6 sm:p-10 rounded-3xl border border-neutral-200" id="wake-cycles-seo-content">
+      <div className="space-y-12 select-text text-gray-700 leading-relaxed text-sm sm:text-base bg-[#FAF6F0]/40 p-6 sm:p-10 rounded-3xl border border-[#E1D8CC]" id="wake-cycles-seo-content">
         
         <section className="space-y-3">
           <h2 className="text-xl sm:text-2xl font-bold font-serif text-gray-900">
@@ -345,19 +346,57 @@ export default function WakeUpCalc() {
           <h2 className="text-xl sm:text-2xl font-bold font-serif text-gray-900">
             Critical FAQ Regarding Sleep Cycle Transitions
           </h2>
-          <div className="space-y-4" id="faq-blocks">
-            <div className="p-4 bg-white rounded-2xl border border-neutral-250">
-              <h4 className="font-bold text-gray-900 text-sm sm:text-base mb-1">What is sleep inertia?</h4>
-              <p className="text-xs sm:text-sm text-neutral-600">
-                Sleep inertia is the dull, heavy groggy transition period immediately following awakening. It is caused by cellular debris and remaining adenosine reserves inside cerebral synapses when awakened abruptly while in Deep Slow-Wave phases.
-              </p>
-            </div>
-            <div className="p-4 bg-white rounded-2xl border border-neutral-250">
-              <h4 className="font-bold text-gray-900 text-sm sm:text-base mb-1">Can power naps cause grogginess?</h4>
-              <p className="text-xs sm:text-sm text-neutral-600">
-                Yes, if they exceed 25 minutes yet fail to reach a complete 90-minute cycle. Standard naps should be capped under 20 minutes to remain in Stage 1 & 2 (Light Sleep), avoiding progress into slow-wave depth.
-              </p>
-            </div>
+          <div className="space-y-3" id="faq-blocks">
+            {[
+              {
+                q: "What is sleep inertia?",
+                a: "Sleep inertia is the dull, heavy groggy transition period immediately following awakening. It is caused by cellular debris and remaining adenosine reserves inside cerebral synapses when awakened abruptly while in Deep Slow-Wave phases."
+              },
+              {
+                q: "Can power naps cause grogginess?",
+                a: "Yes, if they exceed 25 minutes yet fail to reach a complete 90-minute cycle. Standard naps should be capped under 20 minutes to remain in Stage 1 & 2 (Light Sleep), avoiding progress into slow-wave depth."
+              }
+            ].map((faq, idx) => {
+              const isOpen = openFaq === idx;
+              return (
+                <div
+                  key={idx}
+                  className="border border-[#E1D8CC] rounded-2xl overflow-hidden bg-[#FAF6F0] shadow-xs hover:shadow-sm hover:border-[#7C3AED] transition-all duration-300"
+                  id={`calc-faq-item-${idx}`}
+                >
+                  <button
+                    type="button"
+                    onClick={() => setOpenFaq(isOpen ? null : idx)}
+                    className="flex justify-between items-center w-full px-5 py-4 text-left font-sans text-sm sm:text-base font-bold text-gray-900 bg-[#FCFAF7] hover:bg-[#FAF6F0] transition-colors focus:ring-2 focus:ring-[#7C3AED]/20 focus:outline-none cursor-pointer"
+                    aria-expanded={isOpen}
+                    id={`calc-faq-btn-${idx}`}
+                  >
+                    <span className="pr-4">{faq.q}</span>
+                    {isOpen ? (
+                      <ChevronUp className="w-5 h-5 text-[#7C3AED] shrink-0" />
+                    ) : (
+                      <ChevronDown className="w-5 h-5 text-[#7C3AED] shrink-0" />
+                    )}
+                  </button>
+                  <AnimatePresence initial={false}>
+                    {isOpen && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3, ease: "easeInOut" }}
+                        className="overflow-hidden border-t border-[#E1D8CC]"
+                        id={`calc-faq-content-${idx}`}
+                      >
+                        <div className="px-5 pb-5 pt-4 text-neutral-600 text-xs sm:text-sm leading-relaxed bg-[#FAF6F0]">
+                          {faq.a}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              );
+            })}
           </div>
         </section>
 

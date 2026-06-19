@@ -107,7 +107,7 @@ export default function NinetyMinCalc() {
       </div>
 
       {/* Visual Interaction Section */}
-      <div className="bg-white/80 backdrop-blur-md rounded-3xl p-6 sm:p-8 border border-neutral-200 shadow-xl mb-12" id="ninety-widget">
+      <div className="bg-[#FAF6F0]/90 backdrop-blur-md rounded-3xl p-6 sm:p-8 border border-[#E1D8CC] shadow-md mb-12" id="ninety-widget">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           
           {/* Controls column */}
@@ -118,7 +118,7 @@ export default function NinetyMinCalc() {
               </label>
               <input
                 type="time"
-                className="bg-white border border-neutral-300 rounded-xl px-4 py-2 font-mono text-gray-800 text-lg focus:outline-[#7C3AED]"
+                className="bg-[#FCFAF7] border border-[#E1D8CC] rounded-xl px-4 py-2 font-mono text-gray-800 text-lg focus:outline-[#7C3AED]"
                 value={wakeTime}
                 onChange={(e) => setWakeTime(e.target.value)}
                 id="ninety-time"
@@ -216,7 +216,7 @@ export default function NinetyMinCalc() {
 
               {/* Active Selection Hero Card */}
               {calculatedBedtime && (
-                <div className="p-6 sm:p-7 rounded-3xl bg-white border-2 border-[#7C3AED] shadow-md mb-5 relative overflow-hidden" id="ninety-hero-card">
+                <div className="p-6 sm:p-7 rounded-3xl bg-[#FCFAF7] border-2 border-[#7C3AED] shadow-sm mb-5 relative overflow-hidden" id="ninety-hero-card">
                   <div className="absolute right-0 top-0 w-24 h-24 bg-[#7C3AED]/4 rounded-full blur-2xl pointer-events-none" />
                   
                   <div className="flex items-center justify-between mb-3.5 relative z-10">
@@ -267,7 +267,7 @@ export default function NinetyMinCalc() {
                       className={`p-4 rounded-2xl border transition-all cursor-pointer flex items-center justify-between ${
                         isActive
                           ? "border-[#7C3AED] bg-[#7C3AED]/5"
-                          : "border-neutral-200 bg-white hover:border-[#7C3AED]/30"
+                          : "border-[#E1D8CC] bg-[#FAF6F0] hover:border-[#7C3AED]"
                       }`}
                       id={`ninety-option-card-${idx}`}
                     >
@@ -285,7 +285,7 @@ export default function NinetyMinCalc() {
                         className={`text-xs px-3 py-1.5 rounded-xl font-bold transition cursor-pointer ${
                           isActive
                             ? "bg-[#7C3AED] text-white"
-                            : "border border-neutral-200 text-neutral-700 hover:bg-neutral-50"
+                            : "border border-[#E1D8CC] bg-[#FCFAF7] text-neutral-700 hover:bg-[#FAF6F0]"
                         }`}
                       >
                         {isActive ? "Active" : "Select"}
@@ -307,7 +307,7 @@ export default function NinetyMinCalc() {
       </div>
 
       {/* SEO-optimized informative texts */}
-      <div className="space-y-12 select-text text-gray-700 leading-relaxed text-sm sm:text-base bg-white/40 p-6 sm:p-10 rounded-3xl border border-neutral-200" id="ninety-seo-content">
+      <div className="space-y-12 select-text text-gray-700 leading-relaxed text-sm sm:text-base bg-[#FAF6F0]/40 p-6 sm:p-10 rounded-3xl border border-[#E1D8CC]" id="ninety-seo-content">
         
         <section className="space-y-3">
           <h2 className="text-xl sm:text-2xl font-bold font-serif text-gray-900">
@@ -326,28 +326,28 @@ export default function NinetyMinCalc() {
             A perfect cycle sequence contains four primary phases structured proportionally:
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-2" id="stages-grid">
-            <div className="p-4 bg-white rounded-2xl border border-neutral-200">
+            <div className="p-4 bg-[#FAF6F0] rounded-2xl border border-[#E1D8CC]">
               <span className="text-xs font-bold font-mono text-[#7C3AED]">STAGE 1 & 2 (NREM)</span>
               <h4 className="font-bold text-gray-900 text-sm sm:text-base mt-0.5">Light Gateway phase</h4>
               <p className="text-xs sm:text-sm text-neutral-600 mt-1">
                 Occupies approximately 50-60% of cycle lengths. Heart rates relax, brain waves decline, enabling quick sensory arousal.
               </p>
             </div>
-            <div className="p-4 bg-white rounded-2xl border border-neutral-200">
+            <div className="p-4 bg-[#FAF6F0] rounded-2xl border border-[#E1D8CC]">
               <span className="text-xs font-bold font-mono text-[#D4AF37]">STAGE 3 (NREM)</span>
               <h4 className="font-bold text-gray-900 text-sm sm:text-base mt-0.5">Deep Slow-Wave Rest</h4>
               <p className="text-xs sm:text-sm text-neutral-600 mt-1">
                 The most critical phase for cellular restoration, skeletal growth, tissue repair, and biological defense reinforcement.
               </p>
             </div>
-            <div className="p-4 bg-white rounded-2xl border border-neutral-200">
+            <div className="p-4 bg-[#FAF6F0] rounded-2xl border border-[#E1D8CC]">
               <span className="text-xs font-bold font-mono text-cyan-600">STAGE 4 (REM)</span>
               <h4 className="font-bold text-gray-900 text-sm sm:text-base mt-0.5">Active Dream State</h4>
               <p className="text-xs sm:text-sm text-neutral-600 mt-1">
                 Essential for creative synthesis, logical memory filing, and chemical detoxification of neural pathways.
               </p>
             </div>
-            <div className="p-4 bg-white rounded-2xl border border-neutral-200">
+            <div className="p-4 bg-[#FAF6F0] rounded-2xl border border-[#E1D8CC]">
               <span className="text-xs font-bold font-mono text-emerald-600">TERMINAL POINT</span>
               <h4 className="font-bold text-gray-900 text-sm sm:text-base mt-0.5">The Wake Window</h4>
               <p className="text-xs sm:text-sm text-neutral-600 mt-1">

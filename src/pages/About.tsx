@@ -121,7 +121,7 @@ export default function About() {
               Ready to improve your sleep schedule?
             </p>
             <p className="mb-4">
-              👉 <Link to="/" className="text-[#4C1D95] hover:text-[#310A6B] font-bold underline transition-colors">Use the Sleep Calculator</Link> and find your ideal sleep time now.
+              <Link to="/" className="text-[#4C1D95] hover:text-[#310A6B] font-bold underline transition-colors">Use the Sleep Calculator</Link> and find your ideal sleep time now.
             </p>
             <p className="text-gray-400 dark:text-gray-500 text-[14px] mt-8 pt-8 border-t border-gray-100 dark:border-[#1e293b]">
               Built to keep things simple, fast, and actually useful.

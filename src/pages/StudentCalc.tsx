@@ -125,7 +125,7 @@ export default function StudentCalc() {
       </div>
 
       {/* Core Interactive Widget */}
-      <div className="bg-white/80 backdrop-blur-md rounded-3xl p-6 sm:p-8 border border-neutral-200 shadow-xl mb-12" id="student-widget">
+      <div className="bg-[#FAF6F0]/90 backdrop-blur-md rounded-3xl p-6 sm:p-8 border border-[#E1D8CC] shadow-md mb-12" id="student-widget">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           
           {/* Controls Side */}
@@ -143,7 +143,7 @@ export default function StudentCalc() {
                     className={`p-3 text-left rounded-2xl border transition-all duration-200 cursor-pointer flex flex-col justify-center ${
                       selectedAge === age.id
                         ? "border-[#7C3AED] bg-[#7C3AED]/5 text-gray-900 shadow-sm"
-                        : "border-neutral-200 bg-white text-gray-600 hover:bg-neutral-50"
+                        : "border-[#E1D8CC] bg-[#FCFAF7] text-gray-600 hover:bg-[#FAF6F0]"
                     }`}
                   >
                     <span className="font-bold text-sm">{age.label}</span>
@@ -164,7 +164,7 @@ export default function StudentCalc() {
                   className={`flex-1 py-3 px-4 rounded-xl border font-semibold text-center text-sm transition-all duration-200 cursor-pointer ${
                     scheduleMode === "regular"
                       ? "border-[#7C3AED] bg-[#7C3AED]/5 text-neutral-900"
-                      : "border-neutral-200 bg-white text-neutral-600 hover:bg-neutral-50"
+                      : "border-[#E1D8CC] bg-[#FCFAF7] text-neutral-600 hover:bg-[#FAF6F0]"
                   }`}
                 >
                   Regular Classes
@@ -175,7 +175,7 @@ export default function StudentCalc() {
                   className={`flex-1 py-3 px-4 rounded-xl border font-semibold text-center text-sm transition-all duration-200 cursor-pointer flex items-center justify-center gap-2 ${
                     scheduleMode === "exam"
                       ? "border-[#7C3AED] bg-[#7C3AED]/5 text-neutral-900"
-                      : "border-neutral-200 bg-white text-neutral-600 hover:bg-neutral-50"
+                      : "border-[#E1D8CC] bg-[#FCFAF7] text-neutral-600 hover:bg-[#FAF6F0]"
                   }`}
                 >
                   <Brain className="w-4 h-4 text-[#D4AF37]" />
@@ -213,7 +213,7 @@ export default function StudentCalc() {
               {results.length > 0 ? (
                 <div className="space-y-4" id="student-results-list">
                   {/* Hero Suggestion Card (Most Refreshing Spot) */}
-                  <div className="p-6 sm:p-7 rounded-3xl bg-white border-2 border-[#7C3AED] shadow-md relative overflow-hidden" id="student-hero-result">
+                  <div className="p-6 sm:p-7 rounded-3xl bg-[#FCFAF7] border-2 border-[#7C3AED] shadow-sm relative overflow-hidden" id="student-hero-result">
                     <div className="absolute right-0 top-0 w-24 h-24 bg-[#7C3AED]/4 rounded-full blur-2xl pointer-events-none" />
                     
                     <div className="flex items-center justify-between mb-3.5 relative z-10">
@@ -263,7 +263,7 @@ export default function StudentCalc() {
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: -10 }}
                             transition={{ duration: 0.2, delay: idx * 0.05 }}
-                            className="p-4 bg-white rounded-2xl border border-neutral-200 hover:border-[#7C3AED] hover:shadow-xs transition-all flex items-center justify-between"
+                            className="p-4 bg-[#FAF6F0] rounded-2xl border border-[#E1D8CC] hover:border-[#7C3AED] hover:shadow-xs transition-all flex items-center justify-between font-sans"
                             id={`result-card-alt-${idx}`}
                           >
                             <div>
@@ -306,7 +306,7 @@ export default function StudentCalc() {
       </div>
 
       {/* SEO rich-text support and deep content mapping user keywords */}
-      <div className="space-y-12 select-text text-gray-700 leading-relaxed text-sm sm:text-base bg-white/40 p-6 sm:p-10 rounded-3xl border border-neutral-200" id="student-seo-content">
+      <div className="space-y-12 select-text text-gray-700 leading-relaxed text-sm sm:text-base bg-[#FAF6F0]/40 p-6 sm:p-10 rounded-3xl border border-[#E1D8CC]" id="student-seo-content">
         
         <section className="space-y-3">
           <h2 className="text-xl sm:text-2xl font-bold font-serif text-gray-900">

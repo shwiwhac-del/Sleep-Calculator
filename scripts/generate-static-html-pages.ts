@@ -182,13 +182,13 @@ function getStaticFallbackContent(reqPath: string, slug: string): string {
 }
 
 // Full SEO metadata and Schema build-time injection helper
-function injectSEOMetadataStatic(html: string, originalPath: string): string {
+function injectSEOMetadataStatic(html: string, originalPath: string, customCanonical?: string, customTitle?: string): string {
   const reqPath = originalPath.split('?')[0].replace(/\/$/, "") || "/";
   const slug = reqPath.split('/').pop() || "";
 
-  let title = "Sleep Calculator – Calculate Bedtime & Wake Up Times";
+  let title = customTitle || "Sleep Calculator – Calculate Bedtime & Wake Up Times";
   let description = "Calculate the best bedtime and wake-up time using natural 90-minute sleep cycles. Wake up refreshed and improve your sleep quality.";
-  let canonicalUrl = `https://sleepcalculater.online${reqPath}`;
+  let canonicalUrl = customCanonical || `https://sleepcalculater.online${reqPath}`;
   const schemas: any[] = [];
 
   const defaultAppSchema = {
@@ -229,7 +229,7 @@ function injectSEOMetadataStatic(html: string, originalPath: string): string {
       "url": "https://sleepcalculater.online/",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://sleepcalculater.online/favicon.png",
+        "url": "https://sleepcalculater.online/logo.png",
         "width": "512",
         "height": "512"
       },
@@ -253,9 +253,9 @@ function injectSEOMetadataStatic(html: string, originalPath: string): string {
       "operatingSystem": "All"
     });
   } else if (MAIN_PAGES_META[reqPath]) {
-    title = MAIN_PAGES_META[reqPath].title;
+    title = customTitle || MAIN_PAGES_META[reqPath].title;
     description = MAIN_PAGES_META[reqPath].description;
-    canonicalUrl = MAIN_PAGES_META[reqPath].canonicalUrl;
+    canonicalUrl = customCanonical || MAIN_PAGES_META[reqPath].canonicalUrl;
     schemas.push({
       "@context": "https://schema.org",
       "@type": "WebPage",
@@ -266,9 +266,9 @@ function injectSEOMetadataStatic(html: string, originalPath: string): string {
     });
   } else if (BLOG_POSTS_META[slug]) {
     const post = BLOG_POSTS_META[slug];
-    title = post.title;
+    title = customTitle || post.title;
     description = post.description;
-    canonicalUrl = `https://sleepcalculater.online/${slug}`;
+    canonicalUrl = customCanonical || `https://sleepcalculater.online/${slug}`;
 
     // 1. BlogPosting Schema
     schemas.push({
@@ -291,31 +291,50 @@ function injectSEOMetadataStatic(html: string, originalPath: string): string {
         "name": "Sleep Calculator",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://sleepcalculater.online/favicon.png"
+          "url": "https://sleepcalculater.online/logo.png"
         }
       },
       "datePublished": post.date,
       "dateModified": post.date
     });
 
-    // 2. BreadcrumbList Schema
+    // 2. BreadcrumbList Schema (Hierarchical navigation structure for Google deep crawling)
+    const isBlogIndex = canonicalUrl.endsWith('/blog/') || canonicalUrl.endsWith('/blog');
+    const breadcrumbListItems = [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://sleepcalculater.online/"
+      }
+    ];
+
+    if (isBlogIndex) {
+      breadcrumbListItems.push({
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://sleepcalculater.online/blog/"
+      });
+    } else {
+      breadcrumbListItems.push({
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://sleepcalculater.online/blog/"
+      });
+      breadcrumbListItems.push({
+        "@type": "ListItem",
+        "position": 3,
+        "name": post.title,
+        "item": canonicalUrl
+      });
+    }
+
     schemas.push({
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://sleepcalculater.online/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": title,
-          "item": canonicalUrl
-        }
-      ]
+      "itemListElement": breadcrumbListItems
     });
 
     if (slug === 'sleep-debt-explained') {
@@ -480,4 +499,180 @@ for (const route of staticRoutes) {
   console.log(`[Static Gen] Successfully pre-rendered static HTML files for ${reqPath}`);
 }
 
-console.log("[Static Gen] Complete! Generated build-time static HTML payloads successfully.");
+// === Programmatic sitemap.xml Generation ===
+console.log("[Static Gen] Generating fully-synchronized sitemap.xml dynamically...");
+
+const sitemapUrls = [
+  'https://sleepcalculater.online/',
+  ...Object.keys(MAIN_PAGES_META)
+    .filter(p => p !== '/' && p !== '/404' && p !== '/not-found')
+    .map(p => `https://sleepcalculater.online${p.startsWith('/') ? p : '/' + p}`),
+  ...Object.keys(BLOG_POSTS_META)
+    .filter(slug => !REDIRECT_SLUGS.includes(slug))
+    .map(slug => `https://sleepcalculater.online/${slug}`)
+];
+
+const uniqueUrls = Array.from(new Set(sitemapUrls));
+
+let sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`;
+
+for (const url of uniqueUrls) {
+  let changefreq = 'weekly';
+  let priority = '0.8';
+  
+  if (url === 'https://sleepcalculater.online/') {
+    changefreq = 'daily';
+    priority = '1.0';
+  } else if (
+    url.includes('/student-sleep-calculator') || 
+    url.includes('/shift-work-sleep-calculator') || 
+    url.includes('/sleep-cycle-calculator-90-minutes') || 
+    url.includes('/wake-up-between-sleep-cycles') || 
+    url.includes('/ideal-bedtime-based-on-wake-up-time')
+  ) {
+    priority = '0.9'; // High priority calculators & planners
+  } else if (url.includes('/about') || url.includes('/contact')) {
+    priority = '0.5';
+  } else if (url.includes('/privacy') || url.includes('/terms')) {
+    priority = '0.3';
+  }
+  
+  sitemapXml += `
+  <url>
+    <loc>${url}</loc>
+    <changefreq>${changefreq}</changefreq>
+    <priority>${priority}</priority>
+  </url>`;
+}
+
+sitemapXml += `
+</urlset>`;
+
+const publicSitemapPath = path.resolve('./public/sitemap.xml');
+const distSitemapPath = path.resolve('./dist/sitemap.xml');
+
+fs.writeFileSync(publicSitemapPath, sitemapXml, 'utf-8');
+fs.writeFileSync(distSitemapPath, sitemapXml, 'utf-8');
+
+console.log(`[Static Gen] Successfully wrote ${uniqueUrls.length} entries dynamically to:`);
+console.log(`  - ${publicSitemapPath}`);
+console.log(`  - ${distSitemapPath}`);
+
+// === Custom Sleep-Calculator Site Code Structure Compliance ===
+console.log("[Static Gen] Generating special directory structures and structural aliasing requested...");
+
+// 1. Generate Manifest webapp JSON representation
+const manifestSourcePath = path.resolve('./public/manifest.webmanifest');
+const manifestDestPath = path.join(distPath, 'manifest.json');
+try {
+  if (fs.existsSync(manifestSourcePath)) {
+    fs.copyFileSync(manifestSourcePath, manifestDestPath);
+    console.log(`[Static Gen] Synced webapp manifest.json to: ${manifestDestPath}`);
+  }
+} catch (e) {
+  console.error("[Static Gen] Error syncing manifest.json:", e);
+}
+
+// 2. Generate Privacy-Policy and terms mappings
+try {
+  const privacyHtmlSourcePath = path.join(distPath, 'privacy.html');
+  const privacyPolicyHtmlPath = path.join(distPath, 'privacy-policy.html');
+  const termsHtmlSourcePath = path.join(distPath, 'terms.html');
+  
+  if (fs.existsSync(privacyHtmlSourcePath)) {
+    fs.copyFileSync(privacyHtmlSourcePath, privacyPolicyHtmlPath);
+    console.log(`[Static Gen] Synced privacy-policy.html to: ${privacyPolicyHtmlPath}`);
+  }
+} catch (e) {
+  console.error("[Static Gen] Error generating privacy-policy.html:", e);
+}
+
+// 3. Generate structured landing directories under /tools
+const toolsSleepPath = path.join(distPath, 'tools', 'sleep-calculator', 'index.html');
+const toolsBedtimePath = path.join(distPath, 'tools', 'bedtime-calculator', 'index.html');
+const toolsWakeUpPath = path.join(distPath, 'tools', 'wake-up-calculator', 'index.html');
+
+try {
+  // Sleep Calculator landing is equivalent to Home pre-rendered layout
+  const homeHtml = injectSEOMetadataStatic(htmlTemplate, "/");
+  ensureDirectoryExistence(toolsSleepPath);
+  fs.writeFileSync(toolsSleepPath, homeHtml, 'utf-8');
+  console.log(`[Static Gen] Wrote tool home to: ${toolsSleepPath}`);
+
+  // Bedtime Calculator
+  const bedtimeHtml = injectSEOMetadataStatic(htmlTemplate, "/ideal-bedtime-based-on-wake-up-time");
+  ensureDirectoryExistence(toolsBedtimePath);
+  fs.writeFileSync(toolsBedtimePath, bedtimeHtml, 'utf-8');
+  console.log(`[Static Gen] Wrote tool bedtime to: ${toolsBedtimePath}`);
+
+  // Wake Up Calculator
+  const wakeUpHtml = injectSEOMetadataStatic(htmlTemplate, "/wake-up-between-sleep-cycles");
+  ensureDirectoryExistence(toolsWakeUpPath);
+  fs.writeFileSync(toolsWakeUpPath, wakeUpHtml, 'utf-8');
+  console.log(`[Static Gen] Wrote tool wake-up to: ${toolsWakeUpPath}`);
+} catch (e) {
+  console.error("[Static Gen] Error generating tools subdirectory layouts:", e);
+}
+
+// 4. Generate structured blog index and articles subdirectory structure
+const blogIndexPath = path.join(distPath, 'blog', 'index.html');
+const blogArticlesDir = path.join(distPath, 'blog', 'articles');
+
+try {
+  // Blog index page
+  const blogIndexHtml = injectSEOMetadataStatic(
+    htmlTemplate, 
+    "/sleep-cycles-explained", 
+    "https://sleepcalculater.online/blog/", 
+    "Blog – Sleep Tools, Circadian Science & Healthy Bedtimes Guide"
+  );
+  ensureDirectoryExistence(blogIndexPath);
+  fs.writeFileSync(blogIndexPath, blogIndexHtml, 'utf-8');
+  console.log(`[Static Gen] Wrote blog index to: ${blogIndexPath}`);
+
+  // Create blog articles folder
+  if (!fs.existsSync(blogArticlesDir)) {
+    fs.mkdirSync(blogArticlesDir, { recursive: true });
+  }
+
+  // Pre-render specifically matching aliases with proper canonicals and breadcrumbs
+  const guideHtml = injectSEOMetadataStatic(
+    htmlTemplate, 
+    "/sleep-cycles-explained", 
+    "https://sleepcalculater.online/blog/articles/sleep-cycle-guide.html"
+  );
+  fs.writeFileSync(path.join(blogArticlesDir, 'sleep-cycle-guide.html'), guideHtml, 'utf-8');
+
+  const needHtml = injectSEOMetadataStatic(
+    htmlTemplate, 
+    "/how-much-sleep-do-you-need", 
+    "https://sleepcalculater.online/blog/articles/how-much-sleep-do-i-need.html"
+  );
+  fs.writeFileSync(path.join(blogArticlesDir, 'how-much-sleep-do-i-need.html'), needHtml, 'utf-8');
+
+  const bestTimeHtml = injectSEOMetadataStatic(
+    htmlTemplate, 
+    "/best-time-to-sleep-and-wake-up", 
+    "https://sleepcalculater.online/blog/articles/best-sleep-time.html"
+  );
+  fs.writeFileSync(path.join(blogArticlesDir, 'best-sleep-time.html'), bestTimeHtml, 'utf-8');
+
+  // Generate /blog/articles/... files dynamically for all posts to ensure consistent canonical and breadcrumb schemas
+  Object.keys(BLOG_POSTS_META).forEach(postSlug => {
+    try {
+      const articlePath = `/${postSlug}`;
+      const articleCanonical = `https://sleepcalculater.online/blog/articles/${postSlug}.html`;
+      const articleHtml = injectSEOMetadataStatic(htmlTemplate, articlePath, articleCanonical);
+      fs.writeFileSync(path.join(blogArticlesDir, `${postSlug}.html`), articleHtml, 'utf-8');
+    } catch (e) {
+      console.error(`[Static Gen] Error generating structured article ${postSlug}:`, e);
+    }
+  });
+
+  console.log(`[Static Gen] Successfully pre-rendered articles under: ${blogArticlesDir}`);
+} catch (e) {
+  console.error("[Static Gen] Error generating blog folder structure:", e);
+}
+
+console.log("[Static Gen] Complete! Generated build-time static HTML and sitemap payloads successfully.");

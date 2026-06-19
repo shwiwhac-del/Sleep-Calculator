@@ -105,8 +105,8 @@ export const BLOG_POSTS_META: Record<string, { title: string; description: strin
     category: "Sleep Cycles"
   },
   "how-to-wake-up-refreshed": {
-    title: "How to Wake Up Refreshed Every Morning: Science-Backed Sleep Tips That Actually Work",
-    description: "Learn how to wake up refreshed every morning using sleep cycles, better bedtime habits, and a sleep calculator. Improve energy, focus, and sleep quality naturally.",
+    title: "How to Wake Up Refreshed: Science-Backed Sleep Tips",
+    description: "Learn how to wake up refreshed using sleep cycles, bedtime habits, and a sleep calculator. Improve your morning energy and sleep quality naturally.",
     date: "2026-06-03",
     category: "Sleep Hygiene"
   },
@@ -201,8 +201,8 @@ export const BLOG_POSTS_META: Record<string, { title: string; description: strin
     category: "Sleep Schedule"
   },
   "best-temperature-for-sleep": {
-    title: "Best Temperature for Sleep: How Ambient Temperature Affects Sleep Quality",
-    description: "Learn the optimal room temperature for high-quality sleep, how body temperature influences sleep cycles, and practical tips to cool down your bedroom naturally.",
+    title: "Best Temperature for Sleep: How Room Temp Affects Sleep Quality",
+    description: "Learn the optimal room temperature for high-quality sleep, how body temperature affects sleep cycles, and simple tips to cool down your bedroom.",
     date: "2026-06-08",
     category: "Sleep Quality"
   },
@@ -285,8 +285,8 @@ export const BLOG_POSTS_META: Record<string, { title: string; description: strin
     category: "Productivity"
   },
   "sleep-calculator-for-students": {
-    title: "Sleep Calculator for Students: Improve Focus, Memory, and Exam Performance",
-    description: "Discover how a sleep calculator can help students improve focus, memory, productivity, and exam performance through better sleep habits and sleep cycle planning.",
+    title: "Sleep Calculator for Students: Peak Exam Focus & Bedtimes",
+    description: "Discover how a student sleep calculator improves exam performance, focus, and memory through 90-minute sleep cycles and planned bedtimes.",
     date: "2026-06-04",
     category: "Productivity"
   },
@@ -321,20 +321,20 @@ export const BLOG_POSTS_META: Record<string, { title: string; description: strin
     category: "Productivity"
   },
   "sleep-calculator-for-exams": {
-    title: "Sleep Calculator for Exams: Optimize Bedtime for Peak Test Day Performance",
-    description: "Calculate your perfect bedtime the night before a major exam. Discover why sleep cycle planning outperforms late-night cramming for GPA scores and cognitive recall.",
+    title: "Sleep Calculator for Exams: Peak Test Day Bedtimes",
+    description: "Calculate your perfect bedtime before a major exam. See why sleep cycle planning outperforms late-night cramming for better grade recall and focus.",
     date: "2026-06-16",
     category: "Study & Focus"
   },
   "sleep-calculator-for-night-shift-workers": {
-    title: "Sleep Calculator for Night Shift Workers: Aligning Daytime Rest with Circadian Rhythms",
-    description: "Master shift-work sleep schedules using a sleep cycle calculator for night shifts. Learn anchor sleep blocks, split routines, and dark bedroom setups to defeat fatigue.",
+    title: "Sleep Calculator for Night Shift Workers: Day Rest Schedules",
+    description: "Optimize night shift sleep schedules using a sleep cycle calculator. Master anchor sleep blocks, split routines, and circadian alignment.",
     date: "2026-06-16",
     category: "Sleep Health"
   },
   "what-time-should-i-sleep-if-i-wake-up-at-6-am": {
-    title: "What Time Should I Sleep If I Wake Up at 6 AM? Optimal Sleep Schedules",
-    description: "Discover the best times to sleep if you need to wake up at 6 AM. Use the natural 90-minute sleep cycle calculator to wake up full of energy, alert, and refreshed.",
+    title: "What Time to Sleep If You Wake Up at 6 AM: Optimal Bedtimes",
+    description: "Discover the best times to sleep if you wake up at 6 AM. Use the 90-minute sleep cycle calculator to wake up refreshed and fully alert.",
     date: "2026-06-18",
     category: "Sleep Schedule"
   },
@@ -345,8 +345,8 @@ export const BLOG_POSTS_META: Record<string, { title: string; description: strin
     category: "Study & Focus"
   },
   "nap-calculator-20-30-60-90-minutes": {
-    title: "Nap Calculator: 20, 30, 60, 90 Minutes Rest Cycles",
-    description: "Calculate the exact duration for power naps, recovery naps, and full sleep cycle naps. Optimize brain focus and cognitive alert states without post-nap grogginess.",
+    title: "Nap Calculator: 20, 30, 60, 90 Minute Rest Cycles",
+    description: "Calculate the exact duration for power naps and full sleep cycle naps. Optimize brain focus and cognitive alert states without fatigue.",
     date: "2026-06-18",
     category: "Sleep Science"
   }
