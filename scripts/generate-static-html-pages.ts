@@ -562,18 +562,6 @@ console.log(`  - ${distSitemapPath}`);
 // === Custom Sleep-Calculator Site Code Structure Compliance ===
 console.log("[Static Gen] Generating special directory structures and structural aliasing requested...");
 
-// 1. Generate Manifest webapp JSON representation
-const manifestSourcePath = path.resolve('./public/manifest.webmanifest');
-const manifestDestPath = path.join(distPath, 'manifest.json');
-try {
-  if (fs.existsSync(manifestSourcePath)) {
-    fs.copyFileSync(manifestSourcePath, manifestDestPath);
-    console.log(`[Static Gen] Synced webapp manifest.json to: ${manifestDestPath}`);
-  }
-} catch (e) {
-  console.error("[Static Gen] Error syncing manifest.json:", e);
-}
-
 // 2. Generate Privacy-Policy and terms mappings
 try {
   const privacyHtmlSourcePath = path.join(distPath, 'privacy.html');

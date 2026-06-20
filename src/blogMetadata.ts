@@ -6,62 +6,62 @@ export interface PageSEO {
 
 export const MAIN_PAGES_META: Record<string, PageSEO> = {
   "/": {
-    title: "Sleep Calculator – Calculate Bedtime & Wake Up Times",
+    title: "Sleep Calculator | Ideal Bedtime & Wake-Up Times",
     description: "Calculate the best bedtime and wake-up time using natural 90-minute sleep cycles. Wake up refreshed, avoid morning grogginess, and improve your sleep quality.",
     canonicalUrl: "https://sleepcalculater.online/"
   },
   "/about": {
-    title: "About Sleep Calculator – Sleep Cycle & Bedtime Tool",
+    title: "About Sleep Calculator | Sleep Cycle & Bedtime Tool",
     description: "Learn about the Sleep Calculator team, our core mission, and the scientific research behind our 90-minute sleep cycle and bedtime calculation algorithms.",
     canonicalUrl: "https://sleepcalculater.online/about"
   },
   "/contact": {
-    title: "Contact Sleep Calculator – Support & Questions",
+    title: "Contact Sleep Calculator | Support & Questions",
     description: "Contact the Sleep Calculator support and media team for feedback, feature requests, partnership inquiries, or general questions about our sleep cycle tools.",
     canonicalUrl: "https://sleepcalculater.online/contact"
   },
   "/privacy": {
-    title: "Privacy Policy – Sleep Calculator",
+    title: "Privacy Policy | Sleep Calculator",
     description: "Read the Sleep Calculator Privacy Policy. Learn about our commitment to data privacy, how we manage cookie policies, and protect user analytical data safely.",
     canonicalUrl: "https://sleepcalculater.online/privacy"
   },
   "/terms": {
-    title: "Terms and Conditions – Sleep Calculator",
+    title: "Terms and Conditions | Sleep Calculator",
     description: "Review the Terms and Conditions of Sleep Calculator. Read our terms of service, acceptable usage guidelines, liability limitations, and health disclaimers.",
     canonicalUrl: "https://sleepcalculater.online/terms"
   },
   "/404": {
-    title: "404 Page Not Found – Sleep Calculator",
+    title: "404 Page Not Found | Sleep Calculator",
     description: "The requested sleep calculator guide, resource, or article could not be located. Calculate your optimal bedtime and wake-up times on our homepage.",
     canonicalUrl: "https://sleepcalculater.online/404"
   },
   "/not-found": {
-    title: "404 Page Not Found – Sleep Calculator",
+    title: "404 Page Not Found | Sleep Calculator",
     description: "The requested sleep calculator guide, resource, or article could not be located. Calculate your optimal bedtime and wake-up times on our homepage.",
     canonicalUrl: "https://sleepcalculater.online/not-found"
   },
   "/student-sleep-calculator": {
-    title: "Sleep Calculator for Students – Optimize Your Exam Bedtime",
+    title: "Sleep Calculator for Students | Optimize Your Exam Bedtime",
     description: "Use our interactive sleep calculator for students, teenagers, and kids to schedule bedtimes for exams, high school schedules, and toddlers.",
     canonicalUrl: "https://sleepcalculater.online/student-sleep-calculator"
   },
   "/shift-work-sleep-calculator": {
-    title: "Sleep Calculator for Night Shift Workers – Day Sleep Schedule",
+    title: "Sleep Calculator for Night Shift Workers | Day Sleep Schedule",
     description: "Calculate sleep cycles for night shifts. Optimize diurnal sleep, split schedules, and anchors blocks with our interactive sleep calculator for shift workers.",
     canonicalUrl: "https://sleepcalculater.online/shift-work-sleep-calculator"
   },
   "/sleep-cycle-calculator-90-minutes": {
-    title: "Sleep Cycle Calculator 90 Minutes – Calculate Cycles & Bedtime",
+    title: "Sleep Cycle Calculator 90 Minutes | Calculate Cycles & Bedtime",
     description: "Calculate sleep cycles based on the 90-minute formula. Adjust custom cycle lengths and fall asleep latency with our interactive sleep cycle calculator.",
     canonicalUrl: "https://sleepcalculater.online/sleep-cycle-calculator-90-minutes"
   },
   "/wake-up-between-sleep-cycles": {
-    title: "Wake Up Between Sleep Cycles Calculator – Morning Refreshment",
+    title: "Wake Up Between Sleep Cycles Calculator | Morning Refreshment",
     description: "Learn how to wake up between sleep cycles to conquer morning grogginess. Calculate exact bedtime and alarm times with our interactive refresh calculator.",
     canonicalUrl: "https://sleepcalculater.online/wake-up-between-sleep-cycles"
   },
   "/ideal-bedtime-based-on-wake-up-time": {
-    title: "Ideal Bedtime Based on Wake Up Time – Custom Age Calculator",
+    title: "Ideal Bedtime Based on Wake Up Time | Custom Age Calculator",
     description: "Calculate your ideal bedtime based on your wake up time. Select customized settings for adults, babies, toddlers, and teenagers using sleep cycle calculators.",
     canonicalUrl: "https://sleepcalculater.online/ideal-bedtime-based-on-wake-up-time"
   }
