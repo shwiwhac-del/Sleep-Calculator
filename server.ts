@@ -600,6 +600,8 @@ function injectSEOMetadata(html: string, originalPath: string): string {
   // Inject right after opening <head> tag using arrow helper to bypass $ regex replacement issues in JavaScript
   html = html.replace(/<head>/i, () => `<head>\n${seoBlock}`);
 
+  html = html.replace(/<link[^>]*rel="stylesheet"[^>]*href="([^"]+\.css)"[^>]*>/g, `<link rel="preload" as="style" href="$1" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="$1"></noscript>`);
+
   // Replace fallback content for subpages so users don't see the Homepage content before React loads
   if (reqPath !== "/" && reqPath !== "") {
     const cleanFallback = getRichFallbackContent(reqPath, slug, title, description);

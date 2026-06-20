@@ -8,11 +8,12 @@ import { usePerformanceMonitoring } from './hooks/usePerformanceMonitoring';
 import Home from './pages/Home';
 import { OpenGraphTags } from './components/OpenGraphTags';
 
-const Terms = lazy(() => import('./pages/Terms'));
-const Privacy = lazy(() => import('./pages/Privacy'));
+import Terms from './pages/Terms';
+import Privacy from './pages/Privacy';
+import Contact from './pages/Contact';
+import About from './pages/About';
+
 const Blog = lazy(() => import('./pages/Blog'));
-const Contact = lazy(() => import('./pages/Contact'));
-const About = lazy(() => import('./pages/About'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
 const StudentCalc = lazy(() => import('./pages/StudentCalc'));
@@ -31,32 +32,24 @@ function Footer() {
       <div className="flex flex-wrap items-center justify-center gap-x-5 sm:gap-x-6 text-xs sm:text-sm px-4">
         <Link 
           to="/about" 
-          onMouseEnter={() => import('./pages/About')}
-          onFocus={() => import('./pages/About')}
           className="text-[#1F2937] hover:text-[#4C1D95] hover:underline transition-colors font-bold"
         >
           About
         </Link>
         <Link 
           to="/contact" 
-          onMouseEnter={() => import('./pages/Contact')}
-          onFocus={() => import('./pages/Contact')}
           className="text-[#1F2937] hover:text-[#4C1D95] hover:underline transition-colors font-bold"
         >
           Contact
         </Link>
         <Link 
           to="/privacy" 
-          onMouseEnter={() => import('./pages/Privacy')}
-          onFocus={() => import('./pages/Privacy')}
           className="text-[#1F2937] hover:text-[#4C1D95] hover:underline transition-colors font-bold"
         >
           Privacy Policy
         </Link>
         <Link 
           to="/terms" 
-          onMouseEnter={() => import('./pages/Terms')}
-          onFocus={() => import('./pages/Terms')}
           className="text-[#1F2937] hover:text-[#4C1D95] hover:underline transition-colors font-bold"
         >
           Terms & Conditions

@@ -444,6 +444,8 @@ function injectSEOMetadataStatic(html: string, originalPath: string, customCanon
 
   html = html.replace(/<head>/i, () => `<head>\n${seoBlock}`);
 
+  html = html.replace(/<link[^>]*rel="stylesheet"[^>]*href="([^"]+\.css)"[^>]*>/g, `<link rel="preload" as="style" href="$1" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="$1"></noscript>`);
+
   if (reqPath !== "/" && reqPath !== "") {
     const cleanFallback = getStaticFallbackContent(reqPath, slug);
     // Suppress hydrations since we will hydrate React cleanly on top of it.
