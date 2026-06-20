@@ -80,17 +80,30 @@ export function usePerformanceMonitoring() {
     };
 
     // Setup Web Vitals measurement hooks lazily to decrease initial Javascript execution time and bundle size
-    import('web-vitals')
-      .then(({ onCLS, onLCP, onFCP, onTTFB, onINP }) => {
-        onCLS(handleMetric);
-        onLCP(handleMetric);
-        onFCP(handleMetric);
-        onTTFB(handleMetric);
-        onINP(handleMetric);
-      })
-      .catch((err) => {
-        console.warn('[Web Vitals] Dynamic loading failed:', err);
-      });
+    const setupVitals = () => {
+      import('web-vitals')
+        .then(({ onCLS, onLCP, onFCP, onTTFB, onINP }) => {
+          onCLS(handleMetric);
+          onLCP(handleMetric);
+          onFCP(handleMetric);
+          onTTFB(handleMetric);
+          onINP(handleMetric);
+        })
+        .catch((err) => {
+          console.warn('[Web Vitals] Dynamic loading failed:', err);
+        });
+    };
+
+    // Defer loading so it doesn't affect Core Web Vitals metrics / PageSpeed Insights
+    const timeoutId = setTimeout(() => {
+      if ('requestIdleCallback' in window) {
+        (window as any).requestIdleCallback(() => setupVitals());
+      } else {
+        setupVitals();
+      }
+    }, 4000);
+
+    return () => clearTimeout(timeoutId);
   }, []);
 
   return metrics;
