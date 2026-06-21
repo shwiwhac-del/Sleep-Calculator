@@ -590,6 +590,10 @@ try {
   fs.writeFileSync(toolsSleepPath, homeHtml, 'utf-8');
   console.log(`[Static Gen] Wrote tool home to: ${toolsSleepPath}`);
 
+  // Also write back the optimized homepage HTML directly to the master dist/index.html entry point
+  fs.writeFileSync(path.join(distPath, 'index.html'), homeHtml, 'utf-8');
+  console.log(`[Static Gen] Successfully updated master index.html with pre-rendered optimized Homepage`);
+
   // Bedtime Calculator
   const bedtimeHtml = injectSEOMetadataStatic(htmlTemplate, "/ideal-bedtime-based-on-wake-up-time");
   ensureDirectoryExistence(toolsBedtimePath);
