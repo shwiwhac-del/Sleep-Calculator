@@ -8,11 +8,51 @@ import { OpenGraphTags } from "../components/OpenGraphTags";
 import TimePicker from "../components/TimePicker";
 import SleepCycleChart from "../components/SleepCycleChart";
 
-import SleepGuideAndFAQ from "../components/SleepGuideAndFAQ";
-import { QuickSleepTips } from "../components/QuickSleepTips";
-import { SleepJournal } from "../components/SleepJournal";
+const QuickSleepTips = lazy(() =>
+  import("../components/QuickSleepTips").then((m) => ({ default: m.QuickSleepTips })),
+);
+const SleepJournal = lazy(() =>
+  import("../components/SleepJournal").then((m) => ({ default: m.SleepJournal })),
+);
+const SleepGuideAndFAQ = lazy(() => import("../components/SleepGuideAndFAQ"));
 
 const FeedbackModal = lazy(() => import("../components/FeedbackModal").then((m) => ({ default: m.FeedbackModal })));
+
+function QuickTipsSkeleton() {
+  return (
+    <div className="w-full max-w-5xl mx-auto px-4 py-8 animate-pulse">
+      <div className="h-8 bg-gray-200 dark:bg-slate-700 w-48 rounded mb-6 mx-auto sm:mx-0"></div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="h-[220px] bg-[#FAF6F0] dark:bg-slate-800 rounded-3xl border border-[#E1D8CC]"></div>
+        <div className="h-[220px] bg-[#FAF6F0] dark:bg-slate-800 rounded-3xl border border-[#E1D8CC]"></div>
+        <div className="h-[220px] bg-[#FAF6F0] dark:bg-slate-800 rounded-3xl border border-[#E1D8CC]"></div>
+      </div>
+    </div>
+  );
+}
+
+function SleepJournalSkeleton() {
+  return (
+    <div className="w-full max-w-4xl mx-auto px-4 py-8 animate-pulse">
+      <div className="h-8 bg-gray-200 dark:bg-slate-700 w-32 rounded mb-6 mx-auto"></div>
+      <div className="h-[260px] bg-[#FAF6F0] dark:bg-slate-800 rounded-3xl border border-[#E1D8CC]"></div>
+    </div>
+  );
+}
+
+function SleepGuideSkeleton() {
+  return (
+    <div className="w-full max-w-4xl mx-auto px-4 py-8 animate-pulse">
+      <div className="h-8 bg-gray-200 dark:bg-slate-700 w-64 rounded mb-6"></div>
+      <div className="space-y-4">
+        <div className="h-4 bg-gray-200 dark:bg-slate-700 w-full rounded"></div>
+        <div className="h-4 bg-gray-200 dark:bg-slate-700 w-5/6 rounded"></div>
+        <div className="h-4 bg-gray-200 dark:bg-slate-700 w-4/5 rounded"></div>
+        <div className="h-4 bg-gray-200 dark:bg-slate-700 w-full rounded"></div>
+      </div>
+    </div>
+  );
+}
 
 export interface CyclesReport {
   bedTime: string;
@@ -52,16 +92,24 @@ export default function Home() {
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      const isNearBottom =
-        window.innerHeight + scrollY >=
-        document.documentElement.scrollHeight - 150;
+    let ticking = false;
 
-      if (scrollY > 150 && !isNearBottom) {
-        setShowFeedbackButton(true);
-      } else {
-        setShowFeedbackButton(false);
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const scrollY = window.scrollY;
+          const isNearBottom =
+            window.innerHeight + scrollY >=
+            document.documentElement.scrollHeight - 150;
+
+          if (scrollY > 150 && !isNearBottom) {
+            setShowFeedbackButton(true);
+          } else {
+            setShowFeedbackButton(false);
+          }
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 
@@ -1183,11 +1231,17 @@ export default function Home() {
         )}
       </AnimatePresence>
 
-      {/* Clean below-the-fold content rendered inline for zero Cumulative Layout Shift (CLS) */}
+      {/* Clean below-the-fold content rendered with layout stability fallbacks */}
       <div className="w-full space-y-8">
-        <QuickSleepTips />
-        <SleepJournal />
-        <SleepGuideAndFAQ />
+        <Suspense fallback={<QuickTipsSkeleton />}>
+          <QuickSleepTips />
+        </Suspense>
+        <Suspense fallback={<SleepJournalSkeleton />}>
+          <SleepJournal />
+        </Suspense>
+        <Suspense fallback={<SleepGuideSkeleton />}>
+          <SleepGuideAndFAQ />
+        </Suspense>
       </div>
 
       {/* Floating Feedback Button */}
