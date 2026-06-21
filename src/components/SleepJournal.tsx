@@ -77,7 +77,23 @@ const getMockLogs = (): SleepLog[] => {
 };
 
 export function SleepJournal() {
-  const [logs, setLogs] = useState<SleepLog[]>([]);
+  const [logs, setLogs] = useState<SleepLog[]>(() => {
+    try {
+      if (typeof window !== "undefined") {
+        const stored = localStorage.getItem("aurasleep_journal_logs");
+        if (stored) {
+          return JSON.parse(stored);
+        } else {
+          const mock = getMockLogs();
+          localStorage.setItem("aurasleep_journal_logs", JSON.stringify(mock));
+          return mock;
+        }
+      }
+    } catch (e) {
+      console.error("Error reading journal from localStorage on init", e);
+    }
+    return [];
+  });
   const [date, setDate] = useState<string>(() => new Date().toISOString().split("T")[0]);
   const [hours, setHours] = useState<number>(7.5);
   const [quality, setQuality] = useState<number>(4);
@@ -87,18 +103,9 @@ export function SleepJournal() {
   const [isFormOpen, setIsFormOpen] = useState<boolean>(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
 
-  // Load logs on mount
+  // Load logs on mount - no longer needed since handled synchronously, leaving empty hook to preserve lifecycle if required
   useEffect(() => {
-    try {
-      const stored = localStorage.getItem("aurasleep_journal_logs");
-      if (stored) {
-        setLogs(JSON.parse(stored));
-      } else {
-        setLogs([]);
-      }
-    } catch (e) {
-      console.error("Error reading journal from localStorage", e);
-    }
+    // Already synchronized during construction
   }, []);
 
   const triggerToast = (msg: string) => {

@@ -113,7 +113,11 @@ const SLEEP_TIPS_DATA: SleepTip[] = [
 export function QuickSleepTips() {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const [completedTipIds, setCompletedTipIds] = useState<string[]>([]);
-  const [spotlightTip, setSpotlightTip] = useState<SleepTip>(SLEEP_TIPS_DATA[0]);
+  const [spotlightTip, setSpotlightTip] = useState<SleepTip>(() => {
+    const dayOfYear = Math.floor((new Date().getTime() - new Date(new Date().getFullYear(), 0, 0).getTime()) / 86400000);
+    const index = dayOfYear % SLEEP_TIPS_DATA.length;
+    return SLEEP_TIPS_DATA[index];
+  });
   const [expandedTipId, setExpandedTipId] = useState<string | null>(null);
 
   // Load completed tips from localStorage safely (on mount)
@@ -136,13 +140,6 @@ export function QuickSleepTips() {
     } catch (e) {
       console.error("Error reading sleep habits status:", e);
     }
-  }, []);
-
-  // Determine a default spotlight tip of the day based on day of year
-  useEffect(() => {
-    const dayOfYear = Math.floor((new Date().getTime() - new Date(new Date().getFullYear(), 0, 0).getTime()) / 86400000);
-    const index = dayOfYear % SLEEP_TIPS_DATA.length;
-    setSpotlightTip(SLEEP_TIPS_DATA[index]);
   }, []);
 
   const handleToggleComplete = (id: string) => {
