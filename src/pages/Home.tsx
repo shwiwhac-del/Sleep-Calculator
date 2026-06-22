@@ -16,43 +16,19 @@ const SleepJournal = lazy(() =>
 );
 const SleepGuideAndFAQ = lazy(() => import("../components/SleepGuideAndFAQ"));
 
+const QuickSleepTipsSkeleton = () => (
+  <div className="w-full max-w-[42rem] lg:max-w-[60rem] mx-auto bg-white border border-[#E5E7EB] rounded-2xl p-6 md:p-8 shadow-premium h-[420px] animate-pulse" />
+);
+
+const SleepJournalSkeleton = () => (
+  <div className="w-full max-w-4xl mx-auto bg-white border border-[#E5E7EB] rounded-2xl p-6 md:p-8 shadow-premium h-[600px] animate-pulse" />
+);
+
+const SleepGuideAndFAQSkeleton = () => (
+  <div className="w-full max-w-4xl mx-auto bg-white border border-[#E5E7EB] rounded-2xl p-6 md:p-8 shadow-premium h-[500px] animate-pulse" />
+);
+
 const FeedbackModal = lazy(() => import("../components/FeedbackModal").then((m) => ({ default: m.FeedbackModal })));
-
-function QuickTipsSkeleton() {
-  return (
-    <div className="w-full max-w-5xl mx-auto px-4 py-8 animate-pulse">
-      <div className="h-8 bg-gray-200 dark:bg-slate-700 w-48 rounded mb-6 mx-auto sm:mx-0"></div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div className="h-[220px] bg-[#FAF6F0] dark:bg-slate-800 rounded-3xl border border-[#E1D8CC]"></div>
-        <div className="h-[220px] bg-[#FAF6F0] dark:bg-slate-800 rounded-3xl border border-[#E1D8CC]"></div>
-        <div className="h-[220px] bg-[#FAF6F0] dark:bg-slate-800 rounded-3xl border border-[#E1D8CC]"></div>
-      </div>
-    </div>
-  );
-}
-
-function SleepJournalSkeleton() {
-  return (
-    <div className="w-full max-w-4xl mx-auto px-4 py-8 animate-pulse">
-      <div className="h-8 bg-gray-200 dark:bg-slate-700 w-32 rounded mb-6 mx-auto"></div>
-      <div className="h-[260px] bg-[#FAF6F0] dark:bg-slate-800 rounded-3xl border border-[#E1D8CC]"></div>
-    </div>
-  );
-}
-
-function SleepGuideSkeleton() {
-  return (
-    <div className="w-full max-w-4xl mx-auto px-4 py-8 animate-pulse">
-      <div className="h-8 bg-gray-200 dark:bg-slate-700 w-64 rounded mb-6"></div>
-      <div className="space-y-4">
-        <div className="h-4 bg-gray-200 dark:bg-slate-700 w-full rounded"></div>
-        <div className="h-4 bg-gray-200 dark:bg-slate-700 w-5/6 rounded"></div>
-        <div className="h-4 bg-gray-200 dark:bg-slate-700 w-4/5 rounded"></div>
-        <div className="h-4 bg-gray-200 dark:bg-slate-700 w-full rounded"></div>
-      </div>
-    </div>
-  );
-}
 
 export interface CyclesReport {
   bedTime: string;
@@ -1231,15 +1207,15 @@ export default function Home() {
         )}
       </AnimatePresence>
 
-      {/* Clean below-the-fold content rendered with layout stability fallbacks */}
-      <div className="w-full space-y-8">
-        <Suspense fallback={<QuickTipsSkeleton />}>
+      {/* Clean below-the-fold content rendered with layout stability */}
+      <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 space-y-12 sm:space-y-16 mt-6 sm:mt-10">
+        <Suspense fallback={<QuickSleepTipsSkeleton />}>
           <QuickSleepTips />
         </Suspense>
         <Suspense fallback={<SleepJournalSkeleton />}>
           <SleepJournal />
         </Suspense>
-        <Suspense fallback={<SleepGuideSkeleton />}>
+        <Suspense fallback={<SleepGuideAndFAQSkeleton />}>
           <SleepGuideAndFAQ />
         </Suspense>
       </div>

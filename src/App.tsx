@@ -8,10 +8,10 @@ import { usePerformanceMonitoring } from './hooks/usePerformanceMonitoring';
 import Home from './pages/Home';
 import { OpenGraphTags } from './components/OpenGraphTags';
 
-import Terms from './pages/Terms';
-import Privacy from './pages/Privacy';
-import Contact from './pages/Contact';
-import About from './pages/About';
+const Terms = lazy(() => import('./pages/Terms'));
+const Privacy = lazy(() => import('./pages/Privacy'));
+const Contact = lazy(() => import('./pages/Contact'));
+const About = lazy(() => import('./pages/About'));
 
 const Blog = lazy(() => import('./pages/Blog'));
 const NotFound = lazy(() => import('./pages/NotFound'));
