@@ -21,7 +21,16 @@ export function usePerformanceMonitoring() {
   useEffect(() => {
     // Detect Lighthouse or automated agents to bypass performance logging/tracking overhead
     const isAutomated = /Lighthouse|Chrome-Lighthouse|PageSpeed|HeadlessChrome|GTmetrix|Pingdom/i.test(navigator.userAgent);
-    if (isAutomated) {
+    
+    // Detect if running inside a sandboxed iframe to prevent dynamic import and CORS / CSP "Script error."
+    let isInIframe = false;
+    try {
+      isInIframe = window.self !== window.top;
+    } catch (e) {
+      isInIframe = true;
+    }
+
+    if (isAutomated || isInIframe) {
       return;
     }
 

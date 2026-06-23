@@ -1,140 +1,40 @@
 import { useState, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
+import { Clock, EyeOff, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
-import { Moon, Sun, Clock, Coffee, ShieldAlert, Sparkles, Footprints, Flame, EyeOff, ArrowLeft } from "lucide-react";
 import { getCanonicalUrl } from "../lib/seo";
 
 export default function ShiftWorkCalc() {
-  const canonicalUrl = getCanonicalUrl("/sleep-calculator-for-night-shift-workers");
+  const canonicalUrl = getCanonicalUrl("/shift-work-sleep-calculator");
 
+  const AGE_GROUPS = [
+    { id: "0-3m", label: "0-3 Months", minCycles: 9, maxCycles: 11 },
+    { id: "4-11m", label: "4-11 Months", minCycles: 8, maxCycles: 10 },
+    { id: "1-2y", label: "1-2 Years", minCycles: 7, maxCycles: 9 },
+    { id: "3-5y", label: "3-5 Years", minCycles: 6, maxCycles: 8 },
+    { id: "6-12y", label: "6-12 Years", minCycles: 6, maxCycles: 7 },
+    { id: "13-17", label: "13-17 Years", minCycles: 5, maxCycles: 7 },
+    { id: "18-25", label: "18-25 Years", minCycles: 5, maxCycles: 6 },
+    { id: "26-40", label: "26-40 Years", minCycles: 5, maxCycles: 6 },
+    { id: "41-64", label: "41-64 Years", minCycles: 5, maxCycles: 6 },
+    { id: "65+", label: "65+ Years", minCycles: 4, maxCycles: 6 },
+  ];
+
+  // Simplified and clear shifts list
   const SHIFTS = [
-    { id: "night", label: "Night Shift (10 PM - 6 AM)", sleepStrategy: "Anchor Sleep Split", tip: "Avoid bright light during morning transit. Sleep immediately." },
-    { id: "evening", label: "Late Evening (4 PM - Midnight)", sleepStrategy: "Delayed Morning Block", tip: "Relax pre-bed. Wake up naturally without alarm." },
-    { id: "rotating", label: "Rotating / Double Shifts", sleepStrategy: "Prophylactic Napping", tip: "Optimize core sleep when transitioning between shifts." },
-    { id: "morning", label: "Early Morning (5 AM - 1 PM)", sleepStrategy: "Preshift Sleep Phase", tip: "Shift bedtime early. Wind down by 8 PM." },
+    { id: "night", label: "Night Shift (10 PM - 6 AM)", sleepStrategy: "Anchor Sleep Split Strategy" },
+    { id: "evening", label: "Late Evening (4 PM - Midnight)", sleepStrategy: "Delayed Morning Sleep Block" },
+    { id: "morning", label: "Early Morning (5 AM - 1 PM)", sleepStrategy: "Preshift Sleep Phase" },
   ];
 
   const [activeShift, setActiveShift] = useState("night");
+  const [ageGroup, setAgeGroup] = useState("18-25");
   const [returnHomeTime, setReturnHomeTime] = useState("07:00");
-  const [useSplitSleep, setUseSplitSleep] = useState(false);
-  const [results, setResults] = useState<{ label: string; start: string; end: string; duration: string; rationale: string; cycles: number }[]>([]);
+  const [results, setResults] = useState<{ label: string; start: string; end: string; duration: string; rationale: string; cycles: number; isCore: boolean }[]>([]);
+  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
 
-  // Calculate day sleep targets
-  const handleCalculate = () => {
-    const [hours, minutes] = returnHomeTime.split(":").map(Number);
-    const suggestions: typeof results = [];
-
-    if (activeShift === "night") {
-      if (useSplitSleep) {
-        // Split Sleep Routine: Anchor Sleep block (approx 5 hours) + Prophylactic 90min nap
-        const firstStart = new Date();
-        firstStart.setHours(hours + 1, minutes, 0, 0); // 1hr post-transit wind down
-        const firstEnd = new Date(firstStart.getTime() + 5 * 60 * 60 * 1000); // 5 hours anchor block
-
-        const secondStart = new Date(firstEnd.getTime() + 6 * 60 * 60 * 1000); // 6 hours wakeful gap
-        const secondEnd = new Date(secondStart.getTime() + 1.5 * 60 * 60 * 1000); // 90 min cycle nap
-
-        suggestions.push({
-          label: "Core Anchor Block",
-          start: formatTime(firstStart),
-          end: formatTime(firstEnd),
-          duration: "5h 0m",
-          rationale: "Aligns your core physiological rest systems while protecting against noon temperature/light peaks.",
-          cycles: 3,
-        });
-
-        suggestions.push({
-          label: "Prophylactic Nap Cycle",
-          start: formatTime(secondStart),
-          end: formatTime(secondEnd),
-          duration: "1h 30m",
-          rationale: "A complete 90-minute cycle before your next shift to maximize alert levels during the night.",
-          cycles: 1,
-        });
-      } else {
-        // Solid Daytime Block (approx 7.5 hours / 5 cycles)
-        const blockStart = new Date();
-        blockStart.setHours(hours + 1, minutes, 0, 0); // 1hr wind down
-        const blockEnd = new Date(blockStart.getTime() + 7.5 * 60 * 60 * 1000); // 5 cycles
-
-        suggestions.push({
-          label: "Consolidated Rest Day-Block",
-          start: formatTime(blockStart),
-          end: formatTime(blockEnd),
-          duration: "7h 30m",
-          rationale: "Completes exactly 5 sleep cycles. Ensure complete darkness and sound isolation using blackout curtains.",
-          cycles: 5,
-        });
-
-        // Safe alternate: 6 hours (4 cycles)
-        const altEnd = new Date(blockStart.getTime() + 6 * 60 * 60 * 1000);
-        suggestions.push({
-          label: "Abbreviated Rest Block (Recommended if busy)",
-          start: formatTime(blockStart),
-          end: formatTime(altEnd),
-          duration: "6h 0m",
-          rationale: "Provides exactly 4 sleep cycles. Better for days requiring quick turnarounds.",
-          cycles: 4,
-        });
-      }
-    } else if (activeShift === "evening") {
-      // Bedtime approx 1 AM
-      const sleepStart = new Date();
-      sleepStart.setHours(1, 15, 0, 0);
-      const sleepEnd = new Date(sleepStart.getTime() + 7.5 * 60 * 60 * 1000); // 5 cycles
-
-      suggestions.push({
-        label: "Primary Sleep Block",
-        start: formatTime(sleepStart),
-        end: formatTime(sleepEnd),
-        duration: "7h 30m",
-        rationale: "Enables natural wakefulness around 8:45 AM, allowing you to maximize morning sunlight exposure.",
-        cycles: 5,
-      });
-    } else if (activeShift === "rotating") {
-      // Pivot sleeps based on rotating transitions
-      const sleepStart = new Date();
-      sleepStart.setHours(23, 0, 0, 0); // normal-ish night bedtime
-      const sleepEnd = new Date(sleepStart.getTime() + 7.5 * 60 * 60 * 1000);
-
-      suggestions.push({
-        label: "Transition Night Sleep",
-        start: formatTime(sleepStart),
-        end: formatTime(sleepEnd),
-        duration: "7h 30m",
-        rationale: "Keeps your core clock anchored when swapping shift phases to minimize brain fatigue.",
-        cycles: 5,
-      });
-
-      // Quick 20min nap before shifts
-      suggestions.push({
-        label: "Pre-Shift Micro Nap",
-        start: "14:20 PM",
-        end: "14:40 PM",
-        duration: "20 min",
-        rationale: "A quick power nap to boost vigilance and reduce microsleep risks during shift crossovers.",
-        cycles: 0.2,
-      });
-    } else {
-      // Early morning shift
-      const sleepStart = new Date();
-      sleepStart.setHours(20, 30, 0, 0); // sleep early at PM
-      const sleepEnd = new Date(sleepStart.getTime() + 6 * 60 * 60 * 1000); // 4 cycles
-
-      suggestions.push({
-        label: "Early Consolidated Sleep",
-        start: formatTime(sleepStart),
-        end: formatTime(sleepEnd),
-        duration: "6h 0m",
-        rationale: "Gives 4 clean sleep cycles to secure early wakeup before morning traffic pressure peaks.",
-        cycles: 4,
-      });
-    }
-
-    setResults(suggestions);
-  };
-
+  // Function to format Time
   const formatTime = (date: Date) => {
     let hours = date.getHours();
     const minutes = date.getMinutes();
@@ -145,118 +45,180 @@ export default function ShiftWorkCalc() {
     return `${hours}:${minutesStr} ${ampm}`;
   };
 
+  // Straightforward day sleep calculations
+  const handleCalculate = () => {
+    const [hours, minutes] = returnHomeTime.split(":").map(Number);
+    const suggestions: typeof results = [];
+    const ageConfig = AGE_GROUPS.find((g) => g.id === ageGroup) || AGE_GROUPS[6];
+
+    // Core cycles are determined by the specified age config
+    const targetCycles = ageConfig.minCycles; 
+    const abbreviatedCycles = Math.max(3, targetCycles - 1);
+
+    if (activeShift === "night") {
+      // Direct, simple recommendation for Consolidated Day rest block
+      const blockStart = new Date();
+      blockStart.setHours(hours + 1, minutes, 0, 0); // 1 hour buffer to get home and wind-down
+      const blockEnd = new Date(blockStart.getTime() + targetCycles * 1.5 * 60 * 60 * 1000); 
+
+      suggestions.push({
+        label: "Consolidated Daytime Block",
+        start: formatTime(blockStart),
+        end: formatTime(blockEnd),
+        duration: `${Math.floor(targetCycles * 1.5)}h ${Math.round((targetCycles * 90) % 60)}m`,
+        rationale: `Provides exactly ${targetCycles} continuous sleep cycles customized for your age. This is the gold standard daytime replacement routine.`,
+        cycles: targetCycles,
+        isCore: true,
+      });
+
+      // Quick fallback option for busy days
+      const quickEnd = new Date(blockStart.getTime() + abbreviatedCycles * 1.5 * 60 * 60 * 1000); 
+      suggestions.push({
+        label: "Abbreviated Recovery Block",
+        start: formatTime(blockStart),
+        end: formatTime(quickEnd),
+        duration: `${Math.floor(abbreviatedCycles * 1.5)}h ${Math.round((abbreviatedCycles * 90) % 60)}m`,
+        rationale: `Provides exactly ${abbreviatedCycles} full sleep cycles. Best for busy days when personal commitments reduce schedules.`,
+        cycles: abbreviatedCycles,
+        isCore: false,
+      });
+
+    } else if (activeShift === "evening") {
+      // Bedtime for late evening shifts, sleep starts around 1 AM
+      const sleepStart = new Date();
+      sleepStart.setHours(1, 15, 0, 0);
+      const sleepEnd = new Date(sleepStart.getTime() + targetCycles * 1.5 * 60 * 60 * 1000);
+
+      suggestions.push({
+        label: "Primary Sleep Block",
+        start: formatTime(sleepStart),
+        end: formatTime(sleepEnd),
+        duration: `${Math.floor(targetCycles * 1.5)}h ${Math.round((targetCycles * 90) % 60)}m`,
+        rationale: `Allows natural, age-aligned rest of ${targetCycles} sleep cycles. This satisfies your circadian drive perfectly.`,
+        cycles: targetCycles,
+        isCore: true,
+      });
+
+    } else {
+      // Early morning shift, sleep early PM
+      const sleepStart = new Date();
+      sleepStart.setHours(20, 30, 0, 0);
+      const sleepEnd = new Date(sleepStart.getTime() + abbreviatedCycles * 1.5 * 60 * 60 * 1000);
+
+      suggestions.push({
+        label: "Preshift Sleep Window",
+        start: formatTime(sleepStart),
+        end: formatTime(sleepEnd),
+        duration: `${Math.floor(abbreviatedCycles * 1.5)}h ${Math.round((abbreviatedCycles * 90) % 60)}m`,
+        rationale: `Aligns ${abbreviatedCycles} clean sleep cycles to secure alertness before your early morning work duties commence.`,
+        cycles: abbreviatedCycles,
+        isCore: true,
+      });
+    }
+
+    setResults(suggestions);
+  };
+
   useEffect(() => {
     handleCalculate();
-  }, [activeShift, returnHomeTime, useSplitSleep]);
+  }, [activeShift, returnHomeTime, ageGroup]);
 
   return (
-    <div className="w-full max-w-4xl mx-auto px-2 py-8 sm:py-12" id="shift-calculator-root">
+    <div className="w-full max-w-4xl mx-auto px-4 py-8 sm:py-12" id="shift-calculator-root">
       <Helmet>
-        <title>Sleep Calculator for Night Shift Workers – Day Sleep Schedule</title>
+        <title>Sleep Calculator for Night Shift Workers | Optimize Daytime Sleep</title>
         <meta
           name="description"
-          content="Calculate sleep cycles for night shifts. Optimize diurnal sleep, split schedules, and anchors blocks with our interactive sleep calculator for shift workers."
+          content="Determine your optimal day-sleep windows, anchor schedules, and sleep cycles. Use our simple shift-work sleep calculator to prevent daytime split-sleep fatigue."
         />
         <link rel="canonical" href={canonicalUrl} />
       </Helmet>
 
-      {/* breadcrumb */}
-      <div className="mb-6 flex items-center justify-start text-xs sm:text-sm text-[#6B7280]" id="shift-breadcrumb">
-        <Link to="/" className="hover:text-[#7C3AED] transition-colors font-medium">Home</Link>
-        <span className="mx-2">&gt;</span>
-        <span className="font-semibold text-gray-700">Night Shift Sleep Calculator</span>
+      {/* Breadcrumbs - Clean and Simple */}
+      <div className="mb-8 flex items-center text-xs sm:text-sm text-[#6B7280]" id="shift-breadcrumb">
+        <div className="flex items-center gap-1.5">
+          <Link to="/" className="hover:text-[#7C3AED] transition-colors font-medium">Home</Link>
+          <span className="text-gray-400">&gt;</span>
+          <span className="font-semibold text-gray-700">Night Shift Sleep Calculator</span>
+        </div>
       </div>
 
-      {/* Header */}
-      <div className="text-center mb-10" id="shift-header">
-        <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#7C3AED]/10 text-[#7C3AED] rounded-full text-xs font-semibold mb-3">
-          <Moon className="w-4.5 h-4.5" />
-          <span>Occupational Circadian Realignment</span>
-        </div>
-        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black font-serif text-gray-900 tracking-tight leading-tight mb-4">
+      {/* Title */}
+      <div className="text-center mb-8" id="shift-header">
+        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black font-serif text-gray-900 tracking-tight leading-tight mb-3">
           Sleep Calculator for Night Shift Workers
         </h1>
         <p className="text-base sm:text-lg text-[#374151] max-w-2xl mx-auto leading-relaxed">
-          Tailor-made algorithms to manage daylight sleep schedules, rotation periods, and split-sleep styles recursively while keeping cognitive focus sharp.
+          Align your daytime sleep cycles with precision, preventing standard night fatigue and biological mismatch.
         </p>
       </div>
 
-      {/* Active Calculator Box */}
-      <div className="bg-[#FAF6F0]/90 backdrop-blur-md rounded-3xl p-6 sm:p-8 border border-[#E1D8CC] shadow-md mb-12" id="shift-widget">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {/* Styled card container for the tool itself */}
+      <div className="bg-white p-6 sm:p-8 rounded-2xl border border-neutral-200 shadow-md shadow-neutral-100 mb-12" id="shift-widget">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
           
-          {/* Controls */}
-          <div className="space-y-6" id="shift-controls">
+          {/* Controls Side */}
+          <div className="space-y-6 flex flex-col justify-center" id="shift-controls">
             <div>
-              <label className="block text-sm font-bold text-gray-900 mb-2.5">
-                1. Select Shift Sequence Configuration
+              <label className="block text-sm font-bold text-gray-900 mb-3">
+                1. Select Shift Sequence
               </label>
               <div className="space-y-2" id="shift-selector-container">
                 {SHIFTS.map((shift) => (
                   <button
                     key={shift.id}
                     id={`btn-shift-${shift.id}`}
-                    onClick={() => {
-                      setActiveShift(shift.id);
-                      if (shift.id !== "night") setUseSplitSleep(false);
-                    }}
-                    className={`w-full p-3.5 text-left rounded-2xl border transition-all cursor-pointer flex items-center justify-between ${
+                    onClick={() => setActiveShift(shift.id)}
+                    className={`w-full py-2.5 px-4 text-left border-b transition-all duration-150 cursor-pointer flex flex-col ${
                       activeShift === shift.id
-                        ? "border-[#7C3AED] bg-[#7C3AED]/5 text-gray-900"
-                        : "border-[#E1D8CC] bg-[#FCFAF7] hover:bg-[#FAF6F0]"
+                        ? "border-[#7C3AED] border-l-2 pl-3 bg-neutral-100/50 text-[#111827]"
+                        : "border-neutral-200 hover:border-neutral-400 text-neutral-600 bg-transparent"
                     }`}
                   >
-                    <div className="flex items-center justify-between w-full">
-                      <span className="font-bold text-sm sm:text-base">{shift.label}</span>
-                      <span className="text-xs font-semibold bg-neutral-200 px-2 py-0.5 rounded-full text-neutral-700">{shift.sleepStrategy}</span>
-                    </div>
-                    <span className="text-xs text-neutral-500 mt-1">{shift.tip}</span>
+                    <span className="font-bold text-sm text-gray-900">{shift.label}</span>
+                    <span className="text-xs font-semibold text-neutral-500 mt-0.5">{shift.sleepStrategy}</span>
                   </button>
                 ))}
               </div>
             </div>
 
-            {activeShift === "night" && (
-              <div>
-                <label className="block text-sm font-bold text-gray-900 mb-2.5">
-                  2. Select Sleep Pattern Architecture
-                </label>
-                <div className="flex gap-2" id="shift-pattern-toggle">
-                  <button
-                    id="btn-pattern-solid"
-                    onClick={() => setUseSplitSleep(false)}
-                    className={`flex-1 py-3 px-4 rounded-xl border font-semibold text-center text-sm transition-all duration-200 cursor-pointer ${
-                      !useSplitSleep
-                        ? "border-[#7C3AED] bg-[#7C3AED]/5 text-neutral-900"
-                        : "border-[#E1D8CC] bg-[#FCFAF7] text-neutral-600 hover:bg-[#FAF6F0]"
-                    }`}
-                  >
-                    Consolidated 7.5 hrs
-                  </button>
-                  <button
-                    id="btn-pattern-split"
-                    onClick={() => setUseSplitSleep(true)}
-                    className={`flex-1 py-3 px-4 rounded-xl border font-semibold text-center text-sm transition-all duration-200 cursor-pointer ${
-                      useSplitSleep
-                        ? "border-[#7C3AED] bg-[#7C3AED]/5 text-neutral-900"
-                        : "border-[#E1D8CC] bg-[#FCFAF7] text-neutral-600 hover:bg-[#FAF6F0]"
-                    }`}
-                  >
-                    Split Routine (Anchor + Nap)
-                  </button>
+            {/* Age group dropdown selection */}
+            <div className="flex flex-col items-start w-full z-20">
+              <label htmlFor="age-select" className="text-slate-600 uppercase tracking-widest text-[11px] sm:text-xs font-bold mb-1.5 block">
+                Select Your Age
+              </label>
+              <div className="w-full relative group">
+                <select
+                  id="age-select"
+                  value={ageGroup}
+                  onChange={(e) => {
+                    setAgeGroup(e.target.value);
+                  }}
+                  className="w-full bg-[#F8FAFC] border border-[#E5E7EB] focus:border-[#7C3AED] focus:ring-2 focus:ring-[#7C3AED]/20 rounded-xl py-2.5 pl-4 pr-10 transition-all duration-300 shadow-sm text-sm sm:text-base font-bold text-[#374151] cursor-pointer hover:border-gray-300 outline-none appearance-none"
+                >
+                  {AGE_GROUPS.map((g) => (
+                    <option key={g.id} value={g.id} className="bg-white text-left text-gray-900 font-medium">
+                       {g.label}
+                    </option>
+                  ))}
+                </select>
+                <div className="absolute inset-y-0 right-3.5 flex items-center pointer-events-none text-gray-400 group-hover:text-gray-600 transition-colors">
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                  </svg>
                 </div>
               </div>
-            )}
+            </div>
 
             <div>
-              <label className="block text-sm font-bold text-gray-900 mb-2.5">
-                {activeShift === "night" ? "3. When do you get home in the morning?" : "2. When do you transition from shift?"}
+              <label className="block text-sm font-bold text-gray-900 mb-3">
+                {activeShift === "night" ? "2. What time do you return home?" : "2. When does your transition from shift occur?"}
               </label>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 bg-[#FCFAF7] border-b border-gray-300 px-3 py-2.5 hover:border-[#7C3AED]/50 transition">
                 <Clock className="w-5 h-5 text-neutral-400" />
                 <input
                   type="time"
-                  className="bg-[#FCFAF7] border border-[#E1D8CC] rounded-xl px-4 py-2 font-mono text-gray-800 focus:outline-[#7C3AED]"
+                  className="bg-transparent border-none text-gray-800 font-mono focus:outline-none w-full cursor-pointer"
                   value={returnHomeTime}
                   onChange={(e) => setReturnHomeTime(e.target.value)}
                   id="shift-time-picker"
@@ -265,143 +227,217 @@ export default function ShiftWorkCalc() {
             </div>
           </div>
 
-          {/* Results Display */}
-          <div className="flex flex-col justify-between lg:pl-4" id="shift-results-panel">
+          {/* Results Side */}
+          <div className="flex flex-col justify-between space-y-6" id="shift-results-panel">
             <div>
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="text-xl font-bold text-gray-950 flex items-center gap-2">
-                  <Sparkles className="w-5 h-5 text-[#D4AF37] fill-[#D4AF37]" />
-                  Shift Alignment Timeline
-                </h3>
-                <span className="text-xs bg-[#7C3AED]/10 text-[#7C3AED] px-2.5 py-1 rounded-full font-bold">
-                  Anti-Fatigue Active
-                </span>
-              </div>
+              <h3 className="text-lg font-bold text-gray-900 mb-4 border-b border-neutral-200 pb-2">
+                Your Recommended Day-Sleep Schedule
+              </h3>
 
-              <div className="space-y-4" id="shift-results-list">
-                <AnimatePresence mode="popLayout">
-                  {results.map((res, i) => {
-                    const isCore = res.label.toLowerCase().includes("core") || res.label.toLowerCase().includes("solid") || res.label.toLowerCase().includes("primary") || res.label.toLowerCase().includes("consolidated");
-                    return (
-                      <motion.div
-                        key={res.label + res.start}
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -10 }}
-                        transition={{ duration: 0.2, delay: i * 0.05 }}
-                        className={`p-5 rounded-3xl border transition-all ${
-                          isCore
-                            ? "bg-[#FCFAF7] border-2 border-[#7C3AED] shadow-sm"
-                            : "bg-[#FAF6F0] border border-[#E1D8CC] hover:border-[#7C3AED]"
-                        }`}
-                        id={`shift-res-card-${i}`}
-                      >
-                        <div className="flex items-center justify-between mb-3">
-                          <span className={`text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1.5 ${
-                            isCore ? "bg-[#7C3AED]/10 text-[#7C3AED]" : "bg-neutral-100 text-neutral-800"
-                          }`}>
-                            {isCore ? (
-                              <Moon className="w-3.5 h-3.5 text-[#D4AF37] fill-[#D4AF37]" />
-                            ) : (
-                              <Coffee className="w-3.5 h-3.5 text-amber-600" />
-                            )}
-                            {res.label.toUpperCase()}
-                          </span>
-                          <span className="text-[11px] font-mono font-bold text-neutral-500 bg-neutral-100 px-2 py-0.5 rounded">
-                            {res.duration} • {res.cycles} Cyc
-                          </span>
-                        </div>
+              <div className="space-y-5" id="shift-results-list">
+                {results.map((res, i) => (
+                  <div
+                    key={res.label + res.start}
+                    className="border-b border-neutral-200/65 pb-4"
+                    id={`shift-res-card-${i}`}
+                  >
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5 mb-1">
+                      <span className="text-xs font-bold text-[#7C3AED] uppercase bg-[#7C3AED]/10 px-2.5 py-0.5 rounded-full inline-block">
+                        {res.label}
+                      </span>
+                      <span className="text-[11px] font-mono font-bold text-[#6B7280]">
+                        {res.duration} recovery duration • {res.cycles} Cycles
+                      </span>
+                    </div>
 
-                        <div className="flex flex-col gap-1.5">
-                          <span className="text-xs text-neutral-500 font-bold uppercase tracking-wider">Sleep Phase</span>
-                          <div className="flex items-baseline gap-2 font-sans">
-                            <span className="text-3xl sm:text-4xl font-black text-[#7C3AED] tracking-tight">
-                              {res.start}
-                            </span>
-                            <span className="text-xs font-bold text-neutral-400 tracking-widest font-mono">
-                              UNTIL
-                            </span>
-                            <span className="text-3xl sm:text-4xl font-black text-[#7C3AED] tracking-tight">
-                              {res.end}
-                            </span>
-                          </div>
-                        </div>
+                    <div className="flex items-baseline gap-2 mt-2">
+                      <span className="text-2xl sm:text-3xl font-black text-[#7C3AED] tracking-tight">
+                        {res.start}
+                      </span>
+                      <span className="text-xs font-bold text-neutral-400 font-mono">UNTIL</span>
+                      <span className="text-2xl sm:text-3xl font-black text-[#7C3AED] tracking-tight">
+                        {res.end}
+                      </span>
+                    </div>
 
-                        <p className="text-xs text-neutral-600 mt-3 pt-3 border-t border-neutral-100 leading-relaxed font-normal">
-                          {res.rationale}
-                        </p>
-                      </motion.div>
-                    );
-                  })}
-                </AnimatePresence>
+                    <p className="text-xs text-neutral-600 mt-2 leading-relaxed">
+                      {res.rationale}
+                    </p>
+                  </div>
+                ))}
               </div>
             </div>
 
-            <div className="mt-6 bg-[#7C3AED]/5 p-4 rounded-3xl border border-[#7C3AED]/15 text-xs sm:text-sm text-neutral-700 flex items-start gap-3">
+            <div className="bg-[#7C3AED]/5 p-4 border-l-2 border-[#7C3AED] text-xs sm:text-sm text-gray-700 flex items-start gap-3">
               <EyeOff className="w-5 h-5 text-[#7C3AED] shrink-0 mt-0.5" />
               <div>
-                <span className="font-bold text-[#111827]">Daytime light protection:</span> Melatonin release is deeply responsive to sunlight waves. Always wear polarized dark glasses on your commute home in the bright morning to secure your melatonin reserves.
+                <span className="font-bold text-[#111827]">Commute Biohack:</span> Wear polarized sunglasses on your morning trip home! Daylight suppresses melatonin instantly. Guarding your biological system values ensures easy day sleep.
               </div>
             </div>
-
           </div>
+
         </div>
       </div>
 
-      {/* SEO Deep content pages */}
-      <div className="space-y-12 select-text text-gray-700 leading-relaxed text-sm sm:text-base bg-[#FAF6F0]/40 p-6 sm:p-10 rounded-3xl border border-[#E1D8CC]" id="shift-seo-content">
-        <section className="space-y-3">
-          <h2 className="text-xl sm:text-2xl font-bold font-serif text-gray-900">
-            How Shift Work Affects Circadian Rhythms
-          </h2>
+      {/* DEEP SEO CONTENT */}
+      <article className="space-y-12 select-text text-gray-700 leading-relaxed text-sm sm:text-base border-t border-neutral-200 pt-12" id="shift-seo-content">
+        
+        {/* SECTION 1 */}
+        <section className="space-y-4">
+          <header className="pb-2">
+            <h2 className="text-2xl sm:text-3xl font-bold font-serif text-gray-900">
+              The Night Shift Paradox: Managing Circadian Rhythm Inversion Safely
+            </h2>
+          </header>
           <p>
-            The human body has an internal 24-hour genetic clock located inside the suprachiasmatic nucleus (SCN). This clock programs your digestive tracts, temperature, and brain wave levels to follow standard day/night solar lines. Utilizing our robust <strong>sleep calculator for night shift workers</strong> allows workers to program artificial circadian shifts logically without accumulating systemic metabolic damage or cognitive fatigue.
+            Occupational demands obligating humans to work night, evening, or rotating timetables create a core biological mismatch. Our bodies are genetically programmed by evolutionary solar cues. For millions of years, solar rays entering the biological retina functioned as the primary external timer (such as the <em>Zeitgeber</em>) that synchronized our molecular biological rhythms.
+          </p>
+          <p>
+            When we force our bodies to stay awake during hours of natural atmospheric darkness and request deep rest during high noon, we run face-first into the <strong>SCN (Suprachiasmatic Nucleus)</strong> system. The SCN is an internal master genetic clock situated in the hypothalamus. It controls metabolic heat, digestive acid schedules, arterial pressure, and hormonal spikes. Overriding this master clock without structural science-backed routines results in chronic occupational fatigue, mental exhaustion, cognitive sluggishness, and severe sleep debt.
+          </p>
+          <p>
+            Our specialized sleep calculator for night shift workers represents a tool of mathematical circadian adaptation. By programming biological rest structures around precise 90-minute intervals—easily estimated via our <Link to="/sleep-cycle-calculator-90-minutes" className="text-[#7C3AED] font-semibold hover:underline bg-[#7C3AED]/5 px-1.5 py-0.5 rounded">90-Minute Sleep Cycle Calculator</Link>—and scheduling active transit times, shift workers can safely inversion-proof their bodies and protect critical cognitive functions.
           </p>
         </section>
 
-        <section className="space-y-3">
-          <h2 className="text-xl sm:text-2xl font-bold font-serif text-gray-900">
-            What is Split Sleep? Core & Anchor Sleep Strategy
-          </h2>
+        {/* SECTION 2 */}
+        <section className="space-y-4">
+          <header className="pb-2">
+            <h2 className="text-2xl sm:text-3xl font-bold font-serif text-gray-900">
+              Daytime Sleep Cave Architecture: The Physics of Melatonin Preservation
+            </h2>
+          </header>
           <p>
-            When daytime conditions prevent you from enjoying a solid 7.5-hour horizontal sleep block due to ambient family disruptions, daylight heating, or noise profiles, sleep scientists recommend the <strong>Anchor Sleep</strong> strategy:
+            In order to sleep soundly during the day, you must construct a bulletproof, sterile light-and-sound sanctuary that completely mimics the natural dark environment of midnight. Waking up during daytime blocks is almost always caused by passing daylight or minor street noises triggering micro-arousals. These micro-arousals disrupt the natural cycle structures described in our <Link to="/wake-up-between-sleep-cycles" className="text-[#7C3AED] font-semibold hover:underline">Wake Up Between Cycles Guide</Link>. Learn the precise physics of day-sleep cave construction:
           </p>
-          <ul className="list-disc pl-5 space-y-2 mt-2">
+          <ol className="list-decimal pl-5 space-y-3">
             <li>
-              <strong>Anchor Sleep Block:</strong> Securing a solid 4 to 5 hour nocturnal frame. This block contains the highest concentration of slow-wave deep sleep cycles, preserving basic cognitive status.
+              <strong>The Absolute Darkness Standard (Blackout):</strong> Use heavyweight rubberized blackout curtains or thermal cellular shades. Any visible sunlight filtration triggers the production of cortisol and suppresses natural melatonin reserves.
             </li>
             <li>
-              <strong>Prophylactic Nap:</strong> Triggering a complete 90-minute cycle sequence later during the day directly preceding your night shift. Waking from this nap refreshed provides high vigilance metrics during peak duty periods.
+              <strong>Acoustics Management (Pink & Red Noise):</strong> External neighborhood noise spikes during morning and afternoon hours. Use stable mechanical fans, deep pink noise generators, or silicon earplugs to mask these sudden decibel spikes.
             </li>
-          </ul>
-        </section>
-
-        <section className="space-y-3">
-          <h2 className="text-xl sm:text-2xl font-bold font-serif text-gray-905">
-            Step-by-Step Biohacking Guide for Day Sleeping
-          </h2>
-          <p>
-            To successfully execute nocturnal shift programs, you must configure a bulletproof daytime sleep cave:
-          </p>
-          <ol className="list-decimal pl-5 space-y-2 mt-2">
-            <li><strong>Total Optical Darkness:</strong> Utilize full-rubberized blackout curtains. Any daylight filtration will hit the retina, suppressing melatonin and inducing micro-wake phases.</li>
-            <li><strong>Sensory White Noise:</strong> Run high-frequency fans or pink noise generators to mask passing vehicles or active daylight household movements.</li>
-            <li><strong>Thermal Mitigation:</strong> Core body temperature must plunge to initiate sleep. Keep the daytime bedroom chilled around 65°F (18°C).</li>
-            <li><strong>Caffeine Fast:</strong> Cease any coffee or energy drinks at least 6 hours before you intend to sleep. Caffeine blocks adenosine receptors, meaning your brain cannot recognize deep fatigue.</li>
+            <li>
+              <strong>Thermal Optimization (Body Cooling):</strong> Core body temperature must dip by 2 degrees Fahrenheit to initiate natural sleep onset. Daytime ambient temperatures naturally rise. Chilling your bedroom to a cold 64-67°F (17-19°C) signals your hypothalamus that it is time to access deep N3 sleep stages, as explored in the official clinical guides on the <a href="https://www.sleepfoundation.org" target="_blank" rel="noopener noreferrer" className="text-[#7C3AED] underline font-semibold">National Sleep Foundation</a> website.
+            </li>
           </ol>
+          <p>
+            By controlling these three pillars, you ensure that your body can transition comfortably through 4 or 5 full sleep cycles during the day without prematurely exiting to active light waking phases.
+          </p>
         </section>
-      </div>
 
-      <div className="mt-8 text-center" id="shift-footer-actions">
-        <Link
-          to="/"
-          className="inline-flex items-center gap-2 text-sm font-bold text-[#7C3AED] hover:text-[#6D28D9] group transition"
-        >
-          <ArrowLeft className="w-4 h-4 group-hover:-translate-x-0.5 transition" />
-          <span>Back to Main Sleep Calculator</span>
-        </Link>
-      </div>
+        {/* SECTION 3 */}
+        <section className="space-y-4">
+          <header className="pb-2">
+            <h2 className="text-2xl sm:text-3xl font-bold font-serif text-gray-900">
+              Anchor Sleep vs. Split Sleep: The Strategist's Guide
+            </h2>
+          </header>
+          <p>
+            Depending on your shift sequence, family environment, and physiological demands, shift workers should select between two primary sleep schedules:
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
+            <div className="p-5 border-l-2 border-[#7C3AED] bg-[#FCFAF7] rounded-r-2xl">
+              <h3 className="font-bold text-gray-900 mb-2 font-serif">
+                Consolidated Rest Block
+              </h3>
+              <p className="text-sm text-gray-600 mb-3">
+                Sleeping for a continuous 7.5 to 8 hours straight. This is ideal if you have a quiet household, blackout curtains, and can block off a solid daytime window without interruptions. This coordinates perfectly with our customized <Link to="/ideal-bedtime-based-on-wake-up-time" className="text-[#7C3AED] font-semibold hover:underline">Ideal Bedtime Calculator</Link>.
+              </p>
+              <span className="text-xs bg-[#7C3AED]/10 text-[#7C3AED] px-2.5 py-1 rounded font-bold">5 Cycles (Continuous)</span>
+            </div>
+            <div className="p-5 border-l-2 border-[#7C3AED] bg-[#FCFAF7] rounded-r-2xl">
+              <h3 className="font-bold text-gray-900 mb-2 font-serif">
+                Split Schedule (Anchor Sleep Style)
+              </h3>
+              <p className="text-sm text-gray-600 mb-3">
+                Splitting sleep into a 5-hour daytime core block plus a 90-minute pre-shift evening cycle. Highly effective if daytime chores or children prevent a solid 8-hour stretch.
+              </p>
+              <span className="text-xs bg-amber-500/10 text-amber-700 px-2.5 py-1 rounded font-bold">3.5h Anchor + 90 Min Nap</span>
+            </div>
+          </div>
+          <p>
+            The Split layout works beautifully because your 3 to 5 hour core block captures the majority of your daily <strong>N3 deep slow-wave sleep</strong> requirement, which occurs heavily during your initial rest phases. The subsequent 90-minute evening nap provides the necessary <strong>REM sleep</strong> and cognitive freshening safely, immediately priming your focus levels before night shift duties commence.
+          </p>
+        </section>
+
+        {/* SECTION 4 */}
+        <section className="space-y-4">
+          <header className="pb-2">
+            <h2 className="text-2xl sm:text-3xl font-bold font-serif text-gray-900">
+              Nutritional Chronobiology: What and When to Eat on Night Shifts
+            </h2>
+          </header>
+          <p>
+            One of the most ignored elements of shift-work fatigue is digestion timing. Due to the genetic programming of your digestive organs, insulin sensitivity plunges during late-night hours. Eating heavy carbohydrates, sugars, or processed meals at 3 AM triggers severe insulin spikes, leading to sleepiness, digestive discomfort, and metabolic distress.
+          </p>
+          <p>
+            <strong>Night Shift Meal Guidelines:</strong> Limit food intake to light, protein-and-fat-dense snacks (nuts, seeds, hard-boiled eggs, or avocado slices) between Midnight and 5 AM. Eat a warm carb-rich breakfast at 6:30 AM before you go to sleep. Complex carbs (such as oats or bananas) help manufacture serotonin and tryptophan in the brain, supporting quick transition to deep day sleep blocks.
+          </p>
+        </section>
+
+        {/* SECTION 5 - FAQs */}
+        <section className="space-y-6 mb-12">
+          <header className="pb-2">
+            <h2 className="text-2xl sm:text-3xl font-bold font-serif text-gray-900">
+              Occupational Sleep Optimization FAQ
+            </h2>
+          </header>
+          
+          <div className="space-y-4">
+            {[
+              {
+                q: "What are the physiological dangers of long-term rotating shifts?",
+                a: "Regularly swapping shift schedules forces your internal master clock to constantly reset, causing chronic circadian disruption. This is linked to metabolic challenges, cardiorespiratory stress, and weakened immune function. For extensive information on managing shift fatigue, review official resource articles on the CDC website."
+              },
+              {
+                q: "Is melatonin supplementation safe for shift workers sleeping in the day?",
+                a: "Yes, under structured timing. Taking a micro-dose (0.3mg to 1mg of melatonin) approximately 30 minutes before your day block can help initiate sleep onset. Avoid high doses, as they can cause morning grogginess and push your internal circadian timing into a state of chronic confusion."
+              },
+              {
+                q: "How should I handle my transition back to normal weekends off?",
+                a: "On your last morning shift of the week, take a short 90-minute sleep cycle instead of a full day block, waking up around noon. This allows you to accumulate sleep drive during the afternoon, making it easier to sleep at a normal nocturnal hour on your day off. You can also calculate your ideal bedtime structure utilizing our main home calculator, or look into the sleep parameters for kids via our Student Sleep Calculator."
+              }
+            ].map((faq, index) => {
+              const isOpen = openFaqIndex === index;
+              return (
+                <div
+                  key={index}
+                  className="bg-[#FAF6F0] border border-[#E1D8CC] rounded-2xl overflow-hidden shadow-xs transition-all duration-300 hover:border-[#7C3AED]"
+                  id={`faq-item-${index}`}
+                >
+                  <button
+                    type="button"
+                    onClick={() => setOpenFaqIndex(isOpen ? null : index)}
+                    className="w-full flex items-center justify-between p-4 sm:p-5 text-left font-semibold text-[#111827] hover:bg-[#FCFAF7] transition-colors focus:outline-none cursor-pointer"
+                  >
+                    <span className="text-base font-bold text-[#111827] pr-4">{faq.q}</span>
+                    <ChevronDown className={`w-5 h-5 text-[#7C3AED] shrink-0 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`} />
+                  </button>
+                  <AnimatePresence initial={false}>
+                    {isOpen && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                        className="overflow-hidden border-t border-[#E1D8CC]"
+                      >
+                        <p className="p-4 sm:p-5 text-xs sm:text-sm text-[#374151] leading-relaxed bg-[#FAF6F0] select-text">
+                          {faq.a}
+                        </p>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              );
+            })}
+          </div>
+        </section>
+
+      </article>
 
     </div>
   );
 }
+

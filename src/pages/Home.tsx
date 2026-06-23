@@ -7,14 +7,9 @@ import { getCanonicalUrl } from "../lib/seo";
 import { OpenGraphTags } from "../components/OpenGraphTags";
 import TimePicker from "../components/TimePicker";
 import SleepCycleChart from "../components/SleepCycleChart";
-
-const QuickSleepTips = lazy(() =>
-  import("../components/QuickSleepTips").then((m) => ({ default: m.QuickSleepTips })),
-);
-const SleepJournal = lazy(() =>
-  import("../components/SleepJournal").then((m) => ({ default: m.SleepJournal })),
-);
-const SleepGuideAndFAQ = lazy(() => import("../components/SleepGuideAndFAQ"));
+import { QuickSleepTips } from "../components/QuickSleepTips";
+import { SleepJournal } from "../components/SleepJournal";
+import SleepGuideAndFAQ from "../components/SleepGuideAndFAQ";
 
 const QuickSleepTipsSkeleton = () => (
   <div className="w-full max-w-[42rem] lg:max-w-[60rem] mx-auto bg-white border border-[#E5E7EB] rounded-2xl p-6 md:p-8 shadow-premium animate-pulse select-none">
@@ -1271,15 +1266,9 @@ export default function Home() {
 
       {/* Clean below-the-fold content rendered with layout stability */}
       <div className="w-full max-w-4xl mx-auto px-2 sm:px-4 space-y-12 sm:space-y-16 mt-6 sm:mt-10">
-        <Suspense fallback={<QuickSleepTipsSkeleton />}>
-          <QuickSleepTips />
-        </Suspense>
-        <Suspense fallback={<SleepJournalSkeleton />}>
-          <SleepJournal />
-        </Suspense>
-        <Suspense fallback={<SleepGuideAndFAQSkeleton />}>
-          <SleepGuideAndFAQ />
-        </Suspense>
+        <QuickSleepTips />
+        <SleepJournal />
+        <SleepGuideAndFAQ />
       </div>
 
       {/* Floating Feedback Button */}
