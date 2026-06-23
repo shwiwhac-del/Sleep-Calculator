@@ -76,7 +76,7 @@ export default function SleepGuideAndFAQ() {
     .slice(0, 3);
 
   return (
-    <div className="w-full max-w-[42rem] mx-auto mt-6 mb-2 px-4 text-[#374151] select-none font-sans text-left space-y-4 content-visible-auto">
+    <div className="w-full max-w-[42rem] mx-auto mt-6 mb-2 px-0 text-[#374151] select-none font-sans text-left space-y-4 content-visible-auto">
       <h2 className="text-2xl sm:text-3xl font-extrabold text-[#111827] tracking-tight leading-tight">
         Sleep Calculator – Find the Perfect Time to Sleep and Wake Up
       </h2>

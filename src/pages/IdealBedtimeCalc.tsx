@@ -77,7 +77,7 @@ export default function IdealBedtimeCalc() {
   }, [wakeTime, selectedDemo, latency]);
 
   return (
-    <div className="w-full max-w-4xl mx-auto px-4 py-8 sm:py-12" id="ideal-calculator-root">
+    <div className="w-full max-w-4xl mx-auto px-2 py-8 sm:py-12" id="ideal-calculator-root">
       <Helmet>
         <title>Ideal Bedtime Based on Wake Up Time – Custom Age Calculator</title>
         <meta

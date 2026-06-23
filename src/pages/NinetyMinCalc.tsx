@@ -75,7 +75,7 @@ export default function NinetyMinCalc() {
   }, [wakeTime, cycleLength, numCycles, fallAsleepTime]);
 
   return (
-    <div className="w-full max-w-4xl mx-auto px-4 py-8 sm:py-12" id="ninety-calculator-root">
+    <div className="w-full max-w-4xl mx-auto px-2 py-8 sm:py-12" id="ninety-calculator-root">
       <Helmet>
         <title>Sleep Cycle Calculator 90 Minutes – Calculate Cycles & Bedtime</title>
         <meta

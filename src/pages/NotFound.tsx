@@ -10,7 +10,7 @@ export default function NotFound() {
   const canonicalUrl = getCanonicalUrl(location.pathname);
 
   return (
-    <div className="min-h-[75vh] flex flex-col items-center justify-center px-4 sm:px-6 py-12 text-center relative z-10 w-full max-w-xl mx-auto">
+    <div className="min-h-[75vh] flex flex-col items-center justify-center px-2 sm:px-4 py-12 text-center relative z-10 w-full max-w-xl mx-auto">
       <OpenGraphTags
         title="404 Page Not Found – Sleep Calculator"
         description="The requested sleep calculator guide, resource, or article could not be located."

@@ -93,7 +93,7 @@ export default function StudentCalc() {
   }, [selectedAge, scheduleMode, wakeTime]);
 
   return (
-    <div className="w-full max-w-4xl mx-auto px-4 py-8 sm:py-12" id="student-calculator-root">
+    <div className="w-full max-w-4xl mx-auto px-2 py-8 sm:py-12" id="student-calculator-root">
       <Helmet>
         <title>Sleep Calculator for Students – Optimize Your Exam Bedtime</title>
         <meta

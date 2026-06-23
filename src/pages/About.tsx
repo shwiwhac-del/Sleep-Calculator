@@ -18,7 +18,7 @@ export default function About() {
   const meta = MAIN_PAGES_META["/about"];
 
   return (
-    <div className="w-full max-w-4xl mx-auto px-4 sm:px-6">
+    <div className="w-full max-w-4xl mx-auto px-2 sm:px-4">
       <OpenGraphTags
         title={meta.title}
         description={meta.description}

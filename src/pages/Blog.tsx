@@ -1787,7 +1787,7 @@ export default function Blog() {
   }
 
   return (
-    <div className={`w-full mx-auto px-4 sm:px-6 relative z-10 ${isAnyBlog ? 'max-w-3xl py-4 sm:py-6' : 'max-w-6xl py-8'}`}>
+    <div className={`w-full mx-auto px-2 sm:px-4 relative z-10 ${isAnyBlog ? 'max-w-3xl py-4 sm:py-6' : 'max-w-6xl py-8'}`}>
       <OpenGraphTags
         title={title}
         description={description}

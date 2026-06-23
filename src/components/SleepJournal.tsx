@@ -312,7 +312,7 @@ export function SleepJournal() {
   };
 
   return (
-    <div className="w-full max-w-[42rem] mx-auto mt-6 mb-8 px-4 text-left select-none font-sans" id="sleep-journal-section">
+    <div className="w-full max-w-[42rem] mx-auto mt-6 mb-8 px-0 text-left select-none font-sans" id="sleep-journal-section">
       {/* Toast Notification */}
       <AnimatePresence>
         {toastMessage && (

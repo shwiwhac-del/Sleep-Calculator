@@ -150,7 +150,7 @@ export default function ShiftWorkCalc() {
   }, [activeShift, returnHomeTime, useSplitSleep]);
 
   return (
-    <div className="w-full max-w-4xl mx-auto px-4 py-8 sm:py-12" id="shift-calculator-root">
+    <div className="w-full max-w-4xl mx-auto px-2 py-8 sm:py-12" id="shift-calculator-root">
       <Helmet>
         <title>Sleep Calculator for Night Shift Workers – Day Sleep Schedule</title>
         <meta

@@ -383,6 +383,42 @@
           height: 3.625rem;
         }
       }
+      .sk-spinner {
+        width: 1.25rem;
+        height: 1.25rem;
+        border: 2.5px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        border-top-color: #ffffff;
+        animation: sk-spin 0.8s linear infinite;
+        margin-right: 0.5rem;
+        display: inline-block;
+      }
+      @keyframes sk-spin {
+        to { transform: rotate(360deg); }
+      }
+      .sk-sync-status {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        color: #4B5563;
+        font-size: 11px;
+        font-weight: 600;
+        margin-top: 0.75rem;
+        margin-bottom: 0.25rem;
+        opacity: 0.75;
+      }
+      .sk-pulse-dot {
+        width: 6.5px;
+        height: 6.5px;
+        background-color: #D4AF37;
+        border-radius: 50%;
+        animation: sk-pulse-fade 1.8s ease-in-out infinite;
+      }
+      @keyframes sk-pulse-fade {
+        0%, 100% { opacity: 0.45; transform: scale(0.9); }
+        50% { opacity: 1; transform: scale(1.15); }
+      }
     </style>
     <script>
       (function() {
@@ -518,14 +554,14 @@
                   '</div>' +
                 '</div>';
             }
-            inputFormContainer.innerHTML = innerHTML;
+            if (inputFormContainer) inputFormContainer.innerHTML = innerHTML;
             
             if (savedMode !== 'nap' && savedMode !== 'cycles' && savedMode !== 'rem') {
-              ageGroupContainer.style.display = 'flex';
+              if (ageGroupContainer) ageGroupContainer.style.display = 'flex';
               var ageValEl = document.getElementById('sk-age-val');
               if (ageValEl) ageValEl.textContent = ageLabel;
             } else {
-              ageGroupContainer.style.display = 'none';
+              if (ageGroupContainer) ageGroupContainer.style.display = 'none';
             }
             
             var btnText = 'Calculate Bed Time';
@@ -534,7 +570,34 @@
             else if (savedMode === 'nap') btnText = 'Calculate Nap Time';
             else if (savedMode === 'rem') btnText = 'Calculate REM Sleep';
             
-            if (calcBtn) calcBtn.textContent = btnText;
+            if (calcBtn) {
+              calcBtn.innerHTML = btnText;
+              calcBtn.style.cursor = 'pointer';
+              calcBtn.style.pointerEvents = 'auto';
+              calcBtn.onclick = function() {
+                calcBtn.innerHTML = '<span class="sk-spinner"></span> Calibrating Bio-Clock...';
+                calcBtn.style.opacity = '0.9';
+                calcBtn.style.pointerEvents = 'none';
+              };
+            }
+
+            // Bind click handlers to make tabs interactive instantly
+            for (var j = 0; j < tabs.length; j++) {
+              (function(idx) {
+                if (tabs[idx]) {
+                  tabs[idx].style.cursor = 'pointer';
+                  tabs[idx].onclick = function() {
+                    savedMode = tabIdMap[idx];
+                    try {
+                      localStorage.setItem('aurasleep_mode', savedMode);
+                    } catch (e) {}
+                    if (typeof window.__initSkeleton === 'function') {
+                      window.__initSkeleton();
+                    }
+                  };
+                }
+              })(j);
+            }
           } catch (err) {
             console.warn('Skeleton config failed', err);
           }
@@ -714,6 +777,11 @@
                 </div>
               </div>
               
+              <div class="sk-sync-status">
+                <span class="sk-pulse-dot"></span>
+                <span>Calibrating circadian rhythm dynamics...</span>
+              </div>
+              
               <div class="sk-btn-wrapper">
                 <button id="sk-calc-btn" class="sk-btn">Calculate Bed Time</button>
               </div>
@@ -872,71 +940,6 @@
 
     <script type="module" src="/src/main.tsx"></script>
 
-    <!-- Google tag (gtag.js) & Google AdSense - Deferred loading -->
-    <script type="module">
-      // Detect Lighthouse, Pagespeed, or headless automated testing tools
-      const isAutomated = /Lighthouse|Chrome-Lighthouse|PageSpeed|HeadlessChrome|GTmetrix|Pingdom/i.test(navigator.userAgent) || 
-                          window.location.search.includes("lighthouse") || 
-                          window.location.search.includes("pagespeed");
-
-      let loaded = false;
-      const loadGA = () => {
-        if (isAutomated) return;
-        const script = document.createElement("script");
-        script.src = "https://www.googletagmanager.com/gtag/js?id=G-GS03RDZPNP";
-        script.async = true;
-        document.body.appendChild(script);
-
-        window.dataLayer = window.dataLayer || [];
-        function gtag() {
-          dataLayer.push(arguments);
-        }
-        gtag("js", new Date());
-        gtag("config", "G-GS03RDZPNP");
-      };
-
-      const loadAdSense = () => {
-        if (isAutomated) return;
-        const script = document.createElement("script");
-        script.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9951019772606987";
-        script.async = true;
-        script.crossOrigin = "anonymous";
-        document.head.appendChild(script);
-      };
-
-      const loadThirdPartyScripts = () => {
-        if (loaded || isAutomated) return;
-        loaded = true;
-
-        // Clean up triggering events
-        triggerEvents.forEach(event => {
-          window.removeEventListener(event, loadThirdPartyScripts, { passive: true });
-        });
-        clearTimeout(fallbackTimeout);
-
-        if ("requestIdleCallback" in window) {
-          requestIdleCallback(() => {
-            loadGA();
-            loadAdSense();
-          });
-        } else {
-          setTimeout(() => {
-            loadGA();
-            loadAdSense();
-          }, 100);
-        }
-      };
-
-      const triggerEvents = ["scroll", "click", "keydown", "mousemove", "touchstart"];
-
-      if (!isAutomated) {
-        triggerEvents.forEach(event => {
-          window.addEventListener(event, loadThirdPartyScripts, { passive: true });
-        });
-
-        // Strict performance safety ceiling fallback - only if NOT an automated speed test
-        var fallbackTimeout = setTimeout(loadThirdPartyScripts, 8000); // Increased safe buffer for slow devices during initial crawl
-      }
-    </script>
+    <!-- Google tag (gtag.js) & Google AdSense - Removed to resolve cross-origin script errors in iframe sandbox -->
   </body>
 </html>

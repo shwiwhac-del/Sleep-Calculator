@@ -202,7 +202,7 @@ export function QuickSleepTips() {
   const progressPercent = Math.round((completedCount / totalTips) * 100);
 
   return (
-    <div className="w-full max-w-[42rem] lg:max-w-[60rem] mx-auto mt-10 mb-8 px-4 text-left select-none font-sans" id="quick-sleep-tips-section">
+    <div className="w-full max-w-[42rem] lg:max-w-[60rem] mx-auto mt-10 mb-8 px-0 text-left select-none font-sans" id="quick-sleep-tips-section">
       <div className="flex flex-col items-center text-center gap-2 mb-8">
         <h2 className="text-2xl sm:text-3xl font-extrabold text-[#111827] tracking-tight leading-tight">
           Quick Sleep Hygiene Tips

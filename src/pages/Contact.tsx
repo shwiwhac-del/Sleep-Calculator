@@ -82,7 +82,7 @@ export default function Contact() {
   };
 
   return (
-    <div className="w-full max-w-xl mx-auto px-4 sm:px-6">
+    <div className="w-full max-w-xl mx-auto px-2 sm:px-4">
       <OpenGraphTags
         title={meta.title}
         description={meta.description}

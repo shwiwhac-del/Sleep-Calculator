@@ -90,7 +90,7 @@ export default function WakeUpCalc() {
   }, [bedtimeMode, targetTime, latency]);
 
   return (
-    <div className="w-full max-w-4xl mx-auto px-4 py-8 sm:py-12" id="wake-cycles-calculator-root">
+    <div className="w-full max-w-4xl mx-auto px-2 py-8 sm:py-12" id="wake-cycles-calculator-root">
       <Helmet>
         <title>Wake Up Between Sleep Cycles Calculator – Morning Refreshment</title>
         <meta
