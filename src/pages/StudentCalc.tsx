@@ -251,22 +251,20 @@ export default function StudentCalc() {
             Human sleep is not a singular flat state of biological unconsciousness. Instead, it is structured as a series of repeating **Ultradian cycles**, typically lasting approximately 90 minutes. Each cycle represents a highly coordinated transit across diverse neural stages, characterized by unique brain wave profiles, hormonal levels, and metabolic tasks.
           </p>
           
-          <div className="my-6 p-5 border-l-4 border-[#7C3AED] bg-[#FCFAF7] rounded-r-2xl">
-            <h3 className="font-bold text-gray-900 mb-3 text-lg font-serif">Structural Breakdown of a Single 90-Minute Sleep Cycle</h3>
-            <ul className="space-y-3 text-sm">
-              <li>
-                <strong className="text-[#7C3AED] font-bold">Stage N1 (Light Sleep Onset - ~5-10 Minutes):</strong> The transition phase from waking life to physiological sleep. Muscle tone decreases, micro-twitches occur, and the brain shifts from rapid beta/alpha waves to slower theta waves. Waking up in this phase is easy, but leaves you feeling unrefreshed. Same concepts apply when mapping bedtimes using our popular <Link to="/ideal-bedtime-based-on-wake-up-time" className="text-[#7C3AED] hover:underline">Ideal Bedtime Calculator</Link>.
-              </li>
-              <li>
-                <strong className="text-[#7C3AED] font-bold">Stage N2 (Light/Intermediate Recovery - ~20-25 Minutes):</strong> True sleep state stabilizes. Body temperature descends and the heart rate slows down. This stage features **Sleep Spindles** and **K-complexes**—rhythmic bursts of high-frequency brainwave syncs that coordinate communication between the cortical regions, paving the way for file storage routing.
-              </li>
-              <li>
-                <strong className="text-[#7C3AED] font-bold">Stage N3 (Deep Slow-Wave Sleep - ~25-40 Minutes):</strong> The golden recovery phase. The brain undergoes low-frequency delta wave sweeps. During N3, human growth hormone (HGH) peaks, reinforcing muscular tissues and cellular structural systems. Crucially, the glymphatic system expands, flushing metabolic wastes from study-intensive mental hours.
-              </li>
-              <li>
-                <strong className="text-[#7C3AED] font-bold">REM (Rapid Eye Movement - ~10-20 Minutes):</strong> The creative, dream-rich sanctuary. Brain activity surges to match alert waking states. REM cycles organize emotional events, solidify fluid abstract associations, and catalog linguistic and semantic frameworks. Waking during a REM cycle is highly disorganizing, triggering sleep paralysis traces or immediate cognitive fatigue.
-              </li>
-            </ul>
+          <div className="space-y-4 my-6">
+            <h3 className="font-bold text-[#111827] text-xl font-serif">Structural Breakdown of a Single 90-Minute Sleep Cycle</h3>
+            <p>
+              <strong className="text-[#111827]">Stage N1 (Light Sleep Onset - ~5-10 Minutes):</strong> The transition phase from waking life to physiological sleep. Muscle tone decreases, micro-twitches occur, and the brain shifts from rapid beta/alpha waves to slower theta waves. Waking up in this phase is easy, but leaves you feeling unrefreshed. Same concepts apply when mapping bedtimes using our popular <Link to="/ideal-bedtime-based-on-wake-up-time" className="text-[#7C3AED] hover:underline">Ideal Bedtime Calculator</Link>.
+            </p>
+            <p>
+              <strong className="text-[#111827]">Stage N2 (Light/Intermediate Recovery - ~20-25 Minutes):</strong> True sleep state stabilizes. Body temperature descends and the heart rate slows down. This stage features **Sleep Spindles** and **K-complexes**—rhythmic bursts of high-frequency brainwave syncs that coordinate communication between the cortical regions, paving the way for file storage routing.
+            </p>
+            <p>
+              <strong className="text-[#111827]">Stage N3 (Deep Slow-Wave Sleep - ~25-40 Minutes):</strong> The golden recovery phase. The brain undergoes low-frequency delta wave sweeps. During N3, human growth hormone (HGH) peaks, reinforcing muscular tissues and cellular structural systems. Crucially, the glymphatic system expands, flushing metabolic wastes from study-intensive mental hours.
+            </p>
+            <p>
+              <strong className="text-[#111827]">REM (Rapid Eye Movement - ~10-20 Minutes):</strong> The creative, dream-rich sanctuary. Brain activity surges to match alert waking states. REM cycles organize emotional events, solidify fluid abstract associations, and catalog linguistic and semantic frameworks. Waking during a REM cycle is highly disorganizing, triggering sleep paralysis traces or immediate cognitive fatigue.
+            </p>
           </div>
           
           <p>
@@ -285,37 +283,16 @@ export default function StudentCalc() {
             As a student grows through physical and biological developmental stages, their neurological requirements, hormonal secretion timelines, and target rest frames shift significantly. Let us analyze this evolution systematically:
           </p>
           
-          <div className="overflow-x-auto my-6 rounded-2xl border border-neutral-200" id="student-age-table-container">
-            <table className="min-w-full text-sm divide-y divide-neutral-200 bg-white text-left">
-              <thead className="bg-[#FCFAF7]">
-                <tr className="font-bold text-gray-900">
-                  <th className="px-4 py-3">Educational Demographics</th>
-                  <th className="px-4 py-3">Recommended Sleep Range</th>
-                  <th className="px-4 py-3">Ideal Daily Cycles</th>
-                  <th className="px-4 py-3">Core Biological Focus</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-neutral-100 font-sans text-[#374151]">
-                <tr>
-                  <td className="px-4 py-3.5 font-bold text-gray-900">Middle School (6-12 Years)</td>
-                  <td className="px-4 py-3.5">9 to 12 Hours</td>
-                  <td className="px-4 py-3.5">6 to 8 Cycles</td>
-                  <td className="px-4 py-3.5">Physical growth, skeletal tissue tracking, basic semantic skill builders.</td>
-                </tr>
-                <tr>
-                  <td className="px-4 py-3.5 font-bold text-gray-900">High School Teens (13-17 Years)</td>
-                  <td className="px-4 py-3.5">8 to 10 Hours</td>
-                  <td className="px-4 py-3.5">5 to 7 Cycles</td>
-                  <td className="px-4 py-3.5">Synaptic pruning, analytical pathways, intense social emotional integration.</td>
-                </tr>
-                <tr>
-                  <td className="px-4 py-3.5 font-bold text-gray-900">College Students (18+ Years)</td>
-                  <td className="px-4 py-3.5">7 to 9 Hours</td>
-                  <td className="px-4 py-3.5">5 to 6 Cycles</td>
-                  <td className="px-4 py-3.5">Prefrontal cortex refinement, complex analytical retention, stress resilience.</td>
-                </tr>
-              </tbody>
-            </table>
+          <div className="space-y-4 my-6" id="student-age-table-container">
+            <p>
+              <strong className="text-[#111827]">Middle School (6-12 Years):</strong> Recommended 9 to 12 Hours (6 to 8 Cycles). Core biological focus: Physical growth, skeletal tissue tracking, basic semantic skill builders.
+            </p>
+            <p>
+              <strong className="text-[#111827]">High School Teens (13-17 Years):</strong> Recommended 8 to 10 Hours (5 to 7 Cycles). Core biological focus: Synaptic pruning, analytical pathways, intense social emotional integration.
+            </p>
+            <p>
+              <strong className="text-[#111827]">College Students (18+ Years):</strong> Recommended 7 to 9 Hours (5 to 6 Cycles). Core biological focus: Prefrontal cortex refinement, complex analytical retention, stress resilience.
+            </p>
           </div>
 
           <p>

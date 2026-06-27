@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, lazy, Suspense } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "motion/react";
 import { MessageSquare } from "lucide-react";
@@ -10,82 +10,7 @@ import SleepCycleChart from "../components/SleepCycleChart";
 import { QuickSleepTips } from "../components/QuickSleepTips";
 import { SleepJournal } from "../components/SleepJournal";
 import SleepGuideAndFAQ from "../components/SleepGuideAndFAQ";
-
-const QuickSleepTipsSkeleton = () => (
-  <div className="w-full max-w-[42rem] lg:max-w-[60rem] mx-auto bg-white border border-[#E5E7EB] rounded-2xl p-6 md:p-8 shadow-premium animate-pulse select-none">
-    <div className="flex items-center gap-3 mb-6 pb-4 border-b border-gray-100">
-      <div className="w-9 h-9 bg-gray-100 rounded-xl" />
-      <div className="space-y-2 flex-grow">
-        <div className="h-5 w-48 bg-gray-100 rounded-md" />
-        <div className="h-3.5 w-72 bg-gray-50 rounded-md" />
-      </div>
-    </div>
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-      {[1, 2, 3].map((val) => (
-        <div key={val} className="p-5 border border-gray-100 rounded-2xl space-y-4">
-          <div className="w-10 h-10 bg-gray-100 rounded-2xl" />
-          <div className="space-y-2.5">
-            <div className="h-4.5 w-5/6 bg-gray-100 rounded-md" />
-            <div className="h-3.5 w-4/5 bg-gray-50 rounded-md" />
-            <div className="h-3.5 w-3/4 bg-gray-50 rounded-md" />
-          </div>
-        </div>
-      ))}
-    </div>
-  </div>
-);
-
-const SleepJournalSkeleton = () => (
-  <div className="w-full max-w-4xl mx-auto bg-white border border-[#E5E7EB] rounded-2xl p-6 md:p-8 shadow-premium animate-pulse select-none">
-    <div className="flex justify-between items-center mb-6 pb-4 border-b border-gray-100">
-      <div className="flex items-center gap-3">
-        <div className="w-9 h-9 bg-gray-100 rounded-xl" />
-        <div className="space-y-2">
-          <div className="h-5 w-40 bg-gray-100 rounded-md" />
-          <div className="h-3.5 w-60 bg-gray-50 rounded-md" />
-        </div>
-      </div>
-      <div className="w-24 h-9 bg-gray-100 rounded-lg" />
-    </div>
-    <div className="space-y-4">
-      <div className="h-10 w-full bg-gray-50 border border-gray-100 rounded-xl" />
-      {[1, 2, 3].map((val) => (
-        <div key={val} className="p-4 border border-gray-100 rounded-xl flex items-center justify-between gap-4">
-          <div className="space-y-2 flex-grow">
-            <div className="h-4 w-1/3 bg-gray-100 rounded-md" />
-            <div className="h-3.5 w-2/3 bg-gray-50 rounded-md" />
-          </div>
-          <div className="w-12 h-6 bg-gray-100 rounded-full" />
-        </div>
-      ))}
-    </div>
-  </div>
-);
-
-const SleepGuideAndFAQSkeleton = () => (
-  <div className="w-full max-w-4xl mx-auto bg-white border border-[#E5E7EB] rounded-2xl p-6 md:p-8 shadow-premium animate-pulse select-none">
-    <div className="flex items-center gap-3 mb-6 pb-4 border-b border-gray-100">
-      <div className="w-9 h-9 bg-gray-100 rounded-xl" />
-      <div className="space-y-2">
-        <div className="h-5 w-44 bg-gray-100 rounded-md" />
-        <div className="h-3.5 w-64 bg-gray-50 rounded-md" />
-      </div>
-    </div>
-    <div className="space-y-3.5">
-      {[1, 2, 3, 4].map((val) => (
-        <div key={val} className="p-4 bg-gray-50/50 border border-gray-100 rounded-xl space-y-2.5">
-          <div className="flex justify-between items-center">
-            <div className="h-4.5 w-3/4 bg-gray-100 rounded-md" />
-            <div className="w-4 h-4 bg-gray-100 rounded-full" />
-          </div>
-          <div className="h-3.5 w-5/6 bg-gray-50/70 rounded-md" />
-        </div>
-      ))}
-    </div>
-  </div>
-);
-
-const FeedbackModal = lazy(() => import("../components/FeedbackModal").then((m) => ({ default: m.FeedbackModal })));
+import { FeedbackModal } from "../components/FeedbackModal";
 
 export interface CyclesReport {
   bedTime: string;
@@ -1264,7 +1189,7 @@ export default function Home() {
         )}
       </AnimatePresence>
 
-      {/* Clean below-the-fold content rendered with layout stability */}
+      {/* Clean below-the-fold content rendered with smooth animations */}
       <div className="w-full max-w-4xl mx-auto px-2 sm:px-4 space-y-12 sm:space-y-16 mt-6 sm:mt-10">
         <QuickSleepTips />
         <SleepJournal />
@@ -1285,12 +1210,10 @@ export default function Home() {
       </button>
 
       {isFeedbackModalOpen && (
-        <Suspense fallback={null}>
-          <FeedbackModal
-            isOpen={isFeedbackModalOpen}
-            onClose={() => setIsFeedbackModalOpen(false)}
-          />
-        </Suspense>
+        <FeedbackModal
+          isOpen={isFeedbackModalOpen}
+          onClose={() => setIsFeedbackModalOpen(false)}
+        />
       )}
     </div>
   );

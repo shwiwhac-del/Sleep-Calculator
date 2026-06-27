@@ -336,24 +336,28 @@ export default function ShiftWorkCalc() {
           <p>
             Depending on your shift sequence, family environment, and physiological demands, shift workers should select between two primary sleep schedules:
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
-            <div className="p-5 border-l-2 border-[#7C3AED] bg-[#FCFAF7] rounded-r-2xl">
-              <h3 className="font-bold text-gray-900 mb-2 font-serif">
-                Consolidated Rest Block
-              </h3>
-              <p className="text-sm text-gray-600 mb-3">
+          <div className="space-y-6 my-6">
+            <div>
+              <div className="flex flex-wrap items-center gap-2 mb-1">
+                <h3 className="font-bold text-[#111827] text-lg font-serif">
+                  Consolidated Rest Block
+                </h3>
+                <span className="text-xs bg-[#7C3AED]/10 text-[#7C3AED] px-2.5 py-0.5 rounded-full font-semibold">5 Cycles (Continuous)</span>
+              </div>
+              <p>
                 Sleeping for a continuous 7.5 to 8 hours straight. This is ideal if you have a quiet household, blackout curtains, and can block off a solid daytime window without interruptions. This coordinates perfectly with our customized <Link to="/ideal-bedtime-based-on-wake-up-time" className="text-[#7C3AED] font-semibold hover:underline">Ideal Bedtime Calculator</Link>.
               </p>
-              <span className="text-xs bg-[#7C3AED]/10 text-[#7C3AED] px-2.5 py-1 rounded font-bold">5 Cycles (Continuous)</span>
             </div>
-            <div className="p-5 border-l-2 border-[#7C3AED] bg-[#FCFAF7] rounded-r-2xl">
-              <h3 className="font-bold text-gray-900 mb-2 font-serif">
-                Split Schedule (Anchor Sleep Style)
-              </h3>
-              <p className="text-sm text-gray-600 mb-3">
+            <div>
+              <div className="flex flex-wrap items-center gap-2 mb-1">
+                <h3 className="font-bold text-[#111827] text-lg font-serif">
+                  Split Schedule (Anchor Sleep Style)
+                </h3>
+                <span className="text-xs bg-amber-500/10 text-amber-800 px-2.5 py-0.5 rounded-full font-semibold">3.5h Anchor + 90 Min Nap</span>
+              </div>
+              <p>
                 Splitting sleep into a 5-hour daytime core block plus a 90-minute pre-shift evening cycle. Highly effective if daytime chores or children prevent a solid 8-hour stretch.
               </p>
-              <span className="text-xs bg-amber-500/10 text-amber-700 px-2.5 py-1 rounded font-bold">3.5h Anchor + 90 Min Nap</span>
             </div>
           </div>
           <p>

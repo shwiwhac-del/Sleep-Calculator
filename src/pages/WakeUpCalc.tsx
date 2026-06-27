@@ -272,20 +272,20 @@ export default function WakeUpCalc() {
           <p>
             The transition from deep sleep to alert waking states is governed by a delicate hormonal balance:
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
-            <div className="p-5 border-l-2 border-[#7C3AED] bg-[#FCFAF7] rounded-r-2xl">
-              <h3 className="font-bold text-gray-900 mb-2 font-serif text-[#7C3AED]">
+          <div className="space-y-6 my-6">
+            <div>
+              <h3 className="font-bold text-[#111827] text-lg font-serif mb-1">
                 The Cortisol Awakening Response (CAR)
               </h3>
-              <p className="text-sm text-gray-600">
+              <p>
                 In the hour preceding your natural waking time, your body releases a healthy spike of cortisol—historically known as the "stress hormone"—which acts as a biological alarm, raising blood pressure, body temperature, and blood glucose to prime you for physical activity. It coordinates perfectly with the sleep-planning formulas found in the <Link to="/ideal-bedtime-based-on-wake-up-time" className="text-[#7C3AED] font-semibold hover:underline">Ideal Bedtime Calculator</Link>.
               </p>
             </div>
-            <div className="p-5 border-l-2 border-[#7C3AED] bg-[#FCFAF7] rounded-r-2xl">
-              <h3 className="font-bold text-gray-900 mb-2 font-serif text-[#7C3AED]">
+            <div>
+              <h3 className="font-bold text-[#111827] text-lg font-serif mb-1">
                 The Melatonin Clamping Curve
               </h3>
-              <p className="text-sm text-gray-600">
+              <p>
                 As cortisol levels rise, your biological master clock suppresses melatonin secretion. If you wake up prematurely, high levels of melatonin remain in your bloodstream, contributing to a feeling of sluggishness that can last for hours.
               </p>
             </div>

@@ -265,20 +265,20 @@ export default function NinetyMinCalc() {
           <p>
             To understand the 90-minute formula, let us explore the biological milestones that define each sleep stage within this structured loop:
           </p>
-          <ul className="space-y-3 bg-white p-5 rounded-2xl border border-neutral-200 text-sm">
-            <li>
-              <strong>Stage 1 (NREM 1 - ~10 mins):</strong> Alpha brain waves transition to slow theta waves. Muscles relax, and sensory awareness fades. It is a light transition state.
-            </li>
-            <li>
-              <strong>Stage 2 (NREM 2 - ~25 mins):</strong> Marked by the appearance of sleep spindles and K-complexes. This stage represents a biological gateway to deep rest, helping with motor skill consolidation.
-            </li>
-            <li>
-              <strong>Stage 3 (NREM 3 - ~35 mins):</strong> Deep slow-wave sleep. Heart rate and blood pressure drop to their daily lows. The brain produces slow, high-amplitude delta waves, focusing resources on cellular repair and immune strengthening, as outlined in studies published on the <a href="https://www.cdc.gov" target="_blank" rel="noopener noreferrer" className="text-[#7C3AED] underline font-semibold">CDC health directory</a>.
-            </li>
-            <li>
-              <strong>REM Dreaming Sleep (Stage 4 - ~20 mins):</strong> Rapid eye movements, high brainwave activity, and muscular paralysis. Active visual dream loops occur. Waking up directly out of REM sleep can trigger spatial confusion.
-            </li>
-          </ul>
+          <div className="space-y-4 my-4">
+            <p>
+              <strong className="text-[#111827]">Stage 1 (NREM 1 - ~10 mins):</strong> Alpha brain waves transition to slow theta waves. Muscles relax, and sensory awareness fades. It is a light transition state.
+            </p>
+            <p>
+              <strong className="text-[#111827]">Stage 2 (NREM 2 - ~25 mins):</strong> Marked by the appearance of sleep spindles and K-complexes. This stage represents a biological gateway to deep rest, helping with motor skill consolidation.
+            </p>
+            <p>
+              <strong className="text-[#111827]">Stage 3 (NREM 3 - ~35 mins):</strong> Deep slow-wave sleep. Heart rate and blood pressure drop to their daily lows. The brain produces slow, high-amplitude delta waves, focusing resources on cellular repair and immune strengthening, as outlined in studies published on the <a href="https://www.cdc.gov" target="_blank" rel="noopener noreferrer" className="text-[#7C3AED] underline font-semibold">CDC health directory</a>.
+            </p>
+            <p>
+              <strong className="text-[#111827]">REM Dreaming Sleep (Stage 4 - ~20 mins):</strong> Rapid eye movements, high brainwave activity, and muscular paralysis. Active visual dream loops occur. Waking up directly out of REM sleep can trigger spatial confusion.
+            </p>
+          </div>
           <p>
             The proportions of these stages shift across the night. Your first two sleep cycles of the night are dominated by Stage 3 Deep sleep, satisfying your physical recovery needs. Your later cycles are dominated by REM and Stage 2 sleep, supporting creative cognition, logic synthesis, and mood regulation. If you cut your sleep short, you disproportionately sacrifice critical REM sleep hours. For student schedule optimization, please see our dedicated <Link to="/student-sleep-calculator" className="text-[#7C3AED] font-semibold hover:underline">Student Sleep Calculator</Link>.
           </p>

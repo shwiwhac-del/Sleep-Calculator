@@ -232,20 +232,20 @@ export default function IdealBedtimeCalc() {
           <p>
             Sleep architecture undergoes substantial changes as we age:
           </p>
-          <ul className="space-y-4 bg-white p-5 rounded-2xl border border-neutral-200 text-sm">
-            <li>
-              <strong className="text-[#7C3AED] font-bold">Babies & Infants (4-11 months):</strong> Demand 12 to 15 hours of total sleep. Their rest pattern is divided into active sleep (a precursor to REM) and quiet sleep (a precursor to slow-wave deep sleep). These extended rest windows are vital for motor learning, sensory processing, and systemic brain development.
-            </li>
-            <li>
-              <strong className="text-[#7C3AED] font-bold">Teenagers (13-17 years):</strong> Demand between 8.5 to 10 hours of sleep. Adolescence induces a natural circadian phase delay, causing teenagers to stay awake later in the evening. Sacrificing these vital rest windows can lead to difficulties with attention and emotional balance.
-            </li>
-            <li>
-              <strong className="text-[#7C3AED] font-bold">Adults (18-64 years):</strong> Settle into an optimal range of 7 to 9 hours of sleep. The primary goal during this phase is maintaining physiological and emotional recovery, supporting long-term health, cellular regeneration, and cardiovascular resilience.
-            </li>
-            <li>
-              <strong className="text-[#7C3AED] font-bold">Seniors (65+ years):</strong> Experience a natural decline in deep, slow-wave N3 deep sleep. Their rest window often compresses to 5 to 7 hours, resulting in lighter, more fragmented sleep patterns that can lead to waking up earlier in the morning.
-            </li>
-          </ul>
+          <div className="space-y-4 my-4">
+            <p>
+              <strong className="text-[#111827]">Babies & Infants (4-11 months):</strong> Demand 12 to 15 hours of total sleep. Their rest pattern is divided into active sleep (a precursor to REM) and quiet sleep (a precursor to slow-wave deep sleep). These extended rest windows are vital for motor learning, sensory processing, and systemic brain development.
+            </p>
+            <p>
+              <strong className="text-[#111827]">Teenagers (13-17 years):</strong> Demand between 8.5 to 10 hours of sleep. Adolescence induces a natural circadian phase delay, causing teenagers to stay awake later in the evening. Sacrificing these vital rest windows can lead to difficulties with attention and emotional balance.
+            </p>
+            <p>
+              <strong className="text-[#111827]">Adults (18-64 years):</strong> Settle into an optimal range of 7 to 9 hours of sleep. The primary goal during this phase is maintaining physiological and emotional recovery, supporting long-term health, cellular regeneration, and cardiovascular resilience.
+            </p>
+            <p>
+              <strong className="text-[#111827]">Seniors (65+ years):</strong> Experience a natural decline in deep, slow-wave N3 deep sleep. Their rest window often compresses to 5 to 7 hours, resulting in lighter, more fragmented sleep patterns that can lead to waking up earlier in the morning.
+            </p>
+          </div>
         </section>
 
         {/* SECTION 3 */}

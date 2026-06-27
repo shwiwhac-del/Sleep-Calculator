@@ -107,7 +107,7 @@ function AppContent() {
       <OpenGraphTags />
       <Header />
       <main className="relative z-10 flex-grow flex flex-col items-center justify-start w-full pt-0 pb-4 sm:pb-8">
-          <Suspense fallback={null}>
+          <Suspense fallback={<div className="min-h-[60vh] w-full opacity-0 transition-opacity duration-300" />}>
               <Routes>
                 {/* Core Pages */}
                 <Route path="/" element={<Home />} />

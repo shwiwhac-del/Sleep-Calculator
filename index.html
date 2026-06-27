@@ -231,9 +231,17 @@
     <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
     
     <link
+      rel="preload"
+      as="style"
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;650;700&amp;family=Playfair+Display:wght@600;700&amp;display=swap"
-      rel="stylesheet"
+      onload="this.onload=null;this.rel='stylesheet'"
     />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;650;700&amp;family=Playfair+Display:wght@600;700&amp;display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
     <title>Sleep Calculator | Ideal Bedtime & Wake-Up Times</title>
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
