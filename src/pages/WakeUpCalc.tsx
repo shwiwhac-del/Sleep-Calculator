@@ -5,9 +5,18 @@ import { Activity, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { getCanonicalUrl } from "../lib/seo";
 import TimePicker from "../components/TimePicker";
+import HomeSkeleton from "../components/HomeSkeleton";
 
 export default function WakeUpCalc() {
   const canonicalUrl = getCanonicalUrl("/wake-up-between-sleep-cycles");
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 1200);
+    return () => clearTimeout(timer);
+  }, []);
 
   const AGE_GROUPS = [
     { id: "0-3m", label: "0-3 Months", minCycles: 9, maxCycles: 11 },
@@ -97,6 +106,22 @@ export default function WakeUpCalc() {
   useEffect(() => {
     calculateAlarms();
   }, [targetTime, latency, ageGroup]);
+
+  if (loading) {
+    return (
+      <div className="w-full max-w-4xl mx-auto px-4 py-8 sm:py-12" id="wake-cycles-calculator-root">
+        <Helmet>
+          <title>Wake Up Between Sleep Cycles Calculator | Morning Freshness</title>
+          <meta
+            name="description"
+            content="Learn how to wake up between sleep cycles to prevent morning sleep inertia. Calculate your optimal alarm times with our simple sleep cycles calculator."
+          />
+          <link rel="canonical" href={canonicalUrl} />
+        </Helmet>
+        <HomeSkeleton />
+      </div>
+    );
+  }
 
   return (
     <div className="w-full max-w-4xl mx-auto px-4 py-8 sm:py-12" id="wake-cycles-calculator-root">
@@ -252,10 +277,10 @@ export default function WakeUpCalc() {
             </h2>
           </header>
           <p>
-            Have you ever slept for nine or ten hours, only to wake up feeling exhausted, disoriented, and desperately craving coffee? This frustrating state is known as **sleep inertia**—coined by sleep physiologists to describe the temporary degradation of cognitive, sensory, and motor functions experienced immediately upon waking.
+            Have you ever slept for nine or ten hours, only to wake up feeling exhausted, disoriented, and desperately craving coffee? This frustrating state is known as <strong>sleep inertia</strong>—coined by sleep physiologists to describe the temporary degradation of cognitive, sensory, and motor functions experienced immediately upon waking.
           </p>
           <p>
-            The root cause of sleep inertia lies in **arousal thresholds**. If your alarm rings while your brain is deep within N3 slow-wave sleep (characterized by slow, high-amplitude delta waves), your neural networks cannot transition instantly to alert waking states. Instead, traces of deep-sleep patterns persist in the prefrontal cortex, leading to a feeling of mental fog. Waking up during an active transition stage preserves alertness metrics.
+            The root cause of sleep inertia lies in <strong>arousal thresholds</strong>. If your alarm rings while your brain is deep within N3 slow-wave sleep (characterized by slow, high-amplitude delta waves), your neural networks cannot transition instantly to alert waking states. Instead, traces of deep-sleep patterns persist in the prefrontal cortex, leading to a feeling of mental fog. Waking up during an active transition stage preserves alertness metrics.
           </p>
           <p>
             Our specialized wake up between sleep cycles calculator is designed to solve this physiological challenge. By projecting your alarm times to match the natural 90-minute transitions of your sleep cycle—which you can easily assess using our dedicated <Link to="/sleep-cycle-calculator-90-minutes" className="text-[#7C3AED] font-semibold hover:underline bg-[#7C3AED]/5 px-1.5 py-0.5 rounded">90-Minute Sleep Cycle Calculator</Link>—you can bypass the N3 deep sleep phase and wake up feeling alert and refreshed.
@@ -303,7 +328,7 @@ export default function WakeUpCalc() {
             </h2>
           </header>
           <p>
-            Every human body has a unique genetic predisposition to sleep and wake at certain times, known as a **chronotype**. Understanding your chronotype helps you optimize your sleep schedule. Leading research published on the <a href="https://www.sleepfoundation.org" target="_blank" rel="noopener noreferrer" className="text-[#7C3AED] underline font-semibold">National Sleep Foundation</a> website maps these into:
+            Every human body has a unique genetic predisposition to sleep and wake at certain times, known as a <strong>chronotype</strong>. Understanding your chronotype helps you optimize your sleep schedule. Leading research published on the <a href="https://www.sleepfoundation.org" target="_blank" rel="noopener noreferrer" className="text-[#7C3AED] underline font-semibold">National Sleep Foundation</a> website maps these into:
           </p>
           <ul className="list-disc pl-5 space-y-2.5">
             <li>

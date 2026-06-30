@@ -42,7 +42,7 @@ export function Breadcrumbs() {
     if (blogMeta) {
       // Create a nice categorized trail
       const category = blogMeta.category || 'Sleep Guides';
-      items.push({ name: category, url: '/#guides' });
+      items.push({ name: category, url: '/blog' });
       
       // Limit title to make breadcrumbs readable on smaller devices
       const titleLabel = blogMeta.title.length > 40 

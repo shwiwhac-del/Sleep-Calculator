@@ -10,6 +10,11 @@ export const MAIN_PAGES_META: Record<string, PageSEO> = {
     description: "Calculate the best bedtime and wake-up time using natural 90-minute sleep cycles. Wake up refreshed, avoid morning grogginess, and improve your sleep quality.",
     canonicalUrl: "https://sleepcalculater.online/"
   },
+  "/blog": {
+    title: "Sleep Science Blog & Guides | Sleep Calculator",
+    description: "Read high-quality articles, guides, and diagnostic tools regarding 90-minute sleep cycles, REM sleep, circadian rhythms, sleep hygiene, and waking up refreshed.",
+    canonicalUrl: "https://sleepcalculater.online/blog"
+  },
   "/about": {
     title: "About Sleep Calculator | Sleep Cycle & Bedtime Tool",
     description: "Learn about the Sleep Calculator team, our core mission, and the scientific research behind our 90-minute sleep cycle and bedtime calculation algorithms.",

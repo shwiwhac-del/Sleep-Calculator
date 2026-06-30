@@ -343,52 +343,6 @@ export default function SleepGuideAndFAQ() {
         Use the calculator today to discover your ideal sleep time, create a better sleep schedule, and wake up refreshed every morning.
       </p>
 
-      {/* Latest Blog Articles Carousel/Grid component */}
-      <div className="w-full pt-8 pb-4 border-t border-[#E5E7EB] mt-8">
-        <div className="flex flex-col items-center gap-2 text-center max-w-2xl mx-auto mb-8">
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-[#111827] mt-1 text-center w-full">
-            Explore Our Latest Articles
-          </h2>
-          <p className="text-sm text-[#6B7280] text-center w-full">
-            Science-backed tips, research, and deep insights to help you build optimal habits and wake up refreshed.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {latestBlogs.map((post) => (
-            <Link
-              key={post.slug}
-              to={`/${post.slug}`}
-              className="bg-[#FAF6F0] hover:bg-[#FCFAF7] border border-[#E1D8CC] hover:border-[#7C3AED] rounded-2xl p-5 flex flex-col justify-between group shadow-sm transition-all duration-300 select-text hover:shadow-md hover:-translate-y-1 block"
-            >
-              <div>
-                <h3 className="text-base sm:text-lg font-extrabold text-[#111827] leading-snug group-hover:text-[#7C3AED] transition-colors duration-200 line-clamp-2 select-text">
-                  {post.title}
-                </h3>
-                <p className="text-xs sm:text-sm text-[#374151] mt-2.5 line-clamp-3 leading-relaxed">
-                  {post.description}
-                </p>
-              </div>
-              <div className="mt-5 pt-4 border-t border-[#E1D8CC] flex items-center justify-between">
-                <div className="flex items-center gap-3 text-[11px] text-[#6B7280]">
-                  <span className="flex items-center gap-1">
-                    <Calendar size={12} className="text-[#6B7280]" />
-                    {post.date}
-                  </span>
-                  <span className="flex items-center gap-1">
-                    <Clock size={12} className="text-[#6B7280]" />
-                    {post.readTime}
-                  </span>
-                </div>
-                <span className="flex items-center gap-1 text-xs text-[#7C3AED] font-bold group-hover:text-[#6D28D9] transition-colors duration-200">
-                  Read <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-200" />
-                </span>
-              </div>
-            </Link>
-          ))}
-        </div>
-      </div>
-
       {/* Trust Signals & Testimonials section */}
       <div className="w-full pt-8 pb-4 border-t border-[#E5E7EB] mt-8 flex flex-col items-center select-text">
         <div className="flex flex-col items-center text-center max-w-lg mx-auto mb-6">

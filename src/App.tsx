@@ -28,35 +28,92 @@ const IdealBedtimeCalc = lazy(() => import('./pages/IdealBedtimeCalc'));
 
 function Footer() {
   return (
-    <footer className="w-full py-4 mt-auto border-t border-[#E5E7EB] bg-transparent z-20 relative flex flex-col items-center gap-y-2">
-      <div className="flex flex-wrap items-center justify-center gap-x-5 sm:gap-x-6 text-xs sm:text-sm px-4">
-        <Link 
-          to="/about" 
-          className="text-[#1F2937] hover:text-[#4C1D95] hover:underline transition-colors font-bold"
-        >
-          About
-        </Link>
-        <Link 
-          to="/contact" 
-          className="text-[#1F2937] hover:text-[#4C1D95] hover:underline transition-colors font-bold"
-        >
-          Contact
-        </Link>
-        <Link 
-          to="/privacy" 
-          className="text-[#1F2937] hover:text-[#4C1D95] hover:underline transition-colors font-bold"
-        >
-          Privacy Policy
-        </Link>
-        <Link 
-          to="/terms" 
-          className="text-[#1F2937] hover:text-[#4C1D95] hover:underline transition-colors font-bold"
-        >
-          Terms & Conditions
-        </Link>
-      </div>
-      <div className="text-[#1F2937] text-xs flex flex-col items-center font-bold">
-        <span>&copy; {new Date().getFullYear()} Sleep Calculator. All rights reserved.</span>
+    <footer className="w-full mt-auto border-t border-[#E5E7EB] bg-[#FAF6F0]/80 backdrop-blur-md py-12 z-20 relative text-[#4B5563] font-sans">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 sm:gap-16 pb-10 border-b border-[#E5E7EB]">
+          {/* Column 1: Sleep Tools & Calculators */}
+          <div className="flex flex-col gap-y-4">
+            <h3 className="text-sm font-black uppercase tracking-widest text-[#7C3AED] border-b border-[#E1D8CC]/80 pb-2.5">
+              Sleep Calculators
+            </h3>
+            <ul className="flex flex-col gap-y-3 text-[15px] sm:text-base">
+              <li>
+                <Link to="/student-sleep-calculator" className="hover:text-[#7C3AED] hover:translate-x-1.5 transition-all duration-200 block font-bold text-[#111827] hover:underline">
+                  Student Sleep Calculator
+                </Link>
+              </li>
+              <li>
+                <Link to="/shift-work-sleep-calculator" className="hover:text-[#7C3AED] hover:translate-x-1.5 transition-all duration-200 block font-bold text-[#111827] hover:underline">
+                  Shift Work Sleep Calculator
+                </Link>
+              </li>
+              <li>
+                <Link to="/sleep-cycle-calculator-90-minutes" className="hover:text-[#7C3AED] hover:translate-x-1.5 transition-all duration-200 block font-bold text-[#111827] hover:underline">
+                  90-Min Sleep Cycle Calculator
+                </Link>
+              </li>
+              <li>
+                <Link to="/wake-up-between-sleep-cycles" className="hover:text-[#7C3AED] hover:translate-x-1.5 transition-all duration-200 block font-bold text-[#111827] hover:underline">
+                  Wake Up Cycle Calculator
+                </Link>
+              </li>
+              <li>
+                <Link to="/ideal-bedtime-based-on-wake-up-time" className="hover:text-[#7C3AED] hover:translate-x-1.5 transition-all duration-200 block font-bold text-[#111827] hover:underline">
+                  Ideal Bedtime Calculator
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Column 2: Popular Sleep Guides */}
+          <div className="flex flex-col gap-y-4">
+            <h3 className="text-sm font-black uppercase tracking-widest text-[#7C3AED] border-b border-[#E1D8CC]/80 pb-2.5">
+              Sleep Guides & Science
+            </h3>
+            <ul className="flex flex-col gap-y-3 text-[15px] sm:text-base">
+              <li>
+                <Link to="/sleep-cycles-explained" className="hover:text-[#7C3AED] hover:translate-x-1.5 transition-all duration-200 block font-bold text-[#111827] hover:underline">
+                  Sleep Cycles Explained
+                </Link>
+              </li>
+              <li>
+                <Link to="/what-is-rem-sleep" className="hover:text-[#7C3AED] hover:translate-x-1.5 transition-all duration-200 block font-bold text-[#111827] hover:underline">
+                  What is REM Sleep?
+                </Link>
+              </li>
+              <li>
+                <Link to="/how-much-sleep-do-you-need" className="hover:text-[#7C3AED] hover:translate-x-1.5 transition-all duration-200 block font-bold text-[#111827] hover:underline">
+                  How Much Sleep Do I Need?
+                </Link>
+              </li>
+              <li>
+                <Link to="/best-time-to-sleep-and-wake-up" className="hover:text-[#7C3AED] hover:translate-x-1.5 transition-all duration-200 block font-bold text-[#111827] hover:underline">
+                  Best Sleeping & Wake Times
+                </Link>
+              </li>
+              <li>
+                <Link to="/sleep-cycle-calculator-guide" className="hover:text-[#7C3AED] hover:translate-x-1.5 transition-all duration-200 block font-bold text-[#111827] hover:underline">
+                  Sleep Calculator User Guide
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Legal Pages with larger text & copyright centered at the very bottom */}
+        <div className="pt-10 flex flex-col items-center justify-center gap-6">
+          <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-[15px] sm:text-base font-black text-[#374151]">
+            <Link to="/about" className="hover:text-[#7C3AED] hover:underline transition-colors">About</Link>
+            <Link to="/contact" className="hover:text-[#7C3AED] hover:underline transition-colors">Contact</Link>
+            <Link to="/privacy" className="hover:text-[#7C3AED] hover:underline transition-colors">Privacy Policy</Link>
+            <Link to="/terms" className="hover:text-[#7C3AED] hover:underline transition-colors">Terms & Conditions</Link>
+            <Link to="/blog" className="hover:text-[#7C3AED] hover:underline transition-colors">Blog</Link>
+          </div>
+          
+          <span className="text-xs sm:text-sm text-[#6B7280] font-semibold tracking-wide text-center">
+            &copy; {new Date().getFullYear()} Sleep Calculator. All rights reserved.
+          </span>
+        </div>
       </div>
     </footer>
   );
@@ -111,6 +168,7 @@ function AppContent() {
               <Routes>
                 {/* Core Pages */}
                 <Route path="/" element={<Home />} />
+                <Route path="/blog" element={<Blog />} />
 
                 {/* Direct Root Paths for all articles */}
                 <Route path="/sleep-cycles-explained" element={<Blog />} />

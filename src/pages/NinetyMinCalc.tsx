@@ -5,9 +5,18 @@ import { Hourglass, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { getCanonicalUrl } from "../lib/seo";
 import TimePicker from "../components/TimePicker";
+import HomeSkeleton from "../components/HomeSkeleton";
 
 export default function NinetyMinCalc() {
   const canonicalUrl = getCanonicalUrl("/sleep-cycle-calculator-90-minutes");
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 1200);
+    return () => clearTimeout(timer);
+  }, []);
 
   const AGE_GROUPS = [
     { id: "0-3m", label: "0-3 Months", minCycles: 9, maxCycles: 11 },
@@ -87,6 +96,22 @@ export default function NinetyMinCalc() {
   useEffect(() => {
     calculateBedtimes();
   }, [wakeTime, latency, ageGroup]);
+
+  if (loading) {
+    return (
+      <div className="w-full max-w-4xl mx-auto px-4 py-8 sm:py-12" id="ninety-calculator-root">
+        <Helmet>
+          <title>Sleep Cycle Calculator 90 Minutes | Waking Up Fresh</title>
+          <meta
+            name="description"
+            content="Calculate sleep cycles based on the 90-minute formula. Schedule exact bedtime slots using our interactive sleep cycle calculator for maximum mental focus."
+          />
+          <link rel="canonical" href={canonicalUrl} />
+        </Helmet>
+        <HomeSkeleton />
+      </div>
+    );
+  }
 
   return (
     <div className="w-full max-w-4xl mx-auto px-4 py-8 sm:py-12" id="ninety-calculator-root">
@@ -251,7 +276,7 @@ export default function NinetyMinCalc() {
             A sleep cycle represents a complete progression across four distinct biological stages: Light sleep onset (N1), intermediate spindle sleep (N2), deep slow-wave delta sleep (N3), and the rapid eye movement (REM) dreaming cycle. The average healthy adult progresses through these states in approximately 90 minutes. This is standard research supported by the <Link to="/ideal-bedtime-based-on-wake-up-time" className="text-[#7C3AED] font-semibold hover:underline bg-[#7C3AED]/5 px-1.5 py-0.5 rounded">Ideal Bedtime Calculator parameters</Link>.
           </p>
           <p>
-            Waking up in the middle of N3 deep sleep results in **sleep inertia**—characterized by mental lethargy, impaired fine motor skills, and morning brain fog. Our interactive 90-minute sleep calculator utilizes this mathematical formula to align alarm targets with cycle boundaries, helping users wake up feeling alert and refreshed.
+            Waking up in the middle of N3 deep sleep results in <strong>sleep inertia</strong>—characterized by mental lethargy, impaired fine motor skills, and morning brain fog. Our interactive 90-minute sleep calculator utilizes this mathematical formula to align alarm targets with cycle boundaries, helping users wake up feeling alert and refreshed.
           </p>
         </section>
 
@@ -292,7 +317,7 @@ export default function NinetyMinCalc() {
             </h2>
           </header>
           <p>
-            Every time we wake up mid-cycle or miss sleep hours, we accumulate a biological **sleep debt**. This is not a harmless metric. Consistent sleep deprivation impairs the prefrontal cortex—the brain region responsible for planning, working memory, emotional control, and executive decision-making. Waking up during an active transition phase rather than N3 deep sleep keeps you alert, allowing quick access to studied material.
+            Every time we wake up mid-cycle or miss sleep hours, we accumulate a biological <strong>sleep debt</strong>. This is not a harmless metric. Consistent sleep deprivation impairs the prefrontal cortex—the brain region responsible for planning, working memory, emotional control, and executive decision-making. Waking up during an active transition phase rather than N3 deep sleep keeps you alert, allowing quick access to studied material.
           </p>
           <p>
             Sleep debt also leads to cortisol spikes (the primary stress hormone), which can cause insulin resistance, system-level inflammation, and cardiovascular strain. Aligning your rest with the 90-minute sleep cycle helps optimize sleep efficiency, allowing your body to progress through healthy sleep cycles even on shorter schedules instead of suffering from split phases like some workers do on <Link to="/shift-work-sleep-calculator" className="text-[#7C3AED] hover:underline">Night Shifts</Link>.
@@ -307,7 +332,7 @@ export default function NinetyMinCalc() {
             </h2>
           </header>
           <p>
-            A common mistake when using a sleep cycle calculator is ignoring **sleep latency**—the duration of time it takes to transition from active wakefulness to light sleep. Most adults require 15 to 20 minutes to drift off. Failing to account for this delay shifts your sleep cycles, causing your alarm to go off mid-cycle instead of during a natural transition window, which can trigger the grogginess symptoms we discuss on our interactive <Link to="/wake-up-between-sleep-cycles" className="text-[#7C3AED] font-semibold hover:underline">Wake Up Between Cycles Guide</Link>.
+            A common mistake when using a sleep cycle calculator is ignoring <strong>sleep latency</strong>—the duration of time it takes to transition from active wakefulness to light sleep. Most adults require 15 to 20 minutes to drift off. Failing to account for this delay shifts your sleep cycles, causing your alarm to go off mid-cycle instead of during a natural transition window, which can trigger the grogginess symptoms we discuss on our interactive <Link to="/wake-up-between-sleep-cycles" className="text-[#7C3AED] font-semibold hover:underline">Wake Up Between Cycles Guide</Link>.
           </p>
           <p>
             <strong>Tips to Optimize Your Sleep Onset:</strong> Avoid looking at digital displays for at least 60 minutes before bedtime, choose relaxing activities like reading a book or listening to ambient music, and keep your bedroom dark and chilled to signal your brain that it is time to access deep sleep. Learn more on the <a href="https://www.sleepfoundation.org" target="_blank" rel="noopener noreferrer" className="text-[#7C3AED] underline font-semibold">National Sleep Foundation</a> website.

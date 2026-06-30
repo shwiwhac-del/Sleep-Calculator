@@ -4,9 +4,18 @@ import { Link } from "react-router-dom";
 import { Clock, EyeOff, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { getCanonicalUrl } from "../lib/seo";
+import HomeSkeleton from "../components/HomeSkeleton";
 
 export default function ShiftWorkCalc() {
   const canonicalUrl = getCanonicalUrl("/shift-work-sleep-calculator");
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 1200);
+    return () => clearTimeout(timer);
+  }, []);
 
   const AGE_GROUPS = [
     { id: "0-3m", label: "0-3 Months", minCycles: 9, maxCycles: 11 },
@@ -122,6 +131,22 @@ export default function ShiftWorkCalc() {
   useEffect(() => {
     handleCalculate();
   }, [activeShift, returnHomeTime, ageGroup]);
+
+  if (loading) {
+    return (
+      <div className="w-full max-w-4xl mx-auto px-4 py-8 sm:py-12" id="shift-calculator-root">
+        <Helmet>
+          <title>Sleep Calculator for Night Shift Workers | Optimize Daytime Sleep</title>
+          <meta
+            name="description"
+            content="Determine your optimal day-sleep windows, anchor schedules, and sleep cycles. Use our simple shift-work sleep calculator to prevent daytime split-sleep fatigue."
+          />
+          <link rel="canonical" href={canonicalUrl} />
+        </Helmet>
+        <HomeSkeleton />
+      </div>
+    );
+  }
 
   return (
     <div className="w-full max-w-4xl mx-auto px-4 py-8 sm:py-12" id="shift-calculator-root">

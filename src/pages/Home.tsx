@@ -11,6 +11,7 @@ import { QuickSleepTips } from "../components/QuickSleepTips";
 import { SleepJournal } from "../components/SleepJournal";
 import SleepGuideAndFAQ from "../components/SleepGuideAndFAQ";
 import { FeedbackModal } from "../components/FeedbackModal";
+import HomeSkeleton from "../components/HomeSkeleton";
 
 export interface CyclesReport {
   bedTime: string;
@@ -31,6 +32,14 @@ export interface CyclesReport {
 export default function Home() {
   const location = useLocation();
   const canonicalUrl = getCanonicalUrl(location.pathname);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 1200);
+    return () => clearTimeout(timer);
+  }, []);
 
   const AGE_GROUPS = [
     { id: "0-3m", label: "0-3 Months", minCycles: 9, maxCycles: 11 },
@@ -484,6 +493,27 @@ export default function Home() {
     return cycle >= config.minCycles && cycle <= config.maxCycles;
   };
 
+  if (loading) {
+    return (
+      <div className="w-full flex flex-col items-center">
+        <OpenGraphTags
+          title="Sleep Calculator – Calculate Bedtime & Wake Up Time by Sleep Cycles"
+          description="Calculate your perfect bedtime and wake-up times using natural 90-minute sleep cycles. Wake up refreshed and energized with our free, science-based sleep calculator."
+          url={canonicalUrl}
+        />
+        <Helmet>
+          <title>Sleep Calculator – Calculate Bedtime & Wake Up Times</title>
+          <meta
+            name="description"
+            content="Calculate your perfect bedtime and wake-up times using natural 90-minute sleep cycles. Wake up refreshed and energized with our free, science-based sleep calculator. No signup required."
+          />
+          <link rel="canonical" href={canonicalUrl} />
+        </Helmet>
+        <HomeSkeleton />
+      </div>
+    );
+  }
+
   return (
     <div className="w-full flex flex-col items-center">
       {/* Header Info */}
@@ -691,7 +721,7 @@ export default function Home() {
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[2.5rem] font-extrabold tracking-tight text-[#111827] leading-tight sm:leading-snug text-center">
             Calculate Your Perfect Bedtime & Wake-Up Time
           </h1>
-          <p className="text-xs sm:text-sm md:text-base text-[#4B5563] max-w-[36rem] mx-auto font-medium leading-relaxed tracking-normal opacity-95">
+          <p className="text-sm sm:text-base md:text-lg text-[#4B5563] max-w-[42rem] mx-auto font-medium leading-relaxed tracking-normal opacity-95">
             Optimize your rest using scientific 90-minute sleep cycles to wake up refreshed, energized, and ready for your day.
           </p>
         </div>
@@ -950,7 +980,7 @@ export default function Home() {
                             {cyclesReport.rating === "Good" && "Sub-Optimal Alignment"}
                             {cyclesReport.rating === "Caution" && "Deep Sleep Interruption Risk"}
                           </span>
-                          <p className="text-xs text-[#374151] max-w-sm mt-3 px-4 font-semibold leading-relaxed">
+                          <p className="text-sm text-[#4B5563] max-w-sm mt-3 px-4 font-semibold leading-relaxed">
                             {cyclesReport.rating === "Excellent" && "Outstanding! You wake up right at the endpoint of a 90-minute sleep cycle. Waking up during this light sleep transition minimizes grogginess (sleep inertia) and ensures maximum morning alertness."}
                             {cyclesReport.rating === "Good" && "Fairly solid, but you are waking up in a transition boundary. You might feel a slight groggy sensation upon waking up. Tweaking your bedtime by 15-20 minutes could make it perfect."}
                             {cyclesReport.rating === "Caution" && "Caution! Waking up at this scheduled time will likely interrupt your REM or deep sleep stages. This is a common trigger for sleep inertia, leaving you feeling tired even after substantial hours."}
@@ -1031,20 +1061,20 @@ export default function Home() {
                             Sleep Doctor Calibration Advice
                           </span>
 
-                          <p className="text-xs text-slate-750 leading-relaxed font-semibold">
+                          <p className="text-sm text-slate-750 leading-relaxed font-semibold">
                             You are completing {cyclesReport.cycles} cycles. To reach a perfect <strong className="text-[#111827] font-extrabold">{cyclesReport.perfectCycles}.0</strong> cycles and wake up at a clean transition point, we highly suggest one of the following simple bio-clock calibrations:
                           </p>
 
                           <div className="space-y-2 mt-1">
-                            <div className="bg-[#FCFAF7] p-3 rounded-xl border border-[#E1D8CC] flex flex-col justify-center text-left">
+                            <div className="bg-[#FCFAF7] p-3.5 rounded-xl border border-[#E1D8CC] flex flex-col justify-center text-left">
                               <span className="text-[10px] text-[#6B7280] font-extrabold uppercase tracking-wide font-mono">Option A: Recalibrate Bedtime</span>
-                              <p className="text-xs font-bold text-gray-800 mt-0.5">
+                              <p className="text-sm font-bold text-gray-800 mt-0.5">
                                 Shift bedtime to <strong className="text-[#7C3AED] font-extrabold">{cyclesReport.recalibrateBedtime}</strong> while keeping your wake-up time at {formatTime(timeToDate(cyclesReport.wakeTime, "wake"))}.
                               </p>
                             </div>
-                            <div className="bg-[#FCFAF7] p-3 rounded-xl border border-[#E1D8CC] flex flex-col justify-center text-left">
+                            <div className="bg-[#FCFAF7] p-3.5 rounded-xl border border-[#E1D8CC] flex flex-col justify-center text-left">
                               <span className="text-[10px] text-[#6B7280] font-extrabold uppercase tracking-wide font-mono">Option B: Recalibrate Wakeup Time</span>
-                              <p className="text-xs font-bold text-gray-800 mt-0.5">
+                              <p className="text-sm font-bold text-gray-800 mt-0.5">
                                 Keep bedtime at {formatTime(timeToDate(cyclesReport.bedTime, "bed"))}, but wake up at <strong className="text-[#7C3AED] font-extrabold">{cyclesReport.recalibrateWakeup}</strong> instead.
                               </p>
                             </div>
@@ -1057,7 +1087,7 @@ export default function Home() {
                           <span className="text-green-700 text-xs font-black uppercase tracking-wider flex items-center gap-1.5">
                             ✓ PERFECT SCHEDULE DETECTED
                           </span>
-                          <p className="text-xs text-green-850 font-semibold leading-relaxed">
+                          <p className="text-sm text-green-850 font-semibold leading-relaxed">
                             Formidable planning! This sleep duration aligns perfectly with exactly {cyclesReport.perfectCycles} full sleep cycles. This schedule minimizes waking fatigue and supports your circadian rhythm wonderfully.
                           </p>
                         </div>

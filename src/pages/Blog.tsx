@@ -8,7 +8,10 @@ import { BLOG_POSTS_META } from '../blogMetadata';
 import { getCanonicalUrl } from '../lib/seo';
 import { OpenGraphTags } from '../components/OpenGraphTags';
 import { Breadcrumbs } from '../components/Breadcrumbs';
+import TableOfContents from '../components/TableOfContents';
+import { BlogHeroImage } from '../components/BlogHeroImage';
 import HypnogramDiagram from '../components/HypnogramDiagram';
+import BlogSkeleton from '../components/BlogSkeleton';
 
 export const BLOG_POSTS = [
   {
@@ -1112,6 +1115,16 @@ export default function Blog() {
   const { slug } = useParams();
   const currentPath = location.pathname;
 
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setLoading(true);
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 1200);
+    return () => clearTimeout(timer);
+  }, [slug, currentPath]);
+
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   const isBlog1 = currentPath === '/sleep-cycles-explained' || slug === 'sleep-cycles-explained';
@@ -1244,7 +1257,9 @@ export default function Blog() {
     })
     .slice(0, 3);
 
-  if (!isAnyBlog) {
+  const isBlogIndex = currentPath === '/blog' || currentPath === '/blog/';
+
+  if (!isAnyBlog && !isBlogIndex) {
     return <Navigate to="/" replace />;
   }
 
@@ -1253,13 +1268,16 @@ export default function Blog() {
   };
 
   // Metadata determination for SEO
-  let title = "Sleep Calculator Articles: Guides on Sleep Cycles, Bedtime & Wake up Time";
-  let description = "Discover how to use a sleep cycle calculator, find the best time to sleep, and optimize your rest in our sleep health articles.";
+  let title = "Sleep Science Blog & Guides | Sleep Calculator";
+  let description = "Read high-quality articles, guides, and diagnostic tools regarding 90-minute sleep cycles, REM sleep, circadian rhythms, sleep hygiene, and waking up refreshed.";
   let canonicalUrl = getCanonicalUrl(currentPath);
 
   if (activeSlug && BLOG_POSTS_META[activeSlug]) {
     title = BLOG_POSTS_META[activeSlug].title;
     description = BLOG_POSTS_META[activeSlug].description;
+  } else if (isBlogIndex) {
+    title = "Sleep Science Blog & Guides | Sleep Calculator";
+    description = "Read high-quality articles, guides, and diagnostic tools regarding 90-minute sleep cycles, REM sleep, circadian rhythms, sleep hygiene, and waking up refreshed.";
   }
 
   // Generate JSON-LD schemas for search engines
@@ -1786,6 +1804,28 @@ export default function Blog() {
     jsonLdScripts.push({ __html: JSON.stringify(blogListSchema) });
   }
 
+  if (loading) {
+    return (
+      <div className={`w-full mx-auto px-2 sm:px-4 relative z-10 ${isAnyBlog ? 'max-w-3xl py-4 sm:py-6' : 'max-w-6xl py-8'}`}>
+        <OpenGraphTags
+          title={title}
+          description={description}
+          url={canonicalUrl}
+          type="article"
+        />
+        <Helmet>
+          <title>{title}</title>
+          <meta name="description" content={description} />
+          <link rel="canonical" href={canonicalUrl} />
+          {jsonLdScripts.map((script, idx) => (
+            <script key={idx} type="application/ld+json" dangerouslySetInnerHTML={script} />
+          ))}
+        </Helmet>
+        <BlogSkeleton isPost={isAnyBlog} />
+      </div>
+    );
+  }
+
   return (
     <div className={`w-full mx-auto px-2 sm:px-4 relative z-10 ${isAnyBlog ? 'max-w-3xl py-4 sm:py-6' : 'max-w-6xl py-8'}`}>
       <OpenGraphTags
@@ -1884,7 +1924,9 @@ export default function Blog() {
 
         {isAnyBlog && (
           <>
-              {/* Blog 1: Sleep Cycles Explained */}
+            <TableOfContents activeSlug={activeSlug} />
+            <BlogHeroImage activeSlug={activeSlug} title={title} />
+            {/* Blog 1: Sleep Cycles Explained */}
               {(isBlog1 || isAll) && (
           <article className="space-y-6 select-text text-slate-300">
             <header className="space-y-3 pb-6 border-b border-white/10">
@@ -8025,160 +8067,175 @@ export default function Blog() {
         {(isBlog36 || isAll) && (
           <article className="space-y-6 select-text text-slate-300 pt-1">
             <header className="space-y-3 pb-6 border-b border-white/10">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-100 tracking-tight leading-tight">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-100 tracking-tight leading-tight font-serif">
                 Sleep Calculator for Students: Improve Focus, Memory, and Exam Performance
               </h1>
               {isAll && (
-                <div className="text-sm font-bold tracking-wider text-blue-400 uppercase">
-                  Productivity • 5 min read
+                <div className="text-sm font-bold tracking-wider text-blue-400 uppercase font-mono">
+                  Productivity • 8 min read
                 </div>
               )}
             </header>
 
             <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
-              Students often sacrifice sleep to study longer, complete assignments, or prepare for exams. While this may seem productive, poor sleep can reduce memory retention, concentration, and academic performance.
+              Students of all levels—whether in middle school, high school, or pursuing rigorous university degrees—constantly struggle to balance study requirements with physical recovery. Many students routinely sacrifice sleep to study longer, complete assignments, or prepare for exams. While this may seem productive, clinical studies demonstrate that sleep deprivation impairs memory consolidation, reduces focus, and lowers overall academic performance.
             </p>
 
             <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
-              A Sleep Calculator for Students helps create a healthier sleep schedule by aligning bedtime and wake-up times with natural sleep cycles.
+              Using a <strong>Sleep Calculator for Students</strong> allows you to schedule your resting windows and waking times based on the science of natural 90-minute sleep cycles. This article covers the neurobiological link between sleep and learning, the physiological dangers of pulling all-nighters, and how to build a highly optimized routine for academic success.
             </p>
 
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4">
-              Why Sleep Matters for Students
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4 font-serif">
+              The Science of Sleep and Memory Consolidation
             </h2>
 
             <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
-              Sleep plays a major role in:
-            </p>
-
-            <div className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 py-1">
-              <ul className="list-disc pl-6 space-y-1.5 text-slate-300">
-                <li>Memory formation</li>
-                <li>Learning ability</li>
-                <li>Concentration</li>
-                <li>Problem-solving skills</li>
-                <li>Mental health</li>
-                <li>Academic performance</li>
-              </ul>
-            </div>
-
-            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
-              When students get quality sleep, they often perform better than those who stay up late studying.
-            </p>
-
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4">
-              The Link Between Sleep and Exam Success
-            </h2>
-
-            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
-              During sleep, the brain processes and stores information learned throughout the day.
+              To understand why sleep is crucial for academic achievement, we must look at how the human brain processes information. When you attend classes, read textbooks, or solve mathematical equations, your brain takes in new data and stores it temporarily in the hippocampus, which serves as a short-term memory buffer.
             </p>
 
             <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
-              Poor sleep before an exam may lead to:
-            </p>
-
-            <div className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 py-1">
-              <ul className="list-disc pl-6 space-y-1.5 text-slate-300">
-                <li>Difficulty remembering information</li>
-                <li>Reduced focus</li>
-                <li>Slower thinking</li>
-                <li>Increased stress</li>
-              </ul>
-            </div>
-
-            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
-              This is why many education experts recommend prioritizing sleep before important tests.
-            </p>
-
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4">
-              How a Sleep Calculator Helps Students
-            </h2>
-
-            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
-              A Sleep Calculator estimates ideal bedtime and wake-up times based on sleep cycles.
-            </p>
-
-            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
-              Benefits include:
-            </p>
-
-            <div className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 py-1">
-              <ul className="list-disc pl-6 space-y-1.5 text-slate-300">
-                <li>Better morning alertness</li>
-                <li>Improved concentration</li>
-                <li>More energy during classes</li>
-                <li>Better study performance</li>
-                <li>Reduced fatigue</li>
-              </ul>
-            </div>
-
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4">
-              Best Sleep Schedule for Students
-            </h2>
-
-            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
-              Most students benefit from:
-            </p>
-
-            <div className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 py-1">
-              <ul className="list-disc pl-6 space-y-1.5 text-slate-300">
-                <li>8–10 hours of sleep</li>
-                <li>Consistent bedtime</li>
-                <li>Consistent wake-up time</li>
-                <li>Limited screen exposure before bed</li>
-              </ul>
-            </div>
-
-            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
-              A best sleep schedule calculator can help create a routine that supports both learning and recovery.
-            </p>
-
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4">
-              Healthy Bedtime Routine for Students
-            </h2>
-
-            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
-              Simple habits can improve sleep quality:
+              The actual conversion of this short-term data into permanent, long-term memory occurs almost exclusively while you are asleep, specifically during the deep slow-wave sleep (N3 stage) and rapid eye movement (REM) sleep:
             </p>
 
             <div className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 py-1">
               <ul className="list-disc pl-6 space-y-2 text-slate-300">
-                <li>Stop using phones 30–60 minutes before bed</li>
-                <li>Avoid caffeine late in the day</li>
-                <li>Keep the bedroom cool and quiet</li>
-                <li>Follow a regular sleep schedule</li>
-                <li>Use a sleep calculator before school to plan bedtime</li>
+                <li><strong>N3 Deep Sleep (Slow-Wave Sleep):</strong> This stage is dominant during the first half of the night. It is responsible for consolidating declarative memories—such as historical dates, scientific facts, vocabulary lists, and logical concepts. Waking up in the middle of N3 sleep causes extreme grogginess (sleep inertia).</li>
+                <li><strong>REM Sleep (Dreaming Stage):</strong> This stage is dominant during the second half of the night. It consolidates procedural and emotional memories—such as motor skills, musical practice, computer coding, and problem-solving mechanisms. REM sleep is also when the brain makes creative connections between different subjects.</li>
               </ul>
             </div>
 
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4">
-              Common Student Sleep Mistakes
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              When a student gets only 4 or 5 hours of sleep, they drastically cut short their REM sleep periods, which are concentrated in the final hours of a full sleep cycle. Consequently, they lose the ability to apply complex concepts creatively on their exams.
+            </p>
+
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4 font-serif">
+              The Severe Danger of Pulling All-Nighters
             </h2>
 
             <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
-              Many students:
+              Many students view pulling an "all-nighter" as a badge of honor. However, clinical research from sleep academies reveals that staying awake for 18 to 24 hours straight inflicts cognitive impairments identical to having a blood alcohol concentration (BAC) of 0.05% to 0.10%.
+            </p>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              Studying in a state of severe sleep deprivation leads to:
             </p>
 
             <div className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 py-1">
-              <ul className="list-disc pl-6 space-y-1.5 text-slate-300">
-                <li>Stay awake late studying</li>
-                <li>Sleep at different times daily</li>
-                <li>Consume excessive caffeine</li>
-                <li>Ignore sleep quality</li>
+              <ul className="list-disc pl-6 space-y-2 text-slate-300">
+                <li><strong>Impaired Working Memory:</strong> You will find yourself reading the same paragraph over and over without understanding or retaining the information.</li>
+                <li><strong>Slower Processing Speed:</strong> It takes significantly longer to solve analytical equations, write essays, or answer multiple-choice questions.</li>
+                <li><strong>Severe Micro-Sleeps:</strong> The brain enters brief, involuntary periods of sleep lasting from a fraction of a second to several seconds, causing you to lose focus during tests.</li>
+                <li><strong>Increased Cortisol (Stress):</strong> Lack of sleep triggers the release of stress hormones, which can cause intense test anxiety and brain freeze during exams.</li>
               </ul>
             </div>
 
             <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
-              These habits can negatively impact academic performance over time.
+              Rather than cramming for 8 consecutive hours without sleep, a student will achieve much higher exam marks by reviewing materials for 3 hours, then getting a complete, uninterrupted 7.5 or 9 hours of sleep.
             </p>
 
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4 font-serif">
+              Teenage Circadian Shifts and Delayed Sleep Phase
+            </h2>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              It is also important to note that adolescents and young adults experience a natural biological shift in their circadian rhythms. During puberty and college years, the secretion of melatonin (the hormone that signals sleepiness) is delayed by up to two hours.
+            </p>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              This biological phenomenon—known as Delayed Sleep Phase Syndrome—makes it physically difficult for students to fall asleep before 11:00 PM or midnight. However, because school start times are often extremely early (e.g., 7:30 AM or 8:00 AM), students are forced to wake up before completing their required sleep cycles, leading to chronic, accumulated sleep debt.
+            </p>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              To mitigate this, students must use a sleep cycle calculator to schedule their bedtimes in precise 90-minute intervals (e.g., aiming for 7.5 hours of sleep instead of an arbitrary duration), ensuring they do not wake up during deep sleep.
+            </p>
+
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4 font-serif">
+              How a Sleep Calculator Helps Students
+            </h2>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              A standard sleep cycle lasts approximately 90 minutes. A Sleep Calculator uses this biological formula to determine the most restorative bedtimes or wake-up times:
+            </p>
+
+            <div className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 py-1">
+              <ul className="list-disc pl-6 space-y-2 text-slate-300">
+                <li><strong>Prevents Sleep Inertia:</strong> By waking up at the end of a 90-minute sleep cycle (instead of during slow-wave deep sleep), you prevent morning grogginess and wake up feeling alert.</li>
+                <li><strong>Optimizes Latency Buffer:</strong> The calculator automatically builds in a standard 15-minute buffer to account for the time it takes to fall asleep.</li>
+                <li><strong>Schedules Smart Naps:</strong> If you must study late, the calculator can help plan a 20-minute power nap or a complete 90-minute daytime nap to restore cognitive functioning without disrupting your evening sleep schedule.</li>
+              </ul>
+            </div>
+
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4 font-serif">
+              A Actionable 3-Step Academic Sleep Blueprint
+            </h2>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
+              To optimize your sleep patterns and maximize your cognitive performance, implement this three-step clinical sleep schedule:
+            </p>
+
+            <div className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 py-1">
+              <ol className="list-decimal pl-6 space-y-3 text-slate-300">
+                <li>
+                  <strong>Establish a Consistent "Wake-Up Anchor":</strong>
+                  <br />
+                  Wake up at the exact same time every single day, including weekends. This anchors your body's internal clock and ensures you feel naturally tired at the same time each evening.
+                </li>
+                <li>
+                  <strong>Eliminate Blue Light Exposure Before Bed:</strong>
+                  <br />
+                  Turn off phones, tablets, laptops, and TVs at least 45 minutes before attempting to sleep. Blue light from screens suppresses melatonin production, delaying your sleep latency and shortening your deep sleep windows.
+                </li>
+                <li>
+                  <strong>Plan Sleep in 90-Minute Intervals:</strong>
+                  <br />
+                  If you need to wake up at 6:30 AM, use our student sleep calculator to schedule bedtimes. To get 5 full sleep cycles (7.5 hours of sleep), your ideal bedtime is 10:45 PM (which includes the 15-minute falling asleep latency buffer).
+                </li>
+              </ol>
+            </div>
+
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4 font-serif">
+              Summary Table: Sleep Guidelines by Student Age
+            </h2>
+
+            <div className="overflow-x-auto py-4">
+              <table className="w-full border-collapse border border-white/10 text-sm text-left">
+                <thead>
+                  <tr className="bg-white/5 text-gray-100 font-mono text-xs uppercase tracking-wider">
+                    <th className="border border-white/10 p-3">Student Group</th>
+                    <th className="border border-white/10 p-3">Age Range</th>
+                    <th className="border border-white/10 p-3">Recommended Sleep</th>
+                    <th className="border border-white/10 p-3">Ideal Sleep Cycles</th>
+                  </tr>
+                </thead>
+                <tbody className="text-slate-300 font-sans">
+                  <tr>
+                    <td className="border border-white/10 p-3 font-semibold">Elementary / Toddler</td>
+                    <td className="border border-white/10 p-3">6 - 12 years</td>
+                    <td className="border border-white/10 p-3">9 - 11 hours</td>
+                    <td className="border border-white/10 p-3">6 to 7 cycles</td>
+                  </tr>
+                  <tr className="bg-white/5">
+                    <td className="border border-white/10 p-3 font-semibold">Middle / High School</td>
+                    <td className="border border-white/10 p-3">13 - 18 years</td>
+                    <td className="border border-white/10 p-3">8 - 10 hours</td>
+                    <td className="border border-white/10 p-3">5 to 6 cycles</td>
+                  </tr>
+                  <tr>
+                    <td className="border border-white/10 p-3 font-semibold">College / University</td>
+                    <td className="border border-white/10 p-3">18+ years</td>
+                    <td className="border border-white/10 p-3">7 - 9 hours</td>
+                    <td className="border border-white/10 p-3">5 cycles (7.5 hours)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4 font-serif">
               Final Thoughts
             </h2>
 
             <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 pb-6">
-              A Sleep Calculator for Students is a simple tool that can support better sleep habits, improved focus, and stronger academic performance. Instead of sacrificing sleep for study time, build a consistent routine that allows your brain to learn, recover, and perform at its best.
+              A Sleep Calculator for Students is a simple, highly effective tool that can support healthy sleep habits, improved focus, and stronger academic performance. Instead of sacrificing sleep for study time, build a consistent routine that allows your brain to learn, recover, and perform at its best.
             </p>
 
             {/* Dynamic Social Sharing & Calculation Widget */}

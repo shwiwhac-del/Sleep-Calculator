@@ -233,24 +233,24 @@ export function QuickSleepTips() {
               <span className="sm:hidden p-1.5 bg-white border border-[#E5E7EB] rounded-lg inline-flex">
                 {getTipIcon(spotlightTip.iconName)}
               </span>
-              <h3 className="text-base font-extrabold text-[#111827] leading-none mb-0.5">
+              <h3 className="text-lg font-extrabold text-[#111827] leading-tight mb-0.5">
                 {spotlightTip.title}
               </h3>
-              <span className={`text-[9px] uppercase tracking-widest px-1.5 py-0.5 rounded-md font-bold border ${getCategoryColor(spotlightTip.category)}`}>
+              <span className={`text-[10px] uppercase tracking-widest px-2 py-0.5 rounded-md font-bold border ${getCategoryColor(spotlightTip.category)}`}>
                 {spotlightTip.category}
               </span>
             </div>
-            <p className="text-xs font-semibold text-[#374151] leading-relaxed">
+            <p className="text-sm sm:text-base font-semibold text-[#111827] leading-relaxed">
               {spotlightTip.short}
             </p>
-            <p className="text-[11px] text-[#6B7280] leading-relaxed">
+            <p className="text-sm text-[#4B5563] leading-relaxed">
               {spotlightTip.detail}
             </p>
             
             {/* Scientific Factlet */}
             <div className="pt-2 border-t border-dashed border-[#E5E7EB] flex gap-1.5 items-start mt-2 bg-[#F9FAFB]/50 p-2 rounded-lg border border-[#E5E7EB]/50">
               <Info className="w-3.5 h-3.5 text-[#7C3AED] shrink-0 mt-0.5" />
-              <p className="text-[11px] italic text-[#4B5563] leading-relaxed select-text">
+              <p className="text-xs sm:text-sm italic text-[#4B5563] leading-relaxed select-text">
                 <strong className="text-[#374151] not-italic font-bold">Science fact:</strong> {spotlightTip.scientificFact}
               </p>
             </div>
@@ -283,15 +283,15 @@ export function QuickSleepTips() {
       <div className="bg-white border border-[#E5E7EB] rounded-3xl p-5 shadow-premium mb-6" id="tips-daily-progress-dashboard">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-4">
           <div className="space-y-0.5">
-            <h3 className="text-sm font-black text-[#111827] uppercase tracking-wider">
+            <h3 className="text-base font-black text-[#111827] uppercase tracking-wider">
               Daily Sleep Hygiene Board
             </h3>
-            <p className="text-xs text-[#374151]">
+            <p className="text-sm text-[#4B5563]">
               Unlock higher sleep quality by stacking multiple healthy actions.
             </p>
           </div>
           <div className="flex items-center gap-3 w-full sm:w-auto shrink-0">
-            <span className="text-xs font-bold text-[#111827] bg-[#F3ECE3] px-3 py-1 rounded-lg border border-[#E5E7EB] inline-flex items-center gap-1">
+            <span className="text-sm font-bold text-[#111827] bg-[#F3ECE3] px-3 py-1.5 rounded-lg border border-[#E5E7EB] inline-flex items-center gap-1">
               <strong className="text-[#5B21B6]">{completedCount} / {totalTips}</strong> completed
             </span>
             {completedCount > 0 && (
@@ -392,11 +392,11 @@ export function QuickSleepTips() {
                       <h3 className="text-base font-extrabold text-[#111827] leading-tight select-text">
                         {tip.title}
                       </h3>
-                      <span className={`text-[9px] uppercase tracking-widest px-1.5 py-0.5 rounded font-bold border shrink-0 ${getCategoryColor(tip.category)}`}>
+                      <span className={`text-[10px] uppercase tracking-widest px-2 py-0.5 rounded font-bold border shrink-0 ${getCategoryColor(tip.category)}`}>
                         {tip.category}
                       </span>
                     </div>
-                    <p className="text-xs text-[#4B5563] leading-relaxed">
+                    <p className="text-sm text-[#4B5563] leading-relaxed">
                       {tip.short}
                     </p>
                   </div>
@@ -410,12 +410,12 @@ export function QuickSleepTips() {
                         transition={{ type: "spring", stiffness: 300, damping: 30 }}
                         className="overflow-hidden mt-3 pt-3 border-t border-dashed border-[#E5E7EB] space-y-2.5"
                       >
-                        <p className="text-xs text-[#374151] leading-relaxed">
+                        <p className="text-sm text-[#374151] leading-relaxed">
                           {tip.detail}
                         </p>
                         <div className="flex gap-1.5 bg-gray-50 border border-gray-150 p-2 rounded-xl">
                           <Info className="w-3.5 h-3.5 text-[#7C3AED] shrink-0 mt-0.5" />
-                          <p className="text-[11px] italic text-[#6B7280] leading-normal select-text">
+                          <p className="text-xs sm:text-sm italic text-[#4B5563] leading-normal select-text">
                             <strong className="text-[#374151] not-italic font-bold">Science:</strong> {tip.scientificFact}
                           </p>
                         </div>

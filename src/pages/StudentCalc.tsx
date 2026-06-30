@@ -5,9 +5,18 @@ import { Brain, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { getCanonicalUrl } from "../lib/seo";
 import TimePicker from "../components/TimePicker";
+import HomeSkeleton from "../components/HomeSkeleton";
 
 export default function StudentCalc() {
   const canonicalUrl = getCanonicalUrl("/student-sleep-calculator");
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 1200);
+    return () => clearTimeout(timer);
+  }, []);
 
   const AGE_GROUPS = [
     { id: "0-3m", label: "0-3 Months", minCycles: 9, maxCycles: 11 },
@@ -88,6 +97,22 @@ export default function StudentCalc() {
   useEffect(() => {
     handleCalculate();
   }, [ageGroup, wakeTime]);
+
+  if (loading) {
+    return (
+      <div className="w-full max-w-4xl mx-auto px-4 py-8 sm:py-12" id="student-calculator-root">
+        <Helmet>
+          <title>Student Sleep Calculator | Plan Your Bedtime For Exam Days</title>
+          <meta
+            name="description"
+            content="Calculate sleep cycles for exams, high school routines, and college studies. Use our simple student sleep cycle calculator to optimize memory and study scores."
+          />
+          <link rel="canonical" href={canonicalUrl} />
+        </Helmet>
+        <HomeSkeleton />
+      </div>
+    );
+  }
 
   return (
     <div className="w-full max-w-4xl mx-auto px-4 py-8 sm:py-12" id="student-calculator-root">
@@ -248,7 +273,7 @@ export default function StudentCalc() {
             </h2>
           </header>
           <p>
-            Human sleep is not a singular flat state of biological unconsciousness. Instead, it is structured as a series of repeating **Ultradian cycles**, typically lasting approximately 90 minutes. Each cycle represents a highly coordinated transit across diverse neural stages, characterized by unique brain wave profiles, hormonal levels, and metabolic tasks.
+            Human sleep is not a singular flat state of biological unconsciousness. Instead, it is structured as a series of repeating <strong>Ultradian cycles</strong>, typically lasting approximately 90 minutes. Each cycle represents a highly coordinated transit across diverse neural stages, characterized by unique brain wave profiles, hormonal levels, and metabolic tasks.
           </p>
           
           <div className="space-y-4 my-6">
@@ -257,7 +282,7 @@ export default function StudentCalc() {
               <strong className="text-[#111827]">Stage N1 (Light Sleep Onset - ~5-10 Minutes):</strong> The transition phase from waking life to physiological sleep. Muscle tone decreases, micro-twitches occur, and the brain shifts from rapid beta/alpha waves to slower theta waves. Waking up in this phase is easy, but leaves you feeling unrefreshed. Same concepts apply when mapping bedtimes using our popular <Link to="/ideal-bedtime-based-on-wake-up-time" className="text-[#7C3AED] hover:underline">Ideal Bedtime Calculator</Link>.
             </p>
             <p>
-              <strong className="text-[#111827]">Stage N2 (Light/Intermediate Recovery - ~20-25 Minutes):</strong> True sleep state stabilizes. Body temperature descends and the heart rate slows down. This stage features **Sleep Spindles** and **K-complexes**—rhythmic bursts of high-frequency brainwave syncs that coordinate communication between the cortical regions, paving the way for file storage routing.
+              <strong className="text-[#111827]">Stage N2 (Light/Intermediate Recovery - ~20-25 Minutes):</strong> True sleep state stabilizes. Body temperature descends and the heart rate slows down. This stage features <strong>Sleep Spindles</strong> and <strong>K-complexes</strong>—rhythmic bursts of high-frequency brainwave syncs that coordinate communication between the cortical regions, paving the way for file storage routing.
             </p>
             <p>
               <strong className="text-[#111827]">Stage N3 (Deep Slow-Wave Sleep - ~25-40 Minutes):</strong> The golden recovery phase. The brain undergoes low-frequency delta wave sweeps. During N3, human growth hormone (HGH) peaks, reinforcing muscular tissues and cellular structural systems. Crucially, the glymphatic system expands, flushing metabolic wastes from study-intensive mental hours.
@@ -296,7 +321,7 @@ export default function StudentCalc() {
           </div>
 
           <p>
-            A major biological challenge for high school teenagers is **circadian phase delay**. During adolescence, melatonin (the sleep-inducing hormone) is secreted up to two hours later in the evening than in adults or children, pushing biological sleepiness out toward midnight. When school systems mandate early morning wake up schedules, the teen's sleep window is compressed, introducing biological chaos comparable to <Link to="/shift-work-sleep-calculator" className="text-[#7C3AED] hover:underline">Shift Work Challenges</Link>.
+            A major biological challenge for high school teenagers is <strong>circadian phase delay</strong>. During adolescence, melatonin (the sleep-inducing hormone) is secreted up to two hours later in the evening than in adults or children, pushing biological sleepiness out toward midnight. When school systems mandate early morning wake up schedules, the teen's sleep window is compressed, introducing biological chaos comparable to <Link to="/shift-work-sleep-calculator" className="text-[#7C3AED] hover:underline">Shift Work Challenges</Link>.
           </p>
           <p>
             Our teenager sleep calculator targets this exact structural challenge, offering cycle combinations to maintain maximum memory storage and cognitive agility within early alarm envelopes.

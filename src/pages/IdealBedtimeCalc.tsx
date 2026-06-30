@@ -5,9 +5,18 @@ import { Heart, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { getCanonicalUrl } from "../lib/seo";
 import TimePicker from "../components/TimePicker";
+import HomeSkeleton from "../components/HomeSkeleton";
 
 export default function IdealBedtimeCalc() {
   const canonicalUrl = getCanonicalUrl("/ideal-bedtime-based-on-wake-up-time");
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 1200);
+    return () => clearTimeout(timer);
+  }, []);
 
   const AGE_GROUPS = [
     { id: "0-3m", label: "0-3 Months", minCycles: 9, maxCycles: 11 },
@@ -84,6 +93,22 @@ export default function IdealBedtimeCalc() {
   useEffect(() => {
     calculateBedtime();
   }, [wakeTime, ageGroup, latency]);
+
+  if (loading) {
+    return (
+      <div className="w-full max-w-4xl mx-auto px-4 py-8 sm:py-12" id="ideal-calculator-root">
+        <Helmet>
+          <title>Ideal Bedtime Based on Wake Up Time | Personalized Age Calculator</title>
+          <meta
+            name="description"
+            content="Determine your ideal bedtime mathematically based on your target wake up time and sleep cycles. Includes customized settings for adults, children, and seniors."
+          />
+          <link rel="canonical" href={canonicalUrl} />
+        </Helmet>
+        <HomeSkeleton />
+      </div>
+    );
+  }
 
   return (
     <div className="w-full max-w-4xl mx-auto px-4 py-8 sm:py-12" id="ideal-calculator-root">
@@ -256,7 +281,7 @@ export default function IdealBedtimeCalc() {
             </h2>
           </header>
           <p>
-            When calculating bedtimes, you must factor in **sleep latency**—the physical period of transition from active wakefulness to light N1 sleep. Usually, this spans from 10 to 20 minutes, as we detail on our interactive <Link to="/wake-up-between-sleep-cycles" className="text-[#7C3AED] font-semibold hover:underline">Wake Up Between Cycles Guide</Link>.
+            When calculating bedtimes, you must factor in <strong>sleep latency</strong>—the physical period of transition from active wakefulness to light N1 sleep. Usually, this spans from 10 to 20 minutes, as we detail on our interactive <Link to="/wake-up-between-sleep-cycles" className="text-[#7C3AED] font-semibold hover:underline">Wake Up Between Cycles Guide</Link>.
           </p>
           <p>
             If your biological sleep latency extends beyond 30 minutes, it can shift your sleep cycles, causing your alarm to ring in the middle of a deep sleep phase. This delay is often caused by evening screen use, high caffeine intake, or a lack of light management, as researched across publications on the <a href="https://www.sleepfoundation.org" target="_blank" rel="noopener noreferrer" className="text-[#7C3AED] underline font-semibold">National Sleep Foundation</a> website.
