@@ -38,27 +38,27 @@ function Footer() {
             </h3>
             <ul className="flex flex-col gap-y-3 text-[15px] sm:text-base">
               <li>
-                <Link to="/student-sleep-calculator" className="hover:text-[#7C3AED] hover:translate-x-1.5 transition-all duration-200 block font-bold text-[#111827] hover:underline">
+                <Link to="/student-sleep-calculator" className="underline decoration-black hover:text-[#7C3AED] hover:translate-x-1.5 transition-all duration-200 block font-bold text-[#111827] underline-offset-4">
                   Student Sleep Calculator
                 </Link>
               </li>
               <li>
-                <Link to="/shift-work-sleep-calculator" className="hover:text-[#7C3AED] hover:translate-x-1.5 transition-all duration-200 block font-bold text-[#111827] hover:underline">
+                <Link to="/shift-work-sleep-calculator" className="underline decoration-black hover:text-[#7C3AED] hover:translate-x-1.5 transition-all duration-200 block font-bold text-[#111827] underline-offset-4">
                   Shift Work Sleep Calculator
                 </Link>
               </li>
               <li>
-                <Link to="/sleep-cycle-calculator-90-minutes" className="hover:text-[#7C3AED] hover:translate-x-1.5 transition-all duration-200 block font-bold text-[#111827] hover:underline">
+                <Link to="/sleep-cycle-calculator-90-minutes" className="underline decoration-black hover:text-[#7C3AED] hover:translate-x-1.5 transition-all duration-200 block font-bold text-[#111827] underline-offset-4">
                   90-Min Sleep Cycle Calculator
                 </Link>
               </li>
               <li>
-                <Link to="/wake-up-between-sleep-cycles" className="hover:text-[#7C3AED] hover:translate-x-1.5 transition-all duration-200 block font-bold text-[#111827] hover:underline">
+                <Link to="/wake-up-between-sleep-cycles" className="underline decoration-black hover:text-[#7C3AED] hover:translate-x-1.5 transition-all duration-200 block font-bold text-[#111827] underline-offset-4">
                   Wake Up Cycle Calculator
                 </Link>
               </li>
               <li>
-                <Link to="/ideal-bedtime-based-on-wake-up-time" className="hover:text-[#7C3AED] hover:translate-x-1.5 transition-all duration-200 block font-bold text-[#111827] hover:underline">
+                <Link to="/ideal-bedtime-based-on-wake-up-time" className="underline decoration-black hover:text-[#7C3AED] hover:translate-x-1.5 transition-all duration-200 block font-bold text-[#111827] underline-offset-4">
                   Ideal Bedtime Calculator
                 </Link>
               </li>
@@ -72,27 +72,27 @@ function Footer() {
             </h3>
             <ul className="flex flex-col gap-y-3 text-[15px] sm:text-base">
               <li>
-                <Link to="/sleep-cycles-explained" className="hover:text-[#7C3AED] hover:translate-x-1.5 transition-all duration-200 block font-bold text-[#111827] hover:underline">
+                <Link to="/blog/sleep-cycles-explained" className="underline decoration-black hover:text-[#7C3AED] hover:translate-x-1.5 transition-all duration-200 block font-bold text-[#111827] underline-offset-4">
                   Sleep Cycles Explained
                 </Link>
               </li>
               <li>
-                <Link to="/what-is-rem-sleep" className="hover:text-[#7C3AED] hover:translate-x-1.5 transition-all duration-200 block font-bold text-[#111827] hover:underline">
+                <Link to="/blog/what-is-rem-sleep" className="underline decoration-black hover:text-[#7C3AED] hover:translate-x-1.5 transition-all duration-200 block font-bold text-[#111827] underline-offset-4">
                   What is REM Sleep?
                 </Link>
               </li>
               <li>
-                <Link to="/how-much-sleep-do-you-need" className="hover:text-[#7C3AED] hover:translate-x-1.5 transition-all duration-200 block font-bold text-[#111827] hover:underline">
+                <Link to="/blog/how-much-sleep-do-you-need" className="underline decoration-black hover:text-[#7C3AED] hover:translate-x-1.5 transition-all duration-200 block font-bold text-[#111827] underline-offset-4">
                   How Much Sleep Do I Need?
                 </Link>
               </li>
               <li>
-                <Link to="/best-time-to-sleep-and-wake-up" className="hover:text-[#7C3AED] hover:translate-x-1.5 transition-all duration-200 block font-bold text-[#111827] hover:underline">
+                <Link to="/blog/best-time-to-sleep-and-wake-up" className="underline decoration-black hover:text-[#7C3AED] hover:translate-x-1.5 transition-all duration-200 block font-bold text-[#111827] underline-offset-4">
                   Best Sleeping & Wake Times
                 </Link>
               </li>
               <li>
-                <Link to="/sleep-cycle-calculator-guide" className="hover:text-[#7C3AED] hover:translate-x-1.5 transition-all duration-200 block font-bold text-[#111827] hover:underline">
+                <Link to="/blog/sleep-cycle-calculator-guide" className="underline decoration-black hover:text-[#7C3AED] hover:translate-x-1.5 transition-all duration-200 block font-bold text-[#111827] underline-offset-4">
                   Sleep Calculator User Guide
                 </Link>
               </li>
@@ -144,9 +144,73 @@ export default function App() {
   );
 }
 
-function PageBlogRedirect() {
+function RootSlugRedirect() {
   const { slug } = useParams();
-  return <Navigate to={`/${slug}`} replace />;
+  const blogSlugs = [
+    "sleep-cycles-explained",
+    "what-is-rem-sleep",
+    "how-much-sleep-do-you-need",
+    "best-time-to-sleep-and-wake-up",
+    "sleep-cycle-calculator-guide",
+    "why-90-minute-sleep-cycles-matter",
+    "ideal-bedtime-for-adults",
+    "sleep-schedule-for-productivity",
+    "how-many-hours-of-sleep-is-healthy",
+    "power-nap-vs-full-sleep-cycle",
+    "circadian-rhythm-explained",
+    "tired-after-8-hours-of-sleep",
+    "best-bedtime-for-students",
+    "sleep-and-memory",
+    "sleep-debt-explained",
+    "best-wake-up-time",
+    "improve-sleep-quality",
+    "sleep-hygiene-tips",
+    "common-sleep-mistakes",
+    "fix-irregular-sleep-schedule",
+    "consistent-sleep-schedule-benefits",
+    "best-temperature-for-sleep",
+    "what-is-deep-sleep",
+    "how-long-does-it-take-to-fall-asleep",
+    "why-do-we-dream",
+    "why-do-people-snore",
+    "sleep-calculator-for-students",
+    "sleep-calculator-for-exams",
+    "why-am-i-tired-after-sleeping",
+    "rem-sleep-calculator-bedtime-cycles",
+    "sleep-deprivation-calculator-recovery-guide",
+    "adhd-sleep-schedule-calculator-tips",
+    "what-time-should-i-sleep-if-i-wake-up-at-6-am",
+    "best-bedtime-calculator-for-students",
+    "nap-calculator-20-30-60-90-minutes",
+    "sleep-calculator-for-night-shift-workers"
+  ];
+
+  if (slug && blogSlugs.includes(slug.toLowerCase())) {
+    return <Navigate to={`/blog/${slug}`} replace />;
+  }
+
+  // Exact duplicate merges
+  const redirects: Record<string, string> = {
+    "how-to-wake-up-refreshed": "wake-up-between-sleep-cycles",
+    "how-much-sleep-do-you-need-by-age": "blog/how-much-sleep-do-you-need",
+    "wake-up-tired-after-8-hours": "blog/tired-after-8-hours-of-sleep",
+    "best-bedtime-for-adults": "blog/ideal-bedtime-for-adults",
+    "what-is-sleep-debt": "blog/sleep-debt-explained",
+    "sleep-and-memory-learning": "blog/sleep-and-memory",
+    "sleep-calculator-by-age": "blog/how-much-sleep-do-you-need",
+    "90-minute-sleep-calculator": "sleep-cycle-calculator-90-minutes",
+    "best-sleep-schedule-for-productivity": "blog/sleep-schedule-for-productivity",
+    "bedtime-calculator-by-age": "ideal-bedtime-based-on-wake-up-time",
+    "shift-work-sleep-calculator-guide": "blog/sleep-calculator-for-night-shift-workers"
+  };
+
+  if (slug && redirects[slug.toLowerCase()]) {
+    const target = redirects[slug.toLowerCase()];
+    const dest = target.startsWith('blog/') ? `/${target}` : `/${target}`;
+    return <Navigate to={dest} replace />;
+  }
+
+  return <NotFound />;
 }
 
 function AppContent() {
@@ -169,78 +233,26 @@ function AppContent() {
                 {/* Core Pages */}
                 <Route path="/" element={<Home />} />
                 <Route path="/blog" element={<Blog />} />
-
-                {/* Direct Root Paths for all articles */}
-                <Route path="/sleep-cycles-explained" element={<Blog />} />
-                <Route path="/what-is-rem-sleep" element={<Blog />} />
-                <Route path="/how-much-sleep-do-you-need" element={<Blog />} />
-                <Route path="/best-time-to-sleep-and-wake-up" element={<Blog />} />
-                <Route path="/sleep-cycle-calculator-guide" element={<Blog />} />
-                <Route path="/why-90-minute-sleep-cycles-matter" element={<Blog />} />
-                <Route path="/how-to-wake-up-refreshed" element={<Navigate to="/wake-up-between-sleep-cycles" replace />} />
-                <Route path="/ideal-bedtime-for-adults" element={<Blog />} />
-                <Route path="/sleep-schedule-for-productivity" element={<Blog />} />
-                <Route path="/how-many-hours-of-sleep-is-healthy" element={<Blog />} />
-                <Route path="/power-nap-vs-full-sleep-cycle" element={<Blog />} />
-                <Route path="/circadian-rhythm-explained" element={<Blog />} />
-                <Route path="/tired-after-8-hours-of-sleep" element={<Blog />} />
-                <Route path="/best-bedtime-for-students" element={<Blog />} />
-                <Route path="/sleep-and-memory" element={<Blog />} />
-                <Route path="/sleep-debt-explained" element={<Blog />} />
-                <Route path="/best-wake-up-time" element={<Blog />} />
-                <Route path="/improve-sleep-quality" element={<Blog />} />
-                <Route path="/sleep-hygiene-tips" element={<Blog />} />
-                <Route path="/common-sleep-mistakes" element={<Blog />} />
-                <Route path="/fix-irregular-sleep-schedule" element={<Blog />} />
-                <Route path="/consistent-sleep-schedule-benefits" element={<Blog />} />
-                <Route path="/best-temperature-for-sleep" element={<Blog />} />
-                <Route path="/what-is-deep-sleep" element={<Blog />} />
-                
-                {/* 10 New Blog Articles - Merged same-topic duplicates redirect cleanly */}
-                <Route path="/how-much-sleep-do-you-need-by-age" element={<Navigate to="/how-much-sleep-do-you-need" replace />} />
-                <Route path="/wake-up-tired-after-8-hours" element={<Navigate to="/tired-after-8-hours-of-sleep" replace />} />
-                <Route path="/best-bedtime-for-adults" element={<Navigate to="/ideal-bedtime-for-adults" replace />} />
-                <Route path="/how-long-does-it-take-to-fall-asleep" element={<Blog />} />
-                <Route path="/what-is-sleep-debt" element={<Navigate to="/sleep-debt-explained" replace />} />
-                <Route path="/why-do-we-dream" element={<Blog />} />
-                <Route path="/sleep-and-memory-learning" element={<Navigate to="/sleep-and-memory" replace />} />
-                <Route path="/why-do-people-snore" element={<Blog />} />
-                <Route path="/sleep-calculator-by-age" element={<Navigate to="/how-much-sleep-do-you-need" replace />} />
-                <Route path="/90-minute-sleep-calculator" element={<Navigate to="/sleep-cycle-calculator-90-minutes" replace />} />
-                <Route path="/best-sleep-schedule-for-productivity" element={<Navigate to="/sleep-schedule-for-productivity" replace />} />
-                <Route path="/sleep-calculator-for-students" element={<Blog />} />
-                <Route path="/sleep-calculator-for-exams" element={<Blog />} />
-                <Route path="/student-sleep-calculator" element={<StudentCalc />} />
-                <Route path="/why-am-i-tired-after-sleeping" element={<Blog />} />
-                <Route path="/rem-sleep-calculator-bedtime-cycles" element={<Blog />} />
-                <Route path="/sleep-deprivation-calculator-recovery-guide" element={<Blog />} />
-                <Route path="/bedtime-calculator-by-age" element={<Navigate to="/ideal-bedtime-based-on-wake-up-time" replace />} />
-                <Route path="/shift-work-sleep-calculator-guide" element={<Navigate to="/sleep-calculator-for-night-shift-workers" replace />} />
-                <Route path="/adhd-sleep-schedule-calculator-tips" element={<Blog />} />
-                <Route path="/what-time-should-i-sleep-if-i-wake-up-at-6-am" element={<Blog />} />
-                <Route path="/best-bedtime-calculator-for-students" element={<Blog />} />
-                <Route path="/nap-calculator-20-30-60-90-minutes" element={<Blog />} />
+                <Route path="/blog/:slug" element={<Blog />} />
 
                 {/* The 5 Dedicated Interactive Calculator Landing Pages */}
-                <Route path="/sleep-calculator-for-night-shift-workers" element={<Blog />} />
+                <Route path="/student-sleep-calculator" element={<StudentCalc />} />
                 <Route path="/shift-work-sleep-calculator" element={<ShiftWorkCalc />} />
                 <Route path="/sleep-cycle-calculator-90-minutes" element={<NinetyMinCalc />} />
                 <Route path="/wake-up-between-sleep-cycles" element={<WakeUpCalc />} />
                 <Route path="/ideal-bedtime-based-on-wake-up-time" element={<IdealBedtimeCalc />} />
 
-                {/* Legacy /blog and /page/blog Prefixes redirected back to clean root paths */}
-                <Route path="/blog/:slug" element={<PageBlogRedirect />} />
-                <Route path="/page/blog/:slug" element={<PageBlogRedirect />} />
-
-                <Route path="/about" element={<About />} />
-                
                 {/* Utility Pages */}
+                <Route path="/about" element={<About />} />
                 <Route path="/terms" element={<Terms />} />
                 <Route path="/privacy" element={<Privacy />} />
-
                 <Route path="/contact" element={<Contact />} />
-                
 
+                {/* Legacy page/blog Prefixes redirected back to clean paths */}
+                <Route path="/page/blog/:slug" element={<Navigate replace to="/blog/:slug" />} />
+
+                {/* Dynamic redirect for root-level blog slugs to /blog/:slug */}
+                <Route path="/:slug" element={<RootSlugRedirect />} />
 
                 {/* Catch-all 404 route */}
                 <Route path="*" element={<NotFound />} />

@@ -290,51 +290,122 @@ article thead th {
 }
 
 /* Custom Responsive Desktop Typography and Sizing Overrides */
-article, .select-text, .markdown-body, #sleep-journal-section, #sleep-tips-cards-grid {
+article, .select-text, .markdown-body, #sleep-journal-section, #sleep-tips-cards-grid, .blog-reading-layout {
   /* On mobile and default viewports, comfortable base sizes */
-  --font-size-p: 1rem; /* 16px */
-  --font-size-h1: 1.875rem; /* 30px */
-  --font-size-h2: 1.5rem; /* 24px */
-  --font-size-h3: 1.25rem; /* 20px */
+  --font-size-p: 1.0625rem; /* 17px on mobile for maximum legibility */
+  --font-size-h1: 2rem; /* 32px */
+  --font-size-h2: 1.625rem; /* 26px */
+  --font-size-h3: 1.375rem; /* 22px */
 }
 
 @media (min-width: 640px) {
-  article, .select-text, .markdown-body, #sleep-journal-section {
-    --font-size-p: 1.0625rem; /* 17px */
-    --font-size-h1: 2.125rem; /* 34px */
-    --font-size-h2: 1.625rem; /* 26px */
-    --font-size-h3: 1.375rem; /* 22px */
+  article, .select-text, .markdown-body, #sleep-journal-section, .blog-reading-layout {
+    --font-size-p: 1.125rem; /* 18px */
+    --font-size-h1: 2.25rem; /* 36px */
+    --font-size-h2: 1.75rem; /* 28px */
+    --font-size-h3: 1.5rem; /* 24px */
   }
 }
 
 @media (min-width: 1024px) {
-  article, .select-text, .markdown-body, #sleep-journal-section {
-    --font-size-p: 1.125rem; /* 18px - perfect, highly readable on modern screens */
-    --font-size-h1: 2.25rem; /* 36px - elegant, balanced display */
-    --font-size-h2: 1.75rem; /* 28px */
-    --font-size-h3: 1.50rem; /* 24px */
+  article, .select-text, .markdown-body, #sleep-journal-section, .blog-reading-layout {
+    --font-size-p: 1.1875rem; /* 19px - perfect reading size on modern screens */
+    --font-size-h1: 2.5rem; /* 40px - elegant display heading */
+    --font-size-h2: 2rem; /* 32px */
+    --font-size-h3: 1.625rem; /* 26px */
   }
 }
 
-/* Force override font sizes for list items, paragraphs, and headings within articles, guides, policies */
-article p, article li, .select-text p, .select-text li, .markdown-body p, .markdown-body li {
-  font-size: var(--font-size-p) !important;
-  line-height: 1.625 !important;
+/* Force override font sizes and colors for high-contrast readability across articles, guides, and legal policies */
+article, .select-text, .markdown-body, .blog-reading-layout {
+  color: #374151 !important;
 }
 
-article h1, .select-text h1, .markdown-body h1 {
+article p, article li, .select-text p, .select-text li, .markdown-body p, .markdown-body li, .blog-reading-layout p, .blog-reading-layout li {
+  font-size: var(--font-size-p) !important;
+  line-height: 1.75 !important;
+  color: #374151 !important;
+}
+
+article h1, .select-text h1, .markdown-body h1, .blog-reading-layout h1 {
   font-size: var(--font-size-h1) !important;
   font-weight: 800 !important;
+  color: #111827 !important;
 }
 
-article h2, .select-text h2, .markdown-body h2 {
+article h2, .select-text h2, .markdown-body h2, .blog-reading-layout h2 {
   font-size: var(--font-size-h2) !important;
   font-weight: 700 !important;
+  color: #111827 !important;
+  margin-top: 1.75rem !important;
+  margin-bottom: 0.75rem !important;
 }
 
-article h3, .select-text h3, .markdown-body h3 {
+article h3, .select-text h3, .markdown-body h3, .blog-reading-layout h3 {
   font-size: var(--font-size-h3) !important;
   font-weight: 700 !important;
+  color: #111827 !important;
+  margin-top: 1.5rem !important;
+  margin-bottom: 0.5rem !important;
+}
+
+/* Fix links, backgrounds, borders and lists to be eye-friendly and elegant on warm ivory background */
+article a, .select-text a, .markdown-body a, .blog-reading-layout a {
+  color: #7C3AED !important;
+  font-weight: 600 !important;
+  text-decoration: underline !important;
+  text-decoration-thickness: 1px !important;
+  text-underline-offset: 3px !important;
+}
+
+article a:hover, .select-text a:hover, .markdown-body a:hover, .blog-reading-layout a:hover {
+  color: #6D28D9 !important;
+  text-decoration: underline !important;
+}
+
+/* Overriding white/5 transparent backgrounds to look premium beige on the warm canvas */
+article .bg-white\/5, .blog-reading-layout .bg-white\/5 {
+  background-color: #FAF6F0 !important;
+  border-left-color: #D4AF37 !important;
+  border-width: 1px 1px 1px 4px !important;
+  border-style: solid !important;
+  border-color: #E1D8CC #E1D8CC #E1D8CC #D4AF37 !important;
+  border-radius: 0.5rem !important;
+  padding: 1rem !important;
+}
+
+/* Bullet list and number list indicators */
+article ul, .select-text ul, .markdown-body ul, .blog-reading-layout ul {
+  list-style-type: disc !important;
+  padding-left: 1.5rem !important;
+  margin-bottom: 1rem !important;
+}
+
+article ol, .select-text ol, .markdown-body ol, .blog-reading-layout ol {
+  list-style-type: decimal !important;
+  padding-left: 1.5rem !important;
+  margin-bottom: 1rem !important;
+}
+
+/* Fix tables */
+article table, .select-text table, .markdown-body table, .blog-reading-layout table {
+  background-color: #FAF6F0 !important;
+  border: 1px solid #E1D8CC !important;
+}
+
+article tr, .select-text tr, .markdown-body tr, .blog-reading-layout tr {
+  border-bottom: 1px solid #E1D8CC !important;
+  background-color: #FAF6F0 !important;
+}
+
+article th, .select-text th, .markdown-body th, .blog-reading-layout th {
+  background-color: #E1D8CC !important;
+  color: #111827 !important;
+  font-weight: 700 !important;
+}
+
+article td, .select-text td, .markdown-body td, .blog-reading-layout td {
+  color: #374151 !important;
 }
 
 /* Quick sleep tips card adjustments on large monitors */

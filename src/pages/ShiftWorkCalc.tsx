@@ -5,6 +5,7 @@ import { Clock, EyeOff, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { getCanonicalUrl } from "../lib/seo";
 import HomeSkeleton from "../components/HomeSkeleton";
+import { AdPlaceholder } from "../components/AdPlaceholder";
 
 export default function ShiftWorkCalc() {
   const canonicalUrl = getCanonicalUrl("/shift-work-sleep-calculator");
@@ -13,7 +14,7 @@ export default function ShiftWorkCalc() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 1200);
+    }, 300);
     return () => clearTimeout(timer);
   }, []);
 
@@ -177,6 +178,9 @@ export default function ShiftWorkCalc() {
           Align your daytime sleep cycles with precision, preventing standard night fatigue and biological mismatch.
         </p>
       </div>
+
+      {/* Banner Ad Spot below main heading */}
+      <AdPlaceholder id="shift-header-ad" slotName="Shift Work Page Banner" />
 
       {/* Styled card container for the tool itself */}
       <div className="bg-white p-6 sm:p-8 rounded-2xl border border-neutral-200 shadow-md shadow-neutral-100 mb-12" id="shift-widget">

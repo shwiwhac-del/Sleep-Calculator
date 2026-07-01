@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { getCanonicalUrl } from "../lib/seo";
 import TimePicker from "../components/TimePicker";
 import HomeSkeleton from "../components/HomeSkeleton";
+import { AdPlaceholder } from "../components/AdPlaceholder";
 
 export default function IdealBedtimeCalc() {
   const canonicalUrl = getCanonicalUrl("/ideal-bedtime-based-on-wake-up-time");
@@ -14,7 +15,7 @@ export default function IdealBedtimeCalc() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 1200);
+    }, 300);
     return () => clearTimeout(timer);
   }, []);
 
@@ -139,6 +140,9 @@ export default function IdealBedtimeCalc() {
           Find your perfect, age-customized bedtime based on your biological alarm targets and sleep cycle architecture.
         </p>
       </div>
+
+      {/* Banner Ad Spot below main heading */}
+      <AdPlaceholder id="ideal-header-ad" slotName="Ideal Bedtime Page Banner" />
 
       {/* Styled card container for the tool itself */}
       <div className="bg-white p-6 sm:p-8 rounded-2xl border border-neutral-200 shadow-md shadow-neutral-100 mb-12" id="ideal-widget">

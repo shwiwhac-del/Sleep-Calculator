@@ -4,14 +4,13 @@ import { ArrowLeft, ChevronDown, ChevronUp, Calculator, Sparkles } from 'lucide-
 import { Helmet } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'motion/react';
 import ShareScheduleWidget from '../components/ShareScheduleWidget';
-import { BLOG_POSTS_META } from '../blogMetadata';
+import { BLOG_POSTS_META, getFocusKeywordsForPost } from '../blogMetadata';
 import { getCanonicalUrl } from '../lib/seo';
 import { OpenGraphTags } from '../components/OpenGraphTags';
 import { Breadcrumbs } from '../components/Breadcrumbs';
-import TableOfContents from '../components/TableOfContents';
-import { BlogHeroImage } from '../components/BlogHeroImage';
 import HypnogramDiagram from '../components/HypnogramDiagram';
 import BlogSkeleton from '../components/BlogSkeleton';
+import { AdPlaceholder } from '../components/AdPlaceholder';
 
 export const BLOG_POSTS = [
   {
@@ -1121,7 +1120,7 @@ export default function Blog() {
     setLoading(true);
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 1200);
+    }, 300);
     return () => clearTimeout(timer);
   }, [slug, currentPath]);
 
@@ -1268,16 +1267,20 @@ export default function Blog() {
   };
 
   // Metadata determination for SEO
-  let title = "Sleep Science Blog & Guides | Sleep Calculator";
+  let title = "Blog | Sleep Calculator";
   let description = "Read high-quality articles, guides, and diagnostic tools regarding 90-minute sleep cycles, REM sleep, circadian rhythms, sleep hygiene, and waking up refreshed.";
+  let keywords = "sleep science blog, sleep calculator guides, sleep hygiene articles, 90-minute sleep cycle optimization, REM sleep science, circadian rhythm guides, sleep quality research, bedtime calculation tips";
   let canonicalUrl = getCanonicalUrl(currentPath);
 
   if (activeSlug && BLOG_POSTS_META[activeSlug]) {
-    title = BLOG_POSTS_META[activeSlug].title;
-    description = BLOG_POSTS_META[activeSlug].description;
+    const postMeta = BLOG_POSTS_META[activeSlug];
+    title = postMeta.title;
+    description = postMeta.description;
+    keywords = postMeta.keywords || getFocusKeywordsForPost(activeSlug, postMeta.title, postMeta.category);
   } else if (isBlogIndex) {
-    title = "Sleep Science Blog & Guides | Sleep Calculator";
+    title = "Blog | Sleep Calculator";
     description = "Read high-quality articles, guides, and diagnostic tools regarding 90-minute sleep cycles, REM sleep, circadian rhythms, sleep hygiene, and waking up refreshed.";
+    keywords = "sleep science blog, sleep calculator guides, sleep hygiene articles, 90-minute sleep cycle optimization, REM sleep science, circadian rhythm guides, sleep quality research, bedtime calculation tips";
   }
 
   // Generate JSON-LD schemas for search engines
@@ -1810,12 +1813,14 @@ export default function Blog() {
         <OpenGraphTags
           title={title}
           description={description}
+          keywords={keywords}
           url={canonicalUrl}
           type="article"
         />
         <Helmet>
           <title>{title}</title>
           <meta name="description" content={description} />
+          <meta name="keywords" content={keywords} />
           <link rel="canonical" href={canonicalUrl} />
           {jsonLdScripts.map((script, idx) => (
             <script key={idx} type="application/ld+json" dangerouslySetInnerHTML={script} />
@@ -1831,12 +1836,14 @@ export default function Blog() {
       <OpenGraphTags
         title={title}
         description={description}
+        keywords={keywords}
         url={canonicalUrl}
         type="article"
       />
       <Helmet>
         <title>{title}</title>
         <meta name="description" content={description} />
+        <meta name="keywords" content={keywords} />
         <link rel="canonical" href={canonicalUrl} />
         {jsonLdScripts.map((script, idx) => (
           <script key={idx} type="application/ld+json" dangerouslySetInnerHTML={script} />
@@ -1864,12 +1871,15 @@ export default function Blog() {
           <div className="space-y-12">
             <div className="text-center space-y-4 max-w-3xl mx-auto mb-10">
               <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#111827] tracking-tight leading-tight font-serif">
-                Sleep Science <span className="bg-gradient-to-r from-[#7C3AED] to-[#D4AF37] bg-clip-text text-transparent">&amp; Guides</span>
+                Sleep Science <span className="bg-gradient-to-r from-[#7C3AED] to-[#D4AF37] bg-clip-text text-transparent">Blog &amp; Guides</span>
               </h1>
               <p className="text-sm sm:text-base text-[#4B5563] leading-relaxed font-medium">
                 Expert knowledge, physiological research, and actionable tips to help you calculate your optimal sleep windows, reset your internal clock, and wake up energized.
               </p>
             </div>
+
+            {/* Banner Ad Spot below main blog heading */}
+            <AdPlaceholder id="blog-index-header-ad" slotName="Blog Home Banner" />
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 pb-12">
               {BLOG_POSTS.filter(post => ![
@@ -1886,7 +1896,7 @@ export default function Blog() {
               ].includes(post.slug)).map((post) => (
                 <Link
                   key={post.slug}
-                  to={`/${post.slug}`}
+                  to={`/blog/${post.slug}`}
                   className="group flex flex-col bg-white hover:bg-slate-50 border border-[#E5E7EB] hover:border-[#7C3AED]/50 rounded-2xl p-6 transition-all duration-300 transform hover:-translate-y-1.5 shadow-md hover:shadow-premium relative overflow-hidden h-full"
                 >
                   <div className="absolute top-0 left-0 w-1 bg-gradient-to-b from-[#7C3AED] to-[#6D28D9] h-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -1923,9 +1933,10 @@ export default function Blog() {
         )}
 
         {isAnyBlog && (
-          <>
-            <TableOfContents activeSlug={activeSlug} />
-            <BlogHeroImage activeSlug={activeSlug} title={title} />
+          <div className="blog-reading-layout select-text text-[#374151] w-full">
+            {/* Global In-Article / Under Heading Banner Ad Spot for all blog posts */}
+            <AdPlaceholder id="blog-article-header-ad" slotName="In-Article Top Banner" />
+
             {/* Blog 1: Sleep Cycles Explained */}
               {(isBlog1 || isAll) && (
           <article className="space-y-6 select-text text-slate-300">
@@ -10013,7 +10024,7 @@ export default function Blog() {
             </p>
           </article>
         )}
-            </>
+            </div>
         )}
 
         {/* Internal Cross-Linking: Related Guides Section */}

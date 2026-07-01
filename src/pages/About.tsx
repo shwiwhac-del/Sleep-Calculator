@@ -37,7 +37,7 @@ export default function About() {
       </div>
 
       <div className="animate-in fade-in slide-in-from-top-4 duration-500 text-left">
-        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-gray-900 dark:text-gray-100 mb-4 leading-tight font-serif">About This Sleep Calculator</h1>
+        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-gray-900 dark:text-gray-100 mb-4 leading-tight font-serif">About</h1>
         
         <div className="space-y-5 md:space-y-6 text-gray-600 dark:text-gray-300 leading-relaxed text-sm sm:text-base">
           <p className="text-sm sm:text-base font-medium text-gray-900 dark:text-gray-100">

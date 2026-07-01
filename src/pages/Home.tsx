@@ -12,6 +12,7 @@ import { SleepJournal } from "../components/SleepJournal";
 import SleepGuideAndFAQ from "../components/SleepGuideAndFAQ";
 import { FeedbackModal } from "../components/FeedbackModal";
 import HomeSkeleton from "../components/HomeSkeleton";
+import { AdPlaceholder } from "../components/AdPlaceholder";
 
 export interface CyclesReport {
   bedTime: string;
@@ -37,7 +38,7 @@ export default function Home() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 1200);
+    }, 300);
     return () => clearTimeout(timer);
   }, []);
 
@@ -725,6 +726,9 @@ export default function Home() {
             Optimize your rest using scientific 90-minute sleep cycles to wake up refreshed, energized, and ready for your day.
           </p>
         </div>
+        
+        {/* Banner Ad Spot below main heading */}
+        <AdPlaceholder id="home-header-ad" slotName="Home Main Banner" />
       </div>
 
       <AnimatePresence mode="wait" initial={false}>

@@ -1,5 +1,6 @@
 import React from "react";
 import { Skeleton } from "./Skeleton";
+import { AdPlaceholder } from "./AdPlaceholder";
 
 interface BlogSkeletonProps {
   isPost?: boolean;
@@ -25,19 +26,8 @@ export const BlogSkeleton: React.FC<BlogSkeletonProps> = ({ isPost = false }) =>
           </div>
         </div>
 
-        {/* Table of Contents Skeleton */}
-        <div className="p-4 bg-white dark:bg-[#1e293b] rounded-2xl border border-gray-150 dark:border-slate-800 space-y-3">
-          <Skeleton variant="rectangular" className="h-6 w-48 rounded" />
-          <div className="space-y-2 pl-4 pt-1">
-            <Skeleton variant="text" className="h-4 w-5/6" />
-            <Skeleton variant="text" className="h-4 w-4/5" />
-            <Skeleton variant="text" className="h-4 w-11/12" />
-            <Skeleton variant="text" className="h-4 w-3/4" />
-          </div>
-        </div>
-
-        {/* Hero Image Skeleton */}
-        <Skeleton variant="rectangular" className="w-full aspect-[16/9] sm:aspect-[21/9] rounded-2xl" />
+        {/* Global In-Article / Under Heading Banner Ad Spot during skeleton */}
+        <AdPlaceholder id="skeleton-blog-article-ad" slotName="Skeleton In-Article Top Banner" />
 
         {/* Text Paragraph Skeletons */}
         <div className="space-y-4">
@@ -72,6 +62,9 @@ export const BlogSkeleton: React.FC<BlogSkeletonProps> = ({ isPost = false }) =>
           <Skeleton variant="text" className="h-4 w-5/6 mx-auto" />
         </div>
       </div>
+
+      {/* Banner Ad Spot below main blog heading during skeleton */}
+      <AdPlaceholder id="skeleton-blog-index-ad" slotName="Skeleton Blog Home Banner" />
 
       {/* Blog Card Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 pb-12">

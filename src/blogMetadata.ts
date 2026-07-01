@@ -2,6 +2,7 @@ export interface PageSEO {
   title: string;
   description: string;
   canonicalUrl: string;
+  keywords?: string;
 }
 
 export const MAIN_PAGES_META: Record<string, PageSEO> = {
@@ -11,9 +12,10 @@ export const MAIN_PAGES_META: Record<string, PageSEO> = {
     canonicalUrl: "https://sleepcalculater.online/"
   },
   "/blog": {
-    title: "Sleep Science Blog & Guides | Sleep Calculator",
+    title: "Blog | Sleep Calculator",
     description: "Read high-quality articles, guides, and diagnostic tools regarding 90-minute sleep cycles, REM sleep, circadian rhythms, sleep hygiene, and waking up refreshed.",
-    canonicalUrl: "https://sleepcalculater.online/blog"
+    canonicalUrl: "https://sleepcalculater.online/blog",
+    keywords: "sleep science blog, sleep calculator guides, sleep hygiene articles, 90-minute sleep cycle optimization, REM sleep science, circadian rhythm guides, sleep quality research, bedtime calculation tips"
   },
   "/about": {
     title: "About Sleep Calculator | Sleep Cycle & Bedtime Tool",
@@ -72,7 +74,47 @@ export const MAIN_PAGES_META: Record<string, PageSEO> = {
   }
 };
 
-export const BLOG_POSTS_META: Record<string, { title: string; description: string; date: string; category: string }> = {
+export function getFocusKeywordsForPost(slug: string, title: string, category: string): string {
+  const baseKeywords = ["sleep calculator", "sleep cycles", "optimal bedtime", "wake up refreshed"];
+  
+  // Clean title to extract meaningful keyword phrases
+  const cleanedTitleWords = title
+    .replace(/[:|&–\-\?]/g, "")
+    .toLowerCase()
+    .split(" ")
+    .filter(word => word.length > 4);
+    
+  // Dynamic list based on category and slug
+  const categoryKeywords: Record<string, string[]> = {
+    "Sleep Science": ["sleep stages", "REM sleep", "deep sleep science", "ultradian cycles", "sleep physiology"],
+    "Sleep Quality": ["improve sleep depth", "restorative sleep", "REM sleep duration", "waking up tired", "sleep quality tips"],
+    "Sleep Health": ["healthy sleep duration", "sleep recommendations", "sleep deprivation effects", "how much sleep do I need", "sleep health guidelines"],
+    "Circadian Rhythm": ["body clock alignment", "circadian rhythm", "melatonin timing", "natural sleep wake cycle", "biological clock"],
+    "Sleep Guide": ["sleep calculation guide", "how to calculate sleep cycles", "bedtime planning", "optimal sleep windows"],
+    "Sleep Cycles": ["90 minute sleep formula", "sleep cycles duration", "wake up between cycles", "sleep architecture"],
+    "Sleep Hygiene": ["healthy sleep environment", "bedtime routine tips", "sleep hygiene checklist", "falling asleep fast"],
+    "Bedtime Routine": ["nighttime relaxation", "ideal bedtime calculator", "bedtime habits", "sleep initiation"],
+    "Productivity": ["sleep and focus", "productivity sleep schedule", "cognitive performance sleep", "sleep habits for success"],
+    "Health & Wellness": ["sleep and wellbeing", "mental health sleep", "physical recovery sleep", "optimal health sleep duration"],
+    "Study & Focus": ["student sleep tips", "exam prep sleep", "brain performance sleep", "cognitive retention sleep"],
+    "Memory & Brain": ["sleep and memory consolidation", "neuroscience of sleep", "learning retention sleep", "brain health sleep"]
+  };
+
+  const specificKeywords = categoryKeywords[category] || [];
+  const slugPhrase = slug.replace(/-/g, " ");
+
+  const allKeywords = new Set([
+    ...baseKeywords,
+    slugPhrase,
+    category.toLowerCase(),
+    ...specificKeywords,
+    ...cleanedTitleWords.slice(0, 4)
+  ]);
+
+  return Array.from(allKeywords).slice(0, 10).join(", ");
+}
+
+export const BLOG_POSTS_META: Record<string, { title: string; description: string; date: string; category: string; keywords?: string }> = {
   "sleep-cycles-explained": {
     title: "Sleep Cycles Explained: The Science Behind Better Sleep and Better Mornings",
     description: "Learn how sleep cycles work, how many sleep cycles you need, and how a sleep cycle calculator can help improve sleep quality and morning energy.",

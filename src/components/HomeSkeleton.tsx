@@ -1,5 +1,6 @@
 import React from "react";
 import { Skeleton } from "./Skeleton";
+import { AdPlaceholder } from "./AdPlaceholder";
 
 export const HomeSkeleton: React.FC = () => {
   return (
@@ -17,6 +18,9 @@ export const HomeSkeleton: React.FC = () => {
           <Skeleton variant="text" className="h-4.5 sm:h-5 w-8/12 max-w-md" />
         </div>
       </div>
+
+      {/* Banner Ad Spot during skeleton state */}
+      <AdPlaceholder id="skeleton-home-header-ad" slotName="Skeleton Home Main Banner" />
 
       {/* Calculator Inputs Card Skeleton */}
       <div className="w-full max-w-[28.75rem] mx-auto mb-4 relative px-2 sm:px-0">

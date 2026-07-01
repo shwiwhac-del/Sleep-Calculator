@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { getCanonicalUrl } from "../lib/seo";
 import TimePicker from "../components/TimePicker";
 import HomeSkeleton from "../components/HomeSkeleton";
+import { AdPlaceholder } from "../components/AdPlaceholder";
 
 export default function NinetyMinCalc() {
   const canonicalUrl = getCanonicalUrl("/sleep-cycle-calculator-90-minutes");
@@ -14,7 +15,7 @@ export default function NinetyMinCalc() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 1200);
+    }, 300);
     return () => clearTimeout(timer);
   }, []);
 
@@ -142,6 +143,9 @@ export default function NinetyMinCalc() {
           Align your bedtimes mathematically with natural sleep staging boundaries to end grogginess.
         </p>
       </div>
+
+      {/* Banner Ad Spot below main heading */}
+      <AdPlaceholder id="ninety-header-ad" slotName="90-Min Page Banner" />
 
       {/* Styled card container for the tool itself */}
       <div className="bg-white p-6 sm:p-8 rounded-2xl border border-neutral-200 shadow-md shadow-neutral-100 mb-12" id="ninety-widget">

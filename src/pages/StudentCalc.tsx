@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { getCanonicalUrl } from "../lib/seo";
 import TimePicker from "../components/TimePicker";
 import HomeSkeleton from "../components/HomeSkeleton";
+import { AdPlaceholder } from "../components/AdPlaceholder";
 
 export default function StudentCalc() {
   const canonicalUrl = getCanonicalUrl("/student-sleep-calculator");
@@ -14,7 +15,7 @@ export default function StudentCalc() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 1200);
+    }, 300);
     return () => clearTimeout(timer);
   }, []);
 
@@ -143,6 +144,9 @@ export default function StudentCalc() {
           Improve your grades, memory retention, and class focus using science-backed 90-minute sleep cycle planning.
         </p>
       </div>
+
+      {/* Banner Ad Spot below main heading */}
+      <AdPlaceholder id="student-header-ad" slotName="Student Page Banner" />
 
       {/* Styled card container for the tool itself */}
       <div className="bg-white p-6 sm:p-8 rounded-2xl border border-neutral-200 shadow-md shadow-neutral-100 mb-12" id="student-and-exam-calc-widget">

@@ -1,11 +1,12 @@
 import { useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { MAIN_PAGES_META, BLOG_POSTS_META } from '../blogMetadata';
+import { MAIN_PAGES_META, BLOG_POSTS_META, getFocusKeywordsForPost } from '../blogMetadata';
 import { getCanonicalUrl } from '../lib/seo';
 
 interface OpenGraphTagsProps {
   title?: string;
   description?: string;
+  keywords?: string;
   url?: string;
   image?: string;
   type?: 'website' | 'article';
@@ -14,6 +15,7 @@ interface OpenGraphTagsProps {
 export function OpenGraphTags({
   title,
   description,
+  keywords,
   url,
   image,
   type
@@ -27,6 +29,7 @@ export function OpenGraphTags({
   // 1. Determine safe fallback values based on the active route/pathname
   let routeTitle = '';
   let routeDescription = '';
+  let routeKeywords = '';
   let routeUrl = getCanonicalUrl(pathname);
   let routeType: 'website' | 'article' = 'website';
   let routeImage = 'https://sleepcalculater.online/og_banner.png';
@@ -35,14 +38,21 @@ export function OpenGraphTags({
     const meta = MAIN_PAGES_META[normalizedPath];
     routeTitle = meta.title;
     routeDescription = meta.description;
+    routeKeywords = meta.keywords || '';
     routeUrl = meta.canonicalUrl || routeUrl;
   } else {
-    // Check if it's a dynamic blog post path (e.g. "/sleep-cycles-explained")
-    const slug = normalizedPath.substring(1).toLowerCase();
+    // Check if it's a dynamic blog post path (e.g. "/blog/sleep-cycles-explained")
+    let slug = '';
+    if (normalizedPath.startsWith('/blog/')) {
+      slug = normalizedPath.substring(6).toLowerCase();
+    } else {
+      slug = normalizedPath.substring(1).toLowerCase();
+    }
     if (BLOG_POSTS_META[slug]) {
       const meta = BLOG_POSTS_META[slug];
       routeTitle = meta.title;
       routeDescription = meta.description;
+      routeKeywords = meta.keywords || getFocusKeywordsForPost(slug, meta.title, meta.category);
       routeType = 'article';
     } else {
       // General fallbacks for 404 or other dynamic conditions
@@ -55,6 +65,7 @@ export function OpenGraphTags({
   // 2. Prioritize explicitly passed props, fall back to detected route metadata
   const finalTitle = title || routeTitle;
   const finalDescription = description || routeDescription;
+  const finalKeywords = keywords || routeKeywords;
   const finalUrl = url || routeUrl;
   const finalType = type || routeType;
   const finalImage = image || routeImage;
@@ -64,6 +75,7 @@ export function OpenGraphTags({
       {/* Primary HTML Meta Tags */}
       <title>{finalTitle}</title>
       <meta name="description" content={finalDescription} />
+      {finalKeywords && <meta name="keywords" content={finalKeywords} />}
       <link rel="canonical" href={finalUrl} />
 
       {/* Dynamic Open Graph / Facebook Meta Tags */}

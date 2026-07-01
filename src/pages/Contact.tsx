@@ -106,7 +106,7 @@ export default function Contact() {
       </div>
 
       <div className="animate-in fade-in slide-in-from-top-4 duration-500 text-left">
-        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4 leading-tight font-serif">Contact Us</h1>
+        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4 leading-tight font-serif">Contact</h1>
 
         {isSuccess ? (
           <div className="flex flex-col items-start py-8">
@@ -228,32 +228,32 @@ export default function Contact() {
             <p className="text-sm text-gray-600 dark:text-gray-300 mb-3">Optimize your sleep health and circadian metrics by reading our popular science-backed resources:</p>
             <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-2 text-sm text-gray-700 dark:text-gray-300">
               <li>
-                <Link to="/sleep-cycles-explained" className="text-[#7C3AED] hover:underline">
+                <Link to="/blog/sleep-cycles-explained" className="text-[#7C3AED] hover:underline">
                   Sleep Cycles Explained: Science of Rest
                 </Link>
               </li>
               <li>
-                <Link to="/what-is-rem-sleep" className="text-[#7C3AED] hover:underline">
+                <Link to="/blog/what-is-rem-sleep" className="text-[#7C3AED] hover:underline">
                   What Is REM Sleep and Why It Matters
                 </Link>
               </li>
               <li>
-                <Link to="/how-much-sleep-do-you-need" className="text-[#7C3AED] hover:underline">
+                <Link to="/blog/how-much-sleep-do-you-need" className="text-[#7C3AED] hover:underline">
                   Recommended Sleep Hours by Age
                 </Link>
               </li>
               <li>
-                <Link to="/best-time-to-sleep-and-wake-up" className="text-[#7C3AED] hover:underline">
+                <Link to="/blog/best-time-to-sleep-and-wake-up" className="text-[#7C3AED] hover:underline">
                   Best Time to Sleep and Wake Up
                 </Link>
               </li>
               <li>
-                <Link to="/why-90-minute-sleep-cycles-matter" className="text-[#7C3AED] hover:underline">
+                <Link to="/blog/why-90-minute-sleep-cycles-matter" className="text-[#7C3AED] hover:underline">
                   Why 90-Minute Sleep Cycles Matter
                 </Link>
               </li>
               <li>
-                <Link to="/how-to-wake-up-refreshed" className="text-[#7C3AED] hover:underline">
+                <Link to="/wake-up-between-sleep-cycles" className="text-[#7C3AED] hover:underline">
                   How to Wake Up Refreshed
                 </Link>
               </li>

@@ -28,21 +28,26 @@ export function Breadcrumbs() {
     const meta = MAIN_PAGES_META[normalizedPath];
     // Dynamic human-readable names for core pages
     if (normalizedPath === '/about') pageTitle = 'About';
-    else if (normalizedPath === '/contact') pageTitle = 'Contact Us';
+    else if (normalizedPath === '/contact') pageTitle = 'Contact';
     else if (normalizedPath === '/privacy') pageTitle = 'Privacy Policy';
     else if (normalizedPath === '/terms') pageTitle = 'Terms & Conditions';
+    else if (normalizedPath === '/blog') pageTitle = 'Blog';
     else pageTitle = meta.title.split('–')[0].trim();
 
     items.push({ name: pageTitle });
   } else {
     // Check if it's a dynamic blog post path
-    const slug = normalizedPath.substring(1).toLowerCase();
+    let slug = '';
+    if (normalizedPath.startsWith('/blog/')) {
+      slug = normalizedPath.substring(6).toLowerCase();
+    } else {
+      slug = normalizedPath.substring(1).toLowerCase();
+    }
     const blogMeta = BLOG_POSTS_META[slug];
 
     if (blogMeta) {
-      // Create a nice categorized trail
-      const category = blogMeta.category || 'Sleep Guides';
-      items.push({ name: category, url: '/blog' });
+      // Create a nice categorized trail mapping to Blog
+      items.push({ name: 'Blog', url: '/blog' });
       
       // Limit title to make breadcrumbs readable on smaller devices
       const titleLabel = blogMeta.title.length > 40 

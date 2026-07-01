@@ -345,7 +345,7 @@ export default function SleepGuideAndFAQ() {
 
       {/* Trust Signals & Testimonials section */}
       <div className="w-full pt-8 pb-4 border-t border-[#E5E7EB] mt-8 flex flex-col items-center select-text">
-        <div className="flex flex-col items-center text-center max-w-lg mx-auto mb-6">
+        <div className="flex flex-col items-center text-center max-w-lg mx-auto">
           <div className="flex items-center gap-0.5 text-amber-500 mb-1.5">
             <Star className="w-4 h-4 fill-current text-amber-500" />
             <Star className="w-4 h-4 fill-current text-amber-500" />
@@ -359,40 +359,6 @@ export default function SleepGuideAndFAQ() {
           <p className="text-xs text-[#6B7280] dark:text-gray-400 mt-1 max-w-sm">
             94% of active users report waking up refreshed with zero grogginess when utilizing our 90-minute sleep cycle calculations.
           </p>
-        </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
-          <div className="flex flex-col bg-slate-50/50 dark:bg-slate-900/10 p-4 rounded-xl border border-[#E5E7EB] dark:border-slate-800/60 relative">
-            <Quote className="w-5 h-5 text-[#7C3AED]/10 absolute top-3 right-3" />
-            <blockquote className="text-[#374151] dark:text-gray-300 text-xs italic pr-4 leading-relaxed font-medium">
-              "I used to feel exhausted even after 8 hours. Planning my nights around 90-minute sleep cycles changed everything. I wake up completely refreshed!"
-            </blockquote>
-            <div className="mt-3 flex items-center gap-2">
-              <div className="w-6 h-6 rounded-full bg-[#7C3AED]/10 flex items-center justify-center text-[10px] font-bold text-[#7C3AED]">
-                JD
-              </div>
-              <div>
-                <p className="text-[11px] font-bold text-[#111827] dark:text-gray-100 leading-none">John D.</p>
-                <p className="text-[9px] text-[#6B7280]">Verified Active User</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="flex flex-col bg-slate-50/50 dark:bg-slate-900/10 p-4 rounded-xl border border-[#E5E7EB] dark:border-slate-800/60 relative">
-            <Quote className="w-5 h-5 text-[#7C3AED]/10 absolute top-3 right-3" />
-            <blockquote className="text-[#374151] dark:text-gray-300 text-xs italic pr-4 leading-relaxed font-medium">
-              "The sleep calculator is incredibly accurate. It helped me find the perfect bedtime for my early morning shift. No more day sluggishness."
-            </blockquote>
-            <div className="mt-3 flex items-center gap-2">
-              <div className="w-6 h-6 rounded-full bg-[#7C3AED]/10 flex items-center justify-center text-[10px] font-bold text-[#7C3AED]">
-                SM
-              </div>
-              <div>
-                <p className="text-[11px] font-bold text-[#111827] dark:text-gray-100 leading-none">Sarah M.</p>
-                <p className="text-[9px] text-[#6B7280]">Verified Professional User</p>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
 

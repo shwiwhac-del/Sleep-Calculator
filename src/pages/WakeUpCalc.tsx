@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { getCanonicalUrl } from "../lib/seo";
 import TimePicker from "../components/TimePicker";
 import HomeSkeleton from "../components/HomeSkeleton";
+import { AdPlaceholder } from "../components/AdPlaceholder";
 
 export default function WakeUpCalc() {
   const canonicalUrl = getCanonicalUrl("/wake-up-between-sleep-cycles");
@@ -14,7 +15,7 @@ export default function WakeUpCalc() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 1200);
+    }, 300);
     return () => clearTimeout(timer);
   }, []);
 
@@ -152,6 +153,9 @@ export default function WakeUpCalc() {
           Learn how to escape morning sleep inertia by calculating the ideal alarm times based on your bedtime.
         </p>
       </div>
+
+      {/* Banner Ad Spot below main heading */}
+      <AdPlaceholder id="wake-cycles-header-ad" slotName="Wake Up Page Banner" />
 
       {/* Styled card container for the tool itself */}
       <div className="bg-white p-6 sm:p-8 rounded-2xl border border-neutral-200 shadow-md shadow-neutral-100 mb-12" id="wake-cycles-widget">

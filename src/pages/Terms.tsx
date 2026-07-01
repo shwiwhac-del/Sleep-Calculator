@@ -37,7 +37,7 @@ export default function Terms() {
       </div>
       
       <div className="animate-in fade-in slide-in-from-top-4 duration-500 text-left">
-        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-2 leading-tight font-serif">Terms and Conditions</h1>
+        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-2 leading-tight font-serif">Terms & Conditions</h1>
         <p className="text-gray-400 dark:text-gray-500 text-xs sm:text-sm mb-6 md:mb-8">Last Updated: May 2026</p>
 
         <div onContextMenu={(e) => e.stopPropagation()} className="select-text space-y-5 md:space-y-6 text-gray-600 dark:text-gray-300 leading-relaxed text-sm sm:text-base">
@@ -131,22 +131,22 @@ export default function Terms() {
             <p className="mb-4 text-sm sm:text-base">We highly recommend digesting our peer-reviewed sleep optimization guides to develop wholesome resting calendars:</p>
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 text-sm text-gray-700 dark:text-gray-300">
               <li>
-                <Link to="/sleep-cycles-explained" className="text-[#7C3AED] hover:underline">
+                <Link to="/blog/sleep-cycles-explained" className="text-[#7C3AED] hover:underline">
                   Sleep Cycles Explained: Science of Rest
                 </Link>
               </li>
               <li>
-                <Link to="/what-is-rem-sleep" className="text-[#7C3AED] hover:underline">
+                <Link to="/blog/what-is-rem-sleep" className="text-[#7C3AED] hover:underline">
                   What Is REM Sleep and Why It Matters
                 </Link>
               </li>
               <li>
-                <Link to="/how-much-sleep-do-you-need" className="text-[#7C3AED] hover:underline">
+                <Link to="/blog/how-much-sleep-do-you-need" className="text-[#7C3AED] hover:underline">
                   Recommended Sleep Hours by Age
                 </Link>
               </li>
               <li>
-                <Link to="/best-time-to-sleep-and-wake-up" className="text-[#7C3AED] hover:underline">
+                <Link to="/blog/best-time-to-sleep-and-wake-up" className="text-[#7C3AED] hover:underline">
                   Best Time to Sleep and Wake Up
                 </Link>
               </li>
