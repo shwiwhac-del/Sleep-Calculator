@@ -37,6 +37,8 @@ export default function WakeUpCalc() {
   const [latency, setLatency] = useState(15);
   const [results, setResults] = useState<{ cycle: number; time: Date; score: number; text: string; optimal: boolean }[]>([]);
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
+  const [showResults, setShowResults] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   // Calculate clean wake-up alarm times to wake up between 90-minute sleep cycles
   const calculateAlarms = () => {
@@ -92,6 +94,7 @@ export default function WakeUpCalc() {
     });
 
     setResults(suggestions);
+    setShowResults(true);
   };
 
   const formatTime = (date: Date) => {
@@ -104,9 +107,18 @@ export default function WakeUpCalc() {
     return `${hours}:${minutesStr} ${ampm}`;
   };
 
-  useEffect(() => {
-    calculateAlarms();
-  }, [targetTime, latency, ageGroup]);
+  const handleCopy = () => {
+    if (results.length === 0) return;
+    const text = results
+      .map(
+        (res) =>
+          `• ${formatTime(res.time)} (${res.cycle} Cycles - ${Number((res.cycle * 1.5).toFixed(1))}h sleep)${res.optimal ? " [Optimal]" : ""}`
+      )
+      .join("\n");
+    navigator.clipboard.writeText(`My Recommended Wake-up Alarms (Bedtime: ${targetTime}):\n${text}`);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   if (loading) {
     return (
@@ -157,118 +169,178 @@ export default function WakeUpCalc() {
       {/* Banner Ad Spot below main heading */}
       <AdPlaceholder id="wake-cycles-header-ad" slotName="Wake Up Page Banner" />
 
-      {/* Styled card container for the tool itself */}
-      <div className="bg-white p-6 sm:p-8 rounded-2xl border border-neutral-200 shadow-md shadow-neutral-100 mb-12" id="wake-cycles-widget">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-          
-          {/* Controls */}
-          <div className="space-y-6 flex flex-col justify-center" id="wake-cycles-controls">
-            <div>
-              <label className="block text-sm font-bold text-gray-900 mb-3">
-                1. What time will you turn off the lights?
-              </label>
-              <TimePicker value={targetTime} onChange={setTargetTime} mode="bed" />
-            </div>
+      <AnimatePresence mode="wait" initial={false}>
+        {!showResults ? (
+          <motion.div
+            key="calculator-inputs"
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -15 }}
+            transition={{ duration: 0.25 }}
+            className="w-full max-w-[28.75rem] mx-auto mb-12 relative px-2 sm:px-0"
+            id="wake-cycles-widget"
+          >
+            <div className="flex flex-col items-center w-full p-4 sm:p-5">
+              {/* Lights Off Bedtime selection */}
+              <div className="w-full flex flex-col items-center mb-5">
+                <label className="block text-slate-600 uppercase tracking-widest text-[11px] sm:text-xs font-bold mb-2.5 text-center">
+                  1. What time will you turn off the lights?
+                </label>
+                <TimePicker value={targetTime} onChange={setTargetTime} mode="bed" />
+              </div>
 
-            {/* Age group dropdown selection */}
-            <div className="flex flex-col items-start w-full z-20">
-              <label htmlFor="age-select" className="text-slate-600 uppercase tracking-widest text-[11px] sm:text-xs font-bold mb-1.5 block">
-                Select Your Age
-              </label>
-              <div className="w-full relative group">
-                <select
-                  id="age-select"
-                  value={ageGroup}
-                  onChange={(e) => {
-                    setAgeGroup(e.target.value);
-                  }}
-                  className="w-full bg-[#F8FAFC] border border-[#E5E7EB] focus:border-[#7C3AED] focus:ring-2 focus:ring-[#7C3AED]/20 rounded-xl py-2.5 pl-4 pr-10 transition-all duration-300 shadow-sm text-sm sm:text-base font-bold text-[#374151] cursor-pointer hover:border-gray-300 outline-none appearance-none"
-                >
-                  {AGE_GROUPS.map((g) => (
-                    <option key={g.id} value={g.id} className="bg-white text-left text-gray-900 font-medium">
-                       {g.label}
-                    </option>
-                  ))}
-                </select>
-                <div className="absolute inset-y-0 right-3.5 flex items-center pointer-events-none text-gray-400 group-hover:text-gray-600 transition-colors">
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-                  </svg>
+              {/* Age group dropdown selection */}
+              <div className="flex flex-col items-center w-full mb-5 z-20">
+                <label htmlFor="age-select" className="text-slate-600 uppercase tracking-widest text-[11px] sm:text-xs font-bold mb-1.5 block text-center">
+                  Select Your Age
+                </label>
+                <div className="w-full max-w-[11rem] relative group mx-auto">
+                  <select
+                    id="age-select"
+                    value={ageGroup}
+                    onChange={(e) => {
+                      setAgeGroup(e.target.value);
+                    }}
+                    className="w-full bg-[#F8FAFC] border border-[#E5E7EB] focus:border-[#7C3AED] focus:ring-2 focus:ring-[#7C3AED]/20 rounded-xl py-2.5 pl-4 pr-8 transition-all duration-300 shadow-sm text-sm sm:text-base font-bold text-[#374151] cursor-pointer hover:border-gray-300 outline-none appearance-none text-center"
+                  >
+                    {AGE_GROUPS.map((g) => (
+                      <option key={g.id} value={g.id} className="bg-white text-left text-gray-900 font-medium">
+                         {g.label}
+                      </option>
+                    ))}
+                  </select>
+                  <div className="absolute inset-y-0 right-2.5 flex items-center pointer-events-none text-gray-400 group-hover:text-gray-600 transition-colors">
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <div>
-              <label className="block text-sm font-bold text-gray-900 mb-3">
-                2. Select Fall Asleep Latency (Delay)
-              </label>
-              <div className="grid grid-cols-3 gap-2" id="wake-latency-toggle">
-                {[10, 15, 20].map((mins) => (
-                  <button
-                    key={mins}
-                    id={`btn-latency-${mins}`}
-                    onClick={() => setLatency(mins)}
-                    className={`py-2 px-3 rounded-xl border text-xs sm:text-sm font-semibold text-center transition-all cursor-pointer ${
-                      latency === mins
-                        ? "border-[#7C3AED] bg-[#7C3AED]/10 text-neutral-900 font-bold"
-                        : "border-neutral-200 bg-transparent text-neutral-603 hover:border-neutral-400"
-                    }`}
-                  >
-                    {mins} mins
-                  </button>
-                ))}
+              {/* Fall Asleep Latency */}
+              <div className="w-full mb-5 flex flex-col items-center">
+                <label className="block text-slate-600 uppercase tracking-widest text-[11px] sm:text-xs font-bold mb-2.5 text-center">
+                  2. Select Fall Asleep Latency (Delay)
+                </label>
+                <div className="grid grid-cols-3 gap-2 w-full max-w-[18.25rem] sm:max-w-[20rem]" id="wake-latency-toggle">
+                  {[10, 15, 20].map((mins) => (
+                    <button
+                      key={mins}
+                      id={`btn-latency-${mins}`}
+                      onClick={() => setLatency(mins)}
+                      className={`py-2 px-3 rounded-xl border text-xs sm:text-sm font-semibold text-center transition-all cursor-pointer ${
+                        latency === mins
+                          ? "border-[#7C3AED] bg-[#7C3AED]/10 text-neutral-900 font-bold"
+                          : "border-neutral-200 bg-transparent text-neutral-603 hover:border-neutral-400"
+                      }`}
+                    >
+                      {mins} Min
+                    </button>
+                  ))}
+                </div>
+                <p className="text-xs text-neutral-550 mt-2 text-center italic">
+                  How long you lie in bed before starting your first cycle.
+                </p>
+              </div>
+
+              {/* Calculate Button */}
+              <div className="w-full flex justify-center mt-3">
+                <button
+                  onClick={calculateAlarms}
+                  className="w-full max-w-[18.25rem] sm:max-w-[20rem] bg-[#7C3AED] text-white hover:bg-[#6D28D9] active:bg-[#5B21B6] rounded-full py-3.5 px-7 sm:py-4 sm:px-8 font-extrabold text-[#FFFFFF] text-base sm:text-lg tracking-wide transition-all duration-300 hover:shadow-[0_8px_20px_rgba(124,58,237,0.4)] hover:scale-[1.015] active:scale-[0.985] focus-visible:outline-none shadow-[0_5px_15px_rgba(124,58,237,0.3)] cursor-pointer text-center"
+                >
+                  Calculate Wake Alarms
+                </button>
               </div>
             </div>
-          </div>
+          </motion.div>
+        ) : (
+          <motion.div
+            key="calculator-results"
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -15 }}
+            transition={{ duration: 0.25 }}
+            className="w-full max-w-[28.75rem] mx-auto flex flex-col items-center mb-12 px-2"
+            id="wake-cycles-results"
+          >
+            <div className="w-full p-4 sm:p-5 flex flex-col relative overflow-hidden">
+              <div className="flex items-center justify-center mb-6">
+                <h2 className="text-lg sm:text-xl lg:text-2xl font-black text-gray-900 text-center tracking-tight">
+                  Optimal Alarm Alignments
+                </h2>
+              </div>
 
-          {/* Results Side */}
-          <div className="flex flex-col justify-between space-y-6" id="wake-cycles-results">
-            <div>
-              <h3 className="text-lg font-bold text-gray-900 mb-4 border-b border-neutral-200 pb-2">
-                Optimal Alarm Alignments
-              </h3>
-
-              <div className="space-y-5" id="wake-options-list">
-                {results.map((res, i) => (
+              <div className="w-full flex flex-col gap-2 select-text" id="wake-options-list">
+                {results.map((res, index) => (
                   <div
-                    key={res.time.toISOString() + res.cycle}
-                    className="border-b border-neutral-200/65 pb-4"
-                    id={`wake-res-card-${i}`}
+                    key={index}
+                    className={`group flex items-center justify-between py-3.5 px-5 rounded-2xl border transition-all duration-300 hover:shadow-sm ${
+                      res.optimal
+                        ? "border-[#7C3AED]/40 bg-[#7C3AED]/5 hover:bg-[#7C3AED]/10"
+                        : "border-[#E1D8CC] bg-[#FAF6F0] hover:bg-[#FCFAF7]"
+                    }`}
                   >
-                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 border-neutral-100">
-                      <div>
-                        <div className="text-[11px] text-[#6B7280] font-mono uppercase tracking-wider font-bold">
-                          Set alarm clock for:
-                        </div>
-                        <div className="text-3xl font-black text-[#7C3AED] tracking-tight mt-0.5">
-                          {formatTime(res.time)}
-                        </div>
-                      </div>
+                    <div className="flex flex-col relative z-10">
+                      <span className="text-xl sm:text-2xl font-extrabold text-[#111827] tracking-tight leading-none mb-1.5 flex items-center gap-1.5">
+                        {formatTime(res.time)}
+                      </span>
+                      <span className="text-[#374151] text-xs sm:text-sm font-bold">
+                        {res.cycle} sleep cycles ({Number((res.cycle * 1.5).toFixed(1))}h sleep)
+                      </span>
+                    </div>
 
-                      <div className="font-sans text-sm text-gray-800">
-                        <span className="font-bold font-mono text-[#111827]">{res.cycle} Cycles</span> ({Number((res.cycle * 1.5).toFixed(1))}h sleep)
-                        {res.optimal && (
-                          <span className="ml-2 inline-block bg-emerald-500/10 text-emerald-700 text-[10px] font-black px-2.5 py-0.5 rounded-full uppercase tracking-wider">
-                            Optimal Wake
-                          </span>
-                        )}
-                      </div>
+                    <div className="flex items-center gap-2 ml-2 relative z-10 flex-shrink-0">
+                      {res.optimal && (
+                        <span className="inline-flex items-center text-xs sm:text-sm font-extrabold text-[#7C3AED] bg-[#7C3AED]/15 px-3 py-1.5 rounded-lg tracking-wider">
+                          Suggested
+                        </span>
+                      )}
                     </div>
                   </div>
                 ))}
               </div>
-            </div>
 
-            <div className="bg-[#7C3AED]/5 p-4 border-l-2 border-[#7C3AED] text-xs sm:text-sm text-gray-700 leading-relaxed flex items-start gap-3 flex-row">
-              <Activity className="w-5 h-5 text-[#7C3AED] shrink-0 mt-0.5" />
-              <div>
-                <span className="font-bold text-[#111827]">Waking Fresh Tip:</span> Morning grogginess is caused by waking during N3 deep slow-wave sleep. Aligning alarms with standard 90-minute cycle segments ensures you wake up feeling alert and ready to tackle the day.
+              {/* Tip */}
+              <div className="bg-[#7C3AED]/5 p-4 border-l-2 border-[#7C3AED] text-xs sm:text-sm text-gray-700 leading-relaxed flex items-start gap-3 rounded-r-xl mt-6">
+                <Activity className="w-5 h-5 text-[#7C3AED] shrink-0 mt-0.5" />
+                <div>
+                  <span className="font-bold text-gray-900">Waking Fresh Tip:</span> Morning grogginess is caused by waking during N3 deep slow-wave sleep. Aligning alarms with standard 90-minute cycle segments ensures you wake up feeling alert and ready to tackle the day.
+                </div>
+              </div>
+
+              {/* Copy & Reset Buttons */}
+              <div className="flex flex-col gap-3 mt-6 w-full items-center">
+                <button
+                  onClick={handleCopy}
+                  className="w-full max-w-[18.25rem] sm:max-w-[20rem] py-3.5 px-7 sm:py-4 sm:px-8 rounded-full bg-[#7C3AED] text-white hover:bg-[#6D28D9] active:bg-[#5B21B6] font-bold text-base sm:text-lg tracking-wide transition-all duration-300 hover:shadow-[0_8px_20px_rgba(124,58,237,0.4)] hover:scale-[1.015] active:scale-[0.985] focus-visible:outline-none shadow-[0_5px_15px_rgba(124,58,237,0.3)] cursor-pointer text-center flex items-center justify-center gap-2"
+                >
+                  {copied ? (
+                    <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                    </svg>
+                  ) : (
+                    <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+                    </svg>
+                  )}
+                  {copied ? "Copied!" : "Copy Schedule"}
+                </button>
+
+                <button
+                  onClick={() => setShowResults(false)}
+                  className="w-full max-w-[18.25rem] sm:max-w-[20rem] py-3.5 px-7 sm:py-4 sm:px-8 rounded-full bg-slate-900 hover:bg-slate-850 text-white text-base sm:text-lg font-bold shadow-sm transition-all duration-300 hover:scale-[1.015] active:scale-[0.985] focus-visible:outline-none flex items-center justify-center gap-2 group cursor-pointer"
+                >
+                  <svg className="w-5 h-5 text-current opacity-80 group-hover:translate-x-[-2px] transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                  </svg>
+                  Go Back
+                </button>
               </div>
             </div>
-          </div>
-
-        </div>
-      </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* EPIC-DEPTH 2500+ WORDS SEO DICTIONARY & GUIDE */}
       <article className="space-y-12 select-text text-gray-700 leading-relaxed text-sm sm:text-base border-t border-neutral-200 pt-12" id="wake-seo-article">

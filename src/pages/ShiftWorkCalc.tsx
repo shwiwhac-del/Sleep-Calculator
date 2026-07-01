@@ -43,6 +43,8 @@ export default function ShiftWorkCalc() {
   const [returnHomeTime, setReturnHomeTime] = useState("07:00");
   const [results, setResults] = useState<{ label: string; start: string; end: string; duration: string; rationale: string; cycles: number; isCore: boolean }[]>([]);
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
+  const [showResults, setShowResults] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   // Function to format Time
   const formatTime = (date: Date) => {
@@ -127,11 +129,21 @@ export default function ShiftWorkCalc() {
     }
 
     setResults(suggestions);
+    setShowResults(true);
   };
 
-  useEffect(() => {
-    handleCalculate();
-  }, [activeShift, returnHomeTime, ageGroup]);
+  const handleCopy = () => {
+    if (results.length === 0) return;
+    const text = results
+      .map(
+        (res) =>
+          `• ${res.label}: ${res.start} - ${res.end} (${res.duration} • ${res.cycles} Cycles)\n  Rationale: ${res.rationale}`
+      )
+      .join("\n\n");
+    navigator.clipboard.writeText(`My Recommended Day-Sleep Schedule (Return Home: ${returnHomeTime}):\n\n${text}`);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   if (loading) {
     return (
@@ -182,131 +194,193 @@ export default function ShiftWorkCalc() {
       {/* Banner Ad Spot below main heading */}
       <AdPlaceholder id="shift-header-ad" slotName="Shift Work Page Banner" />
 
-      {/* Styled card container for the tool itself */}
-      <div className="bg-white p-6 sm:p-8 rounded-2xl border border-neutral-200 shadow-md shadow-neutral-100 mb-12" id="shift-widget">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-          
-          {/* Controls Side */}
-          <div className="space-y-6 flex flex-col justify-center" id="shift-controls">
-            <div>
-              <label className="block text-sm font-bold text-gray-900 mb-3">
-                1. Select Shift Sequence
-              </label>
-              <div className="space-y-2" id="shift-selector-container">
-                {SHIFTS.map((shift) => (
-                  <button
-                    key={shift.id}
-                    id={`btn-shift-${shift.id}`}
-                    onClick={() => setActiveShift(shift.id)}
-                    className={`w-full py-2.5 px-4 text-left border-b transition-all duration-150 cursor-pointer flex flex-col ${
-                      activeShift === shift.id
-                        ? "border-[#7C3AED] border-l-2 pl-3 bg-neutral-100/50 text-[#111827]"
-                        : "border-neutral-200 hover:border-neutral-400 text-neutral-600 bg-transparent"
-                    }`}
-                  >
-                    <span className="font-bold text-sm text-gray-900">{shift.label}</span>
-                    <span className="text-xs font-semibold text-neutral-500 mt-0.5">{shift.sleepStrategy}</span>
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* Age group dropdown selection */}
-            <div className="flex flex-col items-start w-full z-20">
-              <label htmlFor="age-select" className="text-slate-600 uppercase tracking-widest text-[11px] sm:text-xs font-bold mb-1.5 block">
-                Select Your Age
-              </label>
-              <div className="w-full relative group">
-                <select
-                  id="age-select"
-                  value={ageGroup}
-                  onChange={(e) => {
-                    setAgeGroup(e.target.value);
-                  }}
-                  className="w-full bg-[#F8FAFC] border border-[#E5E7EB] focus:border-[#7C3AED] focus:ring-2 focus:ring-[#7C3AED]/20 rounded-xl py-2.5 pl-4 pr-10 transition-all duration-300 shadow-sm text-sm sm:text-base font-bold text-[#374151] cursor-pointer hover:border-gray-300 outline-none appearance-none"
-                >
-                  {AGE_GROUPS.map((g) => (
-                    <option key={g.id} value={g.id} className="bg-white text-left text-gray-900 font-medium">
-                       {g.label}
-                    </option>
+      <AnimatePresence mode="wait" initial={false}>
+        {!showResults ? (
+          <motion.div
+            key="calculator-inputs"
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -15 }}
+            transition={{ duration: 0.25 }}
+            className="w-full max-w-[28.75rem] mx-auto mb-12 relative px-2 sm:px-0"
+            id="shift-widget"
+          >
+            <div className="flex flex-col items-center w-full p-4 sm:p-5">
+              {/* Shift Selection */}
+              <div className="w-full mb-5">
+                <label className="block text-slate-600 uppercase tracking-widest text-[11px] sm:text-xs font-bold mb-2.5 text-center">
+                  1. Select Shift Sequence
+                </label>
+                <div className="flex flex-col gap-1.5 w-full" id="shift-selector-container">
+                  {SHIFTS.map((shift) => (
+                    <button
+                      key={shift.id}
+                      id={`btn-shift-${shift.id}`}
+                      onClick={() => setActiveShift(shift.id)}
+                      className={`w-full py-3 px-4 rounded-xl text-left border transition-all duration-150 cursor-pointer flex flex-col ${
+                        activeShift === shift.id
+                          ? "border-[#7C3AED] bg-[#7C3AED]/5 text-[#111827]"
+                          : "border-neutral-200 hover:border-neutral-300 text-neutral-600 bg-transparent"
+                      }`}
+                    >
+                      <span className="font-extrabold text-sm text-gray-900">{shift.label}</span>
+                      <span className="text-xs font-semibold text-neutral-500 mt-0.5">{shift.sleepStrategy}</span>
+                    </button>
                   ))}
-                </select>
-                <div className="absolute inset-y-0 right-3.5 flex items-center pointer-events-none text-gray-400 group-hover:text-gray-600 transition-colors">
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-                  </svg>
                 </div>
               </div>
-            </div>
 
-            <div>
-              <label className="block text-sm font-bold text-gray-900 mb-3">
-                {activeShift === "night" ? "2. What time do you return home?" : "2. When does your transition from shift occur?"}
-              </label>
-              <div className="flex items-center gap-2 bg-[#FCFAF7] border-b border-gray-300 px-3 py-2.5 hover:border-[#7C3AED]/50 transition">
-                <Clock className="w-5 h-5 text-neutral-400" />
-                <input
-                  type="time"
-                  className="bg-transparent border-none text-gray-800 font-mono focus:outline-none w-full cursor-pointer"
-                  value={returnHomeTime}
-                  onChange={(e) => setReturnHomeTime(e.target.value)}
-                  id="shift-time-picker"
-                />
+              {/* Age group dropdown selection */}
+              <div className="flex flex-col items-center w-full mb-5 z-20">
+                <label htmlFor="age-select" className="text-slate-600 uppercase tracking-widest text-[11px] sm:text-xs font-bold mb-1.5 block text-center">
+                  2. Select Your Age
+                </label>
+                <div className="w-full max-w-[11rem] relative group mx-auto">
+                  <select
+                    id="age-select"
+                    value={ageGroup}
+                    onChange={(e) => {
+                      setAgeGroup(e.target.value);
+                    }}
+                    className="w-full bg-[#F8FAFC] border border-[#E5E7EB] focus:border-[#7C3AED] focus:ring-2 focus:ring-[#7C3AED]/20 rounded-xl py-2.5 pl-4 pr-8 transition-all duration-300 shadow-sm text-sm sm:text-base font-bold text-[#374151] cursor-pointer hover:border-gray-300 outline-none appearance-none text-center"
+                  >
+                    {AGE_GROUPS.map((g) => (
+                      <option key={g.id} value={g.id} className="bg-white text-left text-gray-900 font-medium">
+                         {g.label}
+                      </option>
+                    ))}
+                  </select>
+                  <div className="absolute inset-y-0 right-2.5 flex items-center pointer-events-none text-gray-400 group-hover:text-gray-600 transition-colors">
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+
+              {/* Transit/Home Time Selection */}
+              <div className="w-full flex flex-col items-center mb-5">
+                <label className="block text-slate-600 uppercase tracking-widest text-[11px] sm:text-xs font-bold mb-2.5 text-center">
+                  {activeShift === "night" ? "3. What time do you return home?" : "3. When does shift transition occur?"}
+                </label>
+                <div className="flex items-center gap-2 bg-[#FCFAF7] border-b border-gray-300 px-3 py-2.5 hover:border-[#7C3AED]/50 transition w-full max-w-[12rem] justify-center">
+                  <Clock className="w-5 h-5 text-neutral-400" />
+                  <input
+                    type="time"
+                    className="bg-transparent border-none text-gray-800 font-mono focus:outline-none cursor-pointer font-bold"
+                    value={returnHomeTime}
+                    onChange={(e) => setReturnHomeTime(e.target.value)}
+                    id="shift-time-picker"
+                  />
+                </div>
+              </div>
+
+              {/* Calculate Button */}
+              <div className="w-full flex justify-center mt-3">
+                <button
+                  onClick={handleCalculate}
+                  className="w-full max-w-[18.25rem] sm:max-w-[20rem] bg-[#7C3AED] text-white hover:bg-[#6D28D9] active:bg-[#5B21B6] rounded-full py-3.5 px-7 sm:py-4 sm:px-8 font-extrabold text-[#FFFFFF] text-base sm:text-lg tracking-wide transition-all duration-300 hover:shadow-[0_8px_20px_rgba(124,58,237,0.4)] hover:scale-[1.015] active:scale-[0.985] focus-visible:outline-none shadow-[0_5px_15px_rgba(124,58,237,0.3)] cursor-pointer text-center"
+                >
+                  Calculate Day-Sleep
+                </button>
               </div>
             </div>
-          </div>
+          </motion.div>
+        ) : (
+          <motion.div
+            key="calculator-results"
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -15 }}
+            transition={{ duration: 0.25 }}
+            className="w-full max-w-[28.75rem] mx-auto flex flex-col items-center mb-12 px-2"
+            id="shift-results-panel"
+          >
+            <div className="w-full p-4 sm:p-5 flex flex-col relative overflow-hidden">
+              <div className="flex items-center justify-center mb-6">
+                <h2 className="text-lg sm:text-xl lg:text-2xl font-black text-gray-900 text-center tracking-tight">
+                  Your Day-Sleep Schedule
+                </h2>
+              </div>
 
-          {/* Results Side */}
-          <div className="flex flex-col justify-between space-y-6" id="shift-results-panel">
-            <div>
-              <h3 className="text-lg font-bold text-gray-900 mb-4 border-b border-neutral-200 pb-2">
-                Your Recommended Day-Sleep Schedule
-              </h3>
-
-              <div className="space-y-5" id="shift-results-list">
-                {results.map((res, i) => (
+              <div className="w-full flex flex-col gap-4 select-text" id="shift-results-list">
+                {results.map((res, index) => (
                   <div
-                    key={res.label + res.start}
-                    className="border-b border-neutral-200/65 pb-4"
-                    id={`shift-res-card-${i}`}
+                    key={index}
+                    className={`group flex flex-col py-4 px-5 rounded-2xl border transition-all duration-300 hover:shadow-sm ${
+                      res.isCore
+                        ? "border-[#7C3AED]/40 bg-[#7C3AED]/5 hover:bg-[#7C3AED]/10"
+                        : "border-[#E1D8CC] bg-[#FAF6F0] hover:bg-[#FCFAF7]"
+                    }`}
                   >
-                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5 mb-1">
-                      <span className="text-xs font-bold text-[#7C3AED] uppercase bg-[#7C3AED]/10 px-2.5 py-0.5 rounded-full inline-block">
+                    <div className="flex items-center justify-between mb-1">
+                      <span className={`text-[10px] font-bold uppercase px-2.5 py-0.5 rounded-full ${
+                        res.isCore ? "bg-[#7C3AED]/15 text-[#7C3AED]" : "bg-neutral-200/70 text-neutral-600"
+                      }`}>
                         {res.label}
                       </span>
                       <span className="text-[11px] font-mono font-bold text-[#6B7280]">
-                        {res.duration} recovery duration • {res.cycles} Cycles
+                        {res.duration} • {res.cycles} Cycles
                       </span>
                     </div>
 
-                    <div className="flex items-baseline gap-2 mt-2">
-                      <span className="text-2xl sm:text-3xl font-black text-[#7C3AED] tracking-tight">
+                    <div className="flex items-center gap-2 mt-2">
+                      <span className="text-xl sm:text-2xl font-black text-[#7C3AED] tracking-tight">
                         {res.start}
                       </span>
                       <span className="text-xs font-bold text-neutral-400 font-mono">UNTIL</span>
-                      <span className="text-2xl sm:text-3xl font-black text-[#7C3AED] tracking-tight">
+                      <span className="text-xl sm:text-2xl font-black text-[#7C3AED] tracking-tight">
                         {res.end}
                       </span>
                     </div>
 
-                    <p className="text-xs text-neutral-600 mt-2 leading-relaxed">
+                    <p className="text-xs text-neutral-600 mt-2.5 leading-relaxed">
                       {res.rationale}
                     </p>
                   </div>
                 ))}
               </div>
-            </div>
 
-            <div className="bg-[#7C3AED]/5 p-4 border-l-2 border-[#7C3AED] text-xs sm:text-sm text-gray-700 flex items-start gap-3">
-              <EyeOff className="w-5 h-5 text-[#7C3AED] shrink-0 mt-0.5" />
-              <div>
-                <span className="font-bold text-[#111827]">Commute Biohack:</span> Wear polarized sunglasses on your morning trip home! Daylight suppresses melatonin instantly. Guarding your biological system values ensures easy day sleep.
+              {/* Biohack */}
+              <div className="bg-[#7C3AED]/5 p-4 border-l-2 border-[#7C3AED] text-xs sm:text-sm text-gray-700 leading-relaxed flex items-start gap-3 rounded-r-xl mt-6">
+                <EyeOff className="w-5 h-5 text-[#7C3AED] shrink-0 mt-0.5" />
+                <div>
+                  <span className="font-bold text-gray-900">Commute Biohack:</span> Wear polarized sunglasses on your morning trip home! Daylight suppresses melatonin instantly. Guarding your biological system values ensures easy day sleep.
+                </div>
+              </div>
+
+              {/* Copy & Reset Buttons */}
+              <div className="flex flex-col gap-3 mt-6 w-full items-center">
+                <button
+                  onClick={handleCopy}
+                  className="w-full max-w-[18.25rem] sm:max-w-[20rem] py-3.5 px-7 sm:py-4 sm:px-8 rounded-full bg-[#7C3AED] text-white hover:bg-[#6D28D9] active:bg-[#5B21B6] font-bold text-base sm:text-lg tracking-wide transition-all duration-300 hover:shadow-[0_8px_20px_rgba(124,58,237,0.4)] hover:scale-[1.015] active:scale-[0.985] focus-visible:outline-none shadow-[0_5px_15px_rgba(124,58,237,0.3)] cursor-pointer text-center flex items-center justify-center gap-2"
+                >
+                  {copied ? (
+                    <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                    </svg>
+                  ) : (
+                    <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+                    </svg>
+                  )}
+                  {copied ? "Copied!" : "Copy Schedule"}
+                </button>
+
+                <button
+                  onClick={() => setShowResults(false)}
+                  className="w-full max-w-[18.25rem] sm:max-w-[20rem] py-3.5 px-7 sm:py-4 sm:px-8 rounded-full bg-slate-900 hover:bg-slate-850 text-white text-base sm:text-lg font-bold shadow-sm transition-all duration-300 hover:scale-[1.015] active:scale-[0.985] focus-visible:outline-none flex items-center justify-center gap-2 group cursor-pointer"
+                >
+                  <svg className="w-5 h-5 text-current opacity-80 group-hover:translate-x-[-2px] transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                  </svg>
+                  Go Back
+                </button>
               </div>
             </div>
-          </div>
-
-        </div>
-      </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* DEEP SEO CONTENT */}
       <article className="space-y-12 select-text text-gray-700 leading-relaxed text-sm sm:text-base border-t border-neutral-200 pt-12" id="shift-seo-content">

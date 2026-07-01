@@ -36,6 +36,8 @@ export default function StudentCalc() {
   const [wakeTime, setWakeTime] = useState("07:00");
   const [results, setResults] = useState<{ bedTime: Date; durationHrs: number; cycles: number; isOptimal: boolean }[]>([]);
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
+  const [showResults, setShowResults] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   // Format 12-hour AM/PM string
   const formatTime = (date: Date) => {
@@ -93,11 +95,21 @@ export default function StudentCalc() {
     });
 
     setResults(suggestions);
+    setShowResults(true);
   };
 
-  useEffect(() => {
-    handleCalculate();
-  }, [ageGroup, wakeTime]);
+  const handleCopy = () => {
+    if (results.length === 0) return;
+    const text = results
+      .map(
+        (res) =>
+          `• ${formatTime(res.bedTime)} (${res.cycles} Cycles - ${res.durationHrs} Hrs sleep)${res.isOptimal ? " [Recommended]" : ""}`
+      )
+      .join("\n");
+    navigator.clipboard.writeText(`My Recommended Bedtimes (Wake up at ${wakeTime}):\n${text}`);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   if (loading) {
     return (
@@ -148,105 +160,154 @@ export default function StudentCalc() {
       {/* Banner Ad Spot below main heading */}
       <AdPlaceholder id="student-header-ad" slotName="Student Page Banner" />
 
-      {/* Styled card container for the tool itself */}
-      <div className="bg-white p-6 sm:p-8 rounded-2xl border border-neutral-200 shadow-md shadow-neutral-100 mb-12" id="student-and-exam-calc-widget">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-          
-          {/* Inputs */}
-          <div className="space-y-6 flex flex-col justify-center" id="student-inputs">
-            {/* Age group dropdown selection */}
-            <div className="flex flex-col items-start w-full z-20">
-              <label htmlFor="age-select" className="text-slate-600 uppercase tracking-widest text-[11px] sm:text-xs font-bold mb-1.5 block">
-                Select Your Age
-              </label>
-              <div className="w-full relative group">
-                <select
-                  id="age-select"
-                  value={ageGroup}
-                  onChange={(e) => {
-                    setAgeGroup(e.target.value);
-                  }}
-                  className="w-full bg-[#F8FAFC] border border-[#E5E7EB] focus:border-[#7C3AED] focus:ring-2 focus:ring-[#7C3AED]/20 rounded-xl py-2.5 pl-4 pr-10 transition-all duration-300 shadow-sm text-sm sm:text-base font-bold text-[#374151] cursor-pointer hover:border-gray-300 outline-none appearance-none"
+      <AnimatePresence mode="wait" initial={false}>
+        {!showResults ? (
+          <motion.div
+            key="calculator-inputs"
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -15 }}
+            transition={{ duration: 0.25 }}
+            className="w-full max-w-[28.75rem] mx-auto mb-12 relative px-2 sm:px-0"
+            id="student-and-exam-calc-widget"
+          >
+            <div className="flex flex-col items-center w-full p-4 sm:p-5">
+              {/* Age group dropdown selection */}
+              <div className="flex flex-col items-center w-full mb-4 z-20">
+                <label htmlFor="age-select" className="text-slate-600 uppercase tracking-widest text-[11px] sm:text-xs font-bold mb-1.5 block text-center">
+                  Select Your Age
+                </label>
+                <div className="w-full max-w-[11rem] relative group mx-auto">
+                  <select
+                    id="age-select"
+                    value={ageGroup}
+                    onChange={(e) => {
+                      setAgeGroup(e.target.value);
+                    }}
+                    className="w-full bg-[#F8FAFC] border border-[#E5E7EB] focus:border-[#7C3AED] focus:ring-2 focus:ring-[#7C3AED]/20 rounded-xl py-2.5 pl-4 pr-8 transition-all duration-300 shadow-sm text-sm sm:text-base font-bold text-[#374151] cursor-pointer hover:border-gray-300 outline-none appearance-none text-center"
+                  >
+                    {AGE_GROUPS.map((g) => (
+                      <option key={g.id} value={g.id} className="bg-white text-left text-gray-900 font-medium">
+                         {g.label}
+                      </option>
+                    ))}
+                  </select>
+                  <div className="absolute inset-y-0 right-2.5 flex items-center pointer-events-none text-gray-400 group-hover:text-gray-600 transition-colors">
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+
+              <div className="w-full flex flex-col items-center mb-4">
+                <label className="block text-slate-600 uppercase tracking-widest text-[11px] sm:text-xs font-bold mb-1.5 text-center">
+                  Select Wake-up Time (Alarm Target)
+                </label>
+                <TimePicker value={wakeTime} onChange={setWakeTime} mode="wake" />
+                <p className="text-xs text-neutral-500 mt-2 text-center italic font-sans">
+                  Calculator automatically factors in a standard 15-minute natural drift-off buffer.
+                </p>
+              </div>
+
+              {/* Calculate Button */}
+              <div className="w-full flex justify-center mt-4">
+                <button
+                  onClick={handleCalculate}
+                  className="w-full max-w-[18.25rem] sm:max-w-[20rem] bg-[#7C3AED] text-white hover:bg-[#6D28D9] active:bg-[#5B21B6] rounded-full py-3.5 px-7 sm:py-4 sm:px-8 font-extrabold text-[#FFFFFF] text-base sm:text-lg tracking-wide transition-all duration-300 hover:shadow-[0_8px_20px_rgba(124,58,237,0.4)] hover:scale-[1.015] active:scale-[0.985] focus-visible:outline-none shadow-[0_5px_15px_rgba(124,58,237,0.3)] cursor-pointer text-center"
                 >
-                  {AGE_GROUPS.map((g) => (
-                    <option key={g.id} value={g.id} className="bg-white text-left text-gray-900 font-medium">
-                       {g.label}
-                    </option>
-                  ))}
-                </select>
-                <div className="absolute inset-y-0 right-3.5 flex items-center pointer-events-none text-gray-400 group-hover:text-gray-600 transition-colors">
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-                  </svg>
-                </div>
+                  Calculate Bed Time
+                </button>
               </div>
             </div>
+          </motion.div>
+        ) : (
+          <motion.div
+            key="calculator-results"
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -15 }}
+            transition={{ duration: 0.25 }}
+            className="w-full max-w-[28.75rem] mx-auto flex flex-col items-center mb-12 px-2"
+            id="student-calculated-results"
+          >
+            <div className="w-full p-4 sm:p-5 flex flex-col relative overflow-hidden">
+              <div className="flex items-center justify-center mb-6">
+                <h2 className="text-lg sm:text-xl lg:text-2xl font-black text-gray-900 text-center tracking-tight">
+                  Your Recommended Bedtimes
+                </h2>
+              </div>
 
-            <div>
-              <label className="block text-sm font-bold text-gray-900 mb-3">
-                Select Wake-up Time (Alarm Target)
-              </label>
-              <TimePicker value={wakeTime} onChange={setWakeTime} mode="wake" />
-              <p className="text-xs text-neutral-550 mt-2 text-center text-neutral-500 italic font-sans animate-pulse">
-                Calculator automatically factors in a standard 15-minute natural drift-off buffer.
-              </p>
-            </div>
-          </div>
-
-          {/* Clean, Simple Results list */}
-          <div className="flex flex-col justify-between space-y-6" id="student-calculated-results">
-            <div>
-              <h3 className="text-lg font-bold text-gray-900 mb-4 border-b border-neutral-200 pb-2">
-                Your Recommended Bedtimes
-              </h3>
-
-              {results.length > 0 ? (
-                <div className="space-y-5" id="student-results-list">
-                  {results.map((res, i) => (
-                    <div
-                      key={res.bedTime.toISOString() + res.cycles}
-                      className="border-b border-neutral-200/65 pb-4"
-                      id={`result-item-${i}`}
-                    >
-                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 border-neutral-100">
-                        <div>
-                          <div className="text-[11px] text-[#6B7280] font-mono uppercase tracking-wider font-bold">
-                            Go to bed at:
-                          </div>
-                          <div className="text-3xl font-black text-[#7C3AED] tracking-tight mt-0.5">
-                            {formatTime(res.bedTime)}
-                          </div>
-                        </div>
-
-                        <div className="font-sans text-sm text-gray-800">
-                          <span className="font-bold font-mono text-[#111827]">{res.cycles} Cycles</span> ({res.durationHrs} Hrs sleep)
-                          {res.isOptimal && (
-                            <span className="ml-2 inline-block bg-[#7C3AED]/10 text-[#7C3AED] text-[10px] font-black px-2.5 py-0.5 rounded-full uppercase tracking-wider">
-                              Optimal Rest
-                            </span>
-                          )}
-                        </div>
-                      </div>
+              <div className="w-full flex flex-col gap-2 select-text" id="student-results-list">
+                {results.map((res, index) => (
+                  <div
+                    key={index}
+                    className={`group flex items-center justify-between py-3.5 px-5 rounded-2xl border transition-all duration-300 hover:shadow-sm ${
+                      res.isOptimal
+                        ? "border-[#7C3AED]/40 bg-[#7C3AED]/5 hover:bg-[#7C3AED]/10"
+                        : "border-[#E1D8CC] bg-[#FAF6F0] hover:bg-[#FCFAF7]"
+                    }`}
+                  >
+                    <div className="flex flex-col relative z-10">
+                      <span className="text-xl sm:text-2xl font-extrabold text-[#111827] tracking-tight leading-none mb-1.5 flex items-center gap-1.5">
+                        {formatTime(res.bedTime)}
+                      </span>
+                      <span className="text-[#374151] text-xs sm:text-sm font-bold">
+                        {res.durationHrs} hours of sleep ({res.cycles} cycles)
+                      </span>
                     </div>
-                  ))}
-                </div>
-              ) : (
-                <div className="text-center py-6 text-neutral-500 text-sm">
-                  Please configure your choices above.
-                </div>
-              )}
-            </div>
 
-            <div className="bg-[#7C3AED]/5 p-4 border-l-2 border-[#7C3AED] text-xs sm:text-sm text-gray-700 leading-relaxed flex items-start gap-3">
-              <Brain className="w-5 h-5 text-[#7C3AED] shrink-0 mt-0.5" />
-              <div>
-                <span className="font-bold text-gray-901">Memory Booster Fact:</span> Waking up at the completion of a full sleep cycle prevents sleep inertia, ensuring you can immediately focus and remember formulas in high-stakes testing rooms.
+                    <div className="flex items-center gap-2 ml-2 relative z-10 flex-shrink-0">
+                      {res.isOptimal && (
+                        <span className="inline-flex items-center text-xs sm:text-sm font-extrabold text-[#7C3AED] bg-[#7C3AED]/15 px-3 py-1.5 rounded-lg tracking-wider">
+                          Suggested
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Brain Fact */}
+              <div className="bg-[#7C3AED]/5 p-4 border-l-2 border-[#7C3AED] text-xs sm:text-sm text-gray-700 leading-relaxed flex items-start gap-3 rounded-r-xl mt-6">
+                <Brain className="w-5 h-5 text-[#7C3AED] shrink-0 mt-0.5" />
+                <div>
+                  <span className="font-bold text-gray-900">Memory Booster Fact:</span> Waking up at the completion of a full sleep cycle prevents sleep inertia, ensuring you can immediately focus and remember formulas in high-stakes testing rooms.
+                </div>
+              </div>
+
+              {/* Copy & Reset Buttons */}
+              <div className="flex flex-col gap-3 mt-6 w-full items-center">
+                <button
+                  onClick={handleCopy}
+                  className="w-full max-w-[18.25rem] sm:max-w-[20rem] py-3.5 px-7 sm:py-4 sm:px-8 rounded-full bg-[#7C3AED] text-white hover:bg-[#6D28D9] active:bg-[#5B21B6] font-bold text-base sm:text-lg tracking-wide transition-all duration-300 hover:shadow-[0_8px_20px_rgba(124,58,237,0.4)] hover:scale-[1.015] active:scale-[0.985] focus-visible:outline-none shadow-[0_5px_15px_rgba(124,58,237,0.3)] cursor-pointer text-center flex items-center justify-center gap-2"
+                >
+                  {copied ? (
+                    <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                    </svg>
+                  ) : (
+                    <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+                    </svg>
+                  )}
+                  {copied ? "Copied!" : "Copy Schedule"}
+                </button>
+
+                <button
+                  onClick={() => setShowResults(false)}
+                  className="w-full max-w-[18.25rem] sm:max-w-[20rem] py-3.5 px-7 sm:py-4 sm:px-8 rounded-full bg-slate-900 hover:bg-slate-850 text-white text-base sm:text-lg font-bold shadow-sm transition-all duration-300 hover:scale-[1.015] active:scale-[0.985] focus-visible:outline-none flex items-center justify-center gap-2 group cursor-pointer"
+                >
+                  <svg className="w-5 h-5 text-current opacity-80 group-hover:translate-x-[-2px] transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                  </svg>
+                  Go Back
+                </button>
               </div>
             </div>
-          </div>
-
-        </div>
-      </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* HUGE, VALUABLE, DEEP SEO & KNOWLEDGE SYSTEM (2500+ Words) */}
       <article className="space-y-12 select-text text-gray-700 leading-relaxed text-sm sm:text-base border-t border-neutral-200 pt-12" id="student-deep-seo-content">
