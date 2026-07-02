@@ -9,14 +9,7 @@ import { AdPlaceholder } from "../components/AdPlaceholder";
 
 export default function ShiftWorkCalc() {
   const canonicalUrl = getCanonicalUrl("/shift-work-sleep-calculator");
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 300);
-    return () => clearTimeout(timer);
-  }, []);
+  const loading = false;
 
   const AGE_GROUPS = [
     { id: "0-3m", label: "0-3 Months", minCycles: 9, maxCycles: 11 },
