@@ -369,9 +369,9 @@ export function SleepJournal() {
           >
             <form 
               onSubmit={handleAddLog}
-              className="bg-white border border-[#E5E7EB] rounded-3xl p-5 sm:p-6 shadow-premium space-y-5"
+              className="bg-white dark:bg-[#151C2C] border border-[#E5E7EB] dark:border-[#1E293B] rounded-3xl p-5 sm:p-6 shadow-premium space-y-5"
             >
-              <h3 className="text-base sm:text-lg font-black text-[#111827] flex items-center gap-2">
+              <h3 className="text-base sm:text-lg font-black text-[#111827] dark:text-slate-100 flex items-center gap-2">
                 ✍️ Log Sleep Details
               </h3>
 
@@ -379,7 +379,7 @@ export function SleepJournal() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {/* Date Input */}
                 <div className="space-y-1.5 text-left">
-                  <label className="text-xs font-black text-[#374151] uppercase tracking-wider block">
+                  <label className="text-xs font-black text-[#374151] dark:text-slate-300 uppercase tracking-wider block">
                     Sleep Night Date
                   </label>
                   <div className="relative">
@@ -389,34 +389,34 @@ export function SleepJournal() {
                       onChange={(e) => setDate(e.target.value)}
                       max={new Date().toISOString().split("T")[0]}
                       required
-                      className="w-full text-sm font-bold bg-[#F9FAFB] border border-[#E5E7EB] rounded-2xl py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#7C3AED]/20 focus:border-[#7C3AED] text-[#111827] transition-all"
+                      className="w-full text-sm font-bold bg-[#F9FAFB] dark:bg-[#0F172A] border border-[#E5E7EB] dark:border-[#1E293B] rounded-2xl py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#7C3AED]/20 focus:border-[#7C3AED] text-[#111827] dark:text-slate-100 transition-all"
                     />
                   </div>
                 </div>
 
                 {/* Highly Tactile Stepper for Hours Slept */}
                 <div className="space-y-1.5 text-left">
-                  <label className="text-xs font-black text-[#374151] uppercase tracking-wider block">
+                  <label className="text-xs font-black text-[#374151] dark:text-slate-300 uppercase tracking-wider block">
                     Sleep Duration (Hours)
                   </label>
-                  <div className="flex items-center bg-[#F9FAFB] border border-[#E5E7EB] rounded-2xl py-1 px-2.5 justify-between">
+                  <div className="flex items-center bg-[#F9FAFB] dark:bg-[#0F172A] border border-[#E5E7EB] dark:border-[#1E293B] rounded-2xl py-1 px-2.5 justify-between">
                     <button
                       type="button"
                       onClick={() => adjustHours(-0.5)}
-                      className="w-9 h-9 flex items-center justify-center rounded-xl bg-white border border-[#E5E7EB] text-[#111827] font-black text-lg hover:bg-red-50 hover:text-red-600 hover:border-red-200 transition-all select-none cursor-pointer"
+                      className="w-9 h-9 flex items-center justify-center rounded-xl bg-white dark:bg-[#151C2C] border border-[#E5E7EB] dark:border-[#1E293B] text-[#111827] dark:text-slate-200 font-black text-lg hover:bg-red-50 hover:text-red-600 hover:border-red-200 transition-all select-none cursor-pointer"
                     >
                       -
                     </button>
-                    <div className="text-center font-extrabold text-[#111827] select-text flex flex-col justify-center items-center">
+                    <div className="text-center font-extrabold text-[#111827] dark:text-slate-100 select-text flex flex-col justify-center items-center">
                       <span className="text-base font-black leading-none">{hours} hrs</span>
-                      <span className="text-[10px] text-gray-400 font-bold mt-0.5">
+                      <span className="text-[10px] text-gray-400 dark:text-gray-500 font-bold mt-0.5">
                         {hours >= 7 && hours <= 9 ? "🟢 Optimal zone" : hours < 6 ? "🔴 Sleep debt risk" : "🟡 Long sleep"}
                       </span>
                     </div>
                     <button
                       type="button"
                       onClick={() => adjustHours(0.5)}
-                      className="w-9 h-9 flex items-center justify-center rounded-xl bg-white border border-[#E5E7EB] text-[#111827] font-black text-lg hover:bg-[#7C3AED]/10 hover:text-[#7C3AED] hover:border-[#7C3AED]/30 transition-all select-none cursor-pointer"
+                      className="w-9 h-9 flex items-center justify-center rounded-xl bg-white dark:bg-[#151C2C] border border-[#E5E7EB] dark:border-[#1E293B] text-[#111827] dark:text-slate-200 font-black text-lg hover:bg-[#7C3AED]/10 hover:text-[#7C3AED] hover:border-[#7C3AED]/30 transition-all select-none cursor-pointer"
                     >
                       +
                     </button>
@@ -427,10 +427,10 @@ export function SleepJournal() {
               {/* Sleeping Quality Star Rating */}
               <div className="space-y-2 text-left">
                 <div className="flex items-center justify-between">
-                  <label className="text-xs font-black text-[#374151] uppercase tracking-wider">
+                  <label className="text-xs font-black text-[#374151] dark:text-slate-300 uppercase tracking-wider">
                     Sleep Quality Rating
                   </label>
-                  <span className="text-xs font-extrabold text-[#7C3AED] bg-[#7C3AED]/10 py-0.5 px-2.5 rounded-full border border-[#7C3AED]/10 transition-all duration-300">
+                  <span className="text-xs font-extrabold text-[#7C3AED] dark:text-violet-400 bg-[#7C3AED]/10 py-0.5 px-2.5 rounded-full border border-[#7C3AED]/10 transition-all duration-300">
                     {getStarLabel(quality)}
                   </span>
                 </div>
@@ -462,7 +462,7 @@ export function SleepJournal() {
 
               {/* Checklist for sleep habits practiced */}
               <div className="space-y-2 text-left">
-                <label className="text-xs font-black text-[#374151] uppercase tracking-wider block">
+                <label className="text-xs font-black text-[#374151] dark:text-slate-300 uppercase tracking-wider block">
                   Sleep Habits Practiced
                 </label>
                 <div className="grid grid-cols-2 gap-2">
@@ -475,8 +475,8 @@ export function SleepJournal() {
                         onClick={() => handleFactorToggle(factor.id)}
                         className={`py-2.5 px-3.5 border rounded-2xl text-xs font-extrabold text-left transition-all duration-300 flex items-center justify-between select-none cursor-pointer ${
                           isSelected 
-                            ? "bg-purple-50/55 border-[#7C3AED] text-[#7C3AED]"
-                            : "bg-white border-[#E5E7EB] hover:bg-slate-50 text-gray-700"
+                            ? "bg-purple-50/55 dark:bg-violet-900/30 border-[#7C3AED] dark:border-[#7C3AED] text-[#7C3AED] dark:text-violet-300"
+                            : "bg-white dark:bg-[#151C2C] border-[#E5E7EB] dark:border-[#1E293B] hover:bg-slate-50 dark:hover:bg-slate-800 text-gray-700 dark:text-slate-300"
                         }`}
                       >
                         <span className="truncate">{factor.label}</span>
@@ -493,7 +493,7 @@ export function SleepJournal() {
 
               {/* Brief Sleep Notes */}
               <div className="space-y-1.5 text-left">
-                <label className="text-xs font-black text-[#374151] uppercase tracking-wider block">
+                <label className="text-xs font-black text-[#374151] dark:text-slate-300 uppercase tracking-wider block">
                   Sleep Notes / Dreams / Physical Feel
                 </label>
                 <textarea
@@ -502,7 +502,7 @@ export function SleepJournal() {
                   placeholder="e.g. Woke up feeling energized. Dreamt about flying. Bedroom was peaceful and dark."
                   rows={2}
                   maxLength={180}
-                  className="w-full text-sm font-semibold bg-[#F9FAFB] border border-[#E5E7EB] rounded-2xl py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#7C3AED]/20 focus:border-[#7C3AED] text-[#111827] placeholder:text-[#9CA3AF] transition-all"
+                  className="w-full text-sm font-semibold bg-[#F9FAFB] dark:bg-[#0F172A] border border-[#E5E7EB] dark:border-[#1E293B] rounded-2xl py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#7C3AED]/20 focus:border-[#7C3AED] text-[#111827] dark:text-slate-100 placeholder:text-[#9CA3AF] transition-all"
                 />
               </div>
 
@@ -511,13 +511,13 @@ export function SleepJournal() {
                 <button
                   type="button"
                   onClick={() => setIsFormOpen(false)}
-                  className="py-2.5 px-5 bg-[#F3F4F6] text-[#4B5563] text-xs font-black rounded-xl hover:bg-[#E5E7EB] transition-colors cursor-pointer select-none"
+                  className="py-2.5 px-5 bg-[#F3F4F6] dark:bg-slate-800 text-[#4B5563] dark:text-slate-200 text-xs font-black rounded-xl hover:bg-[#E5E7EB] dark:hover:bg-slate-700 transition-colors cursor-pointer select-none"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="py-2.5 px-6 bg-slate-900 text-white text-xs font-black rounded-xl hover:bg-slate-800 transition-colors cursor-pointer select-none"
+                  className="py-2.5 px-6 bg-slate-900 dark:bg-violet-600 text-white text-xs font-black rounded-xl hover:bg-slate-800 dark:hover:bg-violet-700 transition-colors cursor-pointer select-none"
                 >
                   Save Entry 💾
                 </button>
@@ -529,43 +529,43 @@ export function SleepJournal() {
 
       {/* Stats Cards Overview */}
       <div className="grid grid-cols-2 gap-4 mb-6" id="sleep-stats-cards">
-        <div className="bg-[#FAF9FF] border border-[#E5E7EB] rounded-3xl p-4 flex items-center gap-3">
+        <div className="bg-[#FAF9FF] dark:bg-[#151C2C] border border-[#E5E7EB] dark:border-[#1E293B] rounded-3xl p-4 flex items-center gap-3">
           <div className="w-10 h-10 rounded-2xl bg-[#7C3AED]/10 border border-[#7C3AED]/15 flex items-center justify-center shrink-0">
-            <Clock className="w-5 h-5 text-[#7C3AED]" />
+            <Clock className="w-5 h-5 text-[#7C3AED] dark:text-violet-400" />
           </div>
           <div className="text-left leading-tight min-w-0">
-            <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest truncate">Average Sleep</p>
-            <p className="text-lg font-black text-[#111827]">{averageHours > 0 ? `${averageHours} hrs` : "--"}</p>
+            <p className="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest truncate">Average Sleep</p>
+            <p className="text-lg font-black text-[#111827] dark:text-slate-100">{averageHours > 0 ? `${averageHours} hrs` : "--"}</p>
           </div>
         </div>
 
-        <div className="bg-[#FAF9FF] border border-[#E5E7EB] rounded-3xl p-4 flex items-center gap-3">
+        <div className="bg-[#FAF9FF] dark:bg-[#151C2C] border border-[#E5E7EB] dark:border-[#1E293B] rounded-3xl p-4 flex items-center gap-3">
           <div className="w-10 h-10 rounded-2xl bg-amber-500/10 border border-amber-500/15 flex items-center justify-center shrink-0">
             <Star className="w-5 h-5 text-amber-500 fill-amber-500/50" />
           </div>
           <div className="text-left leading-tight min-w-0">
-            <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest truncate">Avg Quality</p>
-            <p className="text-lg font-black text-[#111827]">{averageQuality > 0 ? `${averageQuality} / 5` : "--"}</p>
+            <p className="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest truncate">Avg Quality</p>
+            <p className="text-lg font-black text-[#111827] dark:text-slate-100">{averageQuality > 0 ? `${averageQuality} / 5` : "--"}</p>
           </div>
         </div>
       </div>
 
       {/* Beautiful Customized SVG Trends Chart Card */}
       {logs.length > 1 && (
-        <div className="bg-white border border-[#E5E7EB] rounded-3xl p-5 sm:p-6 mb-6 shadow-premium relative overflow-hidden text-left" id="sleep-trends-dashboard">
+        <div className="bg-white dark:bg-[#151C2C] border border-[#E5E7EB] dark:border-[#1E293B] rounded-3xl p-5 sm:p-6 mb-6 shadow-premium relative overflow-hidden text-left" id="sleep-trends-dashboard">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
             <div className="space-y-0.5">
-              <h3 className="text-sm font-black text-[#111827] uppercase tracking-wider flex items-center gap-1.5">
+              <h3 className="text-sm font-black text-[#111827] dark:text-slate-100 uppercase tracking-wider flex items-center gap-1.5">
                 <TrendingUp className="w-4 h-4 text-[#7C3AED]" />
                 Interactive Rest Trends (Last 7 Days)
               </h3>
-              <p className="text-xs text-[#6B7280]">
+              <p className="text-xs text-[#6B7280] dark:text-slate-400">
                 Comparing your hours slept (Line) with custom sleep quality (Glow indicators).
               </p>
             </div>
             
             {/* Legend guide */}
-            <div className="flex items-center gap-3 self-start sm:self-center bg-[#F9FAFB] border border-[#E5E7EB]/80 px-2.5 py-1 rounded-lg">
+            <div className="flex items-center gap-3 self-start sm:self-center bg-[#F9FAFB] dark:bg-[#0F172A] border border-[#E5E7EB]/80 dark:border-[#1E293B]/80 px-2.5 py-1 rounded-lg">
               <div className="flex items-center gap-1">
                 <span className="w-2.5 h-2.5 rounded-full bg-[#7C3AED] inline-block" />
                 <span className="text-[10px] text-[#4B5563] font-bold">Hours</span>
@@ -703,14 +703,14 @@ export function SleepJournal() {
 
       {/* History Log Directory */}
       <div className="space-y-3 text-left">
-        <h3 className="text-xs font-black text-slate-700 uppercase tracking-widest pl-1">
+        <h3 className="text-xs font-black text-slate-700 dark:text-slate-300 uppercase tracking-widest pl-1">
           Recent Sleep History
         </h3>
 
         {logs.length === 0 ? (
-          <div className="bg-white border border-[#E5E7EB] rounded-3xl p-8 text-center text-slate-500">
-            <BookOpen className="w-8 h-8 text-[#7C3AED] mx-auto mb-2 opacity-50" />
-            <p className="text-sm font-semibold">No logs added yet.</p>
+          <div className="bg-white dark:bg-[#151C2C] border border-[#E5E7EB] dark:border-[#1E293B] rounded-3xl p-8 text-center text-slate-500">
+            <BookOpen className="w-8 h-8 text-[#7C3AED] dark:text-violet-400 mx-auto mb-2 opacity-50" />
+            <p className="text-sm font-semibold dark:text-slate-300">No logs added yet.</p>
             <p className="text-xs text-gray-400 mt-1">Tap &quot;Log Night's Sleep&quot; above to create your first journal entry.</p>
           </div>
         ) : (
@@ -725,17 +725,17 @@ export function SleepJournal() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -15 }}
                     transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                    className="bg-white border border-[#E5E7EB] rounded-2xl p-4 shadow-sm hover:shadow-premium transition-all duration-300 relative group"
+                    className="bg-white dark:bg-[#151C2C] border border-[#E5E7EB] dark:border-[#1E293B] rounded-2xl p-4 shadow-sm hover:shadow-premium transition-all duration-300 relative group"
                     id={`sleep-history-card-${log.id}`}
                   >
                     <div className="flex items-start justify-between gap-3">
                       <div className="space-y-1.5 flex-grow min-w-0">
                         {/* Title Row */}
                         <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1">
-                          <span className="text-sm font-black text-[#111827]">
+                          <span className="text-sm font-black text-[#111827] dark:text-slate-100">
                             {getFormattedDate(log.date)}
                           </span>
-                          <span className="text-xs bg-[#7C3AED]/10 text-[#7C3AED] font-extrabold px-2.5 py-0.5 rounded-lg border border-[#7C3AED]/5">
+                          <span className="text-xs bg-[#7C3AED]/10 text-[#7C3AED] dark:text-violet-300 font-extrabold px-2.5 py-0.5 rounded-lg border border-[#7C3AED]/5 dark:border-[#7C3AED]/15">
                             {log.hours} hours
                           </span>
                           <div className="flex items-center">
@@ -745,7 +745,7 @@ export function SleepJournal() {
                                 className={`w-3.5 h-3.5 ${
                                   starVal <= log.quality 
                                     ? "fill-amber-500 text-amber-500" 
-                                    : "text-gray-200"
+                                    : "text-gray-200 dark:text-slate-700"
                                 }`}
                               />
                             ))}
@@ -754,7 +754,7 @@ export function SleepJournal() {
 
                         {/* Note description */}
                         {log.notes && (
-                          <p className="text-xs text-[#4B5563] leading-relaxed italic bg-[#F9FAFB]/60 p-2 border border-[#E5E7EB]/40 rounded-xl select-text">
+                          <p className="text-xs text-[#4B5563] dark:text-slate-300 leading-relaxed italic bg-[#F9FAFB]/60 dark:bg-[#0F172A]/60 p-2 border border-[#E5E7EB]/40 dark:border-[#1E293B]/40 rounded-xl select-text">
                             &ldquo;{log.notes}&rdquo;
                           </p>
                         )}
@@ -768,7 +768,7 @@ export function SleepJournal() {
                               return (
                                 <span 
                                   key={factorId}
-                                  className="text-[10px] sm:text-xs font-semibold text-slate-700 bg-gray-100 border border-gray-150 px-2 py-0.5 rounded-md inline-flex items-center gap-1 shrink-0"
+                                  className="text-[10px] sm:text-xs font-semibold text-slate-700 dark:text-slate-300 bg-gray-100 dark:bg-[#0F172A] border border-gray-150 dark:border-[#1E293B] px-2 py-0.5 rounded-md inline-flex items-center gap-1 shrink-0"
                                 >
                                   <span>{f.label}</span>
                                 </span>
@@ -781,7 +781,7 @@ export function SleepJournal() {
                       {/* Delete button option */}
                       <button
                         onClick={() => handleDeleteLog(log.id, log.date)}
-                        className="p-2.5 bg-[#F9FAFB]/80 hover:bg-red-50 text-[#9CA3AF] hover:text-red-600 border border-[#E5E7EB] hover:border-red-200 rounded-xl transition-all duration-300 cursor-pointer select-none shrink-0 shadow-sm hover:shadow-md hover:scale-105 active:scale-95"
+                        className="p-2.5 bg-[#F9FAFB]/80 dark:bg-[#0F172A]/80 hover:bg-red-50 dark:hover:bg-red-900/30 text-[#9CA3AF] hover:text-red-600 border border-[#E5E7EB] dark:border-[#1E293B] hover:border-red-200 rounded-xl transition-all duration-300 cursor-pointer select-none shrink-0 shadow-sm hover:shadow-md hover:scale-105 active:scale-95"
                         title="Delete sleep log"
                       >
                         <Trash2 className="w-4 h-4" />

@@ -183,81 +183,81 @@
 }
 
 /* Global utility overrides to make any legacy white/slate text highly legible in Light Mode */
-.text-slate-100,
-.text-gray-100,
-.text-gray-150,
-.text-gray-155 {
+:root:not(.dark) .text-slate-100,
+:root:not(.dark) .text-gray-100,
+:root:not(.dark) .text-gray-150,
+:root:not(.dark) .text-gray-155 {
   color: #111827 !important; /* Rich Charcoal for headings */
 }
 
-.text-slate-200,
-.text-slate-300,
-.text-slate-350,
-.text-gray-250,
-.text-gray-300 {
+:root:not(.dark) .text-slate-200,
+:root:not(.dark) .text-slate-300,
+:root:not(.dark) .text-slate-350,
+:root:not(.dark) .text-gray-250,
+:root:not(.dark) .text-gray-300 {
   color: #374151 !important; /* Premium Gray for general content */
 }
 
-.text-slate-400,
-.text-slate-500,
-.text-gray-400,
-.text-gray-450,
-.text-gray-500,
-.text-slate-350,
-.text-\[\#6B7280\] {
+:root:not(.dark) .text-slate-400,
+:root:not(.dark) .text-slate-500,
+:root:not(.dark) .text-gray-400,
+:root:not(.dark) .text-gray-450,
+:root:not(.dark) .text-gray-500,
+:root:not(.dark) .text-slate-350,
+:root:not(.dark) .text-\[\#6B7280\] {
   color: #4B5563 !important; /* Soft Gray for subtext or secondary meta-info */
 }
 
 /* Fix any specifically highlighted headings and strong text in blog/faq content */
-.text-white:not(button):not(a):not(.bg-\[\#7C3AED\] *):not(.bg-\[\#6D28D9\] *):not(.bg-\[\#25D366\] *):not(.bg-green-600 *):not(.bg-slate-900 *) {
+:root:not(.dark) .text-white:not(button):not(a):not(.bg-\[\#7C3AED\] *):not(.bg-\[\#6D28D9\] *):not(.bg-\[\#25D366\] *):not(.bg-green-600 *):not(.bg-slate-900 *) {
   color: #111827 !important;
 }
 
 /* Override all dark background boxes/plates inside blog articles and guides to a bright premium card white style */
-.bg-slate-900\/30,
-.bg-slate-900\/40,
-.bg-slate-900\/45,
-.bg-slate-900\/50,
-.bg-slate-950\/40,
-.bg-slate-950\/60,
-.bg-\[\#07102e\] {
+:root:not(.dark) .bg-slate-900\/30,
+:root:not(.dark) .bg-slate-900\/40,
+:root:not(.dark) .bg-slate-900\/45,
+:root:not(.dark) .bg-slate-900\/50,
+:root:not(.dark) .bg-slate-950\/40,
+:root:not(.dark) .bg-slate-950\/60,
+:root:not(.dark) .bg-\[\#07102e\] {
   background-color: #ffffff !important;
 }
 
 /* Override table headers and odd rows that were dark-themed */
-tr.bg-slate-950\/60,
-tr.bg-slate-900\/50,
-tr.bg-white\/5 {
+:root:not(.dark) tr.bg-slate-950\/60,
+:root:not(.dark) tr.bg-slate-900\/50,
+:root:not(.dark) tr.bg-white\/5 {
   background-color: #f9fafb !important;
 }
 
-tr.bg-blue-500\/5 {
+:root:not(.dark) tr.bg-blue-500\/5 {
   background-color: rgba(139, 92, 246, 0.05) !important;
 }
 
 /* Ensure borders are classes light grey */
-.border-white\/5,
-.border-white\/10,
-.border-white\/15,
-.border-slate-800,
-.border-slate-700 {
+:root:not(.dark) .border-white\/5,
+:root:not(.dark) .border-white\/10,
+:root:not(.dark) .border-white\/15,
+:root:not(.dark) .border-slate-800,
+:root:not(.dark) .border-slate-700 {
   border-color: #E5E7EB !important;
 }
 
 /* Custom spacing and background for section headers within blog */
-span.bg-\[\#07102e\] {
+:root:not(.dark) span.bg-\[\#07102e\] {
   background-color: #f3efe6 !important;
   color: #7C3AED !important;
 }
 
 /* Override blog article lists, subheadings, and strong tags to be pitch charcoal */
-article strong,
-article h1, article h2, article h3, article h4, article h5, article h6 {
+:root:not(.dark) article strong,
+:root:not(.dark) article h1, :root:not(.dark) article h2, :root:not(.dark) article h3, :root:not(.dark) article h4, :root:not(.dark) article h5, :root:not(.dark) article h6 {
   color: #111827 !important;
 }
 
 /* Lists and list spans */
-article li, article li span {
+:root:not(.dark) article li, :root:not(.dark) article li span {
   color: #374151 !important;
 }
 
@@ -268,6 +268,22 @@ article a {
 article a:hover {
   color: #6D28D9 !important;
   text-decoration: underline !important;
+}
+
+/* Neutralize aggressive link styles for Recommended Sleep Guides section */
+article #recommended-guides-section a,
+.select-text #recommended-guides-section a,
+.markdown-body #recommended-guides-section a {
+  color: inherit !important;
+  font-weight: inherit !important;
+  text-decoration: none !important;
+  text-decoration-thickness: initial !important;
+  text-underline-offset: initial !important;
+}
+article #recommended-guides-section a:hover,
+.select-text #recommended-guides-section a:hover,
+.markdown-body #recommended-guides-section a:hover {
+  text-decoration: none !important;
 }
 
 /* Styling tables inside articles */
@@ -414,5 +430,199 @@ article td, .select-text td, .markdown-body td, .blog-reading-layout td {
     grid-template-columns: repeat(3, minmax(0, 1fr)) !important; /* 3 columns on desktop for beautiful density instead of 2 wide stretched cards */
   }
 }
+
+/* ==========================================================================
+   🌙 Comprehensive Premium Dark Mode Override Rules
+   ========================================================================== */
+
+/* Dark Mode Backgrounds */
+:root.dark,
+:root.dark body,
+:root.dark .min-h-screen,
+:root.dark .bg-\[\#F3ECE3\] {
+  background-color: #0B0F19 !important;
+  color: #E2E8F0 !important;
+}
+
+/* Header & Mobile navigation */
+:root.dark header,
+:root.dark .bg-\[\#FAF6F0\]\/90 {
+  background-color: rgba(11, 15, 25, 0.9) !important;
+  border-color: rgba(30, 41, 59, 0.7) !important;
+}
+
+:root.dark #mobile-menu,
+:root.dark .bg-\[\#FAF6F0\] {
+  background-color: #0F172A !important;
+  border-color: rgba(30, 41, 59, 0.7) !important;
+}
+
+/* Redefine central design tokens for dark theme elements */
+:root.dark {
+  --color-background: #0B0F19;
+  --color-card: #151C2C;
+  --color-heading: #F3ECE3;
+  --color-body: #CBD5E1;
+  --color-muted: #94A3B8;
+  --color-border-elegant: #1E293B;
+  --color-input: #0F172A;
+  --color-section: #0B0F19;
+}
+
+/* Dark mode main titles and high-contrast text elements */
+:root.dark h1,
+:root.dark h2,
+:root.dark h3,
+:root.dark h4,
+:root.dark h5,
+:root.dark h6,
+:root.dark .text-\[\#111827\],
+:root.dark .text-gray-900 {
+  color: #F8FAFC !important;
+}
+
+/* Dark mode paragraphs and standard text pieces */
+:root.dark p,
+:root.dark span,
+:root.dark label,
+:root.dark li,
+:root.dark .text-\[\#374151\],
+:root.dark .text-\[\#4B5563\],
+:root.dark .text-gray-700,
+:root.dark .text-gray-600,
+:root.dark .text-gray-500 {
+  color: #CBD5E1 !important;
+}
+
+/* Maintain accent highlights and action items */
+:root.dark .text-\[\#7C3AED\],
+:root.dark .text-violet-600,
+:root.dark .text-purple-600 {
+  color: #A78BFA !important;
+}
+
+:root.dark .bg-white {
+  background-color: #151C2C !important;
+  border-color: #1E293B !important;
+}
+
+:root.dark .bg-gray-50 {
+  background-color: #111827 !important;
+  border-color: #1E293B !important;
+}
+
+/* Border overrides */
+:root.dark .border-gray-100,
+:root.dark .border-gray-200,
+:root.dark .border-gray-300,
+:root.dark .border-\[\#E5E7EB\]\/50 {
+  border-color: #1E293B !important;
+}
+
+/* Interactive form inputs */
+:root.dark input,
+:root.dark select,
+:root.dark textarea {
+  background-color: #0F172A !important;
+  color: #F8FAFC !important;
+  border-color: #1E293B !important;
+}
+
+/* Specific component elements inside calculators */
+:root.dark .text-gray-650 {
+  color: #94A3B8 !important;
+}
+
+/* Results section overrides for contrast */
+:root.dark .bg-green-50\/80,
+:root.dark .bg-emerald-50\/80 {
+  background-color: rgba(16, 185, 129, 0.1) !important;
+  border-color: rgba(16, 185, 129, 0.3) !important;
+}
+
+:root.dark .text-green-900,
+:root.dark .text-emerald-900,
+:root.dark .text-green-800 {
+  color: #34D399 !important;
+}
+
+:root.dark .text-green-700 {
+  color: #A7F3D0 !important;
+}
+
+/* Articles and Guides list container settings in Dark Mode */
+:root.dark article,
+:root.dark .markdown-body,
+:root.dark .blog-reading-layout {
+  color: #CBD5E1 !important;
+}
+
+:root.dark article strong,
+:root.dark .markdown-body strong {
+  color: #F8FAFC !important;
+}
+
+:root.dark article a,
+:root.dark .markdown-body a {
+  color: #A78BFA !important;
+}
+
+:root.dark article a:hover,
+:root.dark .markdown-body a:hover {
+  color: #C4B5FD !important;
+}
+
+/* Tables inside articles in Dark Mode */
+:root.dark article table,
+:root.dark .markdown-body table {
+  background-color: #111827 !important;
+  border: 1px solid #1E293B !important;
+}
+
+:root.dark article tr,
+:root.dark .markdown-body tr {
+  border-bottom: 1px solid #1E293B !important;
+  background-color: #111827 !important;
+}
+
+:root.dark article th,
+:root.dark .markdown-body th {
+  background-color: #1E293B !important;
+  color: #F8FAFC !important;
+}
+
+:root.dark article td,
+:root.dark .markdown-body td {
+  color: #CBD5E1 !important;
+}
+
+/* Bulletproof styling overrides for Recommended Sleep Guides on all pages */
+#recommended-guides-section a,
+#recommended-guides-section a:hover,
+#recommended-guides-grid a,
+#recommended-guides-grid a:hover {
+  color: inherit !important;
+  font-weight: inherit !important;
+  text-decoration: none !important;
+  text-decoration-thickness: initial !important;
+  text-underline-offset: initial !important;
+}
+
+#recommended-guides-section a h4,
+#recommended-guides-section a p,
+#recommended-guides-section a span,
+#recommended-guides-section a div {
+  text-decoration: none !important;
+}
+
+#recommended-guides-section a:hover h4 {
+  color: #7C3AED !important;
+}
+
+:root.dark #recommended-guides-section a:hover h4 {
+  color: #a78bfa !important;
+}
+
+
 
 

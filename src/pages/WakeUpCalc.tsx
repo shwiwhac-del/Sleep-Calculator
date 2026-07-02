@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
-import { Activity, ChevronDown } from "lucide-react";
+import { Activity, ChevronDown, ArrowLeft } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { getCanonicalUrl } from "../lib/seo";
 import TimePicker from "../components/TimePicker";
 import HomeSkeleton from "../components/HomeSkeleton";
 import { AdPlaceholder } from "../components/AdPlaceholder";
+import RecommendedSleepGuides from "../components/RecommendedSleepGuides";
 
 export default function WakeUpCalc() {
   const canonicalUrl = getCanonicalUrl("/wake-up-between-sleep-cycles");
@@ -117,10 +118,10 @@ export default function WakeUpCalc() {
     return (
       <div className="w-full max-w-4xl mx-auto px-4 py-8 sm:py-12" id="wake-cycles-calculator-root">
         <Helmet>
-          <title>Wake Up Between Sleep Cycles Calculator | Morning Freshness</title>
+          <title>Wake Up Between Sleep Cycles Calculator | Best Wake Up Times</title>
           <meta
             name="description"
-            content="Learn how to wake up between sleep cycles to prevent morning sleep inertia. Calculate your optimal alarm times with our simple sleep cycles calculator."
+            content="Find the best times to set your alarm based on when you go to bed. Calculate your natural sleep cycle ends to wake up instantly energized, avoiding sleep inertia."
           />
           <link rel="canonical" href={canonicalUrl} />
         </Helmet>
@@ -132,21 +133,29 @@ export default function WakeUpCalc() {
   return (
     <div className="w-full max-w-4xl mx-auto px-4 py-8 sm:py-12" id="wake-cycles-calculator-root">
       <Helmet>
-        <title>Wake Up Between Sleep Cycles Calculator | Morning Freshness</title>
+        <title>Wake Up Between Sleep Cycles Calculator | Best Wake Up Times</title>
         <meta
           name="description"
-          content="Learn how to wake up between sleep cycles to prevent morning sleep inertia. Calculate your optimal alarm times with our simple sleep cycles calculator."
+          content="Find the best times to set your alarm based on when you go to bed. Calculate your natural sleep cycle ends to wake up instantly energized, avoiding sleep inertia."
         />
         <link rel="canonical" href={canonicalUrl} />
       </Helmet>
 
       {/* Breadcrumbs - Clean and Simple */}
-      <div className="mb-8 flex items-center text-xs sm:text-sm text-[#6B7280]" id="wake-cycles-breadcrumb">
-        <div className="flex items-center gap-1.5 font-sans">
-          <Link to="/" className="hover:text-[#7C3AED] transition-colors font-medium">Home</Link>
-          <span className="text-gray-400">&gt;</span>
-          <span className="font-semibold text-gray-700">Wake Up Between Cycles Calculator</span>
+      <div className="mb-8 text-left" id="wake-cycles-breadcrumb-container">
+        <div className="mb-4 flex items-center text-xs sm:text-sm text-[#6B7280]" id="wake-cycles-breadcrumb">
+          <div className="flex items-center gap-1.5 font-sans">
+            <Link to="/" className="hover:text-[#7C3AED] transition-colors font-medium">Home</Link>
+            <span className="text-gray-400">&gt;</span>
+            <span className="font-semibold text-gray-700">Wake Up Between Cycles Calculator</span>
+          </div>
         </div>
+        <Link 
+          to="/"
+          className="inline-flex items-center gap-2 text-base text-[#6B7280] dark:text-slate-400 font-semibold tracking-wide hover:text-[#7C3AED] transition-colors focus-visible:outline-none cursor-pointer"
+        >
+          <ArrowLeft size={18} /> Back to Calculator
+        </Link>
       </div>
 
       {/* Header Banner */}
@@ -271,7 +280,7 @@ export default function WakeUpCalc() {
                     className={`group flex items-center justify-between py-3.5 px-5 rounded-2xl border transition-all duration-300 hover:shadow-sm ${
                       res.optimal
                         ? "border-[#7C3AED]/40 bg-[#7C3AED]/5 hover:bg-[#7C3AED]/10"
-                        : "border-[#E1D8CC] bg-[#FAF6F0] hover:bg-[#FCFAF7]"
+                        : "border-[#E1D8CC] dark:border-[#1E293B] bg-[#FAF6F0] dark:bg-[#151C2C] hover:bg-[#FCFAF7] dark:hover:bg-[#1E293B]"
                     }`}
                   >
                     <div className="flex flex-col relative z-10">
@@ -459,15 +468,15 @@ export default function WakeUpCalc() {
               return (
                 <div
                   key={index}
-                  className="bg-[#FAF6F0] border border-[#E1D8CC] rounded-2xl overflow-hidden shadow-xs transition-all duration-300 hover:border-[#7C3AED]"
+                  className="bg-[#FAF6F0] dark:bg-[#151C2C] border border-[#E1D8CC] dark:border-[#1E293B] rounded-2xl overflow-hidden shadow-xs transition-all duration-300 hover:border-[#7C3AED]"
                   id={`faq-item-${index}`}
                 >
                   <button
                     type="button"
                     onClick={() => setOpenFaqIndex(isOpen ? null : index)}
-                    className="w-full flex items-center justify-between p-4 sm:p-5 text-left font-semibold text-[#111827] hover:bg-[#FCFAF7] transition-colors focus:outline-none cursor-pointer"
+                    className="w-full flex items-center justify-between p-4 sm:p-5 text-left font-semibold text-[#111827] dark:text-slate-100 hover:bg-[#FCFAF7] dark:hover:bg-[#1E293B] transition-colors focus:outline-none cursor-pointer"
                   >
-                    <span className="text-base font-bold text-[#111827] pr-4">{faq.q}</span>
+                    <span className="text-base font-bold text-[#111827] dark:text-slate-100 pr-4">{faq.q}</span>
                     <ChevronDown className={`w-5 h-5 text-[#7C3AED] shrink-0 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`} />
                   </button>
                   <AnimatePresence initial={false}>
@@ -477,9 +486,9 @@ export default function WakeUpCalc() {
                         animate={{ height: "auto", opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
                         transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                        className="overflow-hidden border-t border-[#E1D8CC]"
+                        className="overflow-hidden border-t border-[#E1D8CC] dark:border-[#1E293B]"
                       >
-                        <p className="p-4 sm:p-5 text-xs sm:text-sm text-[#374151] leading-relaxed bg-[#FAF6F0] select-text">
+                        <p className="p-4 sm:p-5 text-xs sm:text-sm text-[#374151] dark:text-slate-300 leading-relaxed bg-[#FAF6F0] dark:bg-[#151C2C] select-text">
                           {faq.a}
                         </p>
                       </motion.div>
@@ -492,6 +501,9 @@ export default function WakeUpCalc() {
         </section>
 
       </article>
+
+      {/* Recommended Sleep Guides & Science */}
+      <RecommendedSleepGuides />
 
     </div>
   );

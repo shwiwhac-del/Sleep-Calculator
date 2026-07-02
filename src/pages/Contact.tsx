@@ -132,7 +132,7 @@ export default function Contact() {
               </div>
             )}
             
-            <div>
+             <div>
               <label htmlFor="name" className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider block mb-1.5 ml-1">
                 Name
               </label>
@@ -143,7 +143,7 @@ export default function Contact() {
                 value={formData.name}
                 onChange={handleChange}
                 required
-                className="w-full bg-[#F8FAFC] border border-[#E5E7EB] shadow-sm focus:border-[#7C3AED] focus:ring-1 focus:ring-[#7C3AED] rounded-xl px-4 py-3 text-gray-900 placeholder:text-gray-400 focus:outline-none transition-colors text-sm md:text-base"
+                className="w-full bg-[#F8FAFC] dark:bg-[#151C2C] border border-[#E5E7EB] dark:border-[#1E293B] shadow-sm focus:border-[#7C3AED] focus:ring-1 focus:ring-[#7C3AED] rounded-xl px-4 py-3 text-gray-900 dark:text-slate-100 placeholder:text-gray-400 focus:outline-none transition-colors text-sm md:text-base"
                 placeholder="Your name"
               />
             </div>
@@ -159,7 +159,7 @@ export default function Contact() {
                 value={formData.email}
                 onChange={handleChange}
                 required
-                className="w-full bg-[#F8FAFC] border border-[#E5E7EB] shadow-sm focus:border-[#7C3AED] focus:ring-1 focus:ring-[#7C3AED] rounded-xl px-4 py-3 text-gray-900 placeholder:text-gray-400 focus:outline-none transition-colors text-sm md:text-base"
+                className="w-full bg-[#F8FAFC] dark:bg-[#151C2C] border border-[#E5E7EB] dark:border-[#1E293B] shadow-sm focus:border-[#7C3AED] focus:ring-1 focus:ring-[#7C3AED] rounded-xl px-4 py-3 text-gray-900 dark:text-slate-100 placeholder:text-gray-400 focus:outline-none transition-colors text-sm md:text-base"
                 placeholder="you@example.com"
               />
             </div>
@@ -175,7 +175,7 @@ export default function Contact() {
                 onChange={handleChange}
                 required
                 rows={4}
-                className="w-full bg-[#F8FAFC] border border-[#E5E7EB] shadow-sm focus:border-[#7C3AED] focus:ring-1 focus:ring-[#7C3AED] rounded-xl px-4 py-3 text-gray-900 placeholder:text-gray-400 focus:outline-none transition-colors resize-none text-sm md:text-base"
+                className="w-full bg-[#F8FAFC] dark:bg-[#151C2C] border border-[#E5E7EB] dark:border-[#1E293B] shadow-sm focus:border-[#7C3AED] focus:ring-1 focus:ring-[#7C3AED] rounded-xl px-4 py-3 text-gray-900 dark:text-slate-100 placeholder:text-gray-400 focus:outline-none transition-colors resize-none text-sm md:text-base"
                 placeholder="How can we help?"
               />
             </div>

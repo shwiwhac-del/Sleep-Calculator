@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Link } from "react-router-dom";
 import { ChevronDown, Calendar, Clock, ArrowRight, BookOpen, Star, Quote } from "lucide-react";
-import { BLOG_POSTS_META } from "../blogMetadata";
+import RecommendedSleepGuides from "./RecommendedSleepGuides";
 
 export default function SleepGuideAndFAQ() {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
@@ -57,23 +57,6 @@ export default function SleepGuideAndFAQ() {
       a: "Both are crucial, but high-quality sleep is often more restorative than a longer duration of interrupted, low-quality sleep. Aligning your sleep timing with natural 90-minute cycle endpoints optimizes sleep quality by ensuring you wake up at a transition state, not in deep sleep."
     }
   ];
-
-  const latestBlogs = Object.entries(BLOG_POSTS_META)
-    .map(([slug, meta]) => ({
-      slug,
-      title: meta.title,
-      description: meta.description,
-      rawDate: meta.date,
-      date: new Date(meta.date + "T00:00:00").toLocaleDateString("en-US", {
-        month: "short",
-        day: "numeric",
-        year: "numeric"
-      }),
-      readTime: "5 min read",
-      category: meta.category
-    }))
-    .sort((a, b) => b.rawDate.localeCompare(a.rawDate))
-    .slice(0, 3);
 
   return (
     <div className="w-full max-w-[42rem] mx-auto mt-6 mb-2 px-0 text-[#374151] select-none font-sans text-left space-y-4 content-visible-auto">
@@ -342,6 +325,9 @@ export default function SleepGuideAndFAQ() {
       <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-[#374151] pb-2 select-text">
         Use the calculator today to discover your ideal sleep time, create a better sleep schedule, and wake up refreshed every morning.
       </p>
+
+      {/* Recommended Sleep Guides & Science Cards */}
+      <RecommendedSleepGuides />
 
       {/* Trust Signals & Testimonials section */}
       <div className="w-full pt-8 pb-4 border-t border-[#E5E7EB] mt-8 flex flex-col items-center select-text">

@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
-import { Hourglass, ChevronDown } from "lucide-react";
+import { Hourglass, ChevronDown, ArrowLeft } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { getCanonicalUrl } from "../lib/seo";
 import TimePicker from "../components/TimePicker";
 import HomeSkeleton from "../components/HomeSkeleton";
 import { AdPlaceholder } from "../components/AdPlaceholder";
+import RecommendedSleepGuides from "../components/RecommendedSleepGuides";
 
 export default function NinetyMinCalc() {
   const canonicalUrl = getCanonicalUrl("/sleep-cycle-calculator-90-minutes");
@@ -107,10 +108,10 @@ export default function NinetyMinCalc() {
     return (
       <div className="w-full max-w-4xl mx-auto px-4 py-8 sm:py-12" id="ninety-calculator-root">
         <Helmet>
-          <title>Sleep Cycle Calculator 90 Minutes | Waking Up Fresh</title>
+          <title>90 Minute Sleep Calculator | Calculate Sleep Cycles</title>
           <meta
             name="description"
-            content="Calculate sleep cycles based on the 90-minute formula. Schedule exact bedtime slots using our interactive sleep cycle calculator for maximum mental focus."
+            content="Plan your bedtime using our 90-Minute Sleep Calculator. Synchronize sleep cycles to naturally wake up between cycles, cure morning grogginess, and feel refreshed."
           />
           <link rel="canonical" href={canonicalUrl} />
         </Helmet>
@@ -122,21 +123,29 @@ export default function NinetyMinCalc() {
   return (
     <div className="w-full max-w-4xl mx-auto px-4 py-8 sm:py-12" id="ninety-calculator-root">
       <Helmet>
-        <title>Sleep Cycle Calculator 90 Minutes | Waking Up Fresh</title>
+        <title>90 Minute Sleep Calculator | Calculate Sleep Cycles</title>
         <meta
           name="description"
-          content="Calculate sleep cycles based on the 90-minute formula. Schedule exact bedtime slots using our interactive sleep cycle calculator for maximum mental focus."
+          content="Plan your bedtime using our 90-Minute Sleep Calculator. Synchronize sleep cycles to naturally wake up between cycles, cure morning grogginess, and feel refreshed."
         />
         <link rel="canonical" href={canonicalUrl} />
       </Helmet>
 
       {/* Breadcrumbs - Clean and Simple */}
-      <div className="mb-8 flex items-center text-xs sm:text-sm text-[#6B7280]" id="ninety-breadcrumb">
-        <div className="flex items-center gap-1.5 font-sans">
-          <Link to="/" className="hover:text-[#7C3AED] transition-colors font-medium">Home</Link>
-          <span className="text-gray-400">&gt;</span>
-          <span className="font-semibold text-gray-700">90-Minute Sleep Calculator</span>
+      <div className="mb-8 text-left" id="ninety-breadcrumb-container">
+        <div className="mb-4 flex items-center text-xs sm:text-sm text-[#6B7280]" id="ninety-breadcrumb">
+          <div className="flex items-center gap-1.5 font-sans">
+            <Link to="/" className="hover:text-[#7C3AED] transition-colors font-medium">Home</Link>
+            <span className="text-gray-400">&gt;</span>
+            <span className="font-semibold text-gray-700">90-Minute Sleep Calculator</span>
+          </div>
         </div>
+        <Link 
+          to="/"
+          className="inline-flex items-center gap-2 text-base text-[#6B7280] dark:text-slate-400 font-semibold tracking-wide hover:text-[#7C3AED] transition-colors focus-visible:outline-none cursor-pointer"
+        >
+          <ArrowLeft size={18} /> Back to Calculator
+        </Link>
       </div>
 
       {/* Header Banner */}
@@ -259,7 +268,7 @@ export default function NinetyMinCalc() {
                     className={`group flex items-center justify-between py-3.5 px-5 rounded-2xl border transition-all duration-300 hover:shadow-sm ${
                       res.healthy
                         ? "border-[#7C3AED]/40 bg-[#7C3AED]/5 hover:bg-[#7C3AED]/10"
-                        : "border-[#E1D8CC] bg-[#FAF6F0] hover:bg-[#FCFAF7]"
+                        : "border-[#E1D8CC] dark:border-[#1E293B] bg-[#FAF6F0] dark:bg-[#151C2C] hover:bg-[#FCFAF7] dark:hover:bg-[#1E293B]"
                     }`}
                   >
                     <div className="flex flex-col relative z-10">
@@ -430,15 +439,15 @@ export default function NinetyMinCalc() {
               return (
                 <div
                   key={index}
-                  className="bg-[#FAF6F0] border border-[#E1D8CC] rounded-2xl overflow-hidden shadow-xs transition-all duration-300 hover:border-[#7C3AED]"
+                  className="bg-[#FAF6F0] dark:bg-[#151C2C] border border-[#E1D8CC] dark:border-[#1E293B] rounded-2xl overflow-hidden shadow-xs transition-all duration-300 hover:border-[#7C3AED]"
                   id={`faq-item-${index}`}
                 >
                   <button
                     type="button"
                     onClick={() => setOpenFaqIndex(isOpen ? null : index)}
-                    className="w-full flex items-center justify-between p-4 sm:p-5 text-left font-semibold text-[#111827] hover:bg-[#FCFAF7] transition-colors focus:outline-none cursor-pointer"
+                    className="w-full flex items-center justify-between p-4 sm:p-5 text-left font-semibold text-[#111827] dark:text-slate-100 hover:bg-[#FCFAF7] dark:hover:bg-[#1E293B] transition-colors focus:outline-none cursor-pointer"
                   >
-                    <span className="text-base font-bold text-[#111827] pr-4">{faq.q}</span>
+                    <span className="text-base font-bold text-[#111827] dark:text-slate-100 pr-4">{faq.q}</span>
                     <ChevronDown className={`w-5 h-5 text-[#7C3AED] shrink-0 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`} />
                   </button>
                   <AnimatePresence initial={false}>
@@ -448,9 +457,9 @@ export default function NinetyMinCalc() {
                         animate={{ height: "auto", opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
                         transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                        className="overflow-hidden border-t border-[#E1D8CC]"
+                        className="overflow-hidden border-t border-[#E1D8CC] dark:border-[#1E293B]"
                       >
-                        <p className="p-4 sm:p-5 text-xs sm:text-sm text-[#374151] leading-relaxed bg-[#FAF6F0] select-text">
+                        <p className="p-4 sm:p-5 text-xs sm:text-sm text-[#374151] dark:text-slate-300 leading-relaxed bg-[#FAF6F0] dark:bg-[#151C2C] select-text">
                           {faq.a}
                         </p>
                       </motion.div>
@@ -463,6 +472,9 @@ export default function NinetyMinCalc() {
         </section>
 
       </article>
+
+      {/* Recommended Sleep Guides & Science */}
+      <RecommendedSleepGuides />
 
     </div>
   );

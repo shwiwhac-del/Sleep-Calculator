@@ -1897,25 +1897,25 @@ export default function Blog() {
                 <Link
                   key={post.slug}
                   to={`/blog/${post.slug}`}
-                  className="group flex flex-col bg-white hover:bg-slate-50 border border-[#E5E7EB] hover:border-[#7C3AED]/50 rounded-2xl p-6 transition-all duration-300 transform hover:-translate-y-1.5 shadow-md hover:shadow-premium relative overflow-hidden h-full"
+                  className="group flex flex-col bg-white dark:bg-[#151C2C] hover:bg-slate-50 dark:hover:bg-[#1E293B] border border-[#E5E7EB] dark:border-[#1E293B] hover:border-[#7C3AED]/50 rounded-2xl p-6 transition-all duration-300 transform hover:-translate-y-1.5 shadow-md hover:shadow-premium relative overflow-hidden h-full"
                 >
                   <div className="absolute top-0 left-0 w-1 bg-gradient-to-b from-[#7C3AED] to-[#6D28D9] h-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   
                   <div className="flex items-center justify-end mb-4">
-                    <span className="text-xs font-medium text-[#6B7280]">
+                    <span className="text-xs font-medium text-[#6B7280] dark:text-slate-400">
                       {post.readTime}
                     </span>
                   </div>
 
-                  <h2 className="text-xl font-bold text-[#111827] group-hover:text-[#7C3AED] transition-colors leading-snug mb-3 font-serif">
+                  <h2 className="text-xl font-bold text-[#111827] dark:text-slate-100 group-hover:text-[#7C3AED] dark:group-hover:text-violet-400 transition-colors leading-snug mb-3 font-serif">
                     {post.title}
                   </h2>
 
-                  <p className="text-sm text-[#4B5563] leading-relaxed line-clamp-3 mb-6 flex-grow">
+                  <p className="text-sm text-[#4B5563] dark:text-slate-300 leading-relaxed line-clamp-3 mb-6 flex-grow">
                     {post.description}
                   </p>
 
-                  <div className="flex items-center text-sm font-semibold text-[#7C3AED] group-hover:text-[#6D28D9] mt-auto">
+                  <div className="flex items-center text-sm font-semibold text-[#7C3AED] dark:text-violet-400 group-hover:text-[#6D28D9] dark:group-hover:text-violet-300 mt-auto">
                     Read Article
                     <svg 
                       className="w-4 h-4 ml-1 transform group-hover:translate-x-1.5 transition-transform duration-300" 
@@ -10044,13 +10044,13 @@ export default function Blog() {
                     setOpenFaq(null);
                     window.scrollTo({ top: 0, behavior: "smooth" });
                   }}
-                  className="block p-5 bg-[#FAF6F0] border border-[#E1D8CC] rounded-2xl shadow-xs hover:shadow-md hover:border-[#7C3AED] transition-all duration-300 text-left cursor-pointer group"
+                  className="block p-5 bg-[#FAF6F0] dark:bg-[#151C2C] border border-[#E1D8CC] dark:border-[#1E293B] rounded-2xl shadow-xs hover:shadow-md hover:border-[#7C3AED] transition-all duration-300 text-left cursor-pointer group"
                   id={`related-post-card-${post.slug}`}
                 >
-                  <h4 className="text-[#7C3AED] group-hover:text-[#6D28D9] font-bold text-base sm:text-lg font-serif leading-tight mb-2 group-hover:underline">
+                  <h4 className="text-[#7C3AED] dark:text-violet-400 group-hover:text-[#6D28D9] dark:group-hover:text-violet-300 font-bold text-base sm:text-lg font-serif leading-tight mb-2 group-hover:underline">
                     {post.title}
                   </h4>
-                  <p className="text-xs sm:text-sm text-[#4B5563] leading-relaxed">
+                  <p className="text-xs sm:text-sm text-[#4B5563] dark:text-slate-300 leading-relaxed">
                     {post.description}
                   </p>
                 </Link>
@@ -10061,8 +10061,8 @@ export default function Blog() {
 
         {/* Dynamic Contextual FAQ - Interactive elegant accordion cards */}
         {isAnyBlog && currentFaqs && currentFaqs.length > 0 && (
-          <div className="pt-12 border-t border-[#E1D8CC] space-y-6" id="blog-faq-accordion-container">
-            <h2 className="text-2xl sm:text-3xl font-bold text-[#111827] font-serif tracking-tight">
+          <div className="pt-12 border-t border-[#E1D8CC] dark:border-[#1E293B] space-y-6" id="blog-faq-accordion-container">
+            <h2 className="text-2xl sm:text-3xl font-bold text-[#111827] dark:text-slate-100 font-serif tracking-tight">
               Frequently Asked Questions
             </h2>
             <div className="space-y-4 max-w-2xl py-2">
@@ -10071,13 +10071,13 @@ export default function Blog() {
                 return (
                   <div
                     key={idx}
-                    className="border border-[#E1D8CC] rounded-2xl overflow-hidden bg-[#FAF6F0] shadow-xs hover:shadow-sm hover:border-[#7C3AED] transition-all duration-300"
+                    className="border border-[#E1D8CC] dark:border-[#1E293B] rounded-2xl overflow-hidden bg-[#FAF6F0] dark:bg-[#151C2C] shadow-xs hover:shadow-sm hover:border-[#7C3AED] transition-all duration-300"
                     id={`blog-faq-item-${idx}`}
                   >
                     <button
                       type="button"
                       onClick={() => setOpenFaq(isOpen ? null : idx)}
-                      className="flex justify-between items-center w-full px-5 py-4 text-left font-serif text-base sm:text-lg font-bold text-[#111827] bg-[#FCFAF7] hover:bg-[#FAF6F0] transition-colors focus:ring-2 focus:ring-[#7C3AED]/20 focus:outline-none cursor-pointer"
+                      className="flex justify-between items-center w-full px-5 py-4 text-left font-serif text-base sm:text-lg font-bold text-[#111827] dark:text-slate-100 bg-[#FCFAF7] dark:bg-[#0F172A] hover:bg-[#FAF6F0] dark:hover:bg-[#1E293B] transition-colors focus:ring-2 focus:ring-[#7C3AED]/20 focus:outline-none cursor-pointer"
                       aria-expanded={isOpen}
                       id={`blog-faq-btn-${idx}`}
                     >
@@ -10091,14 +10091,14 @@ export default function Blog() {
                     <AnimatePresence initial={false}>
                       {isOpen && (
                         <motion.div
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: "auto", opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.3, ease: "easeInOut" }}
-                          className="overflow-hidden border-t border-[#E1D8CC]"
-                          id={`blog-faq-content-${idx}`}
+                           initial={{ height: 0, opacity: 0 }}
+                           animate={{ height: "auto", opacity: 1 }}
+                           exit={{ height: 0, opacity: 0 }}
+                           transition={{ duration: 0.3, ease: "easeInOut" }}
+                           className="overflow-hidden border-t border-[#E1D8CC] dark:border-[#1E293B]"
+                           id={`blog-faq-content-${idx}`}
                         >
-                          <div className="px-5 pb-5 pt-4 text-[#374151] text-sm sm:text-base leading-relaxed bg-[#FAF6F0]">
+                           <div className="px-5 pb-5 pt-4 text-[#374151] dark:text-slate-300 text-sm sm:text-base leading-relaxed bg-[#FAF6F0] dark:bg-[#151C2C]">
                             {faq.a}
                           </div>
                         </motion.div>
