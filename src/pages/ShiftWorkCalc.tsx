@@ -7,6 +7,7 @@ import { getCanonicalUrl } from "../lib/seo";
 import HomeSkeleton from "../components/HomeSkeleton";
 import { AdPlaceholder } from "../components/AdPlaceholder";
 import RecommendedSleepGuides from "../components/RecommendedSleepGuides";
+import { Breadcrumbs } from "../components/Breadcrumbs";
 
 export default function ShiftWorkCalc() {
   const canonicalUrl = getCanonicalUrl("/shift-work-sleep-calculator");
@@ -143,12 +144,56 @@ export default function ShiftWorkCalc() {
     return (
       <div className="w-full max-w-4xl mx-auto px-4 py-8 sm:py-12" id="shift-calculator-root">
         <Helmet>
-          <title>Sleep Calculator for Night Shift Workers | Shift Work Schedules</title>
+          <title>Sleep Calculator for Night Shift Workers | Split Sleep Schedule</title>
           <meta
             name="description"
-            content="Optimize daytime sleep and split sleep routines with our Night Shift Sleep Calculator. Build anchor schedules, fight fatigue, and protect your circadian rhythm."
+            content="Optimize your day-sleep windows with our sleep calculator for night shift workers. Learn split sleep routine calculations & anchor schedules to beat fatigue."
           />
           <link rel="canonical" href={canonicalUrl} />
+          <script type="application/ld+json">
+            {JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebApplication",
+              "name": "Sleep Calculator for Night Shift Workers",
+              "url": canonicalUrl,
+              "description": "Optimize your day-sleep windows with our sleep calculator for night shift workers. Learn split sleep routine calculations & anchor schedules to beat fatigue.",
+              "applicationCategory": "HealthApplication",
+              "operatingSystem": "All",
+              "browserRequirements": "Requires JavaScript. Requires HTML5."
+            })}
+          </script>
+          <script type="application/ld+json">
+            {JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "What are the physiological dangers of long-term rotating shifts?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Regularly swapping shift schedules forces your internal master clock to constantly reset, causing chronic circadian disruption. This is linked to metabolic challenges, cardiorespiratory stress, and weakened immune function. For extensive information on managing shift fatigue, review official resource articles on the CDC website."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Is melatonin supplementation safe for shift workers sleeping in the day?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, under structured timing. Taking a micro-dose (0.3mg to 1mg of melatonin) approximately 30 minutes before your day block can help initiate sleep onset. Avoid high doses, as they can cause morning grogginess and push your internal circadian timing into a state of chronic confusion."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "How should I handle my transition back to normal weekends off?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "On your last morning shift of the week, take a short 90-minute sleep cycle instead of a full day block, waking up around noon. This allows you to accumulate sleep drive during the afternoon, making it easier to sleep at a normal nocturnal hour on your day off. You can also calculate your ideal bedtime structure utilizing our main home calculator, or look into the sleep parameters for kids via our Student Sleep Calculator."
+                  }
+                }
+              ]
+            })}
+          </script>
         </Helmet>
         <HomeSkeleton />
       </div>
@@ -158,37 +203,64 @@ export default function ShiftWorkCalc() {
   return (
     <div className="w-full max-w-4xl mx-auto px-4 py-8 sm:py-12" id="shift-calculator-root">
       <Helmet>
-        <title>Sleep Calculator for Night Shift Workers | Shift Work Schedules</title>
+        <title>Sleep Calculator for Night Shift Workers | Split Sleep Schedule</title>
         <meta
           name="description"
-          content="Optimize daytime sleep and split sleep routines with our Night Shift Sleep Calculator. Build anchor schedules, fight fatigue, and protect your circadian rhythm."
+          content="Optimize your day-sleep windows with our sleep calculator for night shift workers. Learn split sleep routine calculations & anchor schedules to beat fatigue."
         />
         <link rel="canonical" href={canonicalUrl} />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            "name": "Sleep Calculator for Night Shift Workers",
+            "url": canonicalUrl,
+            "description": "Optimize your day-sleep windows with our sleep calculator for night shift workers. Learn split sleep routine calculations & anchor schedules to beat fatigue.",
+            "applicationCategory": "HealthApplication",
+            "operatingSystem": "All",
+            "browserRequirements": "Requires JavaScript. Requires HTML5."
+          })}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What are the physiological dangers of long-term rotating shifts?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Regularly swapping shift schedules forces your internal master clock to constantly reset, causing chronic circadian disruption. This is linked to metabolic challenges, cardiorespiratory stress, and weakened immune function. For extensive information on managing shift fatigue, review official resource articles on the CDC website."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Is melatonin supplementation safe for shift workers sleeping in the day?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes, under structured timing. Taking a micro-dose (0.3mg to 1mg of melatonin) approximately 30 minutes before your day block can help initiate sleep onset. Avoid high doses, as they can cause morning grogginess and push your internal circadian timing into a state of chronic confusion."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How should I handle my transition back to normal weekends off?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "On your last morning shift of the week, take a short 90-minute sleep cycle instead of a full day block, waking up around noon. This allows you to accumulate sleep drive during the afternoon, making it easier to sleep at a normal nocturnal hour on your day off. You can also calculate your ideal bedtime structure utilizing our main home calculator, or look into the sleep parameters for kids via our Student Sleep Calculator."
+                }
+              }
+            ]
+          })}
+        </script>
       </Helmet>
 
-      {/* Breadcrumbs - Clean and Simple */}
-      <div className="mb-8 text-left" id="shift-breadcrumb-container">
-        <div className="mb-4 flex items-center text-xs sm:text-sm text-[#6B7280]" id="shift-breadcrumb">
-          <div className="flex items-center gap-1.5">
-            <Link to="/" className="hover:text-[#7C3AED] transition-colors font-medium">Home</Link>
-            <span className="text-gray-400">&gt;</span>
-            <span className="font-semibold text-gray-700">Night Shift Sleep Calculator</span>
-          </div>
-        </div>
-        <Link 
-          to="/"
-          className="inline-flex items-center gap-2 text-base text-[#6B7280] dark:text-slate-400 font-semibold tracking-wide hover:text-[#7C3AED] transition-colors focus-visible:outline-none cursor-pointer"
-        >
-          <ArrowLeft size={18} /> Back to Calculator
-        </Link>
-      </div>
-
       {/* Title */}
-      <div className="text-center mb-8" id="shift-header">
-        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black font-serif text-gray-900 tracking-tight leading-tight mb-3">
-          Sleep Calculator for Night Shift Workers
+      <div className="flex flex-col items-center justify-center gap-2 text-center max-w-3xl mx-auto px-2 mt-3 sm:mt-4 md:mt-5 transition-all duration-300 mb-4" id="shift-header">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[2.5rem] font-extrabold tracking-tight text-[#111827] dark:text-white leading-tight sm:leading-snug text-center">
+          Calculate Your Perfect Daytime Sleep Schedule to Defeat Night Shift Fatigue and Circadian Burnout
         </h1>
-        <p className="text-base sm:text-lg text-[#374151] max-w-2xl mx-auto leading-relaxed">
+        <p className="text-sm sm:text-base md:text-lg text-[#4B5563] dark:text-slate-300 max-w-[42rem] mx-auto font-medium leading-relaxed tracking-normal opacity-95 text-center">
           Align your daytime sleep cycles with precision, preventing standard night fatigue and biological mismatch.
         </p>
       </div>
@@ -204,7 +276,7 @@ export default function ShiftWorkCalc() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -15 }}
             transition={{ duration: 0.25 }}
-            className="w-full max-w-[28.75rem] mx-auto mb-12 relative px-2 sm:px-0"
+            className="w-full max-w-[28.75rem] mx-auto mb-4 relative px-2 sm:px-0"
             id="shift-widget"
           >
             <div className="flex flex-col items-center w-full p-4 sm:p-5">
@@ -295,7 +367,7 @@ export default function ShiftWorkCalc() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -15 }}
             transition={{ duration: 0.25 }}
-            className="w-full max-w-[28.75rem] mx-auto flex flex-col items-center mb-12 px-2"
+            className="w-full max-w-[28.75rem] mx-auto flex flex-col items-center mb-4 px-2"
             id="shift-results-panel"
           >
             <div className="w-full p-4 sm:p-5 flex flex-col relative overflow-hidden">
@@ -392,8 +464,8 @@ export default function ShiftWorkCalc() {
         {/* SECTION 1 */}
         <section className="space-y-4">
           <header className="pb-2">
-            <h2 className="text-2xl sm:text-3xl font-bold font-serif text-gray-900">
-              The Night Shift Paradox: Managing Circadian Rhythm Inversion Safely
+            <h2 className="text-2xl sm:text-3xl lg:text-[2rem] font-extrabold tracking-tight text-[#111827] dark:text-white leading-tight">
+              The Night Shift Paradox: Mastering the Science of Circadian Rhythm Inversion Safely and Reliably
             </h2>
           </header>
           <p>
@@ -410,8 +482,8 @@ export default function ShiftWorkCalc() {
         {/* SECTION 2 */}
         <section className="space-y-4">
           <header className="pb-2">
-            <h2 className="text-2xl sm:text-3xl font-bold font-serif text-gray-900">
-              Daytime Sleep Cave Architecture: The Physics of Melatonin Preservation
+            <h2 className="text-2xl sm:text-3xl lg:text-[2rem] font-extrabold tracking-tight text-[#111827] dark:text-white leading-tight">
+              Daytime Sleep Cave Architecture: The Advanced Physics of Day-Sleep Melatonin Preservation
             </h2>
           </header>
           <p>
@@ -436,8 +508,8 @@ export default function ShiftWorkCalc() {
         {/* SECTION 3 */}
         <section className="space-y-4">
           <header className="pb-2">
-            <h2 className="text-2xl sm:text-3xl font-bold font-serif text-gray-900">
-              Anchor Sleep vs. Split Sleep: The Strategist's Guide
+            <h2 className="text-2xl sm:text-3xl lg:text-[2rem] font-extrabold tracking-tight text-[#111827] dark:text-white leading-tight">
+              Anchor Sleep vs. Split Sleep Schedules: The Advanced Strategist's Guide to Day Recovery
             </h2>
           </header>
           <p>
@@ -446,7 +518,7 @@ export default function ShiftWorkCalc() {
           <div className="space-y-6 my-6">
             <div>
               <div className="flex flex-wrap items-center gap-2 mb-1">
-                <h3 className="font-bold text-[#111827] text-lg font-serif">
+                <h3 className="font-bold text-[#111827] dark:text-slate-100 text-lg">
                   Consolidated Rest Block
                 </h3>
                 <span className="text-xs bg-[#7C3AED]/10 text-[#7C3AED] px-2.5 py-0.5 rounded-full font-semibold">5 Cycles (Continuous)</span>
@@ -457,7 +529,7 @@ export default function ShiftWorkCalc() {
             </div>
             <div>
               <div className="flex flex-wrap items-center gap-2 mb-1">
-                <h3 className="font-bold text-[#111827] text-lg font-serif">
+                <h3 className="font-bold text-[#111827] dark:text-slate-100 text-lg">
                   Split Schedule (Anchor Sleep Style)
                 </h3>
                 <span className="text-xs bg-amber-500/10 text-amber-800 px-2.5 py-0.5 rounded-full font-semibold">3.5h Anchor + 90 Min Nap</span>
@@ -475,8 +547,8 @@ export default function ShiftWorkCalc() {
         {/* SECTION 4 */}
         <section className="space-y-4">
           <header className="pb-2">
-            <h2 className="text-2xl sm:text-3xl font-bold font-serif text-gray-900">
-              Nutritional Chronobiology: What and When to Eat on Night Shifts
+            <h2 className="text-2xl sm:text-3xl lg:text-[2rem] font-extrabold tracking-tight text-[#111827] dark:text-white leading-tight">
+              Nutritional Chronobiology: Optimizing Digestion, Insulin and Diet Timetables on Night Shifts
             </h2>
           </header>
           <p>
@@ -490,8 +562,8 @@ export default function ShiftWorkCalc() {
         {/* SECTION 5 - FAQs */}
         <section className="space-y-6 mb-12">
           <header className="pb-2">
-            <h2 className="text-2xl sm:text-3xl font-bold font-serif text-gray-900">
-              Occupational Sleep Optimization FAQ
+            <h2 className="text-2xl sm:text-3xl lg:text-[2rem] font-extrabold tracking-tight text-[#111827] dark:text-white leading-tight">
+              Occupational Sleep Optimization: Pro Circadian Answers to Shift Work Questions
             </h2>
           </header>
           

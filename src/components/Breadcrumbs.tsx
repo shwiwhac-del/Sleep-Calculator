@@ -32,6 +32,11 @@ export function Breadcrumbs() {
     else if (normalizedPath === '/privacy') pageTitle = 'Privacy Policy';
     else if (normalizedPath === '/terms') pageTitle = 'Terms & Conditions';
     else if (normalizedPath === '/blog') pageTitle = 'Blog';
+    else if (normalizedPath === '/student-sleep-calculator') pageTitle = 'Student Sleep Calculator';
+    else if (normalizedPath === '/shift-work-sleep-calculator') pageTitle = 'Night Shift Sleep Calculator';
+    else if (normalizedPath === '/sleep-cycle-calculator-90-minutes') pageTitle = '90-Minute Sleep Calculator';
+    else if (normalizedPath === '/wake-up-between-sleep-cycles') pageTitle = 'Wake Up Between Cycles Calculator';
+    else if (normalizedPath === '/ideal-bedtime-based-on-wake-up-time') pageTitle = 'Ideal Bedtime Calculator';
     else pageTitle = meta.title.split('–')[0].trim();
 
     items.push({ name: pageTitle });
@@ -67,12 +72,16 @@ export function Breadcrumbs() {
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    "itemListElement": items.map((item, idx) => ({
-      "@type": "ListItem",
-      "position": idx + 1,
-      "name": item.name === 'Home' ? "Sleep Calculator" : item.name,
-      "item": item.url ? getCanonicalUrl(item.url) : canonicalUrl
-    }))
+    "itemListElement": items.map((item, idx) => {
+      const isLast = idx === items.length - 1;
+      const itemName = isLast && pageTitle ? pageTitle : (item.name === 'Home' ? "Sleep Calculator" : item.name);
+      return {
+        "@type": "ListItem",
+        "position": idx + 1,
+        "name": itemName,
+        "item": item.url ? getCanonicalUrl(item.url) : canonicalUrl
+      };
+    })
   };
 
   return (

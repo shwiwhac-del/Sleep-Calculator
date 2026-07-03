@@ -8,6 +8,7 @@ import TimePicker from "../components/TimePicker";
 import HomeSkeleton from "../components/HomeSkeleton";
 import { AdPlaceholder } from "../components/AdPlaceholder";
 import RecommendedSleepGuides from "../components/RecommendedSleepGuides";
+import { Breadcrumbs } from "../components/Breadcrumbs";
 
 export default function WakeUpCalc() {
   const canonicalUrl = getCanonicalUrl("/wake-up-between-sleep-cycles");
@@ -118,12 +119,56 @@ export default function WakeUpCalc() {
     return (
       <div className="w-full max-w-4xl mx-auto px-4 py-8 sm:py-12" id="wake-cycles-calculator-root">
         <Helmet>
-          <title>Wake Up Between Sleep Cycles Calculator | Best Wake Up Times</title>
+          <title>Wake Up Between Sleep Cycles | What Time Should I Wake Up?</title>
           <meta
             name="description"
-            content="Find the best times to set your alarm based on when you go to bed. Calculate your natural sleep cycle ends to wake up instantly energized, avoiding sleep inertia."
+            content="Learn how to wakeup between sleep cycles to feel awake. Calculate what time should i wake up to not feel tired, eliminate morning grogginess & sleep inertia."
           />
           <link rel="canonical" href={canonicalUrl} />
+          <script type="application/ld+json">
+            {JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebApplication",
+              "name": "Wake Up Between Sleep Cycles Calculator",
+              "url": canonicalUrl,
+              "description": "Learn how to wakeup between sleep cycles to feel awake. Calculate what time should i wake up to not feel tired, eliminate morning grogginess & sleep inertia.",
+              "applicationCategory": "HealthApplication",
+              "operatingSystem": "All",
+              "browserRequirements": "Requires JavaScript. Requires HTML5."
+            })}
+          </script>
+          <script type="application/ld+json">
+            {JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "Why do progressive sunrise alarms help compared to loud beeping alarms?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Loud, abrasive alarms cause a sudden surge in heart rate and blood pressure, triggering a stress response. Progressive sunrise alarms emit a gradual glow that stimulates cortisol production and suppresses melatonin, supporting a natural and healthy waking process."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "What should I do if my sleep partners have different schedules?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Focus on managing what you can control. Use comfortable silent vibrating wearables for alarms, optimize your sleeping environment to prevent light-and-sound seepage, and try using dim reading lights to respect each other's schedules."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Does hitting 'snooze' help when waking up groggy?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "No, hitting snooze is highly counterproductive. This brief 5 or 9-minute window triggers a new sleep cycle that is quickly interrupted, worsening sleep inertia and leaving you feeling more fatigued. Try placing your alarm across the room to encourage immediate physical movement on waking, allowing light to naturally stimulate you."
+                  }
+                }
+              ]
+            })}
+          </script>
         </Helmet>
         <HomeSkeleton />
       </div>
@@ -133,38 +178,65 @@ export default function WakeUpCalc() {
   return (
     <div className="w-full max-w-4xl mx-auto px-4 py-8 sm:py-12" id="wake-cycles-calculator-root">
       <Helmet>
-        <title>Wake Up Between Sleep Cycles Calculator | Best Wake Up Times</title>
+        <title>Wake Up Between Sleep Cycles | What Time Should I Wake Up?</title>
         <meta
           name="description"
-          content="Find the best times to set your alarm based on when you go to bed. Calculate your natural sleep cycle ends to wake up instantly energized, avoiding sleep inertia."
+          content="Learn how to wakeup between sleep cycles to feel awake. Calculate what time should i wake up to not feel tired, eliminate morning grogginess & sleep inertia."
         />
         <link rel="canonical" href={canonicalUrl} />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            "name": "Wake Up Between Sleep Cycles Calculator",
+            "url": canonicalUrl,
+            "description": "Learn how to wakeup between sleep cycles to feel awake. Calculate what time should i wake up to not feel tired, eliminate morning grogginess & sleep inertia.",
+            "applicationCategory": "HealthApplication",
+            "operatingSystem": "All",
+            "browserRequirements": "Requires JavaScript. Requires HTML5."
+          })}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Why do progressive sunrise alarms help compared to loud beeping alarms?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Loud, abrasive alarms cause a sudden surge in heart rate and blood pressure, triggering a stress response. Progressive sunrise alarms emit a gradual glow that stimulates cortisol production and suppresses melatonin, supporting a natural and healthy waking process."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What should I do if my sleep partners have different schedules?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Focus on managing what you can control. Use comfortable silent vibrating wearables for alarms, optimize your sleeping environment to prevent light-and-sound seepage, and try using dim reading lights to respect each other's schedules."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Does hitting 'snooze' help when waking up groggy?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No, hitting snooze is highly counterproductive. This brief 5 or 9-minute window triggers a new sleep cycle that is quickly interrupted, worsening sleep inertia and leaving you feeling more fatigued. Try placing your alarm across the room to encourage immediate physical movement on waking, allowing light to naturally stimulate you."
+                }
+              }
+            ]
+          })}
+        </script>
       </Helmet>
 
-      {/* Breadcrumbs - Clean and Simple */}
-      <div className="mb-8 text-left" id="wake-cycles-breadcrumb-container">
-        <div className="mb-4 flex items-center text-xs sm:text-sm text-[#6B7280]" id="wake-cycles-breadcrumb">
-          <div className="flex items-center gap-1.5 font-sans">
-            <Link to="/" className="hover:text-[#7C3AED] transition-colors font-medium">Home</Link>
-            <span className="text-gray-400">&gt;</span>
-            <span className="font-semibold text-gray-700">Wake Up Between Cycles Calculator</span>
-          </div>
-        </div>
-        <Link 
-          to="/"
-          className="inline-flex items-center gap-2 text-base text-[#6B7280] dark:text-slate-400 font-semibold tracking-wide hover:text-[#7C3AED] transition-colors focus-visible:outline-none cursor-pointer"
-        >
-          <ArrowLeft size={18} /> Back to Calculator
-        </Link>
-      </div>
-
       {/* Header Banner */}
-      <div className="text-center mb-8" id="wake-cycles-header">
-        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black font-serif text-gray-900 tracking-tight leading-tight mb-3">
-          Wake Up Between Sleep Cycles
+      <div className="flex flex-col items-center justify-center gap-2 text-center max-w-3xl mx-auto px-2 mt-3 sm:mt-4 md:mt-5 transition-all duration-300 mb-4" id="wake-cycles-header">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[2.5rem] font-extrabold tracking-tight text-[#111827] dark:text-white leading-tight sm:leading-snug text-center">
+          Calculate the Perfect Alarm Times to Wake Up Between Sleep Cycles Without Fatigue
         </h1>
-        <p className="text-base sm:text-lg text-[#374151] max-w-2xl mx-auto leading-relaxed">
-          Learn how to escape morning sleep inertia by calculating the ideal alarm times based on your bedtime.
+        <p className="text-sm sm:text-base md:text-lg text-[#4B5563] dark:text-slate-300 max-w-[42rem] mx-auto font-medium leading-relaxed tracking-normal opacity-95 text-center">
+          Use scientific 90-minute sleep staging to pinpoint the exact hours to set your alarm and wake up naturally energized.
         </p>
       </div>
 
@@ -179,7 +251,7 @@ export default function WakeUpCalc() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -15 }}
             transition={{ duration: 0.25 }}
-            className="w-full max-w-[28.75rem] mx-auto mb-12 relative px-2 sm:px-0"
+            className="w-full max-w-[28.75rem] mx-auto mb-4 relative px-2 sm:px-0"
             id="wake-cycles-widget"
           >
             <div className="flex flex-col items-center w-full p-4 sm:p-5">
@@ -263,7 +335,7 @@ export default function WakeUpCalc() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -15 }}
             transition={{ duration: 0.25 }}
-            className="w-full max-w-[28.75rem] mx-auto flex flex-col items-center mb-12 px-2"
+            className="w-full max-w-[28.75rem] mx-auto flex flex-col items-center mb-4 px-2"
             id="wake-cycles-results"
           >
             <div className="w-full p-4 sm:p-5 flex flex-col relative overflow-hidden">
@@ -350,8 +422,8 @@ export default function WakeUpCalc() {
         {/* SECTION 1 */}
         <section className="space-y-4">
           <header className="pb-2">
-            <h2 className="text-2xl sm:text-3xl font-bold font-serif text-gray-900">
-              Conquering Sleep Inertia: The Neuroscience of Morning Grogginess
+            <h2 className="text-2xl sm:text-3xl lg:text-[2rem] font-extrabold tracking-tight text-[#111827] dark:text-white leading-tight">
+              Conquering Morning Sleep Inertia: The Underestimated Neuroscience Behind Persistent Grogginess
             </h2>
           </header>
           <p>
@@ -368,8 +440,8 @@ export default function WakeUpCalc() {
         {/* SECTION 2 */}
         <section className="space-y-4">
           <header className="pb-2">
-            <h2 className="text-2xl sm:text-3xl font-bold font-serif text-gray-900">
-              Hormonal Orchestration: Cortisol, Melatonin, and the Circadian Wave
+            <h2 className="text-2xl sm:text-3xl lg:text-[2rem] font-extrabold tracking-tight text-[#111827] dark:text-white leading-tight">
+              Dynamic Hormonal Orchestration: Balancing Cortisol Spikes, Melatonin Suppression, and the Circadian Wave
             </h2>
           </header>
           <p>
@@ -377,7 +449,7 @@ export default function WakeUpCalc() {
           </p>
           <div className="space-y-6 my-6">
             <div>
-              <h3 className="font-bold text-[#111827] text-lg font-serif mb-1">
+              <h3 className="font-bold text-[#111827] dark:text-slate-100 text-lg mb-1">
                 The Cortisol Awakening Response (CAR)
               </h3>
               <p>
@@ -385,7 +457,7 @@ export default function WakeUpCalc() {
               </p>
             </div>
             <div>
-              <h3 className="font-bold text-[#111827] text-lg font-serif mb-1">
+              <h3 className="font-bold text-[#111827] dark:text-slate-100 text-lg mb-1">
                 The Melatonin Clamping Curve
               </h3>
               <p>
@@ -401,8 +473,8 @@ export default function WakeUpCalc() {
         {/* SECTION 3 */}
         <section className="space-y-4">
           <header className="pb-2">
-            <h2 className="text-2xl sm:text-3xl font-bold font-serif text-gray-900">
-              Chronobiology: Understanding Lions, Bears, and Wolves
+            <h2 className="text-2xl sm:text-3xl lg:text-[2rem] font-extrabold tracking-tight text-[#111827] dark:text-white leading-tight">
+              Chronobiology & Sleep Profiles: Customizing Your Schedule Around Lions, Bears, and Night Wolves
             </h2>
           </header>
           <p>
@@ -427,8 +499,8 @@ export default function WakeUpCalc() {
         {/* SECTION 4 */}
         <section className="space-y-4">
           <header className="pb-2">
-            <h2 className="text-2xl sm:text-3xl font-bold font-serif text-gray-900">
-              Practical Strategies to Boost Morning Vigilance
+            <h2 className="text-2xl sm:text-3xl lg:text-[2rem] font-extrabold tracking-tight text-[#111827] dark:text-white leading-tight">
+              Practical Science-Backed Strategies to Accelerate Morning Vigilance and Peak Performance
             </h2>
           </header>
           <p>
@@ -444,8 +516,8 @@ export default function WakeUpCalc() {
         {/* SECTION 5 - FAQs */}
         <section className="space-y-6 mb-12">
           <header className="pb-2">
-            <h2 className="text-2xl sm:text-3xl font-bold font-serif text-gray-900">
-              Conquering Morning Fatigue FAQ
+            <h2 className="text-2xl sm:text-3xl lg:text-[2rem] font-extrabold tracking-tight text-[#111827] dark:text-white leading-tight">
+              Conquering Persistent Morning Fatigue: Expert Answers to Frequently Asked Questions
             </h2>
           </header>
           

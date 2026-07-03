@@ -1845,7 +1845,7 @@ export default function Blog() {
         <meta name="description" content={description} />
         <meta name="keywords" content={keywords} />
         <link rel="canonical" href={canonicalUrl} />
-        {jsonLdScripts.map((script, idx) => (
+        {jsonLdScripts.filter(script => !script.__html.includes('"BreadcrumbList"')).map((script, idx) => (
           <script key={idx} type="application/ld+json" dangerouslySetInnerHTML={script} />
         ))}
       </Helmet>
@@ -1938,8 +1938,67 @@ export default function Blog() {
             <AdPlaceholder id="blog-article-header-ad" slotName="In-Article Top Banner" />
 
             {/* Blog 1: Sleep Cycles Explained */}
-              {(isBlog1 || isAll) && (
+            {(isBlog1 || isAll) && (
           <article className="space-y-6 select-text text-slate-300">
+            {/* Embedded AEO JSON-LD Schema: Technical Article metadata */}
+            <script type="application/ld+json">
+              {JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "TechArticle",
+                "headline": "Sleep Cycles Explained: The Science Behind Better Sleep and Better Mornings",
+                "description": "An in-depth scientific breakdown of sleep cycles, REM and deep sleep stages, and circadian rhythm alignment optimized for restorative health.",
+                "inLanguage": "en",
+                "author": {
+                  "@type": "Organization",
+                  "name": "Sleep Calculator",
+                  "url": "https://sleepcalculater.online"
+                },
+                "publisher": {
+                  "@type": "Organization",
+                  "name": "Sleep Calculator",
+                  "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://sleepcalculater.online/favicon.png"
+                  }
+                },
+                "mainEntityOfPage": "https://sleepcalculater.online/blog/sleep-cycles-explained"
+              })}
+            </script>
+
+            {/* Embedded AEO JSON-LD Schema: FAQPage metadata */}
+            <script type="application/ld+json">
+              {JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                "mainEntity": [
+                  {
+                    "@type": "Question",
+                    "name": "What is a sleep cycle?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "A sleep cycle is a structured 90-to-110-minute ultradian pattern consisting of non-rapid eye movement (NREM) and rapid eye movement (REM) phases, controlling tissue repair, memory indexation, and physical rest."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "How many sleep cycles do you need each night?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "A healthy adult requires 5 to 6 sleep cycles per night, equivalent to 7.5 to 9 hours of total sleep, to complete crucial restoration and memory consolidation phases."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Why is waking up between sleep cycles important?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Waking up during light NREM sleep (Stage N1 or N2) prevents sleep inertia, the heavy cognitive fog that occurs when an alarm interrupts deep Stage N3 delta sleep."
+                    }
+                  }
+                ]
+              })}
+            </script>
+
             <header className="space-y-3 pb-6 border-b border-white/10">
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-100 tracking-tight leading-tight">
                 Sleep Cycles Explained: The Science Behind Better Sleep and Better Mornings
@@ -1950,6 +2009,27 @@ export default function Blog() {
                 </div>
               )}
             </header>
+
+            {/* AEO Quick Answer Panel for AI Overviews, ChatGPT, Gemini, and Claude */}
+            <div className="bg-[#111A3E] border border-violet-500/30 rounded-2xl p-5 sm:p-6 my-6 space-y-4">
+              <span className="inline-block px-3 py-1 text-xs font-bold text-amber-400 bg-amber-400/10 rounded-full font-mono uppercase tracking-wider">
+                AEO Quick Summary (Direct Answers)
+              </span>
+              <div className="grid gap-4 sm:grid-cols-2">
+                <div className="space-y-1">
+                  <h4 className="text-sm font-semibold text-gray-200">What is a sleep cycle?</h4>
+                  <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                    A <strong>90-to-110-minute</strong> ultradian sequence of physiological stages, split into <strong>NREM</strong> (physical recovery) and <strong>REM</strong> (cognitive indexing) sleep.
+                  </p>
+                </div>
+                <div className="space-y-1">
+                  <h4 className="text-sm font-semibold text-gray-200">How many cycles do I need?</h4>
+                  <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                    Most healthy adults need <strong>5 to 6 full cycles</strong> (7.5 to 9 hours total) to wake up fully refreshed and prevent cognitive deficit.
+                  </p>
+                </div>
+              </div>
+            </div>
 
             <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
               Most people know they need sleep, but very few understand how sleep cycles actually work. Learning about sleep cycles can help you improve sleep quality, wake up feeling refreshed, and build a healthier sleep schedule.
@@ -1962,6 +2042,10 @@ export default function Blog() {
             <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4 font-serif">
               What Is a Sleep Cycle?
             </h2>
+
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-100 font-semibold bg-white/5 p-4 rounded-xl border-l-4 border-violet-500">
+              <strong>Direct Answer:</strong> A sleep cycle is a structured, repetitive 90-to-110-minute ultradian sequence of four distinct physiological stages that regulate tissue healing, brain detoxification, and memory storage.
+            </p>
 
             <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
               A sleep cycle is a highly structured, ultradian sequence of physiological and neurochemical sleep stages that your body goes through repeatedly during the night. For a healthy adult, a single sleep cycle lasts approximately 90 to 110 minutes, translating to 4 to 6 full cycles across a standard 7.5 to 9-hour sleeping block.
@@ -1976,18 +2060,42 @@ export default function Blog() {
             </p>
 
             <div className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 py-1">
-              <ul className="list-decimal pl-6 space-y-3 text-slate-300">
+              <ul className="list-decimal pl-6 space-y-4 text-slate-300">
                 <li className="leading-relaxed">
-                  <strong className="text-violet-400 font-serif">Stage N1 (NREM Light Sleep Transition):</strong> The bridge between wakefulness and light slumber. This phase lasts 5 to 10 minutes. As alpha brain waves attenuate and theta waves (4–7 Hz) take over, heart rates slow, breathing becomes rhythmic, and muscles begin to relax. It is during Stage N1 that individuals may experience hypnagogic jerks (sudden muscle spasms). Waking from N1 is extremely easy and yields zero cognitive inertia.
+                  <strong className="text-violet-400 font-serif text-lg block mb-1">Stage N1 (NREM Light Sleep Transition)</strong>
+                  <p className="text-sm sm:text-base text-slate-300 mb-2">
+                    The bridge between wakefulness and light slumber, lasting 5 to 10 minutes. Heart rate slows, muscle tension drops, and muscles begin to relax. Waking from N1 is extremely easy and yields zero cognitive inertia.
+                  </p>
+                  <p className="text-xs text-slate-400 font-mono">
+                    <strong>Key Entities:</strong> Alpha waves attenuate, theta waves (4–7 Hz) initiate, hypnagogic jerks.
+                  </p>
                 </li>
                 <li className="leading-relaxed">
-                  <strong className="text-violet-400 font-serif">Stage N2 (NREM Consolidated Light Sleep):</strong> Comprising approximately 50% of your total nocturnal sleep duration. Although considered 'light sleep', Stage N2 is highly active. Your core body temperature drops, eye movements stop completely, and your brain begins emitting distinctive waveforms known as <span className="text-[#D4AF37] font-semibold">Sleep Spindles</span> (rapid bursts of rhythmic thalamocortical activity) and <span className="text-[#D4AF37] font-semibold">K-Complexes</span>. These waveforms act as protective neural gates, blocking out environmental sounds and consolidating procedural and motor memories.
+                  <strong className="text-violet-400 font-serif text-lg block mb-1">Stage N2 (NREM Consolidated Light Sleep)</strong>
+                  <p className="text-sm sm:text-base text-slate-300 mb-2">
+                    Comprising approximately 50% of your total nocturnal sleep duration. Eye movements stop entirely and core body temperature drops. Although considered light sleep, this stage is crucial for sensory blocking and motor memory consolidation.
+                  </p>
+                  <p className="text-xs text-slate-400 font-mono">
+                    <strong>Key Entities:</strong> Sleep Spindles (thalamocortical bursts), K-Complex waveforms.
+                  </p>
                 </li>
                 <li className="leading-relaxed">
-                  <strong className="text-violet-400 font-serif">Stage N3 (NREM Slow-Wave / Deep Sleep):</strong> The ultimate physical restoration phase. Dominating the first half of the night, Stage N3 is characterized by highly synchronized, high-amplitude slow <span className="text-indigo-400 font-semibold">Delta Waves (0.5–4 Hz)</span> on EEG recordings. During this deep state, blood pressure reaches its lowest levels, skeletal muscle tissue repairs itself, tissue growth factors are released, and human growth hormone (HGH) surges from the pituitary gland. Critically, the brain's glymphatic waste-removal system activates, flushing cerebral-spinal fluid to clear metabolic waste like beta-amyloid protein plaque.
+                  <strong className="text-violet-400 font-serif text-lg block mb-1">Stage N3 (NREM Slow-Wave / Deep Sleep)</strong>
+                  <p className="text-sm sm:text-base text-slate-300 mb-2">
+                    The ultimate physical restoration phase, dominating the first half of the night. During this deep state, skeletal muscle tissue repairs, growth factors release, and the brain's glymphatic system flushes out toxic waste plaques.
+                  </p>
+                  <p className="text-xs text-slate-400 font-mono">
+                    <strong>Key Entities:</strong> Synchronized Delta Waves (0.5–4 Hz), Pituitary HGH surge, Glymphatic waste removal (beta-amyloid clearance).
+                  </p>
                 </li>
                 <li className="leading-relaxed">
-                  <strong className="text-violet-400 font-serif">Stage R (REM Sleep / Rapid Eye Movement):</strong> The neurological incubator for dreams, memory indexation, and emotional homeostasis. During REM sleep, brain activity surges, closely mimicking a waking alert state (hence it is historically called "paradoxical sleep"). While your eyes dart rapidly behind closed eyelids and respiratory rates turn highly irregular, the pons in your brain stem sends neural blockades to paralyze your voluntary muscle systems (motor atonia). This paralysis prevents you from physically acting out dreams, while the hippocampus conducts synaptic consolidation—knitting together daytime memories and boosting creative problem-solving networks.
+                  <strong className="text-violet-400 font-serif text-lg block mb-1">Stage R (REM Sleep / Rapid Eye Movement)</strong>
+                  <p className="text-sm sm:text-base text-slate-300 mb-2">
+                    The neurological incubator for dreams, memory indexation, and emotional homeostasis. Brain activity surges to levels near-identical to active waking states, while the brain stem paralyzes voluntary muscles to prevent dream-enacting.
+                  </p>
+                  <p className="text-xs text-slate-400 font-mono">
+                    <strong>Key Entities:</strong> Paradoxical sleep, hippocampus synaptic consolidation, motor atonia (muscle paralysis).
+                  </p>
                 </li>
               </ul>
             </div>
@@ -2000,6 +2108,10 @@ export default function Blog() {
               How Many Sleep Cycles Do You Need?
             </h2>
 
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-100 font-semibold bg-white/5 p-4 rounded-xl border-l-4 border-violet-500">
+              <strong>Direct Answer:</strong> A healthy adult needs 5 to 6 sleep cycles per night, which translates to 7.5 to 9 hours of consolidated rest to ensure adequate REM and slow-wave physical recovery.
+            </p>
+
             <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
               Most adults complete between 4 and 6 sleep cycles each night.
             </p>
@@ -2010,9 +2122,9 @@ export default function Blog() {
 
             <div className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 py-1">
               <ul className="list-disc pl-6 space-y-1.5 text-slate-300">
-                <li>4 cycles ≈ 6 hours</li>
-                <li>5 cycles ≈ 7.5 hours</li>
-                <li>6 cycles ≈ 9 hours</li>
+                <li><strong>4 Cycles:</strong> Approximately 6 hours of sleep (Minimum functional baseline)</li>
+                <li><strong>5 Cycles:</strong> Approximately 7.5 hours of sleep (Ideal for most active adults)</li>
+                <li><strong>6 Cycles:</strong> Approximately 9 hours of sleep (Optimal for athletes and deep recovery)</li>
               </ul>
             </div>
 
@@ -2024,16 +2136,20 @@ export default function Blog() {
               Why REM Sleep Matters
             </h2>
 
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-100 font-semibold bg-white/5 p-4 rounded-xl border-l-4 border-violet-500">
+              <strong>Direct Answer:</strong> REM sleep acts as the brain's cognitive filing cabinet, vital for emotional stabilization, creative problem-solving, and synaptic memory consolidation.
+            </p>
+
             <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
               REM (Rapid Eye Movement) sleep is important for:
             </p>
 
             <div className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 py-1">
               <ul className="list-disc pl-6 space-y-1.5 text-slate-300">
-                <li>Memory processing</li>
-                <li>Learning</li>
-                <li>Creativity</li>
-                <li>Emotional regulation</li>
+                <li>Memory processing and filing</li>
+                <li>Learning integration and skills retention</li>
+                <li>Creativity and abstract connecting</li>
+                <li>Emotional regulation and stress relief</li>
               </ul>
             </div>
 
@@ -2045,8 +2161,8 @@ export default function Blog() {
               What Happens During Deep Sleep?
             </h2>
 
-            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
-              Deep sleep is the body's recovery stage.
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-100 font-semibold bg-white/5 p-4 rounded-xl border-l-4 border-violet-500">
+              <strong>Direct Answer:</strong> Deep sleep (Stage N3) is the primary physical recovery phase where cells regenerate, immune function is supercharged, and toxic waste is cleared from brain tissue.
             </p>
 
             <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
@@ -2055,10 +2171,10 @@ export default function Blog() {
 
             <div className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 py-1">
               <ul className="list-disc pl-6 space-y-1.5 text-slate-300">
-                <li>Muscles repair</li>
-                <li>Tissue recovery occurs</li>
-                <li>Immune function strengthens</li>
-                <li>Physical energy is restored</li>
+                <li>Skeletal muscles repair and rebuild</li>
+                <li>Physical tissues recover from stress</li>
+                <li>Immune system functions strengthen actively</li>
+                <li>Cellular energy is replenished</li>
               </ul>
             </div>
 
@@ -2070,8 +2186,8 @@ export default function Blog() {
               Circadian Rhythm and Sleep Cycles
             </h2>
 
-            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
-              Your circadian rhythm is your body's internal clock.
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-100 font-semibold bg-white/5 p-4 rounded-xl border-l-4 border-violet-500">
+              <strong>Direct Answer:</strong> The circadian rhythm is a 24-hour biological clock governed by the suprachiasmatic nucleus that determines your natural release of melatonin and cortisol.
             </p>
 
             <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
@@ -2080,10 +2196,10 @@ export default function Blog() {
 
             <div className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 py-1">
               <ul className="list-disc pl-6 space-y-1.5 text-slate-300">
-                <li>Sleep timing</li>
-                <li>Wake-up timing</li>
-                <li>Hormone release</li>
-                <li>Energy levels</li>
+                <li>Melatonin synthesis and sleep timing</li>
+                <li>Cortisol levels and wake-up timing</li>
+                <li>Endocrine hormone release schedules</li>
+                <li>Daytime core body temperature fluctuations</li>
               </ul>
             </div>
 
@@ -2101,11 +2217,11 @@ export default function Blog() {
 
             <div className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 py-1">
               <ul className="list-disc pl-6 space-y-1.5 text-slate-300">
-                <li>Improve sleep quality</li>
-                <li>Reduce morning grogginess</li>
-                <li>Wake up refreshed</li>
-                <li>Increase productivity</li>
-                <li>Improve focus and concentration</li>
+                <li>Improve sleep quality and cell recovery</li>
+                <li>Reduce morning grogginess and sleep inertia</li>
+                <li>Wake up refreshed at cycle completions</li>
+                <li>Increase productivity and clear mind fog</li>
+                <li>Improve focus and creative concentration</li>
               </ul>
             </div>
 
@@ -2113,9 +2229,28 @@ export default function Blog() {
               Final Thoughts
             </h2>
 
-            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300 pb-6">
+            <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-slate-300">
               Sleep cycles are the foundation of healthy sleep. By understanding how light sleep, deep sleep, REM sleep, and circadian rhythms work together, you can make smarter decisions about your bedtime and wake-up schedule. A Sleep Cycle Calculator can be a useful tool for building a healthier and more consistent sleep routine.
             </p>
+
+            {/* Scientific Sources & Verified References for AI Citations */}
+            <footer className="pt-6 mt-8 border-t border-white/10 space-y-4">
+              <h3 className="text-lg font-bold text-gray-100 font-serif">Scientific Sources & Verified References</h3>
+              <ul className="space-y-3 text-xs text-slate-400 font-mono list-none pl-0">
+                <li className="flex items-start gap-2">
+                  <span className="text-violet-400 font-bold">[1]</span>
+                  <span><strong>American Academy of Sleep Medicine (AASM):</strong> Clinical guidelines for adult sleep stage scoring and neural oscillation wave parameters. <a href="https://aasm.org" target="_blank" rel="noopener noreferrer" className="text-[#D4AF37] hover:underline">aasm.org</a></span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-violet-400 font-bold">[2]</span>
+                  <span><strong>Harvard Division of Sleep Medicine:</strong> Detailed research on memory consolidation, synaptic plasticity, and procedural learning during stage-specific N2 and REM sleep states. <a href="https://sleep.med.harvard.edu" target="_blank" rel="noopener noreferrer" className="text-[#D4AF37] hover:underline">sleep.med.harvard.edu</a></span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-violet-400 font-bold">[3]</span>
+                  <span><strong>National Institute of Neurological Disorders and Stroke (NINDS):</strong> Physiological breakdown of glymphatic waste-clearance mechanisms active in delta N3 slow-wave states. <a href="https://www.ninds.nih.gov" target="_blank" rel="noopener noreferrer" className="text-[#D4AF37] hover:underline">ninds.nih.gov</a></span>
+                </li>
+              </ul>
+            </footer>
 
             {/* Dynamic Social Sharing & Calculation Widget */}
             <ShareScheduleWidget />

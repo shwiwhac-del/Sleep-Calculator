@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, lazy, Suspense } from "react";
 import { useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "motion/react";
 import { MessageSquare } from "lucide-react";
@@ -10,9 +10,14 @@ import SleepCycleChart from "../components/SleepCycleChart";
 import { QuickSleepTips } from "../components/QuickSleepTips";
 import { SleepJournal } from "../components/SleepJournal";
 import SleepGuideAndFAQ from "../components/SleepGuideAndFAQ";
-import { FeedbackModal } from "../components/FeedbackModal";
 import HomeSkeleton from "../components/HomeSkeleton";
 import { AdPlaceholder } from "../components/AdPlaceholder";
+
+const FeedbackModal = lazy(() =>
+  import("../components/FeedbackModal").then((module) => ({
+    default: module.FeedbackModal,
+  }))
+);
 
 export interface CyclesReport {
   bedTime: string;
@@ -534,6 +539,21 @@ export default function Home() {
           <script type="application/ld+json">
             {JSON.stringify({
               "@context": "https://schema.org",
+              "@type": "WebSite",
+              "name": "Sleep Calculator",
+              "alternateName": [
+                "Sleep Calculator",
+                "Sleep Cycle Calculator",
+                "Bedtime Calculator",
+                "REM Sleep Calculator"
+              ],
+              "url": "https://sleepcalculater.online/"
+            })}
+          </script>
+          
+          <script type="application/ld+json">
+            {JSON.stringify({
+              "@context": "https://schema.org",
               "@graph": [
                 {
                   "@type": "WebSite",
@@ -739,10 +759,10 @@ export default function Home() {
           </script>
         </Helmet>
         <div className={`flex flex-col items-center justify-center gap-2 text-center max-w-3xl mx-auto px-2 mt-3 sm:mt-4 md:mt-5 transition-all duration-300 ${showResults ? "mb-4" : "mb-6 sm:mb-8"}`}>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[2.5rem] font-extrabold tracking-tight text-[#111827] leading-tight sm:leading-snug text-center">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[2.5rem] font-extrabold tracking-tight text-[#111827] dark:text-white leading-tight sm:leading-snug text-center">
             Calculate Your Perfect Bedtime & Wake-Up Time
           </h1>
-          <p className="text-sm sm:text-base md:text-lg text-[#4B5563] max-w-[42rem] mx-auto font-medium leading-relaxed tracking-normal opacity-95">
+          <p className="text-sm sm:text-base md:text-lg text-[#4B5563] dark:text-slate-300 max-w-[42rem] mx-auto font-medium leading-relaxed tracking-normal opacity-95">
             Optimize your rest using scientific 90-minute sleep cycles to wake up refreshed, energized, and ready for your day.
           </p>
         </div>
@@ -1264,10 +1284,12 @@ export default function Home() {
       </button>
 
       {isFeedbackModalOpen && (
-        <FeedbackModal
-          isOpen={isFeedbackModalOpen}
-          onClose={() => setIsFeedbackModalOpen(false)}
-        />
+        <Suspense fallback={null}>
+          <FeedbackModal
+            isOpen={isFeedbackModalOpen}
+            onClose={() => setIsFeedbackModalOpen(false)}
+          />
+        </Suspense>
       )}
     </div>
   );

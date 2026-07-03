@@ -8,6 +8,7 @@ import TimePicker from "../components/TimePicker";
 import HomeSkeleton from "../components/HomeSkeleton";
 import { AdPlaceholder } from "../components/AdPlaceholder";
 import RecommendedSleepGuides from "../components/RecommendedSleepGuides";
+import { Breadcrumbs } from "../components/Breadcrumbs";
 
 export default function IdealBedtimeCalc() {
   const canonicalUrl = getCanonicalUrl("/ideal-bedtime-based-on-wake-up-time");
@@ -105,12 +106,56 @@ export default function IdealBedtimeCalc() {
     return (
       <div className="w-full max-w-4xl mx-auto px-4 py-8 sm:py-12" id="ideal-calculator-root">
         <Helmet>
-          <title>Ideal Bedtime Calculator | Sleep Calculator By Age</title>
+          <title>Ideal Bedtime Based on Wake Up Time | Sleep Calculator by Age</title>
           <meta
             name="description"
-            content="Find your perfect, age-customized bedtime with our Ideal Bedtime Calculator. Optimize sleep cycles, reduce morning fatigue, and wake up feeling energized."
+            content="Determine your ideal bedtime based on wake up time with our sleep calculator. Optimized bed times for all age brackets, including adults, children, and seniors."
           />
           <link rel="canonical" href={canonicalUrl} />
+          <script type="application/ld+json">
+            {JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebApplication",
+              "name": "Ideal Bedtime Based on Wake Up Time Calculator",
+              "url": canonicalUrl,
+              "description": "Determine your ideal bedtime based on wake up time with our sleep calculator. Optimized bed times for all age brackets, including adults, children, and seniors.",
+              "applicationCategory": "HealthApplication",
+              "operatingSystem": "All",
+              "browserRequirements": "Requires JavaScript. Requires HTML5."
+            })}
+          </script>
+          <script type="application/ld+json">
+            {JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "Why do seniors wake up so early in the morning?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Geriatric sleep patterns are influenced by age-associated flattening of the Suprachiasmatic Nucleus master clock and decreased natural melatonin secretion. Seniors experience earlier sleepiness in the evening and lighter, more fragmented sleep, leading to earlier waking hours."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Should I adjust my sleep schedule when traveling across time zones?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "To minimize jet lag, adjust your bedtime and solar exposure schedules to match your destination's daytime lines as soon as you board the plane. Structured morning light exposure and evening darkness can help reset your circadian rhythm quickly."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Can I make up for a week of lost sleep on the weekend?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Oversleeping on weekends cannot fully recover a chronic sleep debt, as it disrupts your circadian alignment and leads to 'social jetlag.' Recovery is best achieved by gradually sleeping 1 to 1.5 hours extra on weekends and maintaining a consistent daily sleep schedule during the week."
+                  }
+                }
+              ]
+            })}
+          </script>
         </Helmet>
         <HomeSkeleton />
       </div>
@@ -120,37 +165,64 @@ export default function IdealBedtimeCalc() {
   return (
     <div className="w-full max-w-4xl mx-auto px-4 py-8 sm:py-12" id="ideal-calculator-root">
       <Helmet>
-        <title>Ideal Bedtime Calculator | Sleep Calculator By Age</title>
+        <title>Ideal Bedtime Based on Wake Up Time | Sleep Calculator by Age</title>
         <meta
           name="description"
-          content="Find your perfect, age-customized bedtime with our Ideal Bedtime Calculator. Optimize sleep cycles, reduce morning fatigue, and wake up feeling energized."
+          content="Determine your ideal bedtime based on wake up time with our sleep calculator. Optimized bed times for all age brackets, including adults, children, and seniors."
         />
         <link rel="canonical" href={canonicalUrl} />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            "name": "Ideal Bedtime Based on Wake Up Time Calculator",
+            "url": canonicalUrl,
+            "description": "Determine your ideal bedtime based on wake up time with our sleep calculator. Optimized bed times for all age brackets, including adults, children, and seniors.",
+            "applicationCategory": "HealthApplication",
+            "operatingSystem": "All",
+            "browserRequirements": "Requires JavaScript. Requires HTML5."
+          })}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Why do seniors wake up so early in the morning?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Geriatric sleep patterns are influenced by age-associated flattening of the Suprachiasmatic Nucleus master clock and decreased natural melatonin secretion. Seniors experience earlier sleepiness in the evening and lighter, more fragmented sleep, leading to earlier waking hours."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Should I adjust my sleep schedule when traveling across time zones?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "To minimize jet lag, adjust your bedtime and solar exposure schedules to match your destination's daytime lines as soon as you board the plane. Structured morning light exposure and evening darkness can help reset your circadian rhythm quickly."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Can I make up for a week of lost sleep on the weekend?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Oversleeping on weekends cannot fully recover a chronic sleep debt, as it disrupts your circadian alignment and leads to 'social jetlag.' Recovery is best achieved by gradually sleeping 1 to 1.5 hours extra on weekends and maintaining a consistent daily sleep schedule during the week."
+                }
+              }
+            ]
+          })}
+        </script>
       </Helmet>
 
-      {/* Breadcrumbs - Clean and Simple */}
-      <div className="mb-8 text-left" id="ideal-breadcrumb-container">
-        <div className="mb-4 flex items-center text-xs sm:text-sm text-[#6B7280]" id="ideal-breadcrumb">
-          <div className="flex items-center gap-1.5 font-sans">
-            <Link to="/" className="hover:text-[#7C3AED] transition-colors font-medium">Home</Link>
-            <span className="text-gray-400">&gt;</span>
-            <span className="font-semibold text-gray-700">Ideal Bedtime Calculator</span>
-          </div>
-        </div>
-        <Link 
-          to="/"
-          className="inline-flex items-center gap-2 text-base text-[#6B7280] dark:text-slate-400 font-semibold tracking-wide hover:text-[#7C3AED] transition-colors focus-visible:outline-none cursor-pointer"
-        >
-          <ArrowLeft size={18} /> Back to Calculator
-        </Link>
-      </div>
-
       {/* Header Title */}
-      <div className="text-center mb-8" id="ideal-header">
-        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black font-serif text-gray-900 tracking-tight leading-tight mb-3">
-          Ideal Bedtime Calculator
+      <div className="flex flex-col items-center justify-center gap-2 text-center max-w-3xl mx-auto px-2 mt-3 sm:mt-4 md:mt-5 transition-all duration-300 mb-4" id="ideal-header">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[2.5rem] font-extrabold tracking-tight text-[#111827] dark:text-white leading-tight sm:leading-snug text-center">
+          Calculate Your Ideal Bedtime Based on Your Wake-Up Target & Circadian Science
         </h1>
-        <p className="text-base sm:text-lg text-[#374151] max-w-2xl mx-auto leading-relaxed">
+        <p className="text-sm sm:text-base md:text-lg text-[#4B5563] dark:text-slate-300 max-w-[42rem] mx-auto font-medium leading-relaxed tracking-normal opacity-95 text-center">
           Find your perfect, age-customized bedtime based on your biological alarm targets and sleep cycle architecture.
         </p>
       </div>
@@ -166,7 +238,7 @@ export default function IdealBedtimeCalc() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -15 }}
             transition={{ duration: 0.25 }}
-            className="w-full max-w-[28.75rem] mx-auto mb-12 relative px-2 sm:px-0"
+            className="w-full max-w-[28.75rem] mx-auto mb-4 relative px-2 sm:px-0"
             id="ideal-widget"
           >
             <div className="flex flex-col items-center w-full p-4 sm:p-5">
@@ -250,7 +322,7 @@ export default function IdealBedtimeCalc() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -15 }}
             transition={{ duration: 0.25 }}
-            className="w-full max-w-[28.75rem] mx-auto flex flex-col items-center mb-12 px-2"
+            className="w-full max-w-[28.75rem] mx-auto flex flex-col items-center mb-4 px-2"
             id="ideal-results"
           >
             <div className="w-full p-4 sm:p-5 flex flex-col relative overflow-hidden">
@@ -340,8 +412,8 @@ export default function IdealBedtimeCalc() {
         {/* SECTION 1 */}
         <section className="space-y-4">
           <header className="pb-2">
-            <h2 className="text-2xl sm:text-3xl font-bold font-serif text-gray-900">
-              The Lifespan Sleep Matrix: Designing Custom Bedtimes for Lifelong Health
+            <h2 className="text-2xl sm:text-3xl lg:text-[2rem] font-extrabold tracking-tight text-[#111827] dark:text-white leading-tight">
+              The Lifespan Sleep Matrix: Customizing Bedtimes and Biological Alignments for Ever-Changing Age Demographics
             </h2>
           </header>
           <p>
@@ -358,8 +430,8 @@ export default function IdealBedtimeCalc() {
         {/* SECTION 2 */}
         <section className="space-y-4">
           <header className="pb-2">
-            <h2 className="text-2xl sm:text-3xl font-bold font-serif text-gray-900">
-              The Evolving Brain: How Sleep Architecture Adapts Over the Years
+            <h2 className="text-2xl sm:text-3xl lg:text-[2rem] font-extrabold tracking-tight text-[#111827] dark:text-white leading-tight">
+              The Neuroplastic Brain: How Complex Sleep Architecture and Cycle Phases Evolve Over the Human Lifespan
             </h2>
           </header>
           <p>
@@ -384,8 +456,8 @@ export default function IdealBedtimeCalc() {
         {/* SECTION 3 */}
         <section className="space-y-4">
           <header className="pb-2">
-            <h2 className="text-2xl sm:text-3xl font-bold font-serif text-gray-900">
-              The Science of Sleep Latency: Managing the Transition Phase
+            <h2 className="text-2xl sm:text-3xl lg:text-[2rem] font-extrabold tracking-tight text-[#111827] dark:text-white leading-tight">
+              The Science of Sleep Latency: Mastering the Critical Biological Transition Phase From Wakefulness to Rest
             </h2>
           </header>
           <p>
@@ -399,8 +471,8 @@ export default function IdealBedtimeCalc() {
         {/* SECTION 4 */}
         <section className="space-y-4">
           <header className="pb-2">
-            <h2 className="text-2xl sm:text-3xl font-bold font-serif text-gray-900">
-              Constructing the Ideal Sleep Sanctuary: Environmental Design Principles
+            <h2 className="text-2xl sm:text-3xl lg:text-[2rem] font-extrabold tracking-tight text-[#111827] dark:text-white leading-tight">
+              Constructing the Perfect Sleep Sanctuary: Modern Environmental Design Principles for Uninterrupted Rest
             </h2>
           </header>
           <p>
@@ -416,8 +488,8 @@ export default function IdealBedtimeCalc() {
         {/* SECTION 5 - FAQs */}
         <section className="space-y-6">
           <header className="pb-2">
-            <h2 className="text-2xl sm:text-3xl font-bold font-serif text-gray-900">
-              Circadian Sleep Optimization FAQ
+            <h2 className="text-2xl sm:text-3xl lg:text-[2rem] font-extrabold tracking-tight text-[#111827] dark:text-white leading-tight">
+              Circadian Sleep Optimization: Crucial Answers to Frequently Asked Sleep Questions
             </h2>
           </header>
           

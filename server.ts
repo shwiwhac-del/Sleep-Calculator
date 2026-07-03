@@ -390,6 +390,21 @@ function injectSEOMetadata(html: string, originalPath: string): string {
     title = MAIN_PAGES_META["/"].title;
     description = MAIN_PAGES_META["/"].description;
     canonicalUrl = MAIN_PAGES_META["/"].canonicalUrl;
+    
+    // Add standalone WebSite schema for Google Site Name detection
+    schemas.push({
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Sleep Calculator",
+      "alternateName": [
+        "Sleep Calculator",
+        "Sleep Cycle Calculator",
+        "Bedtime Calculator",
+        "REM Sleep Calculator"
+      ],
+      "url": "https://sleepcalculater.online/"
+    });
+
     schemas.push({
       "@context": "https://schema.org",
       "@type": "WebSite",

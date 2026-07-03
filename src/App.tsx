@@ -8,6 +8,9 @@ import { StarryBackground } from './components/StarryBackground';
 import { usePerformanceMonitoring } from './hooks/usePerformanceMonitoring';
 
 import Home from './pages/Home';
+import BlogSkeleton from './components/BlogSkeleton';
+import HomeSkeleton from './components/HomeSkeleton';
+import Skeleton from './components/Skeleton';
 import { OpenGraphTags } from './components/OpenGraphTags';
 
 const Terms = lazy(() => import('./pages/Terms'));
@@ -477,6 +480,100 @@ function RootSlugRedirect() {
   return <NotFound />;
 }
 
+function PageFallback() {
+  const location = useLocation();
+  const path = location.pathname;
+
+  const isBlogDetail = path.startsWith('/blog/') || [
+    "sleep-cycles-explained",
+    "what-is-rem-sleep",
+    "how-much-sleep-do-you-need",
+    "best-time-to-sleep-and-wake-up",
+    "sleep-cycle-calculator-guide",
+    "why-90-minute-sleep-cycles-matter",
+    "ideal-bedtime-for-adults",
+    "sleep-schedule-for-productivity",
+    "how-many-hours-of-sleep-is-healthy",
+    "power-nap-vs-full-sleep-cycle",
+    "circadian-rhythm-explained",
+    "tired-after-8-hours-of-sleep",
+    "best-bedtime-for-students",
+    "sleep-and-memory",
+    "sleep-debt-explained",
+    "best-wake-up-time",
+    "improve-sleep-quality",
+    "sleep-hygiene-tips",
+    "common-sleep-mistakes",
+    "fix-irregular-sleep-schedule",
+    "consistent-sleep-schedule-benefits",
+    "best-temperature-for-sleep",
+    "what-is-deep-sleep",
+    "how-long-does-it-take-to-fall-asleep",
+    "why-do-we-dream",
+    "why-do-people-snore",
+    "sleep-calculator-for-students",
+    "sleep-calculator-for-exams",
+    "why-am-i-tired-after-sleeping",
+    "rem-sleep-calculator-bedtime-cycles",
+    "sleep-deprivation-calculator-recovery-guide",
+    "adhd-sleep-schedule-calculator-tips",
+    "what-time-should-i-sleep-if-i-wake-up-at-6-am",
+    "best-bedtime-calculator-for-students",
+    "nap-calculator-20-30-60-90-minutes",
+    "sleep-calculator-for-night-shift-workers"
+  ].some(slug => path.endsWith(slug));
+
+  const isBlogIndex = path === '/blog' || path === '/blog/';
+
+  if (isBlogDetail) {
+    return (
+      <div className="w-full mx-auto px-2 sm:px-4 max-w-3xl py-4 sm:py-6 relative z-10">
+        <BlogSkeleton isPost={true} />
+      </div>
+    );
+  }
+
+  if (isBlogIndex) {
+    return (
+      <div className="w-full mx-auto px-2 sm:px-4 max-w-6xl py-8 relative z-10">
+        <BlogSkeleton isPost={false} />
+      </div>
+    );
+  }
+
+  const isCalculator = path === '/' || [
+    '/student-sleep-calculator',
+    '/shift-work-sleep-calculator',
+    '/sleep-cycle-calculator-90-minutes',
+    '/wake-up-between-sleep-cycles',
+    '/ideal-bedtime-based-on-wake-up-time'
+  ].includes(path);
+
+  if (isCalculator) {
+    return (
+      <div className="w-full max-w-6xl mx-auto px-2 sm:px-4 py-8 relative z-10">
+        <HomeSkeleton />
+      </div>
+    );
+  }
+
+  // Fallback for generic text pages (About, Privacy, Terms, Contact)
+  return (
+    <div className="w-full max-w-3xl mx-auto px-4 py-8 sm:py-12 space-y-6 text-left relative z-10">
+      <Skeleton variant="rectangular" className="h-10 w-2/3 rounded-lg" />
+      <Skeleton variant="text" className="h-4 w-full" />
+      <Skeleton variant="text" className="h-4 w-11/12" />
+      <Skeleton variant="text" className="h-4 w-5/6" />
+      <div className="space-y-4 pt-4">
+        <Skeleton variant="rectangular" className="h-8 w-1/3 rounded-md mb-2" />
+        <Skeleton variant="text" className="h-4 w-full" />
+        <Skeleton variant="text" className="h-4 w-full" />
+        <Skeleton variant="text" className="h-4 w-4/5" />
+      </div>
+    </div>
+  );
+}
+
 function AppContent() {
   usePerformanceMonitoring();
   
@@ -486,6 +583,7 @@ function AppContent() {
       if (savedTheme) {
         return savedTheme === "dark";
       }
+      return window.matchMedia("(prefers-color-scheme: dark)").matches;
     }
     return false;
   });
@@ -510,38 +608,38 @@ function AppContent() {
       <OpenGraphTags />
       <Header isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
       <main className="relative z-10 flex-grow flex flex-col items-center justify-start w-full pt-5 sm:pt-8 md:pt-10 pb-4 sm:pb-8">
-          <Suspense fallback={<div className="min-h-[60vh] w-full opacity-0 transition-opacity duration-300" />}>
-              <Routes>
-                {/* Core Pages */}
-                <Route path="/" element={<Home />} />
-                <Route path="/blog" element={<Blog />} />
-                <Route path="/blog/:slug" element={<Blog />} />
+        <Suspense fallback={<PageFallback />}>
+          <Routes>
+            {/* Core Pages */}
+            <Route path="/" element={<Home />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:slug" element={<Blog />} />
 
-                {/* The 5 Dedicated Interactive Calculator Landing Pages */}
-                <Route path="/student-sleep-calculator" element={<StudentCalc />} />
-                <Route path="/shift-work-sleep-calculator" element={<ShiftWorkCalc />} />
-                <Route path="/sleep-cycle-calculator-90-minutes" element={<NinetyMinCalc />} />
-                <Route path="/wake-up-between-sleep-cycles" element={<WakeUpCalc />} />
-                <Route path="/ideal-bedtime-based-on-wake-up-time" element={<IdealBedtimeCalc />} />
+            {/* The 5 Dedicated Interactive Calculator Landing Pages */}
+            <Route path="/student-sleep-calculator" element={<StudentCalc />} />
+            <Route path="/shift-work-sleep-calculator" element={<ShiftWorkCalc />} />
+            <Route path="/sleep-cycle-calculator-90-minutes" element={<NinetyMinCalc />} />
+            <Route path="/wake-up-between-sleep-cycles" element={<WakeUpCalc />} />
+            <Route path="/ideal-bedtime-based-on-wake-up-time" element={<IdealBedtimeCalc />} />
 
-                {/* Utility Pages */}
-                <Route path="/about" element={<About />} />
-                <Route path="/terms" element={<Terms />} />
-                <Route path="/privacy" element={<Privacy />} />
-                <Route path="/contact" element={<Contact />} />
+            {/* Utility Pages */}
+            <Route path="/about" element={<About />} />
+            <Route path="/terms" element={<Terms />} />
+            <Route path="/privacy" element={<Privacy />} />
+            <Route path="/contact" element={<Contact />} />
 
-                {/* Legacy page/blog Prefixes redirected back to clean paths */}
-                <Route path="/page/blog/:slug" element={<Navigate replace to="/blog/:slug" />} />
+            {/* Legacy page/blog Prefixes redirected back to clean paths */}
+            <Route path="/page/blog/:slug" element={<Navigate replace to="/blog/:slug" />} />
 
-                {/* Dynamic redirect for root-level blog slugs to /blog/:slug */}
-                <Route path="/:slug" element={<RootSlugRedirect />} />
+            {/* Dynamic redirect for root-level blog slugs to /blog/:slug */}
+            <Route path="/:slug" element={<RootSlugRedirect />} />
 
-                {/* Catch-all 404 route */}
-                <Route path="*" element={<NotFound />} />
-              </Routes>
-            </Suspense>
-          </main>
-          <Footer />
+            {/* Catch-all 404 route */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Suspense>
+      </main>
+      <Footer />
     </div>
   );
 }

@@ -8,6 +8,7 @@ import TimePicker from "../components/TimePicker";
 import HomeSkeleton from "../components/HomeSkeleton";
 import { AdPlaceholder } from "../components/AdPlaceholder";
 import RecommendedSleepGuides from "../components/RecommendedSleepGuides";
+import { Breadcrumbs } from "../components/Breadcrumbs";
 
 export default function NinetyMinCalc() {
   const canonicalUrl = getCanonicalUrl("/sleep-cycle-calculator-90-minutes");
@@ -108,12 +109,56 @@ export default function NinetyMinCalc() {
     return (
       <div className="w-full max-w-4xl mx-auto px-4 py-8 sm:py-12" id="ninety-calculator-root">
         <Helmet>
-          <title>90 Minute Sleep Calculator | Calculate Sleep Cycles</title>
+          <title>Sleep Cycle Calculator 90 Minutes | 1.5 Hour Increments</title>
           <meta
             name="description"
-            content="Plan your bedtime using our 90-Minute Sleep Calculator. Synchronize sleep cycles to naturally wake up between cycles, cure morning grogginess, and feel refreshed."
+            content="Plan your bedtime with our sleep cycle calculator 90 minutes formula. Calculate sleep cycles in 1.5 hour increments to wake up refreshed and avoid morning fatigue."
           />
           <link rel="canonical" href={canonicalUrl} />
+          <script type="application/ld+json">
+            {JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebApplication",
+              "name": "Sleep Cycle Calculator 90 Minutes",
+              "url": canonicalUrl,
+              "description": "Plan your bedtime with our sleep cycle calculator 90 minutes formula. Calculate sleep cycles in 1.5 hour increments to wake up refreshed and avoid morning fatigue.",
+              "applicationCategory": "HealthApplication",
+              "operatingSystem": "All",
+              "browserRequirements": "Requires JavaScript. Requires HTML5."
+            })}
+          </script>
+          <script type="application/ld+json">
+            {JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "What exactly is sleep inertia, and how long does it typically last?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Sleep inertia is the groggy feeling of confusion and slowed coordination experienced upon waking up directly from N3 deep sleep. It can last from 30 minutes to over two hours, during which your cognitive performance is temporarily degraded. Waking up at the end of a 90-minute cycle avoids this state entirely."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "What should I do if my sleep latency is consistently over 30 minutes?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "A sleep latency of over 30 minutes often indicates high evening cortisol or excessive screen exposure. Establish a dedicated evening wind-down routine, limit caffeine in the afternoon, and try relaxing breathing techniques to help transition to sleep. Read more sleep tips on our home dashboard."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Does everyone have an exact 90-minute sleep cycle?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "No, 90 minutes is the scientific average for adults. Sleep cycles typically slice from 80 to 110 minutes depending on genetics, age, and sleep debt. However, using the standard 90-minute formula provides a highly effective baseline for most users to optimize their sleep schedules."
+                  }
+                }
+              ]
+            })}
+          </script>
         </Helmet>
         <HomeSkeleton />
       </div>
@@ -123,37 +168,64 @@ export default function NinetyMinCalc() {
   return (
     <div className="w-full max-w-4xl mx-auto px-4 py-8 sm:py-12" id="ninety-calculator-root">
       <Helmet>
-        <title>90 Minute Sleep Calculator | Calculate Sleep Cycles</title>
+        <title>Sleep Cycle Calculator 90 Minutes | 1.5 Hour Increments</title>
         <meta
           name="description"
-          content="Plan your bedtime using our 90-Minute Sleep Calculator. Synchronize sleep cycles to naturally wake up between cycles, cure morning grogginess, and feel refreshed."
+          content="Plan your bedtime with our sleep cycle calculator 90 minutes formula. Calculate sleep cycles in 1.5 hour increments to wake up refreshed and avoid morning fatigue."
         />
         <link rel="canonical" href={canonicalUrl} />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            "name": "Sleep Cycle Calculator 90 Minutes",
+            "url": canonicalUrl,
+            "description": "Plan your bedtime with our sleep cycle calculator 90 minutes formula. Calculate sleep cycles in 1.5 hour increments to wake up refreshed and avoid morning fatigue.",
+            "applicationCategory": "HealthApplication",
+            "operatingSystem": "All",
+            "browserRequirements": "Requires JavaScript. Requires HTML5."
+          })}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What exactly is sleep inertia, and how long does it typically last?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Sleep inertia is the groggy feeling of confusion and slowed coordination experienced upon waking up directly from N3 deep sleep. It can last from 30 minutes to over two hours, during which your cognitive performance is temporarily degraded. Waking up at the end of a 90-minute cycle avoids this state entirely."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What should I do if my sleep latency is consistently over 30 minutes?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "A sleep latency of over 30 minutes often indicates high evening cortisol or excessive screen exposure. Establish a dedicated evening wind-down routine, limit caffeine in the afternoon, and try relaxing breathing techniques to help transition to sleep. Read more sleep tips on our home dashboard."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Does everyone have an exact 90-minute sleep cycle?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No, 90 minutes is the scientific average for adults. Sleep cycles typically slice from 80 to 110 minutes depending on genetics, age, and sleep debt. However, using the standard 90-minute formula provides a highly effective baseline for most users to optimize their sleep schedules."
+                }
+              }
+            ]
+          })}
+        </script>
       </Helmet>
 
-      {/* Breadcrumbs - Clean and Simple */}
-      <div className="mb-8 text-left" id="ninety-breadcrumb-container">
-        <div className="mb-4 flex items-center text-xs sm:text-sm text-[#6B7280]" id="ninety-breadcrumb">
-          <div className="flex items-center gap-1.5 font-sans">
-            <Link to="/" className="hover:text-[#7C3AED] transition-colors font-medium">Home</Link>
-            <span className="text-gray-400">&gt;</span>
-            <span className="font-semibold text-gray-700">90-Minute Sleep Calculator</span>
-          </div>
-        </div>
-        <Link 
-          to="/"
-          className="inline-flex items-center gap-2 text-base text-[#6B7280] dark:text-slate-400 font-semibold tracking-wide hover:text-[#7C3AED] transition-colors focus-visible:outline-none cursor-pointer"
-        >
-          <ArrowLeft size={18} /> Back to Calculator
-        </Link>
-      </div>
-
       {/* Header Banner */}
-      <div className="text-center mb-8" id="ninety-header">
-        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black font-serif text-gray-900 tracking-tight leading-tight mb-3">
-          90-Minute Sleep Cycle Calculator
+      <div className="flex flex-col items-center justify-center gap-2 text-center max-w-3xl mx-auto px-2 mt-3 sm:mt-4 md:mt-5 transition-all duration-300 mb-4" id="ninety-header">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[2.5rem] font-extrabold tracking-tight text-[#111827] dark:text-white leading-tight sm:leading-snug text-center">
+          Calculate the Perfect 90-Minute Sleep Cycles to Wake Up Refreshed and Energized Daily
         </h1>
-        <p className="text-base sm:text-lg text-[#374151] max-w-2xl mx-auto leading-relaxed">
+        <p className="text-sm sm:text-base md:text-lg text-[#4B5563] dark:text-slate-300 max-w-[42rem] mx-auto font-medium leading-relaxed tracking-normal opacity-95 text-center">
           Align your bedtimes mathematically with natural sleep staging boundaries to end grogginess.
         </p>
       </div>
@@ -167,7 +239,7 @@ export default function NinetyMinCalc() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -15 }}
             transition={{ duration: 0.25 }}
-            className="w-full max-w-[28.75rem] mx-auto mb-12 relative px-2 sm:px-0"
+            className="w-full max-w-[28.75rem] mx-auto mb-4 relative px-2 sm:px-0"
             id="ninety-widget"
           >
             <div className="flex flex-col items-center w-full p-4 sm:p-5">
@@ -251,7 +323,7 @@ export default function NinetyMinCalc() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -15 }}
             transition={{ duration: 0.25 }}
-            className="w-full max-w-[28.75rem] mx-auto flex flex-col items-center mb-12 px-2"
+            className="w-full max-w-[28.75rem] mx-auto flex flex-col items-center mb-4 px-2"
             id="ninety-results"
           >
             <div className="w-full p-4 sm:p-5 flex flex-col relative overflow-hidden">
@@ -338,8 +410,8 @@ export default function NinetyMinCalc() {
         {/* SECTION 1 */}
         <section className="space-y-4">
           <header className="pb-2">
-            <h2 className="text-2xl sm:text-3xl font-bold font-serif text-gray-900">
-              The 90-Minute Sleep Cycle Formula: Mathematical Staging of Human Rest
+            <h2 className="text-2xl sm:text-3xl lg:text-[2rem] font-extrabold tracking-tight text-[#111827] dark:text-white leading-tight">
+              The 90-Minute Sleep Cycle Formula: Advanced Mathematical Staging and Optimization of Human Recovery
             </h2>
           </header>
           <p>
@@ -356,8 +428,8 @@ export default function NinetyMinCalc() {
         {/* SECTION 2 */}
         <section className="space-y-4">
           <header className="pb-2">
-            <h2 className="text-2xl sm:text-3xl font-bold font-serif text-gray-900">
-              The Ultradian Loop: Decoding the Physiology of Waking & Dreaming
+            <h2 className="text-2xl sm:text-3xl lg:text-[2rem] font-extrabold tracking-tight text-[#111827] dark:text-white leading-tight">
+              The Ultradian Loop Dynamics: Decoding the Deep Physiology of Waking, Sleeping and Active Dreaming
             </h2>
           </header>
           <p>
@@ -385,8 +457,8 @@ export default function NinetyMinCalc() {
         {/* SECTION 3 */}
         <section className="space-y-4">
           <header className="pb-2">
-            <h2 className="text-2xl sm:text-3xl font-bold font-serif text-gray-900">
-              The Compounding Effect of Sleep Debt & Circadian Disruption
+            <h2 className="text-2xl sm:text-3xl lg:text-[2rem] font-extrabold tracking-tight text-[#111827] dark:text-white leading-tight">
+              The Dangerous Compounding Effect of Chronic Sleep Debt and Circadian Biological Disruption
             </h2>
           </header>
           <p>
@@ -400,8 +472,8 @@ export default function NinetyMinCalc() {
         {/* SECTION 4 */}
         <section className="space-y-4">
           <header className="pb-2">
-            <h2 className="text-2xl sm:text-3xl font-bold font-serif text-gray-900">
-              Sleep Latency & Wind Down: Engineering the Transition State
+            <h2 className="text-2xl sm:text-3xl lg:text-[2rem] font-extrabold tracking-tight text-[#111827] dark:text-white leading-tight">
+              Sleep Onset Latency and Wind Down: Scientific Engineering of Your Daily Transition State
             </h2>
           </header>
           <p>
@@ -415,8 +487,8 @@ export default function NinetyMinCalc() {
         {/* SECTION 5 - FAQs */}
         <section className="space-y-6 mb-12">
           <header className="pb-2">
-            <h2 className="text-2xl sm:text-3xl font-bold font-serif text-gray-900">
-              Circadian Rhythm & Sleep Staging FAQ
+            <h2 className="text-2xl sm:text-3xl lg:text-[2rem] font-extrabold tracking-tight text-[#111827] dark:text-white leading-tight">
+              Circadian Rhythm Dynamics & Biological Sleep Staging: Crucial Answers to Frequently Asked Questions
             </h2>
           </header>
           

@@ -8,6 +8,7 @@ import TimePicker from "../components/TimePicker";
 import HomeSkeleton from "../components/HomeSkeleton";
 import { AdPlaceholder } from "../components/AdPlaceholder";
 import RecommendedSleepGuides from "../components/RecommendedSleepGuides";
+import { Breadcrumbs } from "../components/Breadcrumbs";
 
 export default function StudentCalc() {
   const canonicalUrl = getCanonicalUrl("/student-sleep-calculator");
@@ -109,12 +110,64 @@ export default function StudentCalc() {
     return (
       <div className="w-full max-w-4xl mx-auto px-4 py-8 sm:py-12" id="student-calculator-root">
         <Helmet>
-          <title>Sleep Calculator for Students | Academic Focus & Exam Prep</title>
+          <title>Sleep Calculator for Students During Exams | Bedtime Planner</title>
           <meta
             name="description"
-            content="Maximize memory retention and exam grades. Use our specialized Student Sleep Calculator to plan perfect study-rest cycles and study schedules."
+            content="Plan your rest with the sleep calculator for students during exams. Optimize bedtime for college & high school routines to maximize grades & memory retention."
           />
           <link rel="canonical" href={canonicalUrl} />
+          <script type="application/ld+json">
+            {JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebApplication",
+              "name": "Sleep Calculator for Students During Exams",
+              "url": canonicalUrl,
+              "description": "Plan your rest with the sleep calculator for students during exams. Optimize bedtime for college & high school routines to maximize grades & memory retention.",
+              "applicationCategory": "HealthApplication",
+              "operatingSystem": "All",
+              "browserRequirements": "Requires JavaScript. Requires HTML5."
+            })}
+          </script>
+          <script type="application/ld+json">
+            {JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "Can I stay up all night cramming and sleep after the exam instead?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "This is a highly detrimental approach to academic performance. Studies show that pulling an 'all-nighter' severely damages working memory, attention filters, and processing speed the next morning. It also prevents the brain from consolidating the newly reviewed material into long-term storage. Waking up from 5 cycles (7.5 hours) of structured, cycle-aligned sleep will always outperform a sleep-deprived cram session."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "How can I repay a massive sleep debt accrued over school weeks?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "You cannot recover 30 hours of accumulated sleep debt in a single weekend marathon, as oversleeping disrupts your circadian rhythm and leads to 'social jetlag'. Recovery is best achieved gradually by sleeping 1 to 1.5 hours extra on weekend nights, paired with consistent daily schedules during school weeks."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "How does caffeine consumption affect my sleep cycle calculations?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Caffeine is an adenosine receptor antagonist with a half-life of 5 to 7 hours. Even if you fall asleep fine after an afternoon tea, coffee, or energy drink, the presence of caffeine blocks deep, slow-wave N3 deep sleep. Avoid caffeine at least 6 to 8 hours before bedtime to protect your deep sleep stages."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Is a 20-minute power nap helpful during long study blocks?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. A 20-minute micro-nap provides quick alertness by clearing built-up adenosine in the brain. Keep it under 25 minutes to avoid entering N3 deep sleep, which prevents the groggy feeling of 'sleep inertia'."
+                  }
+                }
+              ]
+            })}
+          </script>
         </Helmet>
         <HomeSkeleton />
       </div>
@@ -124,37 +177,72 @@ export default function StudentCalc() {
   return (
     <div className="w-full max-w-4xl mx-auto px-4 py-8 sm:py-12" id="student-calculator-root">
       <Helmet>
-        <title>Sleep Calculator for Students | Academic Focus & Exam Prep</title>
+        <title>Sleep Calculator for Students During Exams | Bedtime Planner</title>
         <meta
           name="description"
-          content="Maximize memory retention and exam grades. Use our specialized Student Sleep Calculator to plan perfect study-rest cycles and study schedules."
+          content="Plan your rest with the sleep calculator for students during exams. Optimize bedtime for college & high school routines to maximize grades & memory retention."
         />
         <link rel="canonical" href={canonicalUrl} />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            "name": "Sleep Calculator for Students During Exams",
+            "url": canonicalUrl,
+            "description": "Plan your rest with the sleep calculator for students during exams. Optimize bedtime for college & high school routines to maximize grades & memory retention.",
+            "applicationCategory": "HealthApplication",
+            "operatingSystem": "All",
+            "browserRequirements": "Requires JavaScript. Requires HTML5."
+          })}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Can I stay up all night cramming and sleep after the exam instead?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "This is a highly detrimental approach to academic performance. Studies show that pulling an 'all-nighter' severely damages working memory, attention filters, and processing speed the next morning. It also prevents the brain from consolidating the newly reviewed material into long-term storage. Waking up from 5 cycles (7.5 hours) of structured, cycle-aligned sleep will always outperform a sleep-deprived cram session."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How can I repay a massive sleep debt accrued over school weeks?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "You cannot recover 30 hours of accumulated sleep debt in a single weekend marathon, as oversleeping disrupts your circadian rhythm and leads to 'social jetlag'. Recovery is best achieved gradually by sleeping 1 to 1.5 hours extra on weekend nights, paired with consistent daily schedules during school weeks."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How does caffeine consumption affect my sleep cycle calculations?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Caffeine is an adenosine receptor antagonist with a half-life of 5 to 7 hours. Even if you fall asleep fine after an afternoon tea, coffee, or energy drink, the presence of caffeine blocks deep, slow-wave N3 deep sleep. Avoid caffeine at least 6 to 8 hours before bedtime to protect your deep sleep stages."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Is a 20-minute power nap helpful during long study blocks?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes. A 20-minute micro-nap provides quick alertness by clearing built-up adenosine in the brain. Keep it under 25 minutes to avoid entering N3 deep sleep, which prevents the groggy feeling of 'sleep inertia'."
+                }
+              }
+            ]
+          })}
+        </script>
       </Helmet>
 
-      {/* Breadcrumb - Clean and Simple */}
-      <div className="mb-8 text-left" id="student-breadcrumb-container">
-        <div className="mb-4 flex items-center text-xs sm:text-sm text-[#6B7280]" id="student-breadcrumb">
-          <div className="flex items-center gap-1.5 font-sans">
-            <Link to="/" className="hover:text-[#7C3AED] transition-colors font-medium">Home</Link>
-            <span className="text-gray-400">&gt;</span>
-            <span className="font-semibold text-gray-700">Student Sleep Calculator</span>
-          </div>
-        </div>
-        <Link 
-          to="/"
-          className="inline-flex items-center gap-2 text-base text-[#6B7280] dark:text-slate-400 font-semibold tracking-wide hover:text-[#7C3AED] transition-colors focus-visible:outline-none cursor-pointer"
-        >
-          <ArrowLeft size={18} /> Back to Calculator
-        </Link>
-      </div>
-
       {/* Title */}
-      <div className="text-center mb-8" id="student-header-banner">
-        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black font-serif text-gray-900 tracking-tight leading-tight mb-3">
-          Sleep Calculator for Students
+      <div className="flex flex-col items-center justify-center gap-2 text-center max-w-3xl mx-auto px-2 mt-3 sm:mt-4 md:mt-5 transition-all duration-300 mb-4" id="student-header-banner">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[2.5rem] font-extrabold tracking-tight text-[#111827] dark:text-white leading-tight sm:leading-snug text-center">
+          Calculate the Perfect Sleep Schedule for Students to Maximize Grades, Focus, and Cognitive Performance
         </h1>
-        <p className="text-base sm:text-lg text-[#374151] max-w-2xl mx-auto leading-relaxed">
+        <p className="text-sm sm:text-base md:text-lg text-[#4B5563] dark:text-slate-300 max-w-[42rem] mx-auto font-medium leading-relaxed tracking-normal opacity-95 text-center">
           Improve your grades, memory retention, and class focus using science-backed 90-minute sleep cycle planning.
         </p>
       </div>
@@ -170,7 +258,7 @@ export default function StudentCalc() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -15 }}
             transition={{ duration: 0.25 }}
-            className="w-full max-w-[28.75rem] mx-auto mb-12 relative px-2 sm:px-0"
+            className="w-full max-w-[28.75rem] mx-auto mb-4 relative px-2 sm:px-0"
             id="student-and-exam-calc-widget"
           >
             <div className="flex flex-col items-center w-full p-4 sm:p-5">
@@ -230,7 +318,7 @@ export default function StudentCalc() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -15 }}
             transition={{ duration: 0.25 }}
-            className="w-full max-w-[28.75rem] mx-auto flex flex-col items-center mb-12 px-2"
+            className="w-full max-w-[28.75rem] mx-auto flex flex-col items-center mb-4 px-2"
             id="student-calculated-results"
           >
             <div className="w-full p-4 sm:p-5 flex flex-col relative overflow-hidden">
@@ -317,8 +405,8 @@ export default function StudentCalc() {
         {/* SECTION 1 */}
         <section className="space-y-4">
           <header className="pb-2">
-            <h2 className="text-2xl sm:text-3xl font-bold font-serif text-gray-900">
-              The Academic Sleep Imperative: Crucial Science for Student Success
+            <h2 className="text-2xl sm:text-3xl lg:text-[2rem] font-extrabold tracking-tight text-[#111827] dark:text-white leading-tight">
+              The Academic Sleep Imperative: Crucial Sleep Science Behind Outstanding Student Success and Focus
             </h2>
           </header>
           <p>
@@ -335,8 +423,8 @@ export default function StudentCalc() {
         {/* SECTION 2 */}
         <section className="space-y-4">
           <header className="pb-2">
-            <h2 className="text-2xl sm:text-3xl font-bold font-serif text-gray-900">
-              The Mechanical Blueprint: NREM, REM, and Memory Consolidation
+            <h2 className="text-2xl sm:text-3xl lg:text-[2rem] font-extrabold tracking-tight text-[#111827] dark:text-white leading-tight">
+              The Neurological Blueprint: How NREM, REM Sleep Stages Drive Memory Consolidation
             </h2>
           </header>
           <p>
@@ -344,7 +432,7 @@ export default function StudentCalc() {
           </p>
           
           <div className="space-y-4 my-6">
-            <h3 className="font-bold text-[#111827] text-xl font-serif">Structural Breakdown of a Single 90-Minute Sleep Cycle</h3>
+            <h3 className="font-bold text-[#111827] dark:text-slate-100 text-xl">Structural Breakdown of a Single 90-Minute Sleep Cycle</h3>
             <p>
               <strong className="text-[#111827]">Stage N1 (Light Sleep Onset - ~5-10 Minutes):</strong> The transition phase from waking life to physiological sleep. Muscle tone decreases, micro-twitches occur, and the brain shifts from rapid beta/alpha waves to slower theta waves. Waking up in this phase is easy, but leaves you feeling unrefreshed. Same concepts apply when mapping bedtimes using our popular <Link to="/ideal-bedtime-based-on-wake-up-time" className="text-[#7C3AED] hover:underline">Ideal Bedtime Calculator</Link>.
             </p>
@@ -367,8 +455,8 @@ export default function StudentCalc() {
         {/* SECTION 3 */}
         <section className="space-y-4">
           <header className="pb-2">
-            <h2 className="text-2xl sm:text-3xl font-bold font-serif text-gray-900">
-              Lifespan Developmental Sleep Guide: Toddlers to College Scholars
+            <h2 className="text-2xl sm:text-3xl lg:text-[2rem] font-extrabold tracking-tight text-[#111827] dark:text-white leading-tight">
+              Lifespan Developmental Sleep Guide: Tailored Recommendations from Young Toddlers to Busy College Scholars
             </h2>
           </header>
           <p>
@@ -398,8 +486,8 @@ export default function StudentCalc() {
         {/* SECTION 4 */}
         <section className="space-y-4">
           <header className="pb-2">
-            <h2 className="text-2xl sm:text-3xl font-bold font-serif text-gray-900">
-              The Exam Preparedness Protocol: Biohacking the Perfect Night Before
+            <h2 className="text-2xl sm:text-3xl lg:text-[2rem] font-extrabold tracking-tight text-[#111827] dark:text-white leading-tight">
+              The Exam Preparedness Protocol: Scientific Strategies for Biohacking the Perfect Night Before Big Tests
             </h2>
           </header>
           <p>
@@ -424,8 +512,8 @@ export default function StudentCalc() {
         {/* SECTION 5 - FAQs */}
         <section className="space-y-6 mb-12">
           <header className="pb-2">
-            <h2 className="text-2xl sm:text-3xl font-bold font-serif text-gray-900">
-              Frequently Asked Questions (Academic Sleep Optimization)
+            <h2 className="text-2xl sm:text-3xl lg:text-[2rem] font-extrabold tracking-tight text-[#111827] dark:text-white leading-tight">
+              Academic Sleep Optimization: Answers to Crucial Frequently Asked Questions
             </h2>
           </header>
                  <div className="space-y-4">
