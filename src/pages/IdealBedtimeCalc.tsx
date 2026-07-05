@@ -163,7 +163,7 @@ export default function IdealBedtimeCalc() {
   }
 
   return (
-    <div className="w-full max-w-4xl mx-auto px-4 py-8 sm:py-12" id="ideal-calculator-root">
+    <div className="w-full max-w-4xl mx-auto px-4 pt-1 pb-8 sm:pb-12" id="ideal-calculator-root">
       <Helmet>
         <title>Ideal Bedtime Based on Wake Up Time | Sleep Calculator by Age</title>
         <meta
@@ -218,12 +218,12 @@ export default function IdealBedtimeCalc() {
       </Helmet>
 
       {/* Header Title */}
-      <div className="flex flex-col items-center justify-center gap-2 text-center max-w-3xl mx-auto px-2 mt-3 sm:mt-4 md:mt-5 transition-all duration-300 mb-4" id="ideal-header">
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[2.5rem] font-extrabold tracking-tight text-[#111827] dark:text-white leading-tight sm:leading-snug text-center">
-          Calculate Your Ideal Bedtime Based on Your Wake-Up Target & Circadian Science
+      <div className="flex flex-col items-center justify-center gap-1 sm:gap-1.5 text-center w-full max-w-full px-2 mt-0 mb-3 transition-all duration-300" id="ideal-header">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-[#111827] dark:text-white leading-tight font-serif text-center w-full max-w-5xl mx-auto">
+          Calculate Your Ideal Bedtime
         </h1>
-        <p className="text-sm sm:text-base md:text-lg text-[#4B5563] dark:text-slate-300 max-w-[42rem] mx-auto font-medium leading-relaxed tracking-normal opacity-95 text-center">
-          Find your perfect, age-customized bedtime based on your biological alarm targets and sleep cycle architecture.
+        <p className="text-xs sm:text-sm md:text-base text-[#4B5563] dark:text-slate-300 max-w-3xl mx-auto font-medium leading-relaxed tracking-normal opacity-90 text-center px-4">
+          Find your perfect science-backed bedtime based on your desired wake-up time.
         </p>
       </div>
 

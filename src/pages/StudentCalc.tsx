@@ -175,7 +175,7 @@ export default function StudentCalc() {
   }
 
   return (
-    <div className="w-full max-w-4xl mx-auto px-4 py-8 sm:py-12" id="student-calculator-root">
+    <div className="w-full max-w-4xl mx-auto px-4 pt-1 pb-8 sm:pb-12" id="student-calculator-root">
       <Helmet>
         <title>Sleep Calculator for Students During Exams | Bedtime Planner</title>
         <meta
@@ -237,13 +237,13 @@ export default function StudentCalc() {
         </script>
       </Helmet>
 
-      {/* Title */}
-      <div className="flex flex-col items-center justify-center gap-2 text-center max-w-3xl mx-auto px-2 mt-3 sm:mt-4 md:mt-5 transition-all duration-300 mb-4" id="student-header-banner">
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[2.5rem] font-extrabold tracking-tight text-[#111827] dark:text-white leading-tight sm:leading-snug text-center">
-          Calculate the Perfect Sleep Schedule for Students to Maximize Grades, Focus, and Cognitive Performance
+      {/* Header Title */}
+      <div className="flex flex-col items-center justify-center gap-1 sm:gap-1.5 text-center w-full max-w-full px-2 mt-0 mb-3 transition-all duration-300" id="student-header-banner">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-[#111827] dark:text-white leading-tight font-serif text-center w-full max-w-5xl mx-auto">
+          Student Sleep Calculator
         </h1>
-        <p className="text-sm sm:text-base md:text-lg text-[#4B5563] dark:text-slate-300 max-w-[42rem] mx-auto font-medium leading-relaxed tracking-normal opacity-95 text-center">
-          Improve your grades, memory retention, and class focus using science-backed 90-minute sleep cycle planning.
+        <p className="text-xs sm:text-sm md:text-base text-[#4B5563] dark:text-slate-300 max-w-3xl mx-auto font-medium leading-relaxed tracking-normal opacity-90 text-center px-4">
+          Optimize your sleep schedule to boost focus and exam performance.
         </p>
       </div>
 

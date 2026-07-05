@@ -36,57 +36,18 @@ const PRESET_FACTORS = [
   { id: "meditation", label: "Wound down / PMR" }
 ];
 
-// 5 initial mock logs to prevent empty charts on first load, referencing the last few days
-const getMockLogs = (): SleepLog[] => {
-  const logs: SleepLog[] = [];
-  const today = new Date();
-  
-  const notes = [
-    "Woke up very refreshed, minimal waking during the night.",
-    "Had some light caffeine late, struggled slightly to drift off.",
-    "Perfect cool bedroom setting. Woke up before my alarm.",
-    "Woke up feeling a bit groggy but sleep hours were solid.",
-    "Practiced breathing exercise. Slept like a baby!"
-  ];
-
-  const factors = [
-    ["no-coffee", "cool-room", "no-screens", "fixed-schedule"],
-    ["cool-room", "exercise"],
-    ["no-coffee", "cool-room", "no-screens", "fixed-schedule", "meditation"],
-    ["no-screens", "exercise"],
-    ["no-coffee", "cool-room", "no-screens", "meditation"]
-  ];
-
-  const hours = [8, 6.5, 8.5, 7, 7.5];
-  const qualities = [5, 3, 5, 4, 4];
-
-  for (let i = 4; i >= 0; i--) {
-    const logDate = new Date();
-    logDate.setDate(today.getDate() - (i + 1));
-    logs.push({
-      id: `mock-log-${4 - i}`,
-      date: logDate.toISOString().split("T")[0],
-      hours: hours[4 - i],
-      quality: qualities[4 - i],
-      factors: factors[4 - i],
-      notes: notes[4 - i]
-    });
-  }
-
-  return logs;
-};
-
 export function SleepJournal() {
   const [logs, setLogs] = useState<SleepLog[]>(() => {
     try {
       if (typeof window !== "undefined") {
         const stored = localStorage.getItem("aurasleep_journal_logs");
         if (stored) {
-          return JSON.parse(stored);
-        } else {
-          const mock = getMockLogs();
-          localStorage.setItem("aurasleep_journal_logs", JSON.stringify(mock));
-          return mock;
+          const parsed = JSON.parse(stored) as SleepLog[];
+          const filtered = parsed.filter(l => l && !l.id.startsWith("mock-log-"));
+          if (filtered.length !== parsed.length) {
+            localStorage.setItem("aurasleep_journal_logs", JSON.stringify(filtered));
+          }
+          return filtered;
         }
       }
     } catch (e) {

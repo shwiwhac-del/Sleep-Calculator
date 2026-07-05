@@ -8,7 +8,6 @@ import { BLOG_POSTS_META, getFocusKeywordsForPost } from '../blogMetadata';
 import { getCanonicalUrl } from '../lib/seo';
 import { OpenGraphTags } from '../components/OpenGraphTags';
 import { Breadcrumbs } from '../components/Breadcrumbs';
-import HypnogramDiagram from '../components/HypnogramDiagram';
 import BlogSkeleton from '../components/BlogSkeleton';
 import { AdPlaceholder } from '../components/AdPlaceholder';
 
