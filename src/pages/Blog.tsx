@@ -1825,7 +1825,13 @@ export default function Blog() {
             <script key={idx} type="application/ld+json" dangerouslySetInnerHTML={script} />
           ))}
         </Helmet>
-        <BlogSkeleton isPost={isAnyBlog} />
+        <BlogSkeleton 
+          isPost={isAnyBlog} 
+          postTitle={currentPost?.title}
+          postCategory={currentPost?.category}
+          postDate={currentPost?.date}
+          postReadTime={currentPost?.readTime}
+        />
       </div>
     );
   }

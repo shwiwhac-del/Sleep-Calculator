@@ -13,7 +13,7 @@ export const Skeleton: React.FC<SkeletonProps> = ({
   width,
   height,
 }) => {
-  const baseClasses = "relative overflow-hidden bg-gradient-to-r from-[#E5E5E5] via-[#F1F1F1] to-[#E5E5E5] dark:from-[#334155] dark:via-[#475569] dark:to-[#334155] animate-shimmer";
+  const baseClasses = "relative overflow-hidden bg-gradient-to-r from-[#7C3AED]/[0.05] via-[#7C3AED]/[0.12] to-[#7C3AED]/[0.05] dark:from-[#D4AF37]/[0.05] dark:via-[#D4AF37]/[0.12] dark:to-[#D4AF37]/[0.05] animate-shimmer";
 
   const variantClasses = {
     text: "rounded-lg h-4 w-full",

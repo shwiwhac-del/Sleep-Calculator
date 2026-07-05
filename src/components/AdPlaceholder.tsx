@@ -70,39 +70,6 @@ export function AdPlaceholder({ id = "ad-slot-header" }: AdPlaceholderProps) {
     const activeHeight = isMobile ? 50 : 90;
     const activeWidth = isMobile ? 320 : 728;
 
-    // Detect if we should load the actual 3rd party ad scripts
-    const shouldLoadRealAd = () => {
-      if (typeof window === "undefined") return false;
-      const hostname = window.location.hostname;
-      const isProd = hostname.endsWith("sleepcalculater.online");
-      if (!isProd) return false; // Serve beautiful mockup placeholders on dev, local, and staging urls to prevent 3rd party server errors from breaking the page speed score
-
-      const ua = window.navigator.userAgent || "";
-      const isLighthouseOrBot = /lighthouse|pagespeed|speed|googlebot|headless|chrome-lighthouse|bot|crawl|spider/i.test(ua) ||
-        !!(window.navigator as any).webdriver ||
-        window.location.search.includes("lighthouse") ||
-        window.location.search.includes("pagespeed");
-
-      return !isLighthouseOrBot;
-    };
-
-    if (!shouldLoadRealAd()) {
-      // Render a clean mock placeholder box to prevent layout shifts during performance audits and development
-      const adContainer = document.createElement("div");
-      adContainer.className = `ad-wrapper-box flex items-center justify-center border border-dashed border-gray-200/80 dark:border-gray-800/80 rounded bg-gray-50/40 dark:bg-gray-900/20`;
-      adContainer.style.width = "100%";
-      adContainer.style.maxWidth = `${activeWidth}px`;
-      adContainer.style.height = `${activeHeight}px`;
-
-      const placeholderText = document.createElement("span");
-      placeholderText.className = "text-[10px] text-gray-400 dark:text-gray-600 font-sans tracking-wider";
-      placeholderText.innerText = `Premium Ad Placement (${activeWidth}x${activeHeight})`;
-      adContainer.appendChild(placeholderText);
-
-      containerRef.current.appendChild(adContainer);
-      return;
-    }
-
     // Set global atOptions dynamically based on resolution
     (window as any).atOptions = {
       'key' : activeKey,

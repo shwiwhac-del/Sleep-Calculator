@@ -1,30 +1,90 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
 import { Skeleton } from "./Skeleton";
 import { AdPlaceholder } from "./AdPlaceholder";
 
 export const HomeSkeleton: React.FC = () => {
+  const location = useLocation();
+  const path = location.pathname;
+
+  const getHeaderInfo = (path: string) => {
+    switch (path) {
+      case "/ideal-bedtime-based-on-wake-up-time":
+        return {
+          title: "Calculate Your Ideal Bedtime",
+          description: "Find your perfect science-backed bedtime based on your desired wake-up time.",
+          adId: "ideal-header-ad",
+          isHome: false,
+        };
+      case "/sleep-cycle-calculator-90-minutes":
+        return {
+          title: "90-Minute Sleep Calculator",
+          description: "Align your rest with natural 90-minute cycle boundaries to wake up energized.",
+          adId: "ninety-header-ad",
+          isHome: false,
+        };
+      case "/shift-work-sleep-calculator":
+        return {
+          title: "Shift Work Sleep Calculator",
+          description: "Calculate custom daytime sleep cycles to beat night shift fatigue.",
+          adId: "shift-header-ad",
+          isHome: false,
+        };
+      case "/student-sleep-calculator":
+        return {
+          title: "Student Sleep Calculator",
+          description: "Optimize your sleep schedule to boost focus and exam performance.",
+          adId: "student-header-ad",
+          isHome: false,
+        };
+      case "/wake-up-between-sleep-cycles":
+        return {
+          title: "Wake Up Between Sleep Cycles",
+          description: "Calculate perfect alarm times to wake up refreshed and prevent fatigue.",
+          adId: "wake-cycles-header-ad",
+          isHome: false,
+        };
+      default:
+        return {
+          title: "Calculate Your Perfect Bedtime & Wake-Up Time",
+          description: "Optimize your rest using scientific 90-minute sleep cycles to wake up refreshed, energized, and ready for your day.",
+          adId: "home-header-ad",
+          isHome: true,
+        };
+    }
+  };
+
+  const headerInfo = getHeaderInfo(path);
+
   return (
     <div className="w-full flex flex-col items-center">
-      {/* Hero Section Skeleton */}
-      <div className="flex flex-col items-center justify-center text-center max-w-3xl mx-auto px-2 mt-3 sm:mt-4 md:mt-5 mb-6 sm:mb-8 transition-all duration-300 w-full">
-        {/* Title placeholder (2 lines responsive) */}
-        <div className="space-y-2.5 w-full flex flex-col items-center">
-          <Skeleton variant="rectangular" className="h-9 sm:h-11 md:h-12 w-11/12 max-w-2xl" />
-          <Skeleton variant="rectangular" className="h-9 sm:h-11 md:h-12 w-8/12 max-w-md hidden sm:block" />
+      {/* Hero Section - Static Text matched exactly to each subpage to prevent flash and shift */}
+      {headerInfo.isHome ? (
+        <div className="flex flex-col items-center justify-center gap-2 text-center max-w-3xl mx-auto px-2 mt-3 sm:mt-4 md:mt-5 mb-6 sm:mb-8 transition-all duration-300 w-full">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[2.5rem] font-extrabold tracking-tight text-[#111827] dark:text-white leading-tight sm:leading-snug text-center font-serif">
+            {headerInfo.title}
+          </h1>
+          <p className="text-sm sm:text-base md:text-lg text-[#4B5563] dark:text-slate-300 max-w-[42rem] mx-auto font-medium leading-relaxed tracking-normal opacity-95">
+            {headerInfo.description}
+          </p>
         </div>
-        {/* Description placeholder (2 lines) */}
-        <div className="space-y-2 mt-4 sm:mt-5 w-full flex flex-col items-center">
-          <Skeleton variant="text" className="h-4.5 sm:h-5 w-10/12 max-w-xl" />
-          <Skeleton variant="text" className="h-4.5 sm:h-5 w-8/12 max-w-md" />
+      ) : (
+        <div className="flex flex-col items-center justify-center gap-1 sm:gap-1.5 text-center w-full max-w-full px-2 mt-0 mb-3 transition-all duration-300">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-[#111827] dark:text-white leading-tight font-serif text-center w-full max-w-5xl mx-auto">
+            {headerInfo.title}
+          </h1>
+          <p className="text-xs sm:text-sm md:text-base text-[#4B5563] dark:text-slate-300 max-w-3xl mx-auto font-medium leading-relaxed tracking-normal opacity-90 text-center px-4">
+            {headerInfo.description}
+          </p>
         </div>
-      </div>
+      )}
 
-      {/* Banner Ad Spot during skeleton state */}
-      <AdPlaceholder id="skeleton-home-header-ad" slotName="Skeleton Home Main Banner" />
+      {/* Banner Ad Spot during skeleton state with matched dynamic ID */}
+      <AdPlaceholder id={headerInfo.adId} slotName="Skeleton Header Banner" />
 
       {/* Calculator Inputs Card Skeleton */}
       <div className="w-full max-w-[28.75rem] mx-auto mb-4 relative px-2 sm:px-0">
-        <div className="flex flex-col items-center w-full p-4 sm:p-5 bg-white dark:bg-[#1e293b] rounded-2xl border border-gray-100 dark:border-slate-800 shadow-md">
+        <div className="flex flex-col items-center w-full p-4 sm:p-5 bg-[#FAF6F0] dark:bg-[#151C2C] rounded-2xl border border-[#E1D8CC] dark:border-[#1E293B] shadow-xs">
           {/* Tabs skeleton: 4 or 5 rounded pills */}
           <div className="flex flex-row flex-nowrap bg-gray-50 dark:bg-[#111827] rounded-xl p-1.5 w-full mb-4 gap-1 overflow-x-auto scrollbar-none">
             <Skeleton variant="pill" className="h-8.5 flex-1 shrink-0 min-w-[5rem]" />

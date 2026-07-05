@@ -52,28 +52,32 @@
 
       :root {
         --sk-bg: #F3ECE3;
-        --sk-card-bg: #FAF6F0;
-        --sk-card-border: #E1D8CC;
+        --sk-card-bg: rgba(250, 246, 240, 0.85);
+        --sk-card-border: rgba(225, 216, 204, 0.5);
         --sk-accent: #7C3AED;
         --sk-accent-gold: #D4AF37;
+        --sk-heading: #111827;
+        --sk-body: #4B5563;
         /* Shimmer uses the site's primary accent color (7C3AED) at very low opacity */
-        --sk-shimmer-color: rgba(124, 58, 237, 0.06); 
-        --sk-shimmer-highlight: rgba(124, 58, 237, 0.12);
+        --sk-shimmer-color: rgba(124, 58, 237, 0.03); 
+        --sk-shimmer-highlight: rgba(124, 58, 237, 0.08);
         /* Skeleton backgrounds are slightly lighter/darker versions of background */
-        --sk-element-bg: #EAE2D5;
-        --sk-element-bg-light: #F0E8DD;
+        --sk-element-bg: rgba(124, 58, 237, 0.05);
+        --sk-element-bg-light: rgba(124, 58, 237, 0.03);
       }
 
       .dark {
         --sk-bg: #090D1A;
-        --sk-card-bg: #0F172A;
-        --sk-card-border: #1E293B;
+        --sk-card-bg: rgba(15, 23, 42, 0.85);
+        --sk-card-border: rgba(30, 41, 59, 0.5);
         --sk-accent: #D4AF37;
         --sk-accent-gold: #7C3AED;
-        --sk-shimmer-color: rgba(212, 175, 55, 0.08);
-        --sk-shimmer-highlight: rgba(212, 175, 55, 0.16);
-        --sk-element-bg: #1E293B;
-        --sk-element-bg-light: #1E293B;
+        --sk-heading: #FFFFFF;
+        --sk-body: #CBD5E1;
+        --sk-shimmer-color: rgba(212, 175, 55, 0.04);
+        --sk-shimmer-highlight: rgba(212, 175, 55, 0.10);
+        --sk-element-bg: rgba(212, 175, 55, 0.06);
+        --sk-element-bg-light: rgba(212, 175, 55, 0.03);
       }
 
       html.dark, .dark body {
@@ -395,7 +399,7 @@
         height: 3.25rem; /* h-13 */
         background-color: var(--sk-accent);
         border-radius: 9999px;
-        opacity: 0.85;
+        opacity: 0.5;
       }
       @media (min-width: 640px) {
         .skeleton-button {
@@ -786,7 +790,7 @@
     <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
     <link rel="icon" type="image/png" sizes="512x512" href="/favicon.png" />
     <link rel="icon" type="image/png" href="/favicon.png" />
-    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="shortcut icon" type="image/png" href="/favicon.png" />
     
     <!-- Apple Touch Icons with Premium Logo Reference -->
     <link rel="apple-touch-icon" href="/favicon.png" />
@@ -931,12 +935,20 @@
           </div>
         </header>
         <main class="skeleton-main">
-          <!-- Hero Section Skeleton -->
-          <div class="skeleton-hero">
-            <div class="skeleton-title-row-1 shimmer-swipe"></div>
-            <div class="skeleton-title-row-2 shimmer-swipe"></div>
-            <div class="skeleton-desc-row-1 shimmer-swipe"></div>
-            <div class="skeleton-desc-row-2 shimmer-swipe"></div>
+          <!-- Hero Section Pre-Rendered Content (Matches main page exactly to eliminate layout shift) -->
+          <div class="skeleton-hero" style="text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem; margin-top: 0.75rem; margin-bottom: 1.5rem; max-width: 48rem; width: 100%; box-sizing: border-box; padding: 0 0.5rem;">
+            <h1 style="font-family: 'Playfair Display', ui-serif, Georgia, serif; font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 800; color: var(--sk-heading, #111827); margin: 0; line-height: 1.2; letter-spacing: -0.025em; max-width: 100%;">
+              Calculate Your Perfect Bedtime & Wake-Up Time
+            </h1>
+            <p style="font-family: 'Inter', system-ui, sans-serif; font-size: clamp(0.85rem, 2vw, 1rem); color: var(--sk-body, #4B5563); margin: 0.25rem 0 0 0; line-height: 1.5; font-weight: 500; max-width: 42rem; opacity: 0.95;">
+              Optimize your rest using scientific 90-minute sleep cycles to wake up refreshed, energized, and ready for your day.
+            </p>
+          </div>
+
+          <!-- Pre-Reserved Advertisement Space to prevent Cumulative Layout Shifts (CLS) -->
+          <div style="width: 100%; max-width: 52rem; margin: 0 auto 1.5rem auto; text-align: center;">
+            <span style="font-family: 'Inter', system-ui, sans-serif; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--sk-body, #6B7280); font-weight: 500; display: block; margin-bottom: 0.25rem;">Advertisement</span>
+            <div style="width: 100%; height: 90px; max-height: 90px; max-width: 728px; margin: 0 auto; background: transparent;"></div>
           </div>
           
           <!-- Pulsing Card Skeleton Frame (for Calculator Pages) -->
