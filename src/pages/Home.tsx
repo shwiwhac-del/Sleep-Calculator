@@ -779,17 +779,17 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -15 }}
             transition={{ duration: 0.25 }}
-            className="w-full max-w-[28.75rem] mx-auto mb-4 relative px-2 sm:px-0"
+            className="w-full max-w-[28.75rem] md:max-w-[42rem] mx-auto mb-4 relative px-2 sm:px-0"
           >
             <div
               onContextMenu={(e) => e.preventDefault()}
-              className="flex flex-col items-center w-full p-4 sm:p-5"
+              className="flex flex-col items-center w-full p-4 sm:p-5 bg-[#FAF6F0] dark:bg-[#151C2C] border border-[#E1D8CC] dark:border-[#1E293B] rounded-2xl shadow-xs"
             >
               {/* Toggle Mode */}
               <div
                 role="radiogroup"
                 aria-label="Calculation mode"
-                className="flex flex-row flex-nowrap bg-gray-50 dark:bg-[#1e293b] rounded-xl p-1.5 w-full mb-4 relative overflow-x-auto scrollbar-none gap-1"
+                className="flex flex-row flex-nowrap bg-white/50 dark:bg-[#111827]/40 rounded-xl p-1.5 w-full mb-4 relative overflow-x-auto md:overflow-x-visible scrollbar-none gap-1"
               >
                 <button
                   role="radio"
@@ -977,7 +977,7 @@ export default function Home() {
               exit={{ opacity: 0, y: -15 }}
               transition={{ duration: 0.25 }}
               ref={resultsRef}
-              className="w-full max-w-[28.75rem] mx-auto flex flex-col items-center mb-6 px-2"
+              className="w-full max-w-[28.75rem] md:max-w-[38rem] mx-auto flex flex-col items-center mb-6 px-2"
             >
               <div className="w-full p-4 sm:p-5 flex flex-col relative overflow-hidden">
                 <div className="relative z-10">

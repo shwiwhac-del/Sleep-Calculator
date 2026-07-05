@@ -83,7 +83,7 @@ export const HomeSkeleton: React.FC = () => {
       <AdPlaceholder id={headerInfo.adId} slotName="Skeleton Header Banner" />
 
       {/* Calculator Inputs Card Skeleton */}
-      <div className="w-full max-w-[28.75rem] mx-auto mb-4 relative px-2 sm:px-0">
+      <div className="w-full max-w-[28.75rem] md:max-w-[42rem] mx-auto mb-4 relative px-2 sm:px-0">
         <div className="flex flex-col items-center w-full p-4 sm:p-5 bg-[#FAF6F0] dark:bg-[#151C2C] rounded-2xl border border-[#E1D8CC] dark:border-[#1E293B] shadow-xs">
           {/* Tabs skeleton: 4 or 5 rounded pills */}
           <div className="flex flex-row flex-nowrap bg-gray-50 dark:bg-[#111827] rounded-xl p-1.5 w-full mb-4 gap-1 overflow-x-auto scrollbar-none">

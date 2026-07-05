@@ -258,10 +258,10 @@ export default function StudentCalc() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -15 }}
             transition={{ duration: 0.25 }}
-            className="w-full max-w-[28.75rem] mx-auto mb-4 relative px-2 sm:px-0"
+            className="w-full max-w-[28.75rem] md:max-w-[42rem] mx-auto mb-4 relative px-2 sm:px-0"
             id="student-and-exam-calc-widget"
           >
-            <div className="flex flex-col items-center w-full p-4 sm:p-5">
+            <div className="flex flex-col items-center w-full p-4 sm:p-5 bg-[#FAF6F0] dark:bg-[#151C2C] border border-[#E1D8CC] dark:border-[#1E293B] rounded-2xl shadow-xs">
               {/* Age group dropdown selection */}
               <div className="flex flex-col items-center w-full mb-4 z-20">
                 <label htmlFor="age-select" className="text-slate-600 uppercase tracking-widest text-[11px] sm:text-xs font-bold mb-1.5 block text-center">
@@ -318,7 +318,7 @@ export default function StudentCalc() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -15 }}
             transition={{ duration: 0.25 }}
-            className="w-full max-w-[28.75rem] mx-auto flex flex-col items-center mb-4 px-2"
+            className="w-full max-w-[28.75rem] md:max-w-[38rem] mx-auto flex flex-col items-center mb-4 px-2"
             id="student-calculated-results"
           >
             <div className="w-full p-4 sm:p-5 flex flex-col relative overflow-hidden">

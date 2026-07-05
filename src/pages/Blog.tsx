@@ -1113,15 +1113,7 @@ export default function Blog() {
   const { slug } = useParams();
   const currentPath = location.pathname;
 
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    setLoading(true);
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 300);
-    return () => clearTimeout(timer);
-  }, [slug, currentPath]);
+  const [loading, setLoading] = useState(false);
 
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
@@ -1242,18 +1234,63 @@ export default function Blog() {
   ];
 
   const currentPost = BLOG_POSTS.find(p => p.slug === activeSlug);
-  const relatedPosts = BLOG_POSTS
-    .filter(p => p.slug !== activeSlug && !DUPLICATE_SLUGS.includes(p.slug))
-    .sort((a, b) => {
-      if (currentPost && a.category === currentPost.category && b.category !== currentPost.category) {
-        return -1;
-      }
-      if (currentPost && b.category === currentPost.category && a.category !== currentPost.category) {
-        return 1;
-      }
-      return (a.title.length + b.description.length) % 2 === 0 ? 1 : -1;
-    })
-    .slice(0, 3);
+
+  // High-performance keyword extraction & scoring algorithm for related posts recommendation
+  const stopWords = new Set([
+    'the', 'and', 'a', 'of', 'to', 'in', 'is', 'for', 'how', 'what', 'why', 'with', 'on', 'your', 'you',
+    'should', 'can', 'it', 'from', 'an', 'are', 'about', 'by', 'be', 'this', 'that', 'or', 'at', 'have',
+    'has', 'how-to', 'the-science'
+  ]);
+
+  const getKeywords = (title: string, description: string): string[] => {
+    const text = `${title} ${description}`.toLowerCase();
+    const cleanText = text.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()?"']/g, ' ');
+    const words = cleanText.split(/\s+/);
+    return Array.from(new Set(words.filter(w => w.length > 2 && !stopWords.has(w))));
+  };
+
+  const currentKeywords = currentPost ? getKeywords(currentPost.title, currentPost.description) : [];
+
+  const relatedPosts = currentPost
+    ? BLOG_POSTS
+        .filter(p => p.slug !== activeSlug && !DUPLICATE_SLUGS.includes(p.slug))
+        .map(post => {
+          const postKeywords = getKeywords(post.title, post.description);
+          let score = 0;
+
+          // 1. Exact or partial word overlaps (weight: 3 per word)
+          currentKeywords.forEach(kw => {
+            if (postKeywords.includes(kw)) {
+              score += 3;
+            }
+          });
+
+          // 2. Category match (weight: 10)
+          if (post.category && currentPost.category && post.category.toLowerCase() === currentPost.category.toLowerCase()) {
+            score += 10;
+          }
+
+          // 3. Custom high-relevance phrases match (weight: 15)
+          const phrases = [
+            'sleep cycle', 'rem sleep', 'bedtime', 'wake up', 'circadian', 'shift work',
+            'student', 'tired', 'nap', 'caffeine', 'sleep debt', 'memory', 'hygiene'
+          ];
+          phrases.forEach(phrase => {
+            const inCurrent = `${currentPost.title} ${currentPost.description}`.toLowerCase().includes(phrase);
+            const inPost = `${post.title} ${post.description}`.toLowerCase().includes(phrase);
+            if (inCurrent && inPost) {
+              score += 15;
+            }
+          });
+
+          return { post, score };
+        })
+        .sort((a, b) => b.score - a.score || b.post.title.localeCompare(a.post.title))
+        .map(item => item.post)
+        .slice(0, 3)
+    : BLOG_POSTS
+        .filter(p => !DUPLICATE_SLUGS.includes(p.slug))
+        .slice(0, 3);
 
   const isBlogIndex = currentPath === '/blog' || currentPath === '/blog/';
 
@@ -1933,6 +1970,146 @@ export default function Blog() {
                   </div>
                 </Link>
               ))}
+            </div>
+
+            {/* --- GO TO CALCULATOR INTERNAL LINKING COMPONENT ON BLOG INDEX --- */}
+            <div className="mt-16 p-6 sm:p-8 bg-[#FAF6F0] dark:bg-[#151C2C] border-2 border-dashed border-[#E1D8CC] dark:border-[#1E293B] rounded-3xl shadow-xs relative overflow-hidden" id="blog-index-to-calculator-card">
+              <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-[#7C3AED]/10 to-[#D4AF37]/10 rounded-full blur-2xl pointer-events-none" />
+              <div className="absolute -bottom-8 -left-8 w-32 h-32 bg-[#7C3AED]/5 rounded-full blur-xl pointer-events-none" />
+
+              <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+                <div className="space-y-3 max-w-xl text-left">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-violet-100 dark:bg-violet-950/40 text-[#7C3AED] dark:text-violet-400">
+                    <Sparkles size={12} className="animate-pulse" /> Try Our Sleep Tool
+                  </span>
+                  <h3 className="text-2xl sm:text-3xl font-extrabold text-[#111827] dark:text-slate-100 font-serif tracking-tight leading-tight">
+                    Wake Up Feeling Completely Refreshed
+                  </h3>
+                  <p className="text-sm sm:text-base text-[#4B5563] dark:text-slate-300 leading-relaxed font-medium">
+                    Stop guessing your bedtimes! Use our state-of-the-art calculator to plan your natural sleep cycles, REM stages, and sleep latency based on real circadian rhythm biology.
+                  </p>
+                </div>
+
+                <div className="w-full md:w-auto shrink-0 text-left">
+                  <Link
+                    to="/"
+                    className="promo-btn w-full md:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-[#7C3AED] hover:bg-[#6D28D9] text-white text-base font-bold rounded-2xl shadow-md hover:shadow-lg hover:shadow-[#7C3AED]/20 transition-all duration-200 transform hover:-translate-y-0.5 cursor-pointer"
+                  >
+                    <Calculator size={18} />
+                    Go to Sleep Calculator
+                  </Link>
+                </div>
+              </div>
+
+              {/* Grid of Specialized Sleep Calculators */}
+              <div className="mt-8 pt-8 border-t border-[#E1D8CC]/60 dark:border-[#1E293B]/60 text-left">
+                <p className="text-xs font-bold uppercase tracking-widest text-[#6B7280] dark:text-slate-400 mb-4 font-mono">
+                  Explore Specialized Sleep Calculators
+                </p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                  <Link
+                    to="/"
+                    className="specialized-card p-4 bg-white/60 dark:bg-[#111827]/40 hover:bg-white dark:hover:bg-[#111827] border border-[#E1D8CC] dark:border-[#1E293B] hover:border-[#7C3AED] rounded-2xl transition-all duration-200 text-left group flex flex-col justify-between"
+                  >
+                    <div>
+                      <h4 className="text-[#111827] dark:text-slate-200 font-bold text-sm group-hover:text-[#7C3AED] transition-colors flex items-center gap-1.5 font-serif">
+                        <span>💤</span> Sleep Cycle Calculator
+                      </h4>
+                      <p className="text-xs text-[#6B7280] dark:text-slate-400 mt-1 leading-normal">
+                        Our flagship tool to calculate optimal bedtime or wake-up times utilizing the 90-minute sleep formula.
+                      </p>
+                    </div>
+                    <span className="launch-link text-[11px] font-bold text-[#7C3AED] dark:text-violet-400 mt-3 inline-flex items-center gap-1 group-hover:underline">
+                      Launch Tool <span className="transform group-hover:translate-x-1 transition-transform">→</span>
+                    </span>
+                  </Link>
+
+                  <Link
+                    to="/shift-work-sleep-calculator"
+                    className="specialized-card p-4 bg-white/60 dark:bg-[#111827]/40 hover:bg-white dark:hover:bg-[#111827] border border-[#E1D8CC] dark:border-[#1E293B] hover:border-[#7C3AED] rounded-2xl transition-all duration-200 text-left group flex flex-col justify-between"
+                  >
+                    <div>
+                      <h4 className="text-[#111827] dark:text-slate-200 font-bold text-sm group-hover:text-[#7C3AED] transition-colors flex items-center gap-1.5 font-serif">
+                        <span>🌙</span> Night Shift Sleep Calculator
+                      </h4>
+                      <p className="text-xs text-[#6B7280] dark:text-slate-400 mt-1 leading-normal">
+                        Designed for doctors, nurses, security guards, and late-night shift workers with irregular sleep blocks.
+                      </p>
+                    </div>
+                    <span className="launch-link text-[11px] font-bold text-[#7C3AED] dark:text-violet-400 mt-3 inline-flex items-center gap-1 group-hover:underline">
+                      Launch Tool <span className="transform group-hover:translate-x-1 transition-transform">→</span>
+                    </span>
+                  </Link>
+
+                  <Link
+                    to="/sleep-cycle-calculator-90-minutes"
+                    className="specialized-card p-4 bg-white/60 dark:bg-[#111827]/40 hover:bg-white dark:hover:bg-[#111827] border border-[#E1D8CC] dark:border-[#1E293B] hover:border-[#7C3AED] rounded-2xl transition-all duration-200 text-left group flex flex-col justify-between"
+                  >
+                    <div>
+                      <h4 className="text-[#111827] dark:text-slate-200 font-bold text-sm group-hover:text-[#7C3AED] transition-colors flex items-center gap-1.5 font-serif">
+                        <span>⏱️</span> 90-Min Sleep Calculator
+                      </h4>
+                      <p className="text-xs text-[#6B7280] dark:text-slate-400 mt-1 leading-normal">
+                        Fine-tune your sleep schedules by customizing exact fall-asleep latency and natural cycle lengths.
+                      </p>
+                    </div>
+                    <span className="launch-link text-[11px] font-bold text-[#7C3AED] dark:text-violet-400 mt-3 inline-flex items-center gap-1 group-hover:underline">
+                      Launch Tool <span className="transform group-hover:translate-x-1 transition-transform">→</span>
+                    </span>
+                  </Link>
+
+                  <Link
+                    to="/student-sleep-calculator"
+                    className="specialized-card p-4 bg-white/60 dark:bg-[#111827]/40 hover:bg-white dark:hover:bg-[#111827] border border-[#E1D8CC] dark:border-[#1E293B] hover:border-[#7C3AED] rounded-2xl transition-all duration-200 text-left group flex flex-col justify-between"
+                  >
+                    <div>
+                      <h4 className="text-[#111827] dark:text-slate-200 font-bold text-sm group-hover:text-[#7C3AED] transition-colors flex items-center gap-1.5 font-serif">
+                        <span>🎓</span> Student Sleep Calculator
+                      </h4>
+                      <p className="text-xs text-[#6B7280] dark:text-slate-400 mt-1 leading-normal">
+                        Optimize study routines and exam week sleep patterns specifically structured for children, teens, and college students.
+                      </p>
+                    </div>
+                    <span className="launch-link text-[11px] font-bold text-[#7C3AED] dark:text-violet-400 mt-3 inline-flex items-center gap-1 group-hover:underline">
+                      Launch Tool <span className="transform group-hover:translate-x-1 transition-transform">→</span>
+                    </span>
+                  </Link>
+
+                  <Link
+                    to="/wake-up-between-sleep-cycles"
+                    className="specialized-card p-4 bg-white/60 dark:bg-[#111827]/40 hover:bg-white dark:hover:bg-[#111827] border border-[#E1D8CC] dark:border-[#1E293B] hover:border-[#7C3AED] rounded-2xl transition-all duration-200 text-left group flex flex-col justify-between"
+                  >
+                    <div>
+                      <h4 className="text-[#111827] dark:text-slate-200 font-bold text-sm group-hover:text-[#7C3AED] transition-colors flex items-center gap-1.5 font-serif">
+                        <span>⏰</span> Wake Up Between Cycles
+                      </h4>
+                      <p className="text-xs text-[#6B7280] dark:text-slate-400 mt-1 leading-normal">
+                        Determine your perfect alarm timing so you wake up right when a sleep cycle ends, avoiding deep sleep grogginess.
+                      </p>
+                    </div>
+                    <span className="launch-link text-[11px] font-bold text-[#7C3AED] dark:text-violet-400 mt-3 inline-flex items-center gap-1 group-hover:underline">
+                      Launch Tool <span className="transform group-hover:translate-x-1 transition-transform">→</span>
+                    </span>
+                  </Link>
+
+                  <Link
+                    to="/ideal-bedtime-based-on-wake-up-time"
+                    className="specialized-card p-4 bg-white/60 dark:bg-[#111827]/40 hover:bg-white dark:hover:bg-[#111827] border border-[#E1D8CC] dark:border-[#1E293B] hover:border-[#7C3AED] rounded-2xl transition-all duration-200 text-left group flex flex-col justify-between"
+                  >
+                    <div>
+                      <h4 className="text-[#111827] dark:text-slate-200 font-bold text-sm group-hover:text-[#7C3AED] transition-colors flex items-center gap-1.5 font-serif">
+                        <span>🎯</span> Ideal Bedtime Calculator
+                      </h4>
+                      <p className="text-xs text-[#6B7280] dark:text-slate-400 mt-1 leading-normal">
+                        Input your target wake time and find the perfect hour to shut down your lights, tailored to different life stages.
+                      </p>
+                    </div>
+                    <span className="launch-link text-[11px] font-bold text-[#7C3AED] dark:text-violet-400 mt-3 inline-flex items-center gap-1 group-hover:underline">
+                      Launch Tool <span className="transform group-hover:translate-x-1 transition-transform">→</span>
+                    </span>
+                  </Link>
+                </div>
+              </div>
             </div>
           </div>
         )}
@@ -10164,7 +10341,147 @@ export default function Blog() {
             </p>
           </article>
         )}
+
+            {/* --- GO TO CALCULATOR INTERNAL LINKING COMPONENT --- */}
+            <div className="mt-12 p-6 sm:p-8 bg-[#FAF6F0] dark:bg-[#151C2C] border-2 border-dashed border-[#E1D8CC] dark:border-[#1E293B] rounded-3xl shadow-xs relative overflow-hidden" id="blog-to-calculator-card">
+              <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-[#7C3AED]/10 to-[#D4AF37]/10 rounded-full blur-2xl pointer-events-none" />
+              <div className="absolute -bottom-8 -left-8 w-32 h-32 bg-[#7C3AED]/5 rounded-full blur-xl pointer-events-none" />
+
+              <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+                <div className="space-y-3 max-w-xl">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-violet-100 dark:bg-violet-950/40 text-[#7C3AED] dark:text-violet-400">
+                    <Sparkles size={12} className="animate-pulse" /> Try Our Sleep Tool
+                  </span>
+                  <h3 className="text-2xl sm:text-3xl font-extrabold text-[#111827] dark:text-slate-100 font-serif tracking-tight leading-tight">
+                    Wake Up Feeling Completely Refreshed
+                  </h3>
+                  <p className="text-sm sm:text-base text-[#4B5563] dark:text-slate-300 leading-relaxed font-medium">
+                    Stop guessing your bedtimes! Use our state-of-the-art calculator to plan your natural sleep cycles, REM stages, and sleep latency based on real circadian rhythm biology.
+                  </p>
+                </div>
+
+                <div className="w-full md:w-auto shrink-0">
+                  <Link
+                    to="/"
+                    className="promo-btn w-full md:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-[#7C3AED] hover:bg-[#6D28D9] text-white text-base font-bold rounded-2xl shadow-md hover:shadow-lg hover:shadow-[#7C3AED]/20 transition-all duration-200 transform hover:-translate-y-0.5 cursor-pointer"
+                  >
+                    <Calculator size={18} />
+                    Go to Sleep Calculator
+                  </Link>
+                </div>
+              </div>
+
+              {/* Grid of Specialized Sleep Calculators */}
+              <div className="mt-8 pt-8 border-t border-[#E1D8CC]/60 dark:border-[#1E293B]/60">
+                <p className="text-xs font-bold uppercase tracking-widest text-[#6B7280] dark:text-slate-400 mb-4 text-left font-mono">
+                  Explore Specialized Sleep Calculators
+                </p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                  <Link
+                    to="/"
+                    className="specialized-card p-4 bg-white/60 dark:bg-[#111827]/40 hover:bg-white dark:hover:bg-[#111827] border border-[#E1D8CC] dark:border-[#1E293B] hover:border-[#7C3AED] rounded-2xl transition-all duration-200 text-left group flex flex-col justify-between"
+                  >
+                    <div>
+                      <h4 className="text-[#111827] dark:text-slate-200 font-bold text-sm group-hover:text-[#7C3AED] transition-colors flex items-center gap-1.5 font-serif">
+                        <span>💤</span> Sleep Cycle Calculator
+                      </h4>
+                      <p className="text-xs text-[#6B7280] dark:text-slate-400 mt-1 leading-normal">
+                        Our flagship tool to calculate optimal bedtime or wake-up times utilizing the 90-minute sleep formula.
+                      </p>
+                    </div>
+                    <span className="launch-link text-[11px] font-bold text-[#7C3AED] dark:text-violet-400 mt-3 inline-flex items-center gap-1 group-hover:underline">
+                      Launch Tool <span className="transform group-hover:translate-x-1 transition-transform">→</span>
+                    </span>
+                  </Link>
+
+                  <Link
+                    to="/shift-work-sleep-calculator"
+                    className="specialized-card p-4 bg-white/60 dark:bg-[#111827]/40 hover:bg-white dark:hover:bg-[#111827] border border-[#E1D8CC] dark:border-[#1E293B] hover:border-[#7C3AED] rounded-2xl transition-all duration-200 text-left group flex flex-col justify-between"
+                  >
+                    <div>
+                      <h4 className="text-[#111827] dark:text-slate-200 font-bold text-sm group-hover:text-[#7C3AED] transition-colors flex items-center gap-1.5 font-serif">
+                        <span>🌙</span> Night Shift Sleep Calculator
+                      </h4>
+                      <p className="text-xs text-[#6B7280] dark:text-slate-400 mt-1 leading-normal">
+                        Designed for doctors, nurses, security guards, and late-night shift workers with irregular sleep blocks.
+                      </p>
+                    </div>
+                    <span className="launch-link text-[11px] font-bold text-[#7C3AED] dark:text-violet-400 mt-3 inline-flex items-center gap-1 group-hover:underline">
+                      Launch Tool <span className="transform group-hover:translate-x-1 transition-transform">→</span>
+                    </span>
+                  </Link>
+
+                  <Link
+                    to="/sleep-cycle-calculator-90-minutes"
+                    className="specialized-card p-4 bg-white/60 dark:bg-[#111827]/40 hover:bg-white dark:hover:bg-[#111827] border border-[#E1D8CC] dark:border-[#1E293B] hover:border-[#7C3AED] rounded-2xl transition-all duration-200 text-left group flex flex-col justify-between"
+                  >
+                    <div>
+                      <h4 className="text-[#111827] dark:text-slate-200 font-bold text-sm group-hover:text-[#7C3AED] transition-colors flex items-center gap-1.5 font-serif">
+                        <span>⏱️</span> 90-Min Sleep Calculator
+                      </h4>
+                      <p className="text-xs text-[#6B7280] dark:text-slate-400 mt-1 leading-normal">
+                        Fine-tune your sleep schedules by customizing exact fall-asleep latency and natural cycle lengths.
+                      </p>
+                    </div>
+                    <span className="launch-link text-[11px] font-bold text-[#7C3AED] dark:text-violet-400 mt-3 inline-flex items-center gap-1 group-hover:underline">
+                      Launch Tool <span className="transform group-hover:translate-x-1 transition-transform">→</span>
+                    </span>
+                  </Link>
+
+                  <Link
+                    to="/student-sleep-calculator"
+                    className="specialized-card p-4 bg-white/60 dark:bg-[#111827]/40 hover:bg-white dark:hover:bg-[#111827] border border-[#E1D8CC] dark:border-[#1E293B] hover:border-[#7C3AED] rounded-2xl transition-all duration-200 text-left group flex flex-col justify-between"
+                  >
+                    <div>
+                      <h4 className="text-[#111827] dark:text-slate-200 font-bold text-sm group-hover:text-[#7C3AED] transition-colors flex items-center gap-1.5 font-serif">
+                        <span>🎓</span> Student Sleep Calculator
+                      </h4>
+                      <p className="text-xs text-[#6B7280] dark:text-slate-400 mt-1 leading-normal">
+                        Optimize study routines and exam week sleep patterns specifically structured for children, teens, and college students.
+                      </p>
+                    </div>
+                    <span className="launch-link text-[11px] font-bold text-[#7C3AED] dark:text-violet-400 mt-3 inline-flex items-center gap-1 group-hover:underline">
+                      Launch Tool <span className="transform group-hover:translate-x-1 transition-transform">→</span>
+                    </span>
+                  </Link>
+
+                  <Link
+                    to="/wake-up-between-sleep-cycles"
+                    className="specialized-card p-4 bg-white/60 dark:bg-[#111827]/40 hover:bg-white dark:hover:bg-[#111827] border border-[#E1D8CC] dark:border-[#1E293B] hover:border-[#7C3AED] rounded-2xl transition-all duration-200 text-left group flex flex-col justify-between"
+                  >
+                    <div>
+                      <h4 className="text-[#111827] dark:text-slate-200 font-bold text-sm group-hover:text-[#7C3AED] transition-colors flex items-center gap-1.5 font-serif">
+                        <span>⏰</span> Wake Up Between Cycles
+                      </h4>
+                      <p className="text-xs text-[#6B7280] dark:text-slate-400 mt-1 leading-normal">
+                        Determine your perfect alarm timing so you wake up right when a sleep cycle ends, avoiding deep sleep grogginess.
+                      </p>
+                    </div>
+                    <span className="launch-link text-[11px] font-bold text-[#7C3AED] dark:text-violet-400 mt-3 inline-flex items-center gap-1 group-hover:underline">
+                      Launch Tool <span className="transform group-hover:translate-x-1 transition-transform">→</span>
+                    </span>
+                  </Link>
+
+                  <Link
+                    to="/ideal-bedtime-based-on-wake-up-time"
+                    className="specialized-card p-4 bg-white/60 dark:bg-[#111827]/40 hover:bg-white dark:hover:bg-[#111827] border border-[#E1D8CC] dark:border-[#1E293B] hover:border-[#7C3AED] rounded-2xl transition-all duration-200 text-left group flex flex-col justify-between"
+                  >
+                    <div>
+                      <h4 className="text-[#111827] dark:text-slate-200 font-bold text-sm group-hover:text-[#7C3AED] transition-colors flex items-center gap-1.5 font-serif">
+                        <span>🎯</span> Ideal Bedtime Calculator
+                      </h4>
+                      <p className="text-xs text-[#6B7280] dark:text-slate-400 mt-1 leading-normal">
+                        Input your target wake time and find the perfect hour to shut down your lights, tailored to different life stages.
+                      </p>
+                    </div>
+                    <span className="launch-link text-[11px] font-bold text-[#7C3AED] dark:text-violet-400 mt-3 inline-flex items-center gap-1 group-hover:underline">
+                      Launch Tool <span className="transform group-hover:translate-x-1 transition-transform">→</span>
+                    </span>
+                  </Link>
+                </div>
+              </div>
             </div>
+          </div>
         )}
 
         {/* Internal Cross-Linking: Related Guides Section */}

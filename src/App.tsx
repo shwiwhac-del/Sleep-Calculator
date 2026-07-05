@@ -8,24 +8,22 @@ import { StarryBackground } from './components/StarryBackground';
 import { usePerformanceMonitoring } from './hooks/usePerformanceMonitoring';
 
 import Home from './pages/Home';
+import Terms from './pages/Terms';
+import Privacy from './pages/Privacy';
+import Contact from './pages/Contact';
+import About from './pages/About';
+import Blog from './pages/Blog';
+import NotFound from './pages/NotFound';
+import StudentCalc from './pages/StudentCalc';
+import ShiftWorkCalc from './pages/ShiftWorkCalc';
+import NinetyMinCalc from './pages/NinetyMinCalc';
+import WakeUpCalc from './pages/WakeUpCalc';
+import IdealBedtimeCalc from './pages/IdealBedtimeCalc';
+
 import BlogSkeleton from './components/BlogSkeleton';
 import HomeSkeleton from './components/HomeSkeleton';
 import Skeleton from './components/Skeleton';
 import { OpenGraphTags } from './components/OpenGraphTags';
-
-const Terms = lazy(() => import('./pages/Terms'));
-const Privacy = lazy(() => import('./pages/Privacy'));
-const Contact = lazy(() => import('./pages/Contact'));
-const About = lazy(() => import('./pages/About'));
-
-const Blog = lazy(() => import('./pages/Blog'));
-const NotFound = lazy(() => import('./pages/NotFound'));
-
-const StudentCalc = lazy(() => import('./pages/StudentCalc'));
-const ShiftWorkCalc = lazy(() => import('./pages/ShiftWorkCalc'));
-const NinetyMinCalc = lazy(() => import('./pages/NinetyMinCalc'));
-const WakeUpCalc = lazy(() => import('./pages/WakeUpCalc'));
-const IdealBedtimeCalc = lazy(() => import('./pages/IdealBedtimeCalc'));
 
 
 // Home Guides

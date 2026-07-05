@@ -379,6 +379,114 @@ article a:hover, .select-text a:hover, .markdown-body a:hover, .blog-reading-lay
   text-decoration: underline !important;
 }
 
+/* Neutralize aggressive article link overrides for promo widgets and clean cards */
+#blog-to-calculator-card a,
+#blog-index-to-calculator-card a {
+  color: inherit !important;
+  font-weight: inherit !important;
+  text-decoration: none !important;
+  text-decoration-thickness: initial !important;
+  text-underline-offset: initial !important;
+}
+
+#blog-to-calculator-card a:hover,
+#blog-index-to-calculator-card a:hover {
+  text-decoration: none !important;
+}
+
+/* Ensure the main call-to-action button inside promo cards has a clear, highly visible button styling */
+#blog-to-calculator-card .promo-btn,
+#blog-index-to-calculator-card .promo-btn {
+  background-color: #7C3AED !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  text-decoration: none !important;
+  border-radius: 1rem !important;
+  box-shadow: 0 4px 6px -1px rgba(124, 58, 237, 0.1), 0 2px 4px -1px rgba(124, 58, 237, 0.06) !important;
+  transition: all 0.2s ease-in-out !important;
+}
+
+#blog-to-calculator-card .promo-btn:hover,
+#blog-index-to-calculator-card .promo-btn:hover {
+  background-color: #6D28D9 !important;
+  color: #ffffff !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 10px 15px -3px rgba(124, 58, 237, 0.3), 0 4px 6px -2px rgba(124, 58, 237, 0.15) !important;
+}
+
+/* Ensure dark mode support for these main buttons as well */
+:root.dark #blog-to-calculator-card .promo-btn,
+:root.dark #blog-index-to-calculator-card .promo-btn {
+  background-color: #7C3AED !important;
+  color: #ffffff !important;
+}
+:root.dark #blog-to-calculator-card .promo-btn:hover,
+:root.dark #blog-index-to-calculator-card .promo-btn:hover {
+  background-color: #6D28D9 !important;
+  color: #ffffff !important;
+}
+
+/* Ensure specialized sleep calculator cards in grid are styled elegantly, no underlines */
+#blog-to-calculator-card .specialized-card,
+#blog-index-to-calculator-card .specialized-card {
+  text-decoration: none !important;
+  color: inherit !important;
+  background-color: rgba(255, 255, 255, 0.6) !important;
+  border: 1px solid #E1D8CC !important;
+}
+
+:root.dark #blog-to-calculator-card .specialized-card,
+:root.dark #blog-index-to-calculator-card .specialized-card {
+  background-color: rgba(21, 28, 44, 0.4) !important;
+  border: 1px solid #1E293B !important;
+}
+
+#blog-to-calculator-card .specialized-card:hover,
+#blog-index-to-calculator-card .specialized-card:hover {
+  background-color: #ffffff !important;
+  border-color: #7C3AED !important;
+}
+
+:root.dark #blog-to-calculator-card .specialized-card:hover,
+:root.dark #blog-index-to-calculator-card .specialized-card:hover {
+  background-color: #111827 !important;
+  border-color: #7C3AED !important;
+}
+
+/* Specialized Card nested items colors */
+#blog-to-calculator-card .specialized-card h4,
+#blog-index-to-calculator-card .specialized-card h4 {
+  color: #111827 !important;
+}
+:root.dark #blog-to-calculator-card .specialized-card h4,
+:root.dark #blog-index-to-calculator-card .specialized-card h4 {
+  color: #f1f5f9 !important;
+}
+
+#blog-to-calculator-card .specialized-card:hover h4,
+#blog-index-to-calculator-card .specialized-card:hover h4 {
+  color: #7C3AED !important;
+}
+
+#blog-to-calculator-card .specialized-card p,
+#blog-index-to-calculator-card .specialized-card p {
+  color: #6B7280 !important;
+}
+:root.dark #blog-to-calculator-card .specialized-card p,
+:root.dark #blog-index-to-calculator-card .specialized-card p {
+  color: #94a3b8 !important;
+}
+
+#blog-to-calculator-card .specialized-card span.launch-link,
+#blog-index-to-calculator-card .specialized-card span.launch-link {
+  color: #7C3AED !important;
+}
+
+#blog-to-calculator-card .specialized-card:hover span.launch-link,
+#blog-index-to-calculator-card .specialized-card:hover span.launch-link {
+  text-decoration: underline !important;
+}
+
 /* Overriding white/5 transparent backgrounds to look premium beige on the warm canvas */
 article .bg-white\/5, .blog-reading-layout .bg-white\/5 {
   background-color: #FAF6F0 !important;
