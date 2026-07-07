@@ -201,7 +201,7 @@ export default function ShiftWorkCalc() {
   }
 
   return (
-    <div className="w-full max-w-4xl mx-auto px-4 pt-1 pb-8 sm:pb-12" id="shift-calculator-root">
+    <main className="w-full max-w-4xl mx-auto px-4 pt-1 pb-8 sm:pb-12" id="shift-calculator-root">
       <Helmet>
         <title>Sleep Calculator for Night Shift Workers | Split Sleep Schedule</title>
         <meta
@@ -623,7 +623,7 @@ export default function ShiftWorkCalc() {
       {/* Recommended Sleep Guides & Science */}
       <RecommendedSleepGuides />
 
-    </div>
+    </main>
   );
 }
 

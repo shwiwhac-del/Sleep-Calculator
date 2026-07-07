@@ -175,7 +175,7 @@ export default function StudentCalc() {
   }
 
   return (
-    <div className="w-full max-w-4xl mx-auto px-4 pt-1 pb-8 sm:pb-12" id="student-calculator-root">
+    <main className="w-full max-w-4xl mx-auto px-4 pt-1 pb-8 sm:pb-12" id="student-calculator-root">
       <Helmet>
         <title>Sleep Calculator for Students During Exams | Bedtime Planner</title>
         <meta
@@ -576,6 +576,6 @@ export default function StudentCalc() {
       {/* Recommended Sleep Guides & Science */}
       <RecommendedSleepGuides />
 
-    </div>
+    </main>
   );
 }

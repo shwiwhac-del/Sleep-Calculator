@@ -514,7 +514,7 @@ export default function Home() {
   }
 
   return (
-    <div className="w-full flex flex-col items-center">
+    <main className="w-full flex flex-col items-center">
       {/* Header Info */}
       <div className="flex flex-col items-center justify-center mb-2 mt-0">
         <OpenGraphTags
@@ -1291,6 +1291,6 @@ export default function Home() {
           />
         </Suspense>
       )}
-    </div>
+    </main>
   );
 }

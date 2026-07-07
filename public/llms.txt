@@ -1,46 +1,21 @@
-# Sleep Calculator & Cycle Planner
+# Sleep Calculator
 
-> A highly polished, science-based suite of Sleep Cycle Calculators, Nap Helpers, and Circadian Hygiene planners to help you calculate bedtimes, track sleep logs, and wake up refreshed.
+An advanced, human-centric web application and educational platform centered on sleep cycles, circadian rhythm alignment, and performance optimization. Built for students, shift workers, and anyone seeking to eliminate daytime fatigue.
 
-## Core Calculators
+## Main Tools
 
-- [Sleep Calculator (Home)](https://sleepcalculater.online/) - Calculate optimal bedtime & wake up times based on natural 90-minute sleep cycles.
-- [90-Minute Sleep Cycle Calculator](https://sleepcalculater.online/sleep-cycle-calculator-90-minutes) - Calculate custom sleep intervals and exact bedtime/wake-up alignments.
-- [Student Sleep Calculator](https://sleepcalculater.online/student-sleep-calculator) - Optimize exam-night bedtimes for peak memory retrieval and visual focus.
-- [Night Shift Sleep Calculator](https://sleepcalculater.online/shift-work-sleep-calculator) - Custom daytime sleep schedules and anchor rest periods for shift workers.
-- [Wake Up Between Cycles Calculator](https://sleepcalculater.online/wake-up-between-sleep-cycles) - Find exact alarm settings to wake up during natural cycle transitions.
-- [Ideal Bedtime by Wake-Up Time](https://sleepcalculater.online/ideal-bedtime-based-on-wake-up-time) - Calculate customized bedtime schedules tailored to your age demographic.
+- [90-Minute Sleep Calculator](/90-minute-sleep-calculator): Calculate optimal sleep durations using natural sleep cycles.
+- [Ideal Bedtime Calculator](/ideal-bedtime-based-on-wake-up-time): Find the perfect time to fall asleep based on your wake-up alarm.
+- [Wake Up Between Cycles](/wake-up-between-sleep-cycles): Real-time calculator for current sleep planning.
+- [Student Sleep Calculator](/sleep-calculator-for-students): Academic performance sleep planner.
+- [Shift Work Sleep Calculator](/shift-work-sleep-calculator-guide): Circadian alignment planner for night shifts.
 
-## Auxiliary Pages
+## Educational Resources
 
-- [About Sleep Calculator](https://sleepcalculater.online/about) - Learn about our mission and scientific methodology behind calculations.
-- [Contact Support](https://sleepcalculater.online/contact) - Get in touch with our team for questions, suggestions, or feedback.
-- [Privacy Policy](https://sleepcalculater.online/privacy) - Information on our server-free local data storage policy.
-- [Terms & Conditions](https://sleepcalculater.online/terms) - Standard terms of utilization.
+- [Sleep Guides & Research](/blog): Full collection of evidence-based sleep articles.
+- [Scientific Foundations](/llm.txt): Deep dive into the math and sleep physiology used in our calculators.
 
-## Research & Circadian Science Guides
+## Meta
 
-- [Sleep Cycles Explained](https://sleepcalculater.online/sleep-cycles-explained) - In-depth guide on the phases of NREM/REM brain activity.
-- [What is REM Sleep](https://sleepcalculater.online/what-is-rem-sleep) - Exploring Rapid Eye Movement phase, dreaming, and memory consolidation.
-- [How Much Sleep Do You Need?](https://sleepcalculater.online/how-much-sleep-do-you-need) - Review sleep guidelines and average daily rest recommendations by age.
-- [Best Time to Sleep and Wake Up](https://sleepcalculater.online/best-time-to-sleep-and-wake-up) - Complete guide on finding optimal bedtime windows for modern health.
-- [Sleep Cycle Calculator Guide](https://sleepcalculater.online/sleep-cycle-calculator-guide) - Comprehensive tutorial on applying sleep cycle intervals to your daily calendar.
-- [Why 90-Minute Sleep Cycles Matter](https://sleepcalculater.online/why-90-minute-sleep-cycles-matter) - Scientific exploration of why sleep quality is determined by completed sleep cycles.
-- [How to Wake Up Refreshed](https://sleepcalculater.online/how-to-wake-up-refreshed) - Practical lifestyle adjustments to eliminate morning fatigue and sleep inertia.
-- [Ideal Bedtime for Adults](https://sleepcalculater.online/ideal-bedtime-for-adults) - Discover the precise hours adults should fall asleep based on biology.
-- [Sleep Schedule for Productivity](https://sleepcalculater.online/sleep-schedule-for-productivity) - How matching your daily workflow with circadian clocks boosts daytime alertness.
-- [How Many Hours of Sleep is Healthy](https://sleepcalculater.online/how-many-hours-of-sleep-is-healthy) - Comprehensive breakdown of sleep needs, limits, and risks of oversleeping.
-- [Power Nap vs Full Sleep Cycle](https://sleepcalculater.online/power-nap-vs-full-sleep-cycle) - Compare quick 20-minute power sessions with full 90-minute physical recovery cycles.
-- [Circadian Rhythm Explained](https://sleepcalculater.online/circadian-rhythm-explained) - How your body's suprachiasmatic nucleus controls body temperature and hormones.
-- [Why You Are Tired After 8 Hours](https://sleepcalculater.online/tired-after-8-hours-of-sleep) - Common underlying issues such as sleep fragmentation, apnea, and poor sleep environment.
-- [Best Bedtime for Students](https://sleepcalculater.online/best-bedtime-for-students) - Sleep schedules aligned with optimal brain executive function, recall, and stress tolerance.
-- [Sleep and Memory](https://sleepcalculater.online/sleep-and-memory) - Educational piece on how slow-wave sleep strengthens synaptic connections.
-- [Sleep Debt Explained](https://sleepcalculater.online/sleep-debt-explained) - Cumulative effects of sleep deprivation and how to safely pay back sleep hours.
-- [Best Wake Up Time](https://sleepcalculater.online/best-wake-up-time) - How aligning your wake alarm with dawn or sleep cycles maximizes energy.
-- [Improve Sleep Quality Naturally](https://sleepcalculater.online/improve-sleep-quality) - Actionable habits including diet adjustments, timing of workouts, and dimming red light.
-- [Sleep Hygiene Tips](https://sleepcalculater.online/sleep-hygiene-tips) - Setting up the ultimate dark, quiet, cold, and relaxing sleep environment.
-- [Common Sleep Mistakes to Avoid](https://sleepcalculater.online/common-sleep-mistakes) - Destructive night patterns such as late-day caffeine or blue screen exposure.
-- [Fix an Irregular Sleep Schedule](https://sleepcalculater.online/fix-irregular-sleep-schedule) - Resetting sleep phase delays using consistent wake times and light therapy.
-- [Benefits of Consistent Sleep Schedules](https://sleepcalculater.online/consistent-sleep-schedule-benefits) - Heart rate, insulin, and emotional stabilization perks of waking up at the exact same hour.
-- [Ideal Room Temperature for Sleep](https://sleepcalculater.online/best-temperature-for-sleep) - Why a cool 65°F (18°C) room is biologically ideal for triggering deep sleep cycle transitions.
-- [Understanding Deep Sleep](https://sleepcalculater.online/what-is-deep-sleep) - Explaining delta waves, human hormone synthesis, and physical recovery phases.
+- [About Us](/about): Project background and scientific advisory sources.
+- [Contact](/contact): Support and professional feedback forms.

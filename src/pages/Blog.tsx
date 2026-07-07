@@ -1786,7 +1786,7 @@ export default function Blog() {
       jsonLdScripts.push({ __html: JSON.stringify(faqSchema) });
     }
   } else {
-    // Generate a cohesive Blog/CollectionPage schema of all available guides for AI aggregators & search engine bots
+    // Generate a cohesive Blog/CollectionPage schema of all available guides for search engine bots
     const blogListSchema = {
       "@context": "https://schema.org",
       "@type": "Blog",
@@ -1874,7 +1874,7 @@ export default function Blog() {
   }
 
   return (
-    <div className={`w-full mx-auto px-2 sm:px-4 relative z-10 ${isAnyBlog ? 'max-w-3xl py-4 sm:py-6' : 'max-w-6xl py-8'}`}>
+    <main className={`w-full mx-auto px-2 sm:px-4 relative z-10 ${isAnyBlog ? 'max-w-3xl py-4 sm:py-6' : 'max-w-6xl py-8'}`}>
       <OpenGraphTags
         title={title}
         description={description}
@@ -2122,7 +2122,7 @@ export default function Blog() {
             {/* Blog 1: Sleep Cycles Explained */}
             {(isBlog1 || isAll) && (
           <article className="space-y-6 select-text text-slate-300">
-            {/* Embedded AEO JSON-LD Schema: Technical Article metadata */}
+            {/* Embedded Structured Data: Technical Article metadata */}
             <script type="application/ld+json">
               {JSON.stringify({
                 "@context": "https://schema.org",
@@ -2147,7 +2147,7 @@ export default function Blog() {
               })}
             </script>
 
-            {/* Embedded AEO JSON-LD Schema: FAQPage metadata */}
+            {/* Embedded Structured Data: FAQPage metadata */}
             <script type="application/ld+json">
               {JSON.stringify({
                 "@context": "https://schema.org",
@@ -2192,10 +2192,10 @@ export default function Blog() {
               )}
             </header>
 
-            {/* AEO Quick Answer Panel for AI Overviews, ChatGPT, Gemini, and Claude */}
+            {/* Featured snippet summary panel */}
             <div className="bg-[#111A3E] border border-violet-500/30 rounded-2xl p-5 sm:p-6 my-6 space-y-4">
               <span className="inline-block px-3 py-1 text-xs font-bold text-amber-400 bg-amber-400/10 rounded-full font-mono uppercase tracking-wider">
-                AEO Quick Summary (Direct Answers)
+                Quick Summary
               </span>
               <div className="grid gap-4 sm:grid-cols-2">
                 <div className="space-y-1">
@@ -8825,7 +8825,7 @@ export default function Blog() {
             </div>
 
             <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4">
-              AEO Direct Answers about REM Sleep Cycles
+              Common Questions About REM Sleep Cycles
             </h2>
 
             <div className="space-y-4 pt-2">
@@ -9049,7 +9049,7 @@ export default function Blog() {
             </div>
 
             <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4">
-              AEO Direct Q&A: Calculating Sleep by Age Groups
+              Direct Q&A: Calculating Sleep by Age Groups
             </h2>
 
             <div className="space-y-4 pt-2">
@@ -9136,7 +9136,7 @@ export default function Blog() {
             </div>
 
             <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4" id="step3">
-              Direct AEO-Optimized Q&A for Night Shift Sleep
+              Direct Q&A for Night Shift Sleep
             </h2>
 
             <div className="space-y-4 pt-2">
@@ -9223,7 +9223,7 @@ export default function Blog() {
             </div>
 
             <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-100 pt-4" id="step3">
-              AEO Direct Q&A: Quieting the Nighttime ADHD Mind
+              Direct Q&A: Quieting the Nighttime ADHD Mind
             </h2>
 
             <div className="space-y-4 pt-2">
@@ -10568,6 +10568,6 @@ export default function Blog() {
           </div>
         )}
       </motion.div>
-    </div>
+    </main>
   );
 }

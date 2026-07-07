@@ -166,7 +166,7 @@ export default function NinetyMinCalc() {
   }
 
   return (
-    <div className="w-full max-w-4xl mx-auto px-4 pt-1 pb-8 sm:pb-12" id="ninety-calculator-root">
+    <main className="w-full max-w-4xl mx-auto px-4 pt-1 pb-8 sm:pb-12" id="ninety-calculator-root">
       <Helmet>
         <title>Sleep Cycle Calculator 90 Minutes | 1.5 Hour Increments</title>
         <meta
@@ -548,6 +548,6 @@ export default function NinetyMinCalc() {
       {/* Recommended Sleep Guides & Science */}
       <RecommendedSleepGuides />
 
-    </div>
+    </main>
   );
 }

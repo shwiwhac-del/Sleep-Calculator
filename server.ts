@@ -117,21 +117,9 @@ async function startServer() {
     });
   });
 
-  // Explicit route to serve favicon.ico directly from favicon.png to avoid 404 errors
+  // Explicit redirect for favicon.ico to favicon.png to ensure maximum browser compatibility and prevent decode errors
   app.get("/favicon.ico", (req, res) => {
-    const publicPath = path.join(process.cwd(), "public", "favicon.png");
-    const distPath = path.join(process.cwd(), "dist", "favicon.png");
-
-    res.set("Content-Type", "image/png");
-    res.sendFile(publicPath, (err) => {
-      if (err) {
-        res.sendFile(distPath, (errDist) => {
-          if (errDist) {
-            res.status(404).set("Content-Type", "text/plain").send("favicon.ico not found");
-          }
-        });
-      }
-    });
+    res.redirect(302, "/favicon.png");
   });
 
   // Vite middleware for development

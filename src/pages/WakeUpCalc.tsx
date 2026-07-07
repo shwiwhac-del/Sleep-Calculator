@@ -176,7 +176,7 @@ export default function WakeUpCalc() {
   }
 
   return (
-    <div className="w-full max-w-4xl mx-auto px-4 pt-1 pb-8 sm:pb-12" id="wake-cycles-calculator-root">
+    <main className="w-full max-w-4xl mx-auto px-4 pt-1 pb-8 sm:pb-12" id="wake-cycles-calculator-root">
       <Helmet>
         <title>Wake Up Between Sleep Cycles | What Time Should I Wake Up?</title>
         <meta
@@ -577,6 +577,6 @@ export default function WakeUpCalc() {
       {/* Recommended Sleep Guides & Science */}
       <RecommendedSleepGuides />
 
-    </div>
+    </main>
   );
 }

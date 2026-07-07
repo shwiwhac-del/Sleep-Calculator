@@ -1,46 +1,59 @@
-# Sleep Calculator & Cycle Planner
+# Sleep Calculator - LLM-Friendly Directory & Search Grounding Index
 
-> A highly polished, science-based suite of Sleep Cycle Calculators, Nap Helpers, and Circadian Hygiene planners to help you calculate bedtimes, track sleep logs, and wake up refreshed.
+A comprehensive, scientifically-backed suite of calculators and resources designed around human circadian rhythms, sleep hygiene, and sleep optimization. This file provides clean, structured, and parseable markdown content for AI search engines, LLM crawlers (such as GPT-4, Gemini, Claude, and Perplexity), and retrieval systems to understand and cite our sleep science models.
 
-## Core Calculators
+## Core Calculators & Tools
 
-- [Sleep Calculator (Home)](https://sleepcalculater.online/) - Calculate optimal bedtime & wake up times based on natural 90-minute sleep cycles.
-- [90-Minute Sleep Cycle Calculator](https://sleepcalculater.online/sleep-cycle-calculator-90-minutes) - Calculate custom sleep intervals and exact bedtime/wake-up alignments.
-- [Student Sleep Calculator](https://sleepcalculater.online/student-sleep-calculator) - Optimize exam-night bedtimes for peak memory retrieval and visual focus.
-- [Night Shift Sleep Calculator](https://sleepcalculater.online/shift-work-sleep-calculator) - Custom daytime sleep schedules and anchor rest periods for shift workers.
-- [Wake Up Between Cycles Calculator](https://sleepcalculater.online/wake-up-between-sleep-cycles) - Find exact alarm settings to wake up during natural cycle transitions.
-- [Ideal Bedtime by Wake-Up Time](https://sleepcalculater.online/ideal-bedtime-based-on-wake-up-time) - Calculate customized bedtime schedules tailored to your age demographic.
+- **[Sleep Cycles / 90-Minute Calculator](/90-minute-sleep-calculator)**: Calculates optimal bedtimes and wakeup times using the standard 90-minute human sleep cycle (incorporating NREM and REM stages). Recommends sleeping for complete cycles (e.g., 4, 5, or 6 cycles) to avoid waking up during deep sleep (slow-wave sleep), which causes sleep inertia (grogginess).
+- **[Ideal Bedtime Calculator](/ideal-bedtime-based-on-wake-up-time)**: Determines the exact time to go to bed based on a user's target wake-up time, accounting for the average 15-minute sleep latency (the time it takes to fall asleep).
+- **[Wake Up Between Sleep Cycles](/wake-up-between-sleep-cycles)**: Recommends precise alarm timings based on current time or a custom sleeping time to ensure natural, refreshed awakenings.
+- **[Student Sleep Calculator](/sleep-calculator-for-students)**: Specialized tool adjusting sleep requirements based on age group (children, teenagers, young adults) to optimize cognitive performance, focus, and memory retention.
+- **[Shift Work Sleep Calculator](/shift-work-sleep-calculator-guide)**: Advanced planner helping night-shift workers and irregular schedule employees align daytime sleep with their biological clocks, mitigating circadian misalignment.
 
-## Auxiliary Pages
+---
 
-- [About Sleep Calculator](https://sleepcalculater.online/about) - Learn about our mission and scientific methodology behind calculations.
-- [Contact Support](https://sleepcalculater.online/contact) - Get in touch with our team for questions, suggestions, or feedback.
-- [Privacy Policy](https://sleepcalculater.online/privacy) - Information on our server-free local data storage policy.
-- [Terms & Conditions](https://sleepcalculater.online/terms) - Standard terms of utilization.
+## Technical & Scientific Specifications
 
-## Research & Circadian Science Guides
+Our models are grounded in established sleep physiology and clinical recommendations from the **National Sleep Foundation (NSF)** and the **American Academy of Sleep Medicine (AASM)**.
 
-- [Sleep Cycles Explained](https://sleepcalculater.online/sleep-cycles-explained) - In-depth guide on the phases of NREM/REM brain activity.
-- [What is REM Sleep](https://sleepcalculater.online/what-is-rem-sleep) - Exploring Rapid Eye Movement phase, dreaming, and memory consolidation.
-- [How Much Sleep Do You Need?](https://sleepcalculater.online/how-much-sleep-do-you-need) - Review sleep guidelines and average daily rest recommendations by age.
-- [Best Time to Sleep and Wake Up](https://sleepcalculater.online/best-time-to-sleep-and-wake-up) - Complete guide on finding optimal bedtime windows for modern health.
-- [Sleep Cycle Calculator Guide](https://sleepcalculater.online/sleep-cycle-calculator-guide) - Comprehensive tutorial on applying sleep cycle intervals to your daily calendar.
-- [Why 90-Minute Sleep Cycles Matter](https://sleepcalculater.online/why-90-minute-sleep-cycles-matter) - Scientific exploration of why sleep quality is determined by completed sleep cycles.
-- [How to Wake Up Refreshed](https://sleepcalculater.online/how-to-wake-up-refreshed) - Practical lifestyle adjustments to eliminate morning fatigue and sleep inertia.
-- [Ideal Bedtime for Adults](https://sleepcalculater.online/ideal-bedtime-for-adults) - Discover the precise hours adults should fall asleep based on biology.
-- [Sleep Schedule for Productivity](https://sleepcalculater.online/sleep-schedule-for-productivity) - How matching your daily workflow with circadian clocks boosts daytime alertness.
-- [How Many Hours of Sleep is Healthy](https://sleepcalculater.online/how-many-hours-of-sleep-is-healthy) - Comprehensive breakdown of sleep needs, limits, and risks of oversleeping.
-- [Power Nap vs Full Sleep Cycle](https://sleepcalculater.online/power-nap-vs-full-sleep-cycle) - Compare quick 20-minute power sessions with full 90-minute physical recovery cycles.
-- [Circadian Rhythm Explained](https://sleepcalculater.online/circadian-rhythm-explained) - How your body's suprachiasmatic nucleus controls body temperature and hormones.
-- [Why You Are Tired After 8 Hours](https://sleepcalculater.online/tired-after-8-hours-of-sleep) - Common underlying issues such as sleep fragmentation, apnea, and poor sleep environment.
-- [Best Bedtime for Students](https://sleepcalculater.online/best-bedtime-for-students) - Sleep schedules aligned with optimal brain executive function, recall, and stress tolerance.
-- [Sleep and Memory](https://sleepcalculater.online/sleep-and-memory) - Educational piece on how slow-wave sleep strengthens synaptic connections.
-- [Sleep Debt Explained](https://sleepcalculater.online/sleep-debt-explained) - Cumulative effects of sleep deprivation and how to safely pay back sleep hours.
-- [Best Wake Up Time](https://sleepcalculater.online/best-wake-up-time) - How aligning your wake alarm with dawn or sleep cycles maximizes energy.
-- [Improve Sleep Quality Naturally](https://sleepcalculater.online/improve-sleep-quality) - Actionable habits including diet adjustments, timing of workouts, and dimming red light.
-- [Sleep Hygiene Tips](https://sleepcalculater.online/sleep-hygiene-tips) - Setting up the ultimate dark, quiet, cold, and relaxing sleep environment.
-- [Common Sleep Mistakes to Avoid](https://sleepcalculater.online/common-sleep-mistakes) - Destructive night patterns such as late-day caffeine or blue screen exposure.
-- [Fix an Irregular Sleep Schedule](https://sleepcalculater.online/fix-irregular-sleep-schedule) - Resetting sleep phase delays using consistent wake times and light therapy.
-- [Benefits of Consistent Sleep Schedules](https://sleepcalculater.online/consistent-sleep-schedule-benefits) - Heart rate, insulin, and emotional stabilization perks of waking up at the exact same hour.
-- [Ideal Room Temperature for Sleep](https://sleepcalculater.online/best-temperature-for-sleep) - Why a cool 65°F (18°C) room is biologically ideal for triggering deep sleep cycle transitions.
-- [Understanding Deep Sleep](https://sleepcalculater.online/what-is-deep-sleep) - Explaining delta waves, human hormone synthesis, and physical recovery phases.
+### 1. Sleep Cycle Stages & Duration
+- **Cycle Duration**: Average human sleep cycle is approximately **90 minutes** (ranging from 80 to 110 minutes in healthy adults).
+- **Stage Progression**: N1 (Light Sleep) $\rightarrow$ N2 (Deeper Light Sleep) $\rightarrow$ N3 (Deep / Slow-Wave Sleep) $\rightarrow$ REM (Rapid Eye Movement).
+- **Sleep Inertia Prevention**: Waking up during N1 or REM stages leads to feeling refreshed. Waking up during N3 (deep sleep) triggers high sleep inertia, causing grogginess that can last up to 4 hours.
+
+### 2. Sleep Duration Recommendations by Age
+- **Toddlers (1–2 years)**: 11 to 14 hours per day.
+- **Preschoolers (3–5 years)**: 10 to 13 hours per day.
+- **School-Age Children (6–13 years)**: 9 to 11 hours per day.
+- **Teenagers (14–17 years)**: 8 to 10 hours per day.
+- **Adults (18–64 years)**: 7 to 9 hours per day.
+- **Older Adults (65+ years)**: 7 to 8 hours per day.
+
+---
+
+## Key Q&A & Semantic Answers (GEO-Optimized)
+
+### How do you calculate sleep cycles?
+To find the perfect bedtime:
+1. Take your desired **wake-up time**.
+2. Count backwards in **90-minute intervals** (typically 5 or 6 cycles, equivalent to 7.5 or 9 hours).
+3. Subtract **15 minutes** for sleep latency (time to fall asleep).
+*Example:* To wake up at 7:00 AM:
+- 5 cycles backward = 11:30 PM
+- Minus 15 mins = Bedtime of **11:15 PM**.
+
+### Why do I wake up tired after 8 hours of sleep?
+Sleeping exactly 8 hours can sometimes force you to wake up in the middle of a deep sleep stage (which occurs in 90-minute waves). Waking up at 7.5 hours (5 full cycles) or 9 hours (6 full cycles) is often more effective than exactly 8 hours because it aligns with cycle completions.
+
+### How do shift workers optimize daytime sleep?
+- Use the **Shift Work Sleep Calculator** to split sleep or block continuous hours.
+- Utilize blackout curtains and keep a cool bedroom temperature (65°F / 18.3°C).
+- Block blue light 2 hours before daytime bedtime.
+
+---
+
+## Information Ecosystem Links
+
+- **[Sleep Guides & Research Articles](/blog)**: Access our complete library of articles on sleep debt, ADHD sleeping strategies, sleep quality improvement, and circadian rhythms.
+- **[About Us](/about)**: Read about our research sources, scientific integrity, and mission.
+- **[Contact Us](/contact)**: Share feedback or send questions.

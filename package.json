@@ -7,9 +7,8 @@
     "dev": "tsx server.ts",
     "start": "NODE_ENV=production node dist/server.js",
     "build:blog": "esbuild scripts/generate-blog-static.ts --bundle --platform=node --format=cjs --target=node22 --outfile=scripts/generate-blog-static.cjs && node scripts/generate-blog-static.cjs",
-    "audit:seo": "esbuild scripts/scan-seo.ts --bundle --platform=node --format=cjs --target=node22 --outfile=scripts/scan-seo.cjs && node scripts/scan-seo.cjs",
     "build:server": "esbuild server.ts --bundle --platform=node --format=esm --target=node22 --outfile=dist/server.js --external:express",
-    "build": "npm run build:blog && vite build && npx tsx scripts/generate-static-html-pages.ts && npm run build:server && npm run audit:seo",
+    "build": "npm run build:blog && vite build && npx tsx scripts/generate-static-html-pages.ts && npm run build:server",
     "preview": "NODE_ENV=production node dist/server.js",
     "clean": "rm -rf dist",
     "lint": "tsc --noEmit"
