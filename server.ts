@@ -197,18 +197,26 @@ function getRichFallbackContent(reqPath: string, slug: string, title: string, de
 
   // Pre-Rendered Navigation Menu
   const navMenu = `
-          <nav style="margin-bottom: 2.5rem; border-bottom: 1px solid #E5E7EB; padding-bottom: 1.25rem; display: flex; flex-wrap: wrap; gap: 15px;">
-            <a href="/" style="text-decoration: none; font-weight: bold; color: #7C3AED; font-family: system-ui, sans-serif;">Home/Calculator</a>
-            <a href="/about" style="text-decoration: none; font-weight: bold; color: #374151; font-family: system-ui, sans-serif; transition: color 0.2s;">About us</a>
-            <a href="/contact" style="text-decoration: none; font-weight: bold; color: #374151; font-family: system-ui, sans-serif; transition: color 0.2s;">Contact & Support</a>
-            <a href="/privacy" style="text-decoration: none; font-weight: bold; color: #374151; font-family: system-ui, sans-serif; transition: color 0.2s;">Privacy Policy</a>
-            <a href="/terms" style="text-decoration: none; font-weight: bold; color: #374151; font-family: system-ui, sans-serif; transition: color 0.2s;">Terms of Service</a>
-          </nav>
+          <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 2.5rem; padding-bottom: 1.25rem; border-bottom: 1px solid var(--sk-card-border); width: 100%;">
+            <!-- Logo link with the beautiful gradient -->
+            <a href="/" style="text-decoration: none; font-family: 'Playfair Display', Georgia, serif; font-size: 1.5rem; font-weight: 900; letter-spacing: -0.02em; background: linear-gradient(to right, #7C3AED, #D4AF37); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1.2; display: inline-block;">
+              Sleep Calculator
+            </a>
+            
+            <!-- Navigation links -->
+            <nav style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center;">
+              <a href="/" style="text-decoration: none; font-size: 0.85rem; font-weight: 700; color: var(--sk-accent); font-family: 'Inter', system-ui, sans-serif; background: rgba(124, 58, 237, 0.05); padding: 6px 12px; border-radius: 8px;">Home</a>
+              <a href="/about" style="text-decoration: none; font-size: 0.85rem; font-weight: 700; color: var(--sk-body); font-family: 'Inter', system-ui, sans-serif; padding: 6px 12px; border-radius: 8px; transition: all 0.2s;">About us</a>
+              <a href="/contact" style="text-decoration: none; font-size: 0.85rem; font-weight: 700; color: var(--sk-body); font-family: 'Inter', system-ui, sans-serif; padding: 6px 12px; border-radius: 8px; transition: all 0.2s;">Contact</a>
+              <a href="/privacy" style="text-decoration: none; font-size: 0.85rem; font-weight: 700; color: var(--sk-body); font-family: 'Inter', system-ui, sans-serif; padding: 6px 12px; border-radius: 8px; transition: all 0.2s;">Privacy</a>
+              <a href="/terms" style="text-decoration: none; font-size: 0.85rem; font-weight: 700; color: var(--sk-body); font-family: 'Inter', system-ui, sans-serif; padding: 6px 12px; border-radius: 8px; transition: all 0.2s;">Terms</a>
+            </nav>
+          </div>
   `;
 
   const footerBanner = `
-          <p style="text-align: center; font-size: 0.9rem; opacity: 0.6; font-style: italic; margin-top: 3.5rem; padding-top: 1.5rem; border-top: 1px solid #E5E7EB; font-family: system-ui, sans-serif;">
-            Loading interactive diagnostics & visual sleep aids...
+          <p style="text-align: center; font-size: 0.75rem; opacity: 0.55; font-weight: 500; font-family: 'JetBrains Mono', monospace; margin-top: 3.5rem; padding-top: 1.5rem; border-top: 1px solid var(--sk-card-border); color: var(--sk-body); letter-spacing: 0.05em; text-transform: uppercase;">
+            ✦ Loading interactive diagnostics & sleep cycle formulas ✦
           </p>
   `;
 
@@ -332,6 +340,14 @@ function getRichFallbackContent(reqPath: string, slug: string, title: string, de
             ${internalLinksList}
           </ul>
     `;
+  } else if ([
+    '/student-sleep-calculator',
+    '/shift-work-sleep-calculator',
+    '/sleep-cycle-calculator-90-minutes',
+    '/wake-up-between-sleep-cycles',
+    '/ideal-bedtime-based-on-wake-up-time'
+  ].includes(reqPath)) {
+    bodyContent = "";
   } else {
     bodyContent = `
           <h1 style="font-size: 2.25rem; font-weight: 800; color: #111827; margin-bottom: 1.5rem; font-family: 'Playfair Display', Georgia, serif;">404 Page Not Found</h1>
@@ -345,10 +361,41 @@ function getRichFallbackContent(reqPath: string, slug: string, title: string, de
     `;
   }
 
+  let processedBody = bodyContent;
+  if (!processedBody || processedBody.trim() === "") {
+    processedBody = `
+          <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 380px; text-align: center; padding: 2.5rem 1.5rem; background: var(--sk-card-bg); border: 1px solid var(--sk-card-border); border-radius: 24px; box-shadow: 0 10px 30px -5px rgba(0,0,0,0.03); margin: 2rem auto; max-width: 480px; box-sizing: border-box; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);">
+            <!-- Pulsing Sleep Moon & Star SVG Illustration -->
+            <div style="margin-bottom: 1.5rem; position: relative; width: 80px; height: 80px; display: flex; align-items: center; justify-content: center;">
+              <svg class="pulse-animation" width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" fill="var(--sk-accent)" stroke="var(--sk-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              <div class="twinkle-1" style="position: absolute; top: 12px; right: 12px; transform-origin: center;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--sk-accent-gold)"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" /></svg>
+              </div>
+              <div class="twinkle-2" style="position: absolute; bottom: 18px; left: 8px; transform-origin: center;">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="var(--sk-accent-gold)" style="opacity: 0.85;"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" /></svg>
+              </div>
+            </div>
+
+            <!-- Loading Typography -->
+            <h2 style="font-family: 'Playfair Display', Georgia, serif; font-size: 1.6rem; font-weight: 700; color: var(--sk-heading); margin: 0 0 0.5rem 0; letter-spacing: -0.01em;">Sleep Calculator</h2>
+            <p style="font-family: 'Inter', system-ui, sans-serif; font-size: 0.95rem; font-weight: 500; color: var(--sk-body); margin: 0 0 1.5rem 0; opacity: 0.9;">Optimizing circadian parameters...</p>
+
+            <!-- Modern Loading Bar Indicator -->
+            <div style="width: 100%; max-width: 220px; height: 6px; background: rgba(124, 58, 237, 0.08); border-radius: 99px; overflow: hidden; position: relative; margin-bottom: 1rem;">
+              <div class="loading-bar-progress-anim" style="height: 100%; width: 50%; background: linear-gradient(90deg, var(--sk-accent), var(--sk-accent-gold)); border-radius: 99px; position: absolute; left: -50%;"></div>
+            </div>
+
+            <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--sk-accent); font-weight: 650; opacity: 0.85;">Preparing Interactive Tool</span>
+          </div>
+    `;
+  }
+
   return `
         <div style="padding: 20px; max-width: 800px; margin: 0 auto; font-family: system-ui, -apple-system, sans-serif; line-height: 1.7; color: #374151;">
           ${navMenu}
-          ${bodyContent}
+          ${processedBody}
           ${footerBanner}
         </div>
   `;

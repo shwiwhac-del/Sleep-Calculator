@@ -703,6 +703,34 @@
       .skeleton-blog-card-text.short {
         width: 83.333333%;
       }
+
+      /* High-quality Preloader Animations */
+      @keyframes pulse-soft {
+        0%, 100% { transform: scale(1); opacity: 0.95; filter: drop-shadow(0 0 12px rgba(124, 58, 237, 0.25)); }
+        50% { transform: scale(1.05); opacity: 1; filter: drop-shadow(0 0 20px rgba(124, 58, 237, 0.45)); }
+      }
+      @keyframes twinkle {
+        0%, 100% { opacity: 0.3; transform: scale(0.8) rotate(0deg); }
+        50% { opacity: 1; transform: scale(1.2) rotate(15deg); }
+      }
+      @keyframes infinite-slide-progress {
+        0% { left: -100%; }
+        50% { left: 100%; }
+        100% { left: -100%; }
+      }
+      .pulse-animation {
+        animation: pulse-soft 2.5s infinite ease-in-out;
+      }
+      .twinkle-1 {
+        animation: twinkle 3s infinite ease-in-out;
+      }
+      .twinkle-2 {
+        animation: twinkle 3s infinite ease-in-out;
+        animation-delay: 1.5s;
+      }
+      .loading-bar-progress-anim {
+        animation: infinite-slide-progress 2s infinite ease-in-out;
+      }
     </style>
     <script>
       // Clean script to boot dark mode and tailor pre-render shell to URL instantly

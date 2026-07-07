@@ -4,11 +4,11 @@ A comprehensive, scientifically-backed suite of calculators and resources design
 
 ## Core Calculators & Tools
 
-- **[Sleep Cycles / 90-Minute Calculator](/90-minute-sleep-calculator)**: Calculates optimal bedtimes and wakeup times using the standard 90-minute human sleep cycle (incorporating NREM and REM stages). Recommends sleeping for complete cycles (e.g., 4, 5, or 6 cycles) to avoid waking up during deep sleep (slow-wave sleep), which causes sleep inertia (grogginess).
+- **[Sleep Cycles / 90-Minute Calculator](/sleep-cycle-calculator-90-minutes)**: Calculates optimal bedtimes and wakeup times using the standard 90-minute human sleep cycle (incorporating NREM and REM stages). Recommends sleeping for complete cycles (e.g., 4, 5, or 6 cycles) to avoid waking up during deep sleep (slow-wave sleep), which causes sleep inertia (grogginess).
 - **[Ideal Bedtime Calculator](/ideal-bedtime-based-on-wake-up-time)**: Determines the exact time to go to bed based on a user's target wake-up time, accounting for the average 15-minute sleep latency (the time it takes to fall asleep).
 - **[Wake Up Between Sleep Cycles](/wake-up-between-sleep-cycles)**: Recommends precise alarm timings based on current time or a custom sleeping time to ensure natural, refreshed awakenings.
-- **[Student Sleep Calculator](/sleep-calculator-for-students)**: Specialized tool adjusting sleep requirements based on age group (children, teenagers, young adults) to optimize cognitive performance, focus, and memory retention.
-- **[Shift Work Sleep Calculator](/shift-work-sleep-calculator-guide)**: Advanced planner helping night-shift workers and irregular schedule employees align daytime sleep with their biological clocks, mitigating circadian misalignment.
+- **[Student Sleep Calculator](/student-sleep-calculator)**: Specialized tool adjusting sleep requirements based on age group (children, teenagers, young adults) to optimize cognitive performance, focus, and memory retention.
+- **[Shift Work Sleep Calculator](/shift-work-sleep-calculator)**: Advanced planner helping night-shift workers and irregular schedule employees align daytime sleep with their biological clocks, mitigating circadian misalignment.
 
 ---
 
@@ -47,7 +47,7 @@ Sleeping exactly 8 hours can sometimes force you to wake up in the middle of a d
 
 ### How do shift workers optimize daytime sleep?
 - Use the **Shift Work Sleep Calculator** to split sleep or block continuous hours.
-- Utilize blackout curtains and keep a cool bedroom temperature (65°F / 18.3°C).
+- Use blackout curtains and keep a cool bedroom temperature (65°F / 18.3°C).
 - Block blue light 2 hours before daytime bedtime.
 
 ---

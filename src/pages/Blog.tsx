@@ -1892,22 +1892,21 @@ export default function Blog() {
         ))}
       </Helmet>
 
-      <div className="mb-8 text-left">
-        <Breadcrumbs />
-        <button 
-          onClick={handleBack}
-          className="inline-flex items-center gap-2 text-base text-[#6B7280] font-semibold tracking-wide hover:text-[#7C3AED] transition-colors focus-visible:outline-none cursor-pointer"
-        >
-          <ArrowLeft size={18} /> Back to Calculator
-        </button>
-      </div>
-
       <motion.div 
-        initial={{ opacity: 0, y: 15 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="text-left space-y-16"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.15, ease: "easeOut" }}
+        className="text-left w-full space-y-8"
       >
+        <div className="text-left">
+          <Breadcrumbs />
+          <button 
+            onClick={handleBack}
+            className="inline-flex items-center gap-2 text-base text-[#6B7280] font-semibold tracking-wide hover:text-[#7C3AED] transition-colors focus-visible:outline-none cursor-pointer"
+          >
+            <ArrowLeft size={18} /> Back to Calculator
+          </button>
+        </div>
         {/* Main Blog Cards Overview - Render when no specific blog is selected */}
         {!isAnyBlog && (
           <div className="space-y-12">

@@ -70,6 +70,26 @@ export function OpenGraphTags({
   const finalType = type || routeType;
   const finalImage = image || routeImage;
 
+  // 3. Dynamic JSON-LD Structured Data for SEO, AEO, and GEO engine crawling
+  const schemas: any[] = [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "@id": "https://sleepcalculater.online/#website",
+      "url": "https://sleepcalculater.online/",
+      "name": "Sleep Calculator",
+      "description": "Scientific sleep calculator, bedtime planner, and 90-minute circadian cycle calculator.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Sleep Calculator",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://sleepcalculater.online/logo.webp"
+        }
+      }
+    }
+  ];
+
   return (
     <Helmet>
       {/* Primary HTML Meta Tags */}
@@ -96,6 +116,13 @@ export function OpenGraphTags({
       <meta name="twitter:title" content={finalTitle} />
       <meta name="twitter:description" content={finalDescription} />
       <meta name="twitter:image" content={finalImage} />
+
+      {/* Inject Structured Data (JSON-LD) dynamically */}
+      {schemas.map((schema, index) => (
+        <script key={index} type="application/ld+json">
+          {JSON.stringify(schema)}
+        </script>
+      ))}
     </Helmet>
   );
 }

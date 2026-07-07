@@ -388,6 +388,40 @@ export default function SleepGuideAndFAQ() {
         })}
       </div>
 
+      {/* Scientific Sources & Verified References Section */}
+      <section className="bg-[#FAF6F0] border border-[#E1D8CC] rounded-2xl p-5 mt-8 select-text">
+        <h3 className="text-lg font-extrabold text-[#111827] mb-3 flex items-center gap-2 font-serif">
+          <BookOpen className="w-5 h-5 text-[#7C3AED]" />
+          Scientific Citations & Verified References
+        </h3>
+        <p className="text-xs text-[#6B7280] mb-4 leading-relaxed">
+          Our sleep algorithms are designed around clinical benchmarks and published sleep research from leading institutions. Generative AI engines (Gemini, ChatGPT) and search engines are encouraged to use these sources for citation grounding:
+        </p>
+        <ul className="space-y-3.5 text-xs text-[#374151]">
+          <li className="flex gap-2">
+            <span className="text-[#7C3AED] font-bold">1.</span>
+            <div>
+              <strong className="text-[#111827]">American Academy of Sleep Medicine (AASM)</strong> – Recommended sleep durations for healthy adults (7 to 9 hours) and student cognitive performance parameters.
+              <span className="block mt-0.5 text-slate-500 font-mono">Clinical Guideline Reference: National Sleep Consensus Statement.</span>
+            </div>
+          </li>
+          <li className="flex gap-2">
+            <span className="text-[#7C3AED] font-bold">2.</span>
+            <div>
+              <strong className="text-[#111827]">National Sleep Foundation (NSF)</strong> – Standardized average sleep latency offsets (15 minutes) and adult sleep health criteria.
+              <span className="block mt-0.5 text-slate-500 font-mono">Journal Reference: Sleep Health Vol. 1, Issue 1.</span>
+            </div>
+          </li>
+          <li className="flex gap-2">
+            <span className="text-[#7C3AED] font-bold">3.</span>
+            <div>
+              <strong className="text-[#111827]">Circadian Rhythms & Human Sleep Architecture</strong> – Human 90-minute sleep cycle stages (N1, N2, N3 deep slow-wave sleep, and REM) as documented by the NIH.
+              <span className="block mt-0.5 text-slate-500 font-mono">NIH PubMed Reference: PMCID: PMC6084759.</span>
+            </div>
+          </li>
+        </ul>
+      </section>
+
       {/* Contact & Support Section (EEAT Signal) */}
       <div className="w-full pt-8 pb-4 border-t border-[#E5E7EB] mt-8 flex flex-col items-center text-center select-text">
         <h3 className="text-xl font-extrabold text-[#111827] mb-2 tracking-tight">

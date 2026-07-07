@@ -4,11 +4,11 @@ An advanced, human-centric web application and educational platform centered on 
 
 ## Main Tools
 
-- [90-Minute Sleep Calculator](/90-minute-sleep-calculator): Calculate optimal sleep durations using natural sleep cycles.
+- [90-Minute Sleep Calculator](/sleep-cycle-calculator-90-minutes): Calculate optimal sleep durations using natural sleep cycles.
 - [Ideal Bedtime Calculator](/ideal-bedtime-based-on-wake-up-time): Find the perfect time to fall asleep based on your wake-up alarm.
 - [Wake Up Between Cycles](/wake-up-between-sleep-cycles): Real-time calculator for current sleep planning.
-- [Student Sleep Calculator](/sleep-calculator-for-students): Academic performance sleep planner.
-- [Shift Work Sleep Calculator](/shift-work-sleep-calculator-guide): Circadian alignment planner for night shifts.
+- [Student Sleep Calculator](/student-sleep-calculator): Academic performance sleep planner.
+- [Shift Work Sleep Calculator](/shift-work-sleep-calculator): Circadian alignment planner for night shifts.
 
 ## Educational Resources
 

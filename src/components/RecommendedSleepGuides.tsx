@@ -21,7 +21,7 @@ export default function RecommendedSleepGuides() {
     .slice(0, 3);
 
   return (
-    <div className="w-full pt-8 pb-4 border-t border-[#E5E7EB] dark:border-[#1E293B] mt-8" id="recommended-guides-section">
+    <section className="w-full pt-8 pb-4 border-t border-[#E5E7EB] dark:border-[#1E293B] mt-8" id="recommended-guides-section">
       <div className="text-center max-w-xl mx-auto mb-6">
         <h3 className="text-xl sm:text-2xl font-extrabold text-[#111827] dark:text-gray-100 tracking-tight mb-3 font-sans">
           Recommended Sleep Guides & Science
@@ -56,6 +56,6 @@ export default function RecommendedSleepGuides() {
           </Link>
         ))}
       </div>
-    </div>
+    </section>
   );
 }
