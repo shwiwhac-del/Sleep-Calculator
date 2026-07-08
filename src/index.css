@@ -366,7 +366,10 @@ article h3, .select-text h3, .markdown-body h3, .blog-reading-layout h3 {
 }
 
 /* Fix links, backgrounds, borders and lists to be eye-friendly and elegant on warm ivory background */
-article a, .select-text a, .markdown-body a, .blog-reading-layout a {
+article a:not(.no-underline):not([class*="no-underline"]):not([class*="card"]):not([class*="btn"]), 
+.select-text a:not(.no-underline):not([class*="no-underline"]):not([class*="card"]):not([class*="btn"]), 
+.markdown-body a:not(.no-underline):not([class*="no-underline"]):not([class*="card"]):not([class*="btn"]), 
+.blog-reading-layout a:not(.no-underline):not([class*="no-underline"]):not([class*="card"]):not([class*="btn"]) {
   color: #7C3AED !important;
   font-weight: 600 !important;
   text-decoration: underline !important;
@@ -374,14 +377,25 @@ article a, .select-text a, .markdown-body a, .blog-reading-layout a {
   text-underline-offset: 3px !important;
 }
 
-article a:hover, .select-text a:hover, .markdown-body a:hover, .blog-reading-layout a:hover {
+article a:not(.no-underline):not([class*="no-underline"]):not([class*="card"]):not([class*="btn"]):hover, 
+.select-text a:not(.no-underline):not([class*="no-underline"]):not([class*="card"]):not([class*="btn"]):hover, 
+.markdown-body a:not(.no-underline):not([class*="no-underline"]):not([class*="card"]):not([class*="btn"]):hover, 
+.blog-reading-layout a:not(.no-underline):not([class*="no-underline"]):not([class*="card"]):not([class*="btn"]):hover {
   color: #6D28D9 !important;
   text-decoration: underline !important;
 }
 
 /* Neutralize aggressive article link overrides for promo widgets and clean cards */
 #blog-to-calculator-card a,
-#blog-index-to-calculator-card a {
+#blog-index-to-calculator-card a,
+#specialized-calculators-links a,
+#specialized-calculators-links-section a,
+#blog-related-articles-section a,
+#recommended-guides-section a,
+#recommended-guides-grid a,
+.specialized-card,
+.specialized-card a,
+#links-grid a {
   color: inherit !important;
   font-weight: inherit !important;
   text-decoration: none !important;
@@ -390,7 +404,15 @@ article a:hover, .select-text a:hover, .markdown-body a:hover, .blog-reading-lay
 }
 
 #blog-to-calculator-card a:hover,
-#blog-index-to-calculator-card a:hover {
+#blog-index-to-calculator-card a:hover,
+#specialized-calculators-links a:hover,
+#specialized-calculators-links-section a:hover,
+#blog-related-articles-section a:hover,
+#recommended-guides-section a:hover,
+#recommended-guides-grid a:hover,
+.specialized-card:hover,
+.specialized-card a:hover,
+#links-grid a:hover {
   text-decoration: none !important;
 }
 
@@ -484,7 +506,7 @@ article a:hover, .select-text a:hover, .markdown-body a:hover, .blog-reading-lay
 
 #blog-to-calculator-card .specialized-card:hover span.launch-link,
 #blog-index-to-calculator-card .specialized-card:hover span.launch-link {
-  text-decoration: underline !important;
+  text-decoration: none !important;
 }
 
 /* Overriding white/5 transparent backgrounds to look premium beige on the warm canvas */

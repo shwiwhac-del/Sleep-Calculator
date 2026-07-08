@@ -49,7 +49,7 @@ export default function RecommendedSleepGuides() {
                 {post.description}
               </p>
             </div>
-            <div className="mt-4 pt-3 border-t border-[#F3F4F6] dark:border-[#1E293B] flex items-center justify-between text-xs font-semibold !text-[#7C3AED] dark:!text-violet-400 group-hover:!underline !no-underline">
+            <div className="mt-4 pt-3 border-t border-[#F3F4F6] dark:border-[#1E293B] flex items-center justify-between text-xs font-semibold !text-[#7C3AED] dark:!text-violet-400 !no-underline">
               <span>Read Article</span>
               <ArrowRight className="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform" />
             </div>

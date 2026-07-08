@@ -117,9 +117,38 @@ async function startServer() {
     });
   });
 
-  // Explicit redirect for favicon.ico to favicon.png to ensure maximum browser compatibility and prevent decode errors
+  // Explicit route to serve favicon.ico directly with correct Content-Type, fallback protected
   app.get("/favicon.ico", (req, res) => {
-    res.redirect(302, "/favicon.png");
+    const distPath = path.join(process.cwd(), "dist", "favicon.ico");
+    const publicPath = path.join(process.cwd(), "public", "favicon.ico");
+
+    res.set("Content-Type", "image/x-icon");
+    res.sendFile(distPath, (err) => {
+      if (err) {
+        res.sendFile(publicPath, (errPublic) => {
+          if (errPublic) {
+            res.status(404).set("Content-Type", "text/plain").send("favicon.ico not found");
+          }
+        });
+      }
+    });
+  });
+
+  // Explicit route to serve favicon.png directly with correct Content-Type, fallback protected
+  app.get("/favicon.png", (req, res) => {
+    const distPath = path.join(process.cwd(), "dist", "favicon.png");
+    const publicPath = path.join(process.cwd(), "public", "favicon.png");
+
+    res.set("Content-Type", "image/png");
+    res.sendFile(distPath, (err) => {
+      if (err) {
+        res.sendFile(publicPath, (errPublic) => {
+          if (errPublic) {
+            res.status(404).set("Content-Type", "text/plain").send("favicon.png not found");
+          }
+        });
+      }
+    });
   });
 
   // Vite middleware for development
