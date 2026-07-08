@@ -7,7 +7,7 @@ import ScrollToTop from './components/ScrollToTop';
 import { StarryBackground } from './components/StarryBackground';
 import { usePerformanceMonitoring } from './hooks/usePerformanceMonitoring';
 
-import Home from './pages/Home';
+const Home = lazy(() => import('./pages/Home'));
 const Terms = lazy(() => import('./pages/Terms'));
 const Privacy = lazy(() => import('./pages/Privacy'));
 const Contact = lazy(() => import('./pages/Contact'));
