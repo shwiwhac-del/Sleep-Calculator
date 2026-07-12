@@ -322,7 +322,7 @@ function injectSEOMetadataStatic(html: string, originalPath: string, customCanon
     const post = BLOG_POSTS_META[slug];
     title = customTitle || post.title;
     description = post.description;
-    canonicalUrl = customCanonical || `https://sleepcalculater.online/${slug}`;
+    canonicalUrl = customCanonical || `https://sleepcalculater.online/blog/${slug}`;
 
     // 1. BlogPosting Schema
     schemas.push({
@@ -395,8 +395,8 @@ function injectSEOMetadataStatic(html: string, originalPath: string, customCanon
       schemas.push({
         "@context": "https://schema.org",
         "@type": "MedicalWebPage",
-        "@id": "https://sleepcalculater.online/sleep-debt-explained#webpage",
-        "url": "https://sleepcalculater.online/sleep-debt-explained",
+        "@id": "https://sleepcalculater.online/blog/sleep-debt-explained#webpage",
+        "url": "https://sleepcalculater.online/blog/sleep-debt-explained",
         "name": "Sleep Debt Explained: What It Is and How to Recover",
         "description": "Learn what sleep debt is, how it affects your health and cognitive functions, and discover practical scientific ways to recover from accumulated sleep loss.",
         "about": {
@@ -424,8 +424,8 @@ function injectSEOMetadataStatic(html: string, originalPath: string, customCanon
       schemas.push({
         "@context": "https://schema.org",
         "@type": "MedicalWebPage",
-        "@id": "https://sleepcalculater.online/how-long-does-it-take-to-fall-asleep#webpage",
-        "url": "https://sleepcalculater.online/how-long-does-it-take-to-fall-asleep",
+        "@id": "https://sleepcalculater.online/blog/how-long-does-it-take-to-fall-asleep#webpage",
+        "url": "https://sleepcalculater.online/blog/how-long-does-it-take-to-fall-asleep",
         "name": "How Long Does It Take to Fall Asleep? What's Normal?",
         "description": "Learn how long it typically takes to fall asleep, factors that affect sleep onset, and tips to fall asleep faster naturally.",
         "about": {
@@ -470,26 +470,26 @@ function injectSEOMetadataStatic(html: string, originalPath: string, customCanon
   html = html.replace(/<script\s+type="application\/ld\+json">.*?<\/script>/gis, "");
 
   let seoBlock = `
-    <title>${title}</title>
-    <link rel="canonical" href="${canonicalUrl}" />
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-    <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-    <meta name="description" content="${description}" />
-    <meta name="keywords" content="sleep calculator, sleep cycles, REM sleep, calculate bedtime, circadian rhythm, quality sleep, wake up refreshed" />
-    <meta property="og:type" content="${reqPath === '/' ? 'website' : 'article'}" />
-    <meta property="og:locale" content="en_US" />
-    <meta property="og:site_name" content="Sleep Calculator" />
-    <meta property="og:title" content="${title}" />
-    <meta property="og:description" content="${description}" />
-    <meta property="og:url" content="${canonicalUrl}" />
-    <meta property="og:image" content="https://sleepcalculater.online/og_banner.png" />
-    <meta property="og:image:secure_url" content="https://sleepcalculater.online/og_banner.png" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="${title}" />
-    <meta name="twitter:description" content="${description}" />
-    <meta name="twitter:image" content="https://sleepcalculater.online/og_banner.png" />
+    <title data-rh="true">${title}</title>
+    <link data-rh="true" rel="canonical" href="${canonicalUrl}" />
+    <meta data-rh="true" name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta data-rh="true" name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta data-rh="true" name="description" content="${description}" />
+    <meta data-rh="true" name="keywords" content="sleep calculator, sleep cycles, REM sleep, calculate bedtime, circadian rhythm, quality sleep, wake up refreshed" />
+    <meta data-rh="true" property="og:type" content="${reqPath === '/' ? 'website' : 'article'}" />
+    <meta data-rh="true" property="og:locale" content="en_US" />
+    <meta data-rh="true" property="og:site_name" content="Sleep Calculator" />
+    <meta data-rh="true" property="og:title" content="${title}" />
+    <meta data-rh="true" property="og:description" content="${description}" />
+    <meta data-rh="true" property="og:url" content="${canonicalUrl}" />
+    <meta data-rh="true" property="og:image" content="https://sleepcalculater.online/og_banner.png" />
+    <meta data-rh="true" property="og:image:secure_url" content="https://sleepcalculater.online/og_banner.png" />
+    <meta data-rh="true" property="og:image:width" content="1200" />
+    <meta data-rh="true" property="og:image:height" content="630" />
+    <meta data-rh="true" name="twitter:card" content="summary_large_image" />
+    <meta data-rh="true" name="twitter:title" content="${title}" />
+    <meta data-rh="true" name="twitter:description" content="${description}" />
+    <meta data-rh="true" name="twitter:image" content="https://sleepcalculater.online/og_banner.png" />
   `;
 
   schemas.forEach(schema => {
@@ -501,7 +501,15 @@ function injectSEOMetadataStatic(html: string, originalPath: string, customCanon
   html = html.replace(/<link[^>]*rel="stylesheet"[^>]*href="([^"]+\.css)"[^>]*>/g, `<link rel="preload" as="style" href="$1" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="$1"></noscript>`);
 
   if (reqPath !== "/" && reqPath !== "") {
-    const cleanFallback = getStaticFallbackContent(reqPath, slug);
+    let cleanFallback = getStaticFallbackContent(reqPath, slug);
+    // Strip duplicate SEO tags that React 19 / Helmet might render into the string
+    cleanFallback = cleanFallback.replace(/<title>.*?<\/title>/gis, "");
+    cleanFallback = cleanFallback.replace(/<link\s+rel="canonical"\s+href="[^"]*"\s*\/?>/gis, "");
+    cleanFallback = cleanFallback.replace(/<meta\s+name="description"\s+content=".*?"\s*\/?>/gis, "");
+    cleanFallback = cleanFallback.replace(/<meta\s+name="keywords"\s+content=".*?"\s*\/?>/gis, "");
+    cleanFallback = cleanFallback.replace(/<meta\s+property="og:[^"]+"\s+content=".*?"\s*\/?>/gis, "");
+    cleanFallback = cleanFallback.replace(/<meta\s+name="twitter:[^"]+"\s+content=".*?"\s*\/?>/gis, "");
+    cleanFallback = cleanFallback.replace(/<script\s+type="application\/ld\+json">.*?<\/script>/gis, "");
     // Suppress hydrations since we will hydrate React cleanly on top of it.
     html = html.replace(/<!-- FALLBACK_CONTENT_START -->.*?<!-- FALLBACK_CONTENT_END -->/gis, () => `<!-- FALLBACK_CONTENT_START --><div class="fallback-content">${cleanFallback}</div><!-- FALLBACK_CONTENT_END -->`);
   }
@@ -532,7 +540,7 @@ const REDIRECT_SLUGS = [
 
 const staticRoutes = [
   ...Object.keys(MAIN_PAGES_META).map(p => p.replace(/\/$/, "")).filter(Boolean),
-  ...Object.keys(BLOG_POSTS_META).map(slug => `/${slug}`).filter(p => !REDIRECT_SLUGS.some(s => p.endsWith(s)))
+  ...Object.keys(BLOG_POSTS_META).map(slug => `/blog/${slug}`).filter(p => !REDIRECT_SLUGS.some(s => p.endsWith(s)))
 ];
 
 console.log(`[Static Gen] Found ${staticRoutes.length} routes to pre-render statically:`, staticRoutes);
@@ -545,8 +553,16 @@ for (const route of staticRoutes) {
   const preRenderedHtml = injectSEOMetadataStatic(htmlTemplate, reqPath);
   
   // Save both slug.html and slug/index.html to be served correctly by any SPA/multi-router server
-  const outputFilePath1 = path.join(distPath, `${slug}.html`);
-  const outputFilePath2 = path.join(distPath, slug, 'index.html');
+  let outputFilePath1: string;
+  let outputFilePath2: string;
+  
+  if (reqPath.startsWith('/blog/')) {
+    outputFilePath1 = path.join(distPath, 'blog', `${slug}.html`);
+    outputFilePath2 = path.join(distPath, 'blog', slug, 'index.html');
+  } else {
+    outputFilePath1 = path.join(distPath, `${slug}.html`);
+    outputFilePath2 = path.join(distPath, slug, 'index.html');
+  }
   
   ensureDirectoryExistence(outputFilePath2);
   fs.writeFileSync(outputFilePath2, preRenderedHtml, 'utf-8');
@@ -565,7 +581,7 @@ const sitemapUrls = [
     .map(p => `https://sleepcalculater.online${p.startsWith('/') ? p : '/' + p}`),
   ...Object.keys(BLOG_POSTS_META)
     .filter(slug => !REDIRECT_SLUGS.includes(slug))
-    .map(slug => `https://sleepcalculater.online/${slug}`)
+    .map(slug => `https://sleepcalculater.online/blog/${slug}`)
 ];
 
 const uniqueUrls = Array.from(new Set(sitemapUrls));
@@ -679,46 +695,7 @@ try {
   fs.writeFileSync(blogIndexPath, blogIndexHtml, 'utf-8');
   console.log(`[Static Gen] Wrote blog index to: ${blogIndexPath}`);
 
-  // Create blog articles folder
-  if (!fs.existsSync(blogArticlesDir)) {
-    fs.mkdirSync(blogArticlesDir, { recursive: true });
-  }
-
-  // Pre-render specifically matching aliases with proper canonicals and breadcrumbs
-  const guideHtml = injectSEOMetadataStatic(
-    htmlTemplate, 
-    "/sleep-cycles-explained", 
-    "https://sleepcalculater.online/blog/articles/sleep-cycle-guide.html"
-  );
-  fs.writeFileSync(path.join(blogArticlesDir, 'sleep-cycle-guide.html'), guideHtml, 'utf-8');
-
-  const needHtml = injectSEOMetadataStatic(
-    htmlTemplate, 
-    "/how-much-sleep-do-you-need", 
-    "https://sleepcalculater.online/blog/articles/how-much-sleep-do-i-need.html"
-  );
-  fs.writeFileSync(path.join(blogArticlesDir, 'how-much-sleep-do-i-need.html'), needHtml, 'utf-8');
-
-  const bestTimeHtml = injectSEOMetadataStatic(
-    htmlTemplate, 
-    "/best-time-to-sleep-and-wake-up", 
-    "https://sleepcalculater.online/blog/articles/best-sleep-time.html"
-  );
-  fs.writeFileSync(path.join(blogArticlesDir, 'best-sleep-time.html'), bestTimeHtml, 'utf-8');
-
-  // Generate /blog/articles/... files dynamically for all posts to ensure consistent canonical and breadcrumb schemas
-  Object.keys(BLOG_POSTS_META).forEach(postSlug => {
-    try {
-      const articlePath = `/${postSlug}`;
-      const articleCanonical = `https://sleepcalculater.online/blog/articles/${postSlug}.html`;
-      const articleHtml = injectSEOMetadataStatic(htmlTemplate, articlePath, articleCanonical);
-      fs.writeFileSync(path.join(blogArticlesDir, `${postSlug}.html`), articleHtml, 'utf-8');
-    } catch (e) {
-      console.error(`[Static Gen] Error generating structured article ${postSlug}:`, e);
-    }
-  });
-
-  console.log(`[Static Gen] Successfully pre-rendered articles under: ${blogArticlesDir}`);
+  console.log("[Static Gen] Bypassing legacy blog articles directory generation as they are now cleanly 301 redirected to /blog/ paths.");
 } catch (e) {
   console.error("[Static Gen] Error generating blog folder structure:", e);
 }

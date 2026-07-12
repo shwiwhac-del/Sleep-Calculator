@@ -1853,16 +1853,13 @@ export default function Blog() {
           keywords={keywords}
           url={canonicalUrl}
           type="article"
+          faqs={currentFaqs?.map(faq => ({ q: faq.q, a: faq.a }))}
+          extraSchemas={jsonLdScripts
+            .map(s => {
+              try { return JSON.parse(s.__html); } catch (e) { return null; }
+            })
+            .filter(s => s && s["@type"] !== "Article" && s["@type"] !== "BreadcrumbList" && s["@type"] !== "FAQPage" && s["@type"] !== "Blog")}
         />
-        <Helmet>
-          <title>{title}</title>
-          <meta name="description" content={description} />
-          <meta name="keywords" content={keywords} />
-          <link rel="canonical" href={canonicalUrl} />
-          {jsonLdScripts.map((script, idx) => (
-            <script key={idx} type="application/ld+json" dangerouslySetInnerHTML={script} />
-          ))}
-        </Helmet>
         <BlogSkeleton 
           isPost={isAnyBlog} 
           postTitle={currentPost?.title}
@@ -1882,16 +1879,13 @@ export default function Blog() {
         keywords={keywords}
         url={canonicalUrl}
         type="article"
+        faqs={currentFaqs?.map(faq => ({ q: faq.q, a: faq.a }))}
+        extraSchemas={jsonLdScripts
+          .map(s => {
+            try { return JSON.parse(s.__html); } catch (e) { return null; }
+          })
+          .filter(s => s && s["@type"] !== "Article" && s["@type"] !== "BreadcrumbList" && s["@type"] !== "FAQPage" && s["@type"] !== "Blog")}
       />
-      <Helmet>
-        <title>{title}</title>
-        <meta name="description" content={description} />
-        <meta name="keywords" content={keywords} />
-        <link rel="canonical" href={canonicalUrl} />
-        {jsonLdScripts.filter(script => !script.__html.includes('"BreadcrumbList"')).map((script, idx) => (
-          <script key={idx} type="application/ld+json" dangerouslySetInnerHTML={script} />
-        ))}
-      </Helmet>
 
       <motion.div 
         initial={{ opacity: 0 }}

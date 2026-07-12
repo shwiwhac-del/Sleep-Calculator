@@ -340,7 +340,7 @@ export default function WakeUpCalc() {
           >
             <div className="w-full p-4 sm:p-5 flex flex-col relative overflow-hidden">
               <div className="flex items-center justify-center mb-6">
-                <h2 className="text-lg sm:text-xl lg:text-2xl font-black text-gray-900 text-center tracking-tight">
+                <h2 className="text-lg sm:text-xl lg:text-2xl font-black text-gray-900 dark:text-gray-100 text-center tracking-tight">
                   Optimal Alarm Alignments
                 </h2>
               </div>
@@ -351,15 +351,15 @@ export default function WakeUpCalc() {
                     key={index}
                     className={`group flex items-center justify-between py-3.5 px-5 rounded-2xl border transition-all duration-300 hover:shadow-sm ${
                       res.optimal
-                        ? "border-[#7C3AED]/40 bg-[#7C3AED]/5 hover:bg-[#7C3AED]/10"
+                        ? "border-[#7C3AED]/40 bg-[#7C3AED]/5 hover:bg-[#7C3AED]/10 dark:border-[#7C3AED]/50 dark:bg-[#7C3AED]/10 dark:hover:bg-[#7C3AED]/15"
                         : "border-[#E1D8CC] dark:border-[#1E293B] bg-[#FAF6F0] dark:bg-[#151C2C] hover:bg-[#FCFAF7] dark:hover:bg-[#1E293B]"
                     }`}
                   >
                     <div className="flex flex-col relative z-10">
-                      <span className="text-xl sm:text-2xl font-extrabold text-[#111827] tracking-tight leading-none mb-1.5 flex items-center gap-1.5">
+                      <span className="text-xl sm:text-2xl font-extrabold text-[#111827] dark:text-white tracking-tight leading-none mb-1.5 flex items-center gap-1.5">
                         {formatTime(res.time)}
                       </span>
-                      <span className="text-[#374151] text-xs sm:text-sm font-bold">
+                      <span className="text-[#374151] dark:text-slate-300 text-xs sm:text-sm font-bold">
                         {res.cycle} sleep cycles ({Number((res.cycle * 1.5).toFixed(1))}h sleep)
                       </span>
                     </div>

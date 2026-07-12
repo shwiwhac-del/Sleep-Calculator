@@ -1,6 +1,5 @@
 import express from "express";
 import compression from "compression";
-import { createServer as createViteServer } from "vite";
 import path from "path";
 import helmet from "helmet";
 import rateLimit from "express-rate-limit";
@@ -43,10 +42,23 @@ async function startServer() {
   // 301 SEO redirects for legacy blog URLs / double routes
   app.use((req, res, next) => {
     const reqPath = req.path.split('?')[0].replace(/\/$/, "");
-    const slug = reqPath.split('/').pop() || "";
-    if (slug && BLOG_REDIRECTS[slug]) {
-      res.redirect(301, "/" + BLOG_REDIRECTS[slug]);
-      return;
+    const parts = reqPath.split('/').filter(Boolean);
+    
+    if (parts.length === 1) {
+      const slug = parts[0].toLowerCase();
+      // 1. Check if it is a redirect mapped slug
+      if (BLOG_REDIRECTS[slug]) {
+        res.redirect(301, "/blog/" + BLOG_REDIRECTS[slug]);
+        return;
+      }
+      
+      // 2. Check if it is a direct blog slug (accessed at root instead of /blog/)
+      const isBlogSlug = Object.keys(BLOG_POSTS_META).some(k => k.toLowerCase() === slug);
+      if (isBlogSlug) {
+        const exactSlug = Object.keys(BLOG_POSTS_META).find(k => k.toLowerCase() === slug) || parts[0];
+        res.redirect(301, "/blog/" + exactSlug);
+        return;
+      }
     }
     next();
   });
@@ -84,17 +96,17 @@ async function startServer() {
 
   // Clean 301 Permanent Redirects for legacy blog structures to avoid duplicate content penalties
   app.get('/blog/articles/sleep-cycle-guide.html', (req, res) => {
-    res.redirect(301, '/sleep-cycles-explained');
+    res.redirect(301, '/blog/sleep-cycles-explained');
   });
   app.get('/blog/articles/how-much-sleep-do-i-need.html', (req, res) => {
-    res.redirect(301, '/how-much-sleep-do-you-need');
+    res.redirect(301, '/blog/how-much-sleep-do-you-need');
   });
   app.get('/blog/articles/best-sleep-time.html', (req, res) => {
-    res.redirect(301, '/best-time-to-sleep-and-wake-up');
+    res.redirect(301, '/blog/best-time-to-sleep-and-wake-up');
   });
   app.get('/blog/articles/:slug.html', (req, res) => {
     const slug = req.params.slug;
-    res.redirect(301, `/${slug}`);
+    res.redirect(301, `/blog/${slug}`);
   });
   app.get('/blog/', (req, res) => {
     res.redirect(301, '/blog');
@@ -151,8 +163,27 @@ async function startServer() {
     });
   });
 
+  // Explicit route to serve favicon.svg directly with correct Content-Type, fallback protected
+  app.get("/favicon.svg", (req, res) => {
+    const distPath = path.join(process.cwd(), "dist", "favicon.svg");
+    const publicPath = path.join(process.cwd(), "public", "favicon.svg");
+
+    res.set("Content-Type", "image/svg+xml");
+    res.sendFile(distPath, (err) => {
+      if (err) {
+        res.sendFile(publicPath, (errPublic) => {
+          if (errPublic) {
+            res.status(404).set("Content-Type", "text/plain").send("favicon.svg not found");
+          }
+        });
+      }
+    });
+  });
+
   // Vite middleware for development
   if (process.env.NODE_ENV !== "production") {
+    // We only import Vite lazily in dev to prevent ES module dynamic require issues in prod bundle
+    const { createServer: createViteServer } = await import('vite');
     const vite = await createViteServer({
       server: { middlewareMode: true },
       appType: "spa",
@@ -163,6 +194,7 @@ async function startServer() {
     app.use(express.static(distPath, {
       maxAge: '1y',
       index: false, // Ensure our app.get('*') can intercept and inject metadata into "/" requests
+      redirect: false,
       setHeaders: (res, filePath) => {
         if (filePath.endsWith('.html')) {
           res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
@@ -532,7 +564,7 @@ function injectSEOMetadata(html: string, originalPath: string): string {
     const post = BLOG_POSTS_META[slug];
     title = post.title;
     description = post.description;
-    canonicalUrl = `https://sleepcalculater.online/${slug}`;
+    canonicalUrl = `https://sleepcalculater.online/blog/${slug}`;
 
     // 1. BlogPosting Schema
     schemas.push({
@@ -587,8 +619,8 @@ function injectSEOMetadata(html: string, originalPath: string): string {
       schemas.push({
         "@context": "https://schema.org",
         "@type": "MedicalWebPage",
-        "@id": "https://sleepcalculater.online/sleep-debt-explained#webpage",
-        "url": "https://sleepcalculater.online/sleep-debt-explained",
+        "@id": "https://sleepcalculater.online/blog/sleep-debt-explained#webpage",
+        "url": "https://sleepcalculater.online/blog/sleep-debt-explained",
         "name": "Sleep Debt Explained: What It Is and How to Recover",
         "description": "Learn what sleep debt is, how it affects your health and cognitive functions, and discover practical scientific ways to recover from accumulated sleep loss.",
         "about": {
@@ -616,8 +648,8 @@ function injectSEOMetadata(html: string, originalPath: string): string {
       schemas.push({
         "@context": "https://schema.org",
         "@type": "MedicalWebPage",
-        "@id": "https://sleepcalculater.online/how-long-does-it-take-to-fall-asleep#webpage",
-        "url": "https://sleepcalculater.online/how-long-does-it-take-to-fall-asleep",
+        "@id": "https://sleepcalculater.online/blog/how-long-does-it-take-to-fall-asleep#webpage",
+        "url": "https://sleepcalculater.online/blog/how-long-does-it-take-to-fall-asleep",
         "name": "How Long Does It Take to Fall Asleep? What's Normal?",
         "description": "Learn how long it typically takes to fall asleep, factors that affect sleep onset, and tips to fall asleep faster naturally.",
         "about": {

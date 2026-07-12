@@ -372,7 +372,7 @@ export default function ShiftWorkCalc() {
           >
             <div className="w-full p-4 sm:p-5 flex flex-col relative overflow-hidden">
               <div className="flex items-center justify-center mb-6">
-                <h2 className="text-lg sm:text-xl lg:text-2xl font-black text-gray-900 text-center tracking-tight">
+                <h2 className="text-lg sm:text-xl lg:text-2xl font-black text-gray-900 dark:text-gray-100 text-center tracking-tight">
                   Your Day-Sleep Schedule
                 </h2>
               </div>
@@ -383,7 +383,7 @@ export default function ShiftWorkCalc() {
                     key={index}
                     className={`group flex flex-col py-4 px-5 rounded-2xl border transition-all duration-300 hover:shadow-sm ${
                       res.isCore
-                        ? "border-[#7C3AED]/40 bg-[#7C3AED]/5 hover:bg-[#7C3AED]/10"
+                        ? "border-[#7C3AED]/40 bg-[#7C3AED]/5 hover:bg-[#7C3AED]/10 dark:border-[#7C3AED]/50 dark:bg-[#7C3AED]/10 dark:hover:bg-[#7C3AED]/15"
                         : "border-[#E1D8CC] dark:border-[#1E293B] bg-[#FAF6F0] dark:bg-[#151C2C] hover:bg-[#FCFAF7] dark:hover:bg-[#1E293B]"
                     }`}
                   >
@@ -395,7 +395,7 @@ export default function ShiftWorkCalc() {
                       }`}>
                         {res.label}
                       </span>
-                      <span className="text-[11px] font-mono font-bold text-[#6B7280]">
+                      <span className="text-[11px] font-mono font-bold text-[#6B7280] dark:text-slate-400">
                         {res.duration} • {res.cycles} Cycles
                       </span>
                     </div>
@@ -410,7 +410,7 @@ export default function ShiftWorkCalc() {
                       </span>
                     </div>
 
-                    <p className="text-xs text-neutral-600 mt-2.5 leading-relaxed">
+                    <p className="text-xs text-neutral-600 dark:text-slate-300 mt-2.5 leading-relaxed">
                       {res.rationale}
                     </p>
                   </div>

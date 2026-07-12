@@ -7,11 +7,9 @@ import { getCanonicalUrl } from "../lib/seo";
 import { OpenGraphTags } from "../components/OpenGraphTags";
 import TimePicker from "../components/TimePicker";
 import SleepCycleChart from "../components/SleepCycleChart";
-import { QuickSleepTips } from "../components/QuickSleepTips";
-import { SleepJournal } from "../components/SleepJournal";
-import SleepGuideAndFAQ from "../components/SleepGuideAndFAQ";
 import HomeSkeleton from "../components/HomeSkeleton";
 import { AdPlaceholder } from "../components/AdPlaceholder";
+import { SleepScienceGuide } from "../components/SleepScienceGuide";
 
 const FeedbackModal = lazy(() =>
   import("../components/FeedbackModal").then((module) => ({
@@ -987,7 +985,7 @@ export default function Home() {
                         <span className="text-[#6B7280] uppercase tracking-wider text-xs font-bold font-mono">
                           Sleep Cycle Health Card
                         </span>
-                        <h2 className="text-2xl font-black mt-1 text-[#111827]">
+                        <h2 className="text-2xl font-black mt-1 text-[#111827] dark:text-white">
                           Your Personal Sleep Report
                         </h2>
                       </div>
@@ -1157,15 +1155,15 @@ export default function Home() {
                                 key={index}
                                 className={`group flex items-center justify-between py-3.5 px-5 rounded-2xl border transition-all duration-300 hover:shadow-sm ${
                                   isSuggested
-                                    ? "border-[#7C3AED]/40 bg-[#7C3AED]/5 hover:bg-[#7C3AED]/10"
-                                    : "border-[#E1D8CC] bg-[#FAF6F0] hover:bg-[#FCFAF7]"
+                                    ? "border-[#7C3AED]/40 bg-[#7C3AED]/5 hover:bg-[#7C3AED]/10 dark:border-[#7C3AED]/50 dark:bg-[#7C3AED]/10 dark:hover:bg-[#7C3AED]/15"
+                                    : "border-[#E1D8CC] dark:border-[#1E293B] bg-[#FAF6F0] dark:bg-[#151C2C] hover:bg-[#FCFAF7] dark:hover:bg-[#1E293B]"
                                 }`}
                               >
                                 <div className="flex flex-col relative z-10">
-                                  <span className="text-xl sm:text-2xl font-extrabold text-[#111827] tracking-tight leading-none mb-1.5 flex items-center gap-1.5">
+                                  <span className="text-xl sm:text-2xl font-extrabold text-[#111827] dark:text-white tracking-tight leading-none mb-1.5 flex items-center gap-1.5">
                                     {formatTime(res.date)}
                                   </span>
-                                  <span className="text-[#374151] text-xs sm:text-sm font-bold">
+                                  <span className="text-[#374151] dark:text-slate-300 text-xs sm:text-sm font-bold">
                                     {res.duration
                                       ? res.duration
                                       : `${Number(res.cycles) * 1.5} hours of sleep (${res.cycles} cycles)`}
@@ -1263,12 +1261,7 @@ export default function Home() {
         )}
       </AnimatePresence>
 
-      {/* Clean below-the-fold content rendered with smooth animations */}
-      <div className="w-full max-w-4xl mx-auto px-2 sm:px-4 space-y-12 sm:space-y-16 mt-6 sm:mt-10">
-        <QuickSleepTips />
-        <SleepJournal />
-        <SleepGuideAndFAQ />
-      </div>
+      <SleepScienceGuide />
 
       {/* Floating Feedback Button */}
       <button
