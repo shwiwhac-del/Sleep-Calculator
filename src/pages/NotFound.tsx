@@ -11,16 +11,9 @@ export default function NotFound() {
 
   return (
     <div className="min-h-[75vh] flex flex-col items-center justify-center px-2 sm:px-4 py-12 text-center relative z-10 w-full max-w-xl mx-auto">
-      <OpenGraphTags
-        title="404 Page Not Found – Sleep Calculator"
-        description="The requested sleep calculator guide, resource, or article could not be located."
-        url={canonicalUrl}
-      />
+      <OpenGraphTags />
       <Helmet>
-        <title>Page Not Found | Sleep Calculator</title>
-        <meta name="description" content="This page does not exist. Let's redirect you back to our Sleep Cycle Calculator." />
         <meta name="robots" content="noindex, follow" />
-        <link rel="canonical" href={canonicalUrl} />
       </Helmet>
 
       {/* Floating Animated Illustration */}

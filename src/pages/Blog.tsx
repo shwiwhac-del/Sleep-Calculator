@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation, useParams, Navigate } from 'react-router-dom';
 import { ArrowLeft, ChevronDown, ChevronUp, Calculator, Sparkles } from 'lucide-react';
-import { Helmet } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'motion/react';
 import ShareScheduleWidget from '../components/ShareScheduleWidget';
 import { BLOG_POSTS_META, getFocusKeywordsForPost } from '../blogMetadata';

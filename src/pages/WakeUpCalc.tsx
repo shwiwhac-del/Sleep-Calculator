@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { Activity, ChevronDown, ArrowLeft } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
@@ -8,6 +7,7 @@ import TimePicker from "../components/TimePicker";
 import { AdPlaceholder } from "../components/AdPlaceholder";
 import RecommendedSleepGuides from "../components/RecommendedSleepGuides";
 import { Breadcrumbs } from "../components/Breadcrumbs";
+import { OpenGraphTags } from "../components/OpenGraphTags";
 
 export default function WakeUpCalc() {
   const canonicalUrl = getCanonicalUrl("/wake-up-between-sleep-cycles");
@@ -115,58 +115,22 @@ export default function WakeUpCalc() {
 
   return (
     <main className="w-full max-w-4xl mx-auto px-4 pt-1 pb-8 sm:pb-12" id="wake-cycles-calculator-root">
-      <Helmet>
-        <title>Wake Up Between Sleep Cycles | What Time Should I Wake Up?</title>
-        <meta
-          name="description"
-          content="Learn how to wakeup between sleep cycles to feel awake. Calculate what time should i wake up to not feel tired, eliminate morning grogginess & sleep inertia."
-        />
-        <link rel="canonical" href={canonicalUrl} />
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "WebApplication",
-            "name": "Wake Up Between Sleep Cycles Calculator",
-            "url": canonicalUrl,
-            "description": "Learn how to wakeup between sleep cycles to feel awake. Calculate what time should i wake up to not feel tired, eliminate morning grogginess & sleep inertia.",
-            "applicationCategory": "HealthApplication",
-            "operatingSystem": "All",
-            "browserRequirements": "Requires JavaScript. Requires HTML5."
-          })}
-        </script>
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": [
-              {
-                "@type": "Question",
-                "name": "Why do progressive sunrise alarms help compared to loud beeping alarms?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Loud, abrasive alarms cause a sudden surge in heart rate and blood pressure, triggering a stress response. Progressive sunrise alarms emit a gradual glow that stimulates cortisol production and suppresses melatonin, supporting a natural and healthy waking process."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "What should I do if my sleep partners have different schedules?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Focus on managing what you can control. Use comfortable silent vibrating wearables for alarms, optimize your sleeping environment to prevent light-and-sound seepage, and try using dim reading lights to respect each other's schedules."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "Does hitting 'snooze' help when waking up groggy?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "No, hitting snooze is highly counterproductive. This brief 5 or 9-minute window triggers a new sleep cycle that is quickly interrupted, worsening sleep inertia and leaving you feeling more fatigued. Try placing your alarm across the room to encourage immediate physical movement on waking, allowing light to naturally stimulate you."
-                }
-              }
-            ]
-          })}
-        </script>
-      </Helmet>
+      <OpenGraphTags
+        faqs={[
+          {
+            q: "Why do progressive sunrise alarms help compared to loud beeping alarms?",
+            a: "Loud, abrasive alarms cause a sudden surge in heart rate and blood pressure, triggering a stress response. Progressive sunrise alarms emit a gradual glow that stimulates cortisol production and suppresses melatonin, supporting a natural and healthy waking process."
+          },
+          {
+            q: "What should I do if my sleep partners have different schedules?",
+            a: "Focus on managing what you can control. Use comfortable silent vibrating wearables for alarms, optimize your sleeping environment to prevent light-and-sound seepage, and try using dim reading lights to respect each other's schedules."
+          },
+          {
+            q: "Does hitting 'snooze' help when waking up groggy?",
+            a: "No, hitting snooze is highly counterproductive. This brief 5 or 9-minute window triggers a new sleep cycle that is quickly interrupted, worsening sleep inertia and leaving you feeling more fatigued. Try placing your alarm across the room to encourage immediate physical movement on waking, allowing light to naturally stimulate you."
+          }
+        ]}
+      />
 
       {/* Header Title */}
       <div className="flex flex-col items-center justify-center gap-1 sm:gap-1.5 text-center w-full max-w-full px-2 mt-0 mb-3 transition-all duration-300" id="wake-cycles-header">

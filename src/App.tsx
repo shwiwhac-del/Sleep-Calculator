@@ -507,9 +507,6 @@ function AppContent() {
 
   return (
     <div className="min-h-screen flex flex-col text-[#374151] dark:text-[#E2E8F0] font-sans relative overflow-x-hidden bg-[#F3ECE3] dark:bg-[#0B0F19] transition-colors duration-300">
-      <Helmet>
-        <link rel="canonical" href={canonicalUrl} />
-      </Helmet>
       <StarryBackground />
       <OpenGraphTags />
       <Header isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />

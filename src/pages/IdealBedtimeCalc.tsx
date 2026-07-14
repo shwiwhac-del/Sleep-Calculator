@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { Heart, ChevronDown, ArrowLeft } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
@@ -8,6 +7,7 @@ import TimePicker from "../components/TimePicker";
 import { AdPlaceholder } from "../components/AdPlaceholder";
 import RecommendedSleepGuides from "../components/RecommendedSleepGuides";
 import { Breadcrumbs } from "../components/Breadcrumbs";
+import { OpenGraphTags } from "../components/OpenGraphTags";
 
 export default function IdealBedtimeCalc() {
   const canonicalUrl = getCanonicalUrl("/ideal-bedtime-based-on-wake-up-time");
@@ -102,58 +102,22 @@ export default function IdealBedtimeCalc() {
 
   return (
     <main className="w-full max-w-4xl mx-auto px-4 pt-1 pb-8 sm:pb-12" id="ideal-calculator-root">
-      <Helmet>
-        <title>Ideal Bedtime Based on Wake Up Time | Sleep Calculator by Age</title>
-        <meta
-          name="description"
-          content="Determine your ideal bedtime based on wake up time with our sleep calculator. Optimized bed times for all age brackets, including adults, children, and seniors."
-        />
-        <link rel="canonical" href={canonicalUrl} />
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "WebApplication",
-            "name": "Ideal Bedtime Based on Wake Up Time Calculator",
-            "url": canonicalUrl,
-            "description": "Determine your ideal bedtime based on wake up time with our sleep calculator. Optimized bed times for all age brackets, including adults, children, and seniors.",
-            "applicationCategory": "HealthApplication",
-            "operatingSystem": "All",
-            "browserRequirements": "Requires JavaScript. Requires HTML5."
-          })}
-        </script>
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": [
-              {
-                "@type": "Question",
-                "name": "Why do seniors wake up so early in the morning?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Geriatric sleep patterns are influenced by age-associated flattening of the Suprachiasmatic Nucleus master clock and decreased natural melatonin secretion. Seniors experience earlier sleepiness in the evening and lighter, more fragmented sleep, leading to earlier waking hours."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "Should I adjust my sleep schedule when traveling across time zones?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "To minimize jet lag, adjust your bedtime and solar exposure schedules to match your destination's daytime lines as soon as you board the plane. Structured morning light exposure and evening darkness can help reset your circadian rhythm quickly."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "Can I make up for a week of lost sleep on the weekend?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Oversleeping on weekends cannot fully recover a chronic sleep debt, as it disrupts your circadian alignment and leads to 'social jetlag.' Recovery is best achieved by gradually sleeping 1 to 1.5 hours extra on weekends and maintaining a consistent daily sleep schedule during the week."
-                }
-              }
-            ]
-          })}
-        </script>
-      </Helmet>
+      <OpenGraphTags
+        faqs={[
+          {
+            q: "Why do seniors wake up so early in the morning?",
+            a: "Geriatric sleep patterns are influenced by age-associated flattening of the Suprachiasmatic Nucleus master clock and decreased natural melatonin secretion. Seniors experience earlier sleepiness in the evening and lighter, more fragmented sleep, leading to earlier waking hours."
+          },
+          {
+            q: "Should I adjust my sleep schedule when traveling across time zones?",
+            a: "To minimize jet lag, adjust your bedtime and solar exposure schedules to match your destination's daytime lines as soon as you board the plane. Structured morning light exposure and evening darkness can help reset your circadian rhythm quickly."
+          },
+          {
+            q: "Can I make up for a week of lost sleep on the weekend?",
+            a: "Oversleeping on weekends cannot fully recover a chronic sleep debt, as it disrupts your circadian alignment and leads to 'social jetlag.' Recovery is best achieved by gradually sleeping 1 to 1.5 hours extra on weekends and maintaining a consistent daily sleep schedule during the week."
+          }
+        ]}
+      />
 
       {/* Header Title */}
       <div className="flex flex-col items-center justify-center gap-1 sm:gap-1.5 text-center w-full max-w-full px-2 mt-0 mb-3 transition-all duration-300" id="ideal-header">

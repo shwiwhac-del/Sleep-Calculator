@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { Hourglass, ChevronDown, ArrowLeft } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
@@ -8,6 +7,7 @@ import TimePicker from "../components/TimePicker";
 import { AdPlaceholder } from "../components/AdPlaceholder";
 import RecommendedSleepGuides from "../components/RecommendedSleepGuides";
 import { Breadcrumbs } from "../components/Breadcrumbs";
+import { OpenGraphTags } from "../components/OpenGraphTags";
 
 export default function NinetyMinCalc() {
   const canonicalUrl = getCanonicalUrl("/sleep-cycle-calculator-90-minutes");
@@ -105,58 +105,22 @@ export default function NinetyMinCalc() {
 
   return (
     <main className="w-full max-w-4xl mx-auto px-4 pt-1 pb-8 sm:pb-12" id="ninety-calculator-root">
-      <Helmet>
-        <title>Sleep Cycle Calculator 90 Minutes | 1.5 Hour Increments</title>
-        <meta
-          name="description"
-          content="Plan your bedtime with our sleep cycle calculator 90 minutes formula. Calculate sleep cycles in 1.5 hour increments to wake up refreshed and avoid morning fatigue."
-        />
-        <link rel="canonical" href={canonicalUrl} />
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "WebApplication",
-            "name": "Sleep Cycle Calculator 90 Minutes",
-            "url": canonicalUrl,
-            "description": "Plan your bedtime with our sleep cycle calculator 90 minutes formula. Calculate sleep cycles in 1.5 hour increments to wake up refreshed and avoid morning fatigue.",
-            "applicationCategory": "HealthApplication",
-            "operatingSystem": "All",
-            "browserRequirements": "Requires JavaScript. Requires HTML5."
-          })}
-        </script>
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": [
-              {
-                "@type": "Question",
-                "name": "What exactly is sleep inertia, and how long does it typically last?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Sleep inertia is the groggy feeling of confusion and slowed coordination experienced upon waking up directly from N3 deep sleep. It can last from 30 minutes to over two hours, during which your cognitive performance is temporarily degraded. Waking up at the end of a 90-minute cycle avoids this state entirely."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "What should I do if my sleep latency is consistently over 30 minutes?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "A sleep latency of over 30 minutes often indicates high evening cortisol or excessive screen exposure. Establish a dedicated evening wind-down routine, limit caffeine in the afternoon, and try relaxing breathing techniques to help transition to sleep. Read more sleep tips on our home dashboard."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "Does everyone have an exact 90-minute sleep cycle?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "No, 90 minutes is the scientific average for adults. Sleep cycles typically slice from 80 to 110 minutes depending on genetics, age, and sleep debt. However, using the standard 90-minute formula provides a highly effective baseline for most users to optimize their sleep schedules."
-                }
-              }
-            ]
-          })}
-        </script>
-      </Helmet>
+      <OpenGraphTags
+        faqs={[
+          {
+            q: "What exactly is sleep inertia, and how long does it typically last?",
+            a: "Sleep inertia is the groggy feeling of confusion and slowed coordination experienced upon waking up directly from N3 deep sleep. It can last from 30 minutes to over two hours, during which your cognitive performance is temporarily degraded. Waking up at the end of a 90-minute cycle avoids this state entirely."
+          },
+          {
+            q: "What should I do if my sleep latency is consistently over 30 minutes?",
+            a: "A sleep latency of over 30 minutes often indicates high evening cortisol or excessive screen exposure. Establish a dedicated evening wind-down routine, limit caffeine in the afternoon, and try relaxing breathing techniques to help transition to sleep. Read more sleep tips on our home dashboard."
+          },
+          {
+            q: "Does everyone have an exact 90-minute sleep cycle?",
+            a: "No, 90 minutes is the scientific average for adults. Sleep cycles typically slice from 80 to 110 minutes depending on genetics, age, and sleep debt. However, using the standard 90-minute formula provides a highly effective baseline for most users to optimize their sleep schedules."
+          }
+        ]}
+      />
 
       {/* Header Title */}
       <div className="flex flex-col items-center justify-center gap-1 sm:gap-1.5 text-center w-full max-w-full px-2 mt-0 mb-3 transition-all duration-300" id="ninety-header">

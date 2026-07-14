@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { Brain, ChevronDown, ArrowLeft } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
@@ -8,6 +7,7 @@ import TimePicker from "../components/TimePicker";
 import { AdPlaceholder } from "../components/AdPlaceholder";
 import RecommendedSleepGuides from "../components/RecommendedSleepGuides";
 import { Breadcrumbs } from "../components/Breadcrumbs";
+import { OpenGraphTags } from "../components/OpenGraphTags";
 
 export default function StudentCalc() {
   const canonicalUrl = getCanonicalUrl("/student-sleep-calculator");
@@ -106,66 +106,26 @@ export default function StudentCalc() {
 
   return (
     <main className="w-full max-w-4xl mx-auto px-4 pt-1 pb-8 sm:pb-12" id="student-calculator-root">
-      <Helmet>
-        <title>Sleep Calculator for Students During Exams | Bedtime Planner</title>
-        <meta
-          name="description"
-          content="Plan your rest with the sleep calculator for students during exams. Optimize bedtime for college & high school routines to maximize grades & memory retention."
-        />
-        <link rel="canonical" href={canonicalUrl} />
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "WebApplication",
-            "name": "Sleep Calculator for Students During Exams",
-            "url": canonicalUrl,
-            "description": "Plan your rest with the sleep calculator for students during exams. Optimize bedtime for college & high school routines to maximize grades & memory retention.",
-            "applicationCategory": "HealthApplication",
-            "operatingSystem": "All",
-            "browserRequirements": "Requires JavaScript. Requires HTML5."
-          })}
-        </script>
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": [
-              {
-                "@type": "Question",
-                "name": "Can I stay up all night cramming and sleep after the exam instead?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "This is a highly detrimental approach to academic performance. Studies show that pulling an 'all-nighter' severely damages working memory, attention filters, and processing speed the next morning. It also prevents the brain from consolidating the newly reviewed material into long-term storage. Waking up from 5 cycles (7.5 hours) of structured, cycle-aligned sleep will always outperform a sleep-deprived cram session."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "How can I repay a massive sleep debt accrued over school weeks?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "You cannot recover 30 hours of accumulated sleep debt in a single weekend marathon, as oversleeping disrupts your circadian rhythm and leads to 'social jetlag'. Recovery is best achieved gradually by sleeping 1 to 1.5 hours extra on weekend nights, paired with consistent daily schedules during school weeks."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "How does caffeine consumption affect my sleep cycle calculations?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Caffeine is an adenosine receptor antagonist with a half-life of 5 to 7 hours. Even if you fall asleep fine after an afternoon tea, coffee, or energy drink, the presence of caffeine blocks deep, slow-wave N3 deep sleep. Avoid caffeine at least 6 to 8 hours before bedtime to protect your deep sleep stages."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "Is a 20-minute power nap helpful during long study blocks?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Yes. A 20-minute micro-nap provides quick alertness by clearing built-up adenosine in the brain. Keep it under 25 minutes to avoid entering N3 deep sleep, which prevents the groggy feeling of 'sleep inertia'."
-                }
-              }
-            ]
-          })}
-        </script>
-      </Helmet>
+      <OpenGraphTags
+        faqs={[
+          {
+            q: "Can I stay up all night cramming and sleep after the exam instead?",
+            a: "This is a highly detrimental approach to academic performance. Studies show that pulling an 'all-nighter' severely damages working memory, attention filters, and processing speed the next morning. It also prevents the brain from consolidating the newly reviewed material into long-term storage. Waking up from 5 cycles (7.5 hours) of structured, cycle-aligned sleep will always outperform a sleep-deprived cram session."
+          },
+          {
+            q: "How can I repay a massive sleep debt accrued over school weeks?",
+            a: "You cannot recover 30 hours of accumulated sleep debt in a single weekend marathon, as oversleeping disrupts your circadian rhythm and leads to 'social jetlag'. Recovery is best achieved gradually by sleeping 1 to 1.5 hours extra on weekend nights, paired with consistent daily schedules during school weeks."
+          },
+          {
+            q: "How does caffeine consumption affect my sleep cycle calculations?",
+            a: "Caffeine is an adenosine receptor antagonist with a half-life of 5 to 7 hours. Even if you fall asleep fine after an afternoon tea, coffee, or energy drink, the presence of caffeine blocks deep, slow-wave N3 deep sleep. Avoid caffeine at least 6 to 8 hours before bedtime to protect your deep sleep stages."
+          },
+          {
+            q: "Is a 20-minute power nap helpful during long study blocks?",
+            a: "Yes. A 20-minute micro-nap provides quick alertness by clearing built-up adenosine in the brain. Keep it under 25 minutes to avoid entering N3 deep sleep, which prevents the groggy feeling of 'sleep inertia'."
+          }
+        ]}
+      />
 
       {/* Header Title */}
       <div className="flex flex-col items-center justify-center gap-1 sm:gap-1.5 text-center w-full max-w-full px-2 mt-0 mb-3 transition-all duration-300" id="student-header-banner">

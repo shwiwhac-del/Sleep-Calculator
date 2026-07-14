@@ -1,12 +1,8 @@
 import { useState, FormEvent, ChangeEvent } from 'react';
-import { Helmet } from 'react-helmet-async';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ArrowLeft, Send, CheckCircle } from 'lucide-react';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from '../lib/firebase';
-import { handleFirestoreError, OperationType } from '../lib/firestore-error';
-import { MAIN_PAGES_META } from '../blogMetadata';
-import { getCanonicalUrl } from '../lib/seo';
 import { OpenGraphTags } from '../components/OpenGraphTags';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 
@@ -16,14 +12,10 @@ export default function Contact() {
   const [isSuccess, setIsSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
-  const location = useLocation();
-  const canonicalUrl = getCanonicalUrl(location.pathname);
 
   const handleBack = () => {
     navigate('/');
   };
-
-  const meta = MAIN_PAGES_META["/contact"];
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -83,17 +75,7 @@ export default function Contact() {
 
   return (
     <main className="w-full max-w-xl mx-auto px-2 sm:px-4">
-      <OpenGraphTags
-        title={meta.title}
-        description={meta.description}
-        url={canonicalUrl}
-      />
-      <Helmet>
-        <title>{meta.title}</title>
-        <meta name="description" content={meta.description} />
-        <meta name="keywords" content="contact sleep calculator, support, feedback, get in touch" />
-        <link rel="canonical" href={canonicalUrl} />
-      </Helmet>
+      <OpenGraphTags />
 
       <div className="mb-8 text-left">
         <Breadcrumbs />
