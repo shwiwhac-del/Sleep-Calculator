@@ -5,14 +5,12 @@ import { Heart, ChevronDown, ArrowLeft } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { getCanonicalUrl } from "../lib/seo";
 import TimePicker from "../components/TimePicker";
-import HomeSkeleton from "../components/HomeSkeleton";
 import { AdPlaceholder } from "../components/AdPlaceholder";
 import RecommendedSleepGuides from "../components/RecommendedSleepGuides";
 import { Breadcrumbs } from "../components/Breadcrumbs";
 
 export default function IdealBedtimeCalc() {
   const canonicalUrl = getCanonicalUrl("/ideal-bedtime-based-on-wake-up-time");
-  const loading = false;
 
   const AGE_GROUPS = [
     { id: "0-3m", label: "0-3 Months", minCycles: 9, maxCycles: 11 },
@@ -101,66 +99,6 @@ export default function IdealBedtimeCalc() {
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
-
-  if (loading) {
-    return (
-      <div className="w-full max-w-4xl mx-auto px-4 py-8 sm:py-12" id="ideal-calculator-root">
-        <Helmet>
-          <title>Ideal Bedtime Based on Wake Up Time | Sleep Calculator by Age</title>
-          <meta
-            name="description"
-            content="Determine your ideal bedtime based on wake up time with our sleep calculator. Optimized bed times for all age brackets, including adults, children, and seniors."
-          />
-          <link rel="canonical" href={canonicalUrl} />
-          <script type="application/ld+json">
-            {JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "WebApplication",
-              "name": "Ideal Bedtime Based on Wake Up Time Calculator",
-              "url": canonicalUrl,
-              "description": "Determine your ideal bedtime based on wake up time with our sleep calculator. Optimized bed times for all age brackets, including adults, children, and seniors.",
-              "applicationCategory": "HealthApplication",
-              "operatingSystem": "All",
-              "browserRequirements": "Requires JavaScript. Requires HTML5."
-            })}
-          </script>
-          <script type="application/ld+json">
-            {JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "FAQPage",
-              "mainEntity": [
-                {
-                  "@type": "Question",
-                  "name": "Why do seniors wake up so early in the morning?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Geriatric sleep patterns are influenced by age-associated flattening of the Suprachiasmatic Nucleus master clock and decreased natural melatonin secretion. Seniors experience earlier sleepiness in the evening and lighter, more fragmented sleep, leading to earlier waking hours."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "Should I adjust my sleep schedule when traveling across time zones?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "To minimize jet lag, adjust your bedtime and solar exposure schedules to match your destination's daytime lines as soon as you board the plane. Structured morning light exposure and evening darkness can help reset your circadian rhythm quickly."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "Can I make up for a week of lost sleep on the weekend?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Oversleeping on weekends cannot fully recover a chronic sleep debt, as it disrupts your circadian alignment and leads to 'social jetlag.' Recovery is best achieved by gradually sleeping 1 to 1.5 hours extra on weekends and maintaining a consistent daily sleep schedule during the week."
-                  }
-                }
-              ]
-            })}
-          </script>
-        </Helmet>
-        <HomeSkeleton />
-      </div>
-    );
-  }
 
   return (
     <main className="w-full max-w-4xl mx-auto px-4 pt-1 pb-8 sm:pb-12" id="ideal-calculator-root">

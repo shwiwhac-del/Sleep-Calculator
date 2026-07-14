@@ -5,14 +5,12 @@ import { Activity, ChevronDown, ArrowLeft } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { getCanonicalUrl } from "../lib/seo";
 import TimePicker from "../components/TimePicker";
-import HomeSkeleton from "../components/HomeSkeleton";
 import { AdPlaceholder } from "../components/AdPlaceholder";
 import RecommendedSleepGuides from "../components/RecommendedSleepGuides";
 import { Breadcrumbs } from "../components/Breadcrumbs";
 
 export default function WakeUpCalc() {
   const canonicalUrl = getCanonicalUrl("/wake-up-between-sleep-cycles");
-  const loading = false;
 
   const AGE_GROUPS = [
     { id: "0-3m", label: "0-3 Months", minCycles: 9, maxCycles: 11 },
@@ -114,66 +112,6 @@ export default function WakeUpCalc() {
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
-
-  if (loading) {
-    return (
-      <div className="w-full max-w-4xl mx-auto px-4 py-8 sm:py-12" id="wake-cycles-calculator-root">
-        <Helmet>
-          <title>Wake Up Between Sleep Cycles | What Time Should I Wake Up?</title>
-          <meta
-            name="description"
-            content="Learn how to wakeup between sleep cycles to feel awake. Calculate what time should i wake up to not feel tired, eliminate morning grogginess & sleep inertia."
-          />
-          <link rel="canonical" href={canonicalUrl} />
-          <script type="application/ld+json">
-            {JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "WebApplication",
-              "name": "Wake Up Between Sleep Cycles Calculator",
-              "url": canonicalUrl,
-              "description": "Learn how to wakeup between sleep cycles to feel awake. Calculate what time should i wake up to not feel tired, eliminate morning grogginess & sleep inertia.",
-              "applicationCategory": "HealthApplication",
-              "operatingSystem": "All",
-              "browserRequirements": "Requires JavaScript. Requires HTML5."
-            })}
-          </script>
-          <script type="application/ld+json">
-            {JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "FAQPage",
-              "mainEntity": [
-                {
-                  "@type": "Question",
-                  "name": "Why do progressive sunrise alarms help compared to loud beeping alarms?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Loud, abrasive alarms cause a sudden surge in heart rate and blood pressure, triggering a stress response. Progressive sunrise alarms emit a gradual glow that stimulates cortisol production and suppresses melatonin, supporting a natural and healthy waking process."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "What should I do if my sleep partners have different schedules?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Focus on managing what you can control. Use comfortable silent vibrating wearables for alarms, optimize your sleeping environment to prevent light-and-sound seepage, and try using dim reading lights to respect each other's schedules."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "Does hitting 'snooze' help when waking up groggy?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "No, hitting snooze is highly counterproductive. This brief 5 or 9-minute window triggers a new sleep cycle that is quickly interrupted, worsening sleep inertia and leaving you feeling more fatigued. Try placing your alarm across the room to encourage immediate physical movement on waking, allowing light to naturally stimulate you."
-                  }
-                }
-              ]
-            })}
-          </script>
-        </Helmet>
-        <HomeSkeleton />
-      </div>
-    );
-  }
 
   return (
     <main className="w-full max-w-4xl mx-auto px-4 pt-1 pb-8 sm:pb-12" id="wake-cycles-calculator-root">

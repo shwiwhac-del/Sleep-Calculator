@@ -4,14 +4,12 @@ import { Link } from "react-router-dom";
 import { Clock, EyeOff, ChevronDown, ArrowLeft } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { getCanonicalUrl } from "../lib/seo";
-import HomeSkeleton from "../components/HomeSkeleton";
 import { AdPlaceholder } from "../components/AdPlaceholder";
 import RecommendedSleepGuides from "../components/RecommendedSleepGuides";
 import { Breadcrumbs } from "../components/Breadcrumbs";
 
 export default function ShiftWorkCalc() {
   const canonicalUrl = getCanonicalUrl("/shift-work-sleep-calculator");
-  const loading = false;
 
   const AGE_GROUPS = [
     { id: "0-3m", label: "0-3 Months", minCycles: 9, maxCycles: 11 },
@@ -139,66 +137,6 @@ export default function ShiftWorkCalc() {
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
-
-  if (loading) {
-    return (
-      <div className="w-full max-w-4xl mx-auto px-4 py-8 sm:py-12" id="shift-calculator-root">
-        <Helmet>
-          <title>Sleep Calculator for Night Shift Workers | Split Sleep Schedule</title>
-          <meta
-            name="description"
-            content="Optimize your day-sleep windows with our sleep calculator for night shift workers. Learn split sleep routine calculations & anchor schedules to beat fatigue."
-          />
-          <link rel="canonical" href={canonicalUrl} />
-          <script type="application/ld+json">
-            {JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "WebApplication",
-              "name": "Sleep Calculator for Night Shift Workers",
-              "url": canonicalUrl,
-              "description": "Optimize your day-sleep windows with our sleep calculator for night shift workers. Learn split sleep routine calculations & anchor schedules to beat fatigue.",
-              "applicationCategory": "HealthApplication",
-              "operatingSystem": "All",
-              "browserRequirements": "Requires JavaScript. Requires HTML5."
-            })}
-          </script>
-          <script type="application/ld+json">
-            {JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "FAQPage",
-              "mainEntity": [
-                {
-                  "@type": "Question",
-                  "name": "What are the physiological dangers of long-term rotating shifts?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Regularly swapping shift schedules forces your internal master clock to constantly reset, causing chronic circadian disruption. This is linked to metabolic challenges, cardiorespiratory stress, and weakened immune function. For extensive information on managing shift fatigue, review official resource articles on the CDC website."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "Is melatonin supplementation safe for shift workers sleeping in the day?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Yes, under structured timing. Taking a micro-dose (0.3mg to 1mg of melatonin) approximately 30 minutes before your day block can help initiate sleep onset. Avoid high doses, as they can cause morning grogginess and push your internal circadian timing into a state of chronic confusion."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "How should I handle my transition back to normal weekends off?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "On your last morning shift of the week, take a short 90-minute sleep cycle instead of a full day block, waking up around noon. This allows you to accumulate sleep drive during the afternoon, making it easier to sleep at a normal nocturnal hour on your day off. You can also calculate your ideal bedtime structure utilizing our main home calculator, or look into the sleep parameters for kids via our Student Sleep Calculator."
-                  }
-                }
-              ]
-            })}
-          </script>
-        </Helmet>
-        <HomeSkeleton />
-      </div>
-    );
-  }
 
   return (
     <main className="w-full max-w-4xl mx-auto px-4 pt-1 pb-8 sm:pb-12" id="shift-calculator-root">

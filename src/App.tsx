@@ -1,4 +1,4 @@
-import { useState, useEffect, Suspense } from 'react';
+import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, Navigate, useParams, useLocation } from 'react-router-dom';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { Menu, X, ChevronDown, Sun, Moon } from 'lucide-react';
@@ -22,7 +22,6 @@ import IdealBedtimeCalc from './pages/IdealBedtimeCalc';
 
 import { OpenGraphTags } from './components/OpenGraphTags';
 import { getCanonicalUrl } from './lib/seo';
-import { ShimmerLoadingEffect } from './components/ShimmerLoadingEffect';
 
 
 // Home Guides
@@ -477,23 +476,10 @@ function RootSlugRedirect() {
   return <NotFound />;
 }
 
-function PageFallback() {
-  return <ShimmerLoadingEffect />;
-}
-
 function AppContent() {
   usePerformanceMonitoring();
   const location = useLocation();
   const canonicalUrl = getCanonicalUrl(location.pathname);
-  const [pageLoading, setPageLoading] = useState(true);
-
-  useEffect(() => {
-    setPageLoading(true);
-    const timer = setTimeout(() => {
-      setPageLoading(false);
-    }, 150);
-    return () => clearTimeout(timer);
-  }, [location.pathname]);
   
   const [isDarkMode, setIsDarkMode] = useState(() => {
     if (typeof window !== "undefined") {
@@ -528,40 +514,34 @@ function AppContent() {
       <OpenGraphTags />
       <Header isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
       <main className="relative z-10 flex-grow flex flex-col items-center justify-start w-full pt-5 sm:pt-8 md:pt-10 pb-4 sm:pb-8">
-        {pageLoading ? (
-          <ShimmerLoadingEffect />
-        ) : (
-          <Suspense fallback={<PageFallback />}>
-            <Routes>
-              {/* Core Pages */}
-              <Route path="/" element={<Home />} />
-              <Route path="/blog" element={<Blog />} />
-              <Route path="/blog/:slug" element={<Blog />} />
+        <Routes>
+          {/* Core Pages */}
+          <Route path="/" element={<Home />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<Blog />} />
 
-              {/* The 5 Dedicated Interactive Calculator Landing Pages */}
-              <Route path="/student-sleep-calculator" element={<StudentCalc />} />
-              <Route path="/shift-work-sleep-calculator" element={<ShiftWorkCalc />} />
-              <Route path="/sleep-cycle-calculator-90-minutes" element={<NinetyMinCalc />} />
-              <Route path="/wake-up-between-sleep-cycles" element={<WakeUpCalc />} />
-              <Route path="/ideal-bedtime-based-on-wake-up-time" element={<IdealBedtimeCalc />} />
+          {/* The 5 Dedicated Interactive Calculator Landing Pages */}
+          <Route path="/student-sleep-calculator" element={<StudentCalc />} />
+          <Route path="/shift-work-sleep-calculator" element={<ShiftWorkCalc />} />
+          <Route path="/sleep-cycle-calculator-90-minutes" element={<NinetyMinCalc />} />
+          <Route path="/wake-up-between-sleep-cycles" element={<WakeUpCalc />} />
+          <Route path="/ideal-bedtime-based-on-wake-up-time" element={<IdealBedtimeCalc />} />
 
-              {/* Utility Pages */}
-              <Route path="/about" element={<About />} />
-              <Route path="/terms" element={<Terms />} />
-              <Route path="/privacy" element={<Privacy />} />
-              <Route path="/contact" element={<Contact />} />
+          {/* Utility Pages */}
+          <Route path="/about" element={<About />} />
+          <Route path="/terms" element={<Terms />} />
+          <Route path="/privacy" element={<Privacy />} />
+          <Route path="/contact" element={<Contact />} />
 
-              {/* Legacy page/blog Prefixes redirected back to clean paths */}
-              <Route path="/page/blog/:slug" element={<Navigate replace to="/blog/:slug" />} />
+          {/* Legacy page/blog Prefixes redirected back to clean paths */}
+          <Route path="/page/blog/:slug" element={<Navigate replace to="/blog/:slug" />} />
 
-              {/* Dynamic redirect for root-level blog slugs to /blog/:slug */}
-              <Route path="/:slug" element={<RootSlugRedirect />} />
+          {/* Dynamic redirect for root-level blog slugs to /blog/:slug */}
+          <Route path="/:slug" element={<RootSlugRedirect />} />
 
-              {/* Catch-all 404 route */}
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </Suspense>
-        )}
+          {/* Catch-all 404 route */}
+          <Route path="*" element={<NotFound />} />
+        </Routes>
       </main>
       <Footer />
     </div>

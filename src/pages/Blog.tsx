@@ -8,7 +8,6 @@ import { BLOG_POSTS_META, getFocusKeywordsForPost } from '../blogMetadata';
 import { getCanonicalUrl } from '../lib/seo';
 import { OpenGraphTags } from '../components/OpenGraphTags';
 import { Breadcrumbs } from '../components/Breadcrumbs';
-import BlogSkeleton from '../components/BlogSkeleton';
 import { AdPlaceholder } from '../components/AdPlaceholder';
 import BlogPostContent from '../data/blogContentGenerator';
 
@@ -1114,8 +1113,6 @@ export default function Blog() {
   const { slug } = useParams();
   const currentPath = location.pathname;
 
-  const [loading, setLoading] = useState(false);
-
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   const isBlog1 = currentPath === '/sleep-cycles-explained' || slug === 'sleep-cycles-explained';
@@ -1842,33 +1839,6 @@ export default function Blog() {
       })
     };
     jsonLdScripts.push({ __html: JSON.stringify(blogListSchema) });
-  }
-
-  if (loading) {
-    return (
-      <div className={`w-full mx-auto px-2 sm:px-4 relative z-10 ${isAnyBlog ? 'max-w-3xl py-4 sm:py-6' : 'max-w-6xl py-8'}`}>
-        <OpenGraphTags
-          title={title}
-          description={description}
-          keywords={keywords}
-          url={canonicalUrl}
-          type="article"
-          faqs={currentFaqs?.map(faq => ({ q: faq.q, a: faq.a }))}
-          extraSchemas={jsonLdScripts
-            .map(s => {
-              try { return JSON.parse(s.__html); } catch (e) { return null; }
-            })
-            .filter(s => s && s["@type"] !== "Article" && s["@type"] !== "BreadcrumbList" && s["@type"] !== "FAQPage" && s["@type"] !== "Blog")}
-        />
-        <BlogSkeleton 
-          isPost={isAnyBlog} 
-          postTitle={currentPost?.title}
-          postCategory={currentPost?.category}
-          postDate={currentPost?.date}
-          postReadTime={currentPost?.readTime}
-        />
-      </div>
-    );
   }
 
   return (

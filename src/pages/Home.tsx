@@ -7,7 +7,6 @@ import { getCanonicalUrl } from "../lib/seo";
 import { OpenGraphTags } from "../components/OpenGraphTags";
 import TimePicker from "../components/TimePicker";
 import SleepCycleChart from "../components/SleepCycleChart";
-import HomeSkeleton from "../components/HomeSkeleton";
 import { AdPlaceholder } from "../components/AdPlaceholder";
 import { SleepScienceGuide } from "../components/SleepScienceGuide";
 
@@ -36,7 +35,6 @@ export interface CyclesReport {
 export default function Home() {
   const location = useLocation();
   const canonicalUrl = getCanonicalUrl(location.pathname);
-  const loading = false;
 
   const AGE_GROUPS = [
     { id: "0-3m", label: "0-3 Months", minCycles: 9, maxCycles: 11 },
@@ -489,27 +487,6 @@ export default function Home() {
     if (!config) return cycle === 6 || cycle === 5;
     return cycle >= config.minCycles && cycle <= config.maxCycles;
   };
-
-  if (loading) {
-    return (
-      <div className="w-full flex flex-col items-center">
-        <OpenGraphTags
-          title="Sleep Calculator – Calculate Bedtime & Wake Up Time by Sleep Cycles"
-          description="Calculate your perfect bedtime and wake-up times using natural 90-minute sleep cycles. Wake up refreshed and energized with our free, science-based sleep calculator."
-          url={canonicalUrl}
-        />
-        <Helmet>
-          <title>Sleep Calculator – Calculate Bedtime & Wake Up Times</title>
-          <meta
-            name="description"
-            content="Calculate your perfect bedtime and wake-up times using natural 90-minute sleep cycles. Wake up refreshed and energized with our free, science-based sleep calculator. No signup required."
-          />
-          <link rel="canonical" href={canonicalUrl} />
-        </Helmet>
-        <HomeSkeleton />
-      </div>
-    );
-  }
 
   return (
     <main className="w-full flex flex-col items-center">
