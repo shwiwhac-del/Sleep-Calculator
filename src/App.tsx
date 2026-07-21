@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, Navigate, useParams, useLocation } from 'react-router-dom';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
-import { Menu, X, ChevronDown, Sun, Moon } from 'lucide-react';
+import { Menu, X, ChevronDown, Sun, Moon, Globe } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import ScrollToTop from './components/ScrollToTop';
 import { StarryBackground } from './components/StarryBackground';
@@ -22,12 +22,79 @@ import IdealBedtimeCalc from './pages/IdealBedtimeCalc';
 
 import { OpenGraphTags } from './components/OpenGraphTags';
 import { getCanonicalUrl } from './lib/seo';
+import { LanguageProvider, useLanguage } from './hooks/useLanguage';
+import { isValidLanguage } from './locales';
+
 
 
 // Home Guides
 
 
+function LanguageSwitcher() {
+  const { currentLang, changeLanguage, languages } = useLanguage();
+  const [isOpen, setIsOpen] = useState(false);
+  
+  // Track dropdown open status securely
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      const target = event.target as HTMLElement;
+      if (isOpen && !target.closest('.lang-switcher-container')) {
+        setIsOpen(false);
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [isOpen]);
+
+  return (
+    <div className="relative lang-switcher-container">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="flex items-center justify-center p-2 rounded-xl text-[#4B5563] dark:text-slate-300 hover:text-[#7C3AED] hover:bg-[#7C3AED]/5 transition-all duration-200 focus-visible:outline-none cursor-pointer"
+        aria-label="Change language"
+        title="Change language"
+      >
+        <Globe className="w-5 h-5" />
+      </button>
+
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: 10, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 10, scale: 0.95 }}
+            transition={{ duration: 0.12 }}
+            className="absolute right-0 mt-2 w-48 rounded-2xl bg-white dark:bg-[#151C2C] border border-[#E5E7EB] dark:border-[#1E293B] shadow-lg ring-1 ring-black/5 py-1.5 z-50 overflow-hidden"
+          >
+            <div className="max-h-64 overflow-y-auto scrollbar-thin">
+              {languages.map((lang) => (
+                <button
+                  key={lang.code}
+                  onClick={() => {
+                    changeLanguage(lang.code as any);
+                    setIsOpen(false);
+                  }}
+                  className={`w-full flex items-center gap-2.5 px-4 py-2.5 text-left text-xs font-bold transition-colors cursor-pointer ${
+                    currentLang === lang.code
+                      ? 'text-[#7C3AED] bg-[#7C3AED]/5 dark:text-violet-400 dark:bg-violet-500/10'
+                      : 'text-[#374151] dark:text-slate-300 hover:text-[#7C3AED] dark:hover:text-violet-400 hover:bg-slate-50 dark:hover:bg-slate-800/40'
+                  }`}
+                >
+                  <span className="text-base">{lang.flag}</span>
+                  <span>{lang.name}</span>
+                </button>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
+
 function Footer() {
+  const { t, getLocalizedPath } = useLanguage();
+
   return (
     <footer className="w-full mt-auto border-t border-[#E5E7EB] dark:border-[#1E293B] bg-[#FAF6F0]/80 dark:bg-[#0F172A]/80 backdrop-blur-md py-12 z-20 relative text-[#4B5563] dark:text-slate-300 font-sans">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -35,32 +102,32 @@ function Footer() {
           {/* Column 1: Sleep Tools & Calculators */}
           <div className="flex flex-col gap-y-4">
             <h3 className="text-sm font-black uppercase tracking-widest text-[#7C3AED] dark:text-violet-400 border-b border-[#E1D8CC]/80 dark:border-slate-800 pb-2.5">
-              Sleep Calculators
+              {t('nav.calculators')}
             </h3>
             <ul className="flex flex-col gap-y-3 text-[15px] sm:text-base">
               <li>
-                <Link to="/student-sleep-calculator" className="underline decoration-black dark:decoration-slate-500 hover:text-[#7C3AED] dark:hover:text-violet-400 hover:translate-x-1.5 transition-all duration-200 block font-bold text-[#111827] dark:text-slate-200 underline-offset-4">
-                  Student Sleep Calculator
+                <Link to={getLocalizedPath('/student-sleep-calculator')} className="underline decoration-black dark:decoration-slate-500 hover:text-[#7C3AED] dark:hover:text-violet-400 hover:translate-x-1.5 transition-all duration-200 block font-bold text-[#111827] dark:text-slate-200 underline-offset-4">
+                  {t('calculators.student.title')}
                 </Link>
               </li>
               <li>
-                <Link to="/shift-work-sleep-calculator" className="underline decoration-black dark:decoration-slate-500 hover:text-[#7C3AED] dark:hover:text-violet-400 hover:translate-x-1.5 transition-all duration-200 block font-bold text-[#111827] dark:text-slate-200 underline-offset-4">
-                  Shift Work Sleep Calculator
+                <Link to={getLocalizedPath('/shift-work-sleep-calculator')} className="underline decoration-black dark:decoration-slate-500 hover:text-[#7C3AED] dark:hover:text-violet-400 hover:translate-x-1.5 transition-all duration-200 block font-bold text-[#111827] dark:text-slate-200 underline-offset-4">
+                  {t('calculators.shiftwork.title')}
                 </Link>
               </li>
               <li>
-                <Link to="/sleep-cycle-calculator-90-minutes" className="underline decoration-black dark:decoration-slate-500 hover:text-[#7C3AED] dark:hover:text-violet-400 hover:translate-x-1.5 transition-all duration-200 block font-bold text-[#111827] dark:text-slate-200 underline-offset-4">
-                  90-Min Sleep Cycle Calculator
+                <Link to={getLocalizedPath('/sleep-cycle-calculator-90-minutes')} className="underline decoration-black dark:decoration-slate-500 hover:text-[#7C3AED] dark:hover:text-violet-400 hover:translate-x-1.5 transition-all duration-200 block font-bold text-[#111827] dark:text-slate-200 underline-offset-4">
+                  {t('calculators.ninetyMin.title')}
                 </Link>
               </li>
               <li>
-                <Link to="/wake-up-between-sleep-cycles" className="underline decoration-black dark:decoration-slate-500 hover:text-[#7C3AED] dark:hover:text-violet-400 hover:translate-x-1.5 transition-all duration-200 block font-bold text-[#111827] dark:text-slate-200 underline-offset-4">
-                  Wake Up Cycle Calculator
+                <Link to={getLocalizedPath('/wake-up-between-sleep-cycles')} className="underline decoration-black dark:decoration-slate-500 hover:text-[#7C3AED] dark:hover:text-violet-400 hover:translate-x-1.5 transition-all duration-200 block font-bold text-[#111827] dark:text-slate-200 underline-offset-4">
+                  {t('calculators.wakeUp.title')}
                 </Link>
               </li>
               <li>
-                <Link to="/ideal-bedtime-based-on-wake-up-time" className="underline decoration-black dark:decoration-slate-500 hover:text-[#7C3AED] dark:hover:text-violet-400 hover:translate-x-1.5 transition-all duration-200 block font-bold text-[#111827] dark:text-slate-200 underline-offset-4">
-                  Ideal Bedtime Calculator
+                <Link to={getLocalizedPath('/ideal-bedtime-based-on-wake-up-time')} className="underline decoration-black dark:decoration-slate-500 hover:text-[#7C3AED] dark:hover:text-violet-400 hover:translate-x-1.5 transition-all duration-200 block font-bold text-[#111827] dark:text-slate-200 underline-offset-4">
+                  {t('calculators.idealBedtime.title')}
                 </Link>
               </li>
             </ul>
@@ -69,31 +136,31 @@ function Footer() {
           {/* Column 2: Popular Sleep Guides */}
           <div className="flex flex-col gap-y-4">
             <h3 className="text-sm font-black uppercase tracking-widest text-[#7C3AED] dark:text-violet-400 border-b border-[#E1D8CC]/80 dark:border-slate-800 pb-2.5">
-              Sleep Guides & Science
+              {t('blog.blogIndexTitle')}
             </h3>
             <ul className="flex flex-col gap-y-3 text-[15px] sm:text-base">
               <li>
-                <Link to="/blog/sleep-cycles-explained" className="underline decoration-black dark:decoration-slate-500 hover:text-[#7C3AED] dark:hover:text-violet-400 hover:translate-x-1.5 transition-all duration-200 block font-bold text-[#111827] dark:text-slate-200 underline-offset-4">
+                <Link to={getLocalizedPath('/blog/sleep-cycles-explained')} className="underline decoration-black dark:decoration-slate-500 hover:text-[#7C3AED] dark:hover:text-violet-400 hover:translate-x-1.5 transition-all duration-200 block font-bold text-[#111827] dark:text-slate-200 underline-offset-4">
                   Sleep Cycles Explained
                 </Link>
               </li>
               <li>
-                <Link to="/blog/what-is-rem-sleep" className="underline decoration-black dark:decoration-slate-500 hover:text-[#7C3AED] dark:hover:text-violet-400 hover:translate-x-1.5 transition-all duration-200 block font-bold text-[#111827] dark:text-slate-200 underline-offset-4">
+                <Link to={getLocalizedPath('/blog/what-is-rem-sleep')} className="underline decoration-black dark:decoration-slate-500 hover:text-[#7C3AED] dark:hover:text-violet-400 hover:translate-x-1.5 transition-all duration-200 block font-bold text-[#111827] dark:text-slate-200 underline-offset-4">
                   What is REM Sleep?
                 </Link>
               </li>
               <li>
-                <Link to="/blog/how-much-sleep-do-you-need" className="underline decoration-black dark:decoration-slate-500 hover:text-[#7C3AED] dark:hover:text-violet-400 hover:translate-x-1.5 transition-all duration-200 block font-bold text-[#111827] dark:text-slate-200 underline-offset-4">
+                <Link to={getLocalizedPath('/blog/how-much-sleep-do-you-need')} className="underline decoration-black dark:decoration-slate-500 hover:text-[#7C3AED] dark:hover:text-violet-400 hover:translate-x-1.5 transition-all duration-200 block font-bold text-[#111827] dark:text-slate-200 underline-offset-4">
                   How Much Sleep Do I Need?
                 </Link>
               </li>
               <li>
-                <Link to="/blog/best-time-to-sleep-and-wake-up" className="underline decoration-black dark:decoration-slate-500 hover:text-[#7C3AED] dark:hover:text-violet-400 hover:translate-x-1.5 transition-all duration-200 block font-bold text-[#111827] dark:text-slate-200 underline-offset-4">
+                <Link to={getLocalizedPath('/blog/best-time-to-sleep-and-wake-up')} className="underline decoration-black dark:decoration-slate-500 hover:text-[#7C3AED] dark:hover:text-violet-400 hover:translate-x-1.5 transition-all duration-200 block font-bold text-[#111827] dark:text-slate-200 underline-offset-4">
                   Best Sleeping & Wake Times
                 </Link>
               </li>
               <li>
-                <Link to="/blog/sleep-cycle-calculator-guide" className="underline decoration-black dark:decoration-slate-500 hover:text-[#7C3AED] dark:hover:text-violet-400 hover:translate-x-1.5 transition-all duration-200 block font-bold text-[#111827] dark:text-slate-200 underline-offset-4">
+                <Link to={getLocalizedPath('/blog/sleep-cycle-calculator-guide')} className="underline decoration-black dark:decoration-slate-500 hover:text-[#7C3AED] dark:hover:text-violet-400 hover:translate-x-1.5 transition-all duration-200 block font-bold text-[#111827] dark:text-slate-200 underline-offset-4">
                   Sleep Calculator User Guide
                 </Link>
               </li>
@@ -104,15 +171,15 @@ function Footer() {
         {/* Legal Pages with larger text & copyright centered at the very bottom */}
         <div className="pt-10 flex flex-col items-center justify-center gap-6">
           <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-[15px] sm:text-base font-black text-[#374151] dark:text-slate-200">
-            <Link to="/about" className="hover:text-[#7C3AED] dark:hover:text-violet-400 hover:underline transition-colors">About</Link>
-            <Link to="/contact" className="hover:text-[#7C3AED] dark:hover:text-violet-400 hover:underline transition-colors">Contact</Link>
-            <Link to="/privacy" className="hover:text-[#7C3AED] dark:hover:text-violet-400 hover:underline transition-colors">Privacy Policy</Link>
-            <Link to="/terms" className="hover:text-[#7C3AED] dark:hover:text-violet-400 hover:underline transition-colors">Terms & Conditions</Link>
-            <Link to="/blog" className="hover:text-[#7C3AED] dark:hover:text-violet-400 hover:underline transition-colors">Blog</Link>
+            <Link to={getLocalizedPath('/about')} className="hover:text-[#7C3AED] dark:hover:text-violet-400 hover:underline transition-colors">{t('nav.about')}</Link>
+            <Link to={getLocalizedPath('/contact')} className="hover:text-[#7C3AED] dark:hover:text-violet-400 hover:underline transition-colors">{t('nav.contact')}</Link>
+            <Link to={getLocalizedPath('/privacy')} className="hover:text-[#7C3AED] dark:hover:text-violet-400 hover:underline transition-colors">{t('nav.privacy')}</Link>
+            <Link to={getLocalizedPath('/terms')} className="hover:text-[#7C3AED] dark:hover:text-violet-400 hover:underline transition-colors">{t('nav.terms')}</Link>
+            <Link to={getLocalizedPath('/blog')} className="hover:text-[#7C3AED] dark:hover:text-violet-400 hover:underline transition-colors">{t('nav.blog')}</Link>
           </div>
           
           <span className="text-xs sm:text-sm text-[#6B7280] dark:text-slate-400 font-semibold tracking-wide text-center">
-            &copy; {new Date().getFullYear()} Sleep Calculator. All rights reserved.
+            &copy; {new Date().getFullYear()} {t('common.allRightsReserved')}
           </span>
         </div>
       </div>
@@ -137,6 +204,7 @@ function Header({ isDarkMode, toggleDarkMode }: HeaderProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const location = useLocation();
+  const { t, getLocalizedPath } = useLanguage();
 
   // Close menus when route changes
   useEffect(() => {
@@ -146,24 +214,33 @@ function Header({ isDarkMode, toggleDarkMode }: HeaderProps) {
 
   const isActive = (path: string) => {
     if (path === '/') {
-      return location.pathname === '/';
+      return location.pathname === '/' || location.pathname === '/es' || location.pathname === '/pt' || location.pathname === '/fr' || location.pathname === '/de' || location.pathname === '/it' || location.pathname === '/nl' || location.pathname === '/tr' || location.pathname === '/id' || location.pathname === '/vi' || location.pathname === '/pl' || location.pathname.match(/^\/[a-z]{2}$/) !== null;
     }
-    return location.pathname.startsWith(path);
+    return location.pathname.includes(path);
+  };
+
+  const getCalculatorLocalizedName = (path: string, fallback: string) => {
+    if (path === '/sleep-cycle-calculator-90-minutes') return t('calculators.ninetyMin.title');
+    if (path === '/wake-up-between-sleep-cycles') return t('calculators.wakeUp.title');
+    if (path === '/ideal-bedtime-based-on-wake-up-time') return t('calculators.idealBedtime.title');
+    if (path === '/student-sleep-calculator') return t('calculators.student.title');
+    if (path === '/shift-work-sleep-calculator') return t('calculators.shiftwork.title');
+    return fallback;
   };
 
   const isCalcActive = () => {
-    return CALCULATORS.some(calc => location.pathname === calc.path);
+    return CALCULATORS.some(calc => location.pathname.includes(calc.path));
   };
 
   return (
-    <header className="w-full bg-[#FAF6F0]/90 backdrop-blur-md border-b border-[#E5E7EB]/50 sticky top-0 z-50 transition-all duration-300">
+    <header className="w-full bg-[#FAF6F0]/90 dark:bg-[#0B0F19]/90 backdrop-blur-md border-b border-[#E5E7EB]/50 dark:border-[#1E293B]/50 sticky top-0 z-50 transition-all duration-300">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 sm:h-20">
           
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center">
             <Link 
-              to="/" 
+              to={getLocalizedPath('/')} 
               onContextMenu={(e) => e.preventDefault()} 
               className="font-display text-2xl sm:text-3xl font-black tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-[#7C3AED] to-[#D4AF37] hover:scale-[1.02] active:scale-[0.98] transition-transform duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7C3AED]/40 rounded-xl leading-tight"
             >
@@ -174,14 +251,14 @@ function Header({ isDarkMode, toggleDarkMode }: HeaderProps) {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-1 lg:space-x-2">
             <Link 
-              to="/" 
+              to={getLocalizedPath('/')} 
               className={`px-3 py-2 rounded-xl text-sm font-bold tracking-wide transition-colors duration-200 ${
                 isActive('/') 
                   ? 'text-[#7C3AED] bg-[#7C3AED]/5' 
-                  : 'text-[#4B5563] hover:text-[#7C3AED] hover:bg-[#7C3AED]/5'
+                  : 'text-[#4B5563] dark:text-slate-300 hover:text-[#7C3AED] hover:bg-[#7C3AED]/5'
               }`}
             >
-              Home
+              {t('nav.home')}
             </Link>
 
             {/* Calculators Dropdown Container */}
@@ -192,13 +269,13 @@ function Header({ isDarkMode, toggleDarkMode }: HeaderProps) {
             >
               <button 
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                className={`flex items-center gap-1 px-3 py-2 rounded-xl text-sm font-bold tracking-wide transition-colors duration-200 focus-visible:outline-none ${
+                className={`flex items-center gap-1 px-3 py-2 rounded-xl text-sm font-bold tracking-wide transition-colors duration-200 focus-visible:outline-none cursor-pointer ${
                   isCalcActive() 
                     ? 'text-[#7C3AED] bg-[#7C3AED]/5' 
-                    : 'text-[#4B5563] hover:text-[#7C3AED] hover:bg-[#7C3AED]/5'
+                    : 'text-[#4B5563] dark:text-slate-300 hover:text-[#7C3AED] hover:bg-[#7C3AED]/5'
                 }`}
               >
-                Calculators
+                {t('nav.calculators')}
                 <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isDropdownOpen ? 'rotate-180' : ''}`} />
               </button>
 
@@ -209,19 +286,19 @@ function Header({ isDarkMode, toggleDarkMode }: HeaderProps) {
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 10, scale: 0.95 }}
                     transition={{ duration: 0.15 }}
-                    className="absolute right-0 mt-1 w-64 rounded-xl bg-white shadow-lg ring-1 ring-black/5 py-1 z-50 border border-[#E5E7EB]"
+                    className="absolute right-0 mt-1 w-72 rounded-2xl bg-white dark:bg-[#151C2C] shadow-lg ring-1 ring-black/5 py-1.5 z-50 border border-[#E5E7EB] dark:border-[#1E293B]"
                   >
                     {CALCULATORS.map((calc) => (
                       <Link
                         key={calc.path}
-                        to={calc.path}
+                        to={getLocalizedPath(calc.path)}
                         className={`block px-4 py-2.5 text-xs font-bold transition-colors duration-150 ${
-                          location.pathname === calc.path
-                            ? 'text-[#7C3AED] bg-[#7C3AED]/5'
-                            : 'text-[#374151] hover:text-[#7C3AED] hover:bg-[#7C3AED]/5'
+                          location.pathname.includes(calc.path)
+                            ? 'text-[#7C3AED] bg-[#7C3AED]/5 dark:text-violet-400 dark:bg-violet-500/10'
+                            : 'text-[#374151] dark:text-slate-300 hover:text-[#7C3AED] hover:bg-[#7C3AED]/5'
                         }`}
                       >
-                        {calc.name}
+                        {getCalculatorLocalizedName(calc.path, calc.name)}
                       </Link>
                     ))}
                   </motion.div>
@@ -230,42 +307,45 @@ function Header({ isDarkMode, toggleDarkMode }: HeaderProps) {
             </div>
 
             <Link 
-              to="/blog" 
+              to={getLocalizedPath('/blog')} 
               className={`px-3 py-2 rounded-xl text-sm font-bold tracking-wide transition-colors duration-200 ${
                 isActive('/blog') 
                   ? 'text-[#7C3AED] bg-[#7C3AED]/5' 
-                  : 'text-[#4B5563] hover:text-[#7C3AED] hover:bg-[#7C3AED]/5'
+                  : 'text-[#4B5563] dark:text-slate-300 hover:text-[#7C3AED] hover:bg-[#7C3AED]/5'
               }`}
             >
-              Blog
+              {t('nav.blog')}
             </Link>
 
             <Link 
-              to="/about" 
+              to={getLocalizedPath('/about')} 
               className={`px-3 py-2 rounded-xl text-sm font-bold tracking-wide transition-colors duration-200 ${
                 isActive('/about') 
                   ? 'text-[#7C3AED] bg-[#7C3AED]/5' 
-                  : 'text-[#4B5563] hover:text-[#7C3AED] hover:bg-[#7C3AED]/5'
+                  : 'text-[#4B5563] dark:text-slate-300 hover:text-[#7C3AED] hover:bg-[#7C3AED]/5'
               }`}
             >
-              About
+              {t('nav.about')}
             </Link>
 
             <Link 
-              to="/contact" 
+              to={getLocalizedPath('/contact')} 
               className={`px-3 py-2 rounded-xl text-sm font-bold tracking-wide transition-colors duration-200 ${
                 isActive('/contact') 
                   ? 'text-[#7C3AED] bg-[#7C3AED]/5' 
-                  : 'text-[#4B5563] hover:text-[#7C3AED] hover:bg-[#7C3AED]/5'
+                  : 'text-[#4B5563] dark:text-slate-300 hover:text-[#7C3AED] hover:bg-[#7C3AED]/5'
               }`}
             >
-              Contact
+              {t('nav.contact')}
             </Link>
+
+            {/* Desktop Language Selector */}
+            <LanguageSwitcher />
 
             {/* Desktop Theme Toggle */}
             <button
               onClick={toggleDarkMode}
-              className="p-2 rounded-xl text-[#4B5563] hover:text-[#7C3AED] hover:bg-[#7C3AED]/5 transition-all duration-200 ml-1 flex items-center justify-center cursor-pointer"
+              className="p-2 rounded-xl text-[#4B5563] dark:text-slate-300 hover:text-[#7C3AED] hover:bg-[#7C3AED]/5 transition-all duration-200 ml-1 flex items-center justify-center cursor-pointer"
               aria-label="Toggle theme"
               title={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
             >
@@ -279,10 +359,13 @@ function Header({ isDarkMode, toggleDarkMode }: HeaderProps) {
 
           {/* Mobile Actions Container */}
           <div className="flex md:hidden items-center space-x-1">
+            {/* Mobile Language Selector */}
+            <LanguageSwitcher />
+
             {/* Mobile Theme Toggle */}
             <button
               onClick={toggleDarkMode}
-              className="p-2 rounded-xl text-[#4B5563] hover:text-[#7C3AED] hover:bg-[#7C3AED]/5 transition-all duration-200 flex items-center justify-center cursor-pointer"
+              className="p-2 rounded-xl text-[#4B5563] dark:text-slate-300 hover:text-[#7C3AED] hover:bg-[#7C3AED]/5 transition-all duration-200 flex items-center justify-center cursor-pointer"
               aria-label="Toggle theme"
             >
               {isDarkMode ? (
@@ -296,7 +379,7 @@ function Header({ isDarkMode, toggleDarkMode }: HeaderProps) {
             <button
               onClick={() => setIsOpen(!isOpen)}
               type="button"
-              className="inline-flex items-center justify-center p-2 rounded-xl text-[#4B5563] hover:text-[#7C3AED] hover:bg-[#7C3AED]/5 focus:outline-none focus:ring-2 focus:ring-[#7C3AED]/30 transition-all duration-200"
+              className="inline-flex items-center justify-center p-2 rounded-xl text-[#4B5563] dark:text-slate-300 hover:text-[#7C3AED] hover:bg-[#7C3AED]/5 focus:outline-none focus:ring-2 focus:ring-[#7C3AED]/30 transition-all duration-200"
               aria-controls="mobile-menu"
               aria-expanded={isOpen}
             >
@@ -320,73 +403,73 @@ function Header({ isDarkMode, toggleDarkMode }: HeaderProps) {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.2, ease: "easeInOut" }}
-            className="md:hidden overflow-hidden bg-[#FAF6F0] border-t border-[#E5E7EB]/50"
+            className="md:hidden overflow-hidden bg-[#FAF6F0] dark:bg-[#0F172A] border-t border-[#E5E7EB]/50 dark:border-[#1E293B]/50"
           >
             <div className="px-3 pt-2 pb-4 space-y-1 sm:px-4 flex flex-col">
               <Link
-                to="/"
+                to={getLocalizedPath('/')}
                 className={`px-4 py-2.5 rounded-xl text-sm font-bold tracking-wide transition-colors ${
                   isActive('/') 
                     ? 'text-[#7C3AED] bg-[#7C3AED]/5' 
-                    : 'text-[#4B5563]'
+                    : 'text-[#4B5563] dark:text-slate-300'
                 }`}
               >
-                Home
+                {t('nav.home')}
               </Link>
               
               {/* Mobile Calculators Section */}
               <div className="py-1">
-                <div className="px-4 py-1.5 text-xs font-black uppercase tracking-widest text-[#7C3AED]">
-                  Sleep Calculators
+                <div className="px-4 py-1.5 text-xs font-black uppercase tracking-widest text-[#7C3AED] dark:text-violet-400">
+                  {t('nav.calculators')}
                 </div>
-                <div className="mt-1 ml-2 pl-2 border-l border-[#E5E7EB] space-y-0.5">
+                <div className="mt-1 ml-2 pl-2 border-l border-[#E5E7EB] dark:border-[#1E293B] space-y-0.5">
                   {CALCULATORS.map((calc) => (
                     <Link
                       key={calc.path}
-                      to={calc.path}
+                      to={getLocalizedPath(calc.path)}
                       className={`block px-3 py-2 rounded-xl text-xs font-bold transition-colors ${
-                        location.pathname === calc.path
-                          ? 'text-[#7C3AED] bg-[#7C3AED]/5'
-                          : 'text-[#4B5563]'
+                        location.pathname.includes(calc.path)
+                          ? 'text-[#7C3AED] bg-[#7C3AED]/5 dark:text-violet-400'
+                          : 'text-[#4B5563] dark:text-slate-300'
                       }`}
                     >
-                      {calc.name}
+                      {getCalculatorLocalizedName(calc.path, calc.name)}
                     </Link>
                   ))}
                 </div>
               </div>
 
               <Link
-                to="/blog"
+                to={getLocalizedPath('/blog')}
                 className={`px-4 py-2.5 rounded-xl text-sm font-bold tracking-wide transition-colors ${
                   isActive('/blog') 
                     ? 'text-[#7C3AED] bg-[#7C3AED]/5' 
-                    : 'text-[#4B5563]'
+                    : 'text-[#4B5563] dark:text-slate-300'
                 }`}
               >
-                Blog
+                {t('nav.blog')}
               </Link>
 
               <Link
-                to="/about"
+                to={getLocalizedPath('/about')}
                 className={`px-4 py-2.5 rounded-xl text-sm font-bold tracking-wide transition-colors ${
                   isActive('/about') 
                     ? 'text-[#7C3AED] bg-[#7C3AED]/5' 
-                    : 'text-[#4B5563]'
+                    : 'text-[#4B5563] dark:text-slate-300'
                 }`}
               >
-                About
+                {t('nav.about')}
               </Link>
 
               <Link
-                to="/contact"
+                to={getLocalizedPath('/contact')}
                 className={`px-4 py-2.5 rounded-xl text-sm font-bold tracking-wide transition-colors ${
                   isActive('/contact') 
                     ? 'text-[#7C3AED] bg-[#7C3AED]/5' 
-                    : 'text-[#4B5563]'
+                    : 'text-[#4B5563] dark:text-slate-300'
                 }`}
               >
-                Contact
+                {t('nav.contact')}
               </Link>
             </div>
           </motion.div>
@@ -400,8 +483,10 @@ export default function App() {
   return (
     <HelmetProvider>
       <Router>
-        <ScrollToTop />
-        <AppContent />
+        <LanguageProvider>
+          <ScrollToTop />
+          <AppContent />
+        </LanguageProvider>
       </Router>
     </HelmetProvider>
   );
@@ -409,6 +494,11 @@ export default function App() {
 
 function RootSlugRedirect() {
   const { slug } = useParams();
+
+  if (slug && isValidLanguage(slug)) {
+    return <Home />;
+  }
+
   const blogSlugs = [
     "sleep-cycles-explained",
     "what-is-rem-sleep",
@@ -530,10 +620,25 @@ function AppContent() {
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/contact" element={<Contact />} />
 
+          {/* Localized routes using :lang prefix */}
+          <Route path="/:lang/blog" element={<Blog />} />
+          <Route path="/:lang/blog/:slug" element={<Blog />} />
+          
+          <Route path="/:lang/student-sleep-calculator" element={<StudentCalc />} />
+          <Route path="/:lang/shift-work-sleep-calculator" element={<ShiftWorkCalc />} />
+          <Route path="/:lang/sleep-cycle-calculator-90-minutes" element={<NinetyMinCalc />} />
+          <Route path="/:lang/wake-up-between-sleep-cycles" element={<WakeUpCalc />} />
+          <Route path="/:lang/ideal-bedtime-based-on-wake-up-time" element={<IdealBedtimeCalc />} />
+
+          <Route path="/:lang/about" element={<About />} />
+          <Route path="/:lang/terms" element={<Terms />} />
+          <Route path="/:lang/privacy" element={<Privacy />} />
+          <Route path="/:lang/contact" element={<Contact />} />
+
           {/* Legacy page/blog Prefixes redirected back to clean paths */}
           <Route path="/page/blog/:slug" element={<Navigate replace to="/blog/:slug" />} />
 
-          {/* Dynamic redirect for root-level blog slugs to /blog/:slug */}
+          {/* Dynamic redirect for root-level blog slugs or root languages to /blog/:slug */}
           <Route path="/:slug" element={<RootSlugRedirect />} />
 
           {/* Catch-all 404 route */}

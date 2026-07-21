@@ -127,6 +127,59 @@ export default function BlogPostContent({ slug, meta }: { slug: string; meta: Bl
     }
   ];
 
+  const sectionTitles = (() => {
+    switch (pillar) {
+      case 'science':
+        return [
+          "Neurological Foundations of Human Sleep Architecture",
+          "The Role of the Glymphatic System and Neurotransmitter Synthesis",
+          "The Clinical Importance of REM Cycle Balance"
+        ];
+      case 'timing':
+        return [
+          "The Mathematics of Sleep Optimization: The Bedtime Formula",
+          "Scientific Sleep Schedule Reference Tables",
+          "Melatonin Regulation and Circadian Synchronization"
+        ];
+      case 'age':
+        return [
+          "Lifespan Biological Sleep Evolution",
+          "Scientific Sleep Recommendations by Age Bracket",
+          "The Teenage Sleep Phase Delay & Older Adult Fragmentation"
+        ];
+      case 'students':
+        return [
+          "Neurological Principles of Memory Consolidation",
+          "Why All-Nighters Destroy Exam Performance",
+          "The 72-Hour Exam Prep Sleep Protocol"
+        ];
+      case 'shiftwork':
+        return [
+          "The Physiology of Circadian Desynchronization",
+          "Core Chronobiological Strategies: Anchor Sleep & Split Routines",
+          "Day-to-Night Light Manipulation Protocol"
+        ];
+      case 'tiredness':
+        return [
+          "The Science of Sleep Inertia & Adenosine Clearance",
+          "Sleep Quantity vs. Sleep Quality: The 8-Hour Fallacy",
+          "Diagnostic Checklist: Identifying Invisible Sleep Disruptors"
+        ];
+      case 'debt':
+        return [
+          "Understanding Sleep Debt: The Cumulative Deficit",
+          "Power Naps (20 min) vs. Full Sleep Cycles (90 min)",
+          "The Clinical Sleep Debt Repayment Blueprint"
+        ];
+      default: // hygiene
+        return [
+          "Sleep Hygiene and Circadian Entrainment",
+          "The Sleep Sanctuary: Temp, Light, & sound Calibration",
+          "The 10-3-2-1-0 Nightly Sleep Hygiene Rule"
+        ];
+    }
+  })();
+
   return (
     <article className="space-y-8 select-text text-slate-700 dark:text-slate-300 font-sans max-w-3xl mx-auto px-1 sm:px-2">
       {/* Embedded Structured Data: Technical Article metadata */}
@@ -204,11 +257,55 @@ export default function BlogPostContent({ slug, meta }: { slug: string; meta: Bl
         </p>
       </div>
 
+      {/* Table of Contents / Jump Links Box */}
+      <div className="p-5 bg-[#FAF6F0] dark:bg-[#151C2C] border border-[#E1D8CC] dark:border-[#1E293B] rounded-2xl space-y-3">
+        <h3 className="text-sm font-bold uppercase tracking-wider text-gray-900 dark:text-gray-100 font-sans flex items-center gap-2">
+          <BookOpen className="w-4 h-4 text-[#7C3AED]" />
+          Table of Contents
+        </h3>
+        <ul className="space-y-2 text-sm">
+          {sectionTitles.map((title, i) => (
+            <li key={i}>
+              <a href={`#sec-${i + 1}`} className="text-[#7C3AED] dark:text-violet-400 hover:underline flex items-start gap-1.5 font-medium">
+                <span className="text-xs font-mono text-[#7C3AED]/70 dark:text-violet-400/70">{i + 1}.</span>
+                <span>{title}</span>
+              </a>
+            </li>
+          ))}
+          <li>
+            <a href="#faq-sec" className="text-[#7C3AED] dark:text-violet-400 hover:underline flex items-start gap-1.5 font-medium">
+              <span className="text-xs font-mono text-[#7C3AED]/70 dark:text-violet-400/70">4.</span>
+              <span>Clinical FAQs &amp; Sleep Troubleshooting</span>
+            </a>
+          </li>
+          <li>
+            <a href="#conclusion-sec" className="text-[#7C3AED] dark:text-violet-400 hover:underline flex items-start gap-1.5 font-medium">
+              <span className="text-xs font-mono text-[#7C3AED]/70 dark:text-violet-400/70">5.</span>
+              <span>Concluding Scientific Consensus</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      {/* Key Takeaways Card */}
+      <div className="p-5 bg-amber-50/40 dark:bg-amber-950/10 border border-amber-200/60 dark:border-amber-900/30 rounded-2xl space-y-2.5">
+        <h3 className="text-sm font-bold uppercase tracking-wider text-amber-800 dark:text-amber-400 font-sans flex items-center gap-2">
+          <span>💡</span>
+          Key Takeaways
+        </h3>
+        <ul className="space-y-1.5 text-xs sm:text-sm text-amber-900/90 dark:text-amber-300/90 list-disc pl-4">
+          <li><strong>Bypass Grogginess:</strong> Waking up at the end of a complete 90-minute sleep cycle eliminates sleep inertia.</li>
+          <li><strong>Calculate Bedtimes:</strong> Subtract multiples of 90 minutes from your wake-up time, then deduct 15 minutes of sleep onset latency.</li>
+          <li><strong>Circadian Consistency:</strong> Anchor your wake-up time. Keep it consistent even on weekends to prevent circadian phase shifts.</li>
+          <li><strong>Bedroom Sanctuary:</strong> Set your bedroom temperature to 65°F (18.3°C) and reduce ambient light to 0 lux to secure deep sleep.</li>
+        </ul>
+      </div>
+
       {/* RENDER THE RELEVANT CONTENT PILLAR (100% TOPICAL MATCH & NO DUPLICATE CONTENT) */}
       
       {pillar === 'science' && (
         <div className="space-y-8 select-text" id="pillar-science">
-          <section className="space-y-4">
+          <section className="space-y-4" id="sec-1">
             <h2 className="text-2xl sm:text-3xl font-black text-gray-950 dark:text-white tracking-tight font-serif">
               1. Neurological Foundations of Human Sleep Architecture
             </h2>
@@ -255,7 +352,7 @@ export default function BlogPostContent({ slug, meta }: { slug: string; meta: Bl
             </div>
           </section>
 
-          <section className="space-y-4">
+          <section className="space-y-4" id="sec-2">
             <h2 className="text-2xl sm:text-3xl font-black text-gray-950 dark:text-white tracking-tight font-serif">
               2. The Role of the Glymphatic System and Neurotransmitter Synthesis
             </h2>
@@ -267,7 +364,7 @@ export default function BlogPostContent({ slug, meta }: { slug: string; meta: Bl
             </p>
           </section>
 
-          <section className="space-y-4">
+          <section className="space-y-4" id="sec-3">
             <h2 className="text-2xl sm:text-3xl font-black text-gray-950 dark:text-white tracking-tight font-serif">
               3. The Clinical Importance of REM Cycle Balance
             </h2>
@@ -280,7 +377,7 @@ export default function BlogPostContent({ slug, meta }: { slug: string; meta: Bl
 
       {pillar === 'timing' && (
         <div className="space-y-8 select-text" id="pillar-timing">
-          <section className="space-y-4">
+          <section className="space-y-4" id="sec-1">
             <h2 className="text-2xl sm:text-3xl font-black text-gray-950 dark:text-white tracking-tight font-serif">
               1. The Mathematics of Sleep Optimization: The Bedtime Formula
             </h2>
@@ -298,7 +395,7 @@ export default function BlogPostContent({ slug, meta }: { slug: string; meta: Bl
             </p>
           </section>
 
-          <section className="space-y-4">
+          <section className="space-y-4" id="sec-2">
             <h2 className="text-2xl sm:text-3xl font-black text-gray-950 dark:text-white tracking-tight font-serif">
               2. Scientific Sleep Schedule Reference Tables
             </h2>
@@ -346,7 +443,7 @@ export default function BlogPostContent({ slug, meta }: { slug: string; meta: Bl
             </div>
           </section>
 
-          <section className="space-y-4">
+          <section className="space-y-4" id="sec-3">
             <h2 className="text-2xl sm:text-3xl font-black text-gray-950 dark:text-white tracking-tight font-serif">
               3. Melatonin Regulation and Circadian Synchronization
             </h2>
@@ -359,7 +456,7 @@ export default function BlogPostContent({ slug, meta }: { slug: string; meta: Bl
 
       {pillar === 'age' && (
         <div className="space-y-8 select-text" id="pillar-age">
-          <section className="space-y-4">
+          <section className="space-y-4" id="sec-1">
             <h2 className="text-2xl sm:text-3xl font-black text-gray-950 dark:text-white tracking-tight font-serif">
               1. Lifespan Biological Sleep Evolution
             </h2>
@@ -371,7 +468,7 @@ export default function BlogPostContent({ slug, meta }: { slug: string; meta: Bl
             </p>
           </section>
 
-          <section className="space-y-4">
+          <section className="space-y-4" id="sec-2">
             <h2 className="text-2xl sm:text-3xl font-black text-gray-950 dark:text-white tracking-tight font-serif">
               2. Scientific Sleep Recommendations by Age Bracket
             </h2>
@@ -424,7 +521,7 @@ export default function BlogPostContent({ slug, meta }: { slug: string; meta: Bl
             </div>
           </section>
 
-          <section className="space-y-4">
+          <section className="space-y-4" id="sec-3">
             <h2 className="text-2xl sm:text-3xl font-black text-gray-950 dark:text-white tracking-tight font-serif">
               3. The Teenage Sleep Phase Delay & Older Adult Fragmentation
             </h2>
@@ -437,7 +534,7 @@ export default function BlogPostContent({ slug, meta }: { slug: string; meta: Bl
 
       {pillar === 'students' && (
         <div className="space-y-8 select-text" id="pillar-students">
-          <section className="space-y-4">
+          <section className="space-y-4" id="sec-1">
             <h2 className="text-2xl sm:text-3xl font-black text-gray-950 dark:text-white tracking-tight font-serif">
               1. Neurological Principles of Memory Consolidation
             </h2>
@@ -449,7 +546,7 @@ export default function BlogPostContent({ slug, meta }: { slug: string; meta: Bl
             </p>
           </section>
 
-          <section className="space-y-4">
+          <section className="space-y-4" id="sec-2">
             <h2 className="text-2xl sm:text-3xl font-black text-gray-950 dark:text-white tracking-tight font-serif">
               2. Why All-Nighters Destroy Exam Performance
             </h2>
@@ -464,7 +561,7 @@ export default function BlogPostContent({ slug, meta }: { slug: string; meta: Bl
             </div>
           </section>
 
-          <section className="space-y-4">
+          <section className="space-y-4" id="sec-3">
             <h2 className="text-2xl sm:text-3xl font-black text-gray-950 dark:text-white tracking-tight font-serif">
               3. The 72-Hour Exam Prep Sleep Protocol
             </h2>
@@ -482,7 +579,7 @@ export default function BlogPostContent({ slug, meta }: { slug: string; meta: Bl
 
       {pillar === 'shiftwork' && (
         <div className="space-y-8 select-text" id="pillar-shiftwork">
-          <section className="space-y-4">
+          <section className="space-y-4" id="sec-1">
             <h2 className="text-2xl sm:text-3xl font-black text-gray-950 dark:text-white tracking-tight font-serif">
               1. The Physiology of Circadian Desynchronization
             </h2>
@@ -494,7 +591,7 @@ export default function BlogPostContent({ slug, meta }: { slug: string; meta: Bl
             </p>
           </section>
 
-          <section className="space-y-4">
+          <section className="space-y-4" id="sec-2">
             <h2 className="text-2xl sm:text-3xl font-black text-gray-950 dark:text-white tracking-tight font-serif">
               2. Core Chronobiological Strategies: Anchor Sleep & Split Routines
             </h2>
@@ -517,7 +614,7 @@ export default function BlogPostContent({ slug, meta }: { slug: string; meta: Bl
             </div>
           </section>
 
-          <section className="space-y-4">
+          <section className="space-y-4" id="sec-3">
             <h2 className="text-2xl sm:text-3xl font-black text-gray-950 dark:text-white tracking-tight font-serif">
               3. Day-to-Night Light Manipulation Protocol
             </h2>
@@ -535,7 +632,7 @@ export default function BlogPostContent({ slug, meta }: { slug: string; meta: Bl
 
       {pillar === 'tiredness' && (
         <div className="space-y-8 select-text" id="pillar-tiredness">
-          <section className="space-y-4">
+          <section className="space-y-4" id="sec-1">
             <h2 className="text-2xl sm:text-3xl font-black text-gray-950 dark:text-white tracking-tight font-serif">
               1. The Science of Sleep Inertia & Adenosine Clearance
             </h2>
@@ -547,7 +644,7 @@ export default function BlogPostContent({ slug, meta }: { slug: string; meta: Bl
             </p>
           </section>
 
-          <section className="space-y-4">
+          <section className="space-y-4" id="sec-2">
             <h2 className="text-2xl sm:text-3xl font-black text-gray-950 dark:text-white tracking-tight font-serif">
               2. Sleep Quantity vs. Sleep Quality: The 8-Hour Fallacy
             </h2>
@@ -559,7 +656,7 @@ export default function BlogPostContent({ slug, meta }: { slug: string; meta: Bl
             </p>
           </section>
 
-          <section className="space-y-4">
+          <section className="space-y-4" id="sec-3">
             <h2 className="text-2xl sm:text-3xl font-black text-gray-950 dark:text-white tracking-tight font-serif">
               3. Diagnostic Checklist: Identifying Invisible Sleep Disruptors
             </h2>
@@ -673,8 +770,79 @@ export default function BlogPostContent({ slug, meta }: { slug: string; meta: Bl
         </div>
       )}
 
+      {/* Product/Concept Comparison & Pros/Cons Section */}
+      <section className="space-y-4 pt-6 border-t border-gray-200 dark:border-slate-800" id="comparison-sec">
+        <h2 className="text-2xl sm:text-3xl font-black text-gray-950 dark:text-white tracking-tight font-serif">
+          Pros &amp; Cons: Sleep Calculators vs. Wearable Trackers
+        </h2>
+        <p className="text-base sm:text-lg leading-relaxed text-slate-800 dark:text-slate-300">
+          When optimizing your sleep cycles, should you rely on mathematical planning (Sleep Calculators) or active biological tracking (Wearables like Apple Watch, Oura Ring, or Whoop)? Here is a side-by-side scientific comparison:
+        </p>
+        
+        <div className="overflow-x-auto rounded-2xl border border-gray-200 dark:border-slate-800 my-6">
+          <table className="w-full text-left border-collapse text-xs sm:text-sm">
+            <thead>
+              <tr className="bg-gray-50 dark:bg-slate-900 border-b border-gray-200 dark:border-slate-800">
+                <th className="p-4 font-bold text-gray-900 dark:text-white font-serif">Feature / Metric</th>
+                <th className="p-4 font-bold text-gray-900 dark:text-white font-serif">Mathematical Sleep Calculator</th>
+                <th className="p-4 font-bold text-gray-900 dark:text-white font-serif">Wearable Sleep Trackers</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-gray-100 dark:divide-slate-800">
+              <tr>
+                <td className="p-4 font-bold text-gray-950 dark:text-white">Cost &amp; Accessibility</td>
+                <td className="p-4 text-green-600 dark:text-green-400 font-semibold">100% Free, Instant Access</td>
+                <td className="p-4 text-red-600 dark:text-red-400">Expensive ($150 - $400+ up-front + subscriptions)</td>
+              </tr>
+              <tr>
+                <td className="p-4 font-bold text-gray-950 dark:text-white">Radiation &amp; Comfort</td>
+                <td className="p-4 text-green-600 dark:text-green-400 font-semibold">Zero EMF Radiation, High Comfort</td>
+                <td className="p-4 text-gray-600 dark:text-gray-400">Low EMF, potential skin irritation or sleep distraction</td>
+              </tr>
+              <tr>
+                <td className="p-4 font-bold text-gray-950 dark:text-white">Predictive Planning</td>
+                <td className="p-4 text-green-600 dark:text-green-400 font-semibold">Excellent (Predicts bedtimes before you sleep)</td>
+                <td className="p-4 text-red-600 dark:text-red-400">Poor (Only reports data after you wake up)</td>
+              </tr>
+              <tr>
+                <td className="p-4 font-bold text-gray-950 dark:text-white">Real-Time Heart Rate/HRV</td>
+                <td className="p-4 text-red-600 dark:text-red-400">None (Relies on mathematical averages)</td>
+                <td className="p-4 text-green-600 dark:text-green-400 font-semibold">Excellent (Tracks actual physical responses)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-6">
+          <div className="p-5 bg-green-50/50 dark:bg-emerald-950/10 border border-green-200 dark:border-emerald-900/30 rounded-2xl space-y-2">
+            <h4 className="font-bold text-green-800 dark:text-emerald-400 flex items-center gap-2">
+              <span className="w-5 h-5 rounded-full bg-green-100 dark:bg-emerald-900/40 text-green-800 dark:text-emerald-400 flex items-center justify-center text-xs">✓</span>
+              Sleep Calculator Pros
+            </h4>
+            <ul className="space-y-1.5 text-xs sm:text-sm text-green-900/80 dark:text-emerald-300/80 list-disc pl-4">
+              <li>Provides actionable target bedtimes to prevent waking mid-deep-sleep</li>
+              <li>Requires no charging, hardware updates, or bluetooth connections</li>
+              <li>Helps cultivate a highly predictable circadian routine naturally</li>
+              <li>Avoids sleep-related anxiety caused by constantly checking scores</li>
+            </ul>
+          </div>
+          
+          <div className="p-5 bg-red-50/50 dark:bg-rose-950/10 border border-red-200 dark:border-rose-900/30 rounded-2xl space-y-2">
+            <h4 className="font-bold text-red-800 dark:text-rose-400 flex items-center gap-2">
+              <span className="w-5 h-5 rounded-full bg-red-100 dark:bg-rose-900/40 text-red-800 dark:text-rose-400 flex items-center justify-center text-xs">✗</span>
+              Sleep Calculator Cons
+            </h4>
+            <ul className="space-y-1.5 text-xs sm:text-sm text-red-900/80 dark:text-rose-300/80 list-disc pl-4">
+              <li>Cannot track micro-arousals (awakenings) that you don't remember</li>
+              <li>Assumes a standard 90-minute sleep cycle length</li>
+              <li>Does not log heart rate variability (HRV) or oxygen desaturation</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
       {/* Section 13: Frequently Asked Questions */}
-      <section className="space-y-3 pt-6 border-t border-gray-200 dark:border-slate-800">
+      <section className="space-y-3 pt-6 border-t border-gray-200 dark:border-slate-800" id="faq-sec">
         <h2 className="text-2xl sm:text-3xl font-black text-gray-950 dark:text-white tracking-tight font-serif">
           Clinical FAQs & Sleep Troubleshooting
         </h2>
@@ -693,7 +861,7 @@ export default function BlogPostContent({ slug, meta }: { slug: string; meta: Bl
       </section>
 
       {/* Section 14: Conclusion */}
-      <section className="space-y-4 pt-6 border-t border-gray-200 dark:border-slate-800">
+      <section className="space-y-4 pt-6 border-t border-gray-200 dark:border-slate-800" id="conclusion-sec">
         <h2 className="text-2xl sm:text-3xl font-black text-gray-950 dark:text-white tracking-tight font-serif">
           Concluding Scientific Consensus on Sleep Optimization
         </h2>

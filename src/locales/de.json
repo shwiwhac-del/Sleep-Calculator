@@ -1,0 +1,238 @@
+{
+  "common": {
+    "calculate": "Optimale Zeiten berechnen",
+    "reset": "Optionen zurücksetzen",
+    "back": "Zurück",
+    "hours": "Stunden",
+    "minutes": "Minuten",
+    "am": "AM",
+    "pm": "PM",
+    "themeLight": "Heller Modus",
+    "themeDark": "Dunkler Modus",
+    "shareBtn": "Zeitplan teilen",
+    "copied": "Link kopiert!",
+    "ratingExc": "Hervorragend",
+    "ratingGood": "Gut",
+    "ratingCaution": "Achtung",
+    "recalibrateBtn": "Zeitplan neu kalibrieren",
+    "excellentRange": "Hervorragend: 5-6 Schlafzyklen (7,5 - 9,0 Std.)",
+    "goodRange": "Gut: 4 Schlafzyklen (6,0 Std.)",
+    "cautionRange": "Achtung: 3 oder weniger Zyklen (< 4,5 Std.)",
+    "recalibrateTitle": "Chronobiologische Rekalibrierung",
+    "recalibrateText": "Wenn sich Ihr Schlafrhythmus verschiebt, berechnen Sie die optimalen Fenster schrittweise neu.",
+    "backToCalc": "Zurück zum Rechner",
+    "readArticle": "Artikel lesen",
+    "tryTool": "Testen Sie unser Schlaftool",
+    "feedbackBtn": "Feedback",
+    "closeBtn": "Schließen",
+    "allRightsReserved": "Schlafrechner. Alle Rechte vorbehalten."
+  },
+  "nav": {
+    "home": "Startseite",
+    "calculators": "Rechner",
+    "blog": "Blog",
+    "about": "Über uns",
+    "contact": "Kontakt",
+    "privacy": "Datenschutzrichtlinie",
+    "terms": "AGB",
+    "selectorTitle": "Sprache ändern"
+  },
+  "home": {
+    "heroTitle": "Schlafrechner",
+    "heroSubtitle": "Optimieren Sie Ihre Schlafzyklen, um völlig erholt, energiegeladen und ohne morgendliche Müdigkeit aufzuwachen.",
+    "modeWake": "Ich möchte aufwachen um...",
+    "modeBed": "Ich plane ins Bett zu gehen um...",
+    "modeCycles": "Schlafzyklen berechnen",
+    "modeNap": "Powernap-Planer",
+    "modeRem": "REM-Phasen-Planer",
+    "ageGroupLabel": "Wählen Sie Ihre Altersgruppe",
+    "latencyLabel": "Einschlaflatenz (Zeit zum Einschlafen)",
+    "latencyDesc": "Im Durchschnitt dauert es 15 Minuten, um einzuschlafen.",
+    "rememberPref": "Meine Auswahl für zukünftige Sitzungen merken",
+    "resultsTitle": "Ihr optimierter Schlafplan",
+    "resultsDesc": "Hier sind die optimalen Schlaffenster basierend auf natürlichen 90-minütigen Schlafzyklen:",
+    "bedtimeLabel": "Optimale Zubettgehzeiten",
+    "wakeTimeLabel": "Optimale Aufwachzeiten",
+    "bedTimeOptionHeader": "Wenn Sie ins Bett gehen um...",
+    "wakeTimeOptionHeader": "Wenn Sie aufwachen um...",
+    "optimumBedtimeMsg": "Wir empfehlen, zu einer dieser Zeiten ins Bett zu gehen:",
+    "optimumWakeMsg": "Wir empfehlen, Ihren Wecker auf eine dieser Zeiten zu stellen:",
+    "sleepCyclesDesc": "vollständige Zyklen",
+    "deepSleepDesc": "Erholsamer Tiefschlaf",
+    "remSleepDesc": "Neurologischer REM-Schlaf",
+    "lightSleepDesc": "Übergangs-Leichtschlaf",
+    "latencyShorthand": "Latenz",
+    "scoreLabel": "Schlafqualitäts-Score",
+    "ratingLabel": "Bewertung",
+    "durationLabel": "Gesamtschlafdauer"
+  },
+  "calculators": {
+    "student": {
+      "title": "Schlafrechner für Studenten",
+      "subtitle": "Optimieren Sie Gedächtnis, Erinnerungsvermögen und kognitive Leistung für Prüfungen.",
+      "examTitle": "Prüfungsvorbereitung & Lernen",
+      "studyDays": "Lerntage erfordern soliden REM-Schlaf für die Informationsintegration.",
+      "calcDays": "Zählen Sie rückwärts, um die kritischen morgendlichen Schlafphasen zu schützen.",
+      "memoryTip": "💡 Tipp: REM-Schlaf findet hauptsächlich in den späten morgendlichen Schlafzyklen statt. Kürzen Sie diese nicht ab!"
+    },
+    "shiftwork": {
+      "title": "Schlafrechner für Schichtarbeit",
+      "subtitle": "Verwalten Sie Schlafblöcke am Tag und planen Sie rotierende Schichten ohne biologischen Schock.",
+      "shiftTiming": "Schichtplan-Optimierung",
+      "sleepBlockTitle": "Berechnete Tagesschlaf-Blöcke",
+      "anchorSleep": "Ankerschlaf-Strategie: Halten Sie ein stabiles 4-stündiges Kernschlaffenster ein.",
+      "dayTransition": "Schichtübergänge erfordern eine sorgfältige Lichtabschirmung bei Sonnenaufgang."
+    },
+    "ninetyMin": {
+      "title": "90-Minuten-Schlafzyklusrechner",
+      "subtitle": "Richten Sie Ihren Schlaf genau an den natürlichen 90-minütigen ultradianen Rhythmusintervallen aus.",
+      "cycleCount": "Zyklen-Multiplikatoren",
+      "totalSleep": "Geplante Gesamtschlafzeit"
+    },
+    "wakeUp": {
+      "title": "Aufwachrechner",
+      "subtitle": "Stellen Sie Ihren Wecker perfekt am Übergang eines Zyklus, um morgendliche Trägheit zu verbannen.",
+      "inertiaTip": "💡 Die Schlafträgheit hält 30–60 Minuten an, wenn Sie während des Tiefschlafs aufwachen."
+    },
+    "idealBedtime": {
+      "title": "Rechner für die ideale Schlafenszeit",
+      "subtitle": "Entdecken Sie altersgerechte optimale Schlafenszeiten vom Säuglings- bis zum Seniorenalter.",
+      "ageCalc": "Altersspezifische Schlafdauer"
+    }
+  },
+  "blog": {
+    "toc": "Inhaltsverzeichnis",
+    "takeaways": "Wichtige Erkenntnisse",
+    "takeawaysTitle1": "Trägheit umgehen",
+    "takeawaysText1": "Das Aufwachen am Ende eines vollständigen 90-minütigen Schlafzyklus eliminiert die Schlafträgheit.",
+    "takeawaysTitle2": "Bettzeiten berechnen",
+    "takeawaysText2": "Ziehen Sie ein Vielfaches von 90 Minuten von Ihrer Aufwachzeit ab und ziehen Sie 15 Minuten Einschlaflatenz ab.",
+    "takeawaysTitle3": "Zirkadiane Konsistenz",
+    "takeawaysText3": "Verankern Sie Ihre Aufwachzeit. Halten Sie sie auch am Wochenende konstant, um Phasenverschiebungen zu vermeiden.",
+    "takeawaysTitle4": "Schlaf-Oase",
+    "takeawaysText4": "Stellen Sie Ihre Raumtemperatur auf 18,3 °C (65 °F) ein und reduzieren Sie das Licht auf 0 Lux für tiefen Schlaf.",
+    "prosConsTitle": "Vor- & Nachteile: Schlafrechner vs. Fitness-Tracker",
+    "prosConsDesc": "Sollten Sie sich bei der Optimierung Ihrer Schlafzyklen auf mathematische Planung oder aktives Tracking verlassen? Hier ist der wissenschaftliche Vergleich:",
+    "colMetric": "Merkmal / Metrik",
+    "colCalc": "Mathematischer Schlafrechner",
+    "colWearable": "Tragbare Schlaf-Tracker",
+    "rowCost": "Kosten & Zugänglichkeit",
+    "rowCostCalc": "100% kostenlos, sofortiger Zugriff",
+    "rowCostWearable": "Teuer ($150 - $400+ Anschaffung + Abonnements)",
+    "rowComfort": "Strahlung & Komfort",
+    "rowComfortCalc": "Keine EMF-Strahlung, hoher Komfort",
+    "rowComfortWearable": "Geringe EMF, potenzielle Hautreizungen oder Schlafablenkung",
+    "rowPlan": "Prädiktive Planung",
+    "rowPlanCalc": "Hervorragend (Sagt Zubettgehzeiten voraus, bevor Sie schlafen)",
+    "rowPlanWearable": "Schlecht (Zeigt Daten erst nach dem Aufwachen an)",
+    "rowHeart": "Echtzeit-Herzfrequenz/HRV",
+    "rowHeartCalc": "Keine (Basiert auf mathematischen Durchschnitten)",
+    "rowHeartWearable": "Hervorragend (Verfolgt tatsächliche körperliche Reaktionen)",
+    "prosTitle": "Vorteile des Schlafrechners",
+    "prosList": [
+      "Bietet umsetzbare Ziel-Zubettgehzeiten, um das Aufwachen im Tiefschlaf zu verhindern",
+      "Erfordert kein Aufladen, keine Hardware-Updates oder Bluetooth-Verbindungen",
+      "Hilft, auf natürliche Weise eine hochgradig vorhersehbare circadiane Routine aufzubauen",
+      "Vermeidet schlafbezogene Ängste, die durch ständiges Kontrollieren von Werten entstehen"
+    ],
+    "consTitle": "Nachteile des Schlafrechners",
+    "consList": [
+      "Kann Mikro-Aufwachphasen, an die Sie sich nicht erinnern, nicht verfolgen",
+      "Setzt eine standardmäßige Schlafzykluslänge von 90 Minuten voraus",
+      "Zeichnet keine Herzfrequenzvariabilität (HRV) oder Sauerstoffsättigung auf"
+    ],
+    "faqTitle": "Klinische FAQs & Fehlerbehebung beim Schlafen",
+    "faqText": "Häufig gestellte wissenschaftliche Fragen zur Optimierung der menschlichen Schlafarchitektur.",
+    "conclusionTitle": "Wissenschaftlicher Konsens zur Schlafoptimierung",
+    "conclusionText": "Die wissenschaftliche Forschung betont nachdrücklich, dass die Konsistenz des Schlafplans in Verbindung mit der Ausrichtung auf biologische 90-Minuten-Zyklen das Fundament für körperliche Gesundheit und geistigen Fokus bildet.",
+    "postAuthors": "Von Dr. Sarah Jenkins — Leitende Schlafberaterin",
+    "blogIndexTitle": "Schlafwissenschafts-Blog & Ratgeber",
+    "blogIndexSub": "Expertenwissen, physiologische Forschung und praktische Tipps, die Ihnen helfen, Ihre optimalen Schlaffenster zu berechnen, Ihre innere Uhr zurückzusetzen und voller Energie aufzuwachen."
+  },
+  "pages": {
+    "about": {
+      "title": "Über den Schlafrechner",
+      "subtitle": "Die Wissenschaft, die Algorithmen und die biologischen Prinzipien hinter unseren Tools.",
+      "cardTitle": "Wissenschaftlich fundierte Chronobiologie",
+      "cardBody": "Unsere Algorithmen basieren auf etablierten Schlafzyklus-Benchmarks, um Millionen Menschen beim erholten Aufwachen zu helfen.",
+      "p1": "Der Schlafrechner wurde entwickelt, um hochpräzise physiologische Schlaffenster für die breite Öffentlichkeit kostenlos zugänglich zu machen.",
+      "p2": "Durch die Kartierung natürlicher 90-minütiger Schlafzyklen (N1, N2, N3 Tiefschlaf und REM) berechnen wir Schlafgrenzen für eine verbesserte Erholung."
+    },
+    "contact": {
+      "title": "Schlaf-Support kontaktieren",
+      "subtitle": "Haben Sie Vorschläge, Fragen oder Partnerschaftsideen? Kontaktieren Sie unser Team.",
+      "name": "Ihr Name",
+      "email": "Ihre E-Mail-Adresse",
+      "message": "Detaillierte Nachricht",
+      "send": "Nachricht senden",
+      "success": "Nachricht erfolgreich gesendet! Unser Schlaf-Team wird innerhalb von 48 Stunden antworten."
+    },
+    "terms": {
+      "title": "Nutzungsbedingungen",
+      "subtitle": "Lesen Sie unsere Nutzungsbedingungen und den medizinischen Haftungsausschluss.",
+      "text": "Unser Schlafrechner dient ausschließlich Bildungszwecken. Er ersetzt keinen medizinischen Rat, keine Diagnose oder Behandlung von Schlafstörungen."
+    },
+    "privacy": {
+      "title": "Datenschutzrichtlinie",
+      "subtitle": "Wie wir Ihre Präferenzen und lokalen Sitzungsdaten schützen.",
+      "text": "Wir schätzen Ihre Privatsphäre. Alle Rechner-Präferenzen, Altersgruppen und Design-Einstellungen werden lokal über den Browser-Speicher auf Ihrem Gerät gesichert."
+    }
+  },
+  "seo": {
+    "/": {
+      "title": "Schlafrechner | Schlafzyklus, Bettzeit & Weckzeit Rechner",
+      "description": "Berechnen Sie Ihre perfekte Schlafens- und Aufwachzeit mit dem Schlafrechner. Vermeiden Sie Müdigkeit am Morgen durch natürliche 90-Minuten-Zyklen.",
+      "keywords": "schlafrechner, schlafzyklus rechner, optimale bettzeit, aufwachen ohne müdigkeit, biologische uhr"
+    },
+    "/blog": {
+      "title": "Schlafwissenschafts-Blog | Tipps für gesunden Schlaf",
+      "description": "Entdecken Sie forschungsbasierte Schlafratgeber, Schlafhygiene-Tipps und Fachartikel über 90-Minuten-Schlafzyklen und circadiane Rhythmen.",
+      "keywords": "schlaf blog, schlafhygiene tipps, 90 minuten zyklen, erholsamer schlaf"
+    },
+    "/about": {
+      "title": "Über uns | Schlafrechner und wissenschaftliche Mission",
+      "description": "Erfahren Sie mehr über das Schlafrechner-Team, unsere Mission und die chronobiologische Forschung hinter unserem 90-Minuten-Algorithmus.",
+      "keywords": "über schlafrechner, schlafforschung, bettzeit algorithmus, circadiane biologie"
+    },
+    "/contact": {
+      "title": "Kontakt | Schlafrechner",
+      "description": "Kontaktieren Sie das Schlafrechner-Team bei Fragen, Anregungen oder Partnerschaftsanfragen.",
+      "keywords": "kontakt schlafrechner, support schlafrechner, feedback schlaf"
+    },
+    "/privacy": {
+      "title": "Datenschutzrichtlinie | Schlafrechner",
+      "description": "Lesen Sie unsere Datenschutzrichtlinie. Erfahren Sie, wie wir Ihre lokalen Browsereinstellungen und Cookies schützen.",
+      "keywords": "datenschutzrichtlinie schlaf, schutz lokaler daten, cookies schlafrechner"
+    },
+    "/terms": {
+      "title": "Allgemeine Geschäftsbedingungen | Schlafrechner",
+      "description": "Prüfen Sie unsere Nutzungsbedingungen und den medizinischen Haftungsausschluss für die Nutzung des Schlafrechners.",
+      "keywords": "nutzungsbedingungen, haftungsausschluss schlaf, agb schlafrechner"
+    },
+    "/student-sleep-calculator": {
+      "title": "Schlafrechner für Schüler & Studenten | Prüfungsplaner",
+      "description": "Optimieren Sie Ihre Gedächtnisleistung und Konzentration für Prüfungen. Wissenschaftlicher Schlafrechner für Jugendliche.",
+      "keywords": "schlafrechner studenten, schlaf für schüler, prüfungsvorbereitung schlaf, lernleistung schlafzyklus"
+    },
+    "/shift-work-sleep-calculator": {
+      "title": "Schlafrechner für Schichtarbeit | Tagschlaf nach Nachtschicht",
+      "description": "Berechnen Sie optimierten Tagschlaf und Ankerschlaf-Strategien für Ärzte, Pflegekräfte und Schichtarbeiter.",
+      "keywords": "schlafrechner schichtarbeit, nachtschicht schlafplan, tagschlaf optimieren, ankerschlaf"
+    },
+    "/sleep-cycle-calculator-90-minutes": {
+      "title": "90-Minuten-Schlafzyklusrechner | Individuelle Einschlafzeit",
+      "description": "Berechnen Sie optimale Bettzeiten basierend auf dem 90-Minuten-Schlafzyklus. Passen Sie Ihre Einschlafdauer an.",
+      "keywords": "90 minuten schlafrechner, schlafzykluslänge, einschlafzeit anpassen, schlafphasen berechnen"
+    },
+    "/wake-up-between-sleep-cycles": {
+      "title": "Zwischen Schlafzyklen aufwachen | Müdigkeit verhindern",
+      "description": "Finden Sie die perfekte Weckzeit, um morgendliche Trägheit zu vermeiden. Nutzen Sie das Ende eines natürlichen Zyklus.",
+      "keywords": "zwischen schlafzyklen aufwachen, aufwachrechner, morgendliche trägheit vermeiden, schlafträgheit"
+    },
+    "/ideal-bedtime-based-on-wake-up-time": {
+      "title": "Optimale Bettzeit nach Aufwachzeit | Altersgerecht",
+      "description": "Bestimmen Sie Ihre ideale Bettzeit basierend auf Ihrer Wunsch-Weckzeit, individuell angepasst an Ihr Alter.",
+      "keywords": "optimale bettzeit berechnen, wann ins bett gehen, schlafrechner nach alter, weckzeit"
+    }
+  }
+}

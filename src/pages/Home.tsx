@@ -6,6 +6,7 @@ import { Helmet } from "react-helmet-async";
 import { getCanonicalUrl } from "../lib/seo";
 import { OpenGraphTags } from "../components/OpenGraphTags";
 import TimePicker from "../components/TimePicker";
+import { useLanguage } from "../hooks/useLanguage";
 import SleepCycleChart from "../components/SleepCycleChart";
 import { AdPlaceholder } from "../components/AdPlaceholder";
 import { SleepScienceGuide } from "../components/SleepScienceGuide";
@@ -35,6 +36,7 @@ export interface CyclesReport {
 export default function Home() {
   const location = useLocation();
   const canonicalUrl = getCanonicalUrl(location.pathname);
+  const { t, currentLang } = useLanguage();
 
   const AGE_GROUPS = [
     { id: "0-3m", label: "0-3 Months", minCycles: 9, maxCycles: 11 },
@@ -495,10 +497,10 @@ export default function Home() {
         <OpenGraphTags />
         <div className={`flex flex-col items-center justify-center gap-2 text-center max-w-3xl mx-auto px-2 mt-3 sm:mt-4 md:mt-5 transition-all duration-300 ${showResults ? "mb-4" : "mb-6 sm:mb-8"}`}>
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[2.5rem] font-extrabold tracking-tight text-[#111827] dark:text-white leading-tight sm:leading-snug text-center">
-            Calculate Your Perfect Bedtime & Wake-Up Time
+            {t('home.heroTitle') === "Sleep Calculator" ? "Calculate Your Perfect Bedtime & Wake-Up Time" : t('home.heroTitle')}
           </h1>
           <p className="text-sm sm:text-base md:text-lg text-[#4B5563] dark:text-slate-300 max-w-[42rem] mx-auto font-medium leading-relaxed tracking-normal opacity-95">
-            Optimize your rest using scientific 90-minute sleep cycles to wake up refreshed, energized, and ready for your day.
+            {t('home.heroSubtitle')}
           </p>
         </div>
         

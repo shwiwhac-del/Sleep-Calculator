@@ -1,0 +1,238 @@
+{
+  "common": {
+    "calculate": "Hitung Waktu Optimal",
+    "reset": "Atur Ulang Pilihan",
+    "back": "Kembali",
+    "hours": "jam",
+    "minutes": "menit",
+    "am": "AM",
+    "pm": "PM",
+    "themeLight": "Mode Terang",
+    "themeDark": "Mode Gelap",
+    "shareBtn": "Bagikan Jadwal",
+    "copied": "Tautan disalin!",
+    "ratingExc": "Sangat Baik",
+    "ratingGood": "Baik",
+    "ratingCaution": "Perlu Perhatian",
+    "recalibrateBtn": "Kalibrasi Ulang Jadwal",
+    "excellentRange": "Sangat Baik: 5-6 siklus tidur (7,5 - 9,0 jam)",
+    "goodRange": "Baik: 4 siklus tidur (6,0 jam)",
+    "cautionRange": "Perlu Perhatian: 3 siklus atau kurang (< 4,5 jam)",
+    "recalibrateTitle": "Rekalibrasi Kronobiologis",
+    "recalibrateText": "Jika jadwal tidur Anda bergeser, hitung ulang jendela optimal secara bertahap.",
+    "backToCalc": "Kembali ke Kalkulator",
+    "readArticle": "Baca Artikel",
+    "tryTool": "Coba Alat Tidur Kami",
+    "feedbackBtn": "Umpan Balik",
+    "closeBtn": "Tutup",
+    "allRightsReserved": "Kalkulator Tidur. Hak cipta dilindungi undang-undang."
+  },
+  "nav": {
+    "home": "Beranda",
+    "calculators": "Kalkulator",
+    "blog": "Blog",
+    "about": "Tentang Kami",
+    "contact": "Kontak",
+    "privacy": "Kebijakan Privasi",
+    "terms": "Syarat & Ketentuan",
+    "selectorTitle": "Ubah Bahasa"
+  },
+  "home": {
+    "heroTitle": "Kalkulator Tidur",
+    "heroSubtitle": "Optimalkan siklus tidur Anda untuk bangun sepenuhnya segar, berenergi, dan tanpa rasa kantuk di pagi hari.",
+    "modeWake": "Saya Ingin Bangun Jam...",
+    "modeBed": "Saya Berencana Tidur Jam...",
+    "modeCycles": "Hitung Siklus Tidur",
+    "modeNap": "Perencana Tidur Siang",
+    "modeRem": "Penarget Siklus REM",
+    "ageGroupLabel": "Pilih Kelompok Usia Anda",
+    "latencyLabel": "Latensi Tidur (Waktu untuk Tertidur)",
+    "latencyDesc": "Rata-rata, dibutuhkan waktu 15 menit untuk tertidur.",
+    "rememberPref": "Ingat pilihan saya untuk sesi mendatang",
+    "resultsTitle": "Jadwal Tidur Anda yang Dioptimalkan",
+    "resultsDesc": "Berikut adalah jendela tidur optimal berdasarkan siklus tidur alami 90 menit:",
+    "bedtimeLabel": "Waktu Tidur Optimal",
+    "wakeTimeLabel": "Waktu Bangun Optimal",
+    "bedTimeOptionHeader": "Jika Anda pergi tidur jam...",
+    "wakeTimeOptionHeader": "Jika Anda bangun jam...",
+    "optimumBedtimeMsg": "Kami menyarankan Anda pergi tidur pada salah satu waktu ini:",
+    "optimumWakeMsg": "Kami menyarankan Anda mengatur alarm Anda pada salah satu waktu ini:",
+    "sleepCyclesDesc": "siklus penuh",
+    "deepSleepDesc": "Tidur Nyenyak yang Memulihkan",
+    "remSleepDesc": "Tidur REM Neurologis",
+    "lightSleepDesc": "Tidur Ringan Transisi",
+    "latencyShorthand": "latensi",
+    "scoreLabel": "Skor Kualitas Tidur",
+    "ratingLabel": "Peringkat",
+    "durationLabel": "Total Durasi Tidur"
+  },
+  "calculators": {
+    "student": {
+      "title": "Kalkulator Tidur Pelajar",
+      "subtitle": "Optimalkan memori, ingatan, dan performa kognitif untuk ujian dan jadwal belajar.",
+      "examTitle": "Persiapan Ujian & Studi",
+      "studyDays": "Hari belajar membutuhkan tidur REM yang kuat untuk integrasi fakta.",
+      "calcDays": "Hitung mundur untuk melindungi periode tidur pagi yang kritis.",
+      "memoryTip": "💡 Tips: Tidur REM sebagian besar terjadi pada siklus tidur menjelang siang; jangan memotongnya!"
+    },
+    "shiftwork": {
+      "title": "Kalkulator Tidur Pekerja Shift",
+      "subtitle": "Kelola blok tidur siang hari dan rancang jadwal bergilir tanpa kejutan sirkadian.",
+      "shiftTiming": "Perencanaan Jadwal Shift",
+      "sleepBlockTitle": "Blok Tidur Siang Hari yang Dihitung",
+      "anchorSleep": "Strategi Tidur Jangkar: Jaga jendela tidur inti 4 jam yang stabil.",
+      "dayTransition": "Transisi shift memerlukan pemblokiran cahaya yang hati-hati saat matahari terbit."
+    },
+    "ninetyMin": {
+      "title": "Kalkulator Siklus Tidur 90 Menit",
+      "subtitle": "Sejajarkan tidur Anda secara tepat dengan interval ritme ultradian alami 90 menit.",
+      "cycleCount": "Kelipatan Siklus",
+      "totalSleep": "Total Waktu Tidur yang Dijadwalkan"
+    },
+    "wakeUp": {
+      "title": "Kalkulator Bangun Segar",
+      "subtitle": "Atur alarm Anda dengan sempurna pada transisi siklus untuk menghilangkan rasa kantuk pagi hari.",
+      "inertiaTip": "💡 Inersia tidur berlangsung selama 30-60 menit jika Anda bangun saat tidur nyenyak."
+    },
+    "idealBedtime": {
+      "title": "Kalkulator Waktu Tidur Ideal",
+      "subtitle": "Temukan waktu tidur optimal yang disesuaikan dengan usia dari masa bayi hingga dewasa akhir.",
+      "ageCalc": "Durasi Tidur Khusus Usia"
+    }
+  },
+  "blog": {
+    "toc": "Daftar Isi",
+    "takeaways": "Poin-poin Kunci",
+    "takeawaysTitle1": "Hindari Rasa Kantuk",
+    "takeawaysText1": "Bangun di akhir siklus tidur 90 menit penuh menghilangkan inersia tidur.",
+    "takeawaysTitle2": "Hitung Waktu Tidur",
+    "takeawaysText2": "Kurangi kelipatan 90 menit dari waktu bangun Anda, lalu kurangi 15 menit latensi tidur.",
+    "takeawaysTitle3": "Konsistensi Sirkadian",
+    "takeawaysText3": "Tetapkan waktu bangun Anda secara konsisten bahkan di akhir pekan untuk mencegah pergeseran fase sirkadian.",
+    "takeawaysTitle4": "Kamar Tidur yang Nyaman",
+    "takeawaysText4": "Atur suhu kamar tidur ke 18,3°C (65°F) dan kurangi cahaya hingga 0 lux untuk mengamankan tidur nyenyak.",
+    "prosConsTitle": "Kelebihan & Kekurangan: Kalkulator Tidur vs. Tracker Wearable",
+    "prosConsDesc": "Saat mengoptimalkan siklus tidur Anda, haruskah Anda mengandalkan perencanaan matematis atau pelacakan biologis aktif? Berikut perbandingan ilmiahnya:",
+    "colMetric": "Fitur / Metrik",
+    "colCalc": "Kalkulator Tidur Matematis",
+    "colWearable": "Tracker Tidur Wearable",
+    "rowCost": "Biaya & Aksesibilitas",
+    "rowCostCalc": "100% Gratis, Akses Instan",
+    "rowCostWearable": "Mahal ($150 - $400+ di awal + biaya langganan)",
+    "rowComfort": "Radiasi & Kenyamanan",
+    "rowComfortCalc": "Nol Radiasi EMF, Kenyamanan Tinggi",
+    "rowComfortWearable": "EMF Rendah, potensi iritasi kulit atau gangguan tidur",
+    "rowPlan": "Perencanaan Prediktif",
+    "rowPlanCalc": "Sangat Baik (Memprediksi waktu tidur sebelum Anda tidur)",
+    "rowPlanWearable": "Kurang Baik (Hanya melaporkan data setelah Anda bangun)",
+    "rowHeart": "Detak Jantung Real-time/HRV",
+    "rowHeartCalc": "Tidak Ada (Mengandalkan rata-rata matematis)",
+    "rowHeartWearable": "Sangat Baik (Melacak respons fisik yang sebenarnya)",
+    "prosTitle": "Kelebihan Kalkulator Tidur",
+    "prosList": [
+      "Menyediakan target waktu tidur yang dapat ditindaklanjuti untuk mencegah bangun di tengah tidur nyenyak",
+      "Tidak memerlukan pengisian daya, pembaruan perangkat keras, atau koneksi bluetooth",
+      "Membantu memupuk rutinitas sirkadian yang sangat mudah diprediksi secara alami",
+      "Menghindari kecemasan terkait tidur yang disebabkan oleh terus-menerus memeriksa skor"
+    ],
+    "consTitle": "Kekurangan Kalkulator Tidur",
+    "consList": [
+      "Tidak dapat melacak bangun mikro yang tidak Anda ingat",
+      "Mengasumsikan panjang siklus tidur standar 90 menit",
+      "Tidak mencatat variabilitas detak jantung (HRV) atau desaturasi oksigen"
+    ],
+    "faqTitle": "FAQ Klinis & Pemecahan Masalah Tidur",
+    "faqText": "Pertanyaan ilmiah yang sering diajukan tentang mengoptimalkan arsitektur tidur manusia.",
+    "conclusionTitle": "Konsensus Ilmiah tentang Optimalisasi Tidur",
+    "conclusionText": "Penelitian ilmiah sangat menekankan bahwa konsistensi dalam jadwal tidur, ditambah dengan penyelarasan dengan siklus 90 menit biologis, membentuk dasar kesehatan fisik yang memulihkan dan fokus kognitif puncak.",
+    "postAuthors": "Oleh Dr. Sarah Jenkins — Penasihat Utama Ilmu Tidur",
+    "blogIndexTitle": "Blog & Panduan Ilmu Tidur",
+    "blogIndexSub": "Pengetahuan ahli, penelitian fisiologis, dan tips praktis untuk membantu Anda menghitung jendela tidur optimal, menyetel ulang jam biologis, dan bangun dengan bertenaga."
+  },
+  "pages": {
+    "about": {
+      "title": "Tentang Kalkulator Tidur",
+      "subtitle": "Sains, algoritma, dan prinsip biologis di balik alat tidur interaktif kami.",
+      "cardTitle": "Kronobiologi Didukung Sains",
+      "cardBody": "Algoritma kami dirancang sesuai dengan tolok ukur siklus tidur yang mapan, membantu jutaan orang bangun dengan segar.",
+      "p1": "Kalkulator Tidur didirikan untuk menghadirkan perencanaan fisiologis presisi tinggi kepada masyarakat umum secara gratis.",
+      "p2": "Dengan memetakan siklus tidur alami 90 menit (mencakup tidur nyenyak N1, N2, N3 dan fase REM), kami menghitung batas tidur untuk meningkatkan pemulihan otak."
+    },
+    "contact": {
+      "title": "Hubungi Dukungan Tidur",
+      "subtitle": "Memiliki saran, pertanyaan, atau kemitraan? Hubungi tim ilmiah kami.",
+      "name": "Nama Anda",
+      "email": "Alamat E-mail Anda",
+      "message": "Pesan Detail",
+      "send": "Kirim Pesan",
+      "success": "Pesan berhasil dikirim! Tim ilmu tidur kami akan meninjau dan membalas dalam waktu 48 jam."
+    },
+    "terms": {
+      "title": "Ketentuan Layanan",
+      "subtitle": "Baca ketentuan peraturan kami, penafian kesehatan, dan kebijakan platform.",
+      "text": "Kalkulator Tidur kami dirancang murni sebagai alat perencanaan edukasi kronobiologi. Ini bukan pengganti saran medis klinis, diagnosis, atau pengobatan gangguan tidur neurologis."
+    },
+    "privacy": {
+      "title": "Kebijakan Privasi",
+      "subtitle": "Bagaimana kami mengamankan preferensi Anda, cookie perangkat, dan analisis sesi lokal.",
+      "text": "Kami menghargai privasi Anda. Semua preferensi kalkulator, latensi tidur yang dipilih, kelompok usia, dan preferensi tema disimpan secara lokal di perangkat Anda melalui penyimpanan lokal browser."
+    }
+  },
+  "seo": {
+    "/": {
+      "title": "Kalkulator Tidur | Siklus Tidur, Waktu Tidur & Waktu Bangun",
+      "description": "Hitung waktu tidur dan waktu bangun sempurna Anda menggunakan siklus tidur alami 90 menit. Hindari kantuk di pagi hari dan bangun segar.",
+      "keywords": "kalkulator tidur, kalkulator siklus tidur, waktu tidur ideal, bangun segar, ritme sirkadian"
+    },
+    "/blog": {
+      "title": "Blog Ilmu Tidur | Tips Siklus Tidur & Higiene Tidur",
+      "description": "Jelajahi panduan ilmu tidur berbasis penelitian, tips higiene tidur, dan artikel ahli tentang siklus tidur 90 menit dan tidur REM.",
+      "keywords": "blog tidur, higiene tidur, siklus tidur 90 menit, tidur nyenyak"
+    },
+    "/about": {
+      "title": "Tentang Kami | Ilmu & Misi Kalkulator Tidur",
+      "description": "Pelajari tim Kalkulator Tidur, misi utama kami, dan riset biologi yang mendasari algoritma siklus tidur 90 menit kami.",
+      "keywords": "tentang kalkulator tidur, riset siklus tidur, algoritma waktu tidur, biologi sirkadian"
+    },
+    "/contact": {
+      "title": "Hubungi Kami | Kalkulator Tidur",
+      "description": "Hubungi tim Kalkulator Tidur untuk pertanyaan, saran, atau peluang kemitraan dengan alat interaktif kami.",
+      "keywords": "kontak kalkulator tidur, dukungan alat tidur, masukan kalkulator tidur"
+    },
+    "/privacy": {
+      "title": "Kebijakan Privasi | Kalkulator Tidur",
+      "description": "Baca Kebijakan Privasi kami. Pelajari bagaimana kami melindungi data preferensi lokal dan cookie perangkat Anda.",
+      "keywords": "kebijakan privasi tidur, perlindungan data lokal, cookie kalkulator tidur"
+    },
+    "/terms": {
+      "title": "Syarat dan Ketentuan | Kalkulator Tidur",
+      "description": "Tinjau Syarat Layanan dan penafian medis kami sebelum menggunakan alat Kalkulator Tidur.",
+      "keywords": "syarat dan ketentuan, penafian medis tidur, syarat layanan"
+    },
+    "/student-sleep-calculator": {
+      "title": "Kalkulator Tidur untuk Pelajar & Ujian | Waktu Tidur Akademik",
+      "description": "Optimalkan retensi memori, fokus, dan nilai ujian Anda. Gunakan kalkulator siklus tidur untuk pelajar dan remaja.",
+      "keywords": "kalkulator tidur pelajar, tidur untuk ujian, siklus tidur belajar, tidur sehat remaja"
+    },
+    "/shift-work-sleep-calculator": {
+      "title": "Kalkulator Tidur Pekerja Shift | Jadwal Tidur Siang Shift Malam",
+      "description": "Didesain untuk dokter, perawat, dan pekerja shift. Hitung blok tidur siang kustom dan strategi tidur jangkar.",
+      "keywords": "kalkulator tidur pekerja shift, jadwal tidur shift malam, tidur siang pekerja shift, tidur jangkar"
+    },
+    "/sleep-cycle-calculator-90-minutes": {
+      "title": "Kalkulator Siklus Tidur 90 Menit | Kustom Latensi Tidur",
+      "description": "Hitung waktu tidur optimal berdasarkan panjang siklus tidur ilmiah 90 menit. Atur durasi waktu untuk tertidur.",
+      "keywords": "kalkulator tidur 90 menit, siklus tidur 90 mnt, waktu untuk tertidur, hitung siklus tidur"
+    },
+    "/wake-up-between-sleep-cycles": {
+      "title": "Bangun di Antara Siklus Tidur | Cegah Lelah Pagi Hari",
+      "description": "Temukan waktu tepat untuk bangun tidur untuk menghindari pusing di pagi hari. Atur alarm di akhir siklus tidur alami.",
+      "keywords": "bangun di antara siklus tidur, kalkulator bangun tidur, cegah lelah pagi hari, inersia tidur"
+    },
+    "/ideal-bedtime-based-on-wake-up-time": {
+      "title": "Waktu Tidur Ideal Berdasarkan Waktu Bangun | Menurut Usia",
+      "description": "Tentukan jam berapa Anda harus tidur jika ingin bangun pada jam tertentu, disesuaikan dengan kelompok usia Anda.",
+      "keywords": "waktu tidur ideal, jam berapa harus tidur, kalkulator tidur berdasarkan usia, bangun segar"
+    }
+  }
+}

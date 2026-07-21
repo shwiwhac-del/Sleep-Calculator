@@ -4,10 +4,14 @@ import { Moon, Home, HelpCircle } from 'lucide-react';
 import { motion } from 'motion/react';
 import { getCanonicalUrl } from '../lib/seo';
 import { OpenGraphTags } from '../components/OpenGraphTags';
+import { useLanguage } from '../hooks/useLanguage';
 
 export default function NotFound() {
   const location = useLocation();
   const canonicalUrl = getCanonicalUrl(location.pathname);
+  const { currentLang, getLocalizedPath } = useLanguage();
+
+  const content = LOCALIZED_NOTFOUND[currentLang] || LOCALIZED_NOTFOUND['en'];
 
   return (
     <div className="min-h-[75vh] flex flex-col items-center justify-center px-2 sm:px-4 py-12 text-center relative z-10 w-full max-w-xl mx-auto">
@@ -49,20 +53,20 @@ export default function NotFound() {
         <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#7C3AED]/8 border border-[#7C3AED]/15">
           <HelpCircle className="w-3.5 h-3.5 text-[#7C3AED]" />
           <span className="text-xs font-mono font-bold tracking-widest text-[#7C3AED] uppercase">
-            Error 404
+            {content.errorTag}
           </span>
         </div>
 
         <h1 className="text-3xl sm:text-4xl font-serif font-extrabold tracking-tight text-[#111827] dark:text-white leading-tight">
-          Page Not Found
+          {content.title}
         </h1>
         
         <p className="text-sm sm:text-base text-[#374151] dark:text-gray-300 leading-relaxed">
-          The requested page could not be located. It might have been moved, renamed, or temporarily rested.
+          {content.desc}
         </p>
 
         <p className="text-xs sm:text-sm text-[#7C3AED] dark:text-violet-400 font-semibold font-mono tracking-wide pb-1">
-          Let’s get you back to calculate your ideal sleep cycle!
+          {content.helper}
         </p>
       </motion.div>
 
@@ -75,14 +79,101 @@ export default function NotFound() {
         id="not-found-actions"
       >
         <Link 
-          to="/" 
+          to={getLocalizedPath('/')} 
           className="w-full inline-flex items-center justify-center gap-2 bg-[#7C3AED] hover:bg-[#6D28D9] active:bg-[#5B21B6] text-white font-bold py-3.5 px-8 rounded-2xl transition-all duration-300 shadow-md shadow-[#7C3AED]/15 active:scale-[0.98] cursor-pointer text-sm sm:text-base uppercase tracking-wider"
           id="not-found-home-btn"
         >
           <Home className="w-4 h-4 sm:w-5 sm:h-5 text-indigo-100" />
-          Back to Home Page
+          {content.btnText}
         </Link>
       </motion.div>
     </div>
   );
 }
+
+const LOCALIZED_NOTFOUND: Record<string, Record<string, any>> = {
+  en: {
+    errorTag: "Error 404",
+    title: "Page Not Found",
+    desc: "The requested page could not be located. It might have been moved, renamed, or temporarily rested.",
+    helper: "Let’s get you back to calculate your ideal sleep cycle!",
+    btnText: "Back to Home Page"
+  },
+  es: {
+    errorTag: "Error 404",
+    title: "Página no encontrada",
+    desc: "La página solicitada no pudo ser localizada. Es posible que haya sido trasladada, renombrada o retirada temporalmente.",
+    helper: "¡Regresemos para calcular tu ciclo de sueño ideal!",
+    btnText: "Volver a la página de inicio"
+  },
+  pt: {
+    errorTag: "Erro 404",
+    title: "Página não encontrada",
+    desc: "A página solicitada não pôde ser localizada. Ela pode ter sido movida, renomeada ou temporariamente desativada.",
+    helper: "Vamos levar você de volta para calcular o seu ciclo de sono ideal!",
+    btnText: "Voltar para a página inicial"
+  },
+  fr: {
+    errorTag: "Erreur 404",
+    title: "Page non trouvée",
+    desc: "La page demandée n'a pas pu être localisée. Il se peut qu'elle ait été déplacée, renommée ou temporairement mise au repos.",
+    helper: "Retournons calculer votre cycle de sommeil idéal !",
+    btnText: "Retour à l'accueil"
+  },
+  de: {
+    errorTag: "Fehler 404",
+    title: "Seite nicht gefunden",
+    desc: "Die angeforderte Seite konnte nicht gefunden werden. Sie wurde möglicherweise verschoben, umbenannt oder vorübergehend deaktiviert.",
+    helper: "Lassen Sie uns zurückkehren, um Ihren idealen Schlafzyklus zu berechnen!",
+    btnText: "Zurück zur Startseite"
+  },
+ Italian: {
+    errorTag: "Errore 404",
+    title: "Pagina non trovata",
+    desc: "La pagina richiesta non è stata trovata. Potrebbe essere stata spostata, rinominata o temporaneamente rimossa.",
+    helper: "Torniamo alla home per calcolare il tuo ciclo del sonno ideale!",
+    btnText: "Torna alla Home"
+  },
+  it: {
+    errorTag: "Errore 404",
+    title: "Pagina non trovata",
+    desc: "La pagina richiesta non è stata trovata. Potrebbe essere stata spostata, rinominata o temporaneamente rimossa.",
+    helper: "Torniamo alla home per calcolare il tuo ciclo del sonno ideale!",
+    btnText: "Torna alla Home"
+  },
+  nl: {
+    errorTag: "Fout 404",
+    title: "Pagina niet gevonden",
+    desc: "De opgevraagde pagina kon niet worden gevonden. Deze is mogelijk verplaatst, hernoemd of tijdelijk buiten gebruik.",
+    helper: "Laten we u terugbrengen om uw ideale slaapcyclus te berekenen!",
+    btnText: "Terug naar startpagina"
+  },
+  tr: {
+    errorTag: "Hata 404",
+    title: "Sayfa Bulunamadı",
+    desc: "İstenen sayfa bulunamadı. Taşınmış, adı değiştirilmiş veya geçici olarak yayından kaldırılmış olabilir.",
+    helper: "İdeal uyku döngünüzü hesaplamak için sizi geri götürelim!",
+    btnText: "Ana Sayfaya Dön"
+  },
+  id: {
+    errorTag: "Error 404",
+    title: "Halaman Tidak Ditemukan",
+    desc: "Halaman yang diminta tidak dapat ditemukan. Mungkin telah dipindahkan, diubah namanya, atau dinonaktifkan sementara.",
+    helper: "Mari kembali untuk menghitung siklus tidur ideal Anda!",
+    btnText: "Kembali ke Beranda"
+  },
+  vi: {
+    errorTag: "Lỗi 404",
+    title: "Không tìm thấy trang",
+    desc: "Không tìm thấy trang yêu cầu. Có thể trang đã bị di chuyển, đổi tên hoặc tạm thời không hoạt động.",
+    helper: "Hãy quay lại để tính toán chu kỳ giấc ngủ lý tưởng của bạn!",
+    btnText: "Quay lại Trang chủ"
+  },
+  pl: {
+    errorTag: "Błąd 404",
+    title: "Strona nie odnaleziona",
+    desc: "Żądana strona nie została odnaleziona. Mogła zostać przeniesiona, zmieniono jej nazwę lub jest tymczasowo niedostępna.",
+    helper: "Powróćmy, aby obliczyć Twój idealny cykl snu!",
+    btnText: "Powrót do strony głównej"
+  }
+};

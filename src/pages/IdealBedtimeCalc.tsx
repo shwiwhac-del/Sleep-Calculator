@@ -8,8 +8,10 @@ import { AdPlaceholder } from "../components/AdPlaceholder";
 import RecommendedSleepGuides from "../components/RecommendedSleepGuides";
 import { Breadcrumbs } from "../components/Breadcrumbs";
 import { OpenGraphTags } from "../components/OpenGraphTags";
+import { useLanguage } from "../hooks/useLanguage";
 
 export default function IdealBedtimeCalc() {
+  const { t } = useLanguage();
   const canonicalUrl = getCanonicalUrl("/ideal-bedtime-based-on-wake-up-time");
 
   const AGE_GROUPS = [
@@ -122,10 +124,10 @@ export default function IdealBedtimeCalc() {
       {/* Header Title */}
       <div className="flex flex-col items-center justify-center gap-1 sm:gap-1.5 text-center w-full max-w-full px-2 mt-0 mb-3 transition-all duration-300" id="ideal-header">
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-[#111827] dark:text-white leading-tight font-serif text-center w-full max-w-5xl mx-auto">
-          Calculate Your Ideal Bedtime
+          {t('calculators.idealBedtime.title')}
         </h1>
         <p className="text-xs sm:text-sm md:text-base text-[#4B5563] dark:text-slate-300 max-w-3xl mx-auto font-medium leading-relaxed tracking-normal opacity-90 text-center px-4">
-          Find your perfect science-backed bedtime based on your desired wake-up time.
+          {t('calculators.idealBedtime.subtitle')}
         </p>
       </div>
 

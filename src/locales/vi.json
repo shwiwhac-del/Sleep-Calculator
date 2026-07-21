@@ -1,0 +1,238 @@
+{
+  "common": {
+    "calculate": "Tính Toán Thời Gian Tối Ưu",
+    "reset": "Đặt Lại Tùy Chọn",
+    "back": "Quay Lại",
+    "hours": "giờ",
+    "minutes": "phút",
+    "am": "CH",
+    "pm": "CH",
+    "themeLight": "Chế Độ Sáng",
+    "themeDark": "Chế Độ Tối",
+    "shareBtn": "Chia Sẻ Lịch Trình",
+    "copied": "Đã sao chép liên kết!",
+    "ratingExc": "Xuất Sắc",
+    "ratingGood": "Tốt",
+    "ratingCaution": "Cần Lưu Ý",
+    "recalibrateBtn": "Hiệu Chỉnh Lại Lịch Trình",
+    "excellentRange": "Xuất Sắc: 5-6 chu kỳ giấc ngủ (7,5 - 9,0 giờ)",
+    "goodRange": "Tốt: 4 chu kỳ giấc ngủ (6,0 giờ)",
+    "cautionRange": "Cần Lưu Ý: 3 chu kỳ hoặc ít hơn (< 4,5 giờ)",
+    "recalibrateTitle": "Hiệu Chỉnh Sinh Học",
+    "recalibrateText": "Nếu lịch trình giấc ngủ của bạn thay đổi, hãy tính toán lại các khoảng thời gian tối ưu một cách tăng dần.",
+    "backToCalc": "Quay lại Bộ tính toán",
+    "readArticle": "Đọc bài viết",
+    "tryTool": "Thử công cụ giấc ngủ của chúng tôi",
+    "feedbackBtn": "Phản Hồi",
+    "closeBtn": "Đóng",
+    "allRightsReserved": "Bộ Tính Toán Giấc Ngủ. Toàn bộ quyền được bảo lưu."
+  },
+  "nav": {
+    "home": "Trang Chủ",
+    "calculators": "Bộ Tính Toán",
+    "blog": "Blog",
+    "about": "Giới Thiệu",
+    "contact": "Liên Hệ",
+    "privacy": "Chính Sách Bảo Mật",
+    "terms": "Điều Khoản Sử Dụng",
+    "selectorTitle": "Thay Đổi Ngôn Ngữ"
+  },
+  "home": {
+    "heroTitle": "Bộ Tính Toán Giấc Ngủ",
+    "heroSubtitle": "Tối ưu hóa chu kỳ giấc ngủ của bạn để thức dậy hoàn toàn tỉnh táo, tràn đầy năng lượng và không bị mệt mỏi vào buổi sáng.",
+    "modeWake": "Tôi Muốn Thức Dậy Lúc...",
+    "modeBed": "Tôi Định Đi Ngủ Lúc...",
+    "modeCycles": "Tính Toán Chu Kỳ Giấc Ngủ",
+    "modeNap": "Lập Kế Hoạch Chợp Mắt",
+    "modeRem": "Định Hướng Chu Kỳ REM",
+    "ageGroupLabel": "Chọn Nhóm Tuổi Của Bạn",
+    "latencyLabel": "Thời Gian Chờ Ngủ (Thời gian để đi vào giấc ngủ)",
+    "latencyDesc": "Trung bình mất khoảng 15 phút để đi vào giấc ngủ.",
+    "rememberPref": "Ghi nhớ các lựa chọn của tôi cho các lần sau",
+    "resultsTitle": "Lịch Trình Giấc Ngủ Tối Ưu Của Bạn",
+    "resultsDesc": "Dưới đây là các khoảng thời gian ngủ tối ưu dựa trên chu kỳ giấc ngủ 90 phút tự nhiên:",
+    "bedtimeLabel": "Giờ Đi Ngủ Tối Ưu",
+    "wakeTimeLabel": "Giờ Thức Dậy Tối Ưu",
+    "bedTimeOptionHeader": "Nếu bạn đi ngủ lúc...",
+    "wakeTimeOptionHeader": "Nếu bạn thức dậy lúc...",
+    "optimumBedtimeMsg": "Chúng tôi khuyên bạn nên đi ngủ vào một trong những khung giờ này:",
+    "optimumWakeMsg": "Chúng tôi khuyên bạn nên đặt báo thức vào một trong những khung giờ này:",
+    "sleepCyclesDesc": "chu kỳ hoàn chỉnh",
+    "deepSleepDesc": "Giấc Ngủ Sâu Phục Hồi",
+    "remSleepDesc": "Giấc Ngủ REM Thần Kinh",
+    "lightSleepDesc": "Giấc Ngủ Nông Chuyển Tiếp",
+    "latencyShorthand": "độ trễ ngủ",
+    "scoreLabel": "Điểm Chất Lượng Giấc Ngủ",
+    "ratingLabel": "Đánh giá",
+    "durationLabel": "Tổng Thời Gian Ngủ"
+  },
+  "calculators": {
+    "student": {
+      "title": "Bộ Tính Giấc Ngủ Cho Học Sinh",
+      "subtitle": "Tối ưu hóa trí nhớ, khả năng gợi nhớ và hiệu suất nhận thức cho các kỳ thi.",
+      "examTitle": "Chuẩn Bị Cho Kỳ Thi & Học Tập",
+      "studyDays": "Những ngày học tập cần giấc ngủ REM ổn định để tích hợp kiến thức thực tế.",
+      "calcDays": "Tính ngược lại để bảo vệ các giai đoạn giấc ngủ sáng quan trọng.",
+      "memoryTip": "💡 Mẹo: Giấc ngủ REM chủ yếu xảy ra trong các chu kỳ giấc ngủ vào cuối buổi sáng; đừng rút ngắn chúng!"
+    },
+    "shiftwork": {
+      "title": "Bộ Tính Giấc Ngủ Làm Việc Theo Ca",
+      "subtitle": "Quản lý các khối giấc ngủ ban ngày và thiết kế lịch trình ca xoay vòng không gây sốc sinh học.",
+      "shiftTiming": "Lập Kế Hoạch Lịch Trình Ca Làm Việc",
+      "sleepBlockTitle": "Các Khối Giấc Ngủ Ban Ngày Được Tính Toán",
+      "anchorSleep": "Chiến Lược Giấc Ngủ Neo: Giữ một khung giờ ngủ cốt lõi ổn định kéo dài 4 giờ.",
+      "dayTransition": "Chuyển ca làm việc đòi hỏi phải che chắn ánh sáng cẩn thận khi mặt trời mọc."
+    },
+    "ninetyMin": {
+      "title": "Bộ Tính Chu Kỳ Giấc Ngủ 90 Phút",
+      "subtitle": "Điều chỉnh giấc ngủ của bạn chính xác theo các khoảng nhịp sinh học tự nhiên kéo dài 90 phút.",
+      "cycleCount": "Bội Số Chu Kỳ",
+      "totalSleep": "Tổng Thời Gian Ngủ Dự Kiến"
+    },
+    "wakeUp": {
+      "title": "Bộ Tính Thức Dậy Tỉnh Táo",
+      "subtitle": "Đặt báo thức của bạn một cách hoàn hảo vào thời điểm chuyển giao chu kỳ để xóa bỏ cảm giác mệt mỏi.",
+      "inertiaTip": "💡 Quán tính giấc ngủ kéo dài 30-60 phút nếu bạn thức dậy trong giấc ngủ sâu."
+    },
+    "idealBedtime": {
+      "title": "Bộ Tính Giờ Đi Ngủ Lý Tưởng",
+      "subtitle": "Khám phá giờ đi ngủ tối ưu được điều chỉnh theo độ tuổi từ trẻ sơ sinh đến người lớn tuổi.",
+      "ageCalc": "Thời Lượng Giấc Ngủ Theo Độ Tuổi"
+    }
+  },
+  "blog": {
+    "toc": "Mục Lục",
+    "takeaways": "Những Điểm Chính",
+    "takeawaysTitle1": "Tránh Mệt Mỏi",
+    "takeawaysText1": "Thức dậy vào cuối chu kỳ giấc ngủ 90 phút hoàn chỉnh giúp loại bỏ quán tính giấc ngủ.",
+    "takeawaysTitle2": "Tính Giờ Đi Ngủ",
+    "takeawaysText2": "Trừ đi các bội số của 90 phút từ giờ thức dậy của bạn, sau đó trừ đi 15 phút thời gian chờ ngủ.",
+    "takeawaysTitle3": "Nhất Quán Sinh Học",
+    "takeawaysText3": "Neo giữ giờ thức dậy của bạn. Giữ nhất quán ngay cả vào cuối tuần để ngăn ngừa lệch nhịp sinh học.",
+    "takeawaysTitle4": "Phòng Ngủ Yên Tĩnh",
+    "takeawaysText4": "Đặt nhiệt độ phòng ngủ ở mức 18,3°C (65°F) và giảm ánh sáng xuống 0 lux để bảo đảm giấc ngủ sâu.",
+    "prosConsTitle": "Ưu & Nhược Điểm: Bộ Tính Giấc Ngủ vs. Thiết Bị Đeo",
+    "prosConsDesc": "Khi tối ưu hóa chu kỳ giấc ngủ, bạn nên dựa vào lập kế hoạch toán học hay theo dõi sinh học tích cực qua thiết bị đeo thông minh? Dưới đây là so sánh khoa học:",
+    "colMetric": "Tính Năng / Chỉ Số",
+    "colCalc": "Bộ Tính Toán Giấc Ngủ Toán Học",
+    "colWearable": "Thiết Bị Theo Dõi Giấc Ngủ Đeo Tay",
+    "rowCost": "Chi Phí & Khả Năng Tiếp Cận",
+    "rowCostCalc": "Miễn Phí 100%, Truy Cập Ngay Lập Tức",
+    "rowCostWearable": "Đắt Đỏ ($150 - $400+ ban đầu + phí đăng ký định kỳ)",
+    "rowComfort": "Bức Xạ & Sự Thoải Mái",
+    "rowComfortCalc": "Không Bức Xạ EMF, Thoải Mái Tuyệt Đối",
+    "rowComfortWearable": "Bức xạ EMF thấp, nguy cơ kích ứng da hoặc gây xao nhãng khi ngủ",
+    "rowPlan": "Lập Kế Hoạch Dự Đoán",
+    "rowPlanCalc": "Xuất Sắc (Dự đoán giờ đi ngủ trước khi bạn thực sự đi ngủ)",
+    "rowPlanWearable": "Kém (Chỉ báo cáo dữ liệu sau khi bạn đã thức dậy)",
+    "rowHeart": "Nhịp Tim/HRV Thời Gian Thực",
+    "rowHeartCalc": "Không có (Dựa trên các chỉ số trung bình toán học)",
+    "rowHeartWearable": "Xuất Sắc (Theo dõi phản ứng thể chất thực tế của cơ thể)",
+    "prosTitle": "Ưu Điểm Bộ Tính Toán Giấc Ngủ",
+    "prosList": [
+      "Cung cấp giờ đi ngủ mục tiêu có thể thực hiện được để ngăn thức dậy giữa giấc ngủ sâu",
+      "Không cần sạc pin, cập nhật phần cứng hoặc kết nối bluetooth",
+      "Giúp xây dựng thói quen nhịp sinh học cực kỳ dễ dự đoán một cách tự nhiên",
+      "Tránh lo âu liên quan đến giấc ngủ do liên tục kiểm tra điểm số giấc ngủ"
+    ],
+    "consTitle": "Nhược Điểm Bộ Tính Toán Giấc Ngủ",
+    "consList": [
+      "Không thể theo dõi các vi thức giấc mà bạn không thể nhớ",
+      "Giả định độ dài chu kỳ giấc ngủ tiêu chuẩn là 90 phút",
+      "Không ghi lại sự thay đổi nhịp tim (HRV) hoặc độ bão hòa oxy"
+    ],
+    "faqTitle": "FAQ Lâm Sàng & Khắc Phục Sự Cố Giấc Ngủ",
+    "faqText": "Các câu hỏi khoa học thường gặp về việc tối ưu hóa cấu trúc giấc ngủ của con người.",
+    "conclusionTitle": "Đồng Thuận Khoa Học Về Tối Ưu Hóa Giấc Ngủ",
+    "conclusionText": "Nghiên cứu khoa học nhấn mạnh rằng sự nhất quán trong lịch trình giấc ngủ, kết hợp với việc điều chỉnh theo các chu kỳ 90 phút sinh học, tạo nên nền tảng của sức khỏe thể chất phục hồi và sự tập trung trí tuệ đỉnh cao.",
+    "postAuthors": "Bởi Tiến sĩ Sarah Jenkins — Cố Vấn Trưởng Khoa Học Giấc Ngủ",
+    "blogIndexTitle": "Blog & Hướng Dẫn Khoa Học Giấc Ngủ",
+    "blogIndexSub": "Kiến thức chuyên môn, nghiên cứu sinh học và các mẹo thực tế giúp bạn tính toán khoảng thời gian ngủ tối ưu, đặt lại đồng hồ sinh học và thức dậy tràn đầy năng lượng."
+  },
+  "pages": {
+    "about": {
+      "title": "Về Bộ Tính Toán Giấc Ngủ",
+      "subtitle": "Khoa học, thuật toán và các nguyên lý sinh học đằng sau các công cụ giấc ngủ tương tác của chúng tôi.",
+      "cardTitle": "Khoa Học Đồng Hành Cùng Nhịp Sinh Học",
+      "cardBody": "Các thuật toán của chúng tôi được thiết kế phù hợp với các tiêu chuẩn chu kỳ giấc ngủ đã được thiết lập, giúp hàng triệu người thức dậy sảng khoái.",
+      "p1": "Bộ Tính Toán Giấc Ngủ được thành lập nhằm mang lại kế hoạch sinh học có độ chính xác cao cho công chúng một cách hoàn toàn miễn phí.",
+      "p2": "Bằng cách lập bản đồ các chu kỳ giấc ngủ 90 phút tự nhiên (bao gồm giấc ngủ sâu N1, N2, N3 và giai đoạn REM), chúng tôi tính toán các giới hạn ngủ để tăng cường phục hồi não bộ."
+    },
+    "contact": {
+      "title": "Liên Hệ Hỗ Trợ Giấc Ngủ",
+      "subtitle": "Bạn có đề xuất, câu hỏi hoặc cơ hội hợp tác? Hãy liên hệ với đội ngũ khoa học của chúng tôi.",
+      "name": "Tên Của Bạn",
+      "email": "Địa Chỉ Email Của Bạn",
+      "message": "Tin Nhắn Chi Tiết",
+      "send": "Gửi Tin Nhắn",
+      "success": "Gửi tin nhắn thành công! Đội ngũ khoa học giấc ngủ của chúng tôi sẽ xem xét và phản hồi trong vòng 48 giờ."
+    },
+    "terms": {
+      "title": "Điều Khoản Dịch Vụ",
+      "subtitle": "Đọc các điều khoản quy định, từ chối trách nhiệm y tế và chính sách nền tảng.",
+      "text": "Bộ Tính Toán Giấc Ngủ của chúng tôi được thiết kế thuần túy như một công cụ lập kế hoạch giáo dục nhịp sinh học. Nó không thay thế cho lời khuyên y tế lâm sàng, chẩn đoán hoặc điều trị các rối loạn giấc ngủ thần kinh."
+    },
+    "privacy": {
+      "title": "Chính Sách Bảo Mật",
+      "subtitle": "Cách chúng tôi bảo mật các tùy chọn, cookie thiết bị và phân tích phiên cục bộ.",
+      "text": "Chúng tôi coi trọng quyền riêng tư của bạn. Tất cả các tùy chọn tính toán, độ trễ giấc ngủ đã chọn, nhóm tuổi và tùy chọn chủ đề giao diện đều được lưu trữ cục bộ trên thiết bị của bạn thông qua bộ nhớ cục bộ của trình duyệt."
+    }
+  },
+  "seo": {
+    "/": {
+      "title": "Bộ Tính Giấc Ngủ | Tính Toán Chu Kỳ Giấc Ngủ & Giờ Đi Ngủ",
+      "description": "Tính toán thời gian đi ngủ và thức dậy hoàn hảo của bạn bằng chu kỳ giấc ngủ tự nhiên kéo dài 90 phút. Tránh mệt mỏi và thức dậy sảng khoái.",
+      "keywords": "bộ tính giấc ngủ, tính chu kỳ giấc ngủ, giờ đi ngủ lý tưởng, thức dậy tỉnh táo, nhịp sinh học"
+    },
+    "/blog": {
+      "title": "Blog Khoa Học Giấc Ngủ | Mẹo Vệ Sinh Giấc Ngủ & Chu Kỳ Ngủ",
+      "description": "Khám phá các hướng dẫn khoa học về giấc ngủ dựa trên nghiên cứu, mẹo vệ sinh giấc ngủ và bài viết của chuyên gia về chu kỳ giấc ngủ 90 phút và giấc ngủ REM.",
+      "keywords": "blog giấc ngủ, vệ sinh giấc ngủ, chu kỳ giấc ngủ 90 phút, giấc ngủ sâu"
+    },
+    "/about": {
+      "title": "Giới thiệu | Khoa học & Sứ mệnh của Máy tính Giấc ngủ",
+      "description": "Tìm hiểu về đội ngũ Máy tính Giấc ngủ, sứ mệnh và nghiên cứu sinh học hỗ trợ các thuật toán chu kỳ giấc ngủ 90 phút.",
+      "keywords": "giới thiệu máy tính giấc ngủ, nghiên cứu chu kỳ giấc ngủ, thuật toán giờ đi ngủ, nhịp sinh học"
+    },
+    "/contact": {
+      "title": "Liên hệ | Máy tính Giấc ngủ",
+      "description": "Liên hệ với đội ngũ Máy tính Giấc ngủ nếu bạn có câu hỏi, đóng góp ý kiến hoặc cơ hội hợp tác.",
+      "keywords": "liên hệ máy tính giấc ngủ, hỗ trợ công cụ ngủ, đóng góp ý kiến giấc ngủ"
+    },
+    "/privacy": {
+      "title": "Chính sách Bảo mật | Máy tính Giấc ngủ",
+      "description": "Đọc Chính sách Bảo mật của chúng tôi. Tìm hiểu cách chúng tôi bảo mật các tùy chọn trình duyệt cục bộ và cookie.",
+      "keywords": "chính sách bảo mật giấc ngủ, bảo mật dữ liệu cục bộ, cookie máy tính giấc ngủ"
+    },
+    "/terms": {
+      "title": "Điều khoản và Điều kiện | Máy tính Giấc ngủ",
+      "description": "Xem lại Điều khoản dịch vụ và tuyên bố từ chối trách nhiệm y tế của chúng tôi trước khi sử dụng máy tính giấc ngủ.",
+      "keywords": "điều khoản và điều kiện, tuyên bố miễn trừ y tế, điều khoản dịch vụ máy tính giấc ngủ"
+    },
+    "/student-sleep-calculator": {
+      "title": "Máy tính Giấc ngủ cho Học sinh & Thi cử | Giờ Ngủ Học tập",
+      "description": "Tối ưu hóa khả năng ghi nhớ, sự tập trung và điểm số. Sử dụng máy tính chu kỳ giấc ngủ cho học sinh và thanh thiếu niên.",
+      "keywords": "máy tính giấc ngủ học sinh, giấc ngủ thi cử, chu kỳ ngủ học tập, giấc ngủ thanh thiếu niên"
+    },
+    "/shift-work-sleep-calculator": {
+      "title": "Máy tính Giấc ngủ cho Người làm ca | Ngủ ngày Ca đêm",
+      "description": "Được thiết kế cho bác sĩ, y tá và người làm ca. Tính toán khối giấc ngủ ban ngày và chiến lược ngủ neo.",
+      "keywords": "máy tính giấc ngủ làm ca, lịch ngủ ca đêm, chu kỳ ngủ ban ngày, ngủ neo"
+    },
+    "/sleep-cycle-calculator-90-minutes": {
+      "title": "Máy tính Chu kỳ Giấc ngủ 90 Phút | Thời gian Vào giấc ngủ",
+      "description": "Tính toán giờ ngủ tối ưu dựa trên độ dài chu kỳ 90 phút khoa học. Tùy chỉnh thời gian để chìm vào giấc ngủ.",
+      "keywords": "máy tính giấc ngủ 90 phút, chu kỳ ngủ 90 phút, thời gian vào giấc ngủ, tính chu kỳ ngủ"
+    },
+    "/wake-up-between-sleep-cycles": {
+      "title": "Thức dậy Giữa các Chu kỳ Giấc ngủ | Không còn Mệt mỏi",
+      "description": "Tìm thời gian chính xác để thức dậy mà không bị mệt mỏi vào buổi sáng. Đặt báo thức vào cuối chu kỳ tự nhiên.",
+      "keywords": "thức dậy giữa các chu kỳ ngủ, máy tính giờ thức dậy, chống mệt mỏi buổi sáng, quán tính giấc ngủ"
+    },
+    "/ideal-bedtime-based-on-wake-up-time": {
+      "title": "Giờ Đi ngủ Lý tưởng Theo Giờ thức dậy | Theo Độ tuổi",
+      "description": "Xác định xem bạn nên đi ngủ lúc mấy giờ nếu thức dậy vào một giờ cụ thể, tùy chỉnh theo từng nhóm tuổi sinh học.",
+      "keywords": "giờ đi ngủ lý tưởng, mấy giờ nên đi ngủ, máy tính giấc ngủ theo tuổi, ngủ ngon thức dậy khỏe"
+    }
+  }
+}

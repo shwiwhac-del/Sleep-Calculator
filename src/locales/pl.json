@@ -1,0 +1,237 @@
+{
+  "common": {
+    "calculate": "Oblicz Optymalny Czas",
+    "reset": "Resetuj Opcje",
+    "back": "Wstecz",
+    "hours": "godzin",
+    "minutes": "minut",
+    "am": "AM",
+    "pm": "PM",
+    "themeLight": "Tryb Jasny",
+    "themeDark": "Tryb Ciemny",
+    "shareBtn": "Udostępnij Grafik",
+    "copied": "Skopiowano link!",
+    "ratingExc": "Doskonale",
+    "ratingGood": "Dobrze",
+    "ratingCaution": "Ostrzeżenie",
+    "recalibrateBtn": "Rekalibruj Harmonogram",
+    "excellentRange": "Doskonale: 5-6 cykli snu (7.5 - 9.0 godz.)",
+    "goodRange": "Dobrze: 4 cykle snu (6.0 godz.)",
+    "cautionRange": "Ostrzeżenie: 3 lub mniej cykli (< 4.5 godz.)",
+    "recalibrateTitle": "Rekalibracja Chronobiologiczna",
+    "recalibrateText": "Jeśli Twój grafik snu się przesunie, obliczaj optymalne okna stopniowo od nowa.",
+    "backToCalc": "Powrót do Kalkulatora",
+    "readArticle": "Przeczytaj artykuł",
+    "tryTool": "Wypróbuj nasze narzędzie do snu",
+    "feedbackBtn": "Opinie",
+    "closeBtn": "Zamknij",
+    "allRightsReserved": "Kalkulator Snu. Wszelkie prawa zastrzeżone."
+  },
+  "nav": {
+    "home": "Główna",
+    "calculators": "Kalkulatory",
+    "blog": "Blog",
+    "about": "O nas",
+    "contact": "Kontakt",
+    "privacy": "Polityka Prywatności",
+    "terms": "Regulamin",
+    "selectorTitle": "Zmień Język"
+  },
+  "home": {
+    "heroTitle": "Kalkulator Snu",
+    "heroSubtitle": "Zoptymalizuj swoje cykle snu, aby budzić się w pełni wypoczętym, pełnym energii i bez porannego oszołomienia.",
+    "modeWake": "Chcę obudzić się o...",
+    "modeBed": "Planuję iść spać o...",
+    "modeCycles": "Oblicz Cykle Snu",
+    "modeNap": "Planer Drzemek",
+    "modeRem": "Celuj w Cykl REM",
+    "ageGroupLabel": "Wybierz Swoją Grupę Wiekową",
+    "latencyLabel": "Opóźnienie Snu (Czas na zaśnięcie)",
+    "latencyDesc": "Przeciętnie zaśnięcie zajmuje około 15 minut.",
+    "rememberPref": "Zapamiętaj moje wybory na przyszłość",
+    "resultsTitle": "Twój Zoptymalizowany Harmonogram Snu",
+    "resultsDesc": "Oto optymalne okna snu oparte na naturalnych 90-minutowych cyklach snu:",
+    "bedtimeLabel": "Optymalne Godziny Snu",
+    "wakeTimeLabel": "Optymalne Godziny Pobudki",
+    "bedTimeOptionHeader": "Jeśli idziesz spać o...",
+    "wakeTimeOptionHeader": "Jeśli budzisz się o...",
+    "optimumBedtimeMsg": "Zalecamy pójście spać o jednej z tych godzin:",
+    "optimumWakeMsg": "Zalecamy ustawienie budzika na jedną z tych godzin:",
+    "sleepCyclesDesc": "pełnych cykli",
+    "deepSleepDesc": "Regenerujący Głęboki Sen",
+    "remSleepDesc": "Neurologiczny Sen REM",
+    "lightSleepDesc": "Przejściowy Płytki Sen",
+    "latencyShorthand": "opóźnienie",
+    "scoreLabel": "Wynik Jakości Snu",
+    "ratingLabel": "Ocena",
+    "durationLabel": "Całkowity Czas Snu"
+  },
+  "calculators": {
+    "student": {
+      "title": "Kalkulator Snu dla Studentów",
+      "subtitle": "Zoptymalizuj pamięć, kojarzenie i wydajność poznawczą przed egzaminami.",
+      "examTitle": "Przygotowanie do Egzaminów i Nauki",
+      "studyDays": "Dni nauki wymagają solidnego snu REM dla integracji faktów w mózgu.",
+      "calcDays": "Odliczaj wstecz, aby zabezpieczyć krytyczne poranne okresy snu.",
+      "memoryTip": "💡 Wskazówka: Sen REM występuje głównie w późnych porannych cyklach snu; nie skracaj ich!"
+    },
+    "shiftwork": {
+      "title": "Kalkulator Snu dla Pracowników Zmianowych",
+      "subtitle": "Zarządzaj blokami snu w ciągu dnia i projektuj harmonogramy zmianowe bez wstrząsu dobowego.",
+      "shiftTiming": "Planowanie Harmonogramu Zmian",
+      "sleepBlockTitle": "Obliczone Bloki Snu w Ciągu Dnia",
+      "anchorSleep": "Strategia Snu Kotwiczącego: Utrzymuj stabilne, 4-godzinne jądro snu.",
+      "dayTransition": "Przejścia między zmianami wymagają dokładnego blokowania światła o wschodzie słońca."
+    },
+    "ninetyMin": {
+      "title": "Kalkulator Cyklu Snu 90 Minut",
+      "subtitle": "Dopasuj swój sen dokładnie do naturalnych 90-minutowych interwałów rytmu ultradialnego.",
+      "cycleCount": "Wielokrotności Cykli",
+      "totalSleep": "Całkowity Zaplanowany Czas Snu"
+    },
+    "wakeUp": {
+      "title": "Kalkulator Budzenia się Bez Zmęczenia",
+      "subtitle": "Ustaw budzik idealnie na przejściu cyklu, aby pozbyć się porannego oszołomienia.",
+      "inertiaTip": "💡 Bezwładność senna trwa 30-60 minut, jeśli obudzisz się podczas głębokiego snu wolnofalowego."
+    },
+    "idealBedtime": {
+      "title": "Kalkulator Idealnej Pory Snu",
+      "subtitle": "Odkryj dostosowane do wieku optymalne pory snu od niemowlęctwa do późnej starości.",
+      "ageCalc": "Czas Snu Dostosowany do Wieku"
+    }
+  },
+  "blog": {
+    "toc": "Spis treści",
+    "takeaways": "Kluczowe Wnioski",
+    "takeawaysTitle1": "Omiń Oszołomienie",
+    "takeawaysText1": "Budzenie się pod koniec pełnego 90-minutowego cyklu snu eliminuje bezwładność senną.",
+    "takeawaysTitle2": "Obliczanie Pory Snu",
+    "takeawaysText2": "Odejmij wielokrotności 90 minut od czasu pobudki, a następnie odejmij 15 minut czasu na zaśnięcie.",
+    "takeawaysTitle3": "Dobowa Spójność",
+    "takeawaysText3": "Ustabilizuj porę pobudki. Zachowaj spójność nawet w weekendy, aby zapobiec rozregulowaniu zegara biologicznego.",
+    "takeawaysTitle4": "Sypialniane Sanktuarium",
+    "takeawaysText4": "Ustaw temperaturę sypialni na 18,3°C (65°F) i ogranicz światło do 0 luksów, aby zapewnić głęboki sen.",
+    "prosConsTitle": "Za i przeciw: Kalkulatory Snu vs. Trackery Opaskowe",
+    "prosConsDesc": "Czy przy optymalizacji cykli snu powinieneś polegać na planowaniu matematycznym (Kalkulatory), czy na aktywnym śledzeniu biologicznym (Wearables)? Oto naukowe porównanie:",
+    "colMetric": "Funkcja / Metryka",
+    "colCalc": "Matematyczny Kalkulator Snu",
+    "colWearable": "Wearables i Trackery Snu",
+    "rowCost": "Koszt i Dostępność",
+    "rowCostCalc": "100% Darmowy, Natychmiastowy Dostęp",
+    "rowCostWearable": "Drogi ($150 - $400+ na start + abonamenty)",
+    "rowComfort": "Promieniowanie i Komfort",
+    "rowComfortCalc": "Zero Promieniowania EMF, Wysoki Komfort",
+    "rowComfortWearable": "Niskie EMF, potencjalne podrażnienia skóry lub dyskomfort w nocy",
+    "rowPlan": "Planowanie Predykcyjne",
+    "rowPlanCalc": "Doskonałe (Przewiduje pory snu zanim pójdziesz spać)",
+    "rowPlanWearable": "Słabe (Raportuje dane dopiero po przebudzeniu)",
+    "rowHeart": "Tętno / HRV w Czasie Rzeczywistym",
+    "rowHeartCalc": "Brak (Opiera się na matematycznych średnich)",
+    "rowHeartWearable": "Doskonałe (Śledzi rzeczywiste reakcje fizyczne organizmu)",
+    "prosTitle": "Zalety Kalkulatora Snu",
+    "prosList": [
+      "Zapewnia gotowe do wdrożenia docelowe pory snu, aby zapobiec budzeniu się w głębokim śnie",
+      "Nie wymaga ładowania, aktualizacji sprzętu ani połączeń bluetooth",
+      "Pomaga w naturalny sposób wykształcić wysoce przewidywalną rutynę dobową",
+      "Pozwala uniknąć lęku związanego ze snem wywołanego ciągłym sprawdzaniem wyników"
+    ],
+    "consTitle": "Wady Kalkulatora Snu",
+    "consList": [
+      "Nie może śledzić mikrowybudzeń, których nie pamiętasz",
+      "Zakłada standardową długość cyklu snu wynoszącą 90 minut",
+      "Nie rejestruje zmienności rytmu zatokowego (HRV) ani desaturacji tlenowej"
+    ],
+    "faqTitle": "Kliniczne FAQ i Rozwiązywanie Problemów ze Snem",
+    "faqText": "Często zadawane pytania naukowe dotyczące optymalizacji architektury ludzkiego snu.",
+    "conclusionTitle": "Konsensus Naukowy w Optymalizacji Snu",
+    "conclusionText": "Badania naukowe jednoznacznie podkreślają, że spójność harmonogramu snu oraz dostosowanie do biologicznych 90-minutowych cykli stanowi fundament regenerującego zdrowia fizycznego i szczytowej koncentracji.",
+    "postAuthors": "Dr Sarah Jenkins — Główny Doradca ds. Nauki o Śnie",
+    "blogIndexTitle": "Blog i Poradniki o Nauce o Śnie",
+    "blogIndexSub": "Ekspercka wiedza, badania fizjologiczne i praktyczne wskazówki, które pomogą Ci obliczyć optymalne okna snu, zresetować wewnętrzny zegar i obudzić się z energią."
+  },
+  "pages": {
+    "about": {
+      "title": "O Kalkulatorze Snu",
+      "subtitle": "Nauka, algorytmy i zasady biologiczne leżące u podstaw naszych interaktywnych narzędzi.",
+      "cardTitle": "Chronobiologia Poparta Nauką",
+      "cardBody": "Nasze algorytmy zostały zaprojektowane zgodnie z ustalonymi benchmarkami cykli snu, pomagając milionom budzić się rano bez zmęczenia.",
+      "p1": "Kalkulator Snu powstał, aby udostępnić opinii publicznej precyzyjne planowanie fizjologiczne całkowicie za darmo.",
+      "p2": "Mapując naturalne 90-minutowe cykle snu (obejmujące głęboki sen N1, N2, N3 oraz fazy REM), obliczamy granice snu dla lepszej regeneracji mózgu."
+    },
+    "contact": {
+      "title": "Skontaktuj się ze Wsparciem",
+      "subtitle": "Masz sugestie, pytania lub propozycje współpracy? Skontaktuj się z naszym zespołem naukowym.",
+      "name": "Twoje Imię",
+      "email": "Twój Adres E-mail",
+      "message": "Szczegółowa Wiadomość",
+      "send": "Wyślij Wiadomość",
+      "success": "Wiadomość wysłana pomyślnie! Nasz zespół odpowie w ciągu 48 godzin."
+    },
+    "terms": {
+      "title": "Warunki Świadczenia Usług",
+      "subtitle": "Zapoznaj się z naszymi warunkami regulacyjnymi i zastrzeżeniem medycznym.",
+      "text": "Nasz Kalkulator Snu został zaprojektowany wyłącznie jako edukacyjne narzędzie planowania chronobiologicznego. Nie zastępuje klinicznej porady lekarskiej ani leczenia."
+    },
+    "privacy": {
+      "title": "Polityka Prywatności",
+      "subtitle": "Jak zabezpieczamy Twoje preferencje, pliki cookie i analizy sesji lokalnych.",
+      "text": "Cenimy Twoją prywatność. Wszystkie preferencje kalkulatora, grupy wiekowe i ustawienia motywu są zapisywane lokalnie w przeglądarce za pomocą local storage."
+    }
+  },
+  "seo": {
+    "/": {
+      "title": "Kalkulator Snu | Cykl Snu, Pora Snu i Budzik",
+      "description": "Oblicz idealną porę na sen i pobudkę, korzystając z naturalnych 90-minutowych cykli snu. Unikaj porannego zmęczenia i budź się rano świeżym.",
+      "keywords": "kalkulator snu, cykl snu, pora snu, budzik snu, stop zmęczeniu rano, rytm dobowy"
+    },
+    "/blog": {
+      "title": "Blog o Nauce o Śnie | Poradniki i Higiena Snu",
+      "description": "Poznaj poparte badaniami poradniki dotyczące snu, wskazówki dotyczące higieny snu i artykuły eksperckie na temat cykli 90-minutowych i snu REM.",
+      "keywords": "blog o śnie, higiena snu, cykl 90 minut, głęboki sen"
+    },
+    "/about": {
+      "title": "O nas | Nauka i Misja Kalkulatora Snu",
+      "description": "Poznaj zespół Kalkulatora Snu, naszą misję oraz badania biologiczne wspierające nasze algorytmy 90-minutowego cyklu snu.",
+      "keywords": "o nas kalkulator snu, badania cyklu snu, algorytm czasu snu, biologia okołodobowa"
+    },
+    "/contact": {
+      "title": "Kontakt | Kalkulator Snu",
+      "description": "Skontaktuj się z zespołem Kalkulatora Snu w przypadku pytań, sugestii lub propozycji współpracy.",
+      "keywords": "kontakt kalkulator snu, wsparcie kalkulatora snu, opinie o narzędziu"
+    },
+    "/privacy": {
+      "title": "Polityka Prywatności | Kalkulator Snu",
+      "description": "Przeczytaj naszą Politykę Prywatności. Dowiedz się, jak chronimy Twoje lokalne preferencje przeglądarki i pliki cookie.",
+      "keywords": "polityka prywatności snu, ochrona danych lokalnych, pliki cookie kalkulatora snu"
+    },
+    "/terms": {
+      "title": "Regulamin | Kalkulator Snu",
+      "description": "Zapoznaj się z naszym regulaminem i zastrzeżeniami medycznymi przed użyciem kalkulatora snu.",
+      "keywords": "regulamin, zastrzeżenie medyczne sen, warunki świadczenia usług"
+    },
+    "/student-sleep-calculator": {
+      "title": "Kalkulator Snu dla Uczniów i Studentów | Sen Przed Egzaminem",
+      "description": "Zoptymalizuj zapamiętywanie, koncentrację i wyniki w nauce. Skorzystaj z kalkulatora cyklu snu dla studentów i nastolatków.",
+      "keywords": "kalkulator snu dla studentów, sen a nauka, planowanie snu przed egzaminem, cykl snu nastolatków"
+    },
+    "/shift-work-sleep-calculator": {
+      "title": "Kalkulator Snu dla Pracowników Zmianowych | Praca w Nocy",
+      "description": "Zaprojektowany dla lekarzy, pielęgniarek i pracowników zmianowych. Oblicz bloki snu w ciągu dnia i strategię snu kotwicznego.",
+      "keywords": "kalkulator snu praca zmianowa, grafik snu praca w nocy, sen w dzień, sen kotwiczny"
+    },
+    "/sleep-cycle-calculator-90-minutes": {
+      "title": "Kalkulator Cyklu Snu 90 Minut | Czas Zasypiania",
+      "description": "Oblicz idealny czas na pójście spać na podstawie 90-minutowych cykli snu. Spersonalizuj swój czas zasypiania."
+    },
+    "/wake-up-between-sleep-cycles": {
+      "title": "Budzenie Się Między Cyklami Snu | Stop Zmęczeniu Rano",
+      "description": "Znajdź dokładną godzinę pobudki, aby wyeliminować poranne oszołomienie. Ustaw budzik na koniec naturalnego cyklu snu.",
+      "keywords": "budzenie się między cyklami snu, kalkulator pobudki, unikaj porannego zmęczenia, bezwładność senna"
+    },
+    "/ideal-bedtime-based-on-wake-up-time": {
+      "title": "Idealny Czas na Sen na Podstawie Godziny Pobudki | Według Wieku",
+      "description": "Dowiedz się, o której godzinie powinieneś pójść spać, jeśli budzisz się o określonej porze, z dostosowaniem do wieku.",
+      "keywords": "idealna godzina na sen, o której iść spać, kalkulator snu według wieku, zdrowy sen"
+    }
+  }
+}
