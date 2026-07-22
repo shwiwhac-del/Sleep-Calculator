@@ -8,7 +8,7 @@ import { Breadcrumbs } from '../components/Breadcrumbs';
 import { useLanguage } from '../hooks/useLanguage';
 
 export default function Contact() {
-  const { t, getLocalizedPath } = useLanguage();
+  const { t, getLocalizedPath, currentLang } = useLanguage();
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);

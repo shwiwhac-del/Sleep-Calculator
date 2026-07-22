@@ -9,6 +9,7 @@ import RecommendedSleepGuides from "../components/RecommendedSleepGuides";
 import { Breadcrumbs } from "../components/Breadcrumbs";
 import { OpenGraphTags } from "../components/OpenGraphTags";
 import { useLanguage } from "../hooks/useLanguage";
+import { PageQuestionBreakdown } from "../components/PageQuestionBreakdown";
 
 export default function NinetyMinCalc() {
   const { t } = useLanguage();
@@ -327,6 +328,57 @@ export default function NinetyMinCalc() {
           <p>
             Waking up in the middle of N3 deep sleep results in <strong>sleep inertia</strong>—characterized by mental lethargy, impaired fine motor skills, and morning brain fog. Our interactive 90-minute sleep calculator utilizes this mathematical formula to align alarm targets with cycle boundaries, helping users wake up feeling alert and refreshed.
           </p>
+
+          <PageQuestionBreakdown
+            mainQuestion="How does the 90-minute sleep cycle work and how do I calculate my optimal sleep times?"
+            quickAnswer="Human sleep is structured into 90-minute ultradian cycles composed of light sleep (N1/N2), deep slow-wave sleep (N3), and dream-rich REM sleep. To calculate optimal sleep times, multiply 90 minutes by the desired number of cycles (usually 5 or 6) and add 15 minutes for sleep onset."
+            keyTerms={[
+              { term: "Ultradian Rhythm", definition: "A biological rhythm that recurs in cycles shorter than 24 hours (such as the 90-minute sleep stage progression)." },
+              { term: "NREM (Non-REM) Sleep", definition: "Stages N1, N2, and N3 sleep characterized by slowing brainwaves, muscle repair, and growth hormone release." },
+              { term: "REM (Rapid Eye Movement)", definition: "The dream stage occurring at the end of each cycle, critical for emotional balance and creative problem-solving." },
+              { term: "Sleep Inertia", definition: "The groggy, disoriented feeling caused by waking up abruptly in the middle of deep Stage-N3 sleep." }
+            ]}
+            practicalExample={{
+              scenario: "You want to wake up at 7:00 AM feeling energized.",
+              steps: [
+                "Calculate 5 cycles: 5 × 90 minutes = 450 minutes (7.5 hours). Subtracting 7.5 hours from 7:00 AM = 11:30 PM.",
+                "Add 15 minutes for falling asleep (sleep latency) → 11:15 PM bedtime.",
+                "Calculate 6 cycles: 6 × 90 minutes = 540 minutes (9.0 hours). Subtracting 9 hours + 15 mins latency from 7:00 AM = 9:45 PM bedtime."
+              ],
+              result: "Going to bed at 11:15 PM (5 cycles) or 9:45 PM (6 cycles) targets a 7:00 AM alarm during light sleep at cycle boundaries."
+            }}
+            comparison={{
+              title: "90-Minute Cycle Alignment vs Fixed 8-Hour Alarm",
+              optionA: {
+                name: "90-Minute Cycle Alignment (7.5 Hours / 5 Cycles)",
+                details: "Alarm rings right at the end of REM/N1 light sleep, when brainwaves are fast and near waking levels.",
+                outcome: "Immediate morning mental clarity, high energy, zero grogginess."
+              },
+              optionB: {
+                name: "Fixed 8-Hour Alarm (5.3 Cycles)",
+                details: "Alarm rings 30 minutes into the 6th cycle—often right during Stage-N3 deep sleep.",
+                outcome: "Severe sleep inertia, morning brain fog, urge to hit snooze multiple times."
+              }
+            }}
+            useCases={[
+              { title: "Daily Work & Productivity Planning", description: "Design consistent sleep schedules targeting 5 cycles (7.5 hours) for sustained daytime focus." },
+              { title: "90-Minute Full-Cycle Power Naps", description: "Take a complete 90-minute nap on weekends to clear sleep debt without post-nap grogginess." },
+              { title: "Jet Lag & Travel Recovery", description: "Shift sleep in strict 90-minute increments when adjusting across time zones." },
+              { title: "Athletic Performance Recovery", description: "Increase cycle target to 6 full cycles (9 hours) during high physical training phases." }
+            ]}
+            pitfalls={[
+              {
+                mistake: "Treating 90 minutes as an exact unyielding clock for every individual.",
+                impact: "Individual cycle lengths naturally range between 80 and 110 minutes depending on age and fatigue.",
+                fix: "Use 90 minutes as a reliable average baseline, adjusting bedtime by ±10 minutes based on how you feel."
+              },
+              {
+                mistake: "Hitting snooze after the alarm rings.",
+                impact: "Snoozing for 10 minutes causes the brain to initiate a brand-new sleep cycle, worsening sleep inertia when the second alarm rings.",
+                fix: "Get out of bed as soon as the first cycle-aligned alarm rings."
+              }
+            ]}
+          />
         </section>
 
         {/* SECTION 2 */}
@@ -450,7 +502,11 @@ export default function NinetyMinCalc() {
       </article>
 
       {/* Recommended Sleep Guides & Science */}
-      <RecommendedSleepGuides />
+      <RecommendedSleepGuides 
+        preferredSlugs={['90-minute-sleep-calculator', 'sleep-cycles-explained', 'what-is-rem-sleep']} 
+        title="90-Minute Sleep Cycle Guides" 
+        description="Learn how the human 90-minute ultradian rhythm works, what happens during REM and NREM stages, and how to optimize your sleep windows."
+      />
 
     </main>
   );

@@ -1,4 +1,10 @@
 User-agent: *
 Allow: /
+Allow: /assets/
+Allow: /data/
+Allow: /*.png
+Allow: /*.ico
+Allow: /*.xml
+Allow: /*.txt
 
 Sitemap: https://sleepcalculater.online/sitemap.xml

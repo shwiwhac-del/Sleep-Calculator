@@ -8,6 +8,7 @@ import RecommendedSleepGuides from "../components/RecommendedSleepGuides";
 import { Breadcrumbs } from "../components/Breadcrumbs";
 import { OpenGraphTags } from "../components/OpenGraphTags";
 import { useLanguage } from "../hooks/useLanguage";
+import { PageQuestionBreakdown } from "../components/PageQuestionBreakdown";
 
 export default function ShiftWorkCalc() {
   const { t } = useLanguage();
@@ -381,6 +382,57 @@ export default function ShiftWorkCalc() {
           <p>
             Our specialized sleep calculator for night shift workers represents a tool of mathematical circadian adaptation. By programming biological rest structures around precise 90-minute intervals—easily estimated via our <Link to="/sleep-cycle-calculator-90-minutes" className="text-[#7C3AED] font-semibold hover:underline bg-[#7C3AED]/5 px-1.5 py-0.5 rounded">90-Minute Sleep Cycle Calculator</Link>—and scheduling active transit times, shift workers can safely inversion-proof their bodies and protect critical cognitive functions.
           </p>
+
+          <PageQuestionBreakdown
+            mainQuestion="How can night shift workers calculate optimal daytime sleep schedules to avoid chronic exhaustion?"
+            quickAnswer="Night shift workers should structure daytime sleep into dedicated 90-minute cycle blocks (e.g., a core 6-hour or 7.5-hour block immediately after shift, or a split strategy with a 4.5-hour core block + a 90-minute pre-shift nap). Wear blue-blocking glasses during the commute home to protect melatonin."
+            keyTerms={[
+              { term: "Anchor Sleep Strategy", definition: "Maintaining a fixed 4-hour core sleep window at the exact same time every day, regardless of shift changes." },
+              { term: "Circadian Inversion", definition: "Shift-work adaptation where sleep and wake schedules are flipped 12 hours relative to solar light." },
+              { term: "Zeitgeber", definition: "External environmental cues (like sunlight and meals) that synchronize your internal 24-hour master clock." },
+              { term: "Split Sleep Strategy", definition: "Dividing total daily sleep into two distinct blocks (e.g., 4.5 hours after shift + 1.5 hours before next shift)." }
+            ]}
+            practicalExample={{
+              scenario: "Night shift nurse finishing a 12-hour shift at 7:00 AM, arriving home at 7:30 AM.",
+              steps: [
+                "Wear dark sunglasses during the morning drive home to prevent morning sunlight from suppressing melatonin.",
+                "Get into a dark bedroom by 8:00 AM.",
+                "Target a 4-cycle core sleep block (6 hours) → wake up at 2:00 PM, OR a 5-cycle core block (7.5 hours) → wake up at 3:30 PM."
+              ],
+              result: "Waking at 2:00 PM or 3:30 PM ensures waking up at the end of a complete 90-minute cycle during light stage-N1/N2 sleep."
+            }}
+            comparison={{
+              title: "Consolidated Daytime Sleep vs Split Sleep Strategy",
+              optionA: {
+                name: "Consolidated Daytime Sleep (6 - 7.5 Hours Straight)",
+                details: "Sleep in a single continuous block from 8:00 AM to 3:30 PM in a dark blackout room.",
+                outcome: "Maximum continuous deep N3 physical recovery; requires strict daytime noise/light blocking."
+              },
+              optionB: {
+                name: "Split Sleep (4.5 Hours Morning + 1.5 Hours Pre-Shift)",
+                details: "Sleep 4.5 hours upon returning home (8:00 AM - 12:30 PM) + take a 90-minute nap before shift (5:30 PM - 7:00 PM).",
+                outcome: "Flexibility for family commitments; reduces pre-shift drowsiness before long night shifts."
+              }
+            }}
+            useCases={[
+              { title: "Rotating 12-Hour Hospital Nursing", description: "Use blue-blocking glasses on the drive home and split-sleep before back-to-back night shifts." },
+              { title: "Long-Haul Logistics & Night Truckers", description: "Schedule 90-minute pre-drive naps in cab sleepers with thermal eye masks." },
+              { title: "24/7 Manufacturing & Plant Operations", description: "Anchor sleep times between 9:00 AM and 1:00 PM on working days." },
+              { title: "First Responders & On-Call Emergency Teams", description: "Use 20-minute power naps or 90-minute emergency recovery cycles between dispatches." }
+            ]}
+            pitfalls={[
+              {
+                mistake: "Exposing eyes to bright sunlight during the morning commute home.",
+                impact: "Morning sunlight triggers cortisol release and suppresses melatonin, making it difficult to fall asleep at 8:00 AM.",
+                fix: "Wear dark amber or polarized UV/blue-blocking sunglasses as soon as you exit the facility."
+              },
+              {
+                mistake: "Using alcohol as a daytime sleep aid.",
+                impact: "Alcohol destroys REM sleep architecture and causes middle-of-the-day awakenings as blood alcohol levels drop.",
+                fix: "Use cold dark room conditions, magnesium glycinate, or pink noise generators instead."
+              }
+            ]}
+          />
         </section>
 
         {/* SECTION 2 */}
@@ -525,7 +577,11 @@ export default function ShiftWorkCalc() {
       </article>
 
       {/* Recommended Sleep Guides & Science */}
-      <RecommendedSleepGuides />
+      <RecommendedSleepGuides 
+        preferredSlugs={['shift-work-sleep-calculator-guide', 'sleep-calculator-for-night-shift-workers', 'fix-irregular-sleep-schedule']} 
+        title="Night Shift & Sleep Health Guides" 
+        description="Discover practical strategies for aligning daytime sleep with circadian rhythms, managing night shifts, and preventing daytime fatigue."
+      />
 
     </main>
   );

@@ -15,8 +15,6 @@ export function SleepScienceGuide() {
         </p>
       </header>
 
-      <hr className="border-[#E1D8CC] dark:border-slate-800" />
-
       {/* Section 1: What is a Sleep Calculator */}
       <section className="space-y-3">
         <h3 className="text-xl sm:text-2xl font-serif font-bold text-[#111827] dark:text-gray-100 tracking-tight">

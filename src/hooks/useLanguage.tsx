@@ -1,6 +1,14 @@
-import React, { createContext, useContext, useEffect, ReactNode } from 'react';
+import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { TRANSLATIONS, SUPPORTED_LANGUAGES, LanguageCode, isValidLanguage } from '../locales';
+
+export interface DetectionToastState {
+  show: boolean;
+  detectedLang: LanguageCode | null;
+  confirmLanguage: () => void;
+  revertToEnglish: () => void;
+  dismissToast: () => void;
+}
 
 interface LanguageContextProps {
   currentLang: LanguageCode;
@@ -8,6 +16,7 @@ interface LanguageContextProps {
   getLocalizedPath: (path: string) => string;
   changeLanguage: (lang: LanguageCode) => void;
   languages: typeof SUPPORTED_LANGUAGES;
+  detectionToast: DetectionToastState;
 }
 
 const LanguageContext = createContext<LanguageContextProps | undefined>(undefined);
@@ -16,6 +25,9 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   const location = useLocation();
   const navigate = useNavigate();
   const params = useParams();
+
+  const [detectedLang, setDetectedLang] = useState<LanguageCode | null>(null);
+  const [showDetectionToast, setShowDetectionToast] = useState<boolean>(false);
 
   // Detect current language from pathname segment
   const pathParts = location.pathname.split('/');
@@ -95,15 +107,40 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     const hasDetected = localStorage.getItem('sleep_calc_lang_detected');
     
-    // Only detect language on the default root path and if not already detected/saved
-    if (!hasDetected && location.pathname === '/') {
-      const browserLang = (navigator.language || (navigator as any).userLanguage || '').split('-')[0];
-      
+    if (!hasDetected) {
+      // Collect candidate browser languages
+      const rawBrowserLangs = navigator.languages
+        ? Array.from(navigator.languages)
+        : [navigator.language || (navigator as any).userLanguage || ''];
+
+      let matchedLang: LanguageCode | null = null;
+      for (const langStr of rawBrowserLangs) {
+        if (!langStr) continue;
+        const code = langStr.split('-')[0].toLowerCase();
+        if (isValidLanguage(code) && code !== 'en') {
+          matchedLang = code as LanguageCode;
+          break;
+        }
+      }
+
       localStorage.setItem('sleep_calc_lang_detected', 'true');
-      
-      if (isValidLanguage(browserLang) && browserLang !== 'en') {
-        localStorage.setItem('sleep_calc_lang', browserLang);
-        navigate(`/${browserLang}`);
+
+      if (matchedLang) {
+        localStorage.setItem('sleep_calc_lang', matchedLang);
+        setDetectedLang(matchedLang);
+        setShowDetectionToast(true);
+
+        // Automatically switch language state & path if not already on it
+        if (currentLang !== matchedLang) {
+          let cleanPath = location.pathname;
+          if (cleanPath.startsWith(`/${currentLang}/`)) {
+            cleanPath = cleanPath.substring(currentLang.length + 1);
+          } else if (cleanPath === `/${currentLang}`) {
+            cleanPath = '/';
+          }
+          const nextPath = cleanPath.startsWith('/') ? cleanPath : `/${cleanPath}`;
+          navigate(`/${matchedLang}${nextPath === '/' ? '' : nextPath}`, { replace: true });
+        }
       } else {
         localStorage.setItem('sleep_calc_lang', 'en');
       }
@@ -112,10 +149,35 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
       localStorage.setItem('sleep_calc_lang_detected', 'true');
       localStorage.setItem('sleep_calc_lang', firstSegment);
     }
-  }, [location.pathname, firstSegment, navigate]);
+  }, [location.pathname, firstSegment, navigate, currentLang]);
+
+  const confirmLanguage = () => {
+    if (detectedLang) {
+      localStorage.setItem('sleep_calc_lang', detectedLang);
+    }
+    localStorage.setItem('sleep_calc_lang_detected', 'true');
+    setShowDetectionToast(false);
+  };
+
+  const revertToEnglish = () => {
+    changeLanguage('en');
+    setShowDetectionToast(false);
+  };
+
+  const dismissToast = () => {
+    setShowDetectionToast(false);
+  };
+
+  const detectionToast: DetectionToastState = {
+    show: showDetectionToast,
+    detectedLang,
+    confirmLanguage,
+    revertToEnglish,
+    dismissToast,
+  };
 
   return (
-    <LanguageContext.Provider value={{ currentLang, t, getLocalizedPath, changeLanguage, languages: SUPPORTED_LANGUAGES }}>
+    <LanguageContext.Provider value={{ currentLang, t, getLocalizedPath, changeLanguage, languages: SUPPORTED_LANGUAGES, detectionToast }}>
       {children}
     </LanguageContext.Provider>
   );
@@ -128,3 +190,14 @@ export function useLanguage() {
   }
   return context;
 }
+
+export function useBrowserLanguageDetector() {
+  const { detectionToast, currentLang, changeLanguage, languages } = useLanguage();
+  return {
+    ...detectionToast,
+    currentLang,
+    changeLanguage,
+    languages,
+  };
+}
+

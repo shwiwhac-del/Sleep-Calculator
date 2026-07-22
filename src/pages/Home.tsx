@@ -719,158 +719,62 @@ export default function Home() {
               <div className="w-full p-4 sm:p-5 flex flex-col relative overflow-hidden">
                 <div className="relative z-10">
                   {mode === "cycles" && cyclesReport ? (
-                    <div className="w-full flex flex-col gap-5 text-[#374151] dark:text-gray-150 select-text">
-                      <div className="text-center">
-                        <span className="text-[#6B7280] uppercase tracking-wider text-xs font-bold font-mono">
-                          Sleep Cycle Health Card
-                        </span>
-                        <h2 className="text-2xl font-black mt-1 text-[#111827] dark:text-white">
-                          Your Personal Sleep Report
+                    <div className="w-full flex flex-col gap-4 text-[#374151] dark:text-gray-150 select-text">
+                      <div className="text-center mb-1">
+                        <h2 className="text-xl sm:text-2xl font-bold text-[#111827] dark:text-white">
+                          Your Sleep Schedule Summary
                         </h2>
+                        <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-1">
+                          Calculated using 90-minute sleep cycles &amp; 15-minute fall asleep delay
+                        </p>
                       </div>
 
-                      {/* Diagnostic Score Circle / Badge */}
-                      <div className="flex flex-col items-center justify-center py-5 bg-[#FAF6F0] dark:bg-[#151C2C] border border-[#E1D8CC] dark:border-[#1E293B] rounded-3xl shadow-xs">
-                        <div className="relative flex items-center justify-center w-24 h-24 sm:w-28 sm:h-28 rounded-full border-4 border-dashed border-[#7C3AED]/20">
-                          <div className="absolute inset-2 rounded-full bg-[#F3ECE3]/45 dark:bg-[#0F172A]/45 shadow-sm flex flex-col items-center justify-center">
-                            <span className="text-3xl sm:text-4xl font-extrabold text-[#7C3AED] leading-none font-mono">
-                              {cyclesReport.score}%
-                            </span>
-                            <span className="text-[10px] sm:text-xs text-[#6B7280] font-extrabold mt-0.5 tracking-wider uppercase font-mono">
-                              Score
-                            </span>
-                          </div>
+                      {/* Clean Summary Stats Grid */}
+                      <div className="grid grid-cols-2 gap-3">
+                        <div className="bg-[#FAF6F0] dark:bg-[#151C2C] border border-[#E1D8CC] dark:border-[#1E293B] rounded-xl p-4 text-center">
+                          <span className="text-[11px] text-slate-500 dark:text-slate-400 font-semibold uppercase tracking-wider block">Bedtime</span>
+                          <span className="text-base sm:text-lg font-bold text-[#111827] dark:text-slate-100 mt-1 block">{formatTime(timeToDate(cyclesReport.bedTime, "bed"))}</span>
                         </div>
-
-                        <div className="mt-4 text-center">
-                          <span className={`inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-extrabold tracking-wide ${
-                            cyclesReport.rating === "Excellent" 
-                              ? "bg-green-50 dark:bg-green-950/20 text-green-700 dark:text-green-300 border border-green-150 dark:border-green-800" 
-                              : cyclesReport.rating === "Good" 
-                                ? "bg-amber-100/60 dark:bg-amber-950/20 text-amber-800 dark:text-amber-300 border border-amber-200 dark:border-amber-800" 
-                                : "bg-rose-50 dark:bg-rose-950/20 text-rose-750 dark:text-rose-300 border border-rose-200 dark:border-rose-800"
-                          }`}>
-                            <span className={`w-2 h-2 rounded-full ${
-                              cyclesReport.rating === "Excellent" 
-                                ? "bg-green-500" 
-                                : cyclesReport.rating === "Good" 
-                                  ? "bg-amber-500" 
-                                  : "bg-rose-500"
-                            }`} />
-                            {cyclesReport.rating === "Excellent" && "Perfect Sleep Alignment"}
-                            {cyclesReport.rating === "Good" && "Sub-Optimal Alignment"}
-                            {cyclesReport.rating === "Caution" && "Deep Sleep Interruption Risk"}
-                          </span>
-                          <p className="text-sm text-[#4B5563] dark:text-slate-300 max-w-sm mt-3 px-4 font-semibold leading-relaxed">
-                            {cyclesReport.rating === "Excellent" && "Outstanding! You wake up right at the endpoint of a 90-minute sleep cycle. Waking up during this light sleep transition minimizes grogginess (sleep inertia) and ensures maximum morning alertness."}
-                            {cyclesReport.rating === "Good" && "Fairly solid, but you are waking up in a transition boundary. You might feel a slight groggy sensation upon waking up. Tweaking your bedtime by 15-20 minutes could make it perfect."}
-                            {cyclesReport.rating === "Caution" && "Caution! Waking up at this scheduled time will likely interrupt your REM or deep sleep stages. This is a common trigger for sleep inertia, leaving you feeling tired even after substantial hours."}
-                          </p>
+                        <div className="bg-[#FAF6F0] dark:bg-[#151C2C] border border-[#E1D8CC] dark:border-[#1E293B] rounded-xl p-4 text-center">
+                          <span className="text-[11px] text-slate-500 dark:text-slate-400 font-semibold uppercase tracking-wider block">Wake-Up Time</span>
+                          <span className="text-base sm:text-lg font-bold text-[#111827] dark:text-slate-100 mt-1 block">{formatTime(timeToDate(cyclesReport.wakeTime, "wake"))}</span>
                         </div>
-                      </div>
-
-                      {/* Stat Grid */}
-                      <div className="grid grid-cols-2 gap-3 mt-1">
-                        <div className="bg-[#FAF6F0] dark:bg-[#151C2C] border border-[#E1D8CC] dark:border-[#1E293B] rounded-2xl p-4 flex flex-col justify-between hover:shadow-sm duration-200">
-                          <span className="text-[#6B7280] dark:text-slate-400 text-[10px] font-bold leading-none uppercase tracking-wider font-mono">Bedtime</span>
-                          <span className="text-lg font-extrabold text-[#111827] dark:text-slate-100 mt-1.5">{formatTime(timeToDate(cyclesReport.bedTime, "bed"))}</span>
-                        </div>
-                        <div className="bg-[#FAF6F0] dark:bg-[#151C2C] border border-[#E1D8CC] dark:border-[#1E293B] rounded-2xl p-4 flex flex-col justify-between hover:shadow-sm duration-200">
-                          <span className="text-[#6B7280] dark:text-slate-400 text-[10px] font-bold leading-none uppercase tracking-wider font-mono">Wake-Up Time</span>
-                          <span className="text-lg font-extrabold text-[#111827] dark:text-slate-100 mt-1.5">{formatTime(timeToDate(cyclesReport.wakeTime, "wake"))}</span>
-                        </div>
-                        <div className="bg-[#FAF6F0] dark:bg-[#151C2C] border border-[#E1D8CC] dark:border-[#1E293B] rounded-2xl p-4 flex flex-col justify-between hover:shadow-sm duration-200">
-                          <span className="text-[#6B7280] dark:text-slate-400 text-[10px] font-bold leading-none uppercase tracking-wider font-mono">Slept Duration</span>
-                          <span className="text-lg font-extrabold text-[#111827] dark:text-slate-100 mt-1.5">
+                        <div className="bg-[#FAF6F0] dark:bg-[#151C2C] border border-[#E1D8CC] dark:border-[#1E293B] rounded-xl p-4 text-center">
+                          <span className="text-[11px] text-slate-500 dark:text-slate-400 font-semibold uppercase tracking-wider block">Total Sleep</span>
+                          <span className="text-base sm:text-lg font-bold text-[#111827] dark:text-slate-100 mt-1 block">
                             {Math.floor(cyclesReport.sleepDurationMinutes / 60)}h {cyclesReport.sleepDurationMinutes % 60}m
                           </span>
                         </div>
-                        <div className="bg-[#FAF6F0] dark:bg-[#151C2C] border border-[#E1D8CC] dark:border-[#1E293B] rounded-2xl p-4 flex flex-col justify-between hover:shadow-sm duration-200">
-                          <span className="text-[#6B7280] dark:text-slate-400 text-[10px] font-bold leading-none uppercase tracking-wider font-mono">Sleep Cycles</span>
-                          <span className="text-lg font-extrabold text-[#7C3AED] dark:text-violet-400 mt-1.5 font-mono">{cyclesReport.cycles} Cycles</span>
+                        <div className="bg-[#FAF6F0] dark:bg-[#151C2C] border border-[#E1D8CC] dark:border-[#1E293B] rounded-xl p-4 text-center">
+                          <span className="text-[11px] text-slate-500 dark:text-slate-400 font-semibold uppercase tracking-wider block">Sleep Cycles</span>
+                          <span className="text-base sm:text-lg font-bold text-[#7C3AED] dark:text-violet-400 mt-1 block">{cyclesReport.cycles} Cycles</span>
                         </div>
                       </div>
 
-                      {/* Interactive Sleep Stage Breakdown */}
-                      <div className="bg-[#FAF6F0] dark:bg-[#151C2C] border border-[#E1D8CC] dark:border-[#1E293B] rounded-2xl p-4 sm:p-5 mt-1 shadow-xs">
-                        <span className="text-xs font-black uppercase text-[#111827] dark:text-slate-100 block mb-3.5 tracking-wider font-sans">
-                          Estimated Sleep Phase Breakdown
-                        </span>
-                        
-                        <div className="space-y-3">
-                          {/* Segmented Progress Bar */}
-                          <div className="h-4 sm:h-5 w-full flex rounded-full overflow-hidden shadow-inner border border-gray-200 dark:border-slate-800">
-                            <div className="bg-[#7C3AED]/85 h-full flex items-center justify-center text-[9px] font-black text-white hover:opacity-90 transition-opacity" style={{ width: "50%" }}>Light</div>
-                            <div className="bg-[#7C3AED] h-full flex items-center justify-center text-[9px] font-black text-white hover:opacity-90 transition-opacity" style={{ width: "25%" }}>Deep</div>
-                            <div className="bg-[#D4AF37] h-full flex items-center justify-center text-[9px] font-black text-slate-900 hover:opacity-90 transition-opacity" style={{ width: "20%" }}>REM</div>
-                            <div className="bg-gray-300 dark:bg-slate-700 h-full flex items-center justify-center text-[9px] font-black text-slate-800 dark:text-slate-200 hover:opacity-90 transition-opacity" style={{ width: "5%" }}>Awake</div>
-                          </div>
-
-                          <div className="grid grid-cols-4 gap-1 text-center text-[10px] font-bold text-[#6B7280] dark:text-slate-400 mt-1 select-none leading-none pt-1">
-                            <div>
-                              <div className="w-2.5 h-2.5 rounded-full bg-[#7C3AED]/85 mx-auto mb-1" />
-                              <span className="text-[#374151] dark:text-slate-300 block uppercase text-[8px] font-extrabold">Light (50%)</span>
-                              <span className="font-mono text-gray-400 dark:text-slate-500 block mt-0.5">{Math.round(cyclesReport.sleepDurationMinutes * 0.5)}m</span>
-                            </div>
-                            <div>
-                              <div className="w-2.5 h-2.5 rounded-full bg-[#7C3AED] mx-auto mb-1" />
-                              <span className="text-[#374151] dark:text-slate-300 block uppercase text-[8px] font-extrabold">Deep (25%)</span>
-                              <span className="font-mono text-gray-400 dark:text-slate-500 block mt-0.5">{Math.round(cyclesReport.sleepDurationMinutes * 0.25)}m</span>
-                            </div>
-                            <div>
-                              <div className="w-2.5 h-2.5 rounded-full bg-[#D4AF37] mx-auto mb-1" />
-                              <span className="text-[#374151] dark:text-slate-300 block uppercase text-[8px] font-extrabold">REM (20%)</span>
-                              <span className="font-mono text-gray-400 dark:text-slate-500 block mt-0.5">{Math.round(cyclesReport.sleepDurationMinutes * 0.2)}m</span>
-                            </div>
-                            <div>
-                              <div className="w-2.5 h-2.5 rounded-full bg-gray-300 dark:bg-slate-700 mx-auto mb-1" />
-                              <span className="text-[#374151] dark:text-slate-300 block uppercase text-[8px] font-extrabold">Awake (5%)</span>
-                              <span className="font-mono text-gray-400 dark:text-slate-500 block mt-0.5">15m</span>
-                            </div>
-                          </div>
+                      {/* Clean Advice Card */}
+                      <div className="bg-[#FAF6F0] dark:bg-[#151C2C] border border-[#E1D8CC] dark:border-[#1E293B] rounded-xl p-4 space-y-2">
+                        <div className="flex items-center gap-2">
+                          <span className={`inline-block w-2.5 h-2.5 rounded-full ${
+                            cyclesReport.rating === "Excellent" ? "bg-emerald-500" : cyclesReport.rating === "Good" ? "bg-amber-500" : "bg-rose-500"
+                          }`} />
+                          <span className="text-sm font-bold text-[#111827] dark:text-slate-100">
+                            {cyclesReport.rating === "Excellent" ? "Optimal Sleep Cycle Alignment" : cyclesReport.rating === "Good" ? "Moderate Sleep Cycle Alignment" : "Potential Sleep Inertia Risk"}
+                          </span>
                         </div>
+                        <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+                          {cyclesReport.rating === "Excellent" && "Great planning! Waking up at the completion of a full 90-minute sleep cycle helps you avoid waking up during deep sleep and minimizes morning grogginess."}
+                          {cyclesReport.rating === "Good" && "You are waking up near a cycle transition. If you feel slightly groggy, adjusting your bedtime or wake-up time by 15-20 minutes will align it with full cycles."}
+                          {cyclesReport.rating === "Caution" && "Waking up at this scheduled time may interrupt a deep sleep cycle, which can cause morning fatigue. Consider shifting bedtime slightly."}
+                        </p>
                       </div>
 
-                      {/* Recalibration Recommendations (if not already perfect) */}
                       {cyclesReport.rating !== "Excellent" && (
-                        <div className="border border-[#7C3AED]/25 dark:border-[#7C3AED]/40 bg-[#7C3AED]/5 dark:bg-[#7C3AED]/10 rounded-2xl p-4.5 mt-1 flex flex-col gap-3">
-                          <span className="text-[#7C3AED] dark:text-violet-400 text-xs font-black uppercase tracking-wider flex items-center gap-1.5">
-                            <span className="relative flex h-2 w-2">
-                              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#7C3AED] opacity-75"></span>
-                              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#7C3AED]"></span>
-                            </span>
-                            Sleep Doctor Calibration Advice
+                        <div className="bg-[#FAF6F0] dark:bg-[#151C2C] border border-[#7C3AED]/30 rounded-xl p-4 space-y-2 text-xs sm:text-sm text-slate-800 dark:text-slate-200">
+                          <span className="font-bold text-[#7C3AED] dark:text-violet-400 block uppercase tracking-wider text-[11px]">
+                            Suggested Adjustments for Full {cyclesReport.perfectCycles} Cycles:
                           </span>
-
-                          <p className="text-sm text-slate-750 dark:text-slate-350 leading-relaxed font-semibold">
-                            You are completing {cyclesReport.cycles} cycles. To reach a perfect <strong className="text-[#111827] dark:text-slate-100 font-extrabold">{cyclesReport.perfectCycles}.0</strong> cycles and wake up at a clean transition point, we highly suggest one of the following simple bio-clock calibrations:
-                          </p>
-
-                          <div className="space-y-2 mt-1">
-                            <div className="bg-[#FCFAF7] dark:bg-[#0F172A] p-3.5 rounded-xl border border-[#E1D8CC] dark:border-[#1E293B] flex flex-col justify-center text-left">
-                              <span className="text-[10px] text-[#6B7280] dark:text-slate-400 font-extrabold uppercase tracking-wide font-mono">Option A: Recalibrate Bedtime</span>
-                              <p className="text-sm font-bold text-gray-800 dark:text-slate-200 mt-0.5">
-                                Shift bedtime to <strong className="text-[#7C3AED] dark:text-violet-400 font-extrabold">{cyclesReport.recalibrateBedtime}</strong> while keeping your wake-up time at {formatTime(timeToDate(cyclesReport.wakeTime, "wake"))}.
-                              </p>
-                            </div>
-                            <div className="bg-[#FCFAF7] dark:bg-[#0F172A] p-3.5 rounded-xl border border-[#E1D8CC] dark:border-[#1E293B] flex flex-col justify-center text-left">
-                              <span className="text-[10px] text-[#6B7280] dark:text-slate-400 font-extrabold uppercase tracking-wide font-mono">Option B: Recalibrate Wakeup Time</span>
-                              <p className="text-sm font-bold text-gray-800 dark:text-slate-200 mt-0.5">
-                                Keep bedtime at {formatTime(timeToDate(cyclesReport.bedTime, "bed"))}, but wake up at <strong className="text-[#7C3AED] dark:text-violet-400 font-extrabold">{cyclesReport.recalibrateWakeup}</strong> instead.
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                      )}
-
-                      {cyclesReport.rating === "Excellent" && (
-                        <div className="border border-green-250 dark:border-green-800 bg-green-50/45 dark:bg-green-950/20 rounded-2xl p-4 mt-1 flex flex-col gap-1.5">
-                          <span className="text-green-700 dark:text-green-300 text-xs font-black uppercase tracking-wider flex items-center gap-1.5">
-                            ✓ PERFECT SCHEDULE DETECTED
-                          </span>
-                          <p className="text-sm text-green-850 dark:text-green-200 font-semibold leading-relaxed">
-                            Formidable planning! This sleep duration aligns perfectly with exactly {cyclesReport.perfectCycles} full sleep cycles. This schedule minimizes waking fatigue and supports your circadian rhythm wonderfully.
-                          </p>
+                          <p>• Shift Bedtime to <strong>{cyclesReport.recalibrateBedtime}</strong> (keeps wake time at {formatTime(timeToDate(cyclesReport.wakeTime, "wake"))})</p>
+                          <p>• Or Shift Wake-Up to <strong>{cyclesReport.recalibrateWakeup}</strong> (keeps bedtime at {formatTime(timeToDate(cyclesReport.bedTime, "bed"))})</p>
                         </div>
                       )}
                     </div>
@@ -1001,28 +905,6 @@ export default function Home() {
       </AnimatePresence>
 
       <SleepScienceGuide />
-
-      {/* Floating Feedback Button */}
-      <button
-        onClick={() => setIsFeedbackModalOpen(true)}
-        className={`fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 bg-[#7C3AED] hover:bg-[#6D28D9] text-white shadow-lg hover:shadow-xl transition-all duration-300 rounded-full py-3 px-4 sm:px-5 flex items-center justify-center gap-2 font-semibold group focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#7C3AED]/20 ${showFeedbackButton ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10 pointer-events-none"}`}
-        aria-label="Send Feedback"
-      >
-        <MessageSquare
-          size={20}
-          className="group-hover:scale-110 transition-transform"
-        />
-        <span className="hidden sm:inline">Feedback</span>
-      </button>
-
-      {isFeedbackModalOpen && (
-        <Suspense fallback={null}>
-          <FeedbackModal
-            isOpen={isFeedbackModalOpen}
-            onClose={() => setIsFeedbackModalOpen(false)}
-          />
-        </Suspense>
-      )}
     </main>
   );
 }

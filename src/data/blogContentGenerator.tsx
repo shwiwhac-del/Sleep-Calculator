@@ -60,6 +60,49 @@ const AEO_DIRECT_ANSWERS: Record<string, string> = {
   "nap-calculator-20-30-60-90-minutes": "Our nap calculator schedules perfect nap durations: 20 minutes for a quick alertness boost (light sleep), or 90 minutes for a complete sleep cycle that repairs muscles and consolidated memory without causing grogginess."
 };
 
+const PILLAR_IMAGES: Record<string, { url: string; alt: string; caption: string }> = {
+  science: {
+    url: "https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?auto=format&fit=crop&w=1200&q=80",
+    alt: "A tranquil bedroom environment optimizing natural sleep cycles",
+    caption: "A quiet, dark bedroom environment supports the natural progression of 90-minute sleep cycles."
+  },
+  timing: {
+    url: "https://images.unsplash.com/photo-1508962914676-134849a727f0?auto=format&fit=crop&w=1200&q=80",
+    alt: "Alarm clock catching morning sunlight",
+    caption: "Setting alarms to match cycle completion helps bypass morning grogginess."
+  },
+  age: {
+    url: "https://images.unsplash.com/photo-1531353826977-0941b4779a1c?auto=format&fit=crop&w=1200&q=80",
+    alt: "Cozy bed with soft pillows",
+    caption: "Comfortable sleep settings tailored to biological age requirements."
+  },
+  students: {
+    url: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=1200&q=80",
+    alt: "Desk with books and soft lamp light",
+    caption: "Structured study habits paired with full 90-minute sleep cycles enhance memory retention."
+  },
+  shiftwork: {
+    url: "https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1200&q=80",
+    alt: "Quiet night cityscape atmosphere",
+    caption: "Shift workers benefit from anchor sleep blocks and split sleep routines."
+  },
+  tiredness: {
+    url: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1200&q=80",
+    alt: "Soft morning sunlight entering a bedroom",
+    caption: "Morning sunlight helps clear adenosine and reset your circadian clock."
+  },
+  debt: {
+    url: "https://images.unsplash.com/photo-1470240731273-7821a6eeb6bd?auto=format&fit=crop&w=1200&q=80",
+    alt: "Golden morning sunrise",
+    caption: "Gradually repaying sleep debt over consecutive nights restores cognitive endurance."
+  },
+  hygiene: {
+    url: "https://images.unsplash.com/photo-1520206183501-b80df61043c2?auto=format&fit=crop&w=1200&q=80",
+    alt: "Minimalist serene bedroom sanctuary",
+    caption: "A cool, dark bedroom sanctuary optimizes sleep depth and melatonin release."
+  }
+};
+
 // Generate extremely rich, deeply detailed, medical-grade scientific paragraphs for the 47 blogs
 export default function BlogPostContent({ slug, meta }: { slug: string; meta: BlogMeta }) {
   const directAnswer = AEO_DIRECT_ANSWERS[slug] || `To optimize your sleep for ${meta.category.toLowerCase()}, you must calculate your sleep times in exact 90-minute increments, aligning your bedtime and morning wake-up routines with your natural circadian rhythm to wake up refreshed and prevent sleep inertia.`;
@@ -244,56 +287,34 @@ export default function BlogPostContent({ slug, meta }: { slug: string; meta: Bl
         </div>
       </header>
 
-      {/* AEO Google Direct Answer Box */}
-      <div className="p-6 bg-violet-50/50 dark:bg-[#151C2C] border-l-4 border-[#7C3AED] rounded-r-2xl space-y-3 shadow-xs">
-        <div className="flex items-center gap-2.5 text-xs font-mono font-bold uppercase tracking-wider text-[#7C3AED]">
-          <span className="flex items-center justify-center w-5 h-5 rounded-md bg-[#7C3AED]/10">
-            <Star className="w-3.5 h-3.5 fill-[#D4AF37] text-[#D4AF37]" />
-          </span>
-          Clinically Approved Short Answer
-        </div>
-        <p className="text-base font-semibold leading-relaxed text-gray-950 dark:text-white select-text italic">
+      {/* Editorial Summary Lead */}
+      <div className="bg-[#FAF6F0] dark:bg-[#151C2C] border border-[#E1D8CC] dark:border-[#1E293B] rounded-xl p-4 sm:p-5 my-4">
+        <p className="text-base sm:text-lg font-medium leading-relaxed text-[#111827] dark:text-slate-100 italic font-serif">
           "{directAnswer}"
         </p>
       </div>
 
-      {/* Table of Contents / Jump Links Box */}
-      <div className="p-5 bg-[#FAF6F0] dark:bg-[#151C2C] border border-[#E1D8CC] dark:border-[#1E293B] rounded-2xl space-y-3">
-        <h3 className="text-sm font-bold uppercase tracking-wider text-gray-900 dark:text-gray-100 font-sans flex items-center gap-2">
-          <BookOpen className="w-4 h-4 text-[#7C3AED]" />
-          Table of Contents
-        </h3>
-        <ul className="space-y-2 text-sm">
-          {sectionTitles.map((title, i) => (
-            <li key={i}>
-              <a href={`#sec-${i + 1}`} className="text-[#7C3AED] dark:text-violet-400 hover:underline flex items-start gap-1.5 font-medium">
-                <span className="text-xs font-mono text-[#7C3AED]/70 dark:text-violet-400/70">{i + 1}.</span>
-                <span>{title}</span>
-              </a>
-            </li>
-          ))}
-          <li>
-            <a href="#faq-sec" className="text-[#7C3AED] dark:text-violet-400 hover:underline flex items-start gap-1.5 font-medium">
-              <span className="text-xs font-mono text-[#7C3AED]/70 dark:text-violet-400/70">4.</span>
-              <span>Clinical FAQs &amp; Sleep Troubleshooting</span>
-            </a>
-          </li>
-          <li>
-            <a href="#conclusion-sec" className="text-[#7C3AED] dark:text-violet-400 hover:underline flex items-start gap-1.5 font-medium">
-              <span className="text-xs font-mono text-[#7C3AED]/70 dark:text-violet-400/70">5.</span>
-              <span>Concluding Scientific Consensus</span>
-            </a>
-          </li>
-        </ul>
-      </div>
+      {/* Direct Featured Editorial Image */}
+      {PILLAR_IMAGES[pillar] && (
+        <figure className="my-6">
+          <img
+            src={PILLAR_IMAGES[pillar].url}
+            alt={PILLAR_IMAGES[pillar].alt}
+            referrerPolicy="no-referrer"
+            className="w-full h-auto max-h-[420px] object-cover rounded-2xl shadow-xs"
+          />
+          <figcaption className="text-xs sm:text-sm text-center text-slate-500 dark:text-slate-400 mt-2 font-sans italic">
+            {PILLAR_IMAGES[pillar].caption}
+          </figcaption>
+        </figure>
+      )}
 
-      {/* Key Takeaways Card */}
-      <div className="p-5 bg-amber-50/40 dark:bg-amber-950/10 border border-amber-200/60 dark:border-amber-900/30 rounded-2xl space-y-2.5">
-        <h3 className="text-sm font-bold uppercase tracking-wider text-amber-800 dark:text-amber-400 font-sans flex items-center gap-2">
-          <span>💡</span>
-          Key Takeaways
+      {/* Key Takeaways - Clean List */}
+      <div className="py-4 px-5 bg-slate-50 dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 space-y-2">
+        <h3 className="text-sm font-bold uppercase tracking-wider text-[#111827] dark:text-slate-200 font-sans">
+          Key Article Takeaways
         </h3>
-        <ul className="space-y-1.5 text-xs sm:text-sm text-amber-900/90 dark:text-amber-300/90 list-disc pl-4">
+        <ul className="space-y-1.5 text-xs sm:text-sm text-slate-700 dark:text-slate-300 list-disc pl-4">
           <li><strong>Bypass Grogginess:</strong> Waking up at the end of a complete 90-minute sleep cycle eliminates sleep inertia.</li>
           <li><strong>Calculate Bedtimes:</strong> Subtract multiples of 90 minutes from your wake-up time, then deduct 15 minutes of sleep onset latency.</li>
           <li><strong>Circadian Consistency:</strong> Anchor your wake-up time. Keep it consistent even on weekends to prevent circadian phase shifts.</li>

@@ -9,6 +9,7 @@ import RecommendedSleepGuides from "../components/RecommendedSleepGuides";
 import { Breadcrumbs } from "../components/Breadcrumbs";
 import { OpenGraphTags } from "../components/OpenGraphTags";
 import { useLanguage } from "../hooks/useLanguage";
+import { PageQuestionBreakdown } from "../components/PageQuestionBreakdown";
 
 export default function IdealBedtimeCalc() {
   const { t } = useLanguage();
@@ -329,6 +330,57 @@ export default function IdealBedtimeCalc() {
           <p>
             Our specialized ideal bedtime calculator provides personalized, science-backed bedtime recommendations tailored specifically to your family's distinct age demographics, matching the core biological rhythms described in our popular <Link to="/sleep-cycle-calculator-90-minutes" className="text-[#7C3AED] font-semibold hover:underline bg-[#7C3AED]/5 px-1.5 py-0.5 rounded">90-Minute Sleep Cycle Calculator</Link>.
           </p>
+
+          <PageQuestionBreakdown
+            mainQuestion="How do I calculate my ideal bedtime based on my required morning wake-up time?"
+            quickAnswer="Count backward from your target wake-up time in 90-minute cycle increments (usually 5 cycles / 7.5 hours for adults), then subtract an additional 15 minutes for natural sleep latency to find your exact head-on-pillow bedtime."
+            keyTerms={[
+              { term: "Target Wake Time", definition: "The exact time your morning alarm must ring for work, school, or daily commitments." },
+              { term: "Sleep Cycle Count", definition: "The total number of complete 90-minute sleep stages completed during the night (typically 5 or 6 for healthy adults)." },
+              { term: "Sleep Onset Buffer", definition: "The standard 15-minute period allowed for your brain to relax into Stage N1 light sleep after turning off lights." },
+              { term: "Circadian Synchronization", definition: "Aligning your bedtime with your body's natural nightly drop in core body temperature and rise in melatonin." }
+            ]}
+            practicalExample={{
+              scenario: "You must wake up at 6:00 AM sharp every morning for work.",
+              steps: [
+                "Target 5 cycles (7.5 hours): Count back 7.5 hours from 6:00 AM → 10:30 PM.",
+                "Subtract 15 minutes for sleep latency → 10:15 PM ideal bedtime.",
+                "Target 6 cycles (9.0 hours): Count back 9.0 hours from 6:00 AM → 9:00 PM - 15 mins latency = 8:45 PM ideal bedtime."
+              ],
+              result: "Getting into bed at 10:15 PM (for 5 cycles) or 8:45 PM (for 6 cycles) ensures you complete full cycles before your 6:00 AM alarm."
+            }}
+            comparison={{
+              title: "5 Cycles (7.5 Hours) vs 6 Cycles (9.0 Hours) Bedtime",
+              optionA: {
+                name: "5 Cycles Bedtime (7.5 Hours - Ideal for Most Adults)",
+                details: "Provides complete mental & physical recovery while fitting realistic modern work/family schedules.",
+                outcome: "High morning energy, sustainable nightly habit, no time wasted lying awake."
+              },
+              optionB: {
+                name: "6 Cycles Bedtime (9.0 Hours - Peak Recovery & Athletics)",
+                details: "Offers extra REM sleep and maximum human growth hormone (HGH) release during Stage N3.",
+                outcome: "Maximum physical tissue repair, peak cognitive capacity; best for athletes, teens, and heavy study phases."
+              }
+            }}
+            useCases={[
+              { title: "Early Morning Commuters & Office Workers", description: "Calculate fixed bedtimes to eliminate reliance on multiple morning alarms." },
+              { title: "Parenting & Children's Bedtime Routines", description: "Calculate age-appropriate bedtimes for toddlers and school-age kids to support developmental growth." },
+              { title: "Athletic Event & Marathon Preparation", description: "Ensure 6 full cycles (9 hours) before major athletic events to optimize muscle glycogen and reaction times." },
+              { title: "Shift Change Transitions", description: "Recalculate ideal bedtimes when moving between morning shifts and day shifts." }
+            ]}
+            pitfalls={[
+              {
+                mistake: "Going to bed too early when you aren't tired.",
+                impact: "Lying in bed awake for over 30 minutes creates conditioned sleep anxiety and disrupts sleep latency.",
+                fix: "Only get into bed when feeling genuinely sleepy; keep bedtimes within a 30-minute window each night."
+              },
+              {
+                mistake: "Keeping inconsistent bedtimes on weekends.",
+                impact: "Varying bedtime by more than 2 hours on weekends creates 'social jetlag', making Sunday night bedtimes difficult.",
+                fix: "Maintain your calculated ideal bedtime within 45 minutes every day of the week."
+              }
+            ]}
+          />
         </section>
 
         {/* SECTION 2 */}
@@ -451,7 +503,11 @@ export default function IdealBedtimeCalc() {
       </article>
 
       {/* Recommended Sleep Guides & Science */}
-      <RecommendedSleepGuides />
+      <RecommendedSleepGuides 
+        preferredSlugs={['best-bedtime-for-adults', 'what-time-should-i-sleep-if-i-wake-up-at-6-am', 'bedtime-calculator-by-age']} 
+        title="Ideal Bedtime & Schedule Guides" 
+        description="Find your optimal bedtime based on targeted wake-up hours, age-specific recommendations, and biological circadian timing."
+      />
 
     </main>
   );

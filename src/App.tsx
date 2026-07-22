@@ -21,6 +21,7 @@ import WakeUpCalc from './pages/WakeUpCalc';
 import IdealBedtimeCalc from './pages/IdealBedtimeCalc';
 
 import { OpenGraphTags } from './components/OpenGraphTags';
+import { LanguageDetectionToast } from './components/LanguageDetectionToast';
 import { getCanonicalUrl } from './lib/seo';
 import { LanguageProvider, useLanguage } from './hooks/useLanguage';
 import { isValidLanguage } from './locales';
@@ -646,6 +647,7 @@ function AppContent() {
         </Routes>
       </main>
       <Footer />
+      <LanguageDetectionToast />
     </div>
   );
 }

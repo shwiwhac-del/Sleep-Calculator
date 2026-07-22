@@ -9,52 +9,36 @@ export default function SleepGuideAndFAQ() {
 
   const faqs = [
     {
-      q: "What time should I go to bed?",
-      a: "The best bedtime depends on when you need to wake up. Our Sleep Calculator uses 90-minute sleep cycles to suggest optimal bedtimes that may help you wake up feeling more refreshed."
+      q: "Why do I feel exhausted even after sleeping 8 full hours?",
+      a: "It's one of the most frustrating feelings—you went to bed on time, slept 8 hours, but woke up feeling like a truck hit you. The reason is usually timing, not total hours. Human sleep occurs in 90-minute cycles. An 8-hour sleep forces your alarm to ring around 5.3 cycles, right in the middle of deep stage-3 slow-wave sleep. Waking up during deep sleep causes severe 'sleep inertia'—a heavy, groggy brain fog. Try aiming for 7.5 hours (5 cycles) or 9 hours (6 cycles) instead, and you'll likely notice an immediate jump in morning alertness."
     },
     {
-      q: "What time should I wake up?",
-      a: "Most adults benefit from 7–9 hours of sleep. The ideal wake-up time should align with your daily schedule while allowing enough time for complete sleep cycles."
+      q: "What should I do if my mind starts racing as soon as my head hits the pillow?",
+      a: "When you finally slow down at night, all the thoughts and worries you suppressed during the day come rushing in. Try a simple 'brain dump' 30 minutes before bed: write down everything on your mind or tomorrow's to-do list on paper. Getting it out of your head signals to your nervous system that it's safe to rest. Also, lower your bedroom temperature to around 65–68°F (18–20°C) and dim lights early to help your body naturally release melatonin."
     },
     {
-      q: "How does a sleep cycle calculator work?",
-      a: "A sleep cycle calculator estimates bedtime and wake-up times based on average 90-minute sleep cycles, including light sleep, deep sleep, and REM sleep."
+      q: "Why do I keep waking up at 3 AM and struggle to fall back asleep?",
+      a: "Waking up around 2 to 4 AM is very common because your body naturally spends more time in lighter sleep during the second half of the night. If a minor noise, temperature shift, or stress spike wakes you up, looking at the clock often causes immediate anxiety ('Oh no, I only have 3 hours left!'). If you're wide awake after 20 minutes, don't force it—get out of bed, sit in dim light, read a book, and only return to bed when your eyelids feel heavy."
     },
     {
-      q: "Why am I tired after sleeping?",
-      a: "You may feel tired after sleeping if you wake up during deep sleep, have an inconsistent sleep schedule, experience poor sleep quality, or do not get enough restorative sleep."
+      q: "Is hitting the snooze button actually hurting my energy levels?",
+      a: "Yes, even though those extra 9 minutes feel comforting, snoozing actually harms your morning energy. When you hit snooze and drift back off, your brain starts a brand-new sleep cycle that it can't finish. When the alarm rings again 9 minutes later, you are yanked out of fragmented sleep, leaving you feeling groggier than getting up on the first alarm. Setting your alarm for the actual time you need to get up and placing your phone across the room can break the habit."
     },
     {
-      q: "How many sleep cycles do I need?",
-      a: "Most adults complete 5–6 sleep cycles per night, which typically equals around 7.5–9 hours of sleep."
+      q: "How can I fix my sleep schedule after staying up late on weekends?",
+      a: "Shift your routine gradually rather than trying to force sleep 2 hours earlier in a single night. The most effective anchor is keeping your wake-up time strict, even on weekends. When you wake up at the same time every morning and get immediate natural daylight exposure, your body builds healthy sleep pressure, making you naturally tired at the right time that evening."
     },
     {
-      q: "How to wake up without feeling tired and avoid morning grogginess?",
-      a: "To know how to wake up without feeling tired and avoid morning grogginess, you should aim to wake up at end of sleep cycle. Our sleep timing calculator is designed to optimize sleep schedule structures so you can improve sleep quality naturally. Practicing a healthy bedtime routine and maintaining a consistent sleep routine will help you achieve better sleep without medication."
+      q: "How long is a good power nap, and when is the best time to take one?",
+      a: "The golden rule for power naps is either 20 minutes or a full 90 minutes. A 20-minute nap gives your brain a quick reset without entering deep sleep, avoiding post-nap grogginess. A 90-minute nap lets you complete one full sleep cycle for deeper mental recovery. Try to take your nap before 3:00 PM so it doesn't steal away your nighttime sleepiness."
     },
     {
-      q: "Is the 90 minute sleep cycle accurate for adults, students, and night shift workers?",
-      a: "Yes, research indicates that is 90 minute sleep cycle accurate as an average estimate of human sleep patterns. In practice, a natural sleep cycle calculator works extremely well as a sleep calculator for adults, a sleep calculator for students during a sleep calculator for exam preparation, or a sleep calculator for productivity. It is also a highly customizable sleep calculator for night shift workers, helping them utilize a sleep calculator before work or a sleep calculator before school to design a customized sleep calculator for healthy routine."
+      q: "How many sleep cycles do I actually need every night?",
+      a: "Most healthy adults feel best with 5 to 6 completed cycles per night (7.5 to 9 hours of total sleep). However, quality matters just as much as quantity. Five uninterrupted cycles will leave you feeling much more energized than 8 hours of restless, fragmented sleep."
     },
     {
-      q: "How many sleep cycles in 8 hours, and why do I wake up tired after 8 hours?",
-      a: "If you want to know how many sleep cycles in 8 hours, 8 hours of sleep equals about 5.3 sleep cycles. When you wake up exactly on the 8th hour, you are often waking up in the middle of a deep sleep cycle, which explains why do i wake up tired after 8 hours. To wake up refreshed, you should use an optimal sleep time calculator or ideal wake up time calculator to wake up precisely between cycles. Factoring in a circadian rhythm calculator, deep sleep cycle calculator, rem sleep timing calculator, sleep debt calculator, recovery sleep calculator, sleep quality calculator, and sleep efficiency calculator will help you manage your morning energy calculator results for a better day."
-    },
-    {
-      q: "How long does it take to fall asleep?",
-      a: "On average, a healthy adult takes 15 to 20 minutes to fall asleep (sleep latency). The sleep calculator automatically incorporates a standard 15-minute sleep latency to provide the most precise sleep schedules."
-    },
-    {
-      q: "How long should a power nap be?",
-      a: "A power nap should ideally be 20 minutes to boost alertness without entering groggy deep sleep. Alternatively, you can take a full 90-minute nap to complete one full sleep cycle."
-    },
-    {
-      q: "Can I catch up on sleep during the weekend?",
-      a: "While extra weekend sleep feels refreshing, it does not fully reverse chronic sleep debt and can disrupt your biological clock (circadian rhythm) for the week ahead. Consistency is key."
-    },
-    {
-      q: "Is sleep quality or sleep quantity more important?",
-      a: "Both are crucial, but high-quality sleep is often more restorative than a longer duration of interrupted, low-quality sleep. Aligning your sleep timing with natural 90-minute cycle endpoints optimizes sleep quality by ensuring you wake up at a transition state, not in deep sleep."
+      q: "What is sleep latency and how long should it take me to fall asleep?",
+      a: "Sleep latency is simply the time it takes you to drift off from full wakefulness. For a healthy person, taking 15 to 20 minutes to fall asleep is completely normal and healthy. Falling asleep instantly (under 5 minutes) usually means you are severely sleep-deprived, while taking over 30 to 45 minutes suggests your circadian rhythm might be shifted or your mind is overly stimulated."
     }
   ];
 
@@ -161,22 +145,16 @@ export default function SleepGuideAndFAQ() {
         </p>
         <ul className="list-disc pl-5 space-y-3 text-base">
           <li>
-            <strong>Sleep calculator for students</strong>: Studying for finals requires maximum memory retention. Using a dedicated <strong>sleep calculator for students</strong> ensures that late-night preparation sessions end at optimal cycle points to protect cognitive functioning.
+            <strong>Students & Exam Preparation</strong>: Late-night studying increases cognitive fatigue and builds heavy adenosine pressure. Timing sleep so study sessions end at complete 90-minute cycle boundaries protects REM sleep, which is critical for long-term memory consolidation and recall during morning exams.
           </li>
           <li>
-            <strong>Sleep calculator for exams</strong>: When cramming for critical tests, a reliable <strong>sleep calculator for exams</strong> prevents heavy morning brain-fog, helping kids and young adults maintain razor-sharp focus during key morning exams.
+            <strong>Night Shift Workers</strong>: Daytime sleep conflicts with your master circadian pacemaker (the suprachiasmatic nucleus) and natural sunlight exposure. Structuring split sleep schedules or multi-cycle day resting blocks helps anchor internal rhythms and reduce cumulative sleep debt.
           </li>
           <li>
-            <strong>Sleep calculator for night shift workers</strong>: Aligning sleep when natural sunshine suggests waking is difficult. An interactive <strong>sleep calculator for night shift workers</strong> maps multiple daytime resting phases and anchors consistent circadian alignments.
+            <strong>Teenagers & Adolescents</strong>: During puberty, the brain undergoes a natural delayed circadian phase preference—melatonin releases up to two hours later at night. Planning bedtimes around 5 to 6 full cycles ensures teens get the 8 to 10 hours required for hormonal growth and emotional balance.
           </li>
           <li>
-            <strong>Sleep calculator for babies</strong>: Infant sleep schedules require unique split structures. A customized <strong>sleep calculator for babies</strong> guides parents through multiple short naps and feeding sleep alignments.
-          </li>
-          <li>
-            <strong>Sleep calculator for toddlers</strong>: Toddler developmental milestones are deeply connected to restorative sleep. A <strong>sleep calculator for toddlers</strong> assists in calculating morning wake-up times and afternoon rest periods.
-          </li>
-          <li>
-            <strong>Sleep calculator for teenagers</strong>: Melatonin naturally releases later in the evening for teens. Aligning their school schedules with a <strong>sleep calculator for teenagers</strong> makes waking up on school mornings much easier.
+            <strong>Infants & Toddlers</strong>: Developing brains require 11 to 14 total hours of daily sleep, divided into nighttime sleep and daytime naps. Syncing nap durations with natural sleep stage transitions prevents toddlers from waking up cranky or overly stimulated.
           </li>
         </ul>
       </div>
@@ -280,23 +258,40 @@ export default function SleepGuideAndFAQ() {
         A Nap Calculator helps you determine the ideal nap length so you can wake up feeling refreshed instead of groggy.
       </p>
 
-      <h3 className="text-xl sm:text-2xl font-bold text-[#111827] pt-3">
-        Common Sleep Questions
-      </h3>
+      <div className="bg-[#FAF6F0] dark:bg-[#151C2C] border border-[#E1D8CC] dark:border-[#1E293B] rounded-2xl p-5 sm:p-6 space-y-4 my-6">
+        <h3 className="text-xl sm:text-2xl font-bold text-[#111827] dark:text-white font-serif">
+          Common Real-World Sleep Questions
+        </h3>
 
-      <p className="text-base sm:text-lg md:text-[1.125rem] font-semibold text-[#111827] mt-2 select-text">
-        How many hours of sleep is 11 PM to 7:00 AM?
-      </p>
-      <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-[#374151] select-text">
-        The time between 11 PM and 7:00 AM is 8 hours, which falls within the recommended sleep range for most healthy adults.
-      </p>
+        <div className="space-y-4">
+          <div className="space-y-1.5">
+            <h4 className="text-base sm:text-lg font-bold text-[#7C3AED] dark:text-violet-400">
+              "If I have to wake up at 6:00 AM, what time should I actually turn off the light?"
+            </h4>
+            <p className="text-sm sm:text-base text-[#374151] dark:text-slate-300 leading-relaxed">
+              To wake up at 6:00 AM feeling naturally energized, target going to sleep at <strong>10:15 PM</strong> (for 5 full cycles / 7.5 hours) or <strong>8:45 PM</strong> (for 6 full cycles / 9 hours). Remember to give yourself an extra 15 minutes in bed to wind down so you aren't stressing about the clock.
+            </p>
+          </div>
 
-      <p className="text-base sm:text-lg md:text-[1.125rem] font-semibold text-[#111827] mt-4 select-text">
-        What time should a 13 year old go to bed?
-      </p>
-      <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-[#374151] select-text">
-        Most 13-year-olds need approximately 8–10 hours of sleep each night. The ideal bedtime depends on school schedules and the required wake-up time.
-      </p>
+          <div className="space-y-1.5 pt-3 border-t border-[#E1D8CC]/60 dark:border-[#1E293B]">
+            <h4 className="text-base sm:text-lg font-bold text-[#7C3AED] dark:text-violet-400">
+              "Why do I hit a massive wall of exhaustion around 2:00 PM every day?"
+            </h4>
+            <p className="text-sm sm:text-base text-[#374151] dark:text-slate-300 leading-relaxed">
+              That afternoon slump isn't a sign that you're lazy—it's a biological dip in your body's core temperature controlled by your internal clock. Instead of grabbing a third cup of coffee (which disrupts your sleep tonight), try taking a 10-minute walk outside in sunlight, drinking a tall glass of cold water, or taking a quick 20-minute power nap before 3:00 PM.
+            </p>
+          </div>
+
+          <div className="space-y-1.5 pt-3 border-t border-[#E1D8CC]/60 dark:border-[#1E293B]">
+            <h4 className="text-base sm:text-lg font-bold text-[#7C3AED] dark:text-violet-400">
+              "What time should teenagers go to bed to handle early school schedules?"
+            </h4>
+            <p className="text-sm sm:text-base text-[#374151] dark:text-slate-300 leading-relaxed">
+              Teenagers biologically experience a natural shift that delays melatonin release by up to two hours, making them alert later at night. However, developing brains still require 8 to 10 hours of sleep. If school starts early and requires a 6:30 AM wake-up, teenagers should aim to be in bed around <strong>9:30 PM to 10:00 PM</strong>, with screens put away an hour earlier to help melatonin kick in.
+            </p>
+          </div>
+        </div>
+      </div>
 
       <h3 className="text-xl sm:text-2xl font-bold text-[#111827] pt-3">
         Benefits of Following a Healthy Sleep Schedule
@@ -319,11 +314,11 @@ export default function SleepGuideAndFAQ() {
       </h3>
 
       <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-[#374151] select-text">
-        Whether you need a Sleep Calculator, Sleep Cycle Calculator, Sleep Time Calculator, Sleepy Time Calculator, Bed Time Calculator, REM Sleep Calculator, REM Cycle Calculator, Nap Calculator, or guidance on when to wake up, our tool helps you make smarter sleep decisions.
+        Aligning your sleep and wake schedule with your body's natural 90-minute circadian loops transforms how you feel every morning. By giving your brain time to complete deep slow-wave repair and REM memory cycles, you wake up naturally with sharp focus, stable mood, and sustained energy.
       </p>
 
       <p className="text-base sm:text-lg md:text-[1.125rem] leading-relaxed text-[#374151] pb-2 select-text">
-        Use the calculator today to discover your ideal sleep time, create a better sleep schedule, and wake up refreshed every morning.
+        Calculate your personalized sleep windows above, adjust for your individual sleep latency, and start building a consistent bedtime routine today.
       </p>
 
       {/* Recommended Sleep Guides & Science Cards */}

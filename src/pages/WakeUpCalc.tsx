@@ -9,6 +9,7 @@ import RecommendedSleepGuides from "../components/RecommendedSleepGuides";
 import { Breadcrumbs } from "../components/Breadcrumbs";
 import { OpenGraphTags } from "../components/OpenGraphTags";
 import { useLanguage } from "../hooks/useLanguage";
+import { PageQuestionBreakdown } from "../components/PageQuestionBreakdown";
 
 export default function WakeUpCalc() {
   const { t } = useLanguage();
@@ -339,6 +340,57 @@ export default function WakeUpCalc() {
           <p>
             Our specialized wake up between sleep cycles calculator is designed to solve this physiological challenge. By projecting your alarm times to match the natural 90-minute transitions of your sleep cycle—which you can easily assess using our dedicated <Link to="/sleep-cycle-calculator-90-minutes" className="text-[#7C3AED] font-semibold hover:underline bg-[#7C3AED]/5 px-1.5 py-0.5 rounded">90-Minute Sleep Cycle Calculator</Link>—you can bypass the N3 deep sleep phase and wake up feeling alert and refreshed.
           </p>
+
+          <PageQuestionBreakdown
+            mainQuestion="How do I calculate what time to wake up based on when I go to bed right now?"
+            quickAnswer="To calculate your optimal wake-up times, add multiples of 90 minutes (such as 7.5 hours for 5 cycles or 9 hours for 6 cycles) to the time you turn off the lights, plus an extra 15 minutes for falling asleep (sleep latency)."
+            keyTerms={[
+              { term: "Sleep Onset Latency", definition: "The period of time it takes to transition from full wakefulness to N1 light sleep (average 15 minutes)." },
+              { term: "Cortisol Awakening Response (CAR)", definition: "The natural morning surge in cortisol that boosts blood glucose and body temperature to wake you up." },
+              { term: "Cycle Endpoint", definition: "The 10-minute transition window between the end of REM sleep and the start of a new N1 stage, ideal for setting alarms." },
+              { term: "Melatonin Clearance", definition: "The metabolic breakdown of the sleep hormone as morning daylight enters the retina." }
+            ]}
+            practicalExample={{
+              scenario: "You turn off the bedroom lights at 10:30 PM.",
+              steps: [
+                "Add 15 minutes for falling asleep → expected sleep onset is 10:45 PM.",
+                "Add 5 cycles (7.5 hours): 10:45 PM + 7 hours 30 mins = 6:15 AM alarm target.",
+                "Add 6 cycles (9.0 hours): 10:45 PM + 9 hours = 7:45 AM alarm target."
+              ],
+              result: "Set your alarm for 6:15 AM (5 cycles) or 7:45 AM (6 cycles) to wake up at the precise end of a REM cycle."
+            }}
+            comparison={{
+              title: "Waking at Cycle Completion vs Waking Mid-Deep Sleep",
+              optionA: {
+                name: "Waking at Cycle Completion (End of REM)",
+                details: "Alarm triggers when brainwaves are fast alpha/beta rhythms, near waking states.",
+                outcome: "Instant alertness, clear thinking, no physical heaviness."
+              },
+              optionB: {
+                name: "Waking Mid-Deep Sleep (Stage N3)",
+                details: "Alarm interrupts high-amplitude slow delta brainwaves during deep physical recovery.",
+                outcome: "Heavy sleep inertia, disoriented morning mood, intense desire to snooze."
+              }
+            }}
+            useCases={[
+              { title: "Variable Bedtime Schedules", description: "Calculate flexible morning alarm times when going to sleep at unpredictable hours." },
+              { title: "Power Napping & Short Rest Blocks", description: "Set 20-minute power nap alarms or 90-minute full cycle alarms during busy workdays." },
+              { title: "Late-Night Work & Study Sessions", description: "Ensure you get at least 3 or 4 full cycles (4.5 or 6 hours) when going to sleep after midnight." },
+              { title: "Weekend Morning Optimization", description: "Align weekend wake-up times to match complete cycle boundaries while avoiding oversleeping." }
+            ]}
+            pitfalls={[
+              {
+                mistake: "Forgetting to add 15 minutes for falling asleep.",
+                impact: "If you set your alarm for exactly 7.5 hours from when you get into bed, you will be woken up 15 minutes before cycle completion.",
+                fix: "Always include a 15-minute sleep latency buffer in your calculations."
+              },
+              {
+                mistake: "Snoozing the alarm repeatedly in 10-minute increments.",
+                impact: "Snoozing confuses the brain, triggering micro-sleep cycles that worsen grogginess.",
+                fix: "Place your phone/alarm across the room so you stand up immediately when it rings."
+              }
+            ]}
+          />
         </section>
 
         {/* SECTION 2 */}
@@ -479,7 +531,11 @@ export default function WakeUpCalc() {
       </article>
 
       {/* Recommended Sleep Guides & Science */}
-      <RecommendedSleepGuides />
+      <RecommendedSleepGuides 
+        preferredSlugs={['wake-up-tired-after-8-hours', 'best-wake-up-time', 'why-am-i-tired-after-sleeping']} 
+        title="Wake Up & Sleep Inertia Guides" 
+        description="Understand why you feel morning grogginess, how to calculate wake-up times precisely between cycles, and how to feel energized immediately."
+      />
 
     </main>
   );

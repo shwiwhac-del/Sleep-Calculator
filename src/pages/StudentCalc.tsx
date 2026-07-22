@@ -9,6 +9,7 @@ import RecommendedSleepGuides from "../components/RecommendedSleepGuides";
 import { Breadcrumbs } from "../components/Breadcrumbs";
 import { OpenGraphTags } from "../components/OpenGraphTags";
 import { useLanguage } from "../hooks/useLanguage";
+import { PageQuestionBreakdown } from "../components/PageQuestionBreakdown";
 
 export default function StudentCalc() {
   const { t } = useLanguage();
@@ -310,6 +311,57 @@ export default function StudentCalc() {
           <p>
             Aligning your bedtime with native 90-minute intervals simplifies life. You can configure precise awakenings using our specialized <Link to="/sleep-cycle-calculator-90-minutes" className="text-[#7C3AED] hover:underline font-semibold bg-[#7C3AED]/5 px-1.5 py-0.5 rounded">90-Minute Sleep Cycle Calculator</Link> or planning target mornings with our <Link to="/wake-up-between-sleep-cycles" className="text-[#7C3AED] hover:underline font-semibold">Wake Up Between Cycles Guide</Link>.
           </p>
+
+          <PageQuestionBreakdown
+            mainQuestion="What is the best sleep schedule for students to maximize exam performance and memory retention?"
+            quickAnswer="Students should aim for 5 or 6 complete 90-minute sleep cycles (7.5 or 9 hours) per night, ending right before their morning alarm. Avoid all-nighters before exams because long-term memory consolidation occurs during deep N3 and REM sleep."
+            keyTerms={[
+              { term: "Sleep Latency", definition: "The average time it takes to fall asleep (typically 15 minutes for healthy students)." },
+              { term: "Memory Consolidation", definition: "The neurological process where short-term study memories move from the hippocampus to long-term cortical storage during REM and N3 sleep." },
+              { term: "Adenosine Pressure", definition: "The chemical build-up in the brain that causes fatigue; cleared only during sleep." },
+              { term: "Circadian Phase Delay", definition: "The natural shift during teenage years that makes adolescents feel sleepy 1 to 2 hours later at night." }
+            ]}
+            practicalExample={{
+              scenario: "Exam day tomorrow. Your alarm is set for 6:30 AM to arrive at school by 7:30 AM.",
+              steps: [
+                "Count back 5 full sleep cycles (5 × 90 mins = 7.5 hours) from 6:30 AM → 11:00 PM.",
+                "Add 15 minutes for natural sleep latency → 10:45 PM bedtime.",
+                "Optionally count back 6 cycles (9 hours) → 9:15 PM bedtime for high physical recovery."
+              ],
+              result: "Going to bed at 10:45 PM yields 5 full cycles and allows waking up refreshed during light sleep at 6:30 AM."
+            }}
+            comparison={{
+              title: "5 Structured Sleep Cycles vs All-Nighter Cramming",
+              optionA: {
+                name: "5 Full Cycles (7.5 Hours Sleep)",
+                details: "Protects N3 deep sleep for physical energy and REM sleep for memory consolidation.",
+                outcome: "High exam recall, fast processing speed, no morning sleep inertia."
+              },
+              optionB: {
+                name: "Pulling an All-Nighter (0-3 Hours Sleep)",
+                details: "High adenosine build-up, zero REM memory consolidation, severe prefrontal cortex fatigue.",
+                outcome: "High error rates, brain fog, poor exam recall despite studying late."
+              }
+            }}
+            useCases={[
+              { title: "Finals & AP Exam Week", description: "Schedule exact 90-minute cycle windows to retain vast amounts of textbook material." },
+              { title: "Early High School Morning Routines", description: "Account for adolescent phase delay by maintaining consistent 10:30 PM bedtimes." },
+              { title: "College Semester Blocks", description: "Combine 20-minute power naps between classes with 5 nightly sleep cycles." },
+              { title: "Morning Standardized Tests (SAT/ACT)", description: "Ensure 6 full cycles (9 hours) two nights prior to maximize spatial and verbal reasoning." }
+            ]}
+            pitfalls={[
+              {
+                mistake: "Studying in bed with bright screen light until lights out.",
+                impact: "Blue light suppresses melatonin release by up to 50%, delaying sleep latency past 45 minutes.",
+                fix: "Stop screen exposure 45 minutes before bed and read printed notes or physical books."
+              },
+              {
+                mistake: "Drinking energy drinks or coffee after 4:00 PM.",
+                impact: "Caffeine blocks deep N3 sleep even if you fall asleep, destroying restorative rest.",
+                fix: "Set a strict 2:00 PM caffeine cutoff on study days."
+              }
+            ]}
+          />
         </section>
 
         {/* SECTION 2 */}
@@ -466,7 +518,11 @@ export default function StudentCalc() {
       </article>
 
       {/* Recommended Sleep Guides & Science */}
-      <RecommendedSleepGuides />
+      <RecommendedSleepGuides 
+        preferredSlugs={['sleep-calculator-for-students', 'sleep-calculator-for-exams', 'best-bedtime-for-students', 'sleep-and-memory']} 
+        title="Recommended Student Sleep Guides" 
+        description="Explore science-backed sleep guides specifically written for students, exam preparation, and memory retention."
+      />
 
     </main>
   );

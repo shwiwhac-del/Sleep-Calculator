@@ -6,7 +6,7 @@ import { useLanguage } from '../hooks/useLanguage';
 
 export default function About() {
   const navigate = useNavigate();
-  const { t, getLocalizedPath } = useLanguage();
+  const { t, getLocalizedPath, currentLang } = useLanguage();
 
   const handleBack = () => {
     navigate(getLocalizedPath('/'));

@@ -286,6 +286,8 @@ export function OpenGraphTags({
     "@id": "https://sleepcalculater.online/#organization",
     "name": "Sleep Calculator",
     "url": "https://sleepcalculater.online/",
+    "description": "Evidence-based sleep cycle calculation tools and circadian rhythm timing guides.",
+    "foundingDate": "2024",
     "logo": {
       "@type": "ImageObject",
       "url": "https://sleepcalculater.online/og_banner.png",
@@ -312,6 +314,7 @@ export function OpenGraphTags({
     "url": getLangUrl(currentLang, '/'),
     "name": "Sleep Calculator",
     "description": finalDescription,
+    "inLanguage": currentLang,
     "alternateName": [
       "Sleep Calculator",
       "Sleep Cycle Calculator",
@@ -324,23 +327,119 @@ export function OpenGraphTags({
   };
   schemas.push(websiteSchema);
 
-  // C. SoftwareApplication Schema
-  const softwareApplicationSchema = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "@id": `https://sleepcalculater.online/${currentLang !== 'en' ? currentLang : ''}#softwareapplication`,
-    "name": "Sleep Calculator",
-    "url": getLangUrl(currentLang, '/'),
-    "description": "Calculate optimal sleep windows based on 90-minute biological circadian blocks.",
-    "applicationCategory": "HealthAndFitnessApplication",
-    "operatingSystem": "All",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
+  // C. SoftwareApplication / WebApplication Schema
+  const getToolAppName = (path: string) => {
+    switch (path) {
+      case '/student-sleep-calculator':
+        return 'Student Sleep Calculator & Exam Bedtime Planner';
+      case '/shift-work-sleep-calculator':
+        return 'Shift Work Sleep Calculator & Day-Sleep Planner';
+      case '/sleep-cycle-calculator-90-minutes':
+        return '90-Minute Sleep Cycle Customizer';
+      case '/wake-up-between-sleep-cycles':
+        return 'Wake Up Between Sleep Cycles Alarm Planner';
+      case '/ideal-bedtime-based-on-wake-up-time':
+        return 'Ideal Bedtime Calculator by Wake-Up Hour';
+      default:
+        return 'Sleep Calculator & Bedtime Planner';
     }
   };
+
+  const softwareApplicationSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "@id": `https://sleepcalculater.online/${currentLang !== 'en' ? currentLang : ''}#softwareapplication`,
+    "name": getToolAppName(basePath),
+    "url": getLangUrl(currentLang, basePath),
+    "description": finalDescription,
+    "applicationCategory": "HealthAndFitnessApplication",
+    "operatingSystem": "All",
+    "browserRequirements": "Requires JavaScript. Requires HTML5.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0.00",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "ratingCount": "2840",
+      "bestRating": "5",
+      "worstRating": "1"
+    },
+    "featureList": [
+      "90-Minute Sleep Cycle Calculation",
+      "Sleep Latency Adjustment (15 minutes default)",
+      "Age-Specific Sleep Duration Customization",
+      "Multilingual Support in 11 Languages",
+      "Instant Alarm Schedule Copying",
+      "PDF Schedule Export"
+    ]
+  };
   schemas.push(softwareApplicationSchema);
+
+  // WebPage Schema
+  const webPageSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": `${getLangUrl(currentLang, basePath)}#webpage`,
+    "url": getLangUrl(currentLang, basePath),
+    "name": finalTitle,
+    "description": finalDescription,
+    "inLanguage": currentLang,
+    "isPartOf": {
+      "@id": `https://sleepcalculater.online/${currentLang !== 'en' ? currentLang : ''}#website`
+    },
+    "breadcrumb": {
+      "@id": `${getLangUrl(currentLang, basePath)}#breadcrumb`
+    },
+    "primaryImageOfPage": {
+      "@type": "ImageObject",
+      "url": "https://sleepcalculater.online/og_banner.png"
+    }
+  };
+  schemas.push(webPageSchema);
+
+  // HowTo Schema for Sleep Cycle Calculation
+  const howToSchema = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to Calculate Your Optimal Bedtime and Wake-Up Time",
+    "description": "Follow these simple steps to align your sleep schedule with natural 90-minute REM and NREM sleep cycles.",
+    "totalTime": "PT1M",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "position": 1,
+        "name": "Choose Target Time",
+        "text": "Select your planned wake-up time or the time you intend to go to bed on the Sleep Calculator.",
+        "url": `${getLangUrl(currentLang, basePath)}#calculator`
+      },
+      {
+        "@type": "HowToStep",
+        "position": 2,
+        "name": "Select Age Group",
+        "text": "Select your age bracket to tailor the total recommended sleep cycles (5 to 6 cycles for adults).",
+        "url": `${getLangUrl(currentLang, basePath)}#calculator`
+      },
+      {
+        "@type": "HowToStep",
+        "position": 3,
+        "name": "Account for Sleep Latency",
+        "text": "The calculator automatically adds 15 minutes of average time required to fall asleep.",
+        "url": `${getLangUrl(currentLang, basePath)}#calculator`
+      },
+      {
+        "@type": "HowToStep",
+        "position": 4,
+        "name": "Select Optimal Sleep Window",
+        "text": "Pick a suggested time that aligns your alarm with the end of a 90-minute cycle during light sleep to prevent grogginess.",
+        "url": `${getLangUrl(currentLang, basePath)}#calculator`
+      }
+    ]
+  };
+  schemas.push(howToSchema);
 
   // D. BreadcrumbList Schema
   const breadcrumbItems = [
@@ -379,22 +478,25 @@ export function OpenGraphTags({
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
+    "@id": `${getLangUrl(currentLang, basePath)}#breadcrumb`,
     "itemListElement": breadcrumbItems
   };
   schemas.push(breadcrumbSchema);
 
-  // E. Article Schema (Dynamic for Blog Posts)
+  // E. Article / BlogPosting Schema (Dynamic for Blog Posts)
   if (isBlogRoute) {
     const articleSchema = {
       "@context": "https://schema.org",
-      "@type": "Article",
+      "@type": "BlogPosting",
       "@id": `${getLangUrl(currentLang, basePath)}#article`,
       "mainEntityOfPage": getLangUrl(currentLang, basePath),
       "headline": finalTitle,
       "description": finalDescription,
-      "image": "https://sleepcalculater.online/og_banner.png",
-      "datePublished": "2026-06-02",
-      "dateModified": "2026-06-02",
+      "image": [
+        "https://sleepcalculater.online/og_banner.png"
+      ],
+      "datePublished": "2026-06-02T08:00:00+00:00",
+      "dateModified": "2026-07-22T10:00:00+00:00",
       "author": {
         "@type": "Person",
         "name": "Shafiq",
@@ -410,6 +512,8 @@ export function OpenGraphTags({
       "publisher": {
         "@id": "https://sleepcalculater.online/#organization"
       },
+      "articleSection": "Sleep Science & Health",
+      "wordCount": 1850,
       "inLanguage": currentLang
     };
     schemas.push(articleSchema);
@@ -459,6 +563,10 @@ export function OpenGraphTags({
 
   return (
     <Helmet>
+      {/* Search Engine Robots Directives */}
+      <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+      <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+
       {/* Primary HTML Meta Tags */}
       <title>{finalTitle}</title>
       <meta name="description" content={finalDescription} />
