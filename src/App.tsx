@@ -1,97 +1,45 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, Navigate, useParams, useLocation } from 'react-router-dom';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
-import { Menu, X, ChevronDown, Sun, Moon, Globe } from 'lucide-react';
+import { Menu, X, ChevronDown, Sun, Moon } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import ScrollToTop from './components/ScrollToTop';
 import { StarryBackground } from './components/StarryBackground';
 import { usePerformanceMonitoring } from './hooks/usePerformanceMonitoring';
 
-import Home from './pages/Home';
-import Terms from './pages/Terms';
-import Privacy from './pages/Privacy';
-import Contact from './pages/Contact';
-import About from './pages/About';
-import Blog from './pages/Blog';
-import NotFound from './pages/NotFound';
-import StudentCalc from './pages/StudentCalc';
-import ShiftWorkCalc from './pages/ShiftWorkCalc';
-import NinetyMinCalc from './pages/NinetyMinCalc';
-import WakeUpCalc from './pages/WakeUpCalc';
-import IdealBedtimeCalc from './pages/IdealBedtimeCalc';
+const Home = lazy(() => import('./pages/Home'));
+const Terms = lazy(() => import('./pages/Terms'));
+const Privacy = lazy(() => import('./pages/Privacy'));
+const Contact = lazy(() => import('./pages/Contact'));
+const About = lazy(() => import('./pages/About'));
+const Blog = lazy(() => import('./pages/Blog'));
+const NotFound = lazy(() => import('./pages/NotFound'));
+const StudentCalc = lazy(() => import('./pages/StudentCalc'));
+const ShiftWorkCalc = lazy(() => import('./pages/ShiftWorkCalc'));
+const NinetyMinCalc = lazy(() => import('./pages/NinetyMinCalc'));
+const WakeUpCalc = lazy(() => import('./pages/WakeUpCalc'));
+const IdealBedtimeCalc = lazy(() => import('./pages/IdealBedtimeCalc'));
 
 import { OpenGraphTags } from './components/OpenGraphTags';
-import { LanguageDetectionToast } from './components/LanguageDetectionToast';
 import { getCanonicalUrl } from './lib/seo';
 import { LanguageProvider, useLanguage } from './hooks/useLanguage';
-import { isValidLanguage } from './locales';
+
+function PageFallback() {
+  return (
+    <div className="w-full max-w-4xl mx-auto px-4 py-12 flex flex-col items-center justify-center min-h-[400px] space-y-4 animate-pulse">
+      <div className="h-8 w-64 bg-slate-200 dark:bg-slate-800 rounded-xl"></div>
+      <div className="h-28 w-full max-w-xl bg-slate-200/70 dark:bg-slate-800/70 rounded-2xl"></div>
+      <div className="h-16 w-full max-w-lg bg-slate-200/50 dark:bg-slate-800/50 rounded-xl"></div>
+    </div>
+  );
+}
 
 
 
 // Home Guides
 
 
-function LanguageSwitcher() {
-  const { currentLang, changeLanguage, languages } = useLanguage();
-  const [isOpen, setIsOpen] = useState(false);
-  
-  // Track dropdown open status securely
-  useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
-      const target = event.target as HTMLElement;
-      if (isOpen && !target.closest('.lang-switcher-container')) {
-        setIsOpen(false);
-      }
-    }
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, [isOpen]);
 
-  return (
-    <div className="relative lang-switcher-container">
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center justify-center p-2 rounded-xl text-[#4B5563] dark:text-slate-300 hover:text-[#7C3AED] hover:bg-[#7C3AED]/5 transition-all duration-200 focus-visible:outline-none cursor-pointer"
-        aria-label="Change language"
-        title="Change language"
-      >
-        <Globe className="w-5 h-5" />
-      </button>
-
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: 10, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 10, scale: 0.95 }}
-            transition={{ duration: 0.12 }}
-            className="absolute right-0 mt-2 w-48 rounded-2xl bg-white dark:bg-[#151C2C] border border-[#E5E7EB] dark:border-[#1E293B] shadow-lg ring-1 ring-black/5 py-1.5 z-50 overflow-hidden"
-          >
-            <div className="max-h-64 overflow-y-auto scrollbar-thin">
-              {languages.map((lang) => (
-                <button
-                  key={lang.code}
-                  onClick={() => {
-                    changeLanguage(lang.code as any);
-                    setIsOpen(false);
-                  }}
-                  className={`w-full flex items-center gap-2.5 px-4 py-2.5 text-left text-xs font-bold transition-colors cursor-pointer ${
-                    currentLang === lang.code
-                      ? 'text-[#7C3AED] bg-[#7C3AED]/5 dark:text-violet-400 dark:bg-violet-500/10'
-                      : 'text-[#374151] dark:text-slate-300 hover:text-[#7C3AED] dark:hover:text-violet-400 hover:bg-slate-50 dark:hover:bg-slate-800/40'
-                  }`}
-                >
-                  <span className="text-base">{lang.flag}</span>
-                  <span>{lang.name}</span>
-                </button>
-              ))}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
-  );
-}
 
 function Footer() {
   const { t, getLocalizedPath } = useLanguage();
@@ -340,9 +288,6 @@ function Header({ isDarkMode, toggleDarkMode }: HeaderProps) {
               {t('nav.contact')}
             </Link>
 
-            {/* Desktop Language Selector */}
-            <LanguageSwitcher />
-
             {/* Desktop Theme Toggle */}
             <button
               onClick={toggleDarkMode}
@@ -360,9 +305,6 @@ function Header({ isDarkMode, toggleDarkMode }: HeaderProps) {
 
           {/* Mobile Actions Container */}
           <div className="flex md:hidden items-center space-x-1">
-            {/* Mobile Language Selector */}
-            <LanguageSwitcher />
-
             {/* Mobile Theme Toggle */}
             <button
               onClick={toggleDarkMode}
@@ -496,10 +438,6 @@ export default function App() {
 function RootSlugRedirect() {
   const { slug } = useParams();
 
-  if (slug && isValidLanguage(slug)) {
-    return <Home />;
-  }
-
   const blogSlugs = [
     "sleep-cycles-explained",
     "what-is-rem-sleep",
@@ -507,6 +445,7 @@ function RootSlugRedirect() {
     "best-time-to-sleep-and-wake-up",
     "sleep-cycle-calculator-guide",
     "why-90-minute-sleep-cycles-matter",
+    "how-to-wake-up-refreshed",
     "ideal-bedtime-for-adults",
     "sleep-schedule-for-productivity",
     "how-many-hours-of-sleep-is-healthy",
@@ -524,44 +463,33 @@ function RootSlugRedirect() {
     "consistent-sleep-schedule-benefits",
     "best-temperature-for-sleep",
     "what-is-deep-sleep",
+    "how-much-sleep-do-you-need-by-age",
+    "wake-up-tired-after-8-hours",
+    "best-bedtime-for-adults",
     "how-long-does-it-take-to-fall-asleep",
+    "what-is-sleep-debt",
     "why-do-we-dream",
+    "sleep-and-memory-learning",
     "why-do-people-snore",
+    "sleep-calculator-by-age",
+    "90-minute-sleep-calculator",
+    "best-sleep-schedule-for-productivity",
     "sleep-calculator-for-students",
-    "sleep-calculator-for-exams",
     "why-am-i-tired-after-sleeping",
     "rem-sleep-calculator-bedtime-cycles",
     "sleep-deprivation-calculator-recovery-guide",
+    "bedtime-calculator-by-age",
+    "shift-work-sleep-calculator-guide",
     "adhd-sleep-schedule-calculator-tips",
+    "sleep-calculator-for-exams",
+    "sleep-calculator-for-night-shift-workers",
     "what-time-should-i-sleep-if-i-wake-up-at-6-am",
     "best-bedtime-calculator-for-students",
-    "nap-calculator-20-30-60-90-minutes",
-    "sleep-calculator-for-night-shift-workers"
+    "nap-calculator-20-30-60-90-minutes"
   ];
 
   if (slug && blogSlugs.includes(slug.toLowerCase())) {
     return <Navigate to={`/blog/${slug}`} replace />;
-  }
-
-  // Exact duplicate merges
-  const redirects: Record<string, string> = {
-    "how-to-wake-up-refreshed": "wake-up-between-sleep-cycles",
-    "how-much-sleep-do-you-need-by-age": "blog/how-much-sleep-do-you-need",
-    "wake-up-tired-after-8-hours": "blog/tired-after-8-hours-of-sleep",
-    "best-bedtime-for-adults": "blog/ideal-bedtime-for-adults",
-    "what-is-sleep-debt": "blog/sleep-debt-explained",
-    "sleep-and-memory-learning": "blog/sleep-and-memory",
-    "sleep-calculator-by-age": "blog/how-much-sleep-do-you-need",
-    "90-minute-sleep-calculator": "sleep-cycle-calculator-90-minutes",
-    "best-sleep-schedule-for-productivity": "blog/sleep-schedule-for-productivity",
-    "bedtime-calculator-by-age": "ideal-bedtime-based-on-wake-up-time",
-    "shift-work-sleep-calculator-guide": "blog/sleep-calculator-for-night-shift-workers"
-  };
-
-  if (slug && redirects[slug.toLowerCase()]) {
-    const target = redirects[slug.toLowerCase()];
-    const dest = target.startsWith('blog/') ? `/${target}` : `/${target}`;
-    return <Navigate to={dest} replace />;
   }
 
   return <NotFound />;
@@ -602,52 +530,46 @@ function AppContent() {
       <OpenGraphTags />
       <Header isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
       <main className="relative z-10 flex-grow flex flex-col items-center justify-start w-full pt-5 sm:pt-8 md:pt-10 pb-4 sm:pb-8">
-        <Routes>
-          {/* Core Pages */}
-          <Route path="/" element={<Home />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/blog/:slug" element={<Blog />} />
+        <Suspense fallback={<PageFallback />}>
+          <Routes>
+            {/* Core Pages */}
+            <Route path="/" element={<Home />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:slug" element={<Blog />} />
 
-          {/* The 5 Dedicated Interactive Calculator Landing Pages */}
-          <Route path="/student-sleep-calculator" element={<StudentCalc />} />
-          <Route path="/shift-work-sleep-calculator" element={<ShiftWorkCalc />} />
-          <Route path="/sleep-cycle-calculator-90-minutes" element={<NinetyMinCalc />} />
-          <Route path="/wake-up-between-sleep-cycles" element={<WakeUpCalc />} />
-          <Route path="/ideal-bedtime-based-on-wake-up-time" element={<IdealBedtimeCalc />} />
+            {/* The Dedicated Interactive Calculator Landing Pages */}
+            <Route path="/student-sleep-calculator" element={<StudentCalc />} />
+            <Route path="/shift-work-sleep-calculator" element={<ShiftWorkCalc />} />
+            <Route path="/sleep-cycle-calculator-90-minutes" element={<NinetyMinCalc />} />
+            <Route path="/wake-up-between-sleep-cycles" element={<WakeUpCalc />} />
+            <Route path="/ideal-bedtime-based-on-wake-up-time" element={<IdealBedtimeCalc />} />
 
-          {/* Utility Pages */}
-          <Route path="/about" element={<About />} />
-          <Route path="/terms" element={<Terms />} />
-          <Route path="/privacy" element={<Privacy />} />
-          <Route path="/contact" element={<Contact />} />
+            {/* Keyword Search Pages (Exact names, direct to Main Sleep Calculator) */}
+            <Route path="/sleep-calculator-by-age" element={<Home />} />
+            <Route path="/sleep-calculator-cycle" element={<Home />} />
+            <Route path="/sleep-calculator-how-much-sleep-did-i-get" element={<Home />} />
+            <Route path="/sleep-calculator-women" element={<Home />} />
+            <Route path="/sleep-calculator-for-kids" element={<Home />} />
+            <Route path="/sleep-calculator-app" element={<Home />} />
 
-          {/* Localized routes using :lang prefix */}
-          <Route path="/:lang/blog" element={<Blog />} />
-          <Route path="/:lang/blog/:slug" element={<Blog />} />
-          
-          <Route path="/:lang/student-sleep-calculator" element={<StudentCalc />} />
-          <Route path="/:lang/shift-work-sleep-calculator" element={<ShiftWorkCalc />} />
-          <Route path="/:lang/sleep-cycle-calculator-90-minutes" element={<NinetyMinCalc />} />
-          <Route path="/:lang/wake-up-between-sleep-cycles" element={<WakeUpCalc />} />
-          <Route path="/:lang/ideal-bedtime-based-on-wake-up-time" element={<IdealBedtimeCalc />} />
+            {/* Utility Pages */}
+            <Route path="/about" element={<About />} />
+            <Route path="/terms" element={<Terms />} />
+            <Route path="/privacy" element={<Privacy />} />
+            <Route path="/contact" element={<Contact />} />
 
-          <Route path="/:lang/about" element={<About />} />
-          <Route path="/:lang/terms" element={<Terms />} />
-          <Route path="/:lang/privacy" element={<Privacy />} />
-          <Route path="/:lang/contact" element={<Contact />} />
+            {/* Legacy page/blog Prefixes redirected back to clean paths */}
+            <Route path="/page/blog/:slug" element={<Navigate replace to="/blog/:slug" />} />
 
-          {/* Legacy page/blog Prefixes redirected back to clean paths */}
-          <Route path="/page/blog/:slug" element={<Navigate replace to="/blog/:slug" />} />
+            {/* Dynamic redirect for root-level blog slugs or root languages to /blog/:slug */}
+            <Route path="/:slug" element={<RootSlugRedirect />} />
 
-          {/* Dynamic redirect for root-level blog slugs or root languages to /blog/:slug */}
-          <Route path="/:slug" element={<RootSlugRedirect />} />
-
-          {/* Catch-all 404 route */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+            {/* Catch-all 404 route */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Suspense>
       </main>
       <Footer />
-      <LanguageDetectionToast />
     </div>
   );
 }

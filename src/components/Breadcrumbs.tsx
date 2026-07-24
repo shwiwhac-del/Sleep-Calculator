@@ -31,7 +31,7 @@ export function Breadcrumbs() {
     else if (normalizedPath === '/contact') pageTitle = 'Contact';
     else if (normalizedPath === '/privacy') pageTitle = 'Privacy Policy';
     else if (normalizedPath === '/terms') pageTitle = 'Terms & Conditions';
-    else if (normalizedPath === '/blog') pageTitle = 'Blog';
+    else if (normalizedPath === '/blog') pageTitle = 'Sleep Education';
     else if (normalizedPath === '/student-sleep-calculator') pageTitle = 'Student Sleep Calculator';
     else if (normalizedPath === '/shift-work-sleep-calculator') pageTitle = 'Night Shift Sleep Calculator';
     else if (normalizedPath === '/sleep-cycle-calculator-90-minutes') pageTitle = '90-Minute Sleep Calculator';
@@ -51,8 +51,8 @@ export function Breadcrumbs() {
     const blogMeta = BLOG_POSTS_META[slug];
 
     if (blogMeta) {
-      // Create a nice categorized trail mapping to Blog
-      items.push({ name: 'Blog', url: '/blog' });
+      // Create a nice categorized trail mapping to Sleep Education
+      items.push({ name: 'Sleep Education', url: '/blog' });
       
       // Limit title to make breadcrumbs readable on smaller devices
       const titleLabel = blogMeta.title.length > 40 

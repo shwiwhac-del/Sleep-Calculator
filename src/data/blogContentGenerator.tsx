@@ -150,23 +150,23 @@ export default function BlogPostContent({ slug, meta }: { slug: string; meta: Bl
     return 'hygiene'; // Default Pillar 8
   })();
 
-  // Custom detailed FAQ questions for structured schema and accordion
+  // Conversational real-world sleep questions and empathetic advice
   const faqList = [
     {
-      q: `How does the 90-minute rule apply to ${meta.title}?`,
-      a: `The 90-minute rule states that human sleep is structured in 90-minute cycles. For ${meta.title}, calculating your sleep duration in multiples of 90 minutes (such as 4.5 hours, 6 hours, or 7.5 hours) ensures you wake up at the end of a cycle, during light sleep, preventing the extreme grogginess associated with deep sleep interruption.`
+      q: `Why do I feel so exhausted in the morning even after sleeping for 8 hours?`,
+      a: `It's one of the most frustrating feelings—you went to bed on time, got 8 hours, but woke up feeling heavy and groggy. This happens because human sleep moves in 90-minute loops. An 8-hour sleep forces your alarm to go off around 5.3 cycles, right in the middle of deep sleep. Waking up from deep sleep triggers 'sleep inertia'—a heavy brain fog. Aiming for 7.5 hours (5 full cycles) or 9 hours (6 full cycles) allows you to wake up during light sleep, making it much easier to feel alert.`
     },
     {
-      q: `Can I recover from a lack of sleep related to ${topicName}?`,
-      a: `Yes, but not all at once. Binge-sleeping on weekends disrupts your circadian rhythm and induces "social jetlag." The clinical recovery method is to add 60 to 90 minutes of sleep per night over several consecutive days, allowing your brain to naturally rebalance its slow-wave and REM sleep ratios.`
+      q: `Can I recover from accumulated sleep debt on the weekends?`,
+      a: `Sleeping in for 3 or 4 extra hours on Saturday morning gives brief relief, but it throws off your internal biological clock (causing 'social jetlag') and makes Sunday night insomnia much worse. The best way to recover is to add 30 to 60 extra minutes of sleep per night over several consecutive days, or take a quick 20-minute afternoon power nap, allowing your body to naturally rebalance without disrupting your routine.`
     },
     {
-      q: `What environmental factors most heavily impact ${meta.category}?`,
-      a: "The three most critical environmental factors are temperature, light, and noise. Keep your bedroom strictly at 65°F (18.3°C) to facilitate core body temperature drops. Maintain absolute darkness at 0 lux using blackout curtains, and eliminate ambient sounds or use a stable pink noise generator to prevent micro-arousals."
+      q: `What bedroom adjustments help me fall asleep faster at night?`,
+      a: "The three most powerful bedroom tweaks are temperature, lighting, and sound. Keep your bedroom cool—around 65°F to 68°F (18°C–20°C)—because your body needs its core temperature to drop before you can sleep. Make the room as dark as possible, and use dim, warm lights 30 minutes before bed so your brain knows it's time to release natural melatonin."
     },
     {
-      q: "How does caffeine and alcohol disrupt natural sleep architecture?",
-      a: "Caffeine acts as an adenosine receptor antagonist, blocking the biochemical signal for sleep drive and delaying sleep onset. Alcohol, while acting as a sedative that induces light sleep, heavily suppresses REM sleep throughout the first half of the night, causing fragmented sleep and severe morning fatigue."
+      q: "Why do caffeine late in the day or a nightcap drink ruin sleep quality?",
+      a: "Caffeine blocks adenosine (the brain chemical that creates sleepiness) and stays active in your system for 6 to 8 hours, preventing deep rest. While alcohol might make you feel drowsy initially, as your body processes it through the night, it disrupts REM sleep—the phase vital for emotional health and memory—leaving you waking up frequently and feeling tired."
     }
   ];
 
@@ -338,7 +338,7 @@ export default function BlogPostContent({ slug, meta }: { slug: string; meta: Bl
             </p>
             
             <div className="space-y-6 my-6" id="science-phases-list">
-              <div className="space-y-2 border-l-2 border-violet-200 dark:border-slate-800 pl-4">
+              <div className="p-5 bg-violet-50/40 dark:bg-[#151C2C] border border-violet-200/60 dark:border-slate-800 rounded-2xl space-y-2">
                 <h3 className="text-lg font-bold text-violet-700 dark:text-violet-400">
                   Stage N1: The Somnolent Transition (Light Sleep)
                 </h3>
@@ -346,7 +346,7 @@ export default function BlogPostContent({ slug, meta }: { slug: string; meta: Bl
                   Lasting only 5 to 10 minutes, Stage N1 represents the highly sensitive bridge between wakefulness and light slumber. During this phase, muscle activity diminishes, the heart rate begins to slow, and alpha brainwaves (8–12 Hz) are gradually replaced by slow, low-amplitude theta waves (4–7 Hz). Waking up from this stage is incredibly easy, and individuals often feel as though they were never actually asleep.
                 </p>
               </div>
-              <div className="space-y-2 border-l-2 border-violet-200 dark:border-slate-800 pl-4">
+              <div className="p-5 bg-violet-50/40 dark:bg-[#151C2C] border border-violet-200/60 dark:border-slate-800 rounded-2xl space-y-2">
                 <h3 className="text-lg font-bold text-violet-700 dark:text-violet-400">
                   Stage N2: Consolidated Light Sleep (Sensory Blocking)
                 </h3>
@@ -354,7 +354,7 @@ export default function BlogPostContent({ slug, meta }: { slug: string; meta: Bl
                   Accounting for approximately 50% of our total nightly sleep, Stage N2 represents a period of stable light sleep. The core body temperature drops, eye movements cease, and the brain initiates highly specialized wave patterns: <strong>Sleep Spindles</strong> (rapid, 11-16 Hz bursts of thalamocortical activity) and <strong>K-Complexes</strong> (high-amplitude, biphasic waveforms). These patterns block external sensory input, allowing the brain to consolidate motor skills and protect sleep continuity.
                 </p>
               </div>
-              <div className="space-y-2 border-l-2 border-violet-200 dark:border-slate-800 pl-4">
+              <div className="p-5 bg-violet-50/40 dark:bg-[#151C2C] border border-violet-200/60 dark:border-slate-800 rounded-2xl space-y-2">
                 <h3 className="text-lg font-bold text-violet-700 dark:text-violet-400">
                   Stage N3: Slow-Wave Sleep (Deep Physical Restoration)
                 </h3>
@@ -362,7 +362,7 @@ export default function BlogPostContent({ slug, meta }: { slug: string; meta: Bl
                   Also known as delta or slow-wave sleep, Stage N3 is the most physically restorative phase of sleep. It is characterized by high-amplitude, slow delta brainwaves (0.5–4 Hz). During this deep phase, the body secretes massive pulses of Human Growth Hormone (HGH) to repair muscles, tissues, and bones. Concurrently, the brain’s glymphatic system opens, washing away metabolic wastes and toxic proteins like beta-amyloid. Interrupting Stage N3 causes severe sleep inertia, leaving you feeling profoundly disoriented and exhausted.
                 </p>
               </div>
-              <div className="space-y-2 border-l-2 border-violet-200 dark:border-slate-800 pl-4">
+              <div className="p-5 bg-violet-50/40 dark:bg-[#151C2C] border border-violet-200/60 dark:border-slate-800 rounded-2xl space-y-2">
                 <h3 className="text-lg font-bold text-violet-700 dark:text-violet-400">
                   Stage REM: Rapid Eye Movement (Cognitive & Emotional Integration)
                 </h3>
@@ -577,7 +577,7 @@ export default function BlogPostContent({ slug, meta }: { slug: string; meta: Bl
             <p className="text-base sm:text-lg leading-relaxed text-slate-800 dark:text-slate-300">
               Without deep slow-wave sleep, memory tracks remain highly fragile and are rapidly overwritten or forgotten. Furthermore, sleep deprivation paralyzes prefrontal cortex executive functions, impairing logical reasoning, attention span, and emotional stability on exam day.
             </p>
-            <div className="p-5 bg-red-50 dark:bg-red-950/20 border-l-4 border-red-500 rounded-r-2xl text-sm sm:text-base leading-relaxed text-red-900 dark:text-red-300">
+            <div className="p-5 bg-red-50 dark:bg-red-950/20 border border-red-200 dark:border-red-900/40 rounded-2xl text-sm sm:text-base leading-relaxed text-red-900 dark:text-red-300">
               <strong>The Student Exam Rule:</strong> Secure at least 5 complete sleep cycles (7.5 hours) the night before an exam. Maximizing your sleep cycle structure guarantees you preserve the deep sleep and REM phases needed for recall and reasoning.
             </div>
           </section>
@@ -620,13 +620,13 @@ export default function BlogPostContent({ slug, meta }: { slug: string; meta: Bl
               To mitigate the biological toll of night shifts, shift work sleep calculators utilize two specialized chronobiological scheduling techniques:
             </p>
             <div className="space-y-6 my-6" id="shiftwork-strategies">
-              <div className="p-5 bg-violet-50/50 dark:bg-[#151C2C] border-l-4 border-[#7C3AED] rounded-r-2xl">
+              <div className="p-5 bg-violet-50/50 dark:bg-[#151C2C] border border-[#7C3AED]/20 dark:border-violet-500/20 rounded-2xl">
                 <h3 className="font-bold text-[#111827] dark:text-white text-base mb-1">Anchor Sleep Blocks</h3>
                 <p className="text-sm text-slate-700 dark:text-slate-300">
                   Secure at least a 4-hour "anchor sleep block" at the exact same time every day (for example, 8:00 AM to 12:00 PM), regardless of whether you are working or off duty. This consistent anchor stabilizes your biological clock, helping you coordinate endocrine releases.
                 </p>
               </div>
-              <div className="p-5 bg-violet-50/50 dark:bg-[#151C2C] border-l-4 border-[#7C3AED] rounded-r-2xl">
+              <div className="p-5 bg-violet-50/50 dark:bg-[#151C2C] border border-[#7C3AED]/20 dark:border-violet-500/20 rounded-2xl">
                 <h3 className="font-bold text-[#111827] dark:text-white text-base mb-1">Split Sleep Schedule Strategy</h3>
                 <p className="text-sm text-slate-700 dark:text-slate-300">
                   If sleeping 7.5 consecutive hours during the day is impossible due to family or noise, divide your sleep into two distinct blocks: a primary 4.5-hour (3 cycles) morning sleep block, paired with a 90-minute (1 cycle) evening sleep block before your shift starts. This split method provides adequate slow-wave and REM sleep without causing severe daytime insomnia.
@@ -729,7 +729,7 @@ export default function BlogPostContent({ slug, meta }: { slug: string; meta: Bl
                 </p>
               </div>
             </div>
-            <div className="p-4 bg-amber-50 dark:bg-amber-950/20 border-l-4 border-amber-500 rounded-r-2xl text-xs sm:text-sm text-amber-900 dark:text-amber-300">
+            <div className="p-4 bg-amber-50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-900/40 rounded-2xl text-xs sm:text-sm text-amber-900 dark:text-amber-300">
               <strong>Avoid the 45-Minute Trap:</strong> Taking a 45-minute nap is counterproductive because it wakes you up right in the middle of deep slow-wave sleep, causing severe morning-like grogginess.
             </div>
           </section>
@@ -780,7 +780,7 @@ export default function BlogPostContent({ slug, meta }: { slug: string; meta: Bl
             <p className="text-base sm:text-lg leading-relaxed text-slate-800 dark:text-slate-300">
               To wind down your nervous system and prepare for deep slow-wave rest, follow this structured countdown:
             </p>
-            <div className="p-6 bg-violet-50/50 dark:bg-[#151C2C] border-l-4 border-[#7C3AED] rounded-r-2xl space-y-2 text-sm sm:text-base text-slate-700 dark:text-slate-300">
+            <div className="p-6 bg-violet-50/50 dark:bg-[#151C2C] border border-[#7C3AED]/20 dark:border-violet-500/20 rounded-2xl space-y-2 text-sm sm:text-base text-slate-700 dark:text-slate-300">
               <p><strong>10 Hours Before Bed:</strong> Stop caffeine consumption (caffeine has a 6-hour half-life and 10-hour quarter-life).</p>
               <p><strong>3 Hours Before Bed:</strong> Stop consuming large meals or alcohol (supports digestion and prevents nighttime body temperature spikes).</p>
               <p><strong>2 Hours Before Bed:</strong> Stop working (calms cognitive activity and reduces cortisol levels).</p>
@@ -862,14 +862,14 @@ export default function BlogPostContent({ slug, meta }: { slug: string; meta: Bl
         </div>
       </section>
 
-      {/* Section 13: Frequently Asked Questions */}
+      {/* Section 13: Common Sleep Questions */}
       <section className="space-y-3 pt-6 border-t border-gray-200 dark:border-slate-800" id="faq-sec">
         <h2 className="text-2xl sm:text-3xl font-black text-gray-950 dark:text-white tracking-tight font-serif">
-          Clinical FAQs & Sleep Troubleshooting
+          Common Sleep Questions
         </h2>
         <div className="space-y-4 mt-6">
           {faqList.map((faq, index) => (
-            <div key={index} className="space-y-1.5 pl-4 border-l-2 border-[#7C3AED]/20">
+            <div key={index} className="p-5 bg-gray-50/50 dark:bg-[#151C2C]/50 border border-gray-200/80 dark:border-slate-800 rounded-2xl space-y-1.5">
               <h4 className="text-base sm:text-lg font-bold text-gray-950 dark:text-gray-100">
                 Q: {faq.q}
               </h4>

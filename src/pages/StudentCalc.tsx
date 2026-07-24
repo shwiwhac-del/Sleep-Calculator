@@ -252,7 +252,7 @@ export default function StudentCalc() {
               </div>
 
               {/* Brain Fact */}
-              <div className="bg-[#7C3AED]/5 p-4 border-l-2 border-[#7C3AED] text-xs sm:text-sm text-gray-700 leading-relaxed flex items-start gap-3 rounded-r-xl mt-6">
+              <div className="bg-[#7C3AED]/5 dark:bg-[#151C2C] p-4 border border-[#7C3AED]/20 dark:border-violet-500/20 text-xs sm:text-sm text-gray-700 dark:text-slate-300 leading-relaxed flex items-start gap-3 rounded-2xl mt-6">
                 <Brain className="w-5 h-5 text-[#7C3AED] shrink-0 mt-0.5" />
                 <div>
                   <span className="font-bold text-gray-900">Memory Booster Fact:</span> Waking up at the completion of a full sleep cycle prevents sleep inertia, ensuring you can immediately focus and remember formulas in high-stakes testing rooms.

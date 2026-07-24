@@ -27,7 +27,7 @@ export function SleepScienceGuide() {
           <p>
             Most people think 8 hours of sleep is the magic number. Science disagrees.
           </p>
-          <div className="p-5 bg-[#FAF6F0] dark:bg-[#151C2C] border-l-4 border-[#7C3AED] rounded-r-2xl space-y-2 my-4">
+          <div className="p-5 bg-[#FAF6F0] dark:bg-[#151C2C] border border-[#7C3AED]/20 dark:border-violet-500/20 rounded-2xl space-y-2 my-4">
             <p className="font-medium text-[#111827] dark:text-gray-100">The Core Sleep Secret:</p>
             <p className="text-sm">
               What actually matters is <em>when</em> your alarm goes off within a sleep cycle. Wake up at the end of a complete cycle and you feel alert within minutes. Wake up in the middle of deep sleep and you feel groggy, foggy, and exhausted — even after a full night in bed.
@@ -409,7 +409,7 @@ export function SleepScienceGuide() {
             </p>
           </div>
         </div>
-        <p className="text-sm leading-relaxed bg-[#FAF6F0] dark:bg-[#151C2C] p-4 rounded-xl border-l-4 border-[#7C3AED] font-semibold">
+        <p className="text-sm leading-relaxed bg-[#FAF6F0] dark:bg-[#151C2C] p-4 rounded-2xl border border-[#7C3AED]/20 dark:border-violet-500/20 font-semibold">
           REM sleep is concentrated in the final two cycles of the night. Every time you set an early alarm or stay up too late, you are cutting off your brain's primary window for cognitive recovery.
         </p>
       </section>
@@ -724,7 +724,7 @@ export function SleepScienceGuide() {
 
       {/* Author box for Home E-E-A-T alignment */}
       <div 
-        className="border-l-4 border-[#7C3AED] bg-[#FAF6F0] dark:bg-[#151C2C] p-6 rounded-r-2xl mt-12"
+        className="border border-[#7C3AED]/20 dark:border-violet-500/20 bg-[#FAF6F0] dark:bg-[#151C2C] p-6 rounded-2xl mt-12"
       >
         <div className="flex flex-col gap-2">
           <div className="text-[11px] font-bold text-[#7C3AED] uppercase tracking-wider">

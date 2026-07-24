@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { BLOG_POSTS_META } from "../blogMetadata";
+import { getBlogPostImage } from "../data/blogImages";
 
 interface RecommendedSleepGuidesProps {
   currentSlug?: string;
@@ -62,35 +63,51 @@ export default function RecommendedSleepGuides({
         </p>
       </div>
       
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4" id="recommended-guides-grid">
-        {finalBlogs.map((post) => (
-          <Link
-            key={post.slug}
-            to={`/blog/${post.slug}`}
-            className="group flex flex-col justify-between p-5 bg-white dark:bg-[#0F172A] rounded-2xl border border-[#E5E7EB] dark:border-[#1E293B] hover:border-[#7C3AED] dark:hover:border-violet-500 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 cursor-pointer text-left !no-underline hover:!no-underline"
-          >
-            <div className="space-y-2 !no-underline">
-              <div className="flex items-center justify-between">
-                <span className="text-[11px] font-bold uppercase tracking-wider text-[#7C3AED] dark:text-violet-400 font-mono">
-                  {post.category || 'Sleep Guide'}
-                </span>
-                <span className="text-xs font-semibold !text-[#6B7280] dark:!text-slate-400 !no-underline">
-                  {post.readTime}
-                </span>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6" id="recommended-guides-grid">
+        {finalBlogs.map((post) => {
+          const img = getBlogPostImage(post.slug, post.category);
+          return (
+            <Link
+              key={post.slug}
+              to={`/blog/${post.slug}`}
+              className="group flex flex-col justify-between overflow-hidden bg-white dark:bg-[#0F172A] rounded-2xl border border-[#E5E7EB] dark:border-[#1E293B] hover:border-[#7C3AED] dark:hover:border-violet-500 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 cursor-pointer text-left !no-underline hover:!no-underline"
+            >
+              <div>
+                <div className="relative aspect-[16/9] w-full overflow-hidden bg-slate-100 dark:bg-slate-800">
+                  <img
+                    src={img.url}
+                    alt={img.alt}
+                    referrerPolicy="no-referrer"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60" />
+                  <span className="absolute bottom-2.5 left-3 text-[10px] font-bold uppercase tracking-wider bg-black/60 backdrop-blur-xs text-white px-2.5 py-1 rounded-md font-mono">
+                    {post.category || 'Sleep Guide'}
+                  </span>
+                </div>
+
+                <div className="p-4 space-y-2 !no-underline">
+                  <div className="flex items-center justify-between text-xs text-[#6B7280] dark:text-slate-400 font-medium">
+                    <span>{post.readTime}</span>
+                    <span>{post.date}</span>
+                  </div>
+                  <h4 className="font-bold text-sm sm:text-base !text-[#111827] dark:!text-slate-100 group-hover:!text-[#7C3AED] dark:group-hover:!text-violet-400 transition-colors line-clamp-2 leading-snug !no-underline">
+                    {post.title}
+                  </h4>
+                  <p className="text-xs !text-[#6B7280] dark:!text-slate-400 line-clamp-2 leading-relaxed !no-underline">
+                    {post.description}
+                  </p>
+                </div>
               </div>
-              <h4 className="font-bold text-sm sm:text-base !text-[#111827] dark:!text-slate-100 group-hover:!text-[#7C3AED] dark:group-hover:!text-violet-400 transition-colors line-clamp-2 leading-snug !no-underline">
-                {post.title}
-              </h4>
-              <p className="text-xs !text-[#6B7280] dark:!text-slate-400 line-clamp-3 leading-relaxed !no-underline">
-                {post.description}
-              </p>
-            </div>
-            <div className="mt-4 pt-3 border-t border-[#F3F4F6] dark:border-[#1E293B] flex items-center justify-between text-xs font-semibold !text-[#7C3AED] dark:!text-violet-400 !no-underline">
-              <span>Read Article</span>
-              <ArrowRight className="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform" />
-            </div>
-          </Link>
-        ))}
+
+              <div className="px-4 pb-4 pt-2 flex items-center justify-between text-xs font-semibold !text-[#7C3AED] dark:!text-violet-400 !no-underline">
+                <span>Read Article</span>
+                <ArrowRight className="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform" />
+              </div>
+            </Link>
+          );
+        })}
       </div>
     </section>
   );

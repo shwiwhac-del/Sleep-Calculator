@@ -10,7 +10,7 @@ import { Breadcrumbs } from '../components/Breadcrumbs';
 import { AdPlaceholder } from '../components/AdPlaceholder';
 import BlogPostContent from '../data/blogContentGenerator';
 import { useLanguage } from '../hooks/useLanguage';
-import { getLocalizedPost } from '../locales/blogTranslations';
+import { getBlogPostImage } from '../data/blogImages';
 
 export const BLOG_POSTS = [
   {
@@ -622,16 +622,16 @@ const BLOG_FAQS: Record<string, { q: string, a: string }[]> = {
   ],
   'tired-after-8-hours-of-sleep': [
     {
-      q: "Why do I wake up coordinates-broken and tired despite completing 8 full hours of sleep?",
-      a: "Simply spending 8 hours in bed does not guarantee restorative sleep. Wakefulness, micro-arousals (often caused by sleep apnea, heavy digestion, or environmental noise), or structural sleep disorders can disrupt your sleep architecture. If you spend too much time in light Stage 1 and 2 sleep and do not achieve sufficient slow-wave Deep (Stage 3) sleep or REM sleep, you will wake up feeling profoundly exhausted."
+      q: "Why do I still wake up exhausted even after sleeping a full 8 hours?",
+      a: "It's frustrating to go to bed on time, sleep 8 hours, and still feel exhausted. Spending 8 hours in bed doesn't automatically mean high-quality, uninterrupted rest. If your alarm rings in the middle of deep sleep (around 5.3 sleep cycles), or if minor interruptions from stress, noise, or late meals disrupt your rest, you will experience severe 'sleep inertia'. Aligning your alarm with the end of a 90-minute sleep cycle (such as 7.5 hours) helps you wake up during light sleep feeling clear-headed."
     },
     {
-      q: "What role does sleep cycle timing play in waking up exhausted?",
-      a: "Waking up in the middle of a 90-minute sleep cycle—specifically during deep Stage 3 slow-wave sleep—triggers a severe state known as sleep inertia. During sleep inertia, your brain is flooded with adenosine, leaving you feeling profoundly disoriented and heavy. Using a sleep calculator to align your waking alarm perfectly with the light sleep phase at the end of a cycle eliminates this grogginess."
+      q: "How does sleep cycle timing affect whether I wake up refreshed or groggy?",
+      a: "Waking up in the middle of a 90-minute sleep cycle—especially during deep slow-wave sleep—causes heavy grogginess called sleep inertia. Your brain is temporarily flooded with sleep chemicals, leaving you disoriented. Aligning your wake-up alarm with the end of a 90-minute cycle lets you wake up during light sleep, making it much easier to jump out of bed feeling alert."
     },
     {
-      q: "What lifestyle factors frequently damage sleep architecture and deep sleep?",
-      a: "Late-evening caffeine (even if taken 6-8 hours before bed), alcohol consumption (which acts as an immediate REM blocker), late-night blue-light screen exposure (which stalls melatonin secretion), and high-stress evening schedules prevent the brain from smoothly entering deep restorative wave phases, leading to fragmented, low-quality rest."
+      q: "What evening habits secretly destroy sleep quality?",
+      a: "Late-afternoon caffeine, evening alcohol, late-night phone or TV screen exposure, and high-stress evening work can prevent your brain from entering deep restorative sleep. While alcohol might make you feel sleepy initially, it disrupts REM sleep later in the night, causing fragmented, shallow rest."
     }
   ],
   'best-bedtime-for-students': [
@@ -818,16 +818,16 @@ const BLOG_FAQS: Record<string, { q: string, a: string }[]> = {
   ],
   'best-bedtime-for-adults': [
     {
-      q: "How does aligning your bedtime with natural circadian biology maximize sleep efficiency?",
-      a: "Going to bed during your biological 'sleep gate'—typically between 10:00 PM and 11:30 PM for most chronotypes—synchronizes your bedtime with your body's natural melatonin surge and core temperature dip. This results in rapid sleep onset, streamlined transitions into deep sleep, and highly efficient sleep architecture."
+      q: "How does matching my bedtime to my biological clock help me sleep better?",
+      a: "Going to bed during your natural 'sleep window'—typically between 10:00 PM and 11:30 PM for most adults—aligns your sleep with your body's natural temperature drop and melatonin surge. This helps you fall asleep faster, spend more time in deep restorative sleep, and wake up naturally feeling refreshed."
     },
     {
-      q: "What is the biological cost of sleep phase delay (going to bed past 2:00 AM)?",
-      a: "Going to bed past 2:00 AM causes circadian misalignment. Because natural daylight, outdoor noise, and core metabolic cycles naturally rise in the morning, your sleep will be truncated. You will miss out on critical REM sleep phases, which occur predominantly in the morning hours, causing cognitive fatigue, emotional volatility, and a weakened immune response."
+      q: "How does staying up past 2:00 AM affect my energy the next day?",
+      a: "Going to bed past 2:00 AM throws off your body's circadian rhythm. Because daylight, ambient morning noise, and core temperature rise early, your sleep gets cut short. You miss out on crucial morning REM sleep, leaving you feeling mentally foggy, irritable, and physically exhausted."
     },
     {
-      q: "How can a bedtime calculator help adults maintain high-level professional productivity?",
-      a: "A bedtime calculator identifies the precise hours to go to sleep based on your required waking hour to ensure you complete 5 or 6 full 90-minute sleep cycles (7.5 or 9 hours of sleep). Bypassing deep-sleep wakeups prevents mid-day energy crashes, maximizes mental speed, and supports sustained executive focus."
+      q: "How can planning my bedtime help me stay energized and focused at work?",
+      a: "Planning your bedtime around 90-minute sleep cycles ensures you get 5 or 6 complete cycles (7.5 or 9 hours). By avoiding alarms that go off during deep sleep, you eliminate morning brain fog, prevent mid-afternoon energy crashes, and maintain steady focus throughout the workday."
     }
   ],
   'how-long-does-it-take-to-fall-asleep': [
@@ -846,16 +846,16 @@ const BLOG_FAQS: Record<string, { q: string, a: string }[]> = {
   ],
   'what-is-sleep-debt': [
     {
-      q: "What is the long-term systemic impact of chronic, unaddressed sleep debt?",
-      a: "Chronic, unaddressed sleep debt degrades system-wide health. Long-term impacts include: elevated systemic inflammation, an increased risk of type 2 diabetes and insulin resistance, cardiovascular stress, accelerated cell aging, and a severely compromised immune system that leaves you vulnerable to infections."
+      q: "What happens if I accumulate a lot of sleep debt over time?",
+      a: "Carrying a high sleep debt isn't just about feeling tired—it impacts your overall health, immune system, and mood. Over time, getting less sleep than your body needs can lead to persistent brain fog, higher stress levels, weakened immunity, and lower daily energy. The good news is you can gradually repay sleep debt by prioritizing consistent rest."
     },
     {
-      q: "Can daytime power naps help repay sleep debt without ruining nighttime rest?",
-      a: "Yes, but they must be timed carefully. Power naps should last exactly 15 to 20 minutes and occur between 1:00 PM and 3:00 PM. This clears immediate adenosine buildup without entering deep sleep, maintaining your homeostatic sleep drive so you can easily fall asleep at night."
+      q: "Can afternoon power naps help repay sleep debt without ruining nighttime rest?",
+      a: "Yes! A brief 20-minute power nap taken between 1:00 PM and 3:00 PM can help clear accumulated fatigue without interfering with your nighttime sleep. Just avoid taking naps past 4:00 PM or sleeping longer than 30 minutes, which can make falling asleep at night harder."
     },
     {
-      q: "How do I calculate my current sleep debt to design a realistic recovery plan?",
-      a: "Compare your weekly sleep requirements against your actual sleep hours. If you need 8 hours per night but only get 6 for 5 workdays, your weekly sleep debt is 10 hours. Design a recovery plan to add 1 hour of sleep per night over 10 days rather than trying to pay it off in a single weekend."
+      q: "How do I calculate my sleep debt to build a realistic recovery plan?",
+      a: "Compare your target sleep hours (usually 7.5 to 8 hours per night) with how much sleep you actually get. If you need 8 hours but only get 6 hours for five workdays, your weekly sleep debt is 10 hours. Instead of trying to pay it all back in one huge weekend sleep-in, add 30 to 60 minutes of extra sleep each night over a week or two."
     }
   ],
   'why-do-we-dream': [
@@ -1327,7 +1327,7 @@ export default function Blog() {
     'why-am-i-tired-after-sleeping'
   ];
 
-  const localizedBlogPosts = BLOG_POSTS.map(post => getLocalizedPost(post, currentLang));
+  const localizedBlogPosts = BLOG_POSTS;
   const currentPost = localizedBlogPosts.find(p => p.slug === activeSlug);
 
   // High-performance keyword extraction & scoring algorithm for related posts recommendation
@@ -1408,10 +1408,12 @@ export default function Blog() {
     title = postMeta.title;
     description = postMeta.description;
     keywords = postMeta.keywords || getFocusKeywordsForPost(activeSlug, postMeta.title, postMeta.category);
+    canonicalUrl = getCanonicalUrl(`/blog/${activeSlug}`);
   } else if (isBlogIndex) {
     title = "Blog | Sleep Calculator";
     description = "Read high-quality articles, guides, and diagnostic tools regarding 90-minute sleep cycles, REM sleep, circadian rhythms, sleep hygiene, and waking up refreshed.";
     keywords = "sleep science blog, sleep calculator guides, sleep hygiene articles, 90-minute sleep cycle optimization, REM sleep science, circadian rhythm guides, sleep quality research, bedtime calculation tips";
+    canonicalUrl = getCanonicalUrl('/blog');
   }
 
   // Generate JSON-LD schemas for search engines
@@ -1996,41 +1998,57 @@ export default function Blog() {
                 'best-sleep-schedule-for-productivity',
                 'sleep-calculator-for-students',
                 'why-am-i-tired-after-sleeping'
-              ].includes(post.slug)).map((post) => (
-                <Link
-                  key={post.slug}
-                  to={`/blog/${post.slug}`}
-                  className="group flex flex-col bg-white dark:bg-[#151C2C] hover:bg-slate-50 dark:hover:bg-[#1E293B] border border-[#E5E7EB] dark:border-[#1E293B] hover:border-[#7C3AED]/50 rounded-2xl p-6 transition-all duration-300 transform hover:-translate-y-1.5 shadow-md hover:shadow-premium relative overflow-hidden h-full"
-                >
-                  <div className="absolute top-0 left-0 w-1 bg-gradient-to-b from-[#7C3AED] to-[#6D28D9] h-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  
-                  <div className="flex items-center justify-end mb-4">
-                    <span className="text-xs font-medium text-[#6B7280] dark:text-slate-400">
-                      {post.readTime}
-                    </span>
-                  </div>
+              ].includes(post.slug)).map((post) => {
+                const img = getBlogPostImage(post.slug, post.category);
+                return (
+                  <Link
+                    key={post.slug}
+                    to={`/blog/${post.slug}`}
+                    className="group flex flex-col bg-white dark:bg-[#151C2C] hover:bg-slate-50 dark:hover:bg-[#1E293B] border border-[#E5E7EB] dark:border-[#1E293B] hover:border-[#7C3AED]/50 rounded-2xl transition-all duration-300 transform hover:-translate-y-1.5 shadow-md hover:shadow-premium relative overflow-hidden h-full"
+                  >
+                    <div className="relative aspect-[16/9] w-full overflow-hidden bg-slate-100 dark:bg-slate-800">
+                      <img
+                        src={img.url}
+                        alt={img.alt}
+                        referrerPolicy="no-referrer"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-70" />
+                      <span className="absolute bottom-3 left-3 text-[11px] font-bold uppercase tracking-wider bg-[#7C3AED] text-white px-3 py-1 rounded-full font-mono shadow-xs">
+                        {post.category || 'Sleep Guide'}
+                      </span>
+                    </div>
 
-                  <h2 className="text-xl font-bold text-[#111827] dark:text-slate-100 group-hover:text-[#7C3AED] dark:group-hover:text-violet-400 transition-colors leading-snug mb-3 font-serif">
-                    {post.title}
-                  </h2>
+                    <div className="p-6 flex flex-col flex-grow">
+                      <div className="flex items-center justify-between mb-3 text-xs font-medium text-[#6B7280] dark:text-slate-400">
+                        <span>{post.readTime}</span>
+                        <span>{post.date}</span>
+                      </div>
 
-                  <p className="text-sm text-[#4B5563] dark:text-slate-300 leading-relaxed line-clamp-3 mb-6 flex-grow">
-                    {post.description}
-                  </p>
+                      <h2 className="text-xl font-bold text-[#111827] dark:text-slate-100 group-hover:text-[#7C3AED] dark:group-hover:text-violet-400 transition-colors leading-snug mb-3 font-serif">
+                        {post.title}
+                      </h2>
 
-                  <div className="flex items-center text-sm font-semibold text-[#7C3AED] dark:text-violet-400 group-hover:text-[#6D28D9] dark:group-hover:text-violet-300 mt-auto">
-                    {t('common.readArticle')}
-                    <svg 
-                      className="w-4 h-4 ml-1 transform group-hover:translate-x-1.5 transition-transform duration-300" 
-                      fill="none" 
-                      viewBox="0 0 24 24" 
-                      stroke="currentColor"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </div>
-                </Link>
-              ))}
+                      <p className="text-sm text-[#4B5563] dark:text-slate-300 leading-relaxed line-clamp-3 mb-6 flex-grow">
+                        {post.description}
+                      </p>
+
+                      <div className="flex items-center text-sm font-semibold text-[#7C3AED] dark:text-violet-400 group-hover:text-[#6D28D9] dark:group-hover:text-violet-300 mt-auto">
+                        {t('common.readArticle')}
+                        <svg 
+                          className="w-4 h-4 ml-1 transform group-hover:translate-x-1.5 transition-transform duration-300" 
+                          fill="none" 
+                          viewBox="0 0 24 24" 
+                          stroke="currentColor"
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </div>
+                    </div>
+                  </Link>
+                );
+              })}
             </div>
 
             {/* --- GO TO CALCULATOR INTERNAL LINKING COMPONENT ON BLOG INDEX --- */}
@@ -2303,49 +2321,62 @@ export default function Blog() {
               Recommended Sleep Guides
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
-              {relatedPosts.map((post) => (
-                <Link
-                  key={post.slug}
-                  to={`/blog/${post.slug}`}
-                  onClick={() => {
-                    setOpenFaq(null);
-                    window.scrollTo({ top: 0, behavior: "smooth" });
-                  }}
-                  className="group flex flex-col bg-white dark:bg-[#151C2C] hover:bg-slate-50 dark:hover:bg-[#1E293B] border border-[#E5E7EB] dark:border-[#1E293B] hover:border-[#7C3AED]/50 rounded-2xl p-6 transition-all duration-300 transform hover:-translate-y-1 shadow-md hover:shadow-premium relative overflow-hidden h-full"
-                  id={`related-post-link-${post.slug}`}
-                >
-                  <div className="absolute top-0 left-0 w-1 bg-gradient-to-b from-[#7C3AED] to-[#6D28D9] h-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-[#7C3AED] dark:text-violet-400 font-mono">
-                      {post.category || 'Sleep Guide'}
-                    </span>
-                    <span className="text-[11px] font-medium text-[#6B7280] dark:text-slate-400 font-mono">
-                      {post.readTime}
-                    </span>
-                  </div>
+              {relatedPosts.map((post) => {
+                const img = getBlogPostImage(post.slug, post.category);
+                return (
+                  <Link
+                    key={post.slug}
+                    to={`/blog/${post.slug}`}
+                    onClick={() => {
+                      setOpenFaq(null);
+                      window.scrollTo({ top: 0, behavior: "smooth" });
+                    }}
+                    className="group flex flex-col bg-white dark:bg-[#151C2C] hover:bg-slate-50 dark:hover:bg-[#1E293B] border border-[#E5E7EB] dark:border-[#1E293B] hover:border-[#7C3AED]/50 rounded-2xl transition-all duration-300 transform hover:-translate-y-1 shadow-md hover:shadow-premium relative overflow-hidden h-full"
+                    id={`related-post-link-${post.slug}`}
+                  >
+                    <div className="relative aspect-[16/9] w-full overflow-hidden bg-slate-100 dark:bg-slate-800">
+                      <img
+                        src={img.url}
+                        alt={img.alt}
+                        referrerPolicy="no-referrer"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-60" />
+                      <span className="absolute bottom-2.5 left-2.5 text-[10px] font-bold uppercase tracking-wider bg-black/60 backdrop-blur-xs text-white px-2.5 py-1 rounded-md font-mono">
+                        {post.category || 'Sleep Guide'}
+                      </span>
+                    </div>
 
-                  <h4 className="text-base sm:text-lg font-bold text-[#111827] dark:text-slate-100 group-hover:text-[#7C3AED] dark:group-hover:text-violet-400 transition-colors leading-snug mb-2 font-serif line-clamp-2">
-                    {post.title}
-                  </h4>
+                    <div className="p-5 flex flex-col flex-grow">
+                      <div className="flex items-center justify-between mb-2 text-[11px] font-medium text-[#6B7280] dark:text-slate-400 font-mono">
+                        <span>{post.readTime}</span>
+                        <span>{post.date}</span>
+                      </div>
 
-                  <p className="text-xs sm:text-sm text-[#4B5563] dark:text-slate-300 leading-relaxed line-clamp-3 mb-4 flex-grow">
-                    {post.description}
-                  </p>
+                      <h4 className="text-base font-bold text-[#111827] dark:text-slate-100 group-hover:text-[#7C3AED] dark:group-hover:text-violet-400 transition-colors leading-snug mb-2 font-serif line-clamp-2">
+                        {post.title}
+                      </h4>
 
-                  <div className="flex items-center text-xs sm:text-sm font-semibold text-[#7C3AED] dark:text-violet-400 group-hover:text-[#6D28D9] dark:group-hover:text-violet-300 mt-auto">
-                    Read Guide
-                    <svg 
-                      className="w-3.5 h-3.5 ml-1 transform group-hover:translate-x-1 transition-transform duration-300" 
-                      fill="none" 
-                      viewBox="0 0 24 24" 
-                      stroke="currentColor"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </div>
-                </Link>
-              ))}
+                      <p className="text-xs sm:text-sm text-[#4B5563] dark:text-slate-300 leading-relaxed line-clamp-2 mb-4 flex-grow">
+                        {post.description}
+                      </p>
+
+                      <div className="flex items-center text-xs sm:text-sm font-semibold text-[#7C3AED] dark:text-violet-400 group-hover:text-[#6D28D9] dark:group-hover:text-violet-300 mt-auto">
+                        Read Guide
+                        <svg 
+                          className="w-3.5 h-3.5 ml-1 transform group-hover:translate-x-1 transition-transform duration-300" 
+                          fill="none" 
+                          viewBox="0 0 24 24" 
+                          stroke="currentColor"
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </div>
+                    </div>
+                  </Link>
+                );
+              })}
             </div>
           </div>
         )}
@@ -2354,7 +2385,7 @@ export default function Blog() {
         {isAnyBlog && currentFaqs && currentFaqs.length > 0 && (
           <div className="pt-12 mt-12 border-t border-[#E1D8CC] dark:border-[#1E293B] space-y-6 text-left" id="blog-faq-accordion-container">
             <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-[#111827] dark:text-slate-100 tracking-tight text-left">
-              Frequently Asked Questions
+              Common Sleep Questions
             </h2>
             <div className="space-y-4 max-w-3xl">
               {currentFaqs.map((faq, idx) => {

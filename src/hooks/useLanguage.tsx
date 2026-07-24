@@ -1,6 +1,81 @@
-import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react';
-import { useLocation, useNavigate, useParams } from 'react-router-dom';
-import { TRANSLATIONS, SUPPORTED_LANGUAGES, LanguageCode, isValidLanguage } from '../locales';
+import React, { createContext, useContext, ReactNode } from 'react';
+
+export type LanguageCode = 'en';
+
+export const SUPPORTED_LANGUAGES = [
+  { code: 'en' as LanguageCode, name: 'English', flag: '🇬🇧' },
+];
+
+const EN_DICTIONARY: Record<string, any> = {
+  common: {
+    calculate: "Calculate",
+    reset: "Reset",
+    back: "Back",
+    hours: "Hours",
+    minutes: "Minutes",
+    am: "AM",
+    pm: "PM",
+    themeLight: "Light",
+    themeDark: "Dark",
+    shareBtn: "Share",
+    copied: "Copied!",
+    ratingExc: "Excellent",
+    ratingGood: "Good",
+    ratingCaution: "Caution",
+    recalibrateBtn: "Recalibrate",
+    excellentRange: "7.5 - 9.0 hrs",
+    goodRange: "6.0 - 7.5 hrs",
+    cautionRange: "< 6.0 hrs",
+    recalibrateTitle: "Recalibrate Schedule",
+    recalibrateText: "Recalibrate your sleep target",
+    backToCalc: "Back to Sleep Calculator",
+    readArticle: "Read Guide",
+    tryTool: "Try Tool",
+    feedbackBtn: "Feedback",
+    closeBtn: "Close",
+    allRightsReserved: "All rights reserved."
+  },
+  nav: {
+    home: "Home",
+    calculators: "Calculators",
+    blog: "Sleep Education",
+    about: "About",
+    contact: "Contact",
+    privacy: "Privacy Policy",
+    terms: "Terms of Service",
+    selectorTitle: "Select Language"
+  },
+  home: {
+    heroTitle: "Sleep Calculator",
+    heroSubtitle: "Waking up at the end of a complete sleep cycle instead of mid-cycle can help you feel more refreshed and improve your overall sleep quality. Simply choose your bedtime or wake-up time, enter the required details, and click Calculate. The calculator will instantly determine the best bedtime or wake-up time based on the optimal number of complete sleep cycles."
+  },
+  calculators: {
+    student: {
+      title: "Student Sleep Calculator",
+      subtitle: "Optimize memory retention and exam performance with tailored study-sleep schedules."
+    },
+    shiftwork: {
+      title: "Shift Work Sleep Calculator",
+      subtitle: "Designed for night shift workers and rotating schedules."
+    },
+    ninetyMin: {
+      title: "90-Minute Sleep Calculator",
+      subtitle: "Calculate bedtimes based on exact 90-minute sleep cycles."
+    },
+    wakeUp: {
+      title: "Wake Up Between Cycles",
+      subtitle: "Stop waking up tired by targeting light sleep transitions."
+    },
+    idealBedtime: {
+      title: "Ideal Bedtime Calculator",
+      subtitle: "Find your ideal bedtime based on your wake-up time and age group."
+    }
+  },
+  blog: {
+    blogIndexTitle: "Sleep Education",
+    blogIndexSub: "Sleep science articles & educational guides"
+  }
+};
 
 export interface DetectionToastState {
   show: boolean;
@@ -22,158 +97,33 @@ interface LanguageContextProps {
 const LanguageContext = createContext<LanguageContextProps | undefined>(undefined);
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const location = useLocation();
-  const navigate = useNavigate();
-  const params = useParams();
+  const currentLang: LanguageCode = 'en';
 
-  const [detectedLang, setDetectedLang] = useState<LanguageCode | null>(null);
-  const [showDetectionToast, setShowDetectionToast] = useState<boolean>(false);
-
-  // Detect current language from pathname segment
-  const pathParts = location.pathname.split('/');
-  const firstSegment = pathParts[1];
-  
-  const currentLang: LanguageCode = isValidLanguage(firstSegment) ? firstSegment : 'en';
-
-  // Safe typed nested key accessor with English fallback
   const t = (keyPath: string): string => {
     const keys = keyPath.split('.');
-    
-    // Attempt localized translation
-    let val: any = TRANSLATIONS[currentLang];
-    let found = true;
+    let val: any = EN_DICTIONARY;
     for (const k of keys) {
       if (val && typeof val === 'object' && k in val) {
         val = val[k];
       } else {
-        found = false;
-        break;
-      }
-    }
-
-    if (found && typeof val === 'string') {
-      return val;
-    }
-
-    // Fallback to English (fallback language)
-    let fallbackVal: any = TRANSLATIONS['en'];
-    for (const k of keys) {
-      if (fallbackVal && typeof fallbackVal === 'object' && k in fallbackVal) {
-        fallbackVal = fallbackVal[k];
-      } else {
         return keyPath;
       }
     }
-
-    return typeof fallbackVal === 'string' ? fallbackVal : keyPath;
+    return typeof val === 'string' ? val : keyPath;
   };
 
-  // Helper to append language prefix to client routing paths
   const getLocalizedPath = (path: string): string => {
-    const cleanPath = path.startsWith('/') ? path : `/${path}`;
-    if (currentLang === 'en') {
-      return cleanPath;
-    }
-    // Don't duplicate prefix if it already has it
-    if (cleanPath.startsWith(`/${currentLang}/`) || cleanPath === `/${currentLang}`) {
-      return cleanPath;
-    }
-    return `/${currentLang}${cleanPath === '/' ? '' : cleanPath}`;
+    return path.startsWith('/') ? path : `/${path}`;
   };
 
-  // Safe language transition handler preserving current sub-route
-  const changeLanguage = (newLang: LanguageCode) => {
-    localStorage.setItem('sleep_calc_lang', newLang);
-    localStorage.setItem('sleep_calc_lang_detected', 'true');
-
-    // Extract the page path without the current language prefix
-    let cleanPath = location.pathname;
-    if (cleanPath.startsWith(`/${currentLang}/`)) {
-      cleanPath = cleanPath.substring(currentLang.length + 1);
-    } else if (cleanPath === `/${currentLang}`) {
-      cleanPath = '/';
-    }
-
-    const nextPath = cleanPath.startsWith('/') ? cleanPath : `/${cleanPath}`;
-
-    if (newLang === 'en') {
-      navigate(nextPath);
-    } else {
-      navigate(`/${newLang}${nextPath === '/' ? '' : nextPath}`);
-    }
-  };
-
-  // Automatic browser language detection on first visit
-  useEffect(() => {
-    const hasDetected = localStorage.getItem('sleep_calc_lang_detected');
-    
-    if (!hasDetected) {
-      // Collect candidate browser languages
-      const rawBrowserLangs = navigator.languages
-        ? Array.from(navigator.languages)
-        : [navigator.language || (navigator as any).userLanguage || ''];
-
-      let matchedLang: LanguageCode | null = null;
-      for (const langStr of rawBrowserLangs) {
-        if (!langStr) continue;
-        const code = langStr.split('-')[0].toLowerCase();
-        if (isValidLanguage(code) && code !== 'en') {
-          matchedLang = code as LanguageCode;
-          break;
-        }
-      }
-
-      localStorage.setItem('sleep_calc_lang_detected', 'true');
-
-      if (matchedLang) {
-        localStorage.setItem('sleep_calc_lang', matchedLang);
-        setDetectedLang(matchedLang);
-        setShowDetectionToast(true);
-
-        // Automatically switch language state & path if not already on it
-        if (currentLang !== matchedLang) {
-          let cleanPath = location.pathname;
-          if (cleanPath.startsWith(`/${currentLang}/`)) {
-            cleanPath = cleanPath.substring(currentLang.length + 1);
-          } else if (cleanPath === `/${currentLang}`) {
-            cleanPath = '/';
-          }
-          const nextPath = cleanPath.startsWith('/') ? cleanPath : `/${cleanPath}`;
-          navigate(`/${matchedLang}${nextPath === '/' ? '' : nextPath}`, { replace: true });
-        }
-      } else {
-        localStorage.setItem('sleep_calc_lang', 'en');
-      }
-    } else if (isValidLanguage(firstSegment)) {
-      // If user directly landed on a localized page, save it as their preference
-      localStorage.setItem('sleep_calc_lang_detected', 'true');
-      localStorage.setItem('sleep_calc_lang', firstSegment);
-    }
-  }, [location.pathname, firstSegment, navigate, currentLang]);
-
-  const confirmLanguage = () => {
-    if (detectedLang) {
-      localStorage.setItem('sleep_calc_lang', detectedLang);
-    }
-    localStorage.setItem('sleep_calc_lang_detected', 'true');
-    setShowDetectionToast(false);
-  };
-
-  const revertToEnglish = () => {
-    changeLanguage('en');
-    setShowDetectionToast(false);
-  };
-
-  const dismissToast = () => {
-    setShowDetectionToast(false);
-  };
+  const changeLanguage = (_newLang: LanguageCode) => {};
 
   const detectionToast: DetectionToastState = {
-    show: showDetectionToast,
-    detectedLang,
-    confirmLanguage,
-    revertToEnglish,
-    dismissToast,
+    show: false,
+    detectedLang: null,
+    confirmLanguage: () => {},
+    revertToEnglish: () => {},
+    dismissToast: () => {},
   };
 
   return (
@@ -200,4 +150,5 @@ export function useBrowserLanguageDetector() {
     languages,
   };
 }
+
 

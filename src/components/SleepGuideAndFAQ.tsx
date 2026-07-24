@@ -344,7 +344,7 @@ export default function SleepGuideAndFAQ() {
       </div>
 
       <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-[#111827] pt-8 text-center w-full">
-        Frequently Asked Questions
+        Common Sleep Questions
       </h2>
 
       <div className="space-y-4 pt-2">

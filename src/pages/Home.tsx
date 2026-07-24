@@ -499,7 +499,7 @@ export default function Home() {
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[2.5rem] font-extrabold tracking-tight text-[#111827] dark:text-white leading-tight sm:leading-snug text-center">
             {t('home.heroTitle') === "Sleep Calculator" ? "Calculate Your Perfect Bedtime & Wake-Up Time" : t('home.heroTitle')}
           </h1>
-          <p className="text-sm sm:text-base md:text-lg text-[#4B5563] dark:text-slate-300 max-w-[42rem] mx-auto font-medium leading-relaxed tracking-normal opacity-95">
+          <p className="text-sm sm:text-base md:text-lg text-[#4B5563] dark:text-slate-300 max-w-3xl mx-auto font-medium leading-relaxed tracking-normal opacity-95">
             {t('home.heroSubtitle')}
           </p>
         </div>

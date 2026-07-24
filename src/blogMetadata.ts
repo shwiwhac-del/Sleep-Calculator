@@ -13,19 +13,19 @@ export const MAIN_PAGES_META: Record<string, PageSEO> = {
     keywords: "sleep calculator, sleep cycle calculator, bedtime calculator, wake up time calculator, 90 minute sleep cycles, REM sleep calculator, bedtime planner, how to wake up refreshed"
   },
   "/blog": {
-    title: "Sleep Science Blog & Guides | Sleep Cycles & Bedtime Tips",
+    title: "Sleep Education | Sleep Calculator",
     description: "Explore research-backed sleep science guides, sleep hygiene tips, and expert articles on 90-minute sleep cycles, REM sleep, and circadian rhythm health.",
     canonicalUrl: "https://sleepcalculater.online/blog",
     keywords: "sleep science blog, sleep calculator guides, sleep hygiene articles, 90-minute sleep cycle optimization, REM sleep science, circadian rhythm guides, sleep quality research, bedtime calculation tips"
   },
   "/about": {
-    title: "About Sleep Calculator | Our Science & Mission",
+    title: "About Us | Sleep Calculator",
     description: "Learn about the Sleep Calculator team, our core mission, and the biological research backing our 90-minute sleep cycle and bedtime algorithms.",
     canonicalUrl: "https://sleepcalculater.online/about",
     keywords: "about sleep calculator, sleep cycle research, bedtime algorithm, circadian biology experts, sleep science team"
   },
   "/contact": {
-    title: "Contact Sleep Calculator | Support & Feedback",
+    title: "Contact Us | Sleep Calculator",
     description: "Get in touch with the Sleep Calculator team for questions, suggestions, partnership opportunities, or support with our interactive sleep cycle tools.",
     canonicalUrl: "https://sleepcalculater.online/contact",
     keywords: "contact sleep calculator, sleep tool support, sleep calculator feedback, developer partnerships"
@@ -81,6 +81,42 @@ export const MAIN_PAGES_META: Record<string, PageSEO> = {
     description: "Determine what time you should go to sleep if you wake up at a specific hour. Select customized sleep schedules from infancy to old age.",
     canonicalUrl: "https://sleepcalculater.online/ideal-bedtime-based-on-wake-up-time",
     keywords: "ideal bedtime based on wake up time, sleep calculator by age, what time should i go to sleep, bedtime calculator, sleep cycle age brackets"
+  },
+  "/sleep-calculator-by-age": {
+    title: "Sleep Calculator by Age | Sleep Calculator",
+    description: "Calculate ideal sleep cycle schedules tailored by age group. Determine optimal bedtime and wake-up times for infants, kids, teens, adults, and seniors.",
+    canonicalUrl: "https://sleepcalculater.online/sleep-calculator-by-age",
+    keywords: "sleep calculator by age, bedtime calculator by age, sleep cycle by age, how much sleep do you need by age"
+  },
+  "/sleep-calculator-cycle": {
+    title: "Sleep Calculator Cycle | Sleep Calculator",
+    description: "Calculate your sleep cycles scientifically using 90-minute REM and NREM intervals. Banish morning fatigue by waking up between complete sleep cycles.",
+    canonicalUrl: "https://sleepcalculater.online/sleep-calculator-cycle",
+    keywords: "sleep calculator cycle, sleep cycle calculator, 90 minute sleep cycle, bedtime sleep cycle calculator"
+  },
+  "/sleep-calculator-how-much-sleep-did-i-get": {
+    title: "Sleep Calculator How Much Sleep Did I Get | Sleep Calculator",
+    description: "Calculate exactly how much sleep you got last night based on your bedtime and wake-up time. Track your completed 90-minute sleep cycles.",
+    canonicalUrl: "https://sleepcalculater.online/sleep-calculator-how-much-sleep-did-i-get",
+    keywords: "sleep calculator how much sleep did i get, how many hours of sleep did i get, sleep duration calculator, calculate hours slept"
+  },
+  "/sleep-calculator-women": {
+    title: "Sleep Calculator Women | Sleep Calculator",
+    description: "Sleep cycle calculator for women. Optimize sleep quality, bedtime routines, and wake times accounting for female circadian rhythm and sleep needs.",
+    canonicalUrl: "https://sleepcalculater.online/sleep-calculator-women",
+    keywords: "sleep calculator women, sleep cycle calculator for women, womens sleep calculator, female sleep cycle bedtime"
+  },
+  "/sleep-calculator-for-kids": {
+    title: "Sleep Calculator for Kids | Sleep Calculator",
+    description: "Calculate the ideal bedtime and wake-up schedule for children and toddlers based on natural sleep cycles and age-appropriate sleep recommendations.",
+    canonicalUrl: "https://sleepcalculater.online/sleep-calculator-for-kids",
+    keywords: "sleep calculator for kids, childrens sleep calculator, kids bedtime calculator, toddler sleep cycle calculator"
+  },
+  "/sleep-calculator-app": {
+    title: "Sleep Calculator App | Sleep Calculator",
+    description: "Free web-based sleep calculator app. Calculate complete 90-minute sleep cycles, set alarms, and plan bedtimes instantly on any device.",
+    canonicalUrl: "https://sleepcalculater.online/sleep-calculator-app",
+    keywords: "sleep calculator app, sleep cycle app, bedtime calculator app, best sleep calculator online app"
   }
 };
 

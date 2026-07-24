@@ -21,9 +21,9 @@ export default defineConfig(({ mode }) => {
     build: {
       target: "esnext",
       minify: "esbuild",
-      cssCodeSplit: false,
-      sourcemap: true,
-      assetsInlineLimit: 8192,
+      cssCodeSplit: true,
+      sourcemap: false,
+      assetsInlineLimit: 4096,
       modulePreload: {
         polyfill: false,
       },
