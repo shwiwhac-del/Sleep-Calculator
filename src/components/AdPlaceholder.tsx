@@ -58,77 +58,31 @@ export function AdPlaceholder({ id = "ad-slot-header" }: AdPlaceholderProps) {
     };
   }, [isMobile]);
 
-  // 3. Mount correct ad element when mode is determined
+  // 3. Mount placeholder slot when mode is determined (Ad network script removed, placement preserved)
   useEffect(() => {
     if (!containerRef.current) return;
 
-    // Reset ad loaded state and clear container
-    setHasAd(false);
+    setHasAd(true);
     containerRef.current.innerHTML = "";
 
-    const activeKey = isMobile ? '07ae11823231445fa441b5413c814dff' : '3c9e8bf6fc3080714d7d5b6af3ab0af3';
     const activeHeight = isMobile ? 50 : 90;
     const activeWidth = isMobile ? 320 : 728;
 
-    // Set global atOptions dynamically based on resolution
-    (window as any).atOptions = {
-      'key' : activeKey,
-      'format' : 'iframe',
-      'height' : activeHeight,
-      'width' : activeWidth,
-      'params' : {}
-    };
-
-    // Create wrapper box (no transition class to prevent layout shift animations)
+    // Create wrapper box (preserves placement slot dimensions)
     const adContainer = document.createElement("div");
     adContainer.className = `ad-wrapper-box flex items-center justify-center`;
     adContainer.style.width = "100%";
     adContainer.style.maxWidth = `${activeWidth}px`;
     adContainer.style.height = `${activeHeight}px`;
 
+    const placeholderContent = document.createElement("div");
+    placeholderContent.className = "text-[11px] font-mono text-[#9CA3AF] dark:text-slate-500 border border-dashed border-slate-300/80 dark:border-slate-800 rounded-xl flex items-center justify-center w-full h-full bg-slate-50/50 dark:bg-slate-900/30";
+    placeholderContent.innerText = `Advertisement Space (${activeWidth}x${activeHeight})`;
+    adContainer.appendChild(placeholderContent);
+
     containerRef.current.appendChild(adContainer);
 
-    // Detect PageSpeed Insights, Lighthouse, Googlebot, or automated browser testing to prevent 500 console errors from external ad servers
-    const isLighthouse = typeof window !== "undefined" && (
-      /Lighthouse|Chrome-Lighthouse|Googlebot|PageSpeed|Speed\s?Insights|headless/i.test(navigator.userAgent) || 
-      (navigator as any).webdriver
-    );
-
-    if (isLighthouse) {
-      // Avoid loading external ad scripts to keep console perfectly clean and secure 100/100 Best Practices on PageSpeed Insights
-      // We render a beautiful, minimal local placeholder card in development/audit mode to prevent layout shifts
-      const placeholderContent = document.createElement("div");
-      placeholderContent.className = "text-[11px] font-mono text-[#9CA3AF] dark:text-slate-500 border border-dashed border-slate-300 dark:border-slate-800 rounded-xl flex items-center justify-center w-full h-full";
-      placeholderContent.innerText = `Premium Ad Placement (${activeWidth}x${activeHeight})`;
-      adContainer.appendChild(placeholderContent);
-      setHasAd(true);
-    } else {
-      // Create script element for actual users
-      const script = document.createElement("script");
-      script.type = "text/javascript";
-      script.src = `https://www.highperformanceformat.com/${activeKey}/invoke.js`;
-      script.onerror = (err) => {
-        console.warn("Failed to load ad resource:", err);
-      };
-      adContainer.appendChild(script);
-    }
-
-    // Watch for injected iframe to confirm ad loading and hide the "Advertisement" text
-    const observer = new MutationObserver(() => {
-      if (containerRef.current) {
-        const iframes = containerRef.current.querySelectorAll("iframe");
-        const divs = containerRef.current.querySelectorAll("div");
-        const anchors = containerRef.current.querySelectorAll("a");
-        if (iframes.length > 0 || divs.length > 1 || anchors.length > 0) {
-          setHasAd(true);
-        }
-      }
-    });
-
-    observer.observe(adContainer, { childList: true, subtree: true });
-
     return () => {
-      observer.disconnect();
       if (containerRef.current) {
         containerRef.current.innerHTML = "";
       }
