@@ -135,12 +135,14 @@ export function AdPlaceholder({ id = "ad-slot-header" }: AdPlaceholderProps) {
     };
   }, [isMobile]);
 
-  const baseHeight = isMobile ? 50 : 90;
+  const reservedHeight = isMobile ? 68 : 108;
+  const activeHeight = isMobile ? 50 : 90;
 
   return (
     <div
       id={id}
-      className="w-full max-w-[52rem] mx-auto my-0.5 sm:my-1.5 px-1 sm:px-0 text-center flex flex-col items-center justify-center overflow-hidden"
+      className="w-full max-w-[52rem] mx-auto my-0.5 sm:my-1.5 px-1 sm:px-0 text-center flex flex-col items-center justify-center overflow-hidden shrink-0"
+      style={{ minHeight: `${reservedHeight}px`, height: `${reservedHeight}px` }}
     >
       {/* Dynamic override styles */}
       <style>{`
@@ -164,19 +166,17 @@ export function AdPlaceholder({ id = "ad-slot-header" }: AdPlaceholderProps) {
       `}</style>
 
       {/* "ADVERTISEMENT" text is permanently visible to guarantee zero cumulative layout shifts (CLS) when ad renders */}
-      <span className="text-[10px] uppercase tracking-widest text-[#6B7280] dark:text-slate-400 block mb-0.5 font-sans font-medium">
+      <span className="text-[10px] uppercase tracking-widest text-[#6B7280] dark:text-slate-400 block mb-0.5 font-sans font-medium h-[14px]">
         Advertisement
       </span>
       
-      {/* Target Mount Node with exact calculated height and scale to eliminate any empty gaps */}
-      {/* Transition removed completely to prevent non-composited animations and jank */}
+      {/* Target Mount Node with exact calculated scale centered within reserved box */}
       <div 
         ref={containerRef} 
-        className="w-full flex justify-center items-center overflow-visible"
+        className="w-full flex justify-center items-center overflow-hidden"
         style={{
-          height: `${baseHeight * scale}px`,
-          transform: `scale(${scale})`,
-          transformOrigin: "center top"
+          height: `${activeHeight}px`,
+          maxHeight: `${activeHeight}px`,
         }}
       ></div>
     </div>
