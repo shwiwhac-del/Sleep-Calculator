@@ -7,7 +7,6 @@ import path from 'path';
 
 import { BLOG_POSTS_META } from '../src/blogMetadata';
 import Blog from '../src/pages/Blog';
-import { LanguageProvider } from '../src/hooks/useLanguage';
 
 // Crucial: Set global flag so the Blog component renders its full JSX content during pre-rendering
 (global as any).IS_STATIC_GEN = true;
@@ -36,13 +35,9 @@ for (const slug of activeSlugs) {
           MemoryRouter,
           { initialEntries: [`/${slug}`] },
           React.createElement(
-            LanguageProvider,
+            Routes,
             null,
-            React.createElement(
-              Routes,
-              null,
-              React.createElement(Route, { path: "/:slug", element: React.createElement(Blog) })
-            )
+            React.createElement(Route, { path: "/:slug", element: React.createElement(Blog) })
           )
         )
       )

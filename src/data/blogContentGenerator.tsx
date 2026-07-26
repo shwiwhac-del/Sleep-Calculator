@@ -57,7 +57,12 @@ const AEO_DIRECT_ANSWERS: Record<string, string> = {
   "sleep-calculator-for-night-shift-workers": "Our night shift sleep calculator organizes daytime sleep blocks into complete 90-minute cycles, helping workers secure restorative Stage N3 and REM sleep despite biological daylight signals.",
   "what-time-should-i-sleep-if-i-wake-up-at-6-am": "To wake up refreshed at 6:00 AM, you should go to bed at either 10:15 PM (for 5 complete sleep cycles / 7.5 hours of sleep) or 8:45 PM (for 6 cycles / 9 hours of sleep), accounting for a standard 15-minute sleep onset latency.",
   "best-bedtime-calculator-for-students": "Our student bedtime calculator factors in school schedules, sleep latency, and age-based biological sleep delays to schedule sleep times that maximize cognitive recall, concentration, and emotional stability.",
-  "nap-calculator-20-30-60-90-minutes": "Our nap calculator schedules perfect nap durations: 20 minutes for a quick alertness boost (light sleep), or 90 minutes for a complete sleep cycle that repairs muscles and consolidated memory without causing grogginess."
+  "nap-calculator-20-30-60-90-minutes": "Our nap calculator schedules perfect nap durations: 20 minutes for a quick alertness boost (light sleep), or 90 minutes for a complete sleep cycle that repairs muscles and consolidated memory without causing grogginess.",
+  "sleep-calculator-cycle": "A sleep cycle calculator determines bedtimes by dividing sleep duration into 90-minute ultradian blocks consisting of Stage N1 light sleep, Stage N2 sensory blocking, Stage N3 slow-wave deep recovery, and REM sleep, allowing you to wake up at the precise moment of lightest sleep.",
+  "sleep-calculator-how-much-sleep-did-i-get": "To calculate how much sleep you got, subtract your actual sleep onset time (bedtime plus sleep latency) from your morning wake-up time, adjusting for nocturnal awakenings, then convert total net sleep minutes into completed 90-minute sleep cycles.",
+  "sleep-calculator-women": "Women require approximately 11 to 20 additional minutes of sleep per night compared to men due to higher cognitive multi-tasking demands and endocrine shifts throughout the menstrual cycle, pregnancy, and menopause.",
+  "sleep-calculator-for-kids": "Children require significantly more sleep than adults—from 11-14 hours for toddlers to 9-11 hours for school-aged kids—with a dense concentration of Stage N3 slow-wave sleep required for growth hormone secretion and cognitive development.",
+  "sleep-calculator-app": "A sleep calculator app is a web tool that mathematically models 90-minute ultradian sleep rhythms, factoring in personal age, sleep latency, and target wake times to generate ideal bedtimes without needing hardware or wearables."
 };
 
 const PILLAR_IMAGES: Record<string, { url: string; alt: string; caption: string }> = {
@@ -100,6 +105,31 @@ const PILLAR_IMAGES: Record<string, { url: string; alt: string; caption: string 
     url: "https://images.unsplash.com/photo-1520206183501-b80df61043c2?auto=format&fit=crop&w=1200&q=80",
     alt: "Minimalist serene bedroom sanctuary",
     caption: "A cool, dark bedroom sanctuary optimizes sleep depth and melatonin release."
+  },
+  women: {
+    url: "https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?auto=format&fit=crop&w=1200&q=80",
+    alt: "A peaceful female bedroom sanctuary tailored for rest and hormonal balance",
+    caption: "Restful bedroom settings designed to support women's circadian and hormonal sleep needs."
+  },
+  kids: {
+    url: "https://images.unsplash.com/photo-1531353826977-0941b4779a1c?auto=format&fit=crop&w=1200&q=80",
+    alt: "A cozy and warm children's bedroom encouraging healthy bedtime habits",
+    caption: "Age-appropriate bedtime routines foster deep slow-wave sleep for pediatric development."
+  },
+  app: {
+    url: "https://images.unsplash.com/photo-1508962914676-134849a727f0?auto=format&fit=crop&w=1200&q=80",
+    alt: "A clean digital interface showing bedtime cycle calculations on a smartphone screen",
+    caption: "Web-based sleep calculator apps eliminate sleep inertia through 90-minute cycle predictions."
+  },
+  cycle: {
+    url: "https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?auto=format&fit=crop&w=1200&q=80",
+    alt: "Diagram concept of human sleep cycle progression across NREM and REM phases",
+    caption: "Understanding 90-minute NREM and REM ultradian cycles optimizes morning alertness."
+  },
+  howmuch: {
+    url: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1200&q=80",
+    alt: "Soft morning light revealing calculated hours slept and energy tracking",
+    caption: "Accurate tracking of net sleep hours and completed cycles prevents chronic sleep debt."
   }
 };
 
@@ -139,6 +169,11 @@ export default function BlogPostContent({ slug, meta }: { slug: string; meta: Bl
       'sleep-debt-explained', 'what-is-sleep-debt', 'sleep-deprivation-calculator-recovery-guide', 
       'power-nap-vs-full-sleep-cycle', 'nap-calculator-20-30-60-90-minutes'
     ];
+    const pWomen = ['sleep-calculator-women'];
+    const pKids = ['sleep-calculator-for-kids'];
+    const pApp = ['sleep-calculator-app'];
+    const pCycle = ['sleep-calculator-cycle'];
+    const pHowMuch = ['sleep-calculator-how-much-sleep-did-i-get'];
 
     if (pScience.includes(slug)) return 'science';
     if (pTiming.includes(slug)) return 'timing';
@@ -147,6 +182,11 @@ export default function BlogPostContent({ slug, meta }: { slug: string; meta: Bl
     if (pShiftwork.includes(slug)) return 'shiftwork';
     if (pTiredness.includes(slug)) return 'tiredness';
     if (pDebt.includes(slug)) return 'debt';
+    if (pWomen.includes(slug)) return 'women';
+    if (pKids.includes(slug)) return 'kids';
+    if (pApp.includes(slug)) return 'app';
+    if (pCycle.includes(slug)) return 'cycle';
+    if (pHowMuch.includes(slug)) return 'howmuch';
     return 'hygiene'; // Default Pillar 8
   })();
 
@@ -786,6 +826,306 @@ export default function BlogPostContent({ slug, meta }: { slug: string; meta: Bl
               <p><strong>2 Hours Before Bed:</strong> Stop working (calms cognitive activity and reduces cortisol levels).</p>
               <p><strong>1 Hour Before Bed:</strong> Eliminate electronic screens (melatonin is preserved without blue light exposure).</p>
               <p><strong>0 Times:</strong> The times you hit 'snooze' in the morning (prevents fragmented cycles and sleep inertia).</p>
+            </div>
+          </section>
+        </div>
+      )}
+
+      {pillar === 'cycle' && (
+        <div className="space-y-8 select-text" id="pillar-cycle">
+          <section className="space-y-4">
+            <h2 className="text-2xl sm:text-3xl font-black text-gray-950 dark:text-white tracking-tight font-serif">
+              1. The Science of the 90-Minute Sleep Cycle
+            </h2>
+            <p className="text-base sm:text-lg leading-relaxed text-slate-800 dark:text-slate-300">
+              Human sleep is not a continuous, monolithic state of unconsciousness. Instead, nocturnal rest is driven by a highly structured biological process known as an <strong>ultradian sleep rhythm</strong>. Every single night, your brain cycles through a predictable sequence lasting approximately 90 to 110 minutes. Each cycle moves through non-rapid eye movement (NREM) stages—Stage N1 light sleep, Stage N2 sleep spindles, and Stage N3 slow-wave deep sleep—before culminating in Rapid Eye Movement (REM) sleep.
+            </p>
+            <p className="text-base sm:text-lg leading-relaxed text-slate-800 dark:text-slate-300">
+              Understanding this 90-minute architecture is the key to conquering morning tiredness. When your alarm rings while you are trapped inside Stage N3 slow-wave deep sleep, your brain experiences severe <strong>sleep inertia</strong>—a state of impaired cognitive performance, heavy grogginess, and mental confusion that can persist for up to two hours. By timing your alarm to coincide with the natural transition window at the end of a 90-minute cycle (when you are in light N1 or early N2 sleep), you wake up effortlessly alert.
+            </p>
+          </section>
+
+          <section className="space-y-4">
+            <h2 className="text-2xl sm:text-3xl font-black text-gray-950 dark:text-white tracking-tight font-serif">
+              2. Detailed Stages of NREM and REM Sleep Architecture
+            </h2>
+            <div className="space-y-4 text-base sm:text-lg leading-relaxed text-slate-800 dark:text-slate-300">
+              <p>
+                <strong>Stage N1 (Light Onset - 5% of cycle):</strong> The transition phase between wakefulness and sleep. Heart rate slows, muscle tone relaxes, and brainwaves transition from active alpha waves (8-12 Hz) to slower theta waves (4-7 Hz).
+              </p>
+              <p>
+                <strong>Stage N2 (Sensory Shielding - 45-55% of cycle):</strong> Your body temperature drops, eye movements cease, and the brain generates burst patterns called <em>sleep spindles</em> and <em>K-complexes</em>. These patterns actively shield the brain from external auditory and tactile disruptions.
+              </p>
+              <p>
+                <strong>Stage N3 (Slow-Wave Deep Sleep - 15-25% of cycle):</strong> High-amplitude delta waves (&lt; 2 Hz) dominate brain activity. Tissue repair occurs, human growth hormone (HGH) is released into the bloodstream, and the glymphatic system clears metabolic waste like beta-amyloid proteins.
+              </p>
+              <p>
+                <strong>REM Sleep (Dreaming &amp; Cognitive Consolidation - 20-25% of cycle):</strong> High-frequency brainwaves mirror waking state activity, accompanied by rapid eye movements, temporary postural muscle paralysis (atonia), vivid dreams, and emotional consolidation.
+              </p>
+            </div>
+          </section>
+
+          <section className="space-y-4">
+            <h2 className="text-2xl sm:text-3xl font-black text-gray-950 dark:text-white tracking-tight font-serif">
+              3. Calculating Optimal Bedtime Multiples
+            </h2>
+            <p className="text-base sm:text-lg leading-relaxed text-slate-800 dark:text-slate-300">
+              To calculate your ideal bedtime, select a target wake-up time and subtract 90-minute cycle blocks, adding a standard 15-minute sleep latency buffer (the time required to fall asleep):
+            </p>
+            <div className="overflow-x-auto my-4">
+              <table className="w-full text-left text-sm sm:text-base border-collapse border border-slate-300 dark:border-slate-700">
+                <thead>
+                  <tr className="bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white font-semibold">
+                    <th className="p-3 border border-slate-300 dark:border-slate-700">Completed Cycles</th>
+                    <th className="p-3 border border-slate-300 dark:border-slate-700">Total Sleep Duration</th>
+                    <th className="p-3 border border-slate-300 dark:border-slate-700">Recommended Bedtime (6:00 AM Wake Up)</th>
+                    <th className="p-3 border border-slate-300 dark:border-slate-700">Recommended Bedtime (7:00 AM Wake Up)</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-200 dark:divide-slate-800 text-slate-700 dark:text-slate-300">
+                  <tr>
+                    <td className="p-3 border border-slate-300 dark:border-slate-700 font-bold">6 Cycles (Ideal Optimal)</td>
+                    <td className="p-3 border border-slate-300 dark:border-slate-700">9 Hours</td>
+                    <td className="p-3 border border-slate-300 dark:border-slate-700">8:45 PM</td>
+                    <td className="p-3 border border-slate-300 dark:border-slate-700">9:45 PM</td>
+                  </tr>
+                  <tr>
+                    <td className="p-3 border border-slate-300 dark:border-slate-700 font-bold">5 Cycles (Standard Adult)</td>
+                    <td className="p-3 border border-slate-300 dark:border-slate-700">7.5 Hours</td>
+                    <td className="p-3 border border-slate-300 dark:border-slate-700">10:15 PM</td>
+                    <td className="p-3 border border-slate-300 dark:border-slate-700">11:15 PM</td>
+                  </tr>
+                  <tr>
+                    <td className="p-3 border border-slate-300 dark:border-slate-700 font-bold">4 Cycles (Minimum Floor)</td>
+                    <td className="p-3 border border-slate-300 dark:border-slate-700">6 Hours</td>
+                    <td className="p-3 border border-slate-300 dark:border-slate-700">11:45 PM</td>
+                    <td className="p-3 border border-slate-300 dark:border-slate-700">12:45 AM</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+      )}
+
+      {pillar === 'howmuch' && (
+        <div className="space-y-8 select-text" id="pillar-howmuch">
+          <section className="space-y-4">
+            <h2 className="text-2xl sm:text-3xl font-black text-gray-950 dark:text-white tracking-tight font-serif">
+              1. Quantifying Your Sleep: Net Sleep vs. Bedtime Duration
+            </h2>
+            <p className="text-base sm:text-lg leading-relaxed text-slate-800 dark:text-slate-300">
+              When asking "How much sleep did I get last night?", many individuals mistakenly calculate the total time spent lying in bed. However, biological sleep research distinguishes between <strong>Time in Bed (TIB)</strong> and <strong>Total Sleep Time (TST)</strong>. The ratio between these two figures determines your <strong>Sleep Efficiency Percentage</strong>:
+            </p>
+            <div className="p-5 bg-slate-100 dark:bg-slate-800 rounded-xl text-center font-mono text-sm sm:text-base text-violet-700 dark:text-violet-300 my-4 border border-slate-200 dark:border-slate-700">
+              Sleep Efficiency (%) = (Total Sleep Time / Time in Bed) × 100
+            </div>
+            <p className="text-base sm:text-lg leading-relaxed text-slate-800 dark:text-slate-300">
+              A healthy sleep efficiency score is <strong>85% or higher</strong>. If you spend 8 hours in bed (480 minutes) but take 45 minutes to fall asleep and wake up twice for a total of 35 minutes, your actual Total Sleep Time is only 400 minutes (6 hours and 40 minutes), yielding a sleep efficiency of 83.3%.
+            </p>
+          </section>
+
+          <section className="space-y-4">
+            <h2 className="text-2xl sm:text-3xl font-black text-gray-950 dark:text-white tracking-tight font-serif">
+              2. Factoring Sleep Latency and Nocturnal Awakenings
+            </h2>
+            <p className="text-base sm:text-lg leading-relaxed text-slate-800 dark:text-slate-300">
+              To accurately calculate your completed sleep cycles, you must account for two critical physiological variables:
+            </p>
+            <ul className="space-y-3 pl-5 list-disc text-sm sm:text-base text-slate-700 dark:text-slate-300">
+              <li><strong>Sleep Onset Latency (SOL):</strong> The time it takes from turning off the lights to entering Stage N1 sleep. Normal SOL ranges from 10 to 20 minutes.</li>
+              <li><strong>Wake After Sleep Onset (WASO):</strong> Brief micro-arousals during the night caused by noise, temperature spikes, or bladder pressure. Experiencing WASO greater than 30 minutes significantly disrupts sleep continuity.</li>
+            </ul>
+          </section>
+
+          <section className="space-y-4">
+            <h2 className="text-2xl sm:text-3xl font-black text-gray-950 dark:text-white tracking-tight font-serif">
+              3. Hours Slept vs. Completed Cycles Matrix
+            </h2>
+            <div className="overflow-x-auto my-4">
+              <table className="w-full text-left text-sm sm:text-base border-collapse border border-slate-300 dark:border-slate-700">
+                <thead>
+                  <tr className="bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white font-semibold">
+                    <th className="p-3 border border-slate-300 dark:border-slate-700">Total Net Hours Slept</th>
+                    <th className="p-3 border border-slate-300 dark:border-slate-700">Completed 90-Min Cycles</th>
+                    <th className="p-3 border border-slate-300 dark:border-slate-700">Cognitive &amp; Physical Status</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-200 dark:divide-slate-800 text-slate-700 dark:text-slate-300">
+                  <tr>
+                    <td className="p-3 border border-slate-300 dark:border-slate-700 font-bold">9.0 Hours</td>
+                    <td className="p-3 border border-slate-300 dark:border-slate-700">6 Complete Cycles</td>
+                    <td className="p-3 border border-slate-300 dark:border-slate-700 text-emerald-600 dark:text-emerald-400 font-semibold">Peak Recovery &amp; Memory Consolidation</td>
+                  </tr>
+                  <tr>
+                    <td className="p-3 border border-slate-300 dark:border-slate-700 font-bold">7.5 Hours</td>
+                    <td className="p-3 border border-slate-300 dark:border-slate-700">5 Complete Cycles</td>
+                    <td className="p-3 border border-slate-300 dark:border-slate-700 text-emerald-600 dark:text-emerald-400 font-semibold">Optimal Healthy Baseline</td>
+                  </tr>
+                  <tr>
+                    <td className="p-3 border border-slate-300 dark:border-slate-700 font-bold">6.0 Hours</td>
+                    <td className="p-3 border border-slate-300 dark:border-slate-700">4 Complete Cycles</td>
+                    <td className="p-3 border border-slate-300 dark:border-slate-700 text-amber-600 dark:text-amber-400 font-semibold">Functional Minimum (Minor Long-term Debt)</td>
+                  </tr>
+                  <tr>
+                    <td className="p-3 border border-slate-300 dark:border-slate-700 font-bold">4.5 Hours or less</td>
+                    <td className="p-3 border border-slate-300 dark:border-slate-700">3 or fewer Cycles</td>
+                    <td className="p-3 border border-slate-300 dark:border-slate-700 text-rose-600 dark:text-rose-400 font-semibold">Severe Sleep Deficit (High Grogginess)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+      )}
+
+      {pillar === 'women' && (
+        <div className="space-y-8 select-text" id="pillar-women">
+          <section className="space-y-4">
+            <h2 className="text-2xl sm:text-3xl font-black text-gray-950 dark:text-white tracking-tight font-serif">
+              1. The Female Sleep Gap: Hormonal &amp; Biological Realities
+            </h2>
+            <p className="text-base sm:text-lg leading-relaxed text-slate-800 dark:text-slate-300">
+              Clinical sleep studies consistently prove that women require an average of <strong>11 to 20 minutes more sleep per night</strong> than men. This "female sleep gap" stems from two distinct biological drivers: higher cognitive multi-tasking neural load and complex endocrine variations across lifetime reproductive stages.
+            </p>
+            <p className="text-base sm:text-lg leading-relaxed text-slate-800 dark:text-slate-300">
+              Throughout the monthly menstrual cycle, shifting ratios of <strong>estrogen and progesterone</strong> directly alter core body temperature, melatonin sensitivity, and sleep architecture. During the luteal phase (the two weeks preceding menstruation), progesterone levels surge, raising core body temperature and suppressing REM sleep, which frequently causes sleep fragmentation and heightened morning fatigue.
+            </p>
+          </section>
+
+          <section className="space-y-4">
+            <h2 className="text-2xl sm:text-3xl font-black text-gray-950 dark:text-white tracking-tight font-serif">
+              2. Sleep Needs Across Pregnancy, Postpartum, and Menopause
+            </h2>
+            <div className="space-y-4 text-base sm:text-lg leading-relaxed text-slate-800 dark:text-slate-300">
+              <p>
+                <strong>First &amp; Third Trimester Pregnancy:</strong> Massive surges in progesterone cause pronounced daytime fatigue, while physical changes increase WASO. Pregnant women often require 9 to 10 hours of sleep per night, emphasizing side-sleeping positions to maintain uterine blood flow.
+              </p>
+              <p>
+                <strong>Postpartum Recovery:</strong> Nocturnal infant feeding disrupts natural 90-minute sleep cycles. Postpartum sleep strategies prioritize <em>anchor sleep blocks</em> (a continuous 4.5-hour sleep window) paired with structured daytime naps.
+              </p>
+              <p>
+                <strong>Perimenopause &amp; Menopause:</strong> Declining estrogen levels trigger nocturnal vasomotor symptoms (hot flashes and night sweats), disrupting slow-wave Stage N3 sleep. Cooling mattress technologies and lowered room temperatures (63°F to 65°F) are essential.
+              </p>
+            </div>
+          </section>
+
+          <section className="space-y-4">
+            <h2 className="text-2xl sm:text-3xl font-black text-gray-950 dark:text-white tracking-tight font-serif">
+              3. Tailored Sleep Optimization Protocol for Women
+            </h2>
+            <ul className="space-y-3 pl-5 list-disc text-sm sm:text-base text-slate-700 dark:text-slate-300">
+              <li><strong>Magnesium Glycinate Supplementation:</strong> Taking 200-400mg of elemental magnesium glycinate 60 minutes before bedtime calms the central nervous system and mitigates luteal phase sleep disturbances.</li>
+              <li><strong>Strict Thermal Modulation:</strong> Utilizing breathable, natural linen sheets and dynamic cooling mattress toppers to counteract nocturnal temperature spikes.</li>
+              <li><strong>Consistent Circadian Anchor:</strong> Maintaining a fixed wake-up time within a 30-minute window every morning to stabilize the master SCN biological clock.</li>
+            </ul>
+          </section>
+        </div>
+      )}
+
+      {pillar === 'kids' && (
+        <div className="space-y-8 select-text" id="pillar-kids">
+          <section className="space-y-4">
+            <h2 className="text-2xl sm:text-3xl font-black text-gray-950 dark:text-white tracking-tight font-serif">
+              1. Pediatric Sleep Architecture &amp; Growth Requirements
+            </h2>
+            <p className="text-base sm:text-lg leading-relaxed text-slate-800 dark:text-slate-300">
+              Children and toddlers do not simply need more hours of sleep than adults—their entire sleep architecture is structurally different. Developing brains spend up to <strong>50% of total sleep time in REM sleep</strong> (compared to 20-25% in adults) to support rapid synaptic formation, memory indexation, and neural pathway development.
+            </p>
+            <p className="text-base sm:text-lg leading-relaxed text-slate-800 dark:text-slate-300">
+              Furthermore, pediatric slow-wave deep sleep (Stage N3) is exceptionally dense. During this deep restorative sleep, the anterior pituitary gland secretes human growth hormone (HGH), driving cellular repair, bone lengthening, and muscle growth. Overtired children frequently display paradoxical hyperactive behavior and emotional dysregulation because sleep deprivation elevates circulating cortisol and adrenaline.
+            </p>
+          </section>
+
+          <section className="space-y-4">
+            <h2 className="text-2xl sm:text-3xl font-black text-gray-950 dark:text-white tracking-tight font-serif">
+              2. Pediatric Sleep Calculator &amp; Bedtime Reference Table
+            </h2>
+            <div className="overflow-x-auto my-4">
+              <table className="w-full text-left text-sm sm:text-base border-collapse border border-slate-300 dark:border-slate-700">
+                <thead>
+                  <tr className="bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white font-semibold">
+                    <th className="p-3 border border-slate-300 dark:border-slate-700">Age Group</th>
+                    <th className="p-3 border border-slate-300 dark:border-slate-700">Recommended Sleep Range</th>
+                    <th className="p-3 border border-slate-300 dark:border-slate-700">Ideal Bedtime Window</th>
+                    <th className="p-3 border border-slate-300 dark:border-slate-700">Nap Strategy</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-200 dark:divide-slate-800 text-slate-700 dark:text-slate-300">
+                  <tr>
+                    <td className="p-3 border border-slate-300 dark:border-slate-700 font-bold">Toddlers (1-2 Years)</td>
+                    <td className="p-3 border border-slate-300 dark:border-slate-700">11 - 14 Hours</td>
+                    <td className="p-3 border border-slate-300 dark:border-slate-700">7:00 PM - 8:00 PM</td>
+                    <td className="p-3 border border-slate-300 dark:border-slate-700">1 Afternoon Nap (1.5-2 hrs)</td>
+                  </tr>
+                  <tr>
+                    <td className="p-3 border border-slate-300 dark:border-slate-700 font-bold">Preschoolers (3-5 Years)</td>
+                    <td className="p-3 border border-slate-300 dark:border-slate-700">10 - 13 Hours</td>
+                    <td className="p-3 border border-slate-300 dark:border-slate-700">7:30 PM - 8:30 PM</td>
+                    <td className="p-3 border border-slate-300 dark:border-slate-700">1 Optional Quiet Nap (1 hr)</td>
+                  </tr>
+                  <tr>
+                    <td className="p-3 border border-slate-300 dark:border-slate-700 font-bold">School-Age (6-12 Years)</td>
+                    <td className="p-3 border border-slate-300 dark:border-slate-700">9 - 11 Hours</td>
+                    <td className="p-3 border border-slate-300 dark:border-slate-700">8:00 PM - 9:00 PM</td>
+                    <td className="p-3 border border-slate-300 dark:border-slate-700">Consolidated Night Sleep</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section className="space-y-4">
+            <h2 className="text-2xl sm:text-3xl font-black text-gray-950 dark:text-white tracking-tight font-serif">
+              3. The 30-Minute Pediatric Wind-Down Routine
+            </h2>
+            <p className="text-base sm:text-lg leading-relaxed text-slate-800 dark:text-slate-300">
+              Children thrive on structured environmental predictability. Implement a strict 30-minute bedtime sequence every evening:
+            </p>
+            <div className="p-6 bg-violet-50/50 dark:bg-[#151C2C] border border-[#7C3AED]/20 dark:border-violet-500/20 rounded-2xl space-y-2 text-sm sm:text-base text-slate-700 dark:text-slate-300">
+              <p><strong>Step 1 (T-30 Min):</strong> Power down all digital screens, tablets, and bright overhead lights.</p>
+              <p><strong>Step 2 (T-20 Min):</strong> Warm bath or shower (lowers core body temperature upon exiting the tub).</p>
+              <p><strong>Step 3 (T-10 Min):</strong> Dim bedroom lighting, read 1-2 storybooks in a calm voice.</p>
+              <p><strong>Step 4 (T-0 Min):</strong> Lights out with a cool room temperature (65-68°F) and white noise machine.</p>
+            </div>
+          </section>
+        </div>
+      )}
+
+      {pillar === 'app' && (
+        <div className="space-y-8 select-text" id="pillar-app">
+          <section className="space-y-4">
+            <h2 className="text-2xl sm:text-3xl font-black text-gray-950 dark:text-white tracking-tight font-serif">
+              1. How Web-Based Sleep Calculator Apps Work
+            </h2>
+            <p className="text-base sm:text-lg leading-relaxed text-slate-800 dark:text-slate-300">
+              A modern <strong>Sleep Calculator App</strong> utilizes mathematical modeling of human ultradian sleep cycles to eliminate morning sleep inertia. Unlike intrusive wearable trackers that require battery charging and uncomfortable wrist straps, a web-based sleep calculator delivers instant, mathematically precise bedtime and wake times directly in your browser.
+            </p>
+            <p className="text-base sm:text-lg leading-relaxed text-slate-800 dark:text-slate-300">
+              The underlying algorithm factors in your target wake time, desired number of completed 90-minute sleep cycles (typically 5 or 6), and your personalized sleep onset latency (defaulting to 15 minutes). The app then generates a clear timeline of precise bedtimes that guarantee waking up during light sleep.
+            </p>
+          </section>
+
+          <section className="space-y-4">
+            <h2 className="text-2xl sm:text-3xl font-black text-gray-950 dark:text-white tracking-tight font-serif">
+              2. Sleep Calculator App Features &amp; Customizations
+            </h2>
+            <ul className="space-y-3 pl-5 list-disc text-sm sm:text-base text-slate-700 dark:text-slate-300">
+              <li><strong>Bedtime Calculation:</strong> Input when you want to wake up, and the app calculates exact times to sleep.</li>
+              <li><strong>Wake-Up Calculation:</strong> Input when you plan to go to bed, and the app calculates optimal wake times.</li>
+              <li><strong>Nap Timer Mode:</strong> Access instant 20-minute power nap or 90-minute full cycle nap timers.</li>
+              <li><strong>Zero Hardware Dependency:</strong> Works seamlessly across iOS, Android, macOS, and Windows without installing heavy background software.</li>
+            </ul>
+          </section>
+
+          <section className="space-y-4">
+            <h2 className="text-2xl sm:text-3xl font-black text-gray-950 dark:text-white tracking-tight font-serif">
+              3. The 3-Step Bedtime Optimization Protocol
+            </h2>
+            <div className="p-6 bg-violet-50/50 dark:bg-[#151C2C] border border-[#7C3AED]/20 dark:border-violet-500/20 rounded-2xl space-y-3 text-sm sm:text-base text-slate-700 dark:text-slate-300">
+              <p><strong>Step 1:</strong> Open the Sleep Calculator App and select your exact morning alarm time (e.g., 6:30 AM).</p>
+              <p><strong>Step 2:</strong> Review the calculated bedtimes. Choose 11:00 PM for 5 cycles (7.5 hours of sleep) or 9:30 PM for 6 cycles (9 hours of sleep).</p>
+              <p><strong>Step 3:</strong> Set your alarm and begin your 30-minute wind-down routine 15 minutes prior to your selected bedtime.</p>
             </div>
           </section>
         </div>

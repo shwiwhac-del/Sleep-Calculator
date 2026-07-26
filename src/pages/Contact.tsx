@@ -5,10 +5,8 @@ import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from '../lib/firebase';
 import { OpenGraphTags } from '../components/OpenGraphTags';
 import { Breadcrumbs } from '../components/Breadcrumbs';
-import { useLanguage } from '../hooks/useLanguage';
 
 export default function Contact() {
-  const { t, getLocalizedPath, currentLang } = useLanguage();
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -16,7 +14,7 @@ export default function Contact() {
   const navigate = useNavigate();
 
   const handleBack = () => {
-    navigate(getLocalizedPath('/'));
+    navigate('/');
   };
 
   const handleSubmit = async (e: FormEvent) => {
@@ -75,7 +73,7 @@ export default function Contact() {
     }));
   };
 
-  const content = LOCALIZED_CONTACT[currentLang] || LOCALIZED_CONTACT['en'];
+  const content = LOCALIZED_CONTACT['en'];
 
   return (
     <main className="w-full max-w-xl mx-auto px-2 sm:px-4">
@@ -87,27 +85,27 @@ export default function Contact() {
           onClick={handleBack}
           className="inline-flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 font-medium tracking-wide hover:text-gray-900 dark:text-gray-100 transition-colors focus-visible:outline-none"
         >
-          <ArrowLeft size={16} /> {t('common.back')}
+          <ArrowLeft size={16} /> Back
         </button>
       </div>
 
       <div className="animate-in fade-in slide-in-from-top-4 duration-500 text-left">
-        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4 leading-tight font-serif">{t('pages.contact.title')}</h1>
+        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4 leading-tight font-serif">Contact Us</h1>
 
         {isSuccess ? (
           <div className="flex flex-col items-start py-8">
             <div className="flex items-center gap-3 text-[#7C3AED] mb-4">
               <CheckCircle size={24} />
-              <h2 className="text-2xl font-bold">{content.messageSent}</h2>
+              <h2 className="text-2xl font-bold">Message Sent</h2>
             </div>
             <p className="text-gray-500 dark:text-gray-400 mb-6 text-base sm:text-lg">
-              {t('pages.contact.success')}
+              Thank you for reaching out! We will get back to you shortly.
             </p>
             <button 
               onClick={() => setIsSuccess(false)}
               className="w-full sm:w-auto px-6 py-2 bg-gray-100 hover:bg-gray-200 dark:bg-[#1e293b] dark:hover:bg-[#222] transition-colors rounded-full text-gray-900 dark:text-gray-100 text-sm font-semibold"
             >
-              {content.sendAnother}
+              Send another message
             </button>
           </div>
         ) : (
@@ -120,7 +118,7 @@ export default function Contact() {
             
              <div>
               <label htmlFor="name" className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider block mb-1.5 ml-1">
-                {t('pages.contact.name')}
+                Name
               </label>
               <input
                 type="text"
@@ -130,13 +128,13 @@ export default function Contact() {
                 onChange={handleChange}
                 required
                 className="w-full bg-[#F8FAFC] dark:bg-[#151C2C] border border-[#E5E7EB] dark:border-[#1E293B] shadow-sm focus:border-[#7C3AED] focus:ring-1 focus:ring-[#7C3AED] rounded-xl px-4 py-3 text-gray-900 dark:text-slate-100 placeholder:text-gray-400 focus:outline-none transition-colors text-sm md:text-base"
-                placeholder={t('pages.contact.name')}
+                placeholder="Your Name"
               />
             </div>
 
             <div>
               <label htmlFor="email" className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider block mb-1.5 ml-1">
-                {t('pages.contact.email')}
+                Email
               </label>
               <input
                 type="email"
@@ -152,7 +150,7 @@ export default function Contact() {
 
             <div>
               <label htmlFor="message" className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider block mb-1.5 ml-1">
-                {t('pages.contact.message')}
+                Message
               </label>
               <textarea
                 id="message"
@@ -162,7 +160,7 @@ export default function Contact() {
                 required
                 rows={4}
                 className="w-full bg-[#F8FAFC] dark:bg-[#151C2C] border border-[#E5E7EB] dark:border-[#1E293B] shadow-sm focus:border-[#7C3AED] focus:ring-1 focus:ring-[#7C3AED] rounded-xl px-4 py-3 text-gray-900 dark:text-slate-100 placeholder:text-gray-400 focus:outline-none transition-colors resize-none text-sm md:text-base"
-                placeholder={content.placeholderMessage}
+                placeholder="How can we help?"
               />
             </div>
 
@@ -171,81 +169,13 @@ export default function Contact() {
               disabled={isSubmitting}
               className="w-full bg-[#7C3AED] text-white hover:bg-[#6D28D9] rounded-xl px-4 py-3 text-sm font-bold transition-all disabled:opacity-50 flex items-center justify-center gap-2 mt-2 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#7C3AED]"
             >
-              {isSubmitting ? content.sending : t('pages.contact.send')}
+              {isSubmitting ? "Sending..." : "Send"}
             </button>
             <p className="text-xs text-gray-400 dark:text-gray-500 text-center mt-4">
-              {content.privacyDisclaimer}
+              Your privacy is important to us. We will only use your email to respond to your inquiry and will never share your information with third parties.
             </p>
           </form>
         )}
-
-        <div className="mt-12 pt-8 border-t border-[#E5E7EB] dark:border-gray-800 text-left space-y-8">
-          <div>
-            <h2 id="contact-email-heading" className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2 font-serif">{content.directEmailTitle}</h2>
-            <p className="text-sm text-gray-600 dark:text-gray-300">
-              {content.directEmailBody}{' '}
-              <a href="mailto:support@sleepcalculater.online" className="text-[#7C3AED] hover:underline font-semibold font-mono">
-                support@sleepcalculater.online
-              </a>
-              .
-            </p>
-          </div>
-
-          <div>
-            <h2 id="contact-faq-heading" className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 font-serif">{content.faqTitle}</h2>
-            <div className="space-y-4 text-sm text-gray-600 dark:text-gray-300">
-              <div>
-                <h3 className="font-bold text-gray-800 dark:text-gray-200 mb-1">{content.faq1Q}</h3>
-                <p>{content.faq1A}</p>
-              </div>
-              <div>
-                <h3 className="font-bold text-gray-800 dark:text-gray-200 mb-1">{content.faq2Q}</h3>
-                <p>{content.faq2A}</p>
-              </div>
-              <div>
-                <h3 className="font-bold text-gray-800 dark:text-gray-200 mb-1">{content.faq3Q}</h3>
-                <p>{content.faq3A}</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="pt-4">
-            <h2 id="popular-guides-heading" className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 font-serif">{content.guidesTitle}</h2>
-            <p className="text-sm text-gray-600 dark:text-gray-300 mb-3">{content.guidesIntro}</p>
-            <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-2 text-sm text-gray-700 dark:text-gray-300">
-              <li>
-                <Link to={getLocalizedPath('/blog/sleep-cycles-explained')} className="text-[#7C3AED] hover:underline">
-                  {content.guide1}
-                </Link>
-              </li>
-              <li>
-                <Link to={getLocalizedPath('/blog/what-is-rem-sleep')} className="text-[#7C3AED] hover:underline">
-                  {content.guide2}
-                </Link>
-              </li>
-              <li>
-                <Link to={getLocalizedPath('/blog/how-much-sleep-do-you-need')} className="text-[#7C3AED] hover:underline">
-                  {content.guide3}
-                </Link>
-              </li>
-              <li>
-                <Link to={getLocalizedPath('/blog/best-time-to-sleep-and-wake-up')} className="text-[#7C3AED] hover:underline">
-                  {content.guide4}
-                </Link>
-              </li>
-              <li>
-                <Link to={getLocalizedPath('/blog/why-90-minute-sleep-cycles-matter')} className="text-[#7C3AED] hover:underline">
-                  {content.guide5}
-                </Link>
-              </li>
-              <li>
-                <Link to={getLocalizedPath('/wake-up-between-sleep-cycles')} className="text-[#7C3AED] hover:underline">
-                  {content.guide6}
-                </Link>
-              </li>
-            </ul>
-          </div>
-        </div>
       </div>
     </main>
   );

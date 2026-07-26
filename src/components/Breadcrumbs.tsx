@@ -1,8 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
 import { ChevronRight, Home as HomeIcon } from 'lucide-react';
 import { MAIN_PAGES_META, BLOG_POSTS_META } from '../blogMetadata';
-import { getCanonicalUrl } from '../lib/seo';
 
 export function Breadcrumbs() {
   const location = useLocation();
@@ -15,7 +13,6 @@ export function Breadcrumbs() {
 
   // Normalize path
   const normalizedPath = pathname.endsWith('/') && pathname !== '/' ? pathname.slice(0, -1) : pathname;
-  const canonicalUrl = getCanonicalUrl(normalizedPath);
 
   // Structural definition for categories and pages
   let items: Array<{ name: string; url?: string }> = [
@@ -68,35 +65,12 @@ export function Breadcrumbs() {
     }
   }
 
-  // Generate Google Search & Answer Engine crawling BreadcrumbList JSON-LD
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": items.map((item, idx) => {
-      const isLast = idx === items.length - 1;
-      const itemName = isLast && pageTitle ? pageTitle : (item.name === 'Home' ? "Sleep Calculator" : item.name);
-      return {
-        "@type": "ListItem",
-        "position": idx + 1,
-        "name": itemName,
-        "item": item.url ? getCanonicalUrl(item.url) : canonicalUrl
-      };
-    })
-  };
-
   return (
-    <>
-      <Helmet>
-        <script type="application/ld+json">
-          {JSON.stringify(breadcrumbSchema)}
-        </script>
-      </Helmet>
-
-      <nav 
-        id="side-breadcrumbs" 
-        aria-label="Breadcrumb" 
-        className="flex items-center flex-wrap gap-2 text-xs sm:text-sm font-medium text-[#6B7280] dark:text-gray-400 py-3 px-1 mb-4 select-none"
-      >
+    <nav 
+      id="side-breadcrumbs" 
+      aria-label="Breadcrumb" 
+      className="flex items-center flex-wrap gap-2 text-xs sm:text-sm font-medium text-[#6B7280] dark:text-gray-400 py-3 px-1 mb-4 select-none"
+    >
         {items.map((item, index) => {
           const isLast = index === items.length - 1;
 
@@ -123,6 +97,5 @@ export function Breadcrumbs() {
           );
         })}
       </nav>
-    </>
   );
 }

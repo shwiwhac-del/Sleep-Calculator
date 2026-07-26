@@ -6,7 +6,6 @@ import { Helmet } from "react-helmet-async";
 import { getCanonicalUrl } from "../lib/seo";
 import { OpenGraphTags } from "../components/OpenGraphTags";
 import TimePicker from "../components/TimePicker";
-import { useLanguage } from "../hooks/useLanguage";
 import SleepCycleChart from "../components/SleepCycleChart";
 import { AdPlaceholder } from "../components/AdPlaceholder";
 import { SleepScienceGuide } from "../components/SleepScienceGuide";
@@ -36,7 +35,6 @@ export interface CyclesReport {
 export default function Home() {
   const location = useLocation();
   const canonicalUrl = getCanonicalUrl(location.pathname);
-  const { t, currentLang } = useLanguage();
 
   const AGE_GROUPS = [
     { id: "0-3m", label: "0-3 Months", minCycles: 9, maxCycles: 11 },
@@ -495,12 +493,12 @@ export default function Home() {
       {/* Header Info */}
       <div className="flex flex-col items-center justify-center mb-2 mt-0">
         <OpenGraphTags />
-        <div className={`flex flex-col items-center justify-center gap-2 text-center max-w-3xl mx-auto px-2 mt-3 sm:mt-4 md:mt-5 transition-all duration-300 ${showResults ? "mb-4" : "mb-6 sm:mb-8"}`}>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[2.5rem] font-extrabold tracking-tight text-[#111827] dark:text-white leading-tight sm:leading-snug text-center">
-            {t('home.heroTitle') === "Sleep Calculator" ? "Calculate Your Perfect Bedtime & Wake-Up Time" : t('home.heroTitle')}
+        <div className={`flex flex-col items-center justify-center gap-2 text-center max-w-4xl mx-auto px-2 mt-3 sm:mt-4 md:mt-5 transition-all duration-300 ${showResults ? "mb-4" : "mb-6 sm:mb-8"}`}>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[2.75rem] font-extrabold tracking-tight text-[#111827] dark:text-white leading-tight sm:leading-snug text-center">
+            Sleep Calculator – Calculate the Best Bedtime, Wake-Up Time, and Healthy Sleep Schedule
           </h1>
           <p className="text-sm sm:text-base md:text-lg text-[#4B5563] dark:text-slate-300 max-w-3xl mx-auto font-medium leading-relaxed tracking-normal opacity-95">
-            {t('home.heroSubtitle')}
+            Waking up at the end of a complete sleep cycle instead of mid-cycle can help you feel more refreshed and improve your overall sleep quality. Simply choose your bedtime or wake-up time, enter the required details, and click Calculate. The calculator will instantly determine the best bedtime or wake-up time based on the optimal number of complete sleep cycles.
           </p>
         </div>
         

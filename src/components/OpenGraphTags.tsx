@@ -1,7 +1,6 @@
 import { useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { BLOG_POSTS_META, getFocusKeywordsForPost } from '../blogMetadata';
-import { useLanguage } from '../hooks/useLanguage';
 
 interface OpenGraphTagsProps {
   title?: string;
@@ -145,7 +144,6 @@ export function OpenGraphTags({
   extraSchemas
 }: OpenGraphTagsProps) {
   const location = useLocation();
-  const { t } = useLanguage();
   const pathname = location.pathname;
   
   // Strip trailing slashes safely
@@ -258,56 +256,53 @@ export function OpenGraphTags({
   };
   schemas.push(websiteSchema);
 
-  // C. SoftwareApplication / WebApplication Schema
-  const getToolAppName = (path: string) => {
-    switch (path) {
-      case '/student-sleep-calculator':
-        return 'Student Sleep Calculator & Exam Bedtime Planner';
-      case '/shift-work-sleep-calculator':
-        return 'Shift Work Sleep Calculator & Day-Sleep Planner';
-      case '/sleep-cycle-calculator-90-minutes':
-        return '90-Minute Sleep Cycle Customizer';
-      case '/wake-up-between-sleep-cycles':
-        return 'Wake Up Between Sleep Cycles Alarm Planner';
-      case '/ideal-bedtime-based-on-wake-up-time':
-        return 'Ideal Bedtime Calculator by Wake-Up Hour';
-      default:
-        return 'Sleep Calculator & Bedtime Planner';
-    }
-  };
+  // C. SoftwareApplication / WebApplication Schema (Only on tool/calculator pages)
+  const isToolRoute = !isBlogRoute && ['/', '/student-sleep-calculator', '/shift-work-sleep-calculator', '/sleep-cycle-calculator-90-minutes', '/wake-up-between-sleep-cycles', '/ideal-bedtime-based-on-wake-up-time', '/sleep-calculator-by-age', '/sleep-calculator-cycle', '/sleep-calculator-how-much-sleep-did-i-get', '/sleep-calculator-women', '/sleep-calculator-for-kids', '/sleep-calculator-app'].includes(basePath);
 
-  const softwareApplicationSchema = {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "@id": "https://sleepcalculater.online/#softwareapplication",
-    "name": getToolAppName(basePath),
-    "url": getLangUrl(basePath),
-    "description": finalDescription,
-    "applicationCategory": "HealthAndFitnessApplication",
-    "operatingSystem": "All",
-    "browserRequirements": "Requires JavaScript. Requires HTML5.",
-    "offers": {
-      "@type": "Offer",
-      "price": "0.00",
-      "priceCurrency": "USD",
-      "availability": "https://schema.org/InStock"
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "ratingCount": "2840",
-      "bestRating": "5",
-      "worstRating": "1"
-    },
-    "featureList": [
-      "90-Minute Sleep Cycle Calculation",
-      "Sleep Latency Adjustment (15 minutes default)",
-      "Age-Specific Sleep Duration Customization",
-      "Instant Alarm Schedule Copying",
-      "PDF Schedule Export"
-    ]
-  };
-  schemas.push(softwareApplicationSchema);
+  if (isToolRoute) {
+    const getToolAppName = (path: string) => {
+      switch (path) {
+        case '/student-sleep-calculator':
+          return 'Student Sleep Calculator & Exam Bedtime Planner';
+        case '/shift-work-sleep-calculator':
+          return 'Shift Work Sleep Calculator & Day-Sleep Planner';
+        case '/sleep-cycle-calculator-90-minutes':
+          return '90-Minute Sleep Cycle Customizer';
+        case '/wake-up-between-sleep-cycles':
+          return 'Wake Up Between Sleep Cycles Alarm Planner';
+        case '/ideal-bedtime-based-on-wake-up-time':
+          return 'Ideal Bedtime Calculator by Wake-Up Hour';
+        default:
+          return 'Sleep Calculator & Bedtime Planner';
+      }
+    };
+
+    const softwareApplicationSchema = {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "@id": `${getLangUrl(basePath)}#softwareapplication`,
+      "name": getToolAppName(basePath),
+      "url": getLangUrl(basePath),
+      "description": finalDescription,
+      "applicationCategory": "HealthAndFitnessApplication",
+      "operatingSystem": "All",
+      "browserRequirements": "Requires JavaScript. Requires HTML5.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0.00",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock"
+      },
+      "featureList": [
+        "90-Minute Sleep Cycle Calculation",
+        "Sleep Latency Adjustment (15 minutes default)",
+        "Age-Specific Sleep Duration Customization",
+        "Instant Alarm Schedule Copying",
+        "PDF Schedule Export"
+      ]
+    };
+    schemas.push(softwareApplicationSchema);
+  }
 
   // WebPage Schema
   const webPageSchema = {
@@ -373,8 +368,8 @@ export function OpenGraphTags({
 
   // D. Dynamic Semantic BreadcrumbList Schema
   const getBreadcrumbSegmentName = (path: string, isLeaf: boolean, rawTitle?: string) => {
-    if (path === '/') return t('nav.home') || 'Home';
-    if (path === '/blog') return t('nav.blog') || 'Sleep Education';
+    if (path === '/') return 'Home';
+    if (path === '/blog') return 'Sleep Education';
     if (path === '/about') return 'About Us';
     if (path === '/contact') return 'Contact Us';
     if (path === '/terms') return 'Terms & Conditions';
@@ -399,7 +394,7 @@ export function OpenGraphTags({
       {
         "@type": "ListItem",
         "position": 1,
-        "name": t('nav.home') || "Home",
+        "name": "Home",
         "item": getLangUrl('/')
       }
     ];
@@ -505,7 +500,11 @@ export function OpenGraphTags({
   if (extraSchemas && extraSchemas.length > 0) {
     extraSchemas.forEach(schema => {
       if (schema) {
-        schemas.push(schema);
+        const schemaType = schema["@type"];
+        const hasExistingType = schemas.some(s => s["@type"] === schemaType);
+        if (!hasExistingType || (schemaType !== "WebApplication" && schemaType !== "SoftwareApplication" && schemaType !== "Organization" && schemaType !== "WebSite")) {
+          schemas.push(schema);
+        }
       }
     });
   }

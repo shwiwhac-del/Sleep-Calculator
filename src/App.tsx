@@ -1,4 +1,4 @@
-import { useState, useEffect, lazy, Suspense } from 'react';
+import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, Navigate, useParams, useLocation } from 'react-router-dom';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { Menu, X, ChevronDown, Sun, Moon } from 'lucide-react';
@@ -7,29 +7,65 @@ import ScrollToTop from './components/ScrollToTop';
 import { StarryBackground } from './components/StarryBackground';
 import { usePerformanceMonitoring } from './hooks/usePerformanceMonitoring';
 
-const Home = lazy(() => import('./pages/Home'));
-const Terms = lazy(() => import('./pages/Terms'));
-const Privacy = lazy(() => import('./pages/Privacy'));
-const Contact = lazy(() => import('./pages/Contact'));
-const About = lazy(() => import('./pages/About'));
-const Blog = lazy(() => import('./pages/Blog'));
-const NotFound = lazy(() => import('./pages/NotFound'));
-const StudentCalc = lazy(() => import('./pages/StudentCalc'));
-const ShiftWorkCalc = lazy(() => import('./pages/ShiftWorkCalc'));
-const NinetyMinCalc = lazy(() => import('./pages/NinetyMinCalc'));
-const WakeUpCalc = lazy(() => import('./pages/WakeUpCalc'));
-const IdealBedtimeCalc = lazy(() => import('./pages/IdealBedtimeCalc'));
+import Home from './pages/Home';
+import Terms from './pages/Terms';
+import Privacy from './pages/Privacy';
+import Contact from './pages/Contact';
+import About from './pages/About';
+import Blog from './pages/Blog';
+import NotFound from './pages/NotFound';
+import StudentCalc from './pages/StudentCalc';
+import ShiftWorkCalc from './pages/ShiftWorkCalc';
+import NinetyMinCalc from './pages/NinetyMinCalc';
+import WakeUpCalc from './pages/WakeUpCalc';
+import IdealBedtimeCalc from './pages/IdealBedtimeCalc';
 
 import { OpenGraphTags } from './components/OpenGraphTags';
 import { getCanonicalUrl } from './lib/seo';
-import { LanguageProvider, useLanguage } from './hooks/useLanguage';
 
 function PageFallback() {
   return (
-    <div className="w-full max-w-4xl mx-auto px-4 py-12 flex flex-col items-center justify-center min-h-[400px] space-y-4 animate-pulse">
-      <div className="h-8 w-64 bg-slate-200 dark:bg-slate-800 rounded-xl"></div>
-      <div className="h-28 w-full max-w-xl bg-slate-200/70 dark:bg-slate-800/70 rounded-2xl"></div>
-      <div className="h-16 w-full max-w-lg bg-slate-200/50 dark:bg-slate-800/50 rounded-xl"></div>
+    <div className="w-full min-h-[calc(100vh-160px)] flex items-center justify-center opacity-0" aria-hidden="true" />
+  );
+}
+
+function GlobalSiteLoader({ isLoading }: { isLoading: boolean }) {
+  const [visible, setVisible] = useState(isLoading);
+
+  useEffect(() => {
+    if (isLoading) {
+      setVisible(true);
+    } else {
+      const timer = setTimeout(() => {
+        setVisible(false);
+      }, 200);
+      return () => clearTimeout(timer);
+    }
+  }, [isLoading]);
+
+  if (!visible) return null;
+
+  return (
+    <div
+      style={{ transition: 'opacity 200ms ease-in-out' }}
+      className={`fixed inset-0 z-[99999] flex flex-col items-center justify-center bg-[#F3ECE3] dark:bg-[#0B0F19] ${
+        isLoading ? 'opacity-100' : 'opacity-0 pointer-events-none'
+      }`}
+    >
+      <div className="flex flex-col items-center justify-center p-6 space-y-4 text-center max-w-sm">
+        <div className="font-serif text-3xl sm:text-4xl font-extrabold tracking-tight text-[#111827] dark:text-white">
+          Sleep<span className="text-[#7C3AED] dark:text-violet-400">Calculator</span>
+        </div>
+        
+        {/* Simple 200ms loading progress bar */}
+        <div className="w-48 h-1.5 bg-[#E1D8CC] dark:bg-[#1E293B] rounded-full overflow-hidden relative">
+          <div className="h-full bg-gradient-to-r from-[#7C3AED] to-[#D4AF37] rounded-full w-full animate-pulse" />
+        </div>
+        
+        <span className="text-[11px] font-mono font-bold uppercase tracking-widest text-[#6B7280] dark:text-slate-400">
+          Loading Page...
+        </span>
+      </div>
     </div>
   );
 }
@@ -42,93 +78,21 @@ function PageFallback() {
 
 
 function Footer() {
-  const { t, getLocalizedPath } = useLanguage();
-
   return (
-    <footer className="w-full mt-auto border-t border-[#E5E7EB] dark:border-[#1E293B] bg-[#FAF6F0]/80 dark:bg-[#0F172A]/80 backdrop-blur-md py-12 z-20 relative text-[#4B5563] dark:text-slate-300 font-sans">
+    <footer className="w-full mt-auto border-t border-[#E5E7EB] dark:border-[#1E293B] bg-[#FAF6F0]/80 dark:bg-[#0F172A]/80 backdrop-blur-md py-8 z-20 relative text-[#4B5563] dark:text-slate-300 font-sans">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 sm:gap-16 pb-10 border-b border-[#E5E7EB] dark:border-[#1E293B]">
-          {/* Column 1: Sleep Tools & Calculators */}
-          <div className="flex flex-col gap-y-4">
-            <h3 className="text-sm font-black uppercase tracking-widest text-[#7C3AED] dark:text-violet-400 border-b border-[#E1D8CC]/80 dark:border-slate-800 pb-2.5">
-              {t('nav.calculators')}
-            </h3>
-            <ul className="flex flex-col gap-y-3 text-[15px] sm:text-base">
-              <li>
-                <Link to={getLocalizedPath('/student-sleep-calculator')} className="underline decoration-black dark:decoration-slate-500 hover:text-[#7C3AED] dark:hover:text-violet-400 hover:translate-x-1.5 transition-all duration-200 block font-bold text-[#111827] dark:text-slate-200 underline-offset-4">
-                  {t('calculators.student.title')}
-                </Link>
-              </li>
-              <li>
-                <Link to={getLocalizedPath('/shift-work-sleep-calculator')} className="underline decoration-black dark:decoration-slate-500 hover:text-[#7C3AED] dark:hover:text-violet-400 hover:translate-x-1.5 transition-all duration-200 block font-bold text-[#111827] dark:text-slate-200 underline-offset-4">
-                  {t('calculators.shiftwork.title')}
-                </Link>
-              </li>
-              <li>
-                <Link to={getLocalizedPath('/sleep-cycle-calculator-90-minutes')} className="underline decoration-black dark:decoration-slate-500 hover:text-[#7C3AED] dark:hover:text-violet-400 hover:translate-x-1.5 transition-all duration-200 block font-bold text-[#111827] dark:text-slate-200 underline-offset-4">
-                  {t('calculators.ninetyMin.title')}
-                </Link>
-              </li>
-              <li>
-                <Link to={getLocalizedPath('/wake-up-between-sleep-cycles')} className="underline decoration-black dark:decoration-slate-500 hover:text-[#7C3AED] dark:hover:text-violet-400 hover:translate-x-1.5 transition-all duration-200 block font-bold text-[#111827] dark:text-slate-200 underline-offset-4">
-                  {t('calculators.wakeUp.title')}
-                </Link>
-              </li>
-              <li>
-                <Link to={getLocalizedPath('/ideal-bedtime-based-on-wake-up-time')} className="underline decoration-black dark:decoration-slate-500 hover:text-[#7C3AED] dark:hover:text-violet-400 hover:translate-x-1.5 transition-all duration-200 block font-bold text-[#111827] dark:text-slate-200 underline-offset-4">
-                  {t('calculators.idealBedtime.title')}
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Column 2: Popular Sleep Guides */}
-          <div className="flex flex-col gap-y-4">
-            <h3 className="text-sm font-black uppercase tracking-widest text-[#7C3AED] dark:text-violet-400 border-b border-[#E1D8CC]/80 dark:border-slate-800 pb-2.5">
-              {t('blog.blogIndexTitle')}
-            </h3>
-            <ul className="flex flex-col gap-y-3 text-[15px] sm:text-base">
-              <li>
-                <Link to={getLocalizedPath('/blog/sleep-cycles-explained')} className="underline decoration-black dark:decoration-slate-500 hover:text-[#7C3AED] dark:hover:text-violet-400 hover:translate-x-1.5 transition-all duration-200 block font-bold text-[#111827] dark:text-slate-200 underline-offset-4">
-                  Sleep Cycles Explained
-                </Link>
-              </li>
-              <li>
-                <Link to={getLocalizedPath('/blog/what-is-rem-sleep')} className="underline decoration-black dark:decoration-slate-500 hover:text-[#7C3AED] dark:hover:text-violet-400 hover:translate-x-1.5 transition-all duration-200 block font-bold text-[#111827] dark:text-slate-200 underline-offset-4">
-                  What is REM Sleep?
-                </Link>
-              </li>
-              <li>
-                <Link to={getLocalizedPath('/blog/how-much-sleep-do-you-need')} className="underline decoration-black dark:decoration-slate-500 hover:text-[#7C3AED] dark:hover:text-violet-400 hover:translate-x-1.5 transition-all duration-200 block font-bold text-[#111827] dark:text-slate-200 underline-offset-4">
-                  How Much Sleep Do I Need?
-                </Link>
-              </li>
-              <li>
-                <Link to={getLocalizedPath('/blog/best-time-to-sleep-and-wake-up')} className="underline decoration-black dark:decoration-slate-500 hover:text-[#7C3AED] dark:hover:text-violet-400 hover:translate-x-1.5 transition-all duration-200 block font-bold text-[#111827] dark:text-slate-200 underline-offset-4">
-                  Best Sleeping & Wake Times
-                </Link>
-              </li>
-              <li>
-                <Link to={getLocalizedPath('/blog/sleep-cycle-calculator-guide')} className="underline decoration-black dark:decoration-slate-500 hover:text-[#7C3AED] dark:hover:text-violet-400 hover:translate-x-1.5 transition-all duration-200 block font-bold text-[#111827] dark:text-slate-200 underline-offset-4">
-                  Sleep Calculator User Guide
-                </Link>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        {/* Legal Pages with larger text & copyright centered at the very bottom */}
-        <div className="pt-10 flex flex-col items-center justify-center gap-6">
+        {/* Legal & Navigation Pages with copyright centered */}
+        <div className="flex flex-col items-center justify-center gap-6">
           <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-[15px] sm:text-base font-black text-[#374151] dark:text-slate-200">
-            <Link to={getLocalizedPath('/about')} className="hover:text-[#7C3AED] dark:hover:text-violet-400 hover:underline transition-colors">{t('nav.about')}</Link>
-            <Link to={getLocalizedPath('/contact')} className="hover:text-[#7C3AED] dark:hover:text-violet-400 hover:underline transition-colors">{t('nav.contact')}</Link>
-            <Link to={getLocalizedPath('/privacy')} className="hover:text-[#7C3AED] dark:hover:text-violet-400 hover:underline transition-colors">{t('nav.privacy')}</Link>
-            <Link to={getLocalizedPath('/terms')} className="hover:text-[#7C3AED] dark:hover:text-violet-400 hover:underline transition-colors">{t('nav.terms')}</Link>
-            <Link to={getLocalizedPath('/blog')} className="hover:text-[#7C3AED] dark:hover:text-violet-400 hover:underline transition-colors">{t('nav.blog')}</Link>
+            <Link to="/about" className="hover:text-[#7C3AED] dark:hover:text-violet-400 hover:underline transition-colors">About</Link>
+            <Link to="/contact" className="hover:text-[#7C3AED] dark:hover:text-violet-400 hover:underline transition-colors">Contact</Link>
+            <Link to="/privacy" className="hover:text-[#7C3AED] dark:hover:text-violet-400 hover:underline transition-colors">Privacy Policy</Link>
+            <Link to="/terms" className="hover:text-[#7C3AED] dark:hover:text-violet-400 hover:underline transition-colors">Terms of Service</Link>
+            <Link to="/blog" className="hover:text-[#7C3AED] dark:hover:text-violet-400 hover:underline transition-colors">Sleep Education</Link>
           </div>
           
           <span className="text-xs sm:text-sm text-[#6B7280] dark:text-slate-400 font-semibold tracking-wide text-center">
-            &copy; {new Date().getFullYear()} {t('common.allRightsReserved')}
+            &copy; {new Date().getFullYear()} All rights reserved.
           </span>
         </div>
       </div>
@@ -137,8 +101,8 @@ function Footer() {
 }
 
 const CALCULATORS = [
-  { name: "90-Min Sleep Calculator", path: "/sleep-cycle-calculator-90-minutes" },
-  { name: "Wake Up Calculator", path: "/wake-up-between-sleep-cycles" },
+  { name: "90 Minute Sleep Calculator", path: "/sleep-cycle-calculator-90-minutes" },
+  { name: "Wake Up Between Sleep Cycles Calculator", path: "/wake-up-between-sleep-cycles" },
   { name: "Ideal Bedtime Calculator", path: "/ideal-bedtime-based-on-wake-up-time" },
   { name: "Student Sleep Calculator", path: "/student-sleep-calculator" },
   { name: "Shift Work Sleep Calculator", path: "/shift-work-sleep-calculator" },
@@ -153,7 +117,6 @@ function Header({ isDarkMode, toggleDarkMode }: HeaderProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const location = useLocation();
-  const { t, getLocalizedPath } = useLanguage();
 
   // Close menus when route changes
   useEffect(() => {
@@ -163,23 +126,12 @@ function Header({ isDarkMode, toggleDarkMode }: HeaderProps) {
 
   const isActive = (path: string) => {
     if (path === '/') {
-      return location.pathname === '/' || location.pathname === '/es' || location.pathname === '/pt' || location.pathname === '/fr' || location.pathname === '/de' || location.pathname === '/it' || location.pathname === '/nl' || location.pathname === '/tr' || location.pathname === '/id' || location.pathname === '/vi' || location.pathname === '/pl' || location.pathname.match(/^\/[a-z]{2}$/) !== null;
+      return location.pathname === '/';
     }
     return location.pathname.includes(path);
   };
 
-  const getCalculatorLocalizedName = (path: string, fallback: string) => {
-    if (path === '/sleep-cycle-calculator-90-minutes') return t('calculators.ninetyMin.title');
-    if (path === '/wake-up-between-sleep-cycles') return t('calculators.wakeUp.title');
-    if (path === '/ideal-bedtime-based-on-wake-up-time') return t('calculators.idealBedtime.title');
-    if (path === '/student-sleep-calculator') return t('calculators.student.title');
-    if (path === '/shift-work-sleep-calculator') return t('calculators.shiftwork.title');
-    return fallback;
-  };
-
-  const isCalcActive = () => {
-    return CALCULATORS.some(calc => location.pathname.includes(calc.path));
-  };
+  const isCalcActive = () => CALCULATORS.some(c => location.pathname === c.path);
 
   return (
     <header className="w-full bg-[#FAF6F0]/90 dark:bg-[#0B0F19]/90 backdrop-blur-md border-b border-[#E5E7EB]/50 dark:border-[#1E293B]/50 sticky top-0 z-50 transition-all duration-300">
@@ -189,7 +141,7 @@ function Header({ isDarkMode, toggleDarkMode }: HeaderProps) {
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center">
             <Link 
-              to={getLocalizedPath('/')} 
+              to="/" 
               onContextMenu={(e) => e.preventDefault()} 
               className="font-display text-2xl sm:text-3xl font-black tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-[#7C3AED] to-[#D4AF37] hover:scale-[1.02] active:scale-[0.98] transition-transform duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7C3AED]/40 rounded-xl leading-tight"
             >
@@ -200,14 +152,14 @@ function Header({ isDarkMode, toggleDarkMode }: HeaderProps) {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-1 lg:space-x-2">
             <Link 
-              to={getLocalizedPath('/')} 
+              to="/" 
               className={`px-3 py-2 rounded-xl text-sm font-bold tracking-wide transition-colors duration-200 ${
                 isActive('/') 
                   ? 'text-[#7C3AED] bg-[#7C3AED]/5' 
                   : 'text-[#4B5563] dark:text-slate-300 hover:text-[#7C3AED] hover:bg-[#7C3AED]/5'
               }`}
             >
-              {t('nav.home')}
+              Home
             </Link>
 
             {/* Calculators Dropdown Container */}
@@ -224,7 +176,7 @@ function Header({ isDarkMode, toggleDarkMode }: HeaderProps) {
                     : 'text-[#4B5563] dark:text-slate-300 hover:text-[#7C3AED] hover:bg-[#7C3AED]/5'
                 }`}
               >
-                {t('nav.calculators')}
+                Calculators
                 <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isDropdownOpen ? 'rotate-180' : ''}`} />
               </button>
 
@@ -240,14 +192,14 @@ function Header({ isDarkMode, toggleDarkMode }: HeaderProps) {
                     {CALCULATORS.map((calc) => (
                       <Link
                         key={calc.path}
-                        to={getLocalizedPath(calc.path)}
+                        to={calc.path}
                         className={`block px-4 py-2.5 text-xs font-bold transition-colors duration-150 ${
                           location.pathname.includes(calc.path)
                             ? 'text-[#7C3AED] bg-[#7C3AED]/5 dark:text-violet-400 dark:bg-violet-500/10'
                             : 'text-[#374151] dark:text-slate-300 hover:text-[#7C3AED] hover:bg-[#7C3AED]/5'
                         }`}
                       >
-                        {getCalculatorLocalizedName(calc.path, calc.name)}
+                        {calc.name}
                       </Link>
                     ))}
                   </motion.div>
@@ -256,36 +208,36 @@ function Header({ isDarkMode, toggleDarkMode }: HeaderProps) {
             </div>
 
             <Link 
-              to={getLocalizedPath('/blog')} 
+              to="/blog" 
               className={`px-3 py-2 rounded-xl text-sm font-bold tracking-wide transition-colors duration-200 ${
                 isActive('/blog') 
                   ? 'text-[#7C3AED] bg-[#7C3AED]/5' 
                   : 'text-[#4B5563] dark:text-slate-300 hover:text-[#7C3AED] hover:bg-[#7C3AED]/5'
               }`}
             >
-              {t('nav.blog')}
+              Sleep Education
             </Link>
 
             <Link 
-              to={getLocalizedPath('/about')} 
+              to="/about" 
               className={`px-3 py-2 rounded-xl text-sm font-bold tracking-wide transition-colors duration-200 ${
                 isActive('/about') 
                   ? 'text-[#7C3AED] bg-[#7C3AED]/5' 
                   : 'text-[#4B5563] dark:text-slate-300 hover:text-[#7C3AED] hover:bg-[#7C3AED]/5'
               }`}
             >
-              {t('nav.about')}
+              About
             </Link>
 
             <Link 
-              to={getLocalizedPath('/contact')} 
+              to="/contact" 
               className={`px-3 py-2 rounded-xl text-sm font-bold tracking-wide transition-colors duration-200 ${
                 isActive('/contact') 
                   ? 'text-[#7C3AED] bg-[#7C3AED]/5' 
                   : 'text-[#4B5563] dark:text-slate-300 hover:text-[#7C3AED] hover:bg-[#7C3AED]/5'
               }`}
             >
-              {t('nav.contact')}
+              Contact
             </Link>
 
             {/* Desktop Theme Toggle */}
@@ -350,69 +302,69 @@ function Header({ isDarkMode, toggleDarkMode }: HeaderProps) {
           >
             <div className="px-3 pt-2 pb-4 space-y-1 sm:px-4 flex flex-col">
               <Link
-                to={getLocalizedPath('/')}
+                to="/"
                 className={`px-4 py-2.5 rounded-xl text-sm font-bold tracking-wide transition-colors ${
                   isActive('/') 
                     ? 'text-[#7C3AED] bg-[#7C3AED]/5' 
                     : 'text-[#4B5563] dark:text-slate-300'
                 }`}
               >
-                {t('nav.home')}
+                Home
               </Link>
               
               {/* Mobile Calculators Section */}
               <div className="py-1">
                 <div className="px-4 py-1.5 text-xs font-black uppercase tracking-widest text-[#7C3AED] dark:text-violet-400">
-                  {t('nav.calculators')}
+                  Calculators
                 </div>
                 <div className="mt-1 ml-2 pl-2 border-l border-[#E5E7EB] dark:border-[#1E293B] space-y-0.5">
                   {CALCULATORS.map((calc) => (
                     <Link
                       key={calc.path}
-                      to={getLocalizedPath(calc.path)}
+                      to={calc.path}
                       className={`block px-3 py-2 rounded-xl text-xs font-bold transition-colors ${
                         location.pathname.includes(calc.path)
                           ? 'text-[#7C3AED] bg-[#7C3AED]/5 dark:text-violet-400'
                           : 'text-[#4B5563] dark:text-slate-300'
                       }`}
                     >
-                      {getCalculatorLocalizedName(calc.path, calc.name)}
+                      {calc.name}
                     </Link>
                   ))}
                 </div>
               </div>
 
               <Link
-                to={getLocalizedPath('/blog')}
+                to="/blog"
                 className={`px-4 py-2.5 rounded-xl text-sm font-bold tracking-wide transition-colors ${
                   isActive('/blog') 
                     ? 'text-[#7C3AED] bg-[#7C3AED]/5' 
                     : 'text-[#4B5563] dark:text-slate-300'
                 }`}
               >
-                {t('nav.blog')}
+                Sleep Education
               </Link>
 
               <Link
-                to={getLocalizedPath('/about')}
+                to="/about"
                 className={`px-4 py-2.5 rounded-xl text-sm font-bold tracking-wide transition-colors ${
                   isActive('/about') 
                     ? 'text-[#7C3AED] bg-[#7C3AED]/5' 
                     : 'text-[#4B5563] dark:text-slate-300'
                 }`}
               >
-                {t('nav.about')}
+                About
               </Link>
 
               <Link
-                to={getLocalizedPath('/contact')}
+                to="/contact"
                 className={`px-4 py-2.5 rounded-xl text-sm font-bold tracking-wide transition-colors ${
                   isActive('/contact') 
                     ? 'text-[#7C3AED] bg-[#7C3AED]/5' 
                     : 'text-[#4B5563] dark:text-slate-300'
                 }`}
               >
-                {t('nav.contact')}
+                Contact
               </Link>
             </div>
           </motion.div>
@@ -426,10 +378,8 @@ export default function App() {
   return (
     <HelmetProvider>
       <Router>
-        <LanguageProvider>
-          <ScrollToTop />
-          <AppContent />
-        </LanguageProvider>
+        <ScrollToTop />
+        <AppContent />
       </Router>
     </HelmetProvider>
   );
@@ -485,11 +435,16 @@ function RootSlugRedirect() {
     "sleep-calculator-for-night-shift-workers",
     "what-time-should-i-sleep-if-i-wake-up-at-6-am",
     "best-bedtime-calculator-for-students",
-    "nap-calculator-20-30-60-90-minutes"
+    "nap-calculator-20-30-60-90-minutes",
+    "sleep-calculator-cycle",
+    "sleep-calculator-how-much-sleep-did-i-get",
+    "sleep-calculator-women",
+    "sleep-calculator-for-kids",
+    "sleep-calculator-app"
   ];
 
   if (slug && blogSlugs.includes(slug.toLowerCase())) {
-    return <Navigate to={`/blog/${slug}`} replace />;
+    return <Blog />;
   }
 
   return <NotFound />;
@@ -500,6 +455,16 @@ function AppContent() {
   const location = useLocation();
   const canonicalUrl = getCanonicalUrl(location.pathname);
   
+  const [isRouteLoading, setIsRouteLoading] = useState(true);
+
+  useEffect(() => {
+    setIsRouteLoading(true);
+    const timer = setTimeout(() => {
+      setIsRouteLoading(false);
+    }, 200);
+    return () => clearTimeout(timer);
+  }, [location.pathname, location.search]);
+
   const [isDarkMode, setIsDarkMode] = useState(() => {
     if (typeof window !== "undefined") {
       const savedTheme = localStorage.getItem("sleep_calculator_theme");
@@ -526,48 +491,46 @@ function AppContent() {
 
   return (
     <div className="min-h-screen flex flex-col text-[#374151] dark:text-[#E2E8F0] font-sans relative overflow-x-hidden bg-[#F3ECE3] dark:bg-[#0B0F19] transition-colors duration-300">
+      <GlobalSiteLoader isLoading={isRouteLoading} />
       <StarryBackground />
-      <OpenGraphTags />
       <Header isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
-      <main className="relative z-10 flex-grow flex flex-col items-center justify-start w-full pt-5 sm:pt-8 md:pt-10 pb-4 sm:pb-8">
-        <Suspense fallback={<PageFallback />}>
-          <Routes>
-            {/* Core Pages */}
-            <Route path="/" element={<Home />} />
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/blog/:slug" element={<Blog />} />
+      <main className="relative z-10 flex-grow flex flex-col items-center justify-start w-full min-h-[calc(100vh-160px)] pt-5 sm:pt-8 md:pt-10 pb-4 sm:pb-8">
+        <Routes>
+          {/* Core Pages */}
+          <Route path="/" element={<Home />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<Blog />} />
 
-            {/* The Dedicated Interactive Calculator Landing Pages */}
-            <Route path="/student-sleep-calculator" element={<StudentCalc />} />
-            <Route path="/shift-work-sleep-calculator" element={<ShiftWorkCalc />} />
-            <Route path="/sleep-cycle-calculator-90-minutes" element={<NinetyMinCalc />} />
-            <Route path="/wake-up-between-sleep-cycles" element={<WakeUpCalc />} />
-            <Route path="/ideal-bedtime-based-on-wake-up-time" element={<IdealBedtimeCalc />} />
+          {/* Dedicated Interactive Calculator Landing Pages */}
+          <Route path="/student-sleep-calculator" element={<StudentCalc />} />
+          <Route path="/shift-work-sleep-calculator" element={<ShiftWorkCalc />} />
+          <Route path="/sleep-cycle-calculator-90-minutes" element={<NinetyMinCalc />} />
+          <Route path="/wake-up-between-sleep-cycles" element={<WakeUpCalc />} />
+          <Route path="/ideal-bedtime-based-on-wake-up-time" element={<IdealBedtimeCalc />} />
 
-            {/* Keyword Search Pages (Exact names, direct to Main Sleep Calculator) */}
-            <Route path="/sleep-calculator-by-age" element={<Home />} />
-            <Route path="/sleep-calculator-cycle" element={<Home />} />
-            <Route path="/sleep-calculator-how-much-sleep-did-i-get" element={<Home />} />
-            <Route path="/sleep-calculator-women" element={<Home />} />
-            <Route path="/sleep-calculator-for-kids" element={<Home />} />
-            <Route path="/sleep-calculator-app" element={<Home />} />
+          {/* Keyword Search Educational Pages (Direct render Blog) */}
+          <Route path="/sleep-calculator-by-age" element={<Blog />} />
+          <Route path="/sleep-calculator-cycle" element={<Blog />} />
+          <Route path="/sleep-calculator-how-much-sleep-did-i-get" element={<Blog />} />
+          <Route path="/sleep-calculator-women" element={<Blog />} />
+          <Route path="/sleep-calculator-for-kids" element={<Blog />} />
+          <Route path="/sleep-calculator-app" element={<Blog />} />
 
-            {/* Utility Pages */}
-            <Route path="/about" element={<About />} />
-            <Route path="/terms" element={<Terms />} />
-            <Route path="/privacy" element={<Privacy />} />
-            <Route path="/contact" element={<Contact />} />
+          {/* Utility Pages */}
+          <Route path="/about" element={<About />} />
+          <Route path="/terms" element={<Terms />} />
+          <Route path="/privacy" element={<Privacy />} />
+          <Route path="/contact" element={<Contact />} />
 
-            {/* Legacy page/blog Prefixes redirected back to clean paths */}
-            <Route path="/page/blog/:slug" element={<Navigate replace to="/blog/:slug" />} />
+          {/* Legacy page/blog Prefixes rendered directly */}
+          <Route path="/page/blog/:slug" element={<Blog />} />
 
-            {/* Dynamic redirect for root-level blog slugs or root languages to /blog/:slug */}
-            <Route path="/:slug" element={<RootSlugRedirect />} />
+          {/* Dynamic redirect for root-level blog slugs or root languages to /blog/:slug */}
+          <Route path="/:slug" element={<RootSlugRedirect />} />
 
-            {/* Catch-all 404 route */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </Suspense>
+          {/* Catch-all 404 route */}
+          <Route path="*" element={<NotFound />} />
+        </Routes>
       </main>
       <Footer />
     </div>

@@ -4,14 +4,18 @@ import { Moon, Home, HelpCircle } from 'lucide-react';
 import { motion } from 'motion/react';
 import { getCanonicalUrl } from '../lib/seo';
 import { OpenGraphTags } from '../components/OpenGraphTags';
-import { useLanguage } from '../hooks/useLanguage';
 
 export default function NotFound() {
   const location = useLocation();
   const canonicalUrl = getCanonicalUrl(location.pathname);
-  const { currentLang, getLocalizedPath } = useLanguage();
 
-  const content = LOCALIZED_NOTFOUND[currentLang] || LOCALIZED_NOTFOUND['en'];
+  const content = {
+    errorTag: "Error 404",
+    title: "Page Not Found",
+    desc: "The requested page could not be located. It might have been moved, renamed, or temporarily rested.",
+    helper: "Let’s get you back to calculate your ideal sleep cycle!",
+    btnText: "Back to Home Page"
+  };
 
   return (
     <div className="min-h-[75vh] flex flex-col items-center justify-center px-2 sm:px-4 py-12 text-center relative z-10 w-full max-w-xl mx-auto">
@@ -79,7 +83,7 @@ export default function NotFound() {
         id="not-found-actions"
       >
         <Link 
-          to={getLocalizedPath('/')} 
+          to="/" 
           className="w-full inline-flex items-center justify-center gap-2 bg-[#7C3AED] hover:bg-[#6D28D9] active:bg-[#5B21B6] text-white font-bold py-3.5 px-8 rounded-2xl transition-all duration-300 shadow-md shadow-[#7C3AED]/15 active:scale-[0.98] cursor-pointer text-sm sm:text-base uppercase tracking-wider"
           id="not-found-home-btn"
         >

@@ -442,16 +442,38 @@ export const BLOG_POSTS_META: Record<string, { title: string; description: strin
     description: "Calculate the exact duration for power naps and full sleep cycle naps. Optimize brain focus and cognitive alert states without fatigue.",
     date: "2026-06-18",
     category: "Sleep Science"
+  },
+  "sleep-calculator-cycle": {
+    title: "Sleep Calculator Cycle: 90-Minute REM & NREM Sleep Cycle Guide",
+    description: "Calculate your sleep cycles scientifically using 90-minute REM and NREM intervals. Banish morning fatigue by waking up between complete sleep cycles.",
+    date: "2026-07-20",
+    category: "Sleep Science"
+  },
+  "sleep-calculator-how-much-sleep-did-i-get": {
+    title: "Sleep Calculator: How Much Sleep Did I Get? Hours Slept & Sleep Debt",
+    description: "Calculate exactly how much sleep you got last night based on bedtime and wake-up time. Track your completed 90-minute sleep cycles and sleep debt.",
+    date: "2026-07-21",
+    category: "Sleep Quality"
+  },
+  "sleep-calculator-women": {
+    title: "Sleep Calculator for Women: Circadian Rhythm, Hormones & Sleep Needs",
+    description: "Sleep cycle calculator for women. Optimize sleep quality, bedtime routines, and wake times accounting for female circadian rhythm and sleep needs.",
+    date: "2026-07-22",
+    category: "Sleep Health"
+  },
+  "sleep-calculator-for-kids": {
+    title: "Sleep Calculator for Kids & Toddlers: Children Bedtime & Growth Guide",
+    description: "Calculate the ideal bedtime and wake-up schedule for children and toddlers based on natural sleep cycles and age-appropriate sleep recommendations.",
+    date: "2026-07-23",
+    category: "Sleep Health"
+  },
+  "sleep-calculator-app": {
+    title: "Sleep Calculator App: Free 90-Minute Bedtime Planner & Sleep Tracker",
+    description: "Free web-based sleep calculator app. Calculate complete 90-minute sleep cycles, set alarms, and plan bedtimes instantly on any device.",
+    date: "2026-07-24",
+    category: "Sleep Science"
   }
 };
 
-// Clean 301 SEO redirects mapping (redirect legacy dynamic params, trailing slashes, duplicates)
-export const BLOG_REDIRECTS: Record<string, string> = {
-  "how-much-sleep-do-you-need-by-age": "how-much-sleep-do-you-need",
-  "wake-up-tired-after-8-hours": "tired-after-8-hours-of-sleep",
-  "best-bedtime-for-adults": "ideal-bedtime-for-adults",
-  "what-is-sleep-debt": "sleep-debt-explained",
-  "sleep-and-memory-learning": "sleep-and-memory",
-  "sleep-calculator-by-age": "how-much-sleep-do-you-need",
-  "best-sleep-schedule-for-productivity": "sleep-schedule-for-productivity"
-};
+// Redirects disabled - all keyword pages are dedicated full content pages
+export const BLOG_REDIRECTS: Record<string, string> = {};

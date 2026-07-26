@@ -689,80 +689,6 @@
     <meta name="twitter:description" content="Calculate the best bedtime and wake-up time using natural 90-minute sleep cycles. Wake up refreshed and improve your sleep quality." />
     <meta name="twitter:image" content="https://sleepcalculater.online/og_banner.png" />
 
-    <!-- Google Search Site Name Structured Data -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "Sleep Calculator",
-        "alternateName": [
-          "Sleep Calculator",
-          "Sleep Cycle Calculator",
-          "Bedtime Calculator",
-          "REM Sleep Calculator"
-        ],
-        "url": "https://sleepcalculater.online/"
-      }
-    </script>
-
-    <!-- Structured Data -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@graph": [
-          {
-            "@type": "WebSite",
-            "@id": "https://sleepcalculater.online/#website",
-            "url": "https://sleepcalculater.online/",
-            "name": "Sleep Calculator",
-            "alternateName": [
-              "Sleep Calculator",
-              "Sleep Cycle Calculator",
-              "Bedtime Calculator",
-              "REM Sleep Calculator"
-            ],
-            "publisher": {
-              "@id": "https://sleepcalculater.online/#organization"
-            }
-          },
-          {
-            "@type": "Organization",
-            "@id": "https://sleepcalculater.online/#organization",
-            "name": "Sleep Calculator",
-            "url": "https://sleepcalculater.online/",
-            "logo": {
-              "@type": "ImageObject",
-              "url": "https://sleepcalculater.online/og_banner.png",
-              "width": "1200",
-              "height": "630"
-            },
-            "sameAs": [
-              "https://www.facebook.com/sleepcalculator",
-              "https://twitter.com/sleepcalc"
-            ],
-            "contactPoint": {
-              "@type": "ContactPoint",
-              "email": "support@sleepcalculater.online",
-              "contactType": "customer support"
-            }
-          },
-          {
-            "@type": "SoftwareApplication",
-            "@id": "https://sleepcalculater.online/#softwareapplication",
-            "name": "Sleep Calculator",
-            "url": "https://sleepcalculater.online/",
-            "description": "Calculate the exact time you need to go to bed or wake up using 90-minute REM sleep intervals to prevent morning grogginess.",
-            "applicationCategory": "HealthAndFitnessApplication",
-            "operatingSystem": "All",
-            "offers": {
-              "@type": "Offer",
-              "price": "0",
-              "priceCurrency": "USD"
-            }
-          }
-        ]
-      }
-    </script>
   </head>
   <body>
     <!-- Persistent Static Ambient Background (Zero Layout Shift) -->
@@ -772,59 +698,18 @@
       <div class="ambient-glow-2"></div>
     </div>
     <div id="root">
-      <div class="min-h-screen flex flex-col text-[#374151] dark:text-[#E2E8F0] font-sans relative overflow-x-hidden bg-[#F3ECE3] dark:bg-[#0B0F19] transition-colors duration-300">
-        <header class="w-full bg-[#FAF6F0]/90 dark:bg-[#0B0F19]/90 backdrop-blur-md border-b border-[#E5E7EB]/50 dark:border-[#1E293B]/50 sticky top-0 z-50 transition-all duration-300">
-          <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16 sm:h-20">
-              <div class="flex-shrink-0 flex items-center">
-                <a href="/" class="font-display text-2xl sm:text-3xl font-black tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-[#7C3AED] to-[#D4AF37] leading-tight">Sleep Calculator</a>
-              </div>
-              <nav class="hidden md:flex items-center space-x-1 lg:space-x-2">
-                <a href="/" class="px-3 py-2 rounded-xl text-sm font-bold tracking-wide text-[#7C3AED] bg-[#7C3AED]/5">Home</a>
-                <a href="/blog" class="px-3 py-2 rounded-xl text-sm font-bold tracking-wide text-[#4B5563] dark:text-slate-300">Blog</a>
-                <a href="/about" class="px-3 py-2 rounded-xl text-sm font-bold tracking-wide text-[#4B5563] dark:text-slate-300">About</a>
-                <a href="/contact" class="px-3 py-2 rounded-xl text-sm font-bold tracking-wide text-[#4B5563] dark:text-slate-300">Contact</a>
-              </nav>
-            </div>
+      <div style="min-height: 100vh; display: flex; flex-direction: column; items-center: center; justify-content: center; background-color: #F3ECE3; text-align: center; padding: 1.5rem; width: 100%;">
+        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; max-width: 24rem; margin: 0 auto;">
+          <div style="font-family: serif; font-size: 2.25rem; font-weight: 800; tracking: -0.025em; color: #111827; margin-bottom: 1rem;">
+            Sleep<span style="color: #7C3AED;">Calculator</span>
           </div>
-        </header>
-
-        <main class="relative z-10 flex-grow flex flex-col items-center justify-start w-full pt-5 sm:pt-8 md:pt-10 pb-4 sm:pb-8">
-          <div class="w-full flex flex-col items-center">
-            <div class="flex flex-col items-center justify-center mb-2 mt-0">
-              <div class="flex flex-col items-center justify-center gap-2 text-center max-w-3xl mx-auto px-2 mt-3 sm:mt-4 md:mt-5 mb-6 sm:mb-8">
-                <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-[2.5rem] font-extrabold tracking-tight text-[#111827] dark:text-white leading-tight sm:leading-snug text-center">Calculate Your Perfect Bedtime & Wake-Up Time</h1>
-                <p class="text-sm sm:text-base md:text-lg text-[#4B5563] dark:text-slate-300 max-w-3xl mx-auto font-medium leading-relaxed tracking-normal opacity-95">Waking up at the end of a complete sleep cycle instead of mid-cycle can help you feel more refreshed and improve your overall sleep quality. Simply choose your bedtime or wake-up time, enter the required details, and click Calculate.</p>
-              </div>
-              <div id="home-header-ad" class="w-full max-w-[52rem] mx-auto my-0.5 sm:my-1.5 px-1 sm:px-0 text-center flex flex-col items-center justify-center overflow-hidden shrink-0 h-[68px] min-h-[68px]">
-                <span class="text-[10px] uppercase tracking-widest text-[#6B7280] dark:text-slate-400 block mb-0.5 font-sans font-medium h-[14px]">Advertisement</span>
-                <div class="w-full flex justify-center items-center overflow-hidden h-[50px] max-h-[50px]"></div>
-              </div>
-            </div>
-
-            <div class="w-full max-w-[28.75rem] md:max-w-[42rem] mx-auto mb-4 relative px-2 sm:px-0">
-              <div class="flex flex-col items-center w-full p-4 sm:p-5 bg-[#FAF6F0] dark:bg-[#151C2C] border border-[#E1D8CC] dark:border-[#1E293B] rounded-2xl shadow-xs">
-                <div role="radiogroup" aria-label="Calculation mode" class="flex flex-row flex-nowrap bg-white/50 dark:bg-[#111827]/40 rounded-xl p-1.5 w-full mb-4 relative overflow-x-auto md:overflow-x-visible scrollbar-none gap-1">
-                  <button type="button" class="flex-1 shrink-0 flex items-center justify-center gap-1.5 py-2 px-3.5 rounded-lg text-xs sm:text-sm font-bold min-w-max whitespace-nowrap text-gray-650 dark:text-gray-400 border border-transparent">Wake up at</button>
-                  <button type="button" class="flex-1 shrink-0 flex items-center justify-center gap-1.5 py-2 px-3.5 rounded-lg text-xs sm:text-sm font-bold min-w-max whitespace-nowrap bg-white dark:bg-[#111827] text-gray-900 dark:text-gray-100 shadow-sm border border-gray-200 dark:border-slate-700/60">Sleep at</button>
-                  <button type="button" class="flex-1 shrink-0 flex items-center justify-center gap-1.5 py-2 px-3.5 rounded-lg text-xs sm:text-sm font-bold min-w-max whitespace-nowrap text-gray-500 dark:text-gray-400 border border-transparent">Sleep Cycles</button>
-                  <button type="button" class="flex-1 shrink-0 flex items-center justify-center gap-1.5 py-2 px-3.5 rounded-lg text-xs sm:text-sm font-bold min-w-max whitespace-nowrap text-gray-500 dark:text-gray-400 border border-transparent">Nap Calc</button>
-                  <button type="button" class="flex-1 shrink-0 flex items-center justify-center gap-1.5 py-2 px-3.5 rounded-lg text-xs sm:text-sm font-bold min-w-max whitespace-nowrap text-gray-500 dark:text-gray-400 border border-transparent">REM Calc</button>
-                </div>
-                <div class="w-full mb-4 flex flex-col items-center">
-                  <div class="w-full flex justify-center py-2">
-                    <span class="text-3xl sm:text-4xl font-extrabold text-[#111827] dark:text-white font-mono">05:15 AM</span>
-                  </div>
-                </div>
-                <div class="w-full mb-4 flex flex-col items-center">
-                  <span class="text-xs font-bold text-[#6B7280] dark:text-slate-400 uppercase tracking-wider mb-1">SELECT YOUR AGE</span>
-                  <div class="w-full max-w-[12rem] bg-white dark:bg-[#111827] border border-[#E1D8CC] dark:border-[#1E293B] rounded-xl px-3 py-2 text-sm font-bold text-[#111827] dark:text-white text-center">18-25 Years</div>
-                </div>
-                <button type="button" class="w-full py-3.5 px-6 rounded-xl font-bold text-white bg-[#7C3AED] shadow-md text-base sm:text-lg">Calculate Bed Time</button>
-              </div>
-            </div>
+          <div style="width: 12rem; height: 6px; background-color: #E1D8CC; border-radius: 9999px; overflow: hidden; position: relative; margin-bottom: 0.75rem;">
+            <div style="height: 100%; background: linear-gradient(to right, #7C3AED, #D4AF37); border-radius: 9999px; width: 100%;"></div>
           </div>
-        </main>
+          <span style="font-size: 11px; font-family: monospace; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #6B7280;">
+            Loading...
+          </span>
+        </div>
       </div>
     </div>
     

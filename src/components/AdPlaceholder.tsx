@@ -68,17 +68,12 @@ export function AdPlaceholder({ id = "ad-slot-header" }: AdPlaceholderProps) {
     const activeHeight = isMobile ? 50 : 90;
     const activeWidth = isMobile ? 320 : 728;
 
-    // Create wrapper box (preserves placement slot dimensions)
+    // Create clean wrapper box (preserves placement slot dimensions without drawing a visible border box)
     const adContainer = document.createElement("div");
     adContainer.className = `ad-wrapper-box flex items-center justify-center`;
     adContainer.style.width = "100%";
     adContainer.style.maxWidth = `${activeWidth}px`;
     adContainer.style.height = `${activeHeight}px`;
-
-    const placeholderContent = document.createElement("div");
-    placeholderContent.className = "text-[11px] font-mono text-[#9CA3AF] dark:text-slate-500 border border-dashed border-slate-300/80 dark:border-slate-800 rounded-xl flex items-center justify-center w-full h-full bg-slate-50/50 dark:bg-slate-900/30";
-    placeholderContent.innerText = `Advertisement Space (${activeWidth}x${activeHeight})`;
-    adContainer.appendChild(placeholderContent);
 
     containerRef.current.appendChild(adContainer);
 

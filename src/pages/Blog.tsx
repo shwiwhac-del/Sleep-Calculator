@@ -9,7 +9,6 @@ import { OpenGraphTags } from '../components/OpenGraphTags';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { AdPlaceholder } from '../components/AdPlaceholder';
 import BlogPostContent from '../data/blogContentGenerator';
-import { useLanguage } from '../hooks/useLanguage';
 import { getBlogPostImage } from '../data/blogImages';
 
 export const BLOG_POSTS = [
@@ -388,6 +387,46 @@ export const BLOG_POSTS = [
     category: 'Sleep Science',
     readTime: '5 min read',
     date: 'June 18, 2026'
+  },
+  {
+    slug: 'sleep-calculator-cycle',
+    title: 'Sleep Calculator Cycle: 90-Minute REM & NREM Sleep Cycle Guide',
+    description: 'Calculate your sleep cycles scientifically using 90-minute REM and NREM intervals. Banish morning fatigue by waking up between complete sleep cycles.',
+    category: 'Sleep Science',
+    readTime: '7 min read',
+    date: 'July 20, 2026'
+  },
+  {
+    slug: 'sleep-calculator-how-much-sleep-did-i-get',
+    title: 'Sleep Calculator: How Much Sleep Did I Get? Hours Slept & Sleep Debt',
+    description: 'Calculate exactly how much sleep you got last night based on bedtime and wake-up time. Track your completed 90-minute sleep cycles and sleep debt.',
+    category: 'Sleep Quality',
+    readTime: '7 min read',
+    date: 'July 21, 2026'
+  },
+  {
+    slug: 'sleep-calculator-women',
+    title: 'Sleep Calculator for Women: Circadian Rhythm, Hormones & Sleep Needs',
+    description: 'Sleep cycle calculator for women. Optimize sleep quality, bedtime routines, and wake times accounting for female circadian rhythm and sleep needs.',
+    category: 'Sleep Health',
+    readTime: '7 min read',
+    date: 'July 22, 2026'
+  },
+  {
+    slug: 'sleep-calculator-for-kids',
+    title: 'Sleep Calculator for Kids & Toddlers: Children Bedtime & Growth Guide',
+    description: 'Calculate the ideal bedtime and wake-up schedule for children and toddlers based on natural sleep cycles and age-appropriate sleep recommendations.',
+    category: 'Sleep Health',
+    readTime: '7 min read',
+    date: 'July 23, 2026'
+  },
+  {
+    slug: 'sleep-calculator-app',
+    title: 'Sleep Calculator App: Free 90-Minute Bedtime Planner & Sleep Tracker',
+    description: 'Free web-based sleep calculator app. Calculate complete 90-minute sleep cycles, set alarms, and plan bedtimes instantly on any device.',
+    category: 'Sleep Science',
+    readTime: '7 min read',
+    date: 'July 24, 2026'
   }
 ];
 
@@ -1113,102 +1152,17 @@ export default function Blog() {
   const location = useLocation();
   const { slug } = useParams();
   const currentPath = location.pathname;
-  const { currentLang, t } = useLanguage();
 
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   const localUi = {
-    launch: {
-      en: "Launch Tool",
-      es: "Iniciar herramienta",
-      pt: "Iniciar ferramenta",
-      fr: "Lancer l'outil",
-      de: "Rechner starten",
-      it: "Avvia strumento",
-      nl: "Start Tool",
-      tr: "Aracı Başlat",
-      id: "Mulai Alat",
-      vi: "Bắt đầu công cụ",
-      pl: "Uruchom narzędzie"
-    }[currentLang] || "Launch Tool",
-    explore: {
-      en: "Explore Specialized Sleep Calculators",
-      es: "Explorar calculadoras de sueño especializadas",
-      pt: "Explorar calculadoras de sono especializadas",
-      fr: "Explorer des calculateurs de sommeil spécialisés",
-      de: "Spezialisierte Schlafrechner erkunden",
-      it: "Esplora calcolatori del sonno specializzati",
-      nl: "Verken gespecialiseerde slaapcalculators",
-      tr: "Özel Uyku Hesaplayıcılarını Keşfedin",
-      id: "Jelajahi Kalkulator Tidur Khusus",
-      vi: "Khám phá các máy tính giấc ngủ chuyên dụng",
-      pl: "Przeglądaj specjalistyczne kalkulatory snu"
-    }[currentLang] || "Explore Specialized Sleep Calculators",
-    tryOurSleepTool: {
-      en: "Try Our Sleep Tool",
-      es: "Pruebe nuestra herramienta de sueño",
-      pt: "Experimente nossa ferramenta de sono",
-      fr: "Essayer notre outil de sommeil",
-      de: "Probieren Sie unser Schlaftool aus",
-      it: "Prova il nostro strumento per il sonno",
-      nl: "Probeer onze slaaptool",
-      tr: "Uyku Aracımızı Deneyin",
-      id: "Coba Alat Tidur Kami",
-      vi: "Thử công cụ giấc ngủ của chúng tôi",
-      pl: "Wypróbuj nasze narzędzie do spania"
-    }[currentLang] || "Try Our Sleep Tool",
-    wakeUpFeelingCompletelyRefreshed: {
-      en: "Wake Up Feeling Completely Refreshed",
-      es: "Despiértese sintiéndose completamente renovado",
-      pt: "Acorde sentindo-se completamente revigorado",
-      fr: "Réveillez-vous en vous sentant complètement rafraîchi",
-      de: "Wachen Sie völlig erholt auf",
-      it: "Svegliati sentendoti completamente riposato",
-      nl: "Word volledig fris wakker",
-      tr: "Tamamen Dinlenmiş Olarak Uyanın",
-      id: "Bangun Tidur dengan Perasaan Benar-benar Segar",
-      vi: "Thức dậy với cảm giác hoàn toàn sảng khoái",
-      pl: "Obudź się z uczuciem całkowitego odświeżenia"
-    }[currentLang] || "Wake Up Feeling Completely Refreshed",
-    stopGuessingYourBedtimes: {
-      en: "Stop guessing your bedtimes! Use our state-of-the-art calculator to plan your natural sleep cycles, REM stages, and sleep latency based on real circadian rhythm biology.",
-      es: "¡Deje de adivinar sus horas de acostarse! Utilice nuestra calculadora de última generación para planificar sus ciclos de sueño naturales, etapas REM y latencia de sueño en función de la biología real del ritmo circadiano.",
-      pt: "Pare de adivinhar suas horas de dormir! Use nossa calculadora de última geração para planejar seus ciclos naturais de sono, estágios REM e latência do sono com base na biologia real do ritmo circadiano.",
-      fr: "Arrêtez de deviner vos heures de coucher ! Utilisez notre calculateur de pointe pour planifier vos cycles de sommeil naturels, vos phases REM et votre latence de sommeil en fonction de la biologie réelle du rythme circadien.",
-      de: "Hören Sie auf, Ihre Bettzeiten zu erraten! Nutzen Sie unseren hochmodernen Rechner, um Ihre natürlichen Schlafzyklen, REM-Phasen und Einschlaflatenz basierend auf der realen circadianen Biologie zu planen.",
-      it: "Smetti di indovinare i tuoi orari di andare a dormire! Utilizza il nostro calcolatore all'avanguardia per pianificare i tuoi cicli naturali del sonno, le fasi REM e la latenza del sonno in base alla reale biologia del ritmo circadiano.",
-      nl: "Stop met het gokken van uw bedtijden! Gebruik onze ultramoderne calculator om uw natuurlijke slaapcycli, REM-fasen en slaaplatentie te plannen op basis van echte circadiaanse biologie.",
-      tr: "Yatma vakitlerinizi tahmin etmeyi bırakın! Gerçek sirkadiyen ritim biyolojisine dayalı olarak doğal uyku döngülerinizi, REM aşamalarınızı ve uyku gecikmenizi planlamak için son teknoloji hesaplayıcımızı kullanın.",
-      id: "Berhentilah menebak-nebak waktu tidur Anda! Gunakan kalkulator mutakhir kami untuk merencanakan siklus tidur alami, tahapan REM, dan latensi tidur Anda berdasarkan biologi ritme sirkadian yang sebenarnya.",
-      vi: "Đừng đoán giờ đi ngủ nữa! Hãy sử dụng máy tính hiện đại của chúng tôi để lập kế hoạch chu kỳ giấc ngủ tự nhiên, giai đoạn REM và độ trễ giấc ngủ dựa trên sinh học nhịp sinh học thực tế.",
-      pl: "Przestań zgadywać godziny kładzenia się spać! Skorzystaj z naszego najnowocześniejszego kalkulatora, aby zaplanować naturalne cykle snu, fazy REM i latencję snu w oparciu o rzeczywistą biologię rytmu dobowego."
-    }[currentLang] || "Stop guessing your bedtimes! Use our state-of-the-art calculator to plan your natural sleep cycles, REM stages, and sleep latency based on real circadian rhythm biology.",
-    flagshipDesc: {
-      en: "Our flagship tool to calculate optimal bedtime or wake-up times utilizing the 90-minute sleep formula.",
-      es: "Nuestra herramienta principal para calcular las horas óptimas de acostarse o despertarse utilizando la fórmula de sueño de 90 minutos.",
-      pt: "Nossa principal ferramenta para calcular os horários ideais para dormir ou acordar usando a fórmula de sono de 90 minutos.",
-      fr: "Notre outil phare pour calculer les heures optimales de coucher ou de réveil à l'aide de la formule de sommeil de 90 minutes.",
-      de: "Unser Flaggschiff-Tool zur Berechnung optimaler Zubettgeh- oder Aufwachzeiten mithilfe der 90-Minuten-Schlafformel.",
-      it: "Il nostro strumento di punta per calcolare l'orario ottimale per andare a dormire o svegliarsi utilizzando la formula del sonno di 90 minuti.",
-      nl: "Onze vlaggenschiptool om optimale bed- of wektijden te berekenen met behulp van de 90-minuten slaapformule.",
-      tr: "90 dakikalık uyku formülünü kullanarak en uygun yatma veya uyanma zamanlarını hesaplayan amiral gemisi aracımız.",
-      id: "Alat utama kami untuk menghitung waktu tidur atau bangun optimal menggunakan formula tidur 90 menit.",
-      vi: "Công cụ hàng đầu của chúng tôi để tính toán thời gian đi ngủ hoặc thức dậy tối ưu bằng cách sử dụng công thức giấc ngủ 90 phút.",
-      pl: "Nasze flagowe narzędzie do obliczania optymalnego czasu pójścia spać lub przebudzenia przy użyciu 90-minutowej formuły snu."
-    }[currentLang] || "Our flagship tool to calculate optimal bedtime or wake-up times utilizing the 90-minute sleep formula.",
-    flagshipTitle: {
-      en: "Sleep Cycle Calculator",
-      es: "Calculadora de ciclo de sueño",
-      pt: "Calculadora de ciclo de sono",
-      fr: "Calculateur de cycle de sommeil",
-      de: "Schlafzyklus-Rechner",
-      it: "Calcolatore del ciclo del sonno",
-      nl: "Slaapcyclus-calculator",
-      tr: "Uyku Döngüsü Hesaplayıcı",
-      id: "Kalkulator Siklus Tidur",
-      vi: "Máy tính chu kỳ giấc ngủ",
-      pl: "Kalkulator cyklu snu"
-    }[currentLang] || "Sleep Cycle Calculator"
+    launch: "Launch Tool",
+    explore: "Explore Specialized Sleep Calculators",
+    tryOurSleepTool: "Try Our Sleep Tool",
+    wakeUpFeelingCompletelyRefreshed: "Wake Up Feeling Completely Refreshed",
+    stopGuessingYourBedtimes: "Stop guessing your bedtimes! Use our state-of-the-art calculator to plan your natural sleep cycles, REM stages, and sleep latency based on real circadian rhythm biology.",
+    flagshipDesc: "Our flagship tool to calculate optimal bedtime or wake-up times utilizing the 90-minute sleep formula.",
+    flagshipTitle: "Sleep Cycle Calculator"
   };
 
   const isBlog1 = currentPath === '/sleep-cycles-explained' || slug === 'sleep-cycles-explained';
@@ -1258,8 +1212,13 @@ export default function Blog() {
   const isBlog45 = currentPath === '/what-time-should-i-sleep-if-i-wake-up-at-6-am' || slug === 'what-time-should-i-sleep-if-i-wake-up-at-6-am';
   const isBlog46 = currentPath === '/best-bedtime-calculator-for-students' || slug === 'best-bedtime-calculator-for-students';
   const isBlog47 = currentPath === '/nap-calculator-20-30-60-90-minutes' || slug === 'nap-calculator-20-30-60-90-minutes';
+  const isBlog48 = currentPath === '/sleep-calculator-cycle' || slug === 'sleep-calculator-cycle';
+  const isBlog49 = currentPath === '/sleep-calculator-how-much-sleep-did-i-get' || slug === 'sleep-calculator-how-much-sleep-did-i-get';
+  const isBlog50 = currentPath === '/sleep-calculator-women' || slug === 'sleep-calculator-women';
+  const isBlog51 = currentPath === '/sleep-calculator-for-kids' || slug === 'sleep-calculator-for-kids';
+  const isBlog52 = currentPath === '/sleep-calculator-app' || slug === 'sleep-calculator-app';
   
-  const isAnyBlog = isBlog1 || isBlog2 || isBlog3 || isBlog4 || isBlog5 || isBlog6 || isBlog7 || isBlog8 || isBlog9 || isBlog10 || isBlog11 || isBlog12 || isBlog13 || isBlog14 || isBlog15 || isBlog16 || isBlog17 || isBlog18 || isBlog19 || isBlog20 || isBlog21 || isBlog22 || isBlog23 || isBlog24 || isBlog25 || isBlog26 || isBlog27 || isBlog28 || isBlog29 || isBlog30 || isBlog31 || isBlog32 || isBlog33 || isBlog34 || isBlog35 || isBlog36 || isBlog37 || isBlog38 || isBlog39 || isBlog40 || isBlog41 || isBlog42 || isBlog43 || isBlog44 || isBlog45 || isBlog46 || isBlog47;
+  const isAnyBlog = isBlog1 || isBlog2 || isBlog3 || isBlog4 || isBlog5 || isBlog6 || isBlog7 || isBlog8 || isBlog9 || isBlog10 || isBlog11 || isBlog12 || isBlog13 || isBlog14 || isBlog15 || isBlog16 || isBlog17 || isBlog18 || isBlog19 || isBlog20 || isBlog21 || isBlog22 || isBlog23 || isBlog24 || isBlog25 || isBlog26 || isBlog27 || isBlog28 || isBlog29 || isBlog30 || isBlog31 || isBlog32 || isBlog33 || isBlog34 || isBlog35 || isBlog36 || isBlog37 || isBlog38 || isBlog39 || isBlog40 || isBlog41 || isBlog42 || isBlog43 || isBlog44 || isBlog45 || isBlog46 || isBlog47 || isBlog48 || isBlog49 || isBlog50 || isBlog51 || isBlog52 || Boolean(slug && BLOG_POSTS.some(p => p.slug === slug));
   const isAll = false; // Override isAll to false so individual articles never render stacked in /blog
 
   let activeSlug = '';
@@ -1310,22 +1269,16 @@ export default function Blog() {
   else if (isBlog45) activeSlug = 'what-time-should-i-sleep-if-i-wake-up-at-6-am';
   else if (isBlog46) activeSlug = 'best-bedtime-calculator-for-students';
   else if (isBlog47) activeSlug = 'nap-calculator-20-30-60-90-minutes';
+  else if (isBlog48) activeSlug = 'sleep-calculator-cycle';
+  else if (isBlog49) activeSlug = 'sleep-calculator-how-much-sleep-did-i-get';
+  else if (isBlog50) activeSlug = 'sleep-calculator-women';
+  else if (isBlog51) activeSlug = 'sleep-calculator-for-kids';
+  else if (isBlog52) activeSlug = 'sleep-calculator-app';
+  else if (slug) activeSlug = slug;
 
   const currentFaqs = activeSlug ? BLOG_FAQS[activeSlug] : [];
 
-
-
-  const DUPLICATE_SLUGS = [
-    'how-much-sleep-do-you-need-by-age',
-    'wake-up-tired-after-8-hours',
-    'best-bedtime-for-adults',
-    'what-is-sleep-debt',
-    'sleep-and-memory-learning',
-    'sleep-calculator-by-age',
-    '90-minute-sleep-calculator',
-    'best-sleep-schedule-for-productivity',
-    'why-am-i-tired-after-sleeping'
-  ];
+  const DUPLICATE_SLUGS: string[] = [];
 
   const localizedBlogPosts = BLOG_POSTS;
   const currentPost = localizedBlogPosts.find(p => p.slug === activeSlug);
@@ -1968,7 +1921,7 @@ export default function Blog() {
             onClick={handleBack}
             className="inline-flex items-center gap-2 text-base text-[#6B7280] font-semibold tracking-wide hover:text-[#7C3AED] transition-colors focus-visible:outline-none cursor-pointer"
           >
-            <ArrowLeft size={18} /> {t('common.backToCalc')}
+            <ArrowLeft size={18} /> Back to Sleep Calculator
           </button>
         </div>
         {/* Main Blog Cards Overview - Render when no specific blog is selected */}
@@ -1976,10 +1929,10 @@ export default function Blog() {
           <div className="space-y-12">
             <div className="text-center space-y-4 max-w-3xl mx-auto mb-10">
               <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#111827] tracking-tight leading-tight font-serif">
-                {t('blog.blogIndexTitle')}
+                Sleep Education & Circadian Science
               </h1>
               <p className="text-sm sm:text-base text-[#4B5563] leading-relaxed font-medium">
-                {t('blog.blogIndexSub')}
+                Evidence-backed guides on 90-minute sleep cycles, REM sleep stages, circadian health, and morning energy.
               </p>
             </div>
 
@@ -2035,7 +1988,7 @@ export default function Blog() {
                       </p>
 
                       <div className="flex items-center text-sm font-semibold text-[#7C3AED] dark:text-violet-400 group-hover:text-[#6D28D9] dark:group-hover:text-violet-300 mt-auto">
-                        {t('common.readArticle')}
+                        Read Article
                         <svg 
                           className="w-4 h-4 ml-1 transform group-hover:translate-x-1.5 transition-transform duration-300" 
                           fill="none" 
@@ -2075,7 +2028,7 @@ export default function Blog() {
                     className="promo-btn w-full md:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-[#7C3AED] hover:bg-[#6D28D9] text-white text-base font-bold rounded-2xl shadow-md hover:shadow-lg hover:shadow-[#7C3AED]/20 transition-all duration-200 transform hover:-translate-y-0.5 cursor-pointer"
                   >
                     <Calculator size={18} />
-                    {t('common.backToCalc')}
+                    Back to Sleep Calculator
                   </Link>
                 </div>
               </div>
@@ -2109,10 +2062,10 @@ export default function Blog() {
                   >
                     <div>
                       <h4 className="text-[#111827] dark:text-slate-200 font-bold text-sm group-hover:text-[#7C3AED] transition-colors flex items-center gap-1.5 font-serif">
-                        <span>🌙</span> {t('calculators.shiftwork.title')}
+                        <span>🌙</span> Shift Work Sleep Calculator - Find the Best Sleep Schedule for Night and Rotating Shift Workers
                       </h4>
                       <p className="text-xs text-[#6B7280] dark:text-slate-400 mt-1 leading-normal">
-                        {t('calculators.shiftwork.subtitle')}
+                        The Shift Work Sleep Calculator helps night shift and rotating shift workers find the best daytime sleep schedule based on their work hours, return-home time, and age.
                       </p>
                     </div>
                     <span className="launch-link text-[11px] font-bold text-[#7C3AED] dark:text-violet-400 mt-3 inline-flex items-center gap-1 group-hover:underline">
@@ -2126,10 +2079,10 @@ export default function Blog() {
                   >
                     <div>
                       <h4 className="text-[#111827] dark:text-slate-200 font-bold text-sm group-hover:text-[#7C3AED] transition-colors flex items-center gap-1.5 font-serif">
-                        <span>⏱️</span> {t('calculators.ninetyMin.title')}
+                        <span>⏱️</span> 90 Minute Sleep Calculator
                       </h4>
                       <p className="text-xs text-[#6B7280] dark:text-slate-400 mt-1 leading-normal">
-                        {t('calculators.ninetyMin.subtitle')}
+                        The 90 Minute Sleep Calculator helps you find the best bedtime or wake-up time based on 90-minute sleep cycles.
                       </p>
                     </div>
                     <span className="launch-link text-[11px] font-bold text-[#7C3AED] dark:text-violet-400 mt-3 inline-flex items-center gap-1 group-hover:underline">
@@ -2143,10 +2096,10 @@ export default function Blog() {
                   >
                     <div>
                       <h4 className="text-[#111827] dark:text-slate-200 font-bold text-sm group-hover:text-[#7C3AED] transition-colors flex items-center gap-1.5 font-serif">
-                        <span>🎓</span> {t('calculators.student.title')}
+                        <span>🎓</span> Student Sleep Calculator – Find the Best Sleep Schedule for Better Learning and Academic Success
                       </h4>
                       <p className="text-xs text-[#6B7280] dark:text-slate-400 mt-1 leading-normal">
-                        {t('calculators.student.subtitle')}
+                        The Student Sleep Calculator helps you find the ideal bedtime based on your wake-up time and age.
                       </p>
                     </div>
                     <span className="launch-link text-[11px] font-bold text-[#7C3AED] dark:text-violet-400 mt-3 inline-flex items-center gap-1 group-hover:underline">
@@ -2160,10 +2113,10 @@ export default function Blog() {
                   >
                     <div>
                       <h4 className="text-[#111827] dark:text-slate-200 font-bold text-sm group-hover:text-[#7C3AED] transition-colors flex items-center gap-1.5 font-serif">
-                        <span>⏰</span> {t('calculators.wakeUp.title')}
+                        <span>⏰</span> Wake Up Between Sleep Cycles Calculator
                       </h4>
                       <p className="text-xs text-[#6B7280] dark:text-slate-400 mt-1 leading-normal">
-                        {t('calculators.wakeUp.subtitle')}
+                        Find the best time to wake up between sleep cycles based on your bedtime, age, and sleep latency.
                       </p>
                     </div>
                     <span className="launch-link text-[11px] font-bold text-[#7C3AED] dark:text-violet-400 mt-3 inline-flex items-center gap-1 group-hover:underline">
@@ -2177,10 +2130,10 @@ export default function Blog() {
                   >
                     <div>
                       <h4 className="text-[#111827] dark:text-slate-200 font-bold text-sm group-hover:text-[#7C3AED] transition-colors flex items-center gap-1.5 font-serif">
-                        <span>🎯</span> {t('calculators.idealBedtime.title')}
+                        <span>🎯</span> Ideal Bedtime Calculator – Find Your Perfect Bedtime for Better Sleep
                       </h4>
                       <p className="text-xs text-[#6B7280] dark:text-slate-400 mt-1 leading-normal">
-                        {t('calculators.idealBedtime.subtitle')}
+                        Use the Ideal Bedtime Calculator to find the best time to go to bed based on your desired wake-up time, age, and sleep latency.
                       </p>
                     </div>
                     <span className="launch-link text-[11px] font-bold text-[#7C3AED] dark:text-violet-400 mt-3 inline-flex items-center gap-1 group-hover:underline">
