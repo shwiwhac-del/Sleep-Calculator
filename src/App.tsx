@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, Navigate, useParams, useLocation } from 'react-router-dom';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { Menu, X, ChevronDown, Sun, Moon } from 'lucide-react';
@@ -7,72 +7,49 @@ import ScrollToTop from './components/ScrollToTop';
 import { StarryBackground } from './components/StarryBackground';
 import { usePerformanceMonitoring } from './hooks/usePerformanceMonitoring';
 
-import Home from './pages/Home';
-import Terms from './pages/Terms';
-import Privacy from './pages/Privacy';
-import Contact from './pages/Contact';
-import About from './pages/About';
-import Blog from './pages/Blog';
-import NotFound from './pages/NotFound';
-import StudentCalc from './pages/StudentCalc';
-import ShiftWorkCalc from './pages/ShiftWorkCalc';
-import NinetyMinCalc from './pages/NinetyMinCalc';
-import WakeUpCalc from './pages/WakeUpCalc';
-import IdealBedtimeCalc from './pages/IdealBedtimeCalc';
+// Code-split page components for optimal initial bundle size & Core Web Vitals
+const Home = lazy(() => import('./pages/Home'));
+const Terms = lazy(() => import('./pages/Terms'));
+const Privacy = lazy(() => import('./pages/Privacy'));
+const Contact = lazy(() => import('./pages/Contact'));
+const About = lazy(() => import('./pages/About'));
+const Blog = lazy(() => import('./pages/Blog'));
+const NotFound = lazy(() => import('./pages/NotFound'));
+const StudentCalc = lazy(() => import('./pages/StudentCalc'));
+const ShiftWorkCalc = lazy(() => import('./pages/ShiftWorkCalc'));
+const NinetyMinCalc = lazy(() => import('./pages/NinetyMinCalc'));
+const WakeUpCalc = lazy(() => import('./pages/WakeUpCalc'));
+const IdealBedtimeCalc = lazy(() => import('./pages/IdealBedtimeCalc'));
 
 import { OpenGraphTags } from './components/OpenGraphTags';
 import { getCanonicalUrl } from './lib/seo';
 
-function PageFallback() {
-  return (
-    <div className="w-full min-h-[calc(100vh-160px)] flex items-center justify-center opacity-0" aria-hidden="true" />
-  );
-}
-
-function GlobalSiteLoader({ isLoading }: { isLoading: boolean }) {
-  const [visible, setVisible] = useState(isLoading);
-
-  useEffect(() => {
-    if (isLoading) {
-      setVisible(true);
-    } else {
-      const timer = setTimeout(() => {
-        setVisible(false);
-      }, 200);
-      return () => clearTimeout(timer);
-    }
-  }, [isLoading]);
-
-  if (!visible) return null;
+function GlobalSiteLoader({ isLoading = true }: { isLoading?: boolean }) {
+  if (!isLoading) return null;
 
   return (
-    <div
-      style={{ transition: 'opacity 200ms ease-in-out' }}
-      className={`fixed inset-0 z-[99999] flex flex-col items-center justify-center bg-[#F3ECE3] dark:bg-[#0B0F19] ${
-        isLoading ? 'opacity-100' : 'opacity-0 pointer-events-none'
-      }`}
-    >
+    <div className="fixed inset-0 z-[999999] flex flex-col items-center justify-center bg-[#F3ECE3] dark:bg-[#0B0F19] w-screen h-screen">
       <div className="flex flex-col items-center justify-center p-6 space-y-4 text-center max-w-sm">
         <div className="font-serif text-3xl sm:text-4xl font-extrabold tracking-tight text-[#111827] dark:text-white">
           Sleep<span className="text-[#7C3AED] dark:text-violet-400">Calculator</span>
         </div>
         
-        {/* Simple 200ms loading progress bar */}
+        {/* Sleek loading progress bar */}
         <div className="w-48 h-1.5 bg-[#E1D8CC] dark:bg-[#1E293B] rounded-full overflow-hidden relative">
           <div className="h-full bg-gradient-to-r from-[#7C3AED] to-[#D4AF37] rounded-full w-full animate-pulse" />
         </div>
         
         <span className="text-[11px] font-mono font-bold uppercase tracking-widest text-[#6B7280] dark:text-slate-400">
-          Loading Page...
+          Loading...
         </span>
       </div>
     </div>
   );
 }
 
-
-
-// Home Guides
+function PageFallback() {
+  return <GlobalSiteLoader isLoading={true} />;
+}
 
 
 
@@ -454,16 +431,6 @@ function AppContent() {
   usePerformanceMonitoring();
   const location = useLocation();
   const canonicalUrl = getCanonicalUrl(location.pathname);
-  
-  const [isRouteLoading, setIsRouteLoading] = useState(true);
-
-  useEffect(() => {
-    setIsRouteLoading(true);
-    const timer = setTimeout(() => {
-      setIsRouteLoading(false);
-    }, 200);
-    return () => clearTimeout(timer);
-  }, [location.pathname, location.search]);
 
   const [isDarkMode, setIsDarkMode] = useState(() => {
     if (typeof window !== "undefined") {
@@ -491,46 +458,47 @@ function AppContent() {
 
   return (
     <div className="min-h-screen flex flex-col text-[#374151] dark:text-[#E2E8F0] font-sans relative overflow-x-hidden bg-[#F3ECE3] dark:bg-[#0B0F19] transition-colors duration-300">
-      <GlobalSiteLoader isLoading={isRouteLoading} />
       <StarryBackground />
       <Header isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
-      <main className="relative z-10 flex-grow flex flex-col items-center justify-start w-full min-h-[calc(100vh-160px)] pt-5 sm:pt-8 md:pt-10 pb-4 sm:pb-8">
-        <Routes>
-          {/* Core Pages */}
-          <Route path="/" element={<Home />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/blog/:slug" element={<Blog />} />
+      <main className="relative flex-grow flex flex-col items-center justify-start w-full min-h-[calc(100vh-160px)] pt-5 sm:pt-8 md:pt-10 pb-4 sm:pb-8">
+        <Suspense fallback={<PageFallback />}>
+          <Routes>
+            {/* Core Pages */}
+            <Route path="/" element={<Home />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:slug" element={<Blog />} />
 
-          {/* Dedicated Interactive Calculator Landing Pages */}
-          <Route path="/student-sleep-calculator" element={<StudentCalc />} />
-          <Route path="/shift-work-sleep-calculator" element={<ShiftWorkCalc />} />
-          <Route path="/sleep-cycle-calculator-90-minutes" element={<NinetyMinCalc />} />
-          <Route path="/wake-up-between-sleep-cycles" element={<WakeUpCalc />} />
-          <Route path="/ideal-bedtime-based-on-wake-up-time" element={<IdealBedtimeCalc />} />
+            {/* Dedicated Interactive Calculator Landing Pages */}
+            <Route path="/student-sleep-calculator" element={<StudentCalc />} />
+            <Route path="/shift-work-sleep-calculator" element={<ShiftWorkCalc />} />
+            <Route path="/sleep-cycle-calculator-90-minutes" element={<NinetyMinCalc />} />
+            <Route path="/wake-up-between-sleep-cycles" element={<WakeUpCalc />} />
+            <Route path="/ideal-bedtime-based-on-wake-up-time" element={<IdealBedtimeCalc />} />
 
-          {/* Keyword Search Educational Pages (Direct render Blog) */}
-          <Route path="/sleep-calculator-by-age" element={<Blog />} />
-          <Route path="/sleep-calculator-cycle" element={<Blog />} />
-          <Route path="/sleep-calculator-how-much-sleep-did-i-get" element={<Blog />} />
-          <Route path="/sleep-calculator-women" element={<Blog />} />
-          <Route path="/sleep-calculator-for-kids" element={<Blog />} />
-          <Route path="/sleep-calculator-app" element={<Blog />} />
+            {/* Keyword Search Educational Pages (Direct render Blog) */}
+            <Route path="/sleep-calculator-by-age" element={<Blog />} />
+            <Route path="/sleep-calculator-cycle" element={<Blog />} />
+            <Route path="/sleep-calculator-how-much-sleep-did-i-get" element={<Blog />} />
+            <Route path="/sleep-calculator-women" element={<Blog />} />
+            <Route path="/sleep-calculator-for-kids" element={<Blog />} />
+            <Route path="/sleep-calculator-app" element={<Blog />} />
 
-          {/* Utility Pages */}
-          <Route path="/about" element={<About />} />
-          <Route path="/terms" element={<Terms />} />
-          <Route path="/privacy" element={<Privacy />} />
-          <Route path="/contact" element={<Contact />} />
+            {/* Utility Pages */}
+            <Route path="/about" element={<About />} />
+            <Route path="/terms" element={<Terms />} />
+            <Route path="/privacy" element={<Privacy />} />
+            <Route path="/contact" element={<Contact />} />
 
-          {/* Legacy page/blog Prefixes rendered directly */}
-          <Route path="/page/blog/:slug" element={<Blog />} />
+            {/* Legacy page/blog Prefixes rendered directly */}
+            <Route path="/page/blog/:slug" element={<Blog />} />
 
-          {/* Dynamic redirect for root-level blog slugs or root languages to /blog/:slug */}
-          <Route path="/:slug" element={<RootSlugRedirect />} />
+            {/* Dynamic redirect for root-level blog slugs or root languages to /blog/:slug */}
+            <Route path="/:slug" element={<RootSlugRedirect />} />
 
-          {/* Catch-all 404 route */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+            {/* Catch-all 404 route */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Suspense>
       </main>
       <Footer />
     </div>

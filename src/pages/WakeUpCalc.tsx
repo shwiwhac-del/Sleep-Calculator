@@ -134,11 +134,11 @@ export default function WakeUpCalc() {
       />
 
       {/* Header Title */}
-      <div className="flex flex-col items-center justify-center gap-2 sm:gap-3 text-center w-full max-w-full px-2 mt-2 mb-4 transition-all duration-300" id="wake-cycles-header">
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[2.6rem] font-extrabold tracking-tight text-[#111827] dark:text-white leading-tight font-serif text-center w-full max-w-4xl mx-auto">
+      <div className="flex flex-col items-center justify-center gap-2 sm:gap-3 text-center w-full max-w-4xl mx-auto px-3 mt-2 mb-4 transition-all duration-300" id="wake-cycles-header">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-[2.4rem] font-extrabold tracking-tight text-[#111827] dark:text-white leading-tight sm:leading-snug font-serif text-center">
           Wake Up Between Sleep Cycles Calculator – Find Your Ideal Wake-Up Time Based on Complete Sleep Cycles
         </h1>
-        <p className="text-sm sm:text-base md:text-lg text-[#4B5563] dark:text-slate-300 max-w-3xl mx-auto font-medium leading-relaxed tracking-normal opacity-95 text-center px-2">
+        <p className="text-sm sm:text-base md:text-lg text-[#4B5563] dark:text-slate-300 max-w-2xl sm:max-w-3xl mx-auto font-medium leading-relaxed opacity-95 text-center mt-1">
           Find the best time to wake up between sleep cycles based on your bedtime, age, and sleep latency. This calculator helps you wake up feeling more refreshed by estimating the ideal wake-up times after complete sleep cycles.
         </p>
       </div>

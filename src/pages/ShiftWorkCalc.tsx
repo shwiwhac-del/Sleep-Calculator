@@ -159,12 +159,12 @@ export default function ShiftWorkCalc() {
       />
 
       {/* Header Title */}
-      <div className="flex flex-col items-center justify-center gap-2 sm:gap-3 text-center w-full max-w-full px-2 mt-2 mb-4 transition-all duration-300" id="shift-header">
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[2.6rem] font-extrabold tracking-tight text-[#111827] dark:text-white leading-tight font-serif text-center w-full max-w-4xl mx-auto">
+      <div className="flex flex-col items-center justify-center gap-2 sm:gap-3 text-center w-full max-w-4xl mx-auto px-3 mt-2 mb-4 transition-all duration-300" id="shift-header">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-[2.4rem] font-extrabold tracking-tight text-[#111827] dark:text-white leading-tight sm:leading-snug font-serif text-center">
           Shift Work Sleep Calculator - Find the Best Sleep Schedule for Night and Rotating Shift Workers
         </h1>
-        <p className="text-sm sm:text-base md:text-lg text-[#4B5563] dark:text-slate-300 max-w-3xl mx-auto font-medium leading-relaxed tracking-normal opacity-95 text-center px-2">
-          The Shift Work Sleep Calculator helps night shift and rotating shift workers find the best daytime sleep schedule based on their work hours, return-home time, and age. Using complete sleep cycles, it recommends the ideal sleep times to improve sleep quality, reduce fatigue, boost alertness, and support better health despite an irregular work schedule.
+        <p className="text-sm sm:text-base md:text-lg text-[#4B5563] dark:text-slate-300 max-w-2xl sm:max-w-3xl mx-auto font-medium leading-relaxed opacity-95 text-center mt-1">
+          The Shift Work Sleep Calculator helps night shift and rotating shift workers find the best daytime sleep schedule based on their work hours, return-home time, and age.
         </p>
       </div>
 

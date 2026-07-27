@@ -1,14 +1,18 @@
 import { useState, useEffect, useRef, lazy, Suspense } from "react";
 import { useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "motion/react";
-import { MessageSquare } from "lucide-react";
 import { Helmet } from "react-helmet-async";
 import { getCanonicalUrl } from "../lib/seo";
 import { OpenGraphTags } from "../components/OpenGraphTags";
 import TimePicker from "../components/TimePicker";
-import SleepCycleChart from "../components/SleepCycleChart";
 import { AdPlaceholder } from "../components/AdPlaceholder";
-import { SleepScienceGuide } from "../components/SleepScienceGuide";
+
+const SleepCycleChart = lazy(() => import("../components/SleepCycleChart"));
+const SleepScienceGuide = lazy(() =>
+  import("../components/SleepScienceGuide").then((module) => ({
+    default: module.SleepScienceGuide,
+  }))
+);
 
 const FeedbackModal = lazy(() =>
   import("../components/FeedbackModal").then((module) => ({
@@ -493,12 +497,12 @@ export default function Home() {
       {/* Header Info */}
       <div className="flex flex-col items-center justify-center mb-2 mt-0">
         <OpenGraphTags />
-        <div className={`flex flex-col items-center justify-center gap-2 text-center max-w-4xl mx-auto px-2 mt-3 sm:mt-4 md:mt-5 transition-all duration-300 ${showResults ? "mb-4" : "mb-6 sm:mb-8"}`}>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[2.75rem] font-extrabold tracking-tight text-[#111827] dark:text-white leading-tight sm:leading-snug text-center">
-            Sleep Calculator – Calculate the Best Bedtime, Wake-Up Time, and Healthy Sleep Schedule
+        <div className={`flex flex-col items-center justify-center gap-2 sm:gap-3 text-center max-w-4xl mx-auto px-3 mt-2 sm:mt-4 transition-all duration-300 ${showResults ? "mb-3" : "mb-5 sm:mb-6"}`}>
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-[2.4rem] font-extrabold tracking-tight text-[#111827] dark:text-white leading-tight sm:leading-snug text-center font-serif">
+            Sleep Calculator – Find Your Ideal Bedtime, Wake-Up Time, and Sleep Cycles
           </h1>
-          <p className="text-sm sm:text-base md:text-lg text-[#4B5563] dark:text-slate-300 max-w-3xl mx-auto font-medium leading-relaxed tracking-normal opacity-95">
-            Waking up at the end of a complete sleep cycle instead of mid-cycle can help you feel more refreshed and improve your overall sleep quality. Simply choose your bedtime or wake-up time, enter the required details, and click Calculate. The calculator will instantly determine the best bedtime or wake-up time based on the optimal number of complete sleep cycles.
+          <p className="text-sm sm:text-base md:text-lg text-[#4B5563] dark:text-slate-300 max-w-2xl sm:max-w-3xl mx-auto font-medium leading-relaxed opacity-95 text-center mt-1">
+            Waking up at the end of a complete sleep cycle instead of mid-cycle can help you feel more refreshed and improve your overall sleep quality. Simply choose your bedtime or wake-up time, enter the required details, and click Calculate.
           </p>
         </div>
         
@@ -825,13 +829,15 @@ export default function Home() {
                       </div>
 
                       {mode !== "wake" && mode !== "bed" && mode !== "rem" && (
-                        <SleepCycleChart
-                          results={results}
-                          mode={mode as "wake" | "bed" | "nap" | "rem"}
-                          time={time}
-                          ageGroup={ageGroup}
-                          isRecommended={isRecommended}
-                        />
+                        <Suspense fallback={null}>
+                          <SleepCycleChart
+                            results={results}
+                            mode={mode as "wake" | "bed" | "nap" | "rem"}
+                            time={time}
+                            ageGroup={ageGroup}
+                            isRecommended={isRecommended}
+                          />
+                        </Suspense>
                       )}
                     </>
                   )}
@@ -902,7 +908,9 @@ export default function Home() {
         )}
       </AnimatePresence>
 
-      <SleepScienceGuide />
+      <Suspense fallback={null}>
+        <SleepScienceGuide />
+      </Suspense>
     </main>
   );
 }

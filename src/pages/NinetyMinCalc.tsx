@@ -1,14 +1,15 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, lazy, Suspense } from "react";
 import { Link } from "react-router-dom";
 import { Hourglass, ChevronDown, ArrowLeft } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { getCanonicalUrl } from "../lib/seo";
 import TimePicker from "../components/TimePicker";
 import { AdPlaceholder } from "../components/AdPlaceholder";
-import RecommendedSleepGuides from "../components/RecommendedSleepGuides";
 import { Breadcrumbs } from "../components/Breadcrumbs";
 import { OpenGraphTags } from "../components/OpenGraphTags";
-import { PageQuestionBreakdown } from "../components/PageQuestionBreakdown";
+
+const RecommendedSleepGuides = lazy(() => import("../components/RecommendedSleepGuides"));
+const PageQuestionBreakdown = lazy(() => import("../components/PageQuestionBreakdown").then(m => ({ default: m.PageQuestionBreakdown })));
 
 export default function NinetyMinCalc() {
   const canonicalUrl = getCanonicalUrl("/sleep-cycle-calculator-90-minutes");
@@ -124,12 +125,12 @@ export default function NinetyMinCalc() {
       />
 
       {/* Header Title */}
-      <div className="flex flex-col items-center justify-center gap-2 sm:gap-3 text-center w-full max-w-full px-2 mt-2 mb-4 transition-all duration-300" id="ninety-header">
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[2.6rem] font-extrabold tracking-tight text-[#111827] dark:text-white leading-tight font-serif text-center w-full max-w-4xl mx-auto">
+      <div className="flex flex-col items-center justify-center gap-2 sm:gap-3 text-center w-full max-w-4xl mx-auto px-3 mt-2 mb-4 transition-all duration-300" id="ninety-header">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-[2.4rem] font-extrabold tracking-tight text-[#111827] dark:text-white leading-tight sm:leading-snug font-serif text-center">
           90 Minute Sleep Calculator – Calculate the Best Bedtime and Wake-Up Time Using 90-Minute Sleep Cycles
         </h1>
-        <p className="text-sm sm:text-base md:text-lg text-[#4B5563] dark:text-slate-300 max-w-3xl mx-auto font-medium leading-relaxed tracking-normal opacity-95 text-center px-2">
-          The 90 Minute Sleep Calculator helps you find the best bedtime or wake-up time based on 90-minute sleep cycles. Wake up at the end of a complete sleep cycle to feel more refreshed and energized. Enter your bedtime or wake-up time, click Calculate, and get your ideal sleep schedule.
+        <p className="text-sm sm:text-base md:text-lg text-[#4B5563] dark:text-slate-300 max-w-2xl sm:max-w-3xl mx-auto font-medium leading-relaxed opacity-95 text-center mt-1">
+          The 90 Minute Sleep Calculator helps you find the best bedtime or wake-up time based on 90-minute sleep cycles. Wake up at the end of a complete sleep cycle to feel more refreshed and energized.
         </p>
       </div>
 
@@ -500,11 +501,13 @@ export default function NinetyMinCalc() {
       </article>
 
       {/* Recommended Sleep Guides & Science */}
-      <RecommendedSleepGuides 
-        preferredSlugs={['90-minute-sleep-calculator', 'sleep-cycles-explained', 'what-is-rem-sleep']} 
-        title="90-Minute Sleep Cycle Guides" 
-        description="Learn how the human 90-minute ultradian rhythm works, what happens during REM and NREM stages, and how to optimize your sleep windows."
-      />
+      <Suspense fallback={null}>
+        <RecommendedSleepGuides 
+          preferredSlugs={['90-minute-sleep-calculator', 'sleep-cycles-explained', 'what-is-rem-sleep']} 
+          title="90-Minute Sleep Cycle Guides" 
+          description="Learn how the human 90-minute ultradian rhythm works, what happens during REM and NREM stages, and how to optimize your sleep windows."
+        />
+      </Suspense>
 
     </main>
   );

@@ -129,12 +129,12 @@ export default function StudentCalc() {
       />
 
       {/* Header Title */}
-      <div className="flex flex-col items-center justify-center gap-2 sm:gap-3 text-center w-full max-w-full px-2 mt-2 mb-4 transition-all duration-300" id="student-header-banner">
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[2.6rem] font-extrabold tracking-tight text-[#111827] dark:text-white leading-tight font-serif text-center w-full max-w-4xl mx-auto">
+      <div className="flex flex-col items-center justify-center gap-2 sm:gap-3 text-center w-full max-w-4xl mx-auto px-3 mt-2 mb-4 transition-all duration-300" id="student-header-banner">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-[2.4rem] font-extrabold tracking-tight text-[#111827] dark:text-white leading-tight sm:leading-snug font-serif text-center">
           Student Sleep Calculator – Find the Best Sleep Schedule for Better Learning and Academic Success
         </h1>
-        <p className="text-sm sm:text-base md:text-lg text-[#4B5563] dark:text-slate-300 max-w-3xl mx-auto font-medium leading-relaxed tracking-normal opacity-95 text-center px-2">
-          The Student Sleep Calculator helps you find the ideal bedtime based on your wake-up time and age. By aligning your sleep with complete sleep cycles, it can help improve focus, memory, learning, energy, and overall academic performance while supporting a healthier daily routine.
+        <p className="text-sm sm:text-base md:text-lg text-[#4B5563] dark:text-slate-300 max-w-2xl sm:max-w-3xl mx-auto font-medium leading-relaxed opacity-95 text-center mt-1">
+          The Student Sleep Calculator helps you find the ideal bedtime based on your wake-up time and age. By aligning your sleep with complete sleep cycles, it can help improve focus, memory, and overall academic performance.
         </p>
       </div>
 

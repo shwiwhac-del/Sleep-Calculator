@@ -29,9 +29,23 @@ export default defineConfig(({ mode }) => {
       },
       rollupOptions: {
         output: {
-          manualChunks: {
-            "vendor-core": ["react", "react-dom", "react-router-dom", "react-helmet-async"],
-            "vendor-ui": ["lucide-react", "motion/react"],
+          manualChunks(id) {
+            if (id.includes("node_modules")) {
+              if (
+                id.includes("react") ||
+                id.includes("react-dom") ||
+                id.includes("react-router-dom") ||
+                id.includes("react-helmet-async")
+              ) {
+                return "vendor-core";
+              }
+              if (id.includes("motion")) {
+                return "vendor-motion";
+              }
+              if (id.includes("lucide-react")) {
+                return "vendor-icons";
+              }
+            }
           },
         },
       },

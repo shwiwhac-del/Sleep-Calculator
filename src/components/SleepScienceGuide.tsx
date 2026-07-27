@@ -54,7 +54,7 @@ export function SleepScienceGuide() {
               <Clock size={20} />
             </div>
             <h4 className="font-bold text-[#111827] dark:text-gray-100">1. Core Anchor</h4>
-            <p className="text-xs text-[#6B7280] dark:text-gray-400">
+            <p className="text-xs text-[#4B5563] dark:text-slate-300 font-medium">
               Your target wake-up time or the specific time you plan to fall asleep.
             </p>
           </div>
@@ -63,7 +63,7 @@ export function SleepScienceGuide() {
               <Activity size={20} />
             </div>
             <h4 className="font-bold text-[#111827] dark:text-gray-100">2. Sleep Cycles</h4>
-            <p className="text-xs text-[#6B7280] dark:text-gray-400">
+            <p className="text-xs text-[#4B5563] dark:text-slate-300 font-medium">
               A standard adult sleep cycle averages roughly 90 minutes across four key stages.
             </p>
           </div>
@@ -72,7 +72,7 @@ export function SleepScienceGuide() {
               <Zap size={20} />
             </div>
             <h4 className="font-bold text-[#111827] dark:text-gray-100">3. Sleep Latency</h4>
-            <p className="text-xs text-[#6B7280] dark:text-gray-400">
+            <p className="text-xs text-[#4B5563] dark:text-slate-300 font-medium">
               The physiological buffer of 14-15 minutes most adults require to fall asleep.
             </p>
           </div>
@@ -100,7 +100,7 @@ export function SleepScienceGuide() {
                 </tr>
                 <tr className="bg-[#FAF6F0]/40 dark:bg-violet-950/5">
                   <td className="p-4 font-mono text-[#7C3AED] dark:text-violet-400 font-semibold flex items-center gap-1.5">
-                    10:15 PM <span className="text-xs px-2 py-0.5 rounded-full bg-[#D4AF37]/15 text-[#D4AF37] dark:bg-amber-500/10 dark:text-amber-400 font-sans font-bold">★ Ideal</span>
+                    10:15 PM <span className="text-xs px-2.5 py-0.5 rounded-full bg-amber-500/15 text-amber-800 dark:bg-amber-500/20 dark:text-amber-300 font-sans font-bold">★ Ideal</span>
                   </td>
                   <td className="p-4 font-semibold text-[#111827] dark:text-gray-100">5 Cycles</td>
                   <td className="p-4 font-semibold text-[#111827] dark:text-gray-100">7.5 Hours</td>
@@ -118,7 +118,7 @@ export function SleepScienceGuide() {
               </tbody>
             </table>
           </div>
-          <p className="text-xs text-[#6B7280] dark:text-gray-400 italic">
+          <p className="text-xs text-[#374151] dark:text-slate-300 italic font-medium">
             The 10:15 PM option is scientifically ideal for most adults — ensuring you wake up naturally at the end of your 5th complete cycle.
           </p>
         </div>
@@ -229,7 +229,7 @@ export function SleepScienceGuide() {
               <tr className="bg-violet-50/20 dark:bg-violet-950/10">
                 <td className="p-4 font-bold text-[#111827] dark:text-gray-100">Adults (26–64 years)</td>
                 <td className="p-4 font-mono text-[#7C3AED] dark:text-violet-400 font-bold">7–9 hours</td>
-                <td className="p-4 font-bold text-[#111827] dark:text-gray-100 font-semibold">5–6 cycles <span className="text-[#D4AF37] ml-1">★</span></td>
+                <td className="p-4 font-bold text-[#111827] dark:text-gray-100">5–6 cycles <span className="text-amber-700 dark:text-amber-400 ml-1 font-bold">★</span></td>
               </tr>
               <tr>
                 <td className="p-4 font-semibold text-[#111827] dark:text-gray-100">Older adults (65+ years)</td>
@@ -253,66 +253,66 @@ export function SleepScienceGuide() {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="p-4 bg-[#FAF6F0]/50 dark:bg-[#151C2C] border border-[#E1D8CC] dark:border-[#1E293B] rounded-2xl flex justify-between items-center">
             <div>
-              <p className="text-xs text-[#6B7280] dark:text-gray-400 font-medium">Waking up at:</p>
+              <p className="text-xs text-[#4B5563] dark:text-slate-300 font-semibold">Waking up at:</p>
               <p className="text-base font-bold text-[#111827] dark:text-gray-100">5:00 AM</p>
             </div>
             <div className="text-right">
-              <p className="text-xs text-[#6B7280] dark:text-gray-400 font-medium">Ideal Bedtimes:</p>
+              <p className="text-xs text-[#4B5563] dark:text-slate-300 font-semibold">Ideal Bedtimes:</p>
               <p className="text-sm font-mono font-semibold text-[#7C3AED] dark:text-violet-400">9:15 PM or 10:45 PM</p>
             </div>
           </div>
 
           <div className="p-4 bg-[#FAF6F0]/50 dark:bg-[#151C2C] border border-[#E1D8CC] dark:border-[#1E293B] rounded-2xl flex justify-between items-center">
             <div>
-              <p className="text-xs text-[#6B7280] dark:text-gray-400 font-medium">Waking up at:</p>
+              <p className="text-xs text-[#4B5563] dark:text-slate-300 font-semibold">Waking up at:</p>
               <p className="text-base font-bold text-[#111827] dark:text-gray-100">5:30 AM</p>
             </div>
             <div className="text-right">
-              <p className="text-xs text-[#6B7280] dark:text-gray-400 font-medium">Ideal Bedtimes:</p>
+              <p className="text-xs text-[#4B5563] dark:text-slate-300 font-semibold">Ideal Bedtimes:</p>
               <p className="text-sm font-mono font-semibold text-[#7C3AED] dark:text-violet-400">9:45 PM or 11:15 PM</p>
             </div>
           </div>
 
           <div className="p-4 bg-[#FAF6F0]/50 dark:bg-[#151C2C] border border-[#E1D8CC] dark:border-[#1E293B] rounded-2xl flex justify-between items-center">
             <div>
-              <p className="text-xs text-[#6B7280] dark:text-gray-400 font-medium">Waking up at:</p>
+              <p className="text-xs text-[#4B5563] dark:text-slate-300 font-semibold">Waking up at:</p>
               <p className="text-base font-bold text-[#111827] dark:text-gray-100">6:00 AM</p>
             </div>
             <div className="text-right">
-              <p className="text-xs text-[#6B7280] dark:text-gray-400 font-medium">Ideal Bedtimes:</p>
+              <p className="text-xs text-[#4B5563] dark:text-slate-300 font-semibold">Ideal Bedtimes:</p>
               <p className="text-sm font-mono font-semibold text-[#7C3AED] dark:text-violet-400">10:15 PM or 11:45 PM</p>
             </div>
           </div>
 
           <div className="p-4 bg-[#FAF6F0]/50 dark:bg-[#151C2C] border border-[#E1D8CC] dark:border-[#1E293B] rounded-2xl flex justify-between items-center">
             <div>
-              <p className="text-xs text-[#6B7280] dark:text-gray-400 font-medium">Waking up at:</p>
+              <p className="text-xs text-[#4B5563] dark:text-slate-300 font-semibold">Waking up at:</p>
               <p className="text-base font-bold text-[#111827] dark:text-gray-100">6:30 AM</p>
             </div>
             <div className="text-right">
-              <p className="text-xs text-[#6B7280] dark:text-gray-400 font-medium">Ideal Bedtimes:</p>
+              <p className="text-xs text-[#4B5563] dark:text-slate-300 font-semibold">Ideal Bedtimes:</p>
               <p className="text-sm font-mono font-semibold text-[#7C3AED] dark:text-violet-400">10:45 PM or 12:15 AM</p>
             </div>
           </div>
 
           <div className="p-4 bg-[#FAF6F0]/50 dark:bg-[#151C2C] border border-[#E1D8CC] dark:border-[#1E293B] rounded-2xl flex justify-between items-center">
             <div>
-              <p className="text-xs text-[#6B7280] dark:text-gray-400 font-medium">Waking up at:</p>
+              <p className="text-xs text-[#4B5563] dark:text-slate-300 font-semibold">Waking up at:</p>
               <p className="text-base font-bold text-[#111827] dark:text-gray-100">7:00 AM</p>
             </div>
             <div className="text-right">
-              <p className="text-xs text-[#6B7280] dark:text-gray-400 font-medium">Ideal Bedtimes:</p>
+              <p className="text-xs text-[#4B5563] dark:text-slate-300 font-semibold">Ideal Bedtimes:</p>
               <p className="text-sm font-mono font-semibold text-[#7C3AED] dark:text-violet-400">11:15 PM or 12:45 AM</p>
             </div>
           </div>
 
           <div className="p-4 bg-[#FAF6F0]/50 dark:bg-[#151C2C] border border-[#E1D8CC] dark:border-[#1E293B] rounded-2xl flex justify-between items-center">
             <div>
-              <p className="text-xs text-[#6B7280] dark:text-gray-400 font-medium">Waking up at:</p>
+              <p className="text-xs text-[#4B5563] dark:text-slate-300 font-semibold">Waking up at:</p>
               <p className="text-base font-bold text-[#111827] dark:text-gray-100">7:30 AM</p>
             </div>
             <div className="text-right">
-              <p className="text-xs text-[#6B7280] dark:text-gray-400 font-medium">Ideal Bedtimes:</p>
+              <p className="text-xs text-[#4B5563] dark:text-slate-300 font-semibold">Ideal Bedtimes:</p>
               <p className="text-sm font-mono font-semibold text-[#7C3AED] dark:text-violet-400">11:45 PM or 1:15 AM</p>
             </div>
           </div>
@@ -593,7 +593,7 @@ export function SleepScienceGuide() {
         <div className="space-y-4">
           <div className="p-5 bg-[#FAF6F0]/50 dark:bg-[#151C2C] border border-[#E1D8CC] dark:border-[#1E293B] rounded-2xl space-y-2">
             <h4 className="font-serif font-bold text-[#111827] dark:text-gray-100 flex items-center gap-2.5 text-base">
-              <span className="text-xs font-mono font-bold px-2 py-0.5 rounded bg-[#7C3AED]/10 text-[#7C3AED] dark:bg-violet-500/20 dark:text-violet-400 uppercase tracking-wider">Myth</span>
+              <span className="text-xs font-mono font-bold px-2.5 py-0.5 rounded bg-violet-100 dark:bg-violet-950/60 text-violet-800 dark:text-violet-300 uppercase tracking-wider">Myth</span>
               "You can catch up on sleep over the weekend."
             </h4>
             <p className="text-sm leading-relaxed text-[#374151]/95 dark:text-slate-300">
@@ -603,7 +603,7 @@ export function SleepScienceGuide() {
 
           <div className="p-5 bg-[#FAF6F0]/50 dark:bg-[#151C2C] border border-[#E1D8CC] dark:border-[#1E293B] rounded-2xl space-y-2">
             <h4 className="font-serif font-bold text-[#111827] dark:text-gray-100 flex items-center gap-2.5 text-base">
-              <span className="text-xs font-mono font-bold px-2 py-0.5 rounded bg-[#7C3AED]/10 text-[#7C3AED] dark:bg-violet-500/20 dark:text-violet-400 uppercase tracking-wider">Myth</span>
+              <span className="text-xs font-mono font-bold px-2.5 py-0.5 rounded bg-violet-100 dark:bg-violet-950/60 text-violet-800 dark:text-violet-300 uppercase tracking-wider">Myth</span>
               "Everyone needs exactly 8 hours."
             </h4>
             <p className="text-sm leading-relaxed text-[#374151]/95 dark:text-slate-300">
@@ -613,7 +613,7 @@ export function SleepScienceGuide() {
 
           <div className="p-5 bg-[#FAF6F0]/50 dark:bg-[#151C2C] border border-[#E1D8CC] dark:border-[#1E293B] rounded-2xl space-y-2">
             <h4 className="font-serif font-bold text-[#111827] dark:text-gray-100 flex items-center gap-2.5 text-base">
-              <span className="text-xs font-mono font-bold px-2 py-0.5 rounded bg-[#7C3AED]/10 text-[#7C3AED] dark:bg-violet-500/20 dark:text-violet-400 uppercase tracking-wider">Myth</span>
+              <span className="text-xs font-mono font-bold px-2.5 py-0.5 rounded bg-violet-100 dark:bg-violet-950/60 text-violet-800 dark:text-violet-300 uppercase tracking-wider">Myth</span>
               "Alcohol helps you sleep better."
             </h4>
             <p className="text-sm leading-relaxed text-[#374151]/95 dark:text-slate-300">
@@ -623,7 +623,7 @@ export function SleepScienceGuide() {
 
           <div className="p-5 bg-[#FAF6F0]/50 dark:bg-[#151C2C] border border-[#E1D8CC] dark:border-[#1E293B] rounded-2xl space-y-2">
             <h4 className="font-serif font-bold text-[#111827] dark:text-gray-100 flex items-center gap-2.5 text-base">
-              <span className="text-xs font-mono font-bold px-2 py-0.5 rounded bg-[#7C3AED]/10 text-[#7C3AED] dark:bg-violet-500/20 dark:text-violet-400 uppercase tracking-wider">Myth</span>
+              <span className="text-xs font-mono font-bold px-2.5 py-0.5 rounded bg-violet-100 dark:bg-violet-950/60 text-violet-800 dark:text-violet-300 uppercase tracking-wider">Myth</span>
               "8 hours is always better than 7.5 hours."
             </h4>
             <p className="text-sm leading-relaxed text-[#374151]/95 dark:text-slate-300">
@@ -740,10 +740,10 @@ export function SleepScienceGuide() {
               <span className="text-[#111827] dark:text-gray-100 ml-1 font-semibold">Dr. Sarah Johnson</span> (MBBS / Sleep Specialist)
             </div>
           </div>
-          <div className="text-xs text-[#6B7280] dark:text-gray-400">
-            <span className="font-semibold">Last Updated:</span> July 2026
+          <div className="text-xs text-[#374151] dark:text-slate-300 font-medium">
+            <span className="font-bold text-[#111827] dark:text-gray-100">Last Updated:</span> July 2026
           </div>
-          <p className="text-[11px] text-[#6B7280] dark:text-gray-400 leading-normal mt-2">
+          <p className="text-[11px] text-[#374151] dark:text-slate-300 leading-normal mt-2">
             <strong>Fact-Checked:</strong> All calculations, stages, and sleep hygiene recommendations are derived from direct standards set by the <strong>American Academy of Sleep Medicine (AASM 2025)</strong>, the <strong>National Sleep Foundation (NSF 2025)</strong>, and peer-reviewed journals published in <strong>PubMed</strong>.
           </p>
         </div>
@@ -751,10 +751,10 @@ export function SleepScienceGuide() {
 
       {/* Sources & Disclaimer Section */}
       <footer className="pt-8 border-t border-[#E1D8CC] dark:border-slate-800 space-y-4">
-        <p className="text-xs text-[#6B7280] dark:text-gray-400 leading-relaxed">
+        <p className="text-xs text-[#374151] dark:text-slate-300 leading-relaxed font-medium">
           <strong>Sources &amp; References:</strong> American Academy of Sleep Medicine (AASM) 2025 · National Sleep Foundation (NSF) 2025 · Van Dongen et al., Sleep 2003 · Walker, M. Why We Sleep, 2017 · NASA Nap Study 1995 · University of Michigan Sleep Study 2024
         </p>
-        <p className="text-xs text-[#6B7280]/80 dark:text-gray-400/80 leading-relaxed italic bg-[#FAF6F0]/50 dark:bg-[#151C2C]/30 p-3.5 rounded-xl border border-[#E1D8CC]/50 dark:border-slate-800/50">
+        <p className="text-xs text-[#374151] dark:text-slate-300 leading-relaxed italic bg-[#FAF6F0] dark:bg-[#151C2C] p-3.5 rounded-xl border border-[#E1D8CC] dark:border-slate-800 font-medium">
           This content is for informational purposes only and does not constitute professional medical advice, clinical diagnosis, or medical treatment plans. Always consult with a licensed healthcare specialist or general practitioner regarding chronic sleep disorders or persistent morning fatigue.
         </p>
       </footer>

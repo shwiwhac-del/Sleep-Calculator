@@ -643,6 +643,7 @@
     <meta name="mobile-web-app-capable" content="yes" />
     
     <!-- Standard & Device Favicons / Icons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
@@ -661,9 +662,22 @@
     <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
     
     <link
-      rel="stylesheet"
+      rel="preload"
+      as="style"
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;650;700&amp;family=Playfair+Display:wght@600;700&amp;display=swap"
     />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;650;700&amp;family=Playfair+Display:wght@600;700&amp;display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;650;700&amp;family=Playfair+Display:wght@600;700&amp;display=swap"
+      />
+    </noscript>
     <title>Sleep Calculator | Ideal Bedtime & Wake-Up Times</title>
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
@@ -698,7 +712,7 @@
       <div class="ambient-glow-2"></div>
     </div>
     <div id="root">
-      <div style="min-height: 100vh; display: flex; flex-direction: column; items-center: center; justify-content: center; background-color: #F3ECE3; text-align: center; padding: 1.5rem; width: 100%;">
+      <div style="position: fixed; inset: 0; z-index: 999999; display: flex; flex-direction: column; align-items: center; justify-content: center; background-color: #F3ECE3; text-align: center; padding: 1.5rem; width: 100vw; height: 100vh;">
         <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; max-width: 24rem; margin: 0 auto;">
           <div style="font-family: serif; font-size: 2.25rem; font-weight: 800; tracking: -0.025em; color: #111827; margin-bottom: 1rem;">
             Sleep<span style="color: #7C3AED;">Calculator</span>

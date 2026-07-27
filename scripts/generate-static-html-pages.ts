@@ -306,6 +306,20 @@ function injectSEOMetadataStatic(html: string, originalPath: string, customCanon
       "applicationCategory": "HealthAndFitnessApplication",
       "operatingSystem": "All"
     });
+
+    // BreadcrumbList Schema for Home
+    schemas.push({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://sleepcalculater.online/"
+        }
+      ]
+    });
   } else if (MAIN_PAGES_META[reqPath]) {
     title = customTitle || MAIN_PAGES_META[reqPath].title;
     description = MAIN_PAGES_META[reqPath].description;
@@ -317,6 +331,39 @@ function injectSEOMetadataStatic(html: string, originalPath: string, customCanon
       "url": canonicalUrl,
       "name": title,
       "description": description
+    });
+
+    const pageLabelMap: Record<string, string> = {
+      "/about": "About Us",
+      "/contact": "Contact Us",
+      "/privacy": "Privacy Policy",
+      "/terms": "Terms & Conditions",
+      "/blog": "Sleep Education",
+      "/student-sleep-calculator": "Student Sleep Calculator",
+      "/shift-work-sleep-calculator": "Night Shift Sleep Calculator",
+      "/sleep-cycle-calculator-90-minutes": "90-Minute Sleep Calculator",
+      "/wake-up-between-sleep-cycles": "Wake Up Between Cycles Calculator",
+      "/ideal-bedtime-based-on-wake-up-time": "Ideal Bedtime Calculator"
+    };
+    const pageLabel = pageLabelMap[reqPath] || title.split('–')[0].split('|')[0].trim();
+
+    schemas.push({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://sleepcalculater.online/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": pageLabel,
+          "item": canonicalUrl
+        }
+      ]
     });
   } else if (BLOG_POSTS_META[slug]) {
     const post = BLOG_POSTS_META[slug];
@@ -367,15 +414,15 @@ function injectSEOMetadataStatic(html: string, originalPath: string, customCanon
       breadcrumbListItems.push({
         "@type": "ListItem",
         "position": 2,
-        "name": "Blog",
-        "item": "https://sleepcalculater.online/blog/"
+        "name": "Sleep Education",
+        "item": "https://sleepcalculater.online/blog"
       });
     } else {
       breadcrumbListItems.push({
         "@type": "ListItem",
         "position": 2,
-        "name": "Blog",
-        "item": "https://sleepcalculater.online/blog/"
+        "name": "Sleep Education",
+        "item": "https://sleepcalculater.online/blog"
       });
       breadcrumbListItems.push({
         "@type": "ListItem",

@@ -56,6 +56,36 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://sleepcalculater.online/sleep-calculator-by-age</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sleepcalculater.online/sleep-calculator-cycle</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sleepcalculater.online/sleep-calculator-how-much-sleep-did-i-get</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sleepcalculater.online/sleep-calculator-women</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sleepcalculater.online/sleep-calculator-for-kids</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sleepcalculater.online/sleep-calculator-app</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://sleepcalculater.online/blog/sleep-cycles-explained</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -252,6 +282,31 @@
   </url>
   <url>
     <loc>https://sleepcalculater.online/blog/nap-calculator-20-30-60-90-minutes</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sleepcalculater.online/blog/sleep-calculator-cycle</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sleepcalculater.online/blog/sleep-calculator-how-much-sleep-did-i-get</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sleepcalculater.online/blog/sleep-calculator-women</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sleepcalculater.online/blog/sleep-calculator-for-kids</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sleepcalculater.online/blog/sleep-calculator-app</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
